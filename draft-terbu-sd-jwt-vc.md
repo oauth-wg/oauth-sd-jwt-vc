@@ -17,7 +17,6 @@ author:
     organization: SpruceID
     email: oliver.terbu@spruceid.com
 
-
 normative:
 
 informative:
@@ -313,7 +312,7 @@ Interoperability considerations: n/a
 
 ### application/vp+sd-jwt
 
-TBD ...
+TBD
 
 --- back
 
