@@ -76,7 +76,16 @@ TBD
 
 ## Header Parameters
 
-TBD
+The `typ` header parameter of the SD-JWT-VC MUST be present. The `typ` value MUST use the media type `vc+sd-jwt`that is registered by this specification. This indicates that the payload of the SD-JWT-VC contains plain JSON and follows the rules as defined in this specification.
+
+The following is a non-normative example of a decoded SD-JWT-VC header:
+
+```
+{
+  "alg": "ES256",
+  "typ": "vc+sd-jwt"
+}
+```
 
 ## Payload
 
