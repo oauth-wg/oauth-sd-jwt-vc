@@ -89,33 +89,61 @@ The following is a non-normative example of a decoded SD-JWT-VC header:
 
 ## Payload
 
+SD-JWT-VCs as defined in this specification can use any claim registered in the “JSON Web Token Claims” registry as defined in RFC 7519.
+
+Some of the claims in a VC MUST NOT be selectively disclosed as they are always required for processing on the verifier side. All other claims can be made selectively disclosable by the issuer when issuing the respective SD-JWT-VC.
+
+SD-JWT-VCs MAY contain additional claims depending on the application.
+
+### `status` claim {#status-claim}
+
+TBD: might get removed once other draft spec finished
+
+### `type` claim {#type-claim}
+
 TBD
 
 ### Usage of registered JWT Claims
 
-TBD
+The following are non-selectively disclosable registered JWT claims that SD-JWT-VCs contain for specific purposes:
 
-### "status" Claim
+* `iss`
+    * REQUIRED. The issuer of the Verifiable Credential. The value of `iss` MUST be a URI. See [JWT] for more information.
+* `iat`
+    * REQUIRED. The time of issuance of the Verifiable Credential.
+* `nbf`
+    * REQUIRED. The time before which the SD-JWT-VC MUST NOT be accepted before validating.
+* `exp`
+    * REQUIRED. The expiry time of the Verifiable Credential after which the proof of the Verifiable Credential is no longer valid.
+* `cnf`
+    * OPTIONAL. The confirmation method can be used to verify the Holder Binding JWT of the disclosed SD-JWT.
+* `type`
+    * REQUIRED. The type or types of the Verifiable Credential. In the general case, the `type` value is an array of case-sensitive strings, each containing a `StringOrURI` value. In the special case when the SD-JWT has one credential type, the `type` value MAY be a single case-sensitive string containing a `StringOrURI` value.
+* `status`
+    * OPTIONAL. The information on how to read the status of the Verifiable Credential.
 
-TBD: might get removed once other draft spec finished
+The following are selectively disclosable registered JWT claims that SD-JWT-VCs contain for specific purposes:
+
+* `sub`
+    * OPTIONAL. The identifier of the subject of the Verifiable Credential. The value of `sub` MUST be a URI..
 
 # Validation Rules and Processing
 
 A verifier MUST validate an SD-JWT-VC as follows:
 
 * REQUIRED. Verify the SD-JWT-VC as per SD-JWT.
-* REQUIRED. Perform Issuer Authentication as described in Section TBD.
+* REQUIRED. Perform Issuer Authentication as described in {#issuer-authentication}.
 * OPTIONAL. If `status` is present in the SD-JWT-VC, the status of the SD-JWT-VC SHOULD be checked. It depends on the verifier policy to reject or accept an SD-JWT-VC based on the status of the Verifiable Credential.
 
 Additional validation rules MAY apply but their use is out-of-scope of this specification.
 
-## Issuer Authentication
+## Issuer Authentication {#issuer-authentication}
 
 Verifiers processing SD-JWT-VCs MUST verify the signature of the SD-JWT with the public key of the SD-JWT-VC issuer. This makes sure that the SD-JWT-VC was issued by the SD-JWT-VC issuer and that it has not been tampered with since issuance.
 
-The `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in Section TBD) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
+The `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in {#jwt-issuer-metadata}) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
 
-## JWT Issuer Metadata
+## JWT Issuer Metadata {#jwt-issuer-metadata}
 
 This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is identified by the `iss` claim in the JWT. Use of the JWT Issuer Metadata is OPTIONAL.
 
