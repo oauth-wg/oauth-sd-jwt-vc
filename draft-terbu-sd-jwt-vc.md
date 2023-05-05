@@ -1,58 +1,207 @@
----
-title: "SD-JWT VC"
-category: info
+%%%
+title = "SD-JWT-based Verifiable Credentials with JSON payloads"
+abbrev = "sd-jwt-vc"
+ipr = "none"
+workgroup = "TBD"
+keyword = ["security", "openid", "sd-jwt"]
 
-docname: draft-terbu-sd-jwt-vc-latest
-submissiontype: independent  # also: "IETF", "IAB", or "IRTF"
-number:
-date:
-v: 3
-venue:
-  github: "awoie/draft-terbu-sd-jwt-vc"
-  latest: "https://awoie.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html"
+[seriesInfo]
+name = "Internet-Draft"
+value = "draft-terbu-sd-jwt-vc-latest"
+status = "standard"
 
-author:
- -
-    fullname: Oliver Terbu
-    organization: SpruceID
-    email: oliver.terbu@spruceid.com
+[[author]]
+initials="O."
+surname="Terbu"
+fullname="Oliver Terbu"
+organization="Spruce Systems, Inc."
+    [author.address]
+    email = "oliver.terbu@spruceid.com"
 
+[[author]]
+initials="D."
+surname="Fett"
+fullname="Daniel Fett"
+organization="Authlete Inc. "
+    [author.address]
+    email = "mail@danielfett.de"
 
-normative:
+%%%
 
-informative:
+.# Abstract
 
+This document specifies Verifiable Credentials based on Selective Disclosure JSON Web Tokens (SD-JWT) with JSON payloads.
 
---- abstract
-
-TODO Abstract
-
-
---- middle
+{mainmatter}
 
 # Introduction
 
-TODO Introduction
 
+TBD: why?
+- simplicity
+- JWTs are well-known, popular but doesn't work best with three-party-model
+- Also no selective disclosure, which impacts costs and security.
 
-# Conventions and Definitions
+This specification describes data formats, validation and processing rules for SD-JWT expresing Verifiable Credentials.
 
-{::boilerplate bcp14-tagged}
+## Requirements Notation and Conventions
 
+The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this document are to be interpreted as described in RFC 2119 [@!RFC2119].
+
+## Terms and Definitions
+
+TBD
+
+## Abbreviations
+
+TBD
+
+# Scope
+
+TBD
+
+# Use Cases
+
+TBD: explain three-party-model and use cases
+
+TBD: conventional crypt, hardware security, hsm, mobile secure area, compliance with FIPS
+
+# Overview
+
+TBD
+
+# Data Format
+
+TBD
+
+## Header Parameters
+
+TBD
+
+## Payload
+
+TBD
+
+### Usage of registered JWT Claims
+
+TBD
+
+### "status" Claim
+
+TBD: might get removed once other draft spec finished
+
+# Validation Rules and Processing
+
+A verifier MUST validate an SD-JWT-VC as follows:
+
+* REQUIRED. Verify the SD-JWT-VC as per SD-JWT.
+* REQUIRED. Perform Issuer Authentication as described in Section TBD.
+* OPTIONAL. If `status` is present in the SD-JWT-VC, the status of the SD-JWT-VC SHOULD be checked. It depends on the verifier policy to reject or accept an SD-JWT-VC based on the status of the Verifiable Credential.
+
+Additional validation rules MAY apply but their use is out-of-scope of this specification.
+
+## Issuer Authentication
+
+Verifiers processing SD-JWT-VCs MUST verify the signature of the SD-JWT with the public key of the SD-JWT-VC issuer. This makes sure that the SD-JWT-VC was issued by the SD-JWT-VC issuer and that it has not been tampered with since issuance.
+
+The `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in Section TBD) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
+
+## JWT Issuer Metadata
+
+This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is identified by the `iss` claim in the JWT. Use of the JWT Issuer Metadata is OPTIONAL.
+
+JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer Metadata configuration available at the path formed by concatenating the string `/.well-known/jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components.
+
+The JWT Issuer Metadata configuration MUST be a JSON document compliant with this specification and MUST be returned using the application/json content type.
+
+This specification defines the following JWT Issuer Metadata parameters:
+
+* `jwks_uri`
+    * OPTIONAL. URL string referencing the JWT Issuer’s JSON Web Key (JWK) Set [RFC7517] document, which contains the JWT Issuer's public keys. The value of this field MUST point to a valid JWK Set document. Use of this parameter is preferred over the `jwks` parameter, as it allows for easier key rotation. JWT Issuer MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata. `jwks_uri` and `jwks` MUST NOT both be present in the same JWT Issuer Metadata.
+* `jwks`
+    * OPTIONAL. JWT Issuer’s JSON Web Key Set [RFC7517] document value, which contains the JWT Issuer’s public keys. The value of this field MUST be a JSON object containing a valid JWK Set. This parameter is intended to be used by JWT Issuer that cannot use the `jwks_uri` parameter. JWT Issuer MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata. `jwks_uri` and `jwks` MUST NOT both be present in the same JWT Issuer Metadata.
+
+It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can be used to lookup the public key in the JWK Set included by value or referenced in the JWT Issuer Metadata.
+
+The following is a non-normative example of a JWT Issuer Metadata including `jwks`:
+
+```
+{
+   "jwks":{
+      "keys":[
+         {
+            "e":"AQAB",
+            "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
+   HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
+   lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
+   RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
+   2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
+   qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
+            "kty":"RSA"
+         }
+      ]
+   }
+}
+```
+
+The following is a non-normative example of a JWT Issuer Metadata including `jwks_uri`:
+
+```
+{
+   "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
+}
+```
+
+# Verifiable Presentation Support
+
+TBD: we would like to register a media type for vp+sd-jwt
 
 # Security Considerations
 
-TODO Security
+TBD
 
+# Privacy Considerations
+
+TBD
+
+# Relationships to Other Documents
+
+## W3C Verifiable Credential Data Model 2.0
+
+### Mapping Mechanism
+
+TBD
+
+{backmatter}
+
+<reference anchor="VC-DATA" target="https://www.w3.org/TR/vc-data-model-2.0/">
+        <front>
+        <title>Verifiable Credentials Data Model v2.0</title>
+        <author fullname="Manu Sporny">
+            <organization>Digital Bazaar</organization>
+        </author>
+        <author fullname="Dave Longley">
+            <organization>Digital Bazaar</organization>
+        </author>
+        <author fullname="David Chadwick">
+            <organization>Crossword Cybersecurity PLC</organization>
+        </author>
+        <date day="4" month="May" year="2023"/>
+        </front>
+</reference>
 
 # IANA Considerations
 
-This document has no IANA actions.
+TBD
 
+# Acknowledgements {#Acknowledgements}
 
---- back
+TBD
 
-# Acknowledgments
-{:numbered="false"}
+# Notices
 
-TODO acknowledge.
+TBD
+
+# Document History
+
+TBD
