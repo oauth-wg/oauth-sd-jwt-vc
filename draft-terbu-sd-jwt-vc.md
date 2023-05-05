@@ -42,7 +42,7 @@ TBD: why?
 - JWTs are well-known, popular but doesn't work best with three-party-model
 - Also no selective disclosure, which impacts costs and security.
 
-This specification describes data formats, validation and processing rules for SD-JWT expresing Verifiable Credentials. 
+This specification describes data formats, validation and processing rules for SD-JWT expresing Verifiable Credentials.
 
 ## Requirements Notation and Conventions
 
@@ -148,7 +148,7 @@ TBD
 
 TBD
 
-# Notices 
+# Notices
 
 TBD
 
