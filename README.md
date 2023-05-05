@@ -2,16 +2,16 @@
 
 This is the working area for the individual Internet-Draft, "SD-JWT-VC".
 
-* [Editor's Copy](https://awoie.github.io/draft-terbu-sd-jwt-vc/#go.draft-terbu-sd-jwt-vc.html)
+* [Editor's Copy](https://vcstuff.github.io/draft-terbu-sd-jwt-vc/#go.draft-terbu-sd-jwt-vc.html)
 * [Datatracker Page](https://datatracker.ietf.org/doc/draft-terbu-sd-jwt-vc)
 * [Individual Draft](https://datatracker.ietf.org/doc/html/draft-terbu-sd-jwt-vc)
-* [Compare Editor's Copy to Individual Draft](https://awoie.github.io/draft-terbu-sd-jwt-vc/#go.draft-terbu-sd-jwt-vc.diff)
+* [Compare Editor's Copy to Individual Draft](https://vcstuff.github.io/draft-terbu-sd-jwt-vc/#go.draft-terbu-sd-jwt-vc.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/awoie/draft-terbu-sd-jwt-vc/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/vcstuff/draft-terbu-sd-jwt-vc/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
