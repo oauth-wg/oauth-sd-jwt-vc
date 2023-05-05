@@ -92,15 +92,65 @@ TBD: might get removed once other draft spec finished
 
 # Validation Rules and Processing
 
-TBD
+A verifier MUST validate an SD-JWT-VC as follows:
+
+* REQUIRED. Verify the SD-JWT-VC as per SD-JWT.
+* REQUIRED. Perform Issuer Authentication as described in Section TBD.
+* OPTIONAL. If `status` is present in the SD-JWT-VC, the status of the SD-JWT-VC SHOULD be checked. It depends on the verifier policy to reject or accept an SD-JWT-VC based on the status of the Verifiable Credential.
+
+Additional validation rules MAY apply but their use is out-of-scope of this specification.
 
 ## Issuer Authentication
 
-TBD
+Verifiers processing SD-JWT-VCs MUST verify the signature of the SD-JWT with the public key of the SD-JWT-VC issuer. This makes sure that the SD-JWT-VC was issued by the SD-JWT-VC issuer and that it has not been tampered with since issuance.
+
+The `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in Section TBD) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
 
 ## JWT Issuer Metadata
 
-TBD
+This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is identified by the `iss` claim in the JWT. Use of the JWT Issuer Metadata is OPTIONAL.
+
+JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer Metadata configuration available at the path formed by concatenating the string `/.well-known/jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components.
+
+The JWT Issuer Metadata configuration MUST be a JSON document compliant with this specification and MUST be returned using the application/json content type.
+
+This specification defines the following JWT Issuer Metadata parameters:
+
+* `jwks_uri`
+    * OPTIONAL. URL string referencing the JWT Issuer’s JSON Web Key (JWK) Set [RFC7517] document, which contains the JWT Issuer's public keys. The value of this field MUST point to a valid JWK Set document. Use of this parameter is preferred over the `jwks` parameter, as it allows for easier key rotation. JWT Issuer MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata. `jwks_uri` and `jwks` MUST NOT both be present in the same JWT Issuer Metadata.
+* `jwks`
+    * OPTIONAL. JWT Issuer’s JSON Web Key Set [RFC7517] document value, which contains the JWT Issuer’s public keys. The value of this field MUST be a JSON object containing a valid JWK Set. This parameter is intended to be used by JWT Issuer that cannot use the `jwks_uri` parameter. JWT Issuer MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata. `jwks_uri` and `jwks` MUST NOT both be present in the same JWT Issuer Metadata.
+
+It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can be used to lookup the public key in the JWK Set included by value or referenced in the JWT Issuer Metadata.
+
+The following is a non-normative example of a JWT Issuer Metadata including `jwks`:
+
+```
+{
+   "jwks":{
+      "keys":[
+         {
+            "e":"AQAB",
+            "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
+   HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
+   lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
+   RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
+   2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
+   qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
+            "kty":"RSA"
+         }
+      ]
+   }
+}
+```
+
+The following is a non-normative example of a JWT Issuer Metadata including `jwks_uri`:
+
+```
+{
+   "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
+}
+```
 
 # Verifiable Presentation Support
 
