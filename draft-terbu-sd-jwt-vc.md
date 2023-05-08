@@ -125,7 +125,7 @@ The following are non-selectively disclosable registered JWT claims that SD-JWT-
 The following are selectively disclosable registered JWT claims that SD-JWT-VCs contain for specific purposes:
 
 * `sub`
-    * OPTIONAL. The identifier of the subject of the Verifiable Credential. The value of `sub` MUST be a URI..
+    * OPTIONAL. The identifier of the subject of the Verifiable Credential. The value of `sub` MUST be a URI. Issuer MAY use it to provide subject’s identifier assigned and maintained by the Issuer. There is no requirement for a binding to exist between `sub` and `cnf` claims.
 
 # Validation Rules and Processing
 
