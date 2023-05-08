@@ -111,8 +111,6 @@ The following are non-selectively disclosable registered JWT claims that SD-JWT-
     * REQUIRED. The issuer of the Verifiable Credential. The value of `iss` MUST be a URI. See [JWT] for more information.
 * `iat`
     * REQUIRED. The time of issuance of the Verifiable Credential.
-* `nbf`
-    * REQUIRED. The time before which the SD-JWT-VC MUST NOT be accepted before validating.
 * `exp`
     * REQUIRED. The expiry time of the Verifiable Credential after which the proof of the Verifiable Credential is no longer valid.
 * `cnf`
@@ -121,6 +119,8 @@ The following are non-selectively disclosable registered JWT claims that SD-JWT-
     * REQUIRED. The type or types of the Verifiable Credential. In the general case, the `type` value is an array of case-sensitive strings, each containing a `StringOrURI` value. In the special case when the SD-JWT has one credential type, the `type` value MAY be a single case-sensitive string containing a `StringOrURI` value.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable Credential.
+* `nbf`
+    * OPTIONAL. The time before which the SD-JWT-VC MUST NOT be accepted before validating.
 
 The following are selectively disclosable registered JWT claims that SD-JWT-VCs contain for specific purposes:
 
