@@ -38,27 +38,28 @@ express Verifiable Credentials based on the SD-JWT format
 
 # Introduction
 
-A Verifiable Credential is an tamper-evident statement about an entity which is
-the Subject of the Verifiable Credential created by an Issuer. Verifiable Credentials
-are issued to Holders which can present Verifiable Credentials to Verifiers
-typically in form of Verifiable Presentations. Verifiers have to trust Issuers
-to make trustworthy statements about the Subject and they can additional require
-that the Holder provides a proof that they are the intended Holder of the Verifiable
-Credential for security reason. This is only possible if an Issuer binds the
-Verifiable Credential to a specific Holder at the time of issuance.
+A Verifiable Credential is an tamper-evident statement about an entity which
+is the Subject of the Verifiable Credential created by an Issuer. Verifiable
+Credentials are issued to Holders which can present Verifiable Credentials to
+Verifiers typically in form of Verifiable Presentations. Verifiers have to
+trust Issuers to make trustworthy statements about the Subject and they can
+additional require that the Holder provides a proof that they are the intended
+Holder of the Verifiable Credential for security reason. This is only possible
+if an Issuer binds the Verifiable Credential to a specific Holder at the time
+of issuance.
 
-The relationships between the entities involved in the issuance and
-verification of Verifiable Credentials is also referred to as the
-three-party-model.
+This is also referred to as the three-party-model which describes the
+relationships between the entities involved in the issuance and verification of
+Verifiable Credentials.
 
 The model involves three parties:
 
 1. Issuer: The entity that issues the Verifiable Credential to the Holder, who
-is typcially the Subject of the Verifiable Credential.
+is tthe person or entity being issued the credential.
 1. Verifier: The entity that verifies the Verifiable Credential presented by
-the Holder, for example to prove eligibility to access certain services.
+the Subject, for example to prove eligibility to access certain services.
 1. Holder: The person or entity being issued the Verifiable Credential, who
-may present the Verifiable Credential to a Verifier for verification.
+ may present the Verifiable Credential to a Verifier for verification.
 
 Signed JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
