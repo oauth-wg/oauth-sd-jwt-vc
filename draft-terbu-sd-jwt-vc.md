@@ -82,10 +82,6 @@ Combined Format for Presentation [see TBD]. In the three-party-model, this
 representation is used for the Verifiable Presentation and is transferred from
 the Issuer to the Holder.
 
-## Abbreviations
-
-TBD
-
 # Scope
 
 TBD
