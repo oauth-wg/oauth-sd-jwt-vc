@@ -477,9 +477,74 @@ TBD
 
 ## W3C Verifiable Credential Data Model 2.0
 
-### Mapping Mechanism
+The W3C VCDM 2.0 (see TBD) defines a JSON-LD vocabulary for Verifiable
+Credentials and Verifiable Presentations. To interop with the W3C VCDM 2.0 data
+model defined in [TBD], this specification defines mapping algorithm for
+VC-SD-JWT and VP-SD-JWT to the vocabulary and data model defined W3C VCDM 2.0
+which is based on JSON-LD.
 
-TBD
+### VC Directory
+
+This specification registers the media types `application/vp+sd-jwt` and
+`application/vc+sd-jwt` in the W3C Verifiable Credentials (VC) Directory.
+
+### Mapping Algorithm
+
+The following is a uni-directional transformation algorithm that takes in a
+VC-SD-JWT conformant to this specification and maps it
+to the corresponding properties in the W3C VCDM 2.0
+which is based on a JSON-LD vocabulary. It includes specific handling for JWT
+claims used in this specification. The function returns a Verifiable
+Credential object in the W3C VCDM 2.0 format.
+
+```
+function get_credential_from_vc_sd_jwt(vc_sd_jwt):
+  // TBD
+  return credential
+
+function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
+
+  // construct input credential (JSON object)
+  credential = get_credential_from_vc_sd_jwt(vc_sd_jwt)
+
+  return map_to_w3c(credential)
+
+  vc = {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2"
+    ]
+  }
+  vc.issuedAt = epochTimeToISO(credential.iat)
+  vc.validFrom = epochTimeToISO(credential.nbf)
+  vc.validUntil = epochTimeToISO(credential.exp)
+  vc.id = credential.jti
+  vc.issuer = credential.iss
+  vc.type = credential.type
+
+  // remove all handled claims
+  credential = drop_claims(credential, ...)
+
+  // add all remaining claims to credentialSubject
+  // ignore other claims such as cnf where no corresponding
+  // representation exists
+  vc.credentialSubject = {
+    "id": credential.sub,
+    ... credential
+  }
+
+  return vc
+```
+
+The following is a uni-directional transformation algorithm from a VP-SD-JWT onto W3C Verifiable Presentations
+in pseudo-code:
+
+```
+function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
+  TBD: similar to above but using W3C VP + VC
+
+```
+
+####
 
 {backmatter}
 
