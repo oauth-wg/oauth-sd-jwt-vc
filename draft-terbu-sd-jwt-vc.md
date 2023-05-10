@@ -47,9 +47,9 @@ that the Holder provides a proof that they are the intended Holder of the Verifi
 Credential for security reason. This is only possible if an Issuer binds the
 Verifiable Credential to a specific Holder at the time of issuance.
 
-This is also referred to as the three-party-model which describes the
-relationships between the entities involved in the issuance and verification of
-Verifiable Credentials.
+The relationships between the entities involved in the issuance and
+verification of Verifiable Credentials is also referred to as the
+three-party-model.
 
 The model involves three parties:
 
