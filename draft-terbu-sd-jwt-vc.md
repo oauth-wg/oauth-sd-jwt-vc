@@ -153,7 +153,7 @@ The following are selectively disclosable registered JWT claims that SD-JWT-VCs 
 
 A verifier MUST validate an SD-JWT-VC as follows:
 
- 1. REQUIRED. Verify the SD-JWT-VC as defined in Section 6.2 of [@!I-D.oauth-selective-disclosure-jwt]. For the verification, the `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in {#jwt-issuer-metadata}) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
+ 1. REQUIRED. Verify the SD-JWT-VC as defined in Section 6.2 of (TBD: see oauth-selective-disclosure-jwt). For the verification, the `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in {#jwt-issuer-metadata}) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT-VC, the status of the SD-JWT-VC SHOULD be checked. It depends on the verifier policy to reject or accept an SD-JWT-VC based on the status of the Verifiable Credential.
 
 Additional validation rules MAY apply, but their use is out of the scope of this specification.
