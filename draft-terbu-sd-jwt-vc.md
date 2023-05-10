@@ -248,6 +248,13 @@ TBD
 
 TBD
 
+## JSON Web Token Claims Registration
+
+ Claim Name: "type"
+   o  Claim Description: Credential Type
+   o  Change Controller: IESG
+   o  Specification Document(s): Section XXX of this document
+
 # Acknowledgements {#Acknowledgements}
 
 TBD
