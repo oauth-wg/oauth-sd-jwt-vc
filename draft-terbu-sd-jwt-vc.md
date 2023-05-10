@@ -38,8 +38,28 @@ express Verifiable Credentials based on the SD-JWT format
 
 # Introduction
 
+A Verifiable Credential is an tamper-evident statement about an entity which
+is the Subject of the Verifiable Credential created by an Issuer. Verifiable
+Credentials are issued to Holders which can present Verifiable Credentials to
+Verifiers typically in form of Verifiable Presentations. Verifiers have to
+trust Issuers to make trustworthy statements about the Subject and they can
+additional require that the Holder provides a proof that they are the intended
+Holder of the Verifiable Credential for security reason. This is only possible
+if an Issuer binds the Verifiable Credential to a specific Holder at the time
+of issuance.
 
-Todo: Discuss VCs, introduce terminology.
+This is also referred to as the three-party-model which describes the
+relationships between the entities involved in the issuance and verification of
+Verifiable Credentials.
+
+The model involves three parties:
+
+1. Issuer: The entity that issues the Verifiable Credential to the Holder, who
+is tthe person or entity being issued the credential.
+1. Verifier: The entity that verifies the Verifiable Credential presented by
+the Subject, for example to prove eligibility to access certain services.
+1. Holder: The person or entity being issued the Verifiable Credential, who
+ may present the Verifiable Credential to a Verifier for verification.
 
 Signed JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
@@ -64,7 +84,14 @@ SD-JWT itself does not define the claims that must be used within the payload of
 the token or their semantics. This specification therefore defines how
 Verifiable Credentials can be expressed using SD-JWT.
 
-Todo: Explain the 'plain JSON' part
+JWTs are used to protect the integrity of JSON payloads, which
+can contain claims that are registered in the IANA JWT Claim Registry, as well
+as public and private claims. Private claims are not relevant for this
+specification due to the openness of the three-party-model. Since SD-JWTs are
+based on JWTs, this specification aims to express the basic Verifiable Credential
+data model purely through JSON payloads, using registered claims while allowing
+Issuers to use additional registered claims, as well as new or existing public
+claims, to make statements about the Subject of the Verifiable Credential.
 
 ## Requirements Notation and Conventions
 
@@ -84,7 +111,7 @@ TBD
 
 # Use Cases
 
-TBD: explain three-party-model and use cases
+TBD: explain three-party-model and use cases.
 
 TBD: conventional crypt, hardware security, hsm, mobile secure area, compliance with FIPS
 
