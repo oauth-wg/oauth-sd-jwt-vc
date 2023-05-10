@@ -32,7 +32,7 @@ organization="Authlete Inc. "
 
 This specification describes data formats, validation and processing rules to
 express Verifiable Credentials based on the SD-JWT format
-[@!I-D.oauth-selective-disclosure-jwt] using JSON payloads.
+(TBD: see oauth-selective-disclosure-jwt) using JSON payloads.
 
 {mainmatter}
 
