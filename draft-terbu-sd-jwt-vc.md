@@ -169,9 +169,9 @@ The JWT Issuer Metadata configuration MUST be a JSON document compliant with thi
 This specification defines the following JWT Issuer Metadata parameters:
 
 * `jwks_uri`
-    * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set [@RFC7517] document which contains the JWT Issuer's public keys. The value of this field MUST point to a valid JWK Set document. Use of this parameter is RECOMMENDED, as it allows for easy key rotation. 
+    * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set [@RFC7517] document which contains the JWT Issuer's public keys. The value of this field MUST point to a valid JWK Set document. Use of this parameter is RECOMMENDED, as it allows for easy key rotation.
 * `jwks`
-    * OPTIONAL. JWT Issuer's JSON Web Key Set [RFC7517] document value, which contains the JWT Issuer's public keys. The value of this field MUST be a JSON object containing a valid JWK Set. This parameter is intended to be used by JWT Issuer that cannot use the `jwks_uri` parameter. 
+    * OPTIONAL. JWT Issuer's JSON Web Key Set [RFC7517] document value, which contains the JWT Issuer's public keys. The value of this field MUST be a JSON object containing a valid JWK Set. This parameter is intended to be used by JWT Issuer that cannot use the `jwks_uri` parameter.
 
 JWT Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata, but not both.
 
