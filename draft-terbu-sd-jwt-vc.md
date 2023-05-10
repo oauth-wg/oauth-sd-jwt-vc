@@ -99,11 +99,15 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Terms and Definitions
 
-TBD
+Verifiable Credential based on SD-JWT (VC-SD-JWT):
+: Refers to the SD-JWT Combined Format for Issuance [see TBD]. In the
+three-party-model, this representation is used for the Verifiable Credential and
+is transferred from the Issuer to the Holder.
 
-## Abbreviations
-
-TBD
+Verifiable Presentation based on SD-JWT (VP-SD-JWT):
+: Refers to the SD-JWT Combined Format for Presentation [see TBD]. In the
+three-party-model, this representation is used for the Verifiable Presentation
+and is transferred from the Issuer to the Holder.
 
 # Scope
 
@@ -121,11 +125,32 @@ TBD
 
 # Data Format
 
-TBD
+This specification defines the media type `vc+sd-jwt` which describes a
+VC-SD-JWT with the following components:
+1. An SD-JWT to protect the integrity of the claims, to enable selective
+disclosure and to ensure authorship of the VC-SD-JWT. The SD-JWT
+header parameters and the payload is further defined by this specification.
+1. The full set of SD-JWT Disclosures that contain the claims in plain text.
+
+This specification defines the media type `vp+sd-jwt` which describes the
+VP-SD-JWT with the following components:
+1. The SD-JWT from the VC-SD-JWT.
+1. A subset of the SD-JWT Disclosures that are selectively disclosed by the
+Holder.
+1. An optional holder binding JWT that proves the Holder is the intended Holder
+of the Verifiable Credential. Note, it is the responsibility for the Issuer
+to include a confirmation method in the Verifiable Credential. This process is
+referred to as holder binding. This enables the Holder to prove they are the
+intended Holder of the Verifiable Credential. Further note, it is up to the
+Verifier to require or to not require the Holder to prove posessions of the
+confirmation method.
 
 ## Header Parameters
 
-The `typ` header parameter of the SD-JWT-VC MUST be present. The `typ` value MUST use the media type `vc+sd-jwt`that is registered by this specification. This indicates that the payload of the SD-JWT-VC contains plain JSON and follows the rules as defined in this specification.
+The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
+use `vc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
+JSON and follows the rules as defined in this specification. It further
+indicates that the SD-JWT is a SD-JWT component of a VC-SD-JWT.
 
 The following is a non-normative example of a decoded SD-JWT-VC header:
 
