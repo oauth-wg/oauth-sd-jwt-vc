@@ -114,6 +114,13 @@ VP-SD-JWT with the following components:
 1. The SD-JWT from the VC-SD-JWT.
 1. A subset of the SD-JWT Disclosures that are selectively disclosed by the
 Holder.
+1. An optional holder binding JWT that proves the Holder is the intended Holder
+of the Verifiable Credential. Note, it is the responsibility for the Issuer
+to include a confirmation method in the Verifiable Credential. This process is
+referred to as holder binding. This enables the Holder to prove they are the
+intended Holder of the Verifiable Credential. Further note, it is up to the
+Verifier to require or to not require the Holder to prove posessions of the
+confirmation method.
 
 ## Header Parameters
 
