@@ -103,6 +103,17 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
+Issuer:
+: An entity that issues VC-SD-JWTs.
+
+Holder:
+: An entity that receives VC-SD-JWTs from the Issuer and has control over
+them. Holders present VC-SD-JWTs as VP-SD-JWTs to Verifiers and can
+prove control over them.
+
+Verifier:
+: An entity that requests, validates and processes VP-SD-JWTs and VC-SD-JWTs.
+
 Verifiable Credential based on SD-JWT (VC-SD-JWT):
 : Refers to the SD-JWT Combined Format for Issuance [see TBD]. In the
 three-party-model, this representation is used for the Verifiable Credential and
@@ -112,17 +123,6 @@ Verifiable Presentation based on SD-JWT (VP-SD-JWT):
 : Refers to the SD-JWT Combined Format for Presentation [see TBD]. In the
 three-party-model, this representation is used for the Verifiable Presentation
 and is transferred from the Issuer to the Holder.
-
-Issuer:
-:  An entity that issues VC-SD-JWTs.
-
-Holder:
-:  An entity that receives VC-SD-JWTs from the Issuer and has control over
-them. Holders present VC-SD-JWTs as VP-SD-JWTs to Verifiers and can
-prove control over them.
-
-Verifier:
-:  An entity that requests, validates and processes VP-SD-JWTs and VC-SD-JWTs.
 
 # Scope
 
@@ -137,29 +137,25 @@ compliance with FIPS
 
 # Overview
 
-TBD
+* This specification defines
+  - Data model and media types for Verifiable Credentials and Presentations based on SD-JWTs.
+  - Validation and processing rules for Verifiers
+  - Mapping mechanisms to related other data models
+  - ...
 
 # Data Format
 
 This specification defines the media type `vc+sd-jwt` which describes a
 VC-SD-JWT with the following components:
-1. An SD-JWT to protect the integrity of the claims, to enable selective
-disclosure and to ensure authorship of the VC-SD-JWT. The SD-JWT
-header parameters and the payload is further defined by this specification.
+
+1. An SD-JWT to protect the integrity of the claims, to enable selective disclosure and to ensure authorship of the VC-SD-JWT. The SD-JWT header parameters and the payload is further defined by this specification.
 1. The full set of SD-JWT Disclosures that contain the claims in plain text.
 
 This specification defines the media type `vp+sd-jwt` which describes the
 VP-SD-JWT with the following components:
 1. The SD-JWT from the VC-SD-JWT.
-1. A subset of the SD-JWT Disclosures that are selectively disclosed by the
-Holder.
-1. An optional holder binding JWT that proves the Holder is the intended Holder
-of the Verifiable Credential. Note, it is the responsibility for the Issuer
-to include a confirmation method in the Verifiable Credential. This process is
-referred to as holder binding. This enables the Holder to prove they are the
-intended Holder of the Verifiable Credential. Further note, it is up to the
-Verifier to require or to not require the Holder to prove posessions of the
-confirmation method.
+1. A subset of the SD-JWT Disclosures that are selectively disclosed by the Holder.
+1. An optional holder binding JWT that proves the Holder is the intended Holder of the Verifiable Credential. Note, it is the responsibility for the Issuer to include a confirmation method in the Verifiable Credential. This process is referred to as holder binding. This enables the Holder to prove they are the intended Holder of the Verifiable Credential. Further note, it is up to the Verifier to require or to not require the Holder to prove posessions of the confirmation method.
 
 ## Header Parameters
 
@@ -189,13 +185,31 @@ VC-SD-JWT.
 
 VC-SD-JWTs MAY contain additional claims depending on the application.
 
-### `status` claim {#status-claim}
-
-TBD: might get removed once other draft spec finished
-
 ### `type` claim {#type-claim}
 
-TBD
+This specification defines the JWT claim `type`. The `type` claim is used
+to express the type or types of the JSON object that is contained in the
+JWT payload. In the general case, the `type` value is an array of
+case-sensitive strings, each containing a `StringOrURI` value. In the special
+case when the SD-JWT has one credential type, the `type` value MAY be a
+single case-sensitive string containing a `StringOrURI` value.
+
+The following is a non-normative example of how `type` is used to express
+a single type:
+
+```
+{
+  "type": "SomeType"
+}
+```
+
+The following is a non-normative example of how `type` is used to express
+multiple types:
+```
+{
+  "type": ["SomeType", "SomeOtherType"]
+}
+```
 
 ### Usage of registered JWT Claims
 
@@ -217,11 +231,7 @@ proof of the Verifiable Credential is no longer valid.
     * OPTIONAL. The confirmation method can be used to verify the Holder
 Binding JWT of the disclosed SD-JWT.
 * `type`
-    * REQUIRED. The type or types of the Verifiable Credential. In the general
-case, the `type` value is an array of case-sensitive strings, each containing
-a `StringOrURI` value. In the special case when the SD-JWT has one credential
-type, the `type` value MAY be a single case-sensitive string containing a
-`StringOrURI` value.
+    * REQUIRED. The type or types of the Verifiable Credential.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential.
