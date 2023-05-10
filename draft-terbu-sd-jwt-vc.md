@@ -92,7 +92,7 @@ TBD
 
 # Use Cases
 
-TBD: explain three-party-model and use cases
+TBD: explain three-party-model and use cases.
 
 TBD: conventional crypt, hardware security, hsm, mobile secure area, compliance with FIPS
 
