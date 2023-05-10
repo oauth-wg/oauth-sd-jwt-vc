@@ -72,15 +72,15 @@ The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD", "S
 
 ## Terms and Definitions
 
-Verifiable Credential based on SD-JWT (VC-SD-JWT): : Refers to the SD-JWT
-Combined Format for Issuance [see TBD]. In the three-party-model, this
-representation is used for the Verifiable Credential and is
-transferred from the Issuer to the Holder.
+Verifiable Credential based on SD-JWT (VC-SD-JWT):
+: Refers to the SD-JWT Combined Format for Issuance [see TBD]. In the
+three-party-model, this representation is used for the Verifiable Credential and
+is transferred from the Issuer to the Holder.
 
-Verifiable Presentation based on SD-JWT (VP-SD-JWT): : Refers to the SD-JWT
-Combined Format for Presentation [see TBD]. In the three-party-model, this
-representation is used for the Verifiable Presentation and is transferred from
-the Issuer to the Holder.
+Verifiable Presentation based on SD-JWT (VP-SD-JWT):
+: Refers to the SD-JWT Combined Format for Presentation [see TBD]. In the
+three-party-model, this representation is used for the Verifiable Presentation
+and is transferred from the Issuer to the Holder.
 
 # Scope
 
