@@ -103,26 +103,40 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
+Verifiable Credential:
+: TBD
+
+Credential:
+: TBD
+
+Verifiable Presentation:
+: TBD
+
 Issuer:
-: An entity that issues VC-SD-JWTs.
+: An entity that issues a Verifiable Credential.
 
 Holder:
-: An entity that receives VC-SD-JWTs from the Issuer and has control over
-them. Holders present VC-SD-JWTs as VP-SD-JWTs to Verifiers and can
-prove control over them.
+: An entity that receives Verifiable Credentials from the Issuer and has
+control over them. Holders present Verifiable Credentials as Verifiable
+Presentations to Verifiers and can prove control over them.
 
 Verifier:
-: An entity that requests, validates and processes VP-SD-JWTs and VC-SD-JWTs.
+: An entity that requests, validates and processes Verifiable Credentials and
+Verifiable Presenations.
 
 Verifiable Credential based on SD-JWT (VC-SD-JWT):
-: Refers to the SD-JWT Combined Format for Issuance [see TBD]. In the
-three-party-model, this representation is used for the Verifiable Credential and
-is transferred from the Issuer to the Holder.
+: Refers to SD-JWT Combined Format for Issuance [see TBD] that complies with
+this specification. In the three-party-model, this representation is used for
+the Verifiable Credential and is transferred from the Issuer to the Holder.
 
 Verifiable Presentation based on SD-JWT (VP-SD-JWT):
-: Refers to the SD-JWT Combined Format for Presentation [see TBD]. In the
-three-party-model, this representation is used for the Verifiable Presentation
-and is transferred from the Issuer to the Holder.
+: Refers to SD-JWT Combined Format for Presentation [see TBD] that complies
+with this specification. In the three-party-model, this representation is used
+for the Verifiable Presentation and is transferred from the Issuer to the
+Holder.
+
+Credential based on SD-JWT (C-SD-JWT):
+: Refers to the original unsecured JSON payload of the VC-SD-JWT.
 
 # Scope
 
@@ -212,41 +226,43 @@ multiple types:
 #### Usage of registered JWT Claims
 
 The following are non-selectively disclosable registered JWT claims that
-VC-SD-JWTs contain for specific purposes:
+SD-JWTs of VC-SD-JWTs contain for specific purposes:
 
 * `iss`
     * REQUIRED. The issuer of the Verifiable Credential. The value of `iss`
-MUST be a URI. See [JWT] for more information.
+MUST be a URI. See [@!RFC7519] for more information.
 * `iat`
-    * REQUIRED. The time of issuance of the Verifiable Credential.
+    * REQUIRED. The time of issuance of the Verifiable Credential. See [@!RFC7519]
+for more information.
 * `nbf`
-    * REQUIRED. The time before which the VC-SD-JWT MUST NOT be accepted before
-validating.
+    * REQUIRED. The time before which the Verifiable Credential MUST NOT be
+accepted before validating. See [@!RFC7519] for more information.
 * `exp`
     * REQUIRED. The expiry time of the Verifiable Credential after which the
-proof of the Verifiable Credential is no longer valid.
+proof of the Verifiable Credential is no longer valid. See [@!RFC7519] for more
+information.
 * `cnf`
-    * OPTIONAL. The confirmation method can be used to verify the Holder
-Binding JWT of the disclosed SD-JWT.
+    * OPTIONAL. The confirmation method can be used to verify the holder
+binding of the Verifiable Presentation. See [@!RFC7800] for more information.
 * `type`
     * REQUIRED. The type or types of the Verifiable Credential.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
-Credential.
+Credential. See TBD for more information.
 
 The following are selectively disclosable registered JWT claims that
-VC-SD-JWTs contain for specific purposes:
+SD-JWTs of VC-SD-JWTs contain for specific purposes:
 
 * `sub`
-    * OPTIONAL. The identifier of the subject of the Verifiable Credential.
+    * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
 The value of `sub` MUST be a URI. The Issuer MAY use it to provide the Subject
 identifier assigned and maintained by the Issuer. There is no requirement for
 a binding to exist between `sub` and `cnf` claims.
 
 ## Example
 
-The following is a non-normative example of an unsecured JSON payload of the
-VC-SD-JWT:
+The following is a non-normative example of a Credential acting as the input
+for the VC-SD-JWT:
 
 ```
 {
@@ -283,7 +299,7 @@ VC-SD-JWT:
 }
 ```
 
-The following is a non-normative example of how the JSON payload above can be
+The following is a non-normative example of how the Credential above can be
 used in a SD-JWT where the resulting VC-SD-JWT contains only claims about
 the Subject that are selectively disclosable:
 
@@ -425,11 +441,11 @@ The following is a non-normative example of a JWT Issuer Metadata including
 
 # Verifiable Presentations
 
-This specification defines the media type `vp+sd-jwt` which describes the
-VP-SD-JWT with the following components:
-1. The SD-JWT from the VC-SD-JWT.
-1. A subset of the SD-JWT Disclosures that are selectively disclosed by the Holder.
-1. An optional holder binding JWT that proves the Holder is the intended Holder of the Verifiable Credential. Note, it is the responsibility for the Issuer to include a confirmation method in the Verifiable Credential. This process is referred to as holder binding. This enables the Holder to prove they are the intended Holder of the Verifiable Credential. Further note, it is up to the Verifier to require or to not require the Holder to prove posessions of the confirmation method.
+This specification defines the media type `vp+sd-jwt` which describes the VP-SD-JWT with the following components:
+
+ 1. The SD-JWT from the VC-SD-JWT.
+ 1. A subset of the SD-JWT Disclosures that are selectively disclosed by the Holder.
+ 1. An optional holder binding JWT that proves the Holder is the intended Holder of the Verifiable Credential. Note, it is the responsibility for the Issuer to include a confirmation method in the Verifiable Credential. This process is referred to as holder binding. This enables the Holder to prove they are the intended Holder of the Verifiable Credential. Further note, it is up to the Verifier to require or to not require the Holder to prove posessions of the confirmation method.
 
 ## Examples
 
@@ -461,9 +477,74 @@ TBD
 
 ## W3C Verifiable Credential Data Model 2.0
 
-### Mapping Mechanism
+The W3C VCDM 2.0 (see TBD) defines a JSON-LD vocabulary for Verifiable
+Credentials and Verifiable Presentations. To interop with the W3C VCDM 2.0 data
+model defined in [TBD], this specification defines mapping algorithm for
+VC-SD-JWT and VP-SD-JWT to the vocabulary and data model defined W3C VCDM 2.0
+which is based on JSON-LD.
 
-TBD
+### VC Directory
+
+This specification registers the media types `application/vp+sd-jwt` and
+`application/vc+sd-jwt` in the W3C Verifiable Credentials (VC) Directory.
+
+### Mapping Algorithm
+
+The following is a uni-directional transformation algorithm that takes in a
+VC-SD-JWT conformant to this specification and maps it
+to the corresponding properties in the W3C VCDM 2.0
+which is based on a JSON-LD vocabulary. It includes specific handling for JWT
+claims used in this specification. The function returns a Verifiable
+Credential object in the W3C VCDM 2.0 format.
+
+```
+function get_credential_from_vc_sd_jwt(vc_sd_jwt):
+  // TBD
+  return credential
+
+function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
+
+  // construct input credential (JSON object)
+  credential = get_credential_from_vc_sd_jwt(vc_sd_jwt)
+
+  return map_to_w3c(credential)
+
+  vc = {
+    "@context": [
+      "https://www.w3.org/ns/credentials/v2"
+    ]
+  }
+  vc.issuedAt = epochTimeToISO(credential.iat)
+  vc.validFrom = epochTimeToISO(credential.nbf)
+  vc.validUntil = epochTimeToISO(credential.exp)
+  vc.id = credential.jti
+  vc.issuer = credential.iss
+  vc.type = credential.type
+
+  // remove all handled claims
+  credential = drop_claims(credential, ...)
+
+  // add all remaining claims to credentialSubject
+  // ignore other claims such as cnf where no corresponding
+  // representation exists
+  vc.credentialSubject = {
+    "id": credential.sub,
+    ... credential
+  }
+
+  return vc
+```
+
+The following is a uni-directional transformation algorithm from a VP-SD-JWT onto W3C Verifiable Presentations
+in pseudo-code:
+
+```
+function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
+  TBD: similar to above but using W3C VP + VC
+
+```
+
+####
 
 {backmatter}
 
