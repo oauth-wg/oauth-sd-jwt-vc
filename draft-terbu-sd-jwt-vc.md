@@ -30,19 +30,41 @@ organization="Authlete Inc. "
 
 .# Abstract
 
-This document specifies Verifiable Credentials based on Selective Disclosure JSON Web Tokens (SD-JWT) with JSON payloads.
+This specification describes data formats, validation and processing rules to
+express Verifiable Credentials based on the SD-JWT format
+(TBD: see oauth-selective-disclosure-jwt) using JSON payloads.
 
 {mainmatter}
 
 # Introduction
 
 
-TBD: why?
-- simplicity
-- JWTs are well-known, popular but doesn't work best with three-party-model
-- Also no selective disclosure, which impacts costs and security.
+Todo: Discuss VCs, introduce terminology.
 
-This specification describes data formats, validation and processing rules for SD-JWT expresing Verifiable Credentials.
+Signed JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
+Verifiable Credentials in a way that is easy to understand and process as it
+builds upon established web primitives. However, JWTs do not support selective
+disclosure, i.e., the ability to disclose only a subset of the claims contained
+in the JWT. This is a common problem in the so-called three-party model: An
+Issuer creates a Verifiable Credential for some End-User (Holder), who then
+presents this credential to multiple Verifiers. A credential might contain a
+large number of claims, but the Holder typically only wants to disclose a subset
+of these claims to a Verifier. In this case, the Holder would have to receive a
+new signed JWT from the Issuer, containing only the claims that should be
+disclosed, for each interaction with a new Verifier. This is inefficient,
+costly, and the necessary interaction with the Issuer introduces additional
+privacy risks.
+
+SD-JWT is a specification that introduces conventions to support selective
+disclosure for JWTs: For an SD-JWT document, a Holder can decide which claims to
+release (within bounds defined by the Issuer). This format is therefore
+perfectly suitable for Verifiable Credentials.
+
+SD-JWT itself does not define the claims that must be used within the payload of
+the token or their semantics. This specification therefore defines how
+Verifiable Credentials can be expressed using SD-JWT.
+
+Todo: Explain the 'plain JSON' part
 
 ## Requirements Notation and Conventions
 
@@ -89,7 +111,7 @@ The following is a non-normative example of a decoded SD-JWT-VC header:
 
 ## Payload
 
-SD-JWT-VCs as defined in this specification can use any claim registered in the “JSON Web Token Claims” registry as defined in RFC 7519.
+SD-JWT-VCs as defined in this specification can use any claim registered in the "JSON Web Token Claims" registry as defined in [@!RFC7519].
 
 Some of the claims in a VC MUST NOT be selectively disclosed as they are always required for processing on the verifier side. All other claims can be made selectively disclosable by the issuer when issuing the respective SD-JWT-VC.
 
@@ -131,17 +153,10 @@ The following are selectively disclosable registered JWT claims that SD-JWT-VCs 
 
 A verifier MUST validate an SD-JWT-VC as follows:
 
-* REQUIRED. Verify the SD-JWT-VC as per SD-JWT.
-* REQUIRED. Perform Issuer Authentication as described in {#issuer-authentication}.
-* OPTIONAL. If `status` is present in the SD-JWT-VC, the status of the SD-JWT-VC SHOULD be checked. It depends on the verifier policy to reject or accept an SD-JWT-VC based on the status of the Verifiable Credential.
+ 1. REQUIRED. Verify the SD-JWT-VC as defined in Section 6.2 of (TBD: see oauth-selective-disclosure-jwt). For the verification, the `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in {#jwt-issuer-metadata}) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
+ 1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT-VC, the status of the SD-JWT-VC SHOULD be checked. It depends on the verifier policy to reject or accept an SD-JWT-VC based on the status of the Verifiable Credential.
 
-Additional validation rules MAY apply but their use is out-of-scope of this specification.
-
-## Issuer Authentication {#issuer-authentication}
-
-Verifiers processing SD-JWT-VCs MUST verify the signature of the SD-JWT with the public key of the SD-JWT-VC issuer. This makes sure that the SD-JWT-VC was issued by the SD-JWT-VC issuer and that it has not been tampered with since issuance.
-
-The `iss` claim in the SD-JWT-VC MAY be used to retrieve the public key from the JWT Issuer Metadata configuration (as defined in {#jwt-issuer-metadata}) of the SD-JWT-VC issuer. A verifier MAY use alternative methods to obtain the public key to verify the signature of the SD-JWT.
+Additional validation rules MAY apply, but their use is out of the scope of this specification.
 
 ## JWT Issuer Metadata {#jwt-issuer-metadata}
 
@@ -149,14 +164,16 @@ This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer Me
 
 JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer Metadata configuration available at the path formed by concatenating the string `/.well-known/jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components.
 
-The JWT Issuer Metadata configuration MUST be a JSON document compliant with this specification and MUST be returned using the application/json content type.
+The JWT Issuer Metadata configuration MUST be a JSON document compliant with this specification and MUST be returned using the `application/json` content type.
 
 This specification defines the following JWT Issuer Metadata parameters:
 
 * `jwks_uri`
-    * OPTIONAL. URL string referencing the JWT Issuer’s JSON Web Key (JWK) Set [RFC7517] document, which contains the JWT Issuer's public keys. The value of this field MUST point to a valid JWK Set document. Use of this parameter is preferred over the `jwks` parameter, as it allows for easier key rotation. JWT Issuer MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata. `jwks_uri` and `jwks` MUST NOT both be present in the same JWT Issuer Metadata.
+    * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set [@RFC7517] document which contains the JWT Issuer's public keys. The value of this field MUST point to a valid JWK Set document. Use of this parameter is RECOMMENDED, as it allows for easy key rotation. 
 * `jwks`
-    * OPTIONAL. JWT Issuer’s JSON Web Key Set [RFC7517] document value, which contains the JWT Issuer’s public keys. The value of this field MUST be a JSON object containing a valid JWK Set. This parameter is intended to be used by JWT Issuer that cannot use the `jwks_uri` parameter. JWT Issuer MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata. `jwks_uri` and `jwks` MUST NOT both be present in the same JWT Issuer Metadata.
+    * OPTIONAL. JWT Issuer's JSON Web Key Set [RFC7517] document value, which contains the JWT Issuer's public keys. The value of this field MUST be a JSON object containing a valid JWK Set. This parameter is intended to be used by JWT Issuer that cannot use the `jwks_uri` parameter. 
+
+JWT Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT Issuer Metadata, but not both.
 
 It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can be used to lookup the public key in the JWK Set included by value or referenced in the JWT Issuer Metadata.
 
