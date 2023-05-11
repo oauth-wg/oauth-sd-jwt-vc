@@ -200,26 +200,15 @@ registered or public claims depending on the application.
 #### `type` claim {#type-claim}
 
 This specification defines the JWT claim `type`. The `type` claim is used
-to express the type or types of the JSON object that is contained in the
-JWT payload. In the general case, the `type` value is an array of
-case-sensitive strings, each containing a `StringOrURI` value. In the special
-case when the SD-JWT has one credential type, the `type` value MAY be a
-single case-sensitive string containing a `StringOrURI` value.
+to express the type of the JSON object that is contained in the
+JWT payload. The `type` value MUST be a case-sensitive `StringOrURI` value.
 
 The following is a non-normative example of how `type` is used to express
-a single type:
+a type:
 
 ```
 {
   "type": "SomeType"
-}
-```
-
-The following is a non-normative example of how `type` is used to express
-multiple types:
-```
-{
-  "type": ["SomeType", "SomeOtherType"]
 }
 ```
 
@@ -245,7 +234,7 @@ information.
     * OPTIONAL. The confirmation method can be used to verify the holder
 binding of the Verifiable Presentation. See [@!RFC7800] for more information.
 * `type`
-    * REQUIRED. The type or types of the Verifiable Credential.
+    * REQUIRED. The type of the Verifiable Credential, e.g., `IdentityCredential`.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See TBD for more information.
