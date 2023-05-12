@@ -43,11 +43,8 @@ a Subject of the Verifiable Credential. Verifiable Credentials are issued to
 Holders which can present Verifiable Credentials to Verifiers typically in form
 of Verifiable Presentations.
 
-This is also referred to as the three-party-model which describes the
-relationships between the entities involved in the issuance and verification of
-Verifiable Credentials.
-
-The model involves three parties:
+These relationships are described by the three-party-model which involves the
+following parties:
 
 1. Issuer: The entity that issues the Verifiable Credential to the Holder, who
 is tthe person or entity being issued the credential.
@@ -200,8 +197,8 @@ registered or public claims depending on the application.
 #### `type` claim {#type-claim}
 
 This specification defines the JWT claim `type`. The `type` claim is used
-to express the type of the JSON object that is contained in the
-JWT payload. The `type` value MUST be a case-sensitive `StringOrURI` value.
+to express the type of the JSON object that is secured by the
+JWT. The `type` value MUST be a case-sensitive `StringOrURI` value.
 
 The following is a non-normative example of how `type` is used to express
 a type:
@@ -234,7 +231,9 @@ information.
     * OPTIONAL. The confirmation method can be used to verify the holder
 binding of the Verifiable Presentation. See [@!RFC7800] for more information.
 * `type`
-    * REQUIRED. The type of the Verifiable Credential, e.g., `IdentityCredential`.
+    * REQUIRED. The type of the Verifiable Credential, e.g.,
+`IdentityCredential`. The claims belonging to the type can be contained in
+different components of the VC-SD-JWT, e.g., SD-JWT or Disclosures.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See TBD for more information.
@@ -330,15 +329,13 @@ The following are Disclosures of the non-normative example from above:
 
 *Disclosure for given_name:*
 
-SHA-256 Hash: f4nimkh9dcwJ8JK46zlad_zgyYJfZFPImAWBNh86Kb0
+- SHA-256 Hash: `f4nimkh9dcwJ8JK46zlad_zgyYJfZFPImAWBNh86Kb0`
+- Disclosure: `WyJuWUpCd1Q0OERQTEtYcVd1UmJ4NVNRIiwgImdpdmVuX25hbWUiLCAiSm9obiJd`
+- Contents:
 
-Disclosure:
-
-WyJuWUpCd1Q0OERQTEtYcVd1UmJ4NVNRIiwgImdpdmVuX25hbWUiLCAiSm9obiJd
-
-Contents:
-
+```
 ["nYJBwT48DPLKXqWuRbx5SQ", "given_name", "John"]
+```
 
 TBD: add other disclosures.
 
