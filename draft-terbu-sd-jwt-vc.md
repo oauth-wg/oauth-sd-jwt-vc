@@ -43,11 +43,8 @@ a Subject of the Verifiable Credential. Verifiable Credentials are issued to
 Holders which can present Verifiable Credentials to Verifiers typically in form
 of Verifiable Presentations.
 
-This is also referred to as the three-party-model which describes the
-relationships between the entities involved in the issuance and verification of
-Verifiable Credentials.
-
-The model involves three parties:
+These relationships are described by the three-party-model which involves the
+following parties:
 
 1. Issuer: The entity that issues the Verifiable Credential to the Holder, who
 is tthe person or entity being issued the credential.
