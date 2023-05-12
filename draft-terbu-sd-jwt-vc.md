@@ -47,7 +47,7 @@ These relationships are described by the three-party-model which involves the
 following parties:
 
 1. Issuer: The entity that issues the Verifiable Credential to the Holder, who
-is tthe person or entity being issued the credential.
+is the person or entity being issued the credential.
 1. Verifier: The entity that verifies the Verifiable Credential presented by
 the Subject, for example to prove eligibility to access certain services.
 1. Holder: The person or entity being issued the Verifiable Credential, who
@@ -56,9 +56,8 @@ the Subject, for example to prove eligibility to access certain services.
 Verifiers have to trust Issuers to make
 trustworthy statements about the Subject and they can additionally require that
 the Holder provides a proof that they are the intended Holder of the Verifiable
-Credential which can important for security reasons. This is only possible if
-an Issuer binds the Verifiable Credential to a specific Holder at the time of
-issuance.
+Credential for security reasons. This is only possible if an Issuer binds the
+Verifiable Credential to a specific Holder at the time of issuance.
 
 Signed JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
