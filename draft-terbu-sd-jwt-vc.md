@@ -101,10 +101,10 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 ## Terms and Definitions
 
 Verifiable Credential:
-: An Issuer-signed Credential whose authenticity can be cryptographically verified. 
+: An Issuer-signed Credential whose authenticity can be cryptographically verified.
 
 Credential:
-: A set of one or more claims about a subject made by a Credential Issuer. 
+: A set of one or more claims about a subject made by a Credential Issuer.
 
 Verifiable Presentation:
 : A Verifiable Credential compliant to the [VCDM 2.0] specification.
