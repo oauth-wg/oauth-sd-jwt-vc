@@ -31,8 +31,8 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats, validation and processing rules to
-express Verifiable Credentials based on the securing mechanisms of SD-JWT
-(TBD: see oauth-selective-disclosure-jwt) and JSON payloads.
+express Verifiable Credentials with JSON payload based on the securing mechanisms of SD-JWT
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 {mainmatter}
 
@@ -60,16 +60,16 @@ Credential which can important for security reasons. This is only possible if
 an Issuer binds the Verifiable Credential to a specific Holder at the time of
 issuance.
 
-Signed JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
+JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
 builds upon established web primitives. However, JWTs do not support selective
 disclosure, i.e., the ability to disclose only a subset of the claims contained
-in the JWT. This is a common problem in the so-called three-party model: An
+in the JWT, in the three-party-model as described above. This is a common problem in the so-called three-party model: An
 Issuer creates a Verifiable Credential for some End-User (Holder), who then
 presents this credential to multiple Verifiers. A credential might contain a
 large number of claims, but the Holder typically only wants to disclose a subset
 of these claims to a Verifier. In this case, the Holder would have to receive a
-new signed JWT from the Issuer, containing only the claims that should be
+new JWT from the Issuer, containing only the claims that should be
 disclosed, for each interaction with a new Verifier. This is inefficient,
 costly, and the necessary interaction with the Issuer introduces additional
 privacy risks.
@@ -79,8 +79,8 @@ disclosure for JWTs: For an SD-JWT document, a Holder can decide which claims to
 release (within bounds defined by the Issuer). This format is therefore
 perfectly suitable for Verifiable Credentials.
 
-SD-JWT itself does not define the claims that must be used within the payload of
-the token or their semantics. This specification therefore defines how
+SD-JWT itself does not define the claims that must be used within the payload 
+or their semantics. This specification therefore defines how
 Verifiable Credentials can be expressed using SD-JWT.
 
 JWTs are used to protect the integrity of JSON payloads, which
@@ -101,13 +101,13 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 ## Terms and Definitions
 
 Verifiable Credential:
-: TBD
+: An Issuer-signed Credential whose authenticity can be cryptographically verified. 
 
 Credential:
-: TBD
+: A set of one or more claims about a subject made by a Credential Issuer. 
 
 Verifiable Presentation:
-: TBD
+: A Verifiable Credential compliant to the [VCDM 2.0] specification.
 
 Issuer:
 : An entity that issues a Verifiable Credential.
@@ -356,7 +356,7 @@ accept an VP-SD-JWT based on the status of the Verifiable Credential.
 Additional validation rules MAY apply, but their use is out of the scope of
 this specification.
 
-### JWT Issuer Metadata {#jwt-issuer-metadata}
+# JWT Issuer Metadata {#jwt-issuer-metadata}
 
 This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer
 Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is
