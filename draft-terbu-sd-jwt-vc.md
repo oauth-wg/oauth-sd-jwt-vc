@@ -633,10 +633,6 @@ Interoperability considerations: : n/a
 
 TBD
 
-# Notices
-
-TBD
-
 # Document History
 
 TBD
