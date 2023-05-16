@@ -79,7 +79,7 @@ disclosure for JWTs: For an SD-JWT document, a Holder can decide which claims to
 release (within bounds defined by the Issuer). This format is therefore
 perfectly suitable for Verifiable Credentials.
 
-SD-JWT itself does not define the claims that must be used within the payload 
+SD-JWT itself does not define the claims that must be used within the payload
 or their semantics. This specification therefore defines how
 Verifiable Credentials can be expressed using SD-JWT.
 
