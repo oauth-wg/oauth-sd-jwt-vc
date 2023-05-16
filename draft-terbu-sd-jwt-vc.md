@@ -137,7 +137,10 @@ Credential based on SD-JWT (C-SD-JWT):
 
 # Scope
 
-TBD
+* This specification defines
+  - Data model and media types for Verifiable Credentials and Presentations based on SD-JWTs.
+  - Validation and processing rules for Verifiers
+  - Mapping mechanisms to related other data models
 
 # Use Cases
 
@@ -145,14 +148,6 @@ TBD: explain use cases of the three-party-model.
 
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
-
-# Overview
-
-* This specification defines
-  - Data model and media types for Verifiable Credentials and Presentations based on SD-JWTs.
-  - Validation and processing rules for Verifiers
-  - Mapping mechanisms to related other data models
-  - ...
 
 # Verifiable Credentials
 
