@@ -631,7 +631,9 @@ Interoperability considerations: : n/a
 
 # Acknowledgements {#Acknowledgements}
 
-TBD
+We would like to thank Alen Horvat, Christian Bormann, Torsten Lodderstedt and
+Kristina Yasuda for their contributions (some of which substantial) to this draft
+and to the initial set of implementations.
 
 # Document History
 
