@@ -145,6 +145,39 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 SD-JWT VCs compliant with this specification MUST use the media type
 `application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
 
+# Flow Diagram
+~~~ ascii-art
+           +------------+
+           |            |
+           |   Issuer   |
+           |            |
+           +------------+
+                 |
+             Issues SD-JWT
+     and Issuer-Issued Disclosures
+                 |
+                 v
+           +------------+                                 +------------+ 
+           |            |                                 |   Status   |
+           |   Holder   |-------- optionally ------------>|  Provider  |
+           |            |       retrieves status          |            |
+           +------------+             VC                  +------------+ 
+                 |
+           Presents SD-JWT
+   and Holder-Selected Disclosures
+                 |
+                 v
+           +-------------+
+           |             |+
+           |  Verifiers  ||+
+           |             |||
+           +-------------+||
+            +-------------+|
+             +-------------+
+~~~
+Figure: VC-SD-JWT Issuance and Presentation Flow w/ Status
+
+
 ## Data Format
 
 SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
