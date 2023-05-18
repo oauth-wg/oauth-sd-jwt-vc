@@ -122,6 +122,10 @@ SD-JWT-based Verifiable Credential (SD-JWT VC):
 SD-JWT-based Verifiable Presentation (SD-JWT VP):
 : A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
+Status Provider:
+: An entity that hosts a URL that points to a Verifiable Credential of type
+`StatusList2021Credential` as defined in [@W3C.vc-status-list, section 2.2].
+
 # Scope
 
 * This specification defines
@@ -153,7 +157,7 @@ SD-JWT VCs compliant with this specification MUST use the media type
            |            |
            +------------+
                  |
-             Issues SD-JWT
+          Issues VC-SD-JWT
      and Issuer-Issued Disclosures
                  |
                  v
@@ -163,7 +167,7 @@ SD-JWT VCs compliant with this specification MUST use the media type
            |            |       retrieves status          |            |
            +------------+             VC                  +------------+ 
                  |
-           Presents SD-JWT
+         Presents VP-SD-JWT
    and Holder-Selected Disclosures
                  |
                  v
@@ -175,7 +179,7 @@ SD-JWT VCs compliant with this specification MUST use the media type
             +-------------+|
              +-------------+
 ~~~
-Figure: VC-SD-JWT Issuance and Presentation Flow w/ Status
+Figure: VC-SD-JWT Issuance and VP-SD-JWT Presentation Flow w/ Status
 
 
 ## Data Format
