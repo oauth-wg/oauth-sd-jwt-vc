@@ -41,7 +41,8 @@ express Verifiable Credentials with JSON payload based on the securing mechanism
 A Verifiable Credential is an tamper-evident statement made by an Issuer about
 a Subject of the Verifiable Credential. Verifiable Credentials are issued to
 Holders which can present Verifiable Credentials to Verifiers typically in form
-of Verifiable Presentations.
+of Verifiable Presentations which are secured envelops that contain Verifiable
+Credentials addressed to a specific audience.
 
 These relationships are described by the three-party-model which involves the
 following parties:
@@ -53,12 +54,16 @@ the Subject, for example to prove eligibility to access certain services.
 1. Holder: The person or entity being issued the Verifiable Credential, who
  may present the Verifiable Credential to a Verifier for verification.
 
+The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
+Presentations, are further described in [VCDM2.0].
+
 Verifiers have to trust Issuers to make
 trustworthy statements about the Subject and they can additionally require that
 the Holder provides a proof that they are the intended Holder of the Verifiable
 Credential which can important for security reasons. This is only possible if
 an Issuer binds the Verifiable Credential to a specific Holder at the time of
-issuance.
+issuance. This process is referred to as Holder Binding and is further
+described in [SD-JWT].
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
@@ -151,7 +156,7 @@ compliance with FIPS
 
 # Verifiable Credentials
 
-This specification defines the media type `vc+sd-jwt` which describes a
+This specification defines the media type `application/vc+sd-jwt` which describes a
 VC-SD-JWT with the following components:
 
 1. An SD-JWT to protect the integrity of the claims, to enable selective disclosure and to ensure authorship of the VC-SD-JWT. The SD-JWT header parameters and the payload is further defined by this specification.
@@ -421,7 +426,8 @@ The following is a non-normative example of a JWT Issuer Metadata including
 
 # Verifiable Presentations
 
-This specification defines the media type `vp+sd-jwt` which describes the VP-SD-JWT with the following components:
+This specification defines the media type `application/vp+sd-jwt` which
+describes the VP-SD-JWT with the following components:
 
  1. The SD-JWT from the VC-SD-JWT.
  1. A subset of the SD-JWT Disclosures that are selectively disclosed by the Holder.
