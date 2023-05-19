@@ -38,7 +38,7 @@ express Verifiable Credentials with JSON payload based on the securing mechanism
 
 # Introduction
 
-A Verifiable Credential is an tamper-evident statement made by an Issuer about
+A Verifiable Credential is a tamper-evident statement made by an Issuer about
 a Subject of the Verifiable Credential. Verifiable Credentials are issued to
 Holders which can present Verifiable Credentials to Verifiers typically in form
 of Verifiable Presentations.
@@ -47,7 +47,7 @@ These relationships are described by the three-party-model which involves the
 following parties:
 
 1. Issuer: The entity that issues the Verifiable Credential to the Holder, who
-is tthe person or entity being issued the credential.
+is the person or entity being issued the credential.
 1. Verifier: The entity that verifies the Verifiable Credential presented by
 the Subject, for example to prove eligibility to access certain services.
 1. Holder: The person or entity being issued the Verifiable Credential, who
@@ -100,14 +100,14 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-Verifiable Credential:
-: An Issuer-signed Credential whose authenticity can be cryptographically verified.
-
 Credential:
 : A set of one or more claims about a subject made by a Credential Issuer.
 
-Verifiable Presentation:
-: A Verifiable Credential compliant to the [VCDM 2.0] specification.
+Verifiable Credential:
+: An Issuer-signed Credential whose authenticity can be cryptographically verified.
+
+Verifiable Presentation
+: Data derived from a Verifiable Credential that is shared with a specific Verifier. The authorship of the data can be trusted after a process of cryptographic verification.  
 
 Issuer:
 : An entity that issues a Verifiable Credential.
@@ -122,18 +122,10 @@ Verifier:
 Verifiable Presenations.
 
 Verifiable Credential based on SD-JWT (VC-SD-JWT):
-: Refers to SD-JWT Combined Format for Issuance [see TBD] that complies with
-this specification. In the three-party-model, this representation is used for
-the Verifiable Credential and is transferred from the Issuer to the Holder.
+: A Verifiable Credential encoded using the Issuance format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Presentation based on SD-JWT (VP-SD-JWT):
-: Refers to SD-JWT Combined Format for Presentation [see TBD] that complies
-with this specification. In the three-party-model, this representation is used
-for the Verifiable Presentation and is transferred from the Issuer to the
-Holder.
-
-Credential based on SD-JWT (C-SD-JWT):
-: Refers to the original unsecured JSON payload of the VC-SD-JWT.
+: A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 # Scope
 
@@ -149,12 +141,12 @@ TBD: explain use cases of the three-party-model.
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
 
-# Verifiable Credentials
+# Verifiable Credentials based on SD-JWT
 
 This specification defines the media type `vc+sd-jwt` which describes a
-VC-SD-JWT with the following components:
+Verifiable Credential based on SD-JWT (VC-SD-JWT) with the following components:
 
-1. An SD-JWT to protect the integrity of the claims, to enable selective disclosure and to ensure authorship of the VC-SD-JWT. The SD-JWT header parameters and the payload is further defined by this specification.
+1. An SD-JWT to protect the integrity of the claims, to enable selective disclosure, and to ensure cryptographic verifiability of the authorship of the VC-SD-JWT. The SD-JWT header parameters and the payload are further defined by this specification.
 1. The full set of SD-JWT Disclosures that contain the claims in plain text.
 
 ## Data Format
@@ -425,7 +417,7 @@ This specification defines the media type `vp+sd-jwt` which describes the VP-SD-
 
  1. The SD-JWT from the VC-SD-JWT.
  1. A subset of the SD-JWT Disclosures that are selectively disclosed by the Holder.
- 1. An optional holder binding JWT that proves the Holder is the intended Holder of the Verifiable Credential. Note, it is the responsibility for the Issuer to include a confirmation method in the Verifiable Credential. This process is referred to as holder binding. This enables the Holder to prove they are the intended Holder of the Verifiable Credential. Further note, it is up to the Verifier to require or to not require the Holder to prove posessions of the confirmation method.
+ 1. An optional holder binding JWT that proves the Holder is the intended Holder of the Verifiable Credential. Note: It is the responsibility for the Issuer to include a confirmation method in the Verifiable Credential to enable holder binding. Holder binding enables the Holder to prove they are the legitimate Holder of the Verifiable Credential. It is up to the Verifier to require or to not require the Holder to prove posession of the key material referenced in the confirmation method.
 
 ## Examples
 
