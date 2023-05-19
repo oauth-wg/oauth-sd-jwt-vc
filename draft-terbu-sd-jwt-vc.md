@@ -338,10 +338,9 @@ TBD: add other disclosures.
 
 A Verifier MUST validate an VC-SD-JWT as follows:
 
- 1. REQUIRED. Verify the SD-JWT as defined in Section 6.2 of (TBD: see
-oauth-selective-disclosure-jwt). For the verification, the `iss` claim in the
+ 1. REQUIRED. Verify the SD-JWT as defined in Section 6.2 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the verification, the `iss` claim in the
 SD-JWT MAY be used to retrieve the public key from the JWT Issuer Metadata
-configuration (as defined in {#jwt-issuer-metadata}) of the VC-SD-JWT issuer.
+configuration (as defined in (#jwt-issuer-metadata)) of the VC-SD-JWT issuer.
 A verifier MAY use alternative methods to obtain the public key to verify the
 signature of the SD-JWT.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
@@ -458,9 +457,9 @@ TBD
 
 ## W3C Verifiable Credential Data Model 2.0
 
-The W3C VCDM 2.0 (see TBD) defines a JSON-LD vocabulary for Verifiable
+The W3C VCDM 2.0 [@VC-DATA] defines a JSON-LD vocabulary for Verifiable
 Credentials and Verifiable Presentations. To interop with the W3C VCDM 2.0 data
-model defined in [TBD], this specification defines mapping algorithm for
+model defined in [@VC-DATA], this specification defines a mapping algorithm for
 VC-SD-JWT and VP-SD-JWT to the vocabulary and data model defined W3C VCDM 2.0
 which is based on JSON-LD.
 
