@@ -501,7 +501,7 @@ The Verifier MUST process and verify an VP-SD-JWT as follows:
 
  1. REQUIRED. When processing and verifying the VP-SD-JWT, the Verifier
 MUST follow the same verification and processing rules as defined in
-{vc-sd-jwt-verification-and-processing}.
+(#vc-sd-jwt-verification-and-processing).
  1. OPTIONAL. If provided, the Verifier MUST verify the Holder Binding JWT
 according to [@!I-D.ietf-oauth-selective-disclosure-jwt, section 6.2.].
 To verify the Holder Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
