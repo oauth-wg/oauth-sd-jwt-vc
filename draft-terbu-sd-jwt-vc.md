@@ -362,7 +362,7 @@ The recipient of the VC-SD-JWT MUST process and verify an VC-SD-JWT as
 follows:
 
  1. REQUIRED. Process and verify the SD-JWT as defined in
-[@!I-D.ietf-oauth-selective-disclosure-jwt, section 6.]. For the
+section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 {#jwt-issuer-metadata}) of the VC-SD-JWT issuer. A Verifier MAY use alternative
