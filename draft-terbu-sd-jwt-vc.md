@@ -555,7 +555,9 @@ Procedure:
   - Remove the `jti` claim from the payload.
 1. Set the `issuer` property of `VC` to the value of the `iss` property in the payload.
   - Remove the `iss` claim from the payload.
-1. Set the `type` property of `VC` to the value of the `type` property in the payload.
+1. Set the `type` property of `VC` to a String array and set the first array element to
+`"VerifiableCredential"`. Add the value of the `type` property in the payload as the
+second array element.
   - Remove the `type` claim from the payload.
 1. If the payload contains the `sub` property:
   - Assign the value of `sub` as the `id` property of the `credentialSubject` object in `VC`.
@@ -605,7 +607,7 @@ function transform_vc_sd_jwt_to_w3c_vc(vc_sd_jwt):
   vc.issuer = payload.iss
   payload = remove_claim_from_json(payload, "iss")
 
-  vc.type = payload.type
+  vc.type = [ "VerifiableCredential", payload.type ]
   payload = remove_claim_from_json(payload, "type")
 
   if (payload.hasProperty("sub")) {
