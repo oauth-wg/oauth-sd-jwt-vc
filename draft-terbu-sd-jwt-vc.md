@@ -524,7 +524,7 @@ model defined in [@VC-DATA], this specification defines a mapping algorithm for
 VC-SD-JWT and VP-SD-JWT to the vocabulary and data model defined W3C VCDM 2.0
 which is based on JSON-LD.
 
-### VC Directory
+### W3C Verifiable Credentials Directory
 
 This specification registers the media type `application/vc+sd-jwt` in the
 W3C Verifiable Credentials (VC) Directory.
