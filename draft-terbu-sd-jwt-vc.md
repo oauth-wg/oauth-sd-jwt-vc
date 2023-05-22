@@ -468,14 +468,14 @@ If the VP-SD-JWT includes a Holder Binding JWT, the
 following claims are used within the Holder Binding JWT:
 
 * `nonce`
-    * REQUIRED. String value used to associate a transaction with a Verifier
-with a Holder Binding JWT, and to mitigate replay attacks. The value is passed
+    * REQUIRED. String value used to associate a transaction between a Verifier
+an a Holder, and to mitigate replay attacks. The value is passed
 through unmodified from the Verifier to the Holder Binding JWT. Sufficient
 entropy MUST be present in the `nonce` values used to prevent attackers from
 guessing values.
 * `aud`
     * REQUIRED. The intended recipient of the Holder Binding JWT which is
-typically the Verifier.  value  See [@!RFC7519] for more information.
+typically the Verifier. See [@!RFC7519] for more information.
 * `iat`
     * REQUIRED. The time of issuance of the Holder Binding JWT. See
 [@!RFC7519] for more information.
