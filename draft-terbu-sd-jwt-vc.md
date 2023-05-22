@@ -38,7 +38,7 @@ express Verifiable Credentials with JSON payload based on the securing mechanism
 
 # Introduction
 
-## The three-party-model
+## The Three-Party-Model
 
 A Verifiable Credential is an tamper-evident statement made by an Issuer about
 a Subject of the Verifiable Credential. Verifiable Credentials are issued to
