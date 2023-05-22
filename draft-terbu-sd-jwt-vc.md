@@ -77,7 +77,7 @@ builds upon established web primitives. However, JWTs do not support selective
 disclosure, i.e., the ability to disclose only a subset of the claims contained
 in the JWT, in the three-party-model as described above. This is a common problem
 in the three-party model: An Issuer creates a Verifiable Credential for
-some End-User (Holder), who then presents this credential to multiple Verifiers.
+some End-User (Holder), who then can presents this credential to multiple Verifiers.
 A Verifiable Credential might contain a large number of claims, but the Holder
 typically only wants to disclose a subset of these claims to a Verifier. In this case,
 the Holder would have to receive a new JWT from the Issuer, containing only the claims that
