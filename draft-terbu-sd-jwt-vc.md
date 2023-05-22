@@ -64,10 +64,10 @@ issuance. This process is referred to as Holder Binding and is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
-Presentations, are further described in [VCDM2.0]. However, this specification
+Presentations, are further described in [@VC-DATA]. However, this specification
 focuses on a specific version of the three-party-model which can have
 different features but will provide a representation of the model
-described in [VCDM2.0].
+described in [@VC-DATA].
 
 ## Rationale
 
@@ -533,7 +533,7 @@ W3C Verifiable Credentials (VC) Directory.
 
 The following is a uni-directional transformation algorithm that takes in a
 VC-SD-JWT conformant to this specification and maps it
-to the corresponding properties in the W3C VCDM 2.0 [VCDM2.0]
+to the corresponding properties in the W3C VCDM 2.0 [@VC-DATA]
 which is based on a JSON-LD vocabulary. It includes specific handling for JWT
 claims used in this specification. The function returns a Verifiable
 Credential object in the W3C VCDM 2.0 format.
