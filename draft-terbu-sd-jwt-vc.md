@@ -484,8 +484,8 @@ typically the Verifier. See [@!RFC7519] for more information.
 the Holder Binding is no longer considered valid. See [@!RFC7519]
 for more information.
 
-The Holder Binding JWT MAY included addtional claims which
-when not understood MUST be ignored.
+The Holder Binding JWT MAY include addtional claims which when not understood
+MUST be ignored.
 
 ## Examples
 
