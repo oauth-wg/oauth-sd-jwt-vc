@@ -247,6 +247,11 @@ a binding to exist between `sub` and `cnf` claims.
 The following is a non-normative example of a Credential acting as the input
 for the VC-SD-JWT:
 
+Test:
+
+<{{examples/01/user_claims.json}}
+
+
 ```
 {
    "iss":"https://example.com",
