@@ -540,32 +540,32 @@ Credential object in the W3C VCDM 2.0 format.
 
 Procedure:
 1. Let `payload` be the unsecured payload of the VC-SD-JWT reconstructed from the SD-JWT and Disclosures.
-1. Let `VC` be an empty JSON object that represents the transformed Verifiable Credential:
-  - Set the `@context` property of `VC` to `"https://www.w3.org/ns/credentials/v2"`.
+1. Let `vc` be an empty JSON object that represents the transformed Verifiable Credential:
+  - Set the `@context` property of `vc` to `"https://www.w3.org/ns/credentials/v2"`.
 1. If the payload contains the `nbf` property:
   - Convert the value of `nbf` from epoch time to an ISO datetime format.
-  - Assign the converted value to the `validFrom` property of `VC`.
+  - Assign the converted value to the `validFrom` property of `vc`.
   - Remove the `nbf` claim from the payload.
 1. If the payload contains the `exp` property:
   - Convert the value of `exp` from epoch time to an ISO datetime format.
-  - Assign the converted value to the `validUntil` property of `VC`.
+  - Assign the converted value to the `validUntil` property of `vc`.
   - Remove the `exp` claim from the payload.
 1. If the payload contains the `jti` property:
-  - Assign the value of `jti` to the `id` property of `VC`.
+  - Assign the value of `jti` to the `id` property of `vc`.
   - Remove the `jti` claim from the payload.
-1. Set the `issuer` property of `VC` to the value of the `iss` property in the payload.
+1. Set the `issuer` property of `vc` to the value of the `iss` property in the payload.
   - Remove the `iss` claim from the payload.
-1. Set the `type` property of `VC` to a String array and set the first array element to
+1. Set the `type` property of `vc` to a String array and set the first array element to
 `"VerifiableCredential"`. Add the value of the `type` property in the payload as the
 second array element.
   - Remove the `type` claim from the payload.
 1. If the payload contains the `sub` property:
-  - Assign the value of `sub` as the `id` property of the `credentialSubject` object in `VC`.
+  - Assign the value of `sub` as the `id` property of the `credentialSubject` object in `vc`.
   - Remove the `sub` claim from the payload.
 1. Else if the payload does not have a `sub` property, create an empty `credentialSubject` object.
-1. Add all remaining claims in the payload to the `credentialSubject` object of `VC` and ignore claims
+1. Add all remaining claims in the payload to the `credentialSubject` object of `vc` and ignore claims
 that do not have a corresponding representation.
-1. Output `VC` which contains the resulting Verifiable Credential.
+1. Output `vc` which contains the resulting Verifiable Credential.
 
 The following is a non-normative example of a pseudocode algorithm:
 
