@@ -247,97 +247,24 @@ a binding to exist between `sub` and `cnf` claims.
 The following is a non-normative example of a Credential acting as the input
 for the VC-SD-JWT:
 
-Test:
-
 <{{examples/01/user_claims.json}}
-
-
-```
-{
-   "iss":"https://example.com",
-   "nbf":1541493724,
-   "iat":1541493724,
-   "cnf":{
-      "jwk":{
-         "kty":"RSA",
-         "n":"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf
-           AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst
-           n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F
-           DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9
-           1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa
-           Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw”,
-         "e":"AQAB"
-      }
-   },
-   "type":"IdentityCredential",
-   "given_name":"John",
-   "family_name":"Doe",
-   "email":"johndoe@example.com",
-   "phone_number":"+1-202-555-0101",
-   "address":{
-      "street_address":"123 Main St",
-      "locality":"Anytown",
-      "region":"Anystate",
-      "country":"US"
-   },
-   "birthdate":"1940-01-01",
-   "is_over_18":true,
-   "is_over_21":true,
-   "is_over_65":true
-}
-```
 
 The following is a non-normative example of how the Credential above can be
 used in a SD-JWT where the resulting VC-SD-JWT contains only claims about
 the Subject that are selectively disclosable:
 
-```
-{
-   "iss":"https://example.com",
-   "iat":1541493724,
-   "exp":1735689661,
-   "nbf":1541493724,
-   "cnf":{
-      "jwk":{
-         "kty":"RSA",
-         "n":"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf
-           AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst
-           n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F
-           DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9
-           1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa
-           Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw",
-         "e":"AQAB"
-      }
-   },
-   "type":"IdentityCredential",
-   "_sd":[
-      "2cj0qo1YI8aGLOPCEzIr0mexil6_9tVz5KnIpY3fszs",
-      "H033gGqGyBCT7VmtYky-1gqqTg9JT8kg9WFJTTN1iVY",
-      "RKE58nhM1GLxUmfvPaZhxNEq8kNplQYnOZlLJosLomY",
-      "S7ebWHiOEgQDLG6JcpYkuMKMCb40uxFUSUimK94MuDc",
-      "WkP5oQu7qxPAxLVPKcFuP4rD5TC0T4CekiYi333zQP4",
-      "f4nimkh9dcwJ8JK46zlad_zgyYJfZFPImAWBNh86Kb0",
-      "goqT4HD2DOmnPF1wNMLNiYuj4SgYtKjfQQHO--CSh0o",
-      "lheBqvJLJPRLsoXVF68rmkn9jL73iGCF0V5sJjPlt68",
-      "tAQ3Er6qd3UwQLrZYRe3fMF4J6MXdz5tJMJfJw48I0g"
-   ],
-   "_sd_alg":"sha-256"
-}
-```
+<{{examples/01/sd_jwt_payload.json}}
 
-The following are Disclosures of the non-normative example from above:
+Note that a `cnf` claim has been added to the SD-JWT payload to express the
+confirmation method of the holder binding.
 
-*Disclosure for given_name:*
+The following are the Disclosures belonging to the SD-JWT payload above:
 
-- SHA-256 Hash: `f4nimkh9dcwJ8JK46zlad_zgyYJfZFPImAWBNh86Kb0`
-- Disclosure: `WyJuWUpCd1Q0OERQTEtYcVd1UmJ4NVNRIiwgImdpdmVuX25hbWUiLCAiSm9obiJd`
-- Contents:
+{{examples/01/disclosures.md}}
 
-```
-["nYJBwT48DPLKXqWuRbx5SQ", "given_name", "John"]
-```
+The SD-JWT and the Disclosures would then be serialized into the following format:
 
-TBD: add other disclosures.
+<{{examples/01/combined_issuance.txt}}
 
 ## Validation Rules and Processing
 
