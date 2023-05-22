@@ -627,8 +627,6 @@ function transform_vc_sd_jwt_to_w3c_vc(vc_sd_jwt):
   return vc
 ```
 
-####
-
 {backmatter}
 
 <reference anchor="VC-DATA" target="https://www.w3.org/TR/vc-data-model-2.0/">
