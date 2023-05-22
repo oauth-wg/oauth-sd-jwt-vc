@@ -23,6 +23,6 @@ report.xml
 !requirements.txt
 
 
-# Ignore output of examples except for examples.yml
+# Ignore output of examples except for specification.yml
 examples/*/*
-!examples/*/example.yml
+!examples/*/specification.yml
