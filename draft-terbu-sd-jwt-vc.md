@@ -533,7 +533,7 @@ W3C Verifiable Credentials (VC) Directory.
 
 The following is a uni-directional transformation algorithm that takes in a
 VC-SD-JWT conformant to this specification and maps it
-to the corresponding properties in the W3C VCDM 2.0
+to the corresponding properties in the W3C VCDM 2.0 [VCDM2.0]
 which is based on a JSON-LD vocabulary. It includes specific handling for JWT
 claims used in this specification. The function returns a Verifiable
 Credential object in the W3C VCDM 2.0 format.
@@ -615,8 +615,6 @@ function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
    o  Specification Document(s): Section XXX of this document
 
 ## Media Types Registry
-
-TBD
 
 ### application/vc+sd-jwt {#application-vc-sd-jwt}
 
