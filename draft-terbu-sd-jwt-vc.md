@@ -524,10 +524,10 @@ model defined in [@VC-DATA], this specification defines a mapping algorithm for
 VC-SD-JWT and VP-SD-JWT to the vocabulary and data model defined W3C VCDM 2.0
 which is based on JSON-LD.
 
-### W3C Verifiable Credentials Directory
+### W3C VC Specifications Directory
 
 This specification registers the media type `application/vc+sd-jwt` in the
-W3C Verifiable Credentials (VC) Directory.
+W3C Verifiable Credentials (VC) Directory [@VC-DIR].
 
 ### Mapping Algorithm
 
@@ -642,6 +642,16 @@ function transform_vc_sd_jwt_to_w3c_vc(vc_sd_jwt):
             <organization>Crossword Cybersecurity PLC</organization>
         </author>
         <date day="4" month="May" year="2023"/>
+        </front>
+</reference>
+
+<reference anchor="VC-DIR" target="https://w3c.github.io/vc-specs-dir/">
+        <front>
+        <title>VC Specifications Directory</title>
+        <author fullname="Manu Sporny">
+            <organization>Digital Bazaar</organization>
+        </author>
+        <date day="8" month="May" year="2023"/>
         </front>
 </reference>
 
