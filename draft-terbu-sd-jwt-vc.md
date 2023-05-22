@@ -612,7 +612,7 @@ function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
  Claim Name: "type"
    o  Claim Description: Credential Type
    o  Change Controller: IESG
-   o  Specification Document(s): Section XXX of this document
+   o  Specification Document(s): Section {#type-claim} of this document
 
 ## Media Types Registry
 
