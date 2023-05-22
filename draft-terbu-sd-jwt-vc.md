@@ -244,7 +244,7 @@ information.
 Binding of the Verifiable Presentation. See [@!RFC7800] for more information.
 * `type`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
-`IdentityCredential`, as defined in {type-claim}.
+`IdentityCredential`, as defined in (#type-claim).
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [TBD] for more information.
