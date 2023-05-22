@@ -168,7 +168,7 @@ This section defines encoding, validation and processing rules for VC-SD-JWTs.
 ## Media Type
 
 VC-SD-JWTs compliant with this specification MUST use the media type
-`application/vc+sd-jwt` as defined in {#application-vc-sd-jwt}.
+`application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
 
 ## Data Format
 
@@ -364,7 +364,7 @@ follows:
 section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
-{#jwt-issuer-metadata}) of the VC-SD-JWT issuer. A Verifier MAY use alternative
+(#jwt-issuer-metadata) of the VC-SD-JWT issuer. A Verifier MAY use alternative
 methods to obtain the public key to verify the signature of the SD-JWT.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
@@ -612,7 +612,7 @@ function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
  Claim Name: "type"
    o  Claim Description: Credential Type
    o  Change Controller: IESG
-   o  Specification Document(s): Section {#type-claim} of this document
+   o  Specification Document(s): Section (#type-claim) of this document
 
 ## Media Types Registry
 
