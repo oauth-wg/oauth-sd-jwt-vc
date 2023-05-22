@@ -203,6 +203,21 @@ The following is a non-normative example of a decoded SD-JWT header:
 This section defines the claims that can be included in the payload of SD-JWTs
 and Diclosures belonging to VC-SD-JWTs.
 
+#### `type` claim {#type-claim}
+
+This specification defines the JWT claim `type`. The `type` claim is used
+to express the type of the JSON object that is secured by the
+JWT. The `type` value MUST be a case-sensitive `StringOrURI` value.
+
+The following is a non-normative example of how `type` is used to express
+a type:
+
+```
+{
+  "type": "SomeType"
+}
+```
+
 #### Registered JWT Claims
 
 VC-SD-JWTs MAY use any claim registered in the "JSON Web Token Claims"
@@ -243,21 +258,6 @@ Disclosures and MAY be selectively disclosed:
 The value of `sub` MUST be a URI. The Issuer MAY use it to provide the Subject
 identifier assigned by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
-
-#### `type` claim {#type-claim}
-
-This specification defines the JWT claim `type`. The `type` claim is used
-to express the type of the JSON object that is secured by the
-JWT. The `type` value MUST be a case-sensitive `StringOrURI` value.
-
-The following is a non-normative example of how `type` is used to express
-a type:
-
-```
-{
-  "type": "SomeType"
-}
-```
 
 #### Public JWT claims
 
