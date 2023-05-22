@@ -262,7 +262,7 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 
 {{examples/01/disclosures.md}}
 
-The SD-JWT and the Disclosures would then be serialized into the following format:
+The SD-JWT and the Disclosures would then be serialized by the Issuer into the following format for issuance to the Holder:
 
 <{{examples/01/combined_issuance.txt}}
 
@@ -361,17 +361,15 @@ This specification defines the media type `vp+sd-jwt` which describes the VP-SD-
 
 ## Examples
 
-The following is a non-normative example of a VP-SD-JWT without holder binding:
+The following is a non-normative example of a presentation of the SD-JWT shown above including a holder binding JWT:
 
-```
-TBD
-```
+<{{examples/01/combined_presentation.txt}}
 
-The following is a non-normative example of a VP-SD-JWT with holder binding:
+In this presentation, the Holder provides only the Disclosure for the claim `address`. Other claims are not disclosed to the Verifier. 
 
-```
-TBD
-```
+The following example shows a presentation of a (different) SD-JWT without a holder binding JWT:
+
+<{{examples/02/combined_presentation.txt}}
 
 ## Validation Rules and Processing
 
