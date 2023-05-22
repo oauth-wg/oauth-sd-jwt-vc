@@ -61,7 +61,7 @@ the Holder provides a proof that they are the intended Holder of the Verifiable
 Credential which can important for security reasons. This is only possible if
 an Issuer binds the Verifiable Credential to a specific Holder at the time of
 issuance. This process is referred to as Holder Binding and is further
-described in [SD-JWT].
+described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
 Presentations, are further described in [VCDM2.0]. However, this specification
