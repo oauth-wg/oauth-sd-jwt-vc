@@ -21,3 +21,8 @@ draft-terbu-sd-jwt-vc.xml
 package-lock.json
 report.xml
 !requirements.txt
+
+
+# Ignore output of examples except for examples.yml
+examples/*/*
+!examples/*/example.yml
