@@ -199,8 +199,8 @@ The following is a non-normative example of a decoded SD-JWT header:
 
 ### Claims
 
-This section defines the claims that can be included in the payload of SD-JWTs
-and Diclosures belonging to VC-SD-JWTs.
+This section defines the claims that can be included in the payload of
+VC-SD-JWTs.
 
 #### `type` claim {#type-claim}
 
@@ -260,13 +260,13 @@ exist between `sub` and `cnf` claims.
 
 #### Public JWT claims
 
-Additional public claims MAY be used in the SD-JWT or in the Disclosures
-depending on the application.
+Additional public claims MAY be used in VC-SD-JWTs depending on the
+application.
 
 ## Example
 
-The following is a non-normative example of a Credential acting as the input
-for the VC-SD-JWT:
+The following is a non-normative example of an unsecured input payload
+of an VC-SD-JWT.
 
 ```
 {
@@ -447,11 +447,6 @@ The following is a non-normative example of a JWT Issuer Metadata including
 # Verifiable Presentations
 
 This section defines encoding, validation and processing rules for VP-SD-JWTs.
-
-## Media Type
-
-VP-SD-JWTs compliant with this specification MUST use the media type
-`application/vp+sd-jwt` as defined in {#application-vp-sd-jwt}.
 
 ## Data Format
 
