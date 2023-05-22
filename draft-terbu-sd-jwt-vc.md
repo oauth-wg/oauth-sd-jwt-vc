@@ -538,51 +538,91 @@ which is based on a JSON-LD vocabulary. It includes specific handling for JWT
 claims used in this specification. The function returns a Verifiable
 Credential object in the W3C VCDM 2.0 format.
 
+Procedure:
+1. Let `payload` be the unsecured payload of the VC-SD-JWT reconstructed from the SD-JWT and Disclosures.
+1. Let `VC` be an empty JSON object that represents the transformed Verifiable Credential:
+  - Set the `@context` property of `VC` to `"https://www.w3.org/ns/credentials/v2"`.
+1. If the payload contains the `nbf` property:
+  - Convert the value of `nbf` from epoch time to an ISO datetime format.
+  - Assign the converted value to the `validFrom` property of `VC`.
+  - Remove the `nbf` claim from the payload.
+1. If the payload contains the `exp` property:
+  - Convert the value of `exp` from epoch time to an ISO datetime format.
+  - Assign the converted value to the `validUntil` property of `VC`.
+  - Remove the `exp` claim from the payload.
+1. If the payload contains the `jti` property:
+  - Assign the value of `jti` to the `id` property of `VC`.
+  - Remove the `jti` claim from the payload.
+1. Set the `issuer` property of `VC` to the value of the `iss` property in the payload.
+  - Remove the `iss` claim from the payload.
+1. Set the `type` property of `VC` to the value of the `type` property in the payload.
+  - Remove the `type` claim from the payload.
+1. If the payload contains the `sub` property:
+  - Assign the value of `sub` as the `id` property of the `credentialSubject` object in `VC`.
+  - Remove the `sub` claim from the payload.
+1. Else if the payload does not have a `sub` property, create an empty `credentialSubject` object.
+1. Add all remaining claims in the payload to the `credentialSubject` object of `VC` and ignore claims
+that do not have a corresponding representation.
+1. Output `VC` which contains the resulting Verifiable Credential.
+
+The following is a non-normative example of a pseudocode algorithm:
+
 ```
 function get_credential_from_vc_sd_jwt(vc_sd_jwt):
-  // TBD
-  return credential
+  // Reconstruct unsecure payload from SD-JWT and Disclosures
+  return payload
 
-function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
+function transform_vc_sd_jwt_to_w3c_vc(vc_sd_jwt):
 
   // construct input credential (JSON object)
-  credential = get_credential_from_vc_sd_jwt(vc_sd_jwt)
-
-  return map_to_w3c(credential)
+  payload = get_unsecured_payload_from_vc_sd_jwt(vc_sd_jwt)
 
   vc = {
     "@context": [
       "https://www.w3.org/ns/credentials/v2"
     ]
   }
-  vc.issuedAt = epochTimeToISO(credential.iat)
-  vc.validFrom = epochTimeToISO(credential.nbf)
-  vc.validUntil = epochTimeToISO(credential.exp)
-  vc.id = credential.jti
-  vc.issuer = credential.iss
-  vc.type = credential.type
-
-  // remove all handled claims
-  credential = drop_claims(credential, ...)
-
-  // add all remaining claims to credentialSubject
-  // ignore other claims such as cnf where no corresponding
-  // representation exists
-  vc.credentialSubject = {
-    "id": credential.sub,
-    ... credential
+  if (payload.hasProperty("iat")) {
+    vc.issuedAt = epoch_time_to_ISO_datetime(payload.iat)
+    payload = remove_claim_from_json(payload, "iat")
   }
 
+  if (payload.hasProperty("nbf")) {
+    vc.validFrom = epoch_time_to_ISO_datetime(payload.nbf)
+    payload = remove_claim_from_json(payload, "nbf")
+  }
+
+  if (payload.hasProperty("exp")) {
+    vc.validUntil = epoch_time_to_ISO_datetime(payload.exp)
+    payload = remove_claim_from_json(payload, "exp")
+  }
+
+  if (payload.hasProperty("jti")) {
+    vc.id = payload.jti
+    payload = remove_claim_from_json(payload, "jti")
+  }
+
+  vc.issuer = payload.iss
+  payload = remove_claim_from_json(payload, "iss")
+
+  vc.type = payload.type
+  payload = remove_claim_from_json(payload, "type")
+
+  if (payload.hasProperty("sub")) {
+    vc.credentialSubject = {
+      "id": payload.sub
+    }
+    payload = remove_claim_from_json(payload, "sub")
+  } else {
+    vc.credentialSubject = { }
+  }
+
+  // add all remaining claims to credentialSubject
+  // ignore other claims such as "cnf" where no
+  // corresponding representation exists
+  vc.credentialSubject = insert_claims_into_credential_subject(vc, payload)
+
   return vc
-```
-
-The following is a uni-directional transformation algorithm from a VP-SD-JWT onto W3C Verifiable Presentations
-in pseudo-code:
-
-```
-function map_vc_sd_jwt_to_w3c(vc_sd_jwt):
-  TBD: similar to above but using W3C VP + VC
-
 ```
 
 ####
