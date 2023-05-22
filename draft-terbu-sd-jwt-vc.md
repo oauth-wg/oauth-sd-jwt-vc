@@ -361,7 +361,7 @@ This specification defines the media type `vp+sd-jwt` which describes the VP-SD-
 
 ## Examples
 
-The following is a non-normative example of a presentation of the SD-JWT shown above including a holder binding JWT:
+The following is a non-normative example of a presentation of the SD-JWT shown above including a Holder Binding JWT:
 
 <{{examples/01/combined_presentation.txt}}
 
