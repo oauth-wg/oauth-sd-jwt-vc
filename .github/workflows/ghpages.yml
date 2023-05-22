@@ -43,7 +43,7 @@ jobs:
     # Build the local examples
     - name: "Build local examples"
       run: |
-        cd ../examples/
+        cd examples
         python3 ../sd-jwt/scripts/generate.py example
 
     - name: "Caching"
