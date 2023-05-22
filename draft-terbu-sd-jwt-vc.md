@@ -43,8 +43,8 @@ express Verifiable Credentials with JSON payload based on the securing mechanism
 A Verifiable Credential is an tamper-evident statement made by an Issuer about
 a Subject of the Verifiable Credential. Verifiable Credentials are issued to
 Holders which can present Verifiable Credentials to Verifiers typically in form
-of Verifiable Presentations which are secure envelops that contain Verifiable
-Credentials addressed to a specific audience.
+of Verifiable Presentations which are secure Verifiable Credentials addressed
+to a specific audience.
 
 These relationships are described by the three-party-model which involves the
 following parties:
