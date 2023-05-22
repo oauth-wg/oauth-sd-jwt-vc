@@ -177,7 +177,6 @@ defined in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 5.3.].
 
 VC-SD-JWTs MUST contain all Disclosures corresponding to their SD-JWT component
 except for Decoy Digests as per section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-section 5.1.1.3.].
 
 ### Header Parameters
 
