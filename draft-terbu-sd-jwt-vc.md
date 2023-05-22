@@ -526,8 +526,8 @@ which is based on JSON-LD.
 
 ### VC Directory
 
-This specification registers the media types `application/vp+sd-jwt` and
-`application/vc+sd-jwt` in the W3C Verifiable Credentials (VC) Directory.
+This specification registers the media type `application/vc+sd-jwt` in the
+W3C Verifiable Credentials (VC) Directory.
 
 ### Mapping Algorithm
 
