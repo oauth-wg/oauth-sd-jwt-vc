@@ -367,7 +367,7 @@ The following is a non-normative example of a presentation of the SD-JWT shown a
 
 In this presentation, the Holder provides only the Disclosure for the claim `address`. Other claims are not disclosed to the Verifier.
 
-The following example shows a presentation of a (different) SD-JWT without a holder binding JWT:
+The following example shows a presentation of a (different) SD-JWT without a Holder Binding JWT:
 
 <{{examples/02/combined_presentation.txt}}
 
