@@ -112,14 +112,14 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-Verifiable Credential:
-: An Issuer-signed Credential whose authenticity can be cryptographically verified.
-
 Credential:
 : A set of one or more claims about a subject made by a Credential Issuer.
 
-Verifiable Presentation:
-: A Verifiable Credential compliant to the [VCDM 2.0] specification.
+Verifiable Credential:
+: An Issuer-signed Credential whose authenticity can be cryptographically verified.
+
+Verifiable Presentation
+: Data derived from a Verifiable Credential that is shared with a specific Verifier. The authorship of the data can be trusted after a process of cryptographic verification.
 
 Issuer:
 : An entity that issues a Verifiable Credential.
@@ -134,18 +134,10 @@ Verifier:
 Verifiable Presenations.
 
 Verifiable Credential based on SD-JWT (VC-SD-JWT):
-: Refers to SD-JWT Combined Format for Issuance [see TBD] that complies with
-this specification. In the three-party-model, this representation is used for
-the Verifiable Credential and is transferred from the Issuer to the Holder.
+: A Verifiable Credential encoded using the Issuance format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Presentation based on SD-JWT (VP-SD-JWT):
-: Refers to SD-JWT Combined Format for Presentation [see TBD] that complies
-with this specification. In the three-party-model, this representation is used
-for the Verifiable Presentation and is transferred from the Issuer to the
-Holder.
-
-Credential based on SD-JWT (C-SD-JWT):
-: Refers to the original unsecured JSON payload of the VC-SD-JWT.
+: A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 # Scope
 
@@ -161,7 +153,8 @@ TBD: explain use cases of the three-party-model.
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
 
-# Verifiable Credentials
+# Verifiable Credentials based on SD-JWT
+
 
 This section defines encoding, validation and processing rules for VC-SD-JWTs.
 
