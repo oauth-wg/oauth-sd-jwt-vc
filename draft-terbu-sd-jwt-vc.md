@@ -123,8 +123,7 @@ SD-JWT-based Verifiable Presentation (SD-JWT VP):
 : A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Status Provider:
-: An entity that hosts a URL that points to a Verifiable Credential of type
-`StatusList2021Credential` as defined in [@W3C.vc-status-list, section 2.2].
+: An entity that provides status information (e.g. revocation) about a Verifiable Credential.
 
 # Scope
 
