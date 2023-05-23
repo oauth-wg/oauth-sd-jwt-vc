@@ -296,7 +296,7 @@ be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
-The following is a non-normative example of an URL of the JWT Issuer Metadata
+The following is a non-normative example of the URL of the JWT Issuer Metadata
 configuration when `iss` is set to `https://example.com`:
 
 ```
