@@ -313,6 +313,20 @@ be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
+The following is a non-normative example of an URL of the JWT Issuer Metadata
+configuration when `iss` is set to `https://example.com`:
+
+```
+https://example.com/.well-known/jwt-issuer
+```
+
+The following is a non-normative example of an URL of the JWT Issuer Metadata
+configuration when `iss` is set to `https://example.com/user/1234`:
+
+```
+https://example.com/user/1234/.well-known/jwt-issuer
+```
+
 The JWT Issuer Metadata configuration MUST be a JSON document compliant with
 this specification and MUST be returned using the `application/json` content
 type.
