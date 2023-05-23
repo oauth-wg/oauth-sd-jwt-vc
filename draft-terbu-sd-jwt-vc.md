@@ -112,23 +112,9 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-Verifiable Credential:
-: An Issuer-signed Credential whose authenticity can be cryptographically verified.
-
-Verifiable Presentation
-: Data derived from a Verifiable Credential that is shared with a specific Verifier. The authorship of the data can be trusted after a process of cryptographic verification.
-
-Issuer:
-: An entity that issues a Verifiable Credential.
-
-Holder:
-: An entity that receives Verifiable Credentials from the Issuer and has
-control over them. Holders present Verifiable Credentials as Verifiable
-Presentations to Verifiers and can prove control over them.
-
-Verifier:
-: An entity that requests, validates and processes Verifiable Credentials and
-Verifiable Presenations.
+This specification uses the terms "Holder", "Issuer", "Verifier", defined by
+[@!I-D.ietf-oauth-selective-disclosure-jwt], Verifiable Credential and Verifiable
+Presentation defined by [@VC-DATA].
 
 Verifiable Credential based on SD-JWT (VC-SD-JWT):
 : A Verifiable Credential encoded using the Issuance format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
