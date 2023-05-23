@@ -1,5 +1,5 @@
 %%%
-title = "SD-JWT-based Verifiable Credentials with JSON payloads"
+title = "SD-JWT-based Verifiable Credentials with JSON payloads (SD-JWT VC)"
 abbrev = "sd-jwt vc"
 ipr = "none"
 workgroup = "TBD"
