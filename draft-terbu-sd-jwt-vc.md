@@ -303,7 +303,7 @@ configuration when `iss` is set to `https://example.com`:
 https://example.com/.well-known/jwt-issuer
 ```
 
-The following is a non-normative example of an URL of the JWT Issuer Metadata
+The following is a non-normative example of the URL of the JWT Issuer Metadata
 configuration when `iss` is set to `https://example.com/user/1234`:
 
 ```
