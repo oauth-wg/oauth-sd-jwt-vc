@@ -155,7 +155,6 @@ compliance with FIPS
 
 # Verifiable Credentials based on SD-JWT
 
-
 This section defines encoding, validation and processing rules for VC-SD-JWTs.
 
 ## Media Type
