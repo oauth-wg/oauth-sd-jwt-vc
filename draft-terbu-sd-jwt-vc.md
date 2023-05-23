@@ -450,7 +450,7 @@ which is based on JSON-LD.
 ### W3C VC Specifications Directory
 
 This specification registers the media type `application/vc+sd-jwt` in the
-W3C Verifiable Credentials (VC) Directory [@VC-DIR].
+W3C VC Specifications Directory [@VC-DIR].
 
 ### Mapping Algorithm
 
