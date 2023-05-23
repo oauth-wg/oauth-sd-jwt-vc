@@ -160,11 +160,11 @@ SD-JWT VCs compliant with this specification MUST use the media type
      and Issuer-Issued Disclosures
                  |
                  v
-           +------------+                                 +------------+ 
+           +------------+                                 +------------+
            |            |                                 |   Status   |
            |   Holder   |-------- optionally ------------>|  Provider  |
            |            |       retrieves status          |            |
-           +------------+             VC                  +------------+ 
+           +------------+             VC                  +------------+
                  |
          Presents VP-SD-JWT
    and Holder-Selected Disclosures
