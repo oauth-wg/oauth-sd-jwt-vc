@@ -458,6 +458,7 @@ claims used in this specification. The function returns a Verifiable
 Credential object in the W3C VCDM 2.0 format.
 
 Procedure:
+
 1. Let *payload* be the unsecured payload of the SD-JWT VC reconstructed from the SD-JWT and Disclosures.
 1. Let *vc* be an empty JSON object that represents the transformed Verifiable Credential:
   - Set the `@context` property of *vc* to `"https://www.w3.org/ns/credentials/v2"`.
@@ -474,16 +475,13 @@ Procedure:
   - Remove the `jti` claim from *payload*.
 1. Set the `issuer` property of *vc* to the value of the `iss` property in *payload*.
   - Remove the `iss` claim from *payload*.
-1. Set the `type` property of *vc* to a String array and set the first array element to
-`"VerifiableCredential"`. Add the value of the `type` property in *payload* as the
-second array element.
+1. Set the `type` property of *vc* to a String array and set the first array element to `"VerifiableCredential"`. Add the value of the `type` property in *payload* as the second array element.
   - Remove the `type` claim from *payload*.
 1. If *payload* contains the `sub` property:
   - Assign the value of `sub` as the `id` property of the `credentialSubject` object in *vc*.
   - Remove the `sub` claim from *payload*.
 1. Else if *payload* does not have a `sub` property, create an empty `credentialSubject` object.
-1. Add all remaining claims in *payload* to the `credentialSubject` object of *vc* and ignore claims
-that do not have a corresponding representation.
+1. Add all remaining claims in *payload* to the `credentialSubject` object of *vc* and ignore claims that do not have a corresponding representation.
 1. Output *vc* which contains the resulting Verifiable Credential.
 
 The following is a non-normative example of a pseudocode algorithm:
