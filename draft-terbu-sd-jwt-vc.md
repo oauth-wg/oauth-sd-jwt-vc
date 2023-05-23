@@ -112,9 +112,6 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-Credential:
-: A set of one or more claims about a subject made by a Credential Issuer.
-
 Verifiable Credential:
 : An Issuer-signed Credential whose authenticity can be cryptographically verified.
 
