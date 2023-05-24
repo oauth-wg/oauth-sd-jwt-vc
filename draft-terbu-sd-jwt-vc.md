@@ -64,10 +64,11 @@ issuance. This process is referred to as Holder Binding and is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
-Presentations, are further described in [@VC-DATA]. However, this specification
-focuses on a specific version of the three-party-model which can have
-different features but will provide a representation of the model
-described in [@VC-DATA].
+Presentations, is also described in [@VC-DATA]. However, this specification
+provides a specific format of Verifiable Credentials which deviates from the
+format described in [@VC-DATA] to create Verifiable Credentials based on SD-JWT
+and JSON payloads but a translation algorithm is provided in this
+specification.
 
 ## Rationale
 
