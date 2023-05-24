@@ -75,15 +75,8 @@ JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
 builds upon established web primitives. However, JWTs do not support selective
 disclosure, i.e., the ability to disclose only a subset of the claims contained
-in the JWT, in the three-party-model as described above. This is a common problem
-in the three-party model: An Issuer creates a Verifiable Credential for
-some End-User (Holder), who then can presents this credential to multiple Verifiers.
-A Verifiable Credential might contain a large number of claims, but the Holder
-typically only wants to disclose a subset of these claims to a Verifier. In this case,
-the Holder would have to receive a new JWT from the Issuer, containing only the claims that
-should be disclosed, for each interaction with a new Verifier. This is inefficient,
-costly, and the necessary interaction with the Issuer introduces additional
-privacy risks.
+in the JWT, which is a requirement to implement the three-party-model
+efficiently.
 
 Selective Disclosure JWT (SD-JWT) [SD-JWT] is a specification that introduces
 conventions to support selective disclosure for JWTs: For an SD-JWT document,
