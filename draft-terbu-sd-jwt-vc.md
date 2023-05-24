@@ -122,6 +122,9 @@ SD-JWT-based Verifiable Credential (SD-JWT VC):
 SD-JWT-based Verifiable Presentation (SD-JWT VP):
 : A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
+Status Provider:
+: An entity that provides status information (e.g. revocation) about a Verifiable Credential.
+
 # Scope
 
 * This specification defines
@@ -144,6 +147,39 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 
 SD-JWT VCs compliant with this specification MUST use the media type
 `application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
+
+# Flow Diagram
+~~~ ascii-art
+           +------------+
+           |            |
+           |   Issuer   |
+           |            |
+           +------------+
+                 |
+          Issues VC-SD-JWT
+     and Issuer-Issued Disclosures
+                 |
+                 v
+           +------------+                                 +------------+
+           |            |                                 |   Status   |
+           |   Holder   |-------- optionally ------------>|  Provider  |
+           |            |       retrieves status          |            |
+           +------------+             VC                  +------------+
+                 |
+         Presents VP-SD-JWT
+   and Holder-Selected Disclosures
+                 |
+                 v
+           +-------------+
+           |             |+
+           |  Verifiers  ||+
+           |             |||
+           +-------------+||
+            +-------------+|
+             +-------------+
+~~~
+Figure: VC-SD-JWT Issuance and VP-SD-JWT Presentation Flow w/ Status
+
 
 ## Data Format
 
