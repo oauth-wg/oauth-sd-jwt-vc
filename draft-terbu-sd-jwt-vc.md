@@ -326,9 +326,14 @@ Host: example.com
 A successful response MUST use the `200 OK HTTP` and return the JWT Issuer
 Metadata configuration using the `application/json` content type.
 
+An error response uses the applicable HTTP status code value.
+
 This specification defines the following JWT Issuer Metadata configuration
 parameters:
 
+* `issuer`
+      REQUIRED. The JWT Issuer identifier, which MUST be identical to the `iss`
+value in the JWT.
 * `jwks_uri`
     * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set
 [@RFC7517] document which contains the JWT Issuer's public keys. The value of
@@ -352,6 +357,7 @@ including `jwks`:
 
 ```
 {
+   "issuer":"https://example.com",
    "jwks":{
       "keys":[
          {
@@ -374,11 +380,18 @@ configuration including `jwks_uri`:
 
 ```
 {
+   "issuer":"https://example.com",
    "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
 }
 ```
 
 Additional JWT Issuer Metadata configuration parameters MAY also be used.
+
+## JWT Issuer Metadata Validation
+
+The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
+these values are not identical, the data contained in the response MUST NOT be
+used.
 
 # Verifiable Presentations
 
