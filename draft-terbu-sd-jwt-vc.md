@@ -55,6 +55,37 @@ the Subject, for example to prove eligibility to access certain services.
 1. Holder: The person or entity being issued the Verifiable Credential, who
  may present the Verifiable Credential to a Verifier for verification.
 
+~~~ ascii-art
+           +------------+
+           |            |
+           |   Issuer   |
+           |            |
+           +------------+
+                 |
+          Issues SD-JWT VC
+     and Issuer-Issued Disclosures
+                 |
+                 v
+           +------------+                                 +------------+
+           |            |                                 |   Status   |
+           |   Holder   |-------- optionally ------------>|  Provider  |
+           |            |       retrieves status          |            |
+           +------------+             VC                  +------------+
+                 |
+         Presents SD-JWT VP
+   and Holder-Selected Disclosures
+                 |
+                 v
+           +-------------+
+           |             |+
+           |  Verifiers  ||+
+           |             |||
+           +-------------+||
+            +-------------+|
+             +-------------+
+~~~
+Figure: SD-JWT VC Issuance and SD-JWT VP Presentation Flow w/ Status
+
 In the three-party-model, Verifiers have to trust Issuers to make
 trustworthy statements about the Subject and they can additionally require that
 the Holder provides a proof that they are the intended Holder of the Verifiable
@@ -147,39 +178,6 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 
 SD-JWT VCs compliant with this specification MUST use the media type
 `application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
-
-# Flow Diagram
-~~~ ascii-art
-           +------------+
-           |            |
-           |   Issuer   |
-           |            |
-           +------------+
-                 |
-          Issues VC-SD-JWT
-     and Issuer-Issued Disclosures
-                 |
-                 v
-           +------------+                                 +------------+
-           |            |                                 |   Status   |
-           |   Holder   |-------- optionally ------------>|  Provider  |
-           |            |       retrieves status          |            |
-           +------------+             VC                  +------------+
-                 |
-         Presents VP-SD-JWT
-   and Holder-Selected Disclosures
-                 |
-                 v
-           +-------------+
-           |             |+
-           |  Verifiers  ||+
-           |             |||
-           +-------------+||
-            +-------------+|
-             +-------------+
-~~~
-Figure: VC-SD-JWT Issuance and VP-SD-JWT Presentation Flow w/ Status
-
 
 ## Data Format
 
