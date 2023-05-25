@@ -148,7 +148,7 @@ SD-JWT-based Verifiable Presentation (SD-JWT VP):
 : A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Unsecured payload of an SD-JWT VC:
-: A JSON object containing all selective and non-selective disclosable claims
+: A JSON object containing all selectively disclosable and non-selectively disclosable claims
 of the SD-JWT VC. The unsecured payload acts as the input JSON object to issue
 an SD-JWT VC complying to this specification.
 
