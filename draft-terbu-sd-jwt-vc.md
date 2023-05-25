@@ -241,9 +241,8 @@ information.
 Holder Binding. The `cnf` claim MUST be present when Holder Binding is to be
 supported. It SHOULD contain a JWK as defined in Section
 3.2. of [@!RFC7800] and in this case, the `kid` (Key ID) member MUST be present
-in the JWK. For cryptographic Holder Binding, the Holder Binding JWT in the
-Combined Format for Presentation MUST be signed by the key identified in this
-claim.
+in the JWK and the Holder Binding JWT in the Combined Format for Presentation
+MUST be signed by the key identified in this claim.
 * `type`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `IdentityCredential`, as defined in (#type-claim).
