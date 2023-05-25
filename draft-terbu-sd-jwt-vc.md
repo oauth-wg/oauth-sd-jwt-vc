@@ -382,6 +382,7 @@ including `jwks`:
    "jwks":{
       "keys":[
          {
+            "kid":"doc-signer-05-25-2022",
             "e":"AQAB",
             "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
    HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
