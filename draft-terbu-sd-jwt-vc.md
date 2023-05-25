@@ -116,7 +116,7 @@ The following are non-selectively disclosable registered JWT claims that SD-JWT-
 * `exp`
     * REQUIRED. The expiry time of the Verifiable Credential after which the proof of the Verifiable Credential is no longer valid.
 * `cnf`
-    * OPTIONAL. The confirmation method as defined in [@!RFC7800]. It MAY be used when Cryptographic Holder Binding is required. It MUST contain a JWK as defined in Section 3.2 of [@!RFC7800]. Other representations of the key MUST NOT be used. "kid" (Key ID) member MUST be present in the JWK. Holder Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
+    * RECOMMENDED when Cryptographic Holder Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800] and in this case, the `kid` (Key ID) member MUST be present in the JWK.  For Cryptographic Holder Binding, the Holder Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
 * `type`
     * REQUIRED. The type or types of the Verifiable Credential. In the general case, the `type` value is an array of case-sensitive strings, each containing a `StringOrURI` value. In the special case when the SD-JWT has one credential type, the `type` value MAY be a single case-sensitive string containing a `StringOrURI` value.
 * `status`
