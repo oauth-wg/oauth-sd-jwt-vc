@@ -46,31 +46,31 @@ Credentials are tamper-evident (usually cryptographically signed) statements
 about a Subject, typically the Holder.
 
 ~~~ ascii-art
-           +------------+
-           |            |
-           |   Issuer   |
-           |            |
-           +------------+
-                 |
-      Issues Verifiable Credential
-                 |
-                 v
-           +------------+
-           |            |
-           |   Holder   |
-           |            |
-           +------------+
-                 |
-    Presents Verifiable Credential
-                 |
-                 v
+         +------------+
+         |            |
+         |   Issuer   |
+         |            |
+         +------------+
+               |
+    Issues Verifiable Credential
+               |
+               v
+         +------------+
+         |            |
+         |   Holder   |
+         |            |
+         +------------+
+               |
+  Presents Verifiable Credential
+               |
+               v
+         +-------------+
+         |             |+                                  +------------+
+         |  Verifiers  ||+                                 |   Status   |
+         |             |||---------- optionally ---------->|  Provider  |
+         +-------------+||        retrieve status of       |            |
+          +-------------+|       Verifiable Credential     +------------+
            +-------------+
-           |             |+                                  +------------+
-           |  Verifiers  ||+                                 |   Status   |
-           |             |||---------- optionally ---------->|  Provider  |
-           +-------------+||       retrieve credential       |            |
-            +-------------+|            status               +------------+
-             +-------------+
 ~~~
 Figure: Three-Party-Model with optional Status Provider
 
@@ -84,11 +84,10 @@ To support revocation of credentials, an optional fourth party can be involved,
 a Status Provider, who delivers revocation information to Verifiers. (The Verifier can
 also serve as the Status Provider.)
 
-The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
-Presentations, is also described in [@VC-DATA]. This specification defines
-Verifiable Credentials based on the SD-JWT format and JSON payloads. A
-translation algorithm between the two approaches is provided in this
-specification.
+The three-party-model, i.e., actors, Verifiable Credentials, is also described in
+[@VC-DATA]. This specification defines Verifiable Credentials based on the SD-JWT
+format and JSON payloads. A translation algorithm between the two approaches is
+provided in this specification.
 
 ## Rationale
 
