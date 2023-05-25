@@ -99,11 +99,11 @@ support selective disclosure, i.e., the ability for a holder to disclose only a
 subset of the claims contained in the JWT, which is a requirement to implement
 the three-party-model efficiently.
 
-Selective Disclosure JWT (SD-JWT) [SD-JWT] is a specification that introduces
-conventions to support selective disclosure for JWTs: For an SD-JWT document, a
-Holder can decide which claims to release (within bounds defined by the Issuer).
-This format is therefore perfectly suited for Verifiable Credentials and
-Verifiable Presentations.
+Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
+a specification that introduces conventions to support selective disclosure for
+JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
+bounds defined by the Issuer). This format is therefore perfectly suited for
+Verifiable Credentials and Verifiable Presentations.
 
 SD-JWT itself does not define the claims that must be used within the payload or
 their semantics. This specification therefore defines how Verifiable Credentials
@@ -317,7 +317,7 @@ be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
-## JWT Issuer Metdata Request
+## JWT Issuer Metadata Request
 
 A JWT Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#jwt-issuer-metadata).
@@ -361,7 +361,7 @@ value in the JWT.
 this field MUST point to a valid JWK Set document. Use of this parameter is
 RECOMMENDED, as it allows for easy key rotation.
 * `jwks`
-    * OPTIONAL. JWT Issuer's JSON Web Key Set [RFC7517] document value, which
+    * OPTIONAL. JWT Issuer's JSON Web Key Set [@RFC7517] document value, which
 contains the JWT Issuer's public keys. The value of this field MUST be a JSON
 object containing a valid JWK Set. This parameter is intended to be used by JWT
 Issuer that cannot use the `jwks_uri` parameter.
