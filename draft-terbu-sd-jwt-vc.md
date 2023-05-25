@@ -108,10 +108,11 @@ SD-JWT itself does not define the claims that must be used within the payload or
 their semantics. This specification therefore defines how Verifiable Credentials
 can be expressed using SD-JWT.
 
-JWTs (and SD-JWTs) can contain claims that are registered in the IANA JWT Claim
-Registry [IANA-JWT], as well as public and private claims. Private claims are not
-relevant for this specification due to the openness of the three-party-model. Since
-SD-JWTs are based on JWTs, this specification aims to express the basic
+JWTs (and SD-JWTs) can contain claims that are registered in "JSON Web Token Claims"
+registry as defined in [@!RFC7519], as well as public and
+private claims. Private claims are not relevant for this specification due to the
+openness of the three-party-model. Since SD-JWTs are based on JWTs, this specification
+aims to express the basic
 Verifiable Credential data model purely through JWT Claim Sets, using registered
 claims while allowing Issuers to use additional registered claims, as well as
 new or existing public claims, to make statements about the Subject of the
