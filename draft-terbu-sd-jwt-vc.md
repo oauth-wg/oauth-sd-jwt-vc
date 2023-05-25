@@ -170,10 +170,10 @@ SD-JWT VCs compliant with this specification MUST use the media type
 ## Data Format
 
 SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
-defined in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 5.3.].
+defined in Section 5.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 SD-JWT VCs MUST contain all Disclosures corresponding to their SD-JWT component
-except for Decoy Digests as per section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 ### Header Parameters
 
@@ -289,7 +289,7 @@ The recipient of the SD-JWT VC MUST process and verify an SD-JWT VC as
 follows:
 
  1. REQUIRED. Process and verify the SD-JWT as defined in
-section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
+Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 (#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
@@ -422,10 +422,10 @@ This section defines encoding, validation and processing rules for SD-JWT VPs.
 ## Data Format
 
 SD-JWT VPs MUST be encoded using the SD-JWT Combined Format for Presentation as
-defined in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 5.4.].
+defined in Section 5.4. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-SD-JWT VPs MAY contain a Holder Binding JWT as described in
-[@!I-D.ietf-oauth-selective-disclosure-jwt, section 5.4.1.].
+SD-JWT VPs MAY contain a Holder Binding JWT as described in Section 5.4.1. of
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 ### Holder Binding JWT
 
@@ -472,14 +472,14 @@ The Verifier MUST process and verify an SD-JWT VP as follows:
 MUST follow the same verification and processing rules as defined in
 (#vc-sd-jwt-verification-and-processing).
  1. OPTIONAL. If provided, the Verifier MUST verify the Holder Binding JWT
-according to [@!I-D.ietf-oauth-selective-disclosure-jwt, section 6.2.].
+according to Section 6.2. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 To verify the Holder Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
-# Security Considerations
+# Security Considerations {#security-considerations}
 
 TBD: Verifier provided `nonce`.
 
-# Privacy Considerations
+# Privacy Considerations {#privacy-considerations}
 
 TBD: Holder provided nonce via `jti`.
 
@@ -649,7 +649,7 @@ Encoding considerations: : 8-bit code points; SD-JWT VC values are encoded as a
 series of base64url-encoded values (some of which may be the empty string)
 separated by period ('.') and tilde ('~') characters.
 
-Security considerations: : See Security Considerations in Section TODO.
+Security considerations: : See Security Considerations in (#security-considerations).
 
 Interoperability considerations: : n/a
 
@@ -663,7 +663,7 @@ Interoperability considerations: : n/a
   - Person & email address to contact for further information: TBD
   - Intended usage: COMMON
   - Restrictions on usage: none
-  - Author: Oliver Terbu <TODO@email.com>
+  - Author: Oliver Terbu <oliver.terbu@spruceid.com>
   - Change controller: IETF
 
 # Acknowledgements {#Acknowledgements}
