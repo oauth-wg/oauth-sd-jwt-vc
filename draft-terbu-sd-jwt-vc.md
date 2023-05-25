@@ -6,7 +6,7 @@ workgroup = "TODO Working Group"
 keyword = ["security", "openid", "sd-jwt"]
 
 [seriesInfo]
-name = "Internet-Draft"s
+name = "Internet-Draft"
 value = "draft-terbu-sd-jwt-vc-latest"
 status = "standard"
 
