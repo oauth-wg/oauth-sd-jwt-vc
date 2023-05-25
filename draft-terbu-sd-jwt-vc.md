@@ -298,7 +298,7 @@ components.
 
 ## JWT Issuer Metdata Request
 
-An JWT Issuer Metadata configuration MUST be queried using an HTTP "GET" request
+A JWT Issuer Metadata configuration MUST be queried using an HTTP "GET" request
 at the path defined in (#jwt-issuer-metadata).
 
 The following is a non-normative example of a HTTP request for the JWT Issuer
