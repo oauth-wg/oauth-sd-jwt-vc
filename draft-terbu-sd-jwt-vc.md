@@ -30,9 +30,9 @@ organization="Authlete Inc. "
 
 .# Abstract
 
-This specification describes data formats, validation and processing rules to
-express Verifiable Credentials with JSON payload based on the securing mechanisms of SD-JWT
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
+This specification describes data formats as well as validation and processing
+rules to express Verifiable Credentials with JSON payload based on the SD-JWT
+format [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 {mainmatter}
 
@@ -40,20 +40,10 @@ express Verifiable Credentials with JSON payload based on the securing mechanism
 
 ## The Three-Party-Model
 
-A Verifiable Credential is an tamper-evident statement made by an Issuer about
-a Subject of the Verifiable Credential. Verifiable Credentials are issued to
-Holders which can present Verifiable Credentials to Verifiers typically in form
-of Verifiable Presentations which secure Verifiable Credentials addressed
-to a specific audience.
-
-These relationships are described by the three-party-model which involves the
-following parties:
-
-1. Issuer: The entity that issues the Verifiable Credential to the Holder.
-1. Verifier: The entity that verifies the Verifiable Credential presented by
-the Subject, for example to prove eligibility to access certain services.
-1. Holder: The person or entity being issued the Verifiable Credential, who
- may present the Verifiable Credential to a Verifier for verification.
+In the so-called Three-Party-Model, Issuers issue Verifiable Credentials to a
+Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
+Credentials are tamper-evident (usually cryptographically signed) statements
+about a Subject, typically the Holder.
 
 ~~~ ascii-art
            +------------+
@@ -62,72 +52,71 @@ the Subject, for example to prove eligibility to access certain services.
            |            |
            +------------+
                  |
-          Issues SD-JWT VC
-     and Issuer-Issued Disclosures
+      Issues Verifiable Credential
                  |
                  v
-           +------------+                                 +------------+
-           |            |                                 |   Status   |
-           |   Holder   |-------- optionally ------------>|  Provider  |
-           |            |       retrieves status          |            |
-           +------------+             VC                  +------------+
+           +------------+
+           |            |
+           |   Holder   |
+           |            |
+           +------------+
                  |
-         Presents SD-JWT VP
-   and Holder-Selected Disclosures
+    Presents Verifiable Credential
                  |
                  v
            +-------------+
-           |             |+
-           |  Verifiers  ||+
-           |             |||
-           +-------------+||
-            +-------------+|
+           |             |+                                  +------------+
+           |  Verifiers  ||+                                 |   Status   |
+           |             |||---------- optionally ---------->|  Provider  |
+           +-------------+||       retrieve credential       |            |
+            +-------------+|            status               +------------+
              +-------------+
 ~~~
-Figure: SD-JWT VC Issuance and SD-JWT VP Presentation Flow w/ Status
+Figure: Three-Party-Model with optional Status Provider
 
-In the three-party-model, Verifiers have to trust Issuers to make
-trustworthy statements about the Subject and they can additionally require that
-the Holder provides a proof that they are the intended Holder of the Verifiable
-Credential which can important for security reasons. This is only possible if
-an Issuer binds the Verifiable Credential to a specific Holder at the time of
-issuance. This process is referred to as Holder Binding and is further
+Verifiers can check the authenticity of the data in the Verifiable Credentials
+and optionally enforce Holder Binding, i.e., ask the Holder to prove that they
+are the intended holder of the Verifiable Credential, for example, by proving possession of a
+cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
+To support revocation of credentials, an optional fourth party can be involved,
+a Status Provider, who delivers revocation information to Verifiers. (The Verifier can
+also serve as the Status Provider.)
+
 The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
-Presentations, is also described in [@VC-DATA]. However, this specification
-provides a specific format of Verifiable Credentials which deviates from the
-format described in [@VC-DATA] to create Verifiable Credentials based on SD-JWT
-and JSON payloads but a translation algorithm is provided in this
+Presentations, is also described in [@VC-DATA]. This specification defines
+Verifiable Credentials based on the SD-JWT format and JSON payloads. A
+translation algorithm between the two approaches is provided in this
 specification.
 
 ## Rationale
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
-builds upon established web primitives. However, JWTs do not support selective
-disclosure, i.e., the ability to disclose only a subset of the claims contained
-in the JWT, which is a requirement to implement the three-party-model
-efficiently.
+builds upon established web primitives. However, JWT-based credentials do not
+support selective disclosure, i.e., the ability for a holder to disclose only a
+subset of the claims contained in the JWT, which is a requirement to implement
+the three-party-model efficiently.
 
 Selective Disclosure JWT (SD-JWT) [SD-JWT] is a specification that introduces
-conventions to support selective disclosure for JWTs: For an SD-JWT document,
-a Holder can decide which claims to release (within bounds defined by the Issuer).
-This format is therefore perfectly suitable for Verifiable Credentials and
+conventions to support selective disclosure for JWTs: For an SD-JWT document, a
+Holder can decide which claims to release (within bounds defined by the Issuer).
+This format is therefore perfectly suited for Verifiable Credentials and
 Verifiable Presentations.
 
-SD-JWT itself does not define the claims that must be used within the payload
-or their semantics. This specification therefore defines how
-Verifiable Credentials can be expressed using SD-JWT.
+SD-JWT itself does not define the claims that must be used within the payload or
+their semantics. This specification therefore defines how Verifiable Credentials
+can be expressed using SD-JWT.
 
-JWTs are used to protect the integrity of JSON payloads, which
-can contain claims that are registered in the IANA JWT Claim Registry, as well
-as public and private claims. Private claims are not relevant for this
-specification due to the openness of the three-party-model. Since SD-JWTs are
-based on JWTs, this specification aims to express the basic Verifiable Credential
-data model purely through JSON payloads, using registered claims while allowing
-Issuers to use additional registered claims, as well as new or existing public
-claims, to make statements about the Subject of the Verifiable Credential.
+JWTs (and SD-JWTs) can contain claims that are registered in the IANA JWT Claim
+Registry, as well as public and private claims. Private claims are not relevant
+for this specification due to the openness of the three-party-model. Since
+SD-JWTs are based on JWTs, this specification aims to express the basic
+Verifiable Credential data model purely through JWT Claim Sets, using registered
+claims while allowing Issuers to use additional registered claims, as well as
+new or existing public claims, to make statements about the Subject of the
+Verifiable Credential.
 
 ## Requirements Notation and Conventions
 
