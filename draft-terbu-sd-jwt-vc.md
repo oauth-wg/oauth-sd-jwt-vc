@@ -94,7 +94,7 @@ two approaches is provided in this specification.
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
 builds upon established web primitives. While JWT-based credentials enable selective
-disclosure, i.e., the ability for a holder to disclose only a subset of the contained
+disclosure, i.e., the ability for a Holder to disclose only a subset of the contained
 claims, in an Identity Provider ecosystem by issuing new JWTs to the Verifier for
 every presentation, this approach does not work in the three-party-model.
 
