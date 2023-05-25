@@ -76,7 +76,7 @@ Figure: Three-Party-Model with optional Status Provider
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Holder Binding, i.e., ask the Holder to prove that they
-are the intended holder of the Verifiable Credential by proving possession of a
+are the intended holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
