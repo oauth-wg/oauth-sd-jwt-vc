@@ -81,7 +81,8 @@ cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 To support revocation of credentials, an optional fourth party can be involved,
-a Status Provider, who delivers revocation information to Verifiers.
+a Status Provider, who delivers revocation information to Verifiers. (The Verifier can
+also serve as the Status Provider.)
 
 The three-party-model, i.e., actors, Verifiable Credentials and Verifiable
 Presentations, is also described in [@VC-DATA]. This specification defines
