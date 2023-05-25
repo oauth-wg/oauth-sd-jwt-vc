@@ -1,12 +1,12 @@
 %%%
 title = "SD-JWT-based Verifiable Credentials with JSON payloads (SD-JWT VC)"
-abbrev = "sd-jwt vc"
-ipr = "none"
-workgroup = "TBD"
+abbrev = "SD-JWT VC"
+ipr = "trust200902"
+workgroup = "TODO Working Group"
 keyword = ["security", "openid", "sd-jwt"]
 
 [seriesInfo]
-name = "Internet-Draft"
+name = "Internet-Draft"s
 value = "draft-terbu-sd-jwt-vc-latest"
 status = "standard"
 
