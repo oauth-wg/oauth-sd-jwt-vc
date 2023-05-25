@@ -31,8 +31,8 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payload based ons the securing
-mechanisms of SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt].
+rules to express Verifiable Credentials with JSON payload based on the SD-JWT
+format [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 {mainmatter}
 
@@ -108,14 +108,14 @@ SD-JWT itself does not define the claims that must be used within the payload or
 their semantics. This specification therefore defines how Verifiable Credentials
 can be expressed using SD-JWT.
 
-JWTs are used to protect the integrity of JSON payloads, which can contain
-claims that are registered in the IANA JWT Claim Registry, as well as public and
-private claims. Private claims are not relevant for this specification due to
-the openness of the three-party-model. Since SD-JWTs are based on JWTs, this
-specification aims to express the basic Verifiable Credential data model purely
-through JSON payloads, using registered claims while allowing Issuers to use
-additional registered claims, as well as new or existing public claims, to make
-statements about the Subject of the Verifiable Credential.
+JWTs (and SD-JWTs) can contain claims that are registered in the IANA JWT Claim
+Registry, as well as public and private claims. Private claims are not relevant
+for this specification due to the openness of the three-party-model. Since
+SD-JWTs are based on JWTs, this specification aims to express the basic
+Verifiable Credential data model purely through JSON payloads, using registered
+claims while allowing Issuers to use additional registered claims, as well as
+new or existing public claims, to make statements about the Subject of the
+Verifiable Credential.
 
 ## Requirements Notation and Conventions
 
