@@ -38,7 +38,7 @@ format [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 # Introduction
 
-## The Three-Party-Model
+## Three-Party-Model
 
 In the so-called Three-Party-Model, Issuers issue Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
@@ -318,26 +318,44 @@ be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
-The following is a non-normative example of the URL of the JWT Issuer Metadata
-configuration when `iss` is set to `https://example.com`:
+## JWT Issuer Metdata Request
+
+A JWT Issuer Metadata configuration MUST be queried using an HTTP `GET` request
+at the path defined in (#jwt-issuer-metadata).
+
+The following is a non-normative example of a HTTP request for the JWT Issuer
+Metadata configuration when `iss` is set to `https://example.com`:
 
 ```
-https://example.com/.well-known/jwt-issuer
+GET /.well-known/jwt-issuer HTTP/1.1
+Host: example.com
 ```
 
-The following is a non-normative example of the URL of the JWT Issuer Metadata
-configuration when `iss` is set to `https://example.com/user/1234`:
+If the `iss` value contains a path component, any terminating `/` MUST be
+removed before inserting `/.well-known/` and the well-known URI suffix
+between the host component and the path component.
+
+The following is a non-normative example of a HTTP request for the JWT Issuer
+Metadata configuration when `iss` is set to `https://example.com/user/1234`:
 
 ```
-https://example.com/user/1234/.well-known/jwt-issuer
+GET /.well-known/jwt-issuer/user/1234 HTTP/1.1
+Host: example.com
 ```
 
-The JWT Issuer Metadata configuration MUST be a JSON document compliant with
-this specification and MUST be returned using the `application/json` content
-type.
+## JWT Issuer Metadata Response
 
-This specification defines the following JWT Issuer Metadata parameters:
+A successful response MUST use the `200 OK HTTP` and return the JWT Issuer
+Metadata configuration using the `application/json` content type.
 
+An error response uses the applicable HTTP status code value.
+
+This specification defines the following JWT Issuer Metadata configuration
+parameters:
+
+* `issuer`
+      REQUIRED. The JWT Issuer identifier, which MUST be identical to the `iss`
+value in the JWT.
 * `jwks_uri`
     * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set
 [@RFC7517] document which contains the JWT Issuer's public keys. The value of
@@ -356,11 +374,12 @@ It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
 be used to lookup the public key in the JWK Set included by value or referenced
 in the JWT Issuer Metadata.
 
-The following is a non-normative example of a JWT Issuer Metadata including
-`jwks`:
+The following is a non-normative example of a JWT Issuer Metadata configuration
+including `jwks`:
 
 ```
 {
+   "issuer":"https://example.com",
    "jwks":{
       "keys":[
          {
@@ -378,14 +397,23 @@ The following is a non-normative example of a JWT Issuer Metadata including
 }
 ```
 
-The following is a non-normative example of a JWT Issuer Metadata including
-`jwks_uri`:
+The following is a non-normative example of a JWT Issuer Metadata
+configuration including `jwks_uri`:
 
 ```
 {
+   "issuer":"https://example.com",
    "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
 }
 ```
+
+Additional JWT Issuer Metadata configuration parameters MAY also be used.
+
+## JWT Issuer Metadata Validation
+
+The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
+these values are not identical, the data contained in the response MUST NOT be
+used.
 
 # Verifiable Presentations
 
