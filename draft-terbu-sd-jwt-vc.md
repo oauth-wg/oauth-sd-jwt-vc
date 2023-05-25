@@ -136,6 +136,11 @@ SD-JWT-based Verifiable Credential (SD-JWT VC):
 SD-JWT-based Verifiable Presentation (SD-JWT VP):
 : A Verifiable Presentation encoded using the Presentation format defined in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
+Unsecured payload of an SD-JWT VC:
+: A JSON object containing all selectively disclosable and non-selectively disclosable claims
+of the SD-JWT VC. The unsecured payload acts as the input JSON object to issue
+an SD-JWT VC complying to this specification.
+
 Status Provider:
 : An entity that provides status information (e.g. revocation) about a Verifiable Credential.
 
@@ -257,14 +262,14 @@ application.
 
 ## Example
 
-The following is a non-normative example of an unsecured input payload
-of an SD-JWT VC.
+The following is a non-normative example of an unsecured payload of an
+SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
 
-The following is a non-normative example of how the Credential above can be
-used in a SD-JWT where the resulting SD-JWT VC contains only claims about
-the Subject that are selectively disclosable:
+The following is a non-normative example of how the unsecured payload of the
+SD-JWT VC above can be used in a SD-JWT where the resulting SD-JWT VC contains
+only claims about the Subject that are selectively disclosable:
 
 <{{examples/01/sd_jwt_payload.json}}
 
