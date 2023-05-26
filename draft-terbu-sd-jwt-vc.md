@@ -569,6 +569,10 @@ initial set of implementations.
 
 # Document History
 
+-01
+
+* Removed W3C VCDM section
+
 -00
 
 * Initial Version
