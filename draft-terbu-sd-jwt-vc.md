@@ -565,15 +565,16 @@ Interoperability considerations: : n/a
 # Acknowledgements {#Acknowledgements}
 
 We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-Giuseppe De Marco, Torsten Lodderstedt and Kristina Yasuda for their
-contributions (some of which substantial) to this draft and to the
-initial set of implementations.
+Giuseppe De Marco, Paul Bastian, Torsten Lodderstedt, Tobias Looker
+and Kristina Yasuda for their contributions (some of which substantial) to this
+draft and to the initial set of implementations.
 
 # Document History
 
 -01
 
 * Removed W3C VCDM transformation algorithm
+* Various editorial changes based on feedback
 
 -00
 
