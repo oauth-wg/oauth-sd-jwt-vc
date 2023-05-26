@@ -292,7 +292,8 @@ key from the JWT Issuer Metadata configuration (as defined in
 methods to obtain the public key to verify the signature of the SD-JWT.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
-accept an SD-JWT VP based on the status of the Verifiable Credential.
+accept a presentation of a SD-JWT VC based on the status of the Verifiable
+Credential.
 
 Any claims used that are not understood MUST be ignored.
 
@@ -467,7 +468,7 @@ Holder Binding JWT:
 
 ## Verification and Processing {#vp-sd-jwt-verification-and-processing}
 
-The Verifier MUST process and verify an SD-JWT VP as follows:
+The Verifier MUST process and verify a presentation of SD-JWT VC as follows:
 
  1. REQUIRED. When processing and verifying the presentation of the SD-JWT VC,
 the Verifier MUST follow the same verification and processing rules as defined
