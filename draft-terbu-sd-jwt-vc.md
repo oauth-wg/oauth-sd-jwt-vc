@@ -127,7 +127,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", defined by
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
-:  An Issuer-signed attestation with claims about a Subject whose authenticity
+:  An Issuer-signed assertions with claims about a Subject whose authenticity
 can be cryptographically verified.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
@@ -570,6 +570,10 @@ and Kristina Yasuda for their contributions (some of which substantial) to this
 draft and to the initial set of implementations.
 
 # Document History
+
+-02
+
+* Adjusted terminology based on feedback
 
 -01
 
