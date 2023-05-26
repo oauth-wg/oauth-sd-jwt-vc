@@ -64,11 +64,11 @@ Credentials are cryptographically signed statements about a Subject, typically t
                |
                v
          +-------------+
-         |             |+                                  +------------+
-         |  Verifiers  ||+                                 |   Status   |
-         |             |||---------- optionally ---------->|  Provider  |
-         +-------------+||        retrieve status of       |            |
-          +-------------+|       Verifiable Credential     +------------+
+         |             |+                          +------------+
+         |  Verifiers  ||+                         |   Status   |
+         |             |||----- optionally ------->|  Provider  |
+         +-------------+||   retrieve status of    |            |
+          +-------------+|  Verifiable Credential  +------------+
            +-------------+
 ~~~
 Figure: Three-Party-Model with optional Status Provider
@@ -127,7 +127,8 @@ This specification uses the terms "Holder", "Issuer", "Verifier", defined by
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
-:  An Issuer-signed statement about a Subject whose authenticity can be cryptographically verified.
+:  An Issuer-signed attestation with claims about a Subject whose authenticity
+can be cryptographically verified.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the Issuance format defined in
