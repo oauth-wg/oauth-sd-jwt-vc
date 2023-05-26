@@ -42,8 +42,7 @@ format [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 In the so-called Three-Party-Model, Issuers issue Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
-Credentials are tamper-evident (usually cryptographically signed) statements
-about a Subject, typically the Holder.
+Credentials are cryptographically signed statements about a Subject, typically the Holder.
 
 ~~~ ascii-art
          +------------+
@@ -84,10 +83,8 @@ To support revocation of Verifiable Credentials, an optional fourth party can be
 involved, a Status Provider, who delivers revocation information to Verifiers.
 (The Verifier can also serve as the Status Provider.)
 
-The three-party-model, i.e., actors, Verifiable Credentials, is also described in
-[@VC-DATA]. This specification defines Verifiable Credentials based on the SD-JWT
-format and JWT Claim Sets with JSON payloads. A translation algorithm between the
-two approaches is provided in this specification.
+This specification defines Verifiable Credentials based on the SD-JWT
+format with a JWT Claim Set.
 
 ## Rationale
 
@@ -127,8 +124,10 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 ## Terms and Definitions
 
 This specification uses the terms "Holder", "Issuer", "Verifier", defined by
-[@!I-D.ietf-oauth-selective-disclosure-jwt], Verifiable Credential defined by
-[@VC-DATA].
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
+
+Verifiable Credential (VC):
+:  An Issuer-signed statement about a Subject whose authenticity can be cryptographically verified.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the Issuance format defined in
