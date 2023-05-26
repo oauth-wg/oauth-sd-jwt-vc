@@ -571,7 +571,7 @@ initial set of implementations.
 
 -01
 
-* Removed W3C VCDM section
+* Removed W3C VCDM transformation algorithm
 
 -00
 
