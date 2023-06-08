@@ -288,7 +288,7 @@ follows:
 Section 6. of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
-(#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
+(#vc-jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
 methods to obtain the public key to verify the signature of the SD-JWT.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
@@ -300,7 +300,7 @@ Any claims used that are not understood MUST be ignored.
 Additional validation rules MAY apply, but their use is out of the scope of
 this specification.
 
-# JWT Issuer Metadata {#jwt-issuer-metadata}
+# Verifiable Credential JWT Issuer Metadata {#vc-jwt-issuer-metadata}
 
 This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer
 Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is
@@ -309,21 +309,21 @@ is OPTIONAL.
 
 JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer Metadata
 configuration available at the path formed by concatenating the string
-`/.well-known/jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST
+`/.well-known/vc-jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST
 be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
-## JWT Issuer Metadata Request
+## Verifiable Credential Issuer Metadata Request
 
 A JWT Issuer Metadata configuration MUST be queried using an HTTP `GET` request
-at the path defined in (#jwt-issuer-metadata).
+at the path defined in (#vc-jwt-issuer-metadata).
 
 The following is a non-normative example of a HTTP request for the JWT Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
 ```
-GET /.well-known/jwt-issuer HTTP/1.1
+GET /.well-known/vc-jwt-issuer HTTP/1.1
 Host: example.com
 ```
 
@@ -400,7 +400,7 @@ configuration including `jwks_uri`:
 ```
 {
    "issuer":"https://example.com",
-   "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
+   "jwks_uri":"https://vc-jwt-issuer.example.org/my_public_keys.jwks"
 }
 ```
 
