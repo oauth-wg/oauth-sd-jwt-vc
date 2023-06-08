@@ -300,7 +300,7 @@ Any claims used that are not understood MUST be ignored.
 Additional validation rules MAY apply, but their use is out of the scope of
 this specification.
 
-# Verifiable Credential JWT Issuer Metadata {#vc-jwt-issuer-metadata}
+# JWT Issuer Metadata {#vc-jwt-issuer-metadata}
 
 This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer
 Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is
@@ -314,7 +314,7 @@ be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
-## Verifiable Credential Issuer Metadata Request
+## JWT Issuer Metadata Request
 
 A JWT Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#vc-jwt-issuer-metadata).
