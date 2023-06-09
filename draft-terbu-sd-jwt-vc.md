@@ -1,9 +1,9 @@
 %%%
-title = "SD-JWT-based Verifiable Credentials with JSON payloads (SD-JWT VC)"
+title = "Verifiable Credentials with a JWT Claim Set with or without Selective Disclosure"
 abbrev = "SD-JWT VC"
 ipr = "trust200902"
 workgroup = "TODO Working Group"
-keyword = ["security", "openid", "sd-jwt"]
+keyword = ["security", "oauth", "sd-jwt", "jwt"]
 
 [seriesInfo]
 name = "Internet-Draft"
@@ -31,8 +31,9 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payload based on the SD-JWT
-format [@!I-D.ietf-oauth-selective-disclosure-jwt].
+rules to express Verifiable Credentials with a JWT Claim set [@!RFC7519] that are protected
+using the JWS [@!RFC7515], or the SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]
+when the selective disclosure capability is required.
 
 {mainmatter}
 
@@ -83,8 +84,8 @@ To support revocation of Verifiable Credentials, an optional fourth party can be
 involved, a Status Provider, who delivers revocation information to Verifiers.
 (The Verifier can also serve as the Status Provider.)
 
-This specification defines Verifiable Credentials based on the SD-JWT
-format with a JWT Claim Set.
+This specification defines Verifiable Credentials based on the JWS and SD-JWT
+with a JWT Claim Set.
 
 ## Rationale
 
@@ -144,7 +145,7 @@ Status Provider:
 # Scope
 
 * This specification defines
-  - Data model and media types for Verifiable Credentials based on SD-JWTs.
+  - Data model and media types for Verifiable Credentials based on JWS and SD-JWTs.
   - Validation and processing rules for Verifiers and Holders.
 
 # Use Cases
@@ -154,34 +155,21 @@ TBD: explain use cases of the three-party-model.
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
 
-# Verifiable Credentials based on SD-JWT
+# Common Data Format
 
-This section defines encoding, validation and processing rules for SD-JWT VCs.
+JWT VCs and SD-JWT VCs MUST follow the common rules defined in this section.
 
-## Media Type
+## Header Parameters
 
-SD-JWT VCs compliant with this specification MUST use the media type
-`application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
+This section defines JWT header parameters for the JWT VC
+and the SD-JWT component of the SD-JWT VC.
 
-## Data Format
+The `typ` header parameter MUST be present. The `typ` value MUST
+use the values defined in (#media-type-jwt-vc) or (#media-type-sd-jwt-vc).
+This indicates that the payload of the JWT or SD-JWT contains plain
+JSON and follows the rules as defined in this specification.
 
-SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
-defined in Section 5.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-SD-JWT VCs MUST contain all Disclosures corresponding to their SD-JWT component
-except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-### Header Parameters
-
-This section defines JWT header parameters for the SD-JWT component of the
-SD-JWT VC.
-
-The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
-use `vc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
-JSON and follows the rules as defined in this specification. It further
-indicates that the SD-JWT is a SD-JWT component of a SD-JWT VC.
-
-The following is a non-normative example of a decoded SD-JWT header:
+The following is a non-normative example of a decoded SD-JWT VC header:
 
 ```
 {
@@ -190,12 +178,12 @@ The following is a non-normative example of a decoded SD-JWT header:
 }
 ```
 
-### Claims
+## Claims
 
 This section defines the claims that can be included in the payload of
-SD-JWT VCs.
+JWT VCs and SD-JWT VCs.
 
-#### `type` claim {#type-claim}
+### `type` claim {#type-claim}
 
 This specification defines the JWT claim `type`. The `type` claim is used
 to express the type of the JSON object that is secured by the
@@ -210,14 +198,12 @@ a type:
 }
 ```
 
-#### Registered JWT Claims
+### Registered JWT Claims {#registered-jwt-claims}
 
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
 
-If present, the following registered JWT claims MUST be included in the SD-JWT
-and MUST NOT be included in the Disclosures, i.e. cannot be selectively
-disclosed:
+The following Claims are used within the JWT VC and SD-JWT VC:
 
 * `iss`
     * REQUIRED. The Issuer of the Verifiable Credential. The value of `iss`
@@ -240,22 +226,49 @@ information.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [TBD] for more information.
-
-The following registered JWT claims MAY be contained in the SD-JWT or in the
-Disclosures and MAY be selectively disclosed:
-
 * `sub`
     * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
 The value of `sub` MUST be a URI. The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
 
-#### Public JWT claims
+### Public JWT claims
 
 Additional public claims MAY be used in SD-JWT VCs depending on the
 application.
 
-## Example
+# Verifiable Credentials with a JWT Claim set based on JWS (JWT VC)
+
+This section defines encoding rules for JWT VCs.
+
+## JWT VC Media Type {#media-type-jwt-vc}
+
+JWT VCs compliant with this specification MUST use the media type
+`application/vc+jwt` as defined in (#application-vc-jwt).
+
+# Verifiable Credentials with a JWT Claim set based on SD-JWT (SD-JWT VC)
+
+This section defines encoding rules for SD-JWT VCs.
+
+## SD-JWT VC Media Type {#media-type-sd-jwt-vc}
+
+SD-JWT VCs compliant with this specification MUST use the media type
+`application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
+
+## Data Format
+
+SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
+defined in Section 5.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+
+SD-JWT VCs MUST contain all Disclosures corresponding to their SD-JWT component
+except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+
+## Disclosability of the Payload Claims
+
+Out of the claims used in SD-JWT VC defined in (#registered-jwt-claims),
+only the `sub` claim MAY be selectively disclosed.
+
+## Issued SD-JWT VC Example
 
 The following is a non-normative example of an unsecured payload of an
 SD-JWT VC.
@@ -279,21 +292,21 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 
 <{{examples/01/combined_issuance.txt}}
 
-## Verification and Processing {#vc-sd-jwt-verification-and-processing}
+# Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
-The recipient of the SD-JWT VC MUST process and verify an SD-JWT VC as
+The recipient of the JWT VC MUST process and verify a JWT VC as
 follows:
 
- 1. REQUIRED. Process and verify the SD-JWT as defined in
-Section 6. of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
-verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
+ 1. REQUIRED. To process and verify the JWT VC, follow the stepd defined in
+Section 7.2 of [@!RFC7519]. To process and verify the SD-JWT VC, follow the steps
+defined in Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
+verification, the `iss` claim in the payload MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
-(#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
-methods to obtain the public key to verify the signature of the SD-JWT.
- 1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
+(#jwt-issuer-metadata)) of the JWT VC or SD-JWT VC Issuer. A Verifier MAY use alternative
+methods to obtain the public key to verify the signatureof the JWT VC or SD-JWT VC.
+ 1. OPTIONAL. If `status` is present in the verified payload,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
-accept a presentation of a SD-JWT VC based on the status of the Verifiable
-Credential.
+accept a presentation based on the status of the Verifiable Credential.
 
 Any claims used that are not understood MUST be ignored.
 
@@ -415,43 +428,44 @@ used.
 # Presenting Verifiable Credentials
 
 This section defines encoding, validation and processing rules for presentations
-of SD-JWT VCs.
+of JWT VCs and SD-JWT VCs.
 
 ## Data Format
+
+A presentation of a JWT VC or an SD-JWT VC MAY contain a Holder Binding JWT defined in
+Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+
+## JWT VC Data Format
+
+When a presentation of a JWT VC contains a Holder Binding JWT, a JWT VC and
+a Holder Binding JWT MUST be separated from each other by a single tilde ('~')
+character as follows:
+
+```
+<JWT VC>~<optional Holder Binding JWT>
+```
+
+## SD-JWT VC Data Format
 
 A presentation of an SD-JWT VC MUST be encoded using the SD-JWT Combined
 Format for Presentation as defined in Section 5.4. of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-A presentation of an SD-JWT VC MAY contain a Holder Binding JWT as described in
-Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
 ### Holder Binding JWT
 
-If the presentation of the SD-JWT VC includes a Holder Binding JWT, the
-following claims are used within the Holder Binding JWT:
+If the presentation includes a Holder Binding JWT, the
+following claims are used within the Holder Binding JWT in addition to those defined in
+Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt]:
 
-* `nonce`
-    * REQUIRED. String value used to associate a transaction between a Verifier
-an a Holder, and to mitigate replay attacks. The value is passed
-through unmodified from the Verifier to the Holder Binding JWT. Sufficient
-entropy MUST be present in the `nonce` values used to prevent attackers from
-guessing values.
-* `aud`
-    * REQUIRED. The intended recipient of the Holder Binding JWT which is
-typically the Verifier. See [@!RFC7519] for more information.
-* `iat`
-    * REQUIRED. The time of issuance of the Holder Binding JWT. See
-[@!RFC7519] for more information.
 * `exp`
     * OPTIONAL. The expiration time of the signature when
 the Holder Binding is no longer considered valid. See [@!RFC7519]
 for more information.
 
-The Holder Binding JWT MAY include addtional claims which when not understood
+The Holder Binding JWT MAY include addtional claims which, when not understood,
 MUST be ignored.
 
-## Examples
+## SD-JWT VC Presentation Examples
 
 The following is a non-normative example of a presentation of the SD-JWT shown
 above including a Holder Binding JWT:
@@ -468,14 +482,14 @@ Holder Binding JWT:
 
 ## Verification and Processing {#vp-sd-jwt-verification-and-processing}
 
-The Verifier MUST process and verify a presentation of SD-JWT VC as follows:
+The Verifier MUST process and verify a presentation as follows:
 
- 1. REQUIRED. When processing and verifying the presentation of the SD-JWT VC,
+ 1. REQUIRED. When processing and verifying the presentation of the JWT VC or SD-JWT VC,
 the Verifier MUST follow the same verification and processing rules as defined
 in (#vc-sd-jwt-verification-and-processing).
  1. OPTIONAL. If provided, the Verifier MUST verify the Holder Binding JWT
 according to Section 6.2. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-To verify the Holder Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
+To verify the Holder Binding JWT, the `cnf` claim of the JWT VC or SD-JWT VC MUST be used.
 
 # Security Considerations {#security-considerations}
 
@@ -528,6 +542,39 @@ TBD
 
 ## Media Types Registry
 
+### application/vc+jwt {#application-vc-jwt}
+
+The Internet media type for a JWT VC is `application/vc+jwt`.
+
+Type name: : `application`
+
+Subtype name: : `vc+jwt`
+
+Required parameters: : n/a
+
+Optional parameters: : n/a
+
+Encoding considerations: : 8-bit code points; JWT VC values are encoded as a
+series of base64url-encoded values (some of which may be the empty string),
+each separated from the next by a single period ('.') character.
+
+Security considerations: : See Security Considerations in (#security-considerations).
+
+Interoperability considerations: : n/a
+
+- Published specification: : RFC TODO
+- Applications that use this media type: : Applications that issue, present,
+  verify verifiable credentials and presentations.
+- Additional information:
+  - Magic number(s): n/a
+  - File extension(s): n/a
+  - Macintosh file type code(s): n/a
+  - Person & email address to contact for further information: TBD
+  - Intended usage: COMMON
+  - Restrictions on usage: none
+  - Author: Oliver Terbu <oliver.terbu@spruceid.com>
+  - Change controller: IETF
+
 ### application/vc+sd-jwt {#application-vc-sd-jwt}
 
 The Internet media type for a SD-JWT VC is `application/vc+sd-jwt`.
@@ -564,9 +611,9 @@ Interoperability considerations: : n/a
 # Acknowledgements {#Acknowledgements}
 
 We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-Giuseppe De Marco, Paul Bastian, Torsten Lodderstedt, Tobias Looker
-and Kristina Yasuda for their contributions (some of which substantial) to this
-draft and to the initial set of implementations.
+Giuseppe De Marco, Michael Jones, Mike Prorock, Orie Steele, Paul Bastian,
+Torsten Lodderstedt, Tobias Looker and Kristina Yasuda for their contributions
+(some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
 
