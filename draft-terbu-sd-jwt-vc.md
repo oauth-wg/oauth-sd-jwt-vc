@@ -155,7 +155,7 @@ TBD: explain use cases of the three-party-model.
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
 
-# Common Data Format
+# Common Data Format for JWT VC and SD-JWT VC
 
 JWT VCs and SD-JWT VCs MUST follow the common rules defined in this section.
 
@@ -435,7 +435,7 @@ of JWT VCs and SD-JWT VCs.
 A presentation of a JWT VC or an SD-JWT VC MAY contain a Holder Binding JWT defined in
 Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-## JWT VC Data Format
+### JWT VC Data Format
 
 When a presentation of a JWT VC contains a Holder Binding JWT, a JWT VC and
 a Holder Binding JWT MUST be separated from each other by a single tilde ('~')
@@ -445,7 +445,7 @@ character as follows:
 <JWT VC>~<optional Holder Binding JWT>
 ```
 
-## SD-JWT VC Data Format
+### SD-JWT VC Data Format
 
 A presentation of an SD-JWT VC MUST be encoded using the SD-JWT Combined
 Format for Presentation as defined in Section 5.4. of
@@ -616,6 +616,10 @@ Torsten Lodderstedt, Tobias Looker and Kristina Yasuda for their contributions
 (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-03
+
+* added non-selectively disclosable JWT VC
 
 -02
 
