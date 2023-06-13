@@ -84,8 +84,7 @@ To support revocation of Verifiable Credentials, an optional fourth party can be
 involved, a Status Provider, who delivers revocation information to Verifiers.
 (The Verifier can also serve as the Status Provider.)
 
-This specification defines Verifiable Credentials based on the JWS and SD-JWT
-with a JWT Claim Set.
+This specification defines Verifiable Credentials based on JWT and SD-JWT.
 
 ## Rationale
 
@@ -150,7 +149,7 @@ Status Provider:
 # Scope
 
 * This specification defines
-  - Data model and media types for Verifiable Credentials based on JWS and SD-JWTs.
+  - Data model and media types for Verifiable Credentials based on JWTs and SD-JWTs.
   - Validation and processing rules for Verifiers and Holders.
 
 # Use Cases
@@ -166,7 +165,7 @@ JWT VCs and SD-JWT VCs MUST follow the common rules defined in this section.
 
 ## Header Parameters
 
-This section defines JWT header parameters for the JWT VC
+This section defines JOSE header parameters for the JWT VC
 and the SD-JWT component of the SD-JWT VC.
 
 The `typ` header parameter MUST be present. The `typ` value MUST
@@ -302,8 +301,8 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 The recipient of the JWT VC MUST process and verify a JWT VC as
 follows:
 
- 1. REQUIRED. To process and verify the JWT VC, follow the stepd defined in
-Section 7.2 of [@!RFC7519]. To process and verify the SD-JWT VC, follow the steps
+ 1. REQUIRED. To process and verify a JWT VC, follow the stepd defined in
+Section 7.2 of [@!RFC7519]. To process and verify a SD-JWT VC, follow the steps
 defined in Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the payload MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
