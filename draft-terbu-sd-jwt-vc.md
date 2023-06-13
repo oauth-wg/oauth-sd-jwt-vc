@@ -271,7 +271,7 @@ except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-
 ## Disclosability of the Payload Claims
 
 Out of the claims used in SD-JWT VC defined in (#registered-jwt-claims),
-only the `sub` claim MAY be selectively disclosed.
+only the `sub` claim MAY be selectively disclosable. Other claims not defined in (#registered-jwt-claims) MAY be selectively disclosable.
 
 ## Issued SD-JWT VC Example
 
@@ -308,7 +308,7 @@ defined in Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the payload MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 (#jwt-issuer-metadata)) of the JWT VC or SD-JWT VC Issuer. A Verifier MAY use alternative
-methods to obtain the public key to verify the signatureof the JWT VC or SD-JWT VC.
+methods to obtain the public key to verify the signature of the JWT VC or SD-JWT VC.
  1. OPTIONAL. If `status` is present in the verified payload,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
 accept a presentation based on the status of the Verifiable Credential.
@@ -438,7 +438,7 @@ of JWT VCs and SD-JWT VCs.
 ## Data Format
 
 A presentation of a JWT VC or an SD-JWT VC MAY contain a Holder Binding JWT defined in
-Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+Section 5.4.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 ### JWT VC Data Format
 
@@ -460,7 +460,7 @@ Format for Presentation as defined in Section 5.4. of
 
 If the presentation includes a Holder Binding JWT, the
 following claims are used within the Holder Binding JWT in addition to those defined in
-Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt]:
+Section 5.4.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt]:
 
 * `exp`
     * OPTIONAL. The expiration time of the signature when
