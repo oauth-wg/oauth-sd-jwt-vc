@@ -1,5 +1,5 @@
 %%%
-title = "JWT and SD-JWT Verifiable Credentials"
+title = "JWT-based Verifiable Credentials (JWT VC)"
 abbrev = "SD-JWT VC"
 ipr = "trust200902"
 workgroup = "TODO Working Group"
