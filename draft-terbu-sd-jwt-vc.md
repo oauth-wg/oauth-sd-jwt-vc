@@ -91,7 +91,9 @@ with a JWT Claim Set.
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
-builds upon established web primitives. While JWT-based credentials enable selective
+builds upon established web primitives.
+
+While JWT-based credentials enable selective
 disclosure, i.e., the ability for a Holder to disclose only a subset of the contained
 claims, in an Identity Provider ecosystem by issuing new JWTs to the Verifier for
 every presentation, this approach does not work in the three-party-model.
@@ -103,8 +105,11 @@ bounds defined by the Issuer). This format is therefore perfectly suited for
 Verifiable Credentials.
 
 SD-JWT itself does not define the claims that must be used within the payload or
-their semantics. This specification therefore defines how Verifiable Credentials
-can be expressed using SD-JWT.
+their semantics. JWT defines rules for payload but does not define who Verifiable
+Credentials can be expressed using JWT.
+
+This specification therefore defines how Verifiable Credentials
+can be expressed using JWT or SD-JWT.
 
 JWTs (and SD-JWTs) can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
