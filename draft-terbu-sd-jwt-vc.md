@@ -31,8 +31,7 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with a JWT Claim set [@!RFC7519] that are protected
-using the JWS [@!RFC7515], or the SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]
+rules to express Verifiable Credentials based on JWT [@!RFC7519] or SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]
 when the selective disclosure capability is required.
 
 {mainmatter}
@@ -166,7 +165,7 @@ JWT VCs and SD-JWT VCs MUST follow the common rules defined in this section.
 ## Header Parameters
 
 This section defines JOSE header parameters for the JWT VC
-and the SD-JWT component of the SD-JWT VC.
+and the SD-JWT VC.
 
 The `typ` header parameter MUST be present. The `typ` value MUST
 use the values defined in (#media-type-jwt-vc) or (#media-type-sd-jwt-vc).
@@ -298,7 +297,7 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 
 # Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
-The recipient of the JWT VC MUST process and verify a JWT VC as
+The recipient of the JWT VC MUST process and verify a JWT VC or an SD-JWT VC as
 follows:
 
  1. REQUIRED. To process and verify a JWT VC, follow the stepd defined in
