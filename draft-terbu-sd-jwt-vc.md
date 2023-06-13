@@ -135,8 +135,8 @@ This specification uses the terms "Holder", "Issuer", "Verifier", defined by
 Verifiable Credential (VC):
 :  An Issuer-signed assertion with claims about a Subject.
 
-SD-JWT-based Verifiable Credential (SD-JWT VC):
-: A Verifiable Credential encoded using the Issuance format defined in
+JWT Verifiable Credential (JWT VC):
+: A Verifiable Credential encoded as JWT or the SD-JWT Issuance format defined in
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Unsecured payload of an SD-JWT VC:
