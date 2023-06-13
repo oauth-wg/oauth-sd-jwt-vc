@@ -245,7 +245,7 @@ The following registered JWT claims MAY be contained in the SD-JWT or in the
 Disclosures and MAY be selectively disclosed:
 
 * `sub`
-    * OPTIONAL. The identifier of the Subject of the Verifiable Credential as known to the .
+    * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
