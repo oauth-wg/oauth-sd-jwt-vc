@@ -7,7 +7,7 @@ keyword = ["security", "oauth", "sd-jwt", "jwt"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-terbu-jwt-vc-latest"
+value = "draft-terbu-oauth-jwt-vc-latest"
 status = "standard"
 
 [[author]]
