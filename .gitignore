@@ -17,7 +17,7 @@
 /versioned/
 Gemfile.lock
 archive.json
-draft-terbu-sd-jwt-vc.xml
+draft-terbu-jwt-vc.xml
 package-lock.json
 report.xml
 !requirements.txt
