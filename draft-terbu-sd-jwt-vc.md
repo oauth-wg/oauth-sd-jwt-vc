@@ -1,7 +1,7 @@
 %%%
 title = "JWT-based Verifiable Credentials (JWT VC)"
 abbrev = "JWT VC"
-ipr = "trust2009
+ipr = "trust200902"
 workgroup = "TODO Working Group"
 keyword = ["security", "oauth", "sd-jwt", "jwt"]
 
