@@ -92,10 +92,6 @@ Verifiable Credentials in the three-party-model
 in a way that is easy to understand and process as it
 builds upon established web primitives.
 
-JWT-based credentials enable selective
-disclosure, i.e., the ability for a Holder to disclose only a subset of the contained
-claims, in an Identity Provider ecosystem by issuing new JWTs to the Verifier for
-every presentation.
 
 Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
 a specification that introduces conventions to support selective disclosure for
