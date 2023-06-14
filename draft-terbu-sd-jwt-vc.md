@@ -1,7 +1,7 @@
 %%%
 title = "JWT-based Verifiable Credentials (JWT VC)"
-abbrev = "SD-JWT VC"
-ipr = "trust200902"
+abbrev = "JWT VC"
+ipr = "trust2009
 workgroup = "TODO Working Group"
 keyword = ["security", "oauth", "sd-jwt", "jwt"]
 
@@ -87,23 +87,23 @@ This specification defines Verifiable Credentials based on JWT and SD-JWT.
 
 ## Rationale
 
-JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
-Verifiable Credentials in a way that is easy to understand and process as it
+JSON Web Tokens (JWTs) [@!RFC7519] can be used to express
+Verifiable Credentials in the three-party-model
+in a way that is easy to understand and process as it
 builds upon established web primitives.
 
-While JWT-based credentials enable selective
+JWT-based credentials enable selective
 disclosure, i.e., the ability for a Holder to disclose only a subset of the contained
 claims, in an Identity Provider ecosystem by issuing new JWTs to the Verifier for
-every presentation, this approach does not work in the three-party-model.
+every presentation.
 
 Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
-bounds defined by the Issuer). This format is therefore perfectly suited for
-Verifiable Credentials.
+bounds defined by the Issuer).
 
 SD-JWT itself does not define the claims that must be used within the payload or
-their semantics. JWT defines rules for payload but does not define who Verifiable
+their semantics. JWT defines rules for payload but does not define how Verifiable
 Credentials can be expressed using JWT.
 
 This specification therefore defines how Verifiable Credentials
