@@ -98,20 +98,18 @@ a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
 
-SD-JWT itself does not define the claims that must be used within the payload or
-their semantics. SD-JWT can be used when there are no selectively disclosable claims.
-This specification therefore defines how Verifiable Credentials
-can be expressed using SD-JWT.
+SD-JWT is a superset of JWT as it can also be used when there are no selectively
+disclosable claims and also supports JWS JSON serialization, which is useful for
+long term archiving and multi signatures. However, SD-JWT itself does not define
+the claims that must be used within the payload or their semantics.
 
-JWTs (and SD-JWTs) can contain claims that are registered in "JSON Web Token Claims"
+This specification therefore uses SD-JWT and the well-established JWT content rules and
+extensibility model as basis for representing Verifiable Credentials with JSON payload.
+Those Verifiable Credentials are called SD-JWT VCs.
+
+SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
-private claims. Private claims are not relevant for this specification due to the
-openness of the three-party-model. Since SD-JWTs are based on JWTs, this specification
-aims to express the basic
-Verifiable Credential data model purely through JWT Claim Sets, using registered
-claims while allowing Issuers to use additional registered claims, as well as
-new or existing public claims, to make statements about the Subject of the
-Verifiable Credential.
+private claims.
 
 ## Requirements Notation and Conventions
 
