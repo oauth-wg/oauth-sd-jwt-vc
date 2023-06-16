@@ -294,8 +294,8 @@ verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 (#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
 methods to obtain the public key to verify the signature of the SD-JWT.
-If there are no selectively disclosable claims, there is no need to process
-`_sd` claim nor Disclosures.
+If there are no selectively disclosable claims, there is no need to process the
+`_sd` claim nor any Disclosures.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
 accept a presentation of a SD-JWT VC based on the status of the Verifiable
@@ -433,7 +433,7 @@ A presentation of an SD-JWT VC MAY contain a Holder Binding JWT as described in
 Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 When there are no selectively disclosable claims, a presentation of SD-JWT VC
-does not contain any disclosures.
+does not contain any Disclosures.
 
 ### Holder Binding JWT
 
