@@ -256,8 +256,8 @@ application.
 #### SD-JWT VC without selectively disclosable claims
 
 SD-JWT VC may not contain any selectively disclosable claims.
-Such SD-JWT VC does not contain `_sd` claim in the JWT body and
-does not have any Disclosures.
+In that case, the SD-JWT VC MUST NOT contain the `_sd` claim in the JWT body. I also
+MUST NOT have any Disclosures.
 
 ## Example
 
