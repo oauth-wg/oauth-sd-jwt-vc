@@ -31,9 +31,8 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials based on the Selective Disclosure
-for JWT and JWS with JSON payloads (SD-JWT) format [@!I-D.ietf-oauth-selective-disclosure-jwt].
-It can be used when there are no selective disclosable claims, too.
+rules to express Verifiable Credentials with JSON payload based on the SD-JWT
+format [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 {mainmatter}
 
@@ -85,22 +84,25 @@ involved, a Status Provider, who delivers revocation information to Verifiers.
 (The Verifier can also serve as the Status Provider.)
 
 This specification defines Verifiable Credentials based on the SD-JWT
-format with a JWT Claim Set. It can be used when there are no selective disclosable claims, too.
+format with a JWT Claim Set.
 
 ## Rationale
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
-builds upon established web primitives.
+builds upon established web primitives. While JWT-based credentials enable selective
+disclosure, i.e., the ability for a Holder to disclose only a subset of the contained
+claims, in an Identity Provider ecosystem by issuing new JWTs to the Verifier for
+every presentation, this approach does not work in the three-party-model.
 
 Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
-bounds defined by the Issuer).
+bounds defined by the Issuer). This format is therefore perfectly suited for
+Verifiable Credentials.
 
 SD-JWT itself does not define the claims that must be used within the payload or
-their semantics. SD-JWT can be used when there are no selectively disclosable claims.
-This specification therefore defines how Verifiable Credentials
+their semantics. This specification therefore defines how Verifiable Credentials
 can be expressed using SD-JWT.
 
 JWTs (and SD-JWTs) can contain claims that are registered in "JSON Web Token Claims"
@@ -129,8 +131,7 @@ Verifiable Credential (VC):
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the Issuance format defined in
-[@!I-D.ietf-oauth-selective-disclosure-jwt]. It may or may not contain
-selectively disclosable claims.
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Unsecured payload of an SD-JWT VC:
 : A JSON object containing all selectively disclosable and non-selectively disclosable claims
@@ -167,8 +168,7 @@ SD-JWT VCs compliant with this specification MUST use the media type
 SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
 defined in Section 5.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-When there are selectively disclosable claims, SD-JWT VCs MUST contain all
-Disclosures corresponding to their SD-JWT component
+SD-JWT VCs MUST contain all Disclosures corresponding to their SD-JWT component
 except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 ### Header Parameters
@@ -255,12 +255,6 @@ exist between `sub` and `cnf` claims.
 Additional public claims MAY be used in SD-JWT VCs depending on the
 application.
 
-#### SD-JWT VC without selectively disclosable claims
-
-SD-JWT VC may not contain any selectively disclosable claims.
-Such SD-JWT VC does not contain `_sd` claim in the JWT body and
-does not have any Disclosures.
-
 ## Example
 
 The following is a non-normative example of an unsecured payload of an
@@ -296,8 +290,6 @@ verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 (#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
 methods to obtain the public key to verify the signature of the SD-JWT.
-If there are no selectively disclosable claims, there is no need to process
-`_sd` claim nor Disclosures.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
 accept a presentation of a SD-JWT VC based on the status of the Verifiable
@@ -433,9 +425,6 @@ Format for Presentation as defined in Section 5.4. of
 
 A presentation of an SD-JWT VC MAY contain a Holder Binding JWT as described in
 Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-When there are no selectively disclosable claims, a presentation of SD-JWT VC
-does not contain any disclosures.
 
 ### Holder Binding JWT
 
@@ -574,16 +563,12 @@ Interoperability considerations: : n/a
 
 # Acknowledgements {#Acknowledgements}
 
-We would like to thank Alen Horvat, Andres Uribe, Brian Campbell, Christian Bormann,
-Giuseppe De Marco, Michael Jones, Mike Prorock, Orie Steele, Paul Bastian,
-Torsten Lodderstedt, Tobias Looker and Kristina Yasuda for their contributions
-(some of which substantial) to this draft and to the initial set of implementations.
+We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
+Giuseppe De Marco, Paul Bastian, Torsten Lodderstedt, Tobias Looker
+and Kristina Yasuda for their contributions (some of which substantial) to this
+draft and to the initial set of implementations.
 
 # Document History
-
--03
-
-* added non-selectively disclosable JWT VC
 
 -02
 
