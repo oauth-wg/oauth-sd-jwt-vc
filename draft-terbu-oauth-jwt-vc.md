@@ -293,10 +293,10 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 
 # Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
-The recipient of the JWT VC MUST process and verify a JWT VC or an SD-JWT VC as
+The recipient of the JWT-based VC MUST process and verify a JWT VC or an SD-JWT VC as
 follows:
 
- 1. REQUIRED. To process and verify a JWT VC, follow the stepd defined in
+ 1. REQUIRED. To process and verify a JWT VC, follow the steps defined in
 Section 7.2 of [@!RFC7519]. To process and verify a SD-JWT VC, follow the steps
 defined in Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the payload MAY be used to retrieve the public
@@ -609,7 +609,7 @@ Interoperability considerations: : n/a
 
 # Acknowledgements {#Acknowledgements}
 
-We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
+We would like to thank Alen Horvat, Andres Uribe, Brian Campbell, Christian Bormann,
 Giuseppe De Marco, Michael Jones, Mike Prorock, Orie Steele, Paul Bastian,
 Torsten Lodderstedt, Tobias Looker and Kristina Yasuda for their contributions
 (some of which substantial) to this draft and to the initial set of implementations.
