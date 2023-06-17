@@ -243,7 +243,7 @@ Disclosures and MAY be selectively disclosed:
 
 * `sub`
     * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
-The value of `sub` MUST be a URI. The Issuer MAY use it to provide the Subject
+The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
 
