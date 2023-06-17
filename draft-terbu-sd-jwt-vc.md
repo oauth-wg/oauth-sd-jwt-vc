@@ -107,12 +107,9 @@ can be expressed using SD-JWT.
 
 JWTs (and SD-JWTs) can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
-private claims. Private claims are not relevant for this specification due to the
-openness of the three-party-model. Since SD-JWTs are based on JWTs, this specification
-aims to express the basic
-Verifiable Credential data model purely through JWT Claim Sets, using registered
-claims while allowing Issuers to use additional registered claims, as well as
-new or existing public claims, to make statements about the Subject of the
+private claims. This specification aims to express metadata of the properties of the
+Verifiable Credentials utilizing registered JWT claims, while allowing Issuers to use
+other registered, public, or private claims to make statements about the Subject of the
 Verifiable Credential.
 
 ## Requirements Notation and Conventions
