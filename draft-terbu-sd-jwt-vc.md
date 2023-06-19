@@ -253,10 +253,10 @@ exist between `sub` and `cnf` claims.
 Additional public claims MAY be used in SD-JWT VCs depending on the
 application.
 
-#### SD-JWT VC without selectively disclosable claims
+#### SD-JWT VC without Selectively Disclosable Claims
 
-SD-JWT VC may not contain any selectively disclosable claims.
-In that case, the SD-JWT VC MUST NOT contain the `_sd` claim in the JWT body. I also
+An SD-JWT VC MAY have no selectively disclosable claims.
+In that case, the SD-JWT VC MUST NOT contain the `_sd` claim in the JWT body. It also
 MUST NOT have any Disclosures.
 
 ## Example
@@ -572,10 +572,20 @@ Interoperability considerations: : n/a
 
 # Acknowledgements {#Acknowledgements}
 
-We would like to thank Alen Horvat, Andres Uribe, Brian Campbell, Christian Bormann,
-Giuseppe De Marco, Michael Jones, Mike Prorock, Orie Steele, Paul Bastian,
-Torsten Lodderstedt, Tobias Looker and Kristina Yasuda for their contributions
-(some of which substantial) to this draft and to the initial set of implementations.
+We would like to thank
+Alen Horvat,
+Andres Uribe,
+Brian Campbell,
+Christian Bormann,
+Giuseppe De Marco,
+Michael Jones,
+Mike Prorock,
+Orie Steele,
+Paul Bastian,
+Torsten Lodderstedt,
+Tobias Looker, and
+Kristina Yasuda
+for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
 
