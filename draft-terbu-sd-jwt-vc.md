@@ -274,7 +274,7 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 
 The SD-JWT and the Disclosures would then be serialized by the Issuer into the following format for issuance to the Holder:
 
-<{{examples/01/combined_issuance.txt}}
+<{{examples/01/sd_jwt_issuance.txt}}
 
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
@@ -453,7 +453,7 @@ MUST be ignored.
 The following is a non-normative example of a presentation of the SD-JWT shown
 above including a Holder Binding JWT:
 
-<{{examples/01/combined_presentation.txt}}
+<{{examples/01/sd_jwt_presentation.txt}}
 
 In this presentation, the Holder provides only the Disclosure for the claim
 `address`. Other claims are not disclosed to the Verifier.
@@ -461,7 +461,7 @@ In this presentation, the Holder provides only the Disclosure for the claim
 The following example shows a presentation of a (different) SD-JWT without a
 Holder Binding JWT:
 
-<{{examples/02/combined_presentation.txt}}
+<{{examples/02/sd_jwt_presentation.txt}}
 
 ## Verification and Processing {#vp-sd-jwt-verification-and-processing}
 
