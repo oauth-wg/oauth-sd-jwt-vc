@@ -32,7 +32,7 @@ organization="Authlete Inc. "
 
 This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials based on the Selective Disclosure
-for JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
+for JWTs (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
 It can be used when there are no selective disclosable claims, too.
 
 {mainmatter}
