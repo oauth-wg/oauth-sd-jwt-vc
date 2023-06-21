@@ -80,9 +80,9 @@ are the intended holder of the Verifiable Credential, for example, by proving po
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-To support revocation of Verifiable Credentials, an optional fourth party can be
-involved, a Status Provider, who delivers revocation information to Verifiers.
-(The Verifier can also serve as the Status Provider.)
+To support revocation of Verifiable Credentials, revocation information can
+optionally be retrieved from a Status Provider. The role of a Status Provider
+can be fulfilled by either a fourth party or by the Issuer.
 
 This specification defines Verifiable Credentials based on the SD-JWT
 format with a JWT Claim Set. It can be used when there are no selective disclosable claims, too.
