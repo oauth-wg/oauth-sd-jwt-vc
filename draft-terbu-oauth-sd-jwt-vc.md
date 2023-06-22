@@ -39,9 +39,9 @@ It can be used when there are no selective disclosable claims, too.
 
 # Introduction
 
-## Three-Party-Model
+## Issuer-Holder-Verifier Model
 
-In the so-called Three-Party-Model, Issuers issue Verifiable Credentials to a
+In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
 Credentials are cryptographically signed statements about a Subject, typically the Holder.
 
@@ -72,7 +72,7 @@ Credentials are cryptographically signed statements about a Subject, typically t
           +-------------+|  Verifiable Credential  +------------+
            +-------------+
 ~~~
-Figure: Three-Party-Model with optional Status Provider
+Figure: Issuer-Holder-Verifier Model with optional Status Provider
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
@@ -146,7 +146,7 @@ Status Provider:
 
 # Use Cases
 
-TBD: explain use cases of the three-party-model.
+TBD: explain use cases of the Issuer-Holder-Verifier Model.
 
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
