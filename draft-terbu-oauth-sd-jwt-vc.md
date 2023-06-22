@@ -75,7 +75,7 @@ Credentials are cryptographically signed statements about a Subject, typically t
 Figure: Three-Party-Model with optional Status Provider
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
-and optionally enforce Holder Binding, i.e., ask the Holder to prove that they
+and optionally enforce Key Binding, i.e., ask the Holder to prove that they
 are the intended holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
@@ -231,7 +231,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * REQUIRED when Cryptographic Holder Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800] and in this case, the `kid` (Key ID) member MUST be present in the JWK.  For Cryptographic Holder Binding, the Holder Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
+    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800] and in this case, the `kid` (Key ID) member MUST be present in the JWK.  For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
 * `type`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `IdentityCredential`, as defined in (#type-claim).
@@ -273,7 +273,7 @@ only claims about the Subject that are selectively disclosable:
 <{{examples/01/sd_jwt_payload.json}}
 
 Note that a `cnf` claim has been added to the SD-JWT payload to express the
-confirmation method of the holder binding.
+confirmation method of the Key Binding.
 
 The following are the Disclosures belonging to the SD-JWT payload above:
 
@@ -429,41 +429,41 @@ A presentation of an SD-JWT VC MUST be encoded using the SD-JWT Combined
 Format for Presentation as defined in Section 5.4. of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-A presentation of an SD-JWT VC MAY contain a Holder Binding JWT as described in
+A presentation of an SD-JWT VC MAY contain a Key Binding JWT as described in
 Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 When there are no selectively disclosable claims, a presentation of SD-JWT VC
 does not contain any Disclosures.
 
-### Holder Binding JWT
+### Key Binding JWT
 
-If the presentation of the SD-JWT VC includes a Holder Binding JWT, the
-following claims are used within the Holder Binding JWT:
+If the presentation of the SD-JWT VC includes a Key Binding JWT, the
+following claims are used within the Key Binding JWT:
 
 * `nonce`
     * REQUIRED. String value used to associate a transaction between a Verifier
 an a Holder, and to mitigate replay attacks. The value is passed
-through unmodified from the Verifier to the Holder Binding JWT. Sufficient
+through unmodified from the Verifier to the Key Binding JWT. Sufficient
 entropy MUST be present in the `nonce` values used to prevent attackers from
 guessing values.
 * `aud`
-    * REQUIRED. The intended recipient of the Holder Binding JWT which is
+    * REQUIRED. The intended recipient of the Key Binding JWT which is
 typically the Verifier. See [@!RFC7519] for more information.
 * `iat`
-    * REQUIRED. The time of issuance of the Holder Binding JWT. See
+    * REQUIRED. The time of issuance of the Key Binding JWT. See
 [@!RFC7519] for more information.
 * `exp`
     * OPTIONAL. The expiration time of the signature when
-the Holder Binding is no longer considered valid. See [@!RFC7519]
+the Key Binding is no longer considered valid. See [@!RFC7519]
 for more information.
 
-The Holder Binding JWT MAY include addtional claims which when not understood
+The Key Binding JWT MAY include addtional claims which when not understood
 MUST be ignored.
 
 ## Examples
 
 The following is a non-normative example of a presentation of the SD-JWT shown
-above including a Holder Binding JWT:
+above including a Key Binding JWT:
 
 <{{examples/01/combined_presentation.txt}}
 
@@ -471,7 +471,7 @@ In this presentation, the Holder provides only the Disclosure for the claim
 `address`. Other claims are not disclosed to the Verifier.
 
 The following example shows a presentation of a (different) SD-JWT without a
-Holder Binding JWT:
+Key Binding JWT:
 
 <{{examples/02/combined_presentation.txt}}
 
@@ -482,9 +482,9 @@ The Verifier MUST process and verify a presentation of SD-JWT VC as follows:
  1. REQUIRED. When processing and verifying the presentation of the SD-JWT VC,
 the Verifier MUST follow the same verification and processing rules as defined
 in (#vc-sd-jwt-verification-and-processing).
- 1. OPTIONAL. If provided, the Verifier MUST verify the Holder Binding JWT
+ 1. OPTIONAL. If provided, the Verifier MUST verify the Key Binding JWT
 according to Section 6.2. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-To verify the Holder Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
+To verify the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 # Security Considerations {#security-considerations}
 
