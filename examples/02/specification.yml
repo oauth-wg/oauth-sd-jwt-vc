@@ -1,4 +1,4 @@
-# This is a copy of 01, but without the holder binding
+# This is a copy of 01, but without the key binding
 
 user_claims:
   type: IdentityCredential
@@ -11,13 +11,12 @@ user_claims:
     locality: Anytown
     region: Anystate
     country: US
-  !sd birthdate: '1940-01-01'
+  !sd birthdate: "1940-01-01"
   !sd is_over_18: true
   !sd is_over_21: true
   !sd is_over_65: true
 
+holder_disclosed_claims:
+  address: true
 
-holder_disclosed_claims: { "address": {} }
-
-holder_binding: False
-
+key_binding: false
