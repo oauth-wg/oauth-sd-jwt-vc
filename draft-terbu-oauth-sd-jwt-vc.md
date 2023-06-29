@@ -85,22 +85,18 @@ optionally be retrieved from a Status Provider. The role of a Status Provider
 can be fulfilled by either a fourth party or by the Issuer.
 
 This specification defines Verifiable Credentials based on the SD-JWT
-format with a JWT Claim Set.
+format with a JWT Claim Set. It can be used when there are no selective disclosable claims, too.
 
 ## Rationale
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
-builds upon established web primitives. While JWT-based credentials enable selective
-disclosure, i.e., the ability for a Holder to disclose only a subset of the contained
-claims, in an Identity Provider ecosystem by issuing new JWTs to the Verifier for
-every presentation, this approach does not work in the three-party-model.
+builds upon established web primitives.
 
 Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
-bounds defined by the Issuer). This format is therefore perfectly suited for
-Verifiable Credentials.
+bounds defined by the Issuer).
 
 SD-JWT is a superset of JWT as it can also be used when there are no selectively
 disclosable claims and also supports JWS JSON serialization, which is useful for
@@ -133,7 +129,8 @@ Verifiable Credential (VC):
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the Issuance format defined in
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
+[@!I-D.ietf-oauth-selective-disclosure-jwt]. It may or may not contain
+selectively disclosable claims.
 
 Unsecured payload of an SD-JWT VC:
 : A JSON object containing all selectively disclosable and non-selectively disclosable claims
@@ -170,7 +167,8 @@ SD-JWT VCs compliant with this specification MUST use the media type
 SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
 defined in Section 5.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-SD-JWT VCs MUST contain all Disclosures corresponding to their SD-JWT component
+When there are selectively disclosable claims, SD-JWT VCs MUST contain all
+Disclosures corresponding to their SD-JWT component
 except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 ### Header Parameters
@@ -582,6 +580,11 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-03
+
+* added non-selectively disclosable JWT VC
+* added a noe that this is not w3c vcdm.
 
 -02
 
