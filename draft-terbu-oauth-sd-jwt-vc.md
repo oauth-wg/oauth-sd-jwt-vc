@@ -584,7 +584,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -03
 
 * added non-selectively disclosable JWT VC
-* added a noe that this is not w3c vcdm.
+* added a note that this is not w3c vcdm.
 
 -02
 
