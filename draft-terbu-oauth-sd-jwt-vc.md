@@ -1,5 +1,5 @@
 %%%
-title = "SD-JWT-based Verifiable Credentials with JSON payloads (SD-JWT VC)"
+title = "SD-JWT-based Verifiable Credentials (SD-JWT VC)"
 abbrev = "SD-JWT VC"
 ipr = "trust200902"
 workgroup = "TODO Working Group"
@@ -7,7 +7,7 @@ keyword = ["security", "openid", "sd-jwt"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-terbu-sd-jwt-vc-latest"
+value = "draft-terbu-oauth-sd-jwt-vc-latest"
 status = "standard"
 
 [[author]]
@@ -31,16 +31,17 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payload based on the SD-JWT
-format [@!I-D.ietf-oauth-selective-disclosure-jwt].
+rules to express Verifiable Credentials with JSON payloads based on the Selective Disclosure
+for JWTs (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
+It can be used when there are no selective disclosable claims, too.
 
 {mainmatter}
 
 # Introduction
 
-## Three-Party-Model
+## Issuer-Holder-Verifier Model
 
-In the so-called Three-Party-Model, Issuers issue Verifiable Credentials to a
+In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
 Credentials are cryptographically signed statements about a Subject, typically the Holder.
 
@@ -71,17 +72,17 @@ Credentials are cryptographically signed statements about a Subject, typically t
           +-------------+|  Verifiable Credential  +------------+
            +-------------+
 ~~~
-Figure: Three-Party-Model with optional Status Provider
+Figure: Issuer-Holder-Verifier Model with optional Status Provider
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
-and optionally enforce Holder Binding, i.e., ask the Holder to prove that they
+and optionally enforce Key Binding, i.e., ask the Holder to prove that they
 are the intended holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-To support revocation of Verifiable Credentials, an optional fourth party can be
-involved, a Status Provider, who delivers revocation information to Verifiers.
-(The Verifier can also serve as the Status Provider.)
+To support revocation of Verifiable Credentials, revocation information can
+optionally be retrieved from a Status Provider. The role of a Status Provider
+can be fulfilled by either a fourth party or by the Issuer.
 
 This specification defines Verifiable Credentials based on the SD-JWT
 format with a JWT Claim Set.
@@ -101,19 +102,18 @@ JWTs: For an SD-JWT document, a Holder can decide which claims to release (withi
 bounds defined by the Issuer). This format is therefore perfectly suited for
 Verifiable Credentials.
 
-SD-JWT itself does not define the claims that must be used within the payload or
-their semantics. This specification therefore defines how Verifiable Credentials
-can be expressed using SD-JWT.
+SD-JWT is a superset of JWT as it can also be used when there are no selectively
+disclosable claims and also supports JWS JSON serialization, which is useful for
+long term archiving and multi signatures. However, SD-JWT itself does not define
+the claims that must be used within the payload or their semantics.
 
-JWTs (and SD-JWTs) can contain claims that are registered in "JSON Web Token Claims"
+This specification therefore uses SD-JWT and the well-established JWT content rules and
+extensibility model as basis for representing Verifiable Credentials with JSON payload.
+Those Verifiable Credentials are called SD-JWT VCs.
+
+SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
-private claims. Private claims are not relevant for this specification due to the
-openness of the three-party-model. Since SD-JWTs are based on JWTs, this specification
-aims to express the basic
-Verifiable Credential data model purely through JWT Claim Sets, using registered
-claims while allowing Issuers to use additional registered claims, as well as
-new or existing public claims, to make statements about the Subject of the
-Verifiable Credential.
+private claims.
 
 ## Requirements Notation and Conventions
 
@@ -149,7 +149,7 @@ Status Provider:
 
 # Use Cases
 
-TBD: explain use cases of the three-party-model.
+TBD: explain use cases of the Issuer-Holder-Verifier Model.
 
 TBD: conventional crypt, hardware security, hsm, mobile secure area,
 compliance with FIPS
@@ -233,7 +233,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * REQUIRED when Cryptographic Holder Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800] and in this case, the `kid` (Key ID) member MUST be present in the JWK.  For Cryptographic Holder Binding, the Holder Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
+    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800] and in this case, the `kid` (Key ID) member MUST be present in the JWK.  For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
 * `type`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `IdentityCredential`, as defined in (#type-claim).
@@ -246,7 +246,7 @@ Disclosures and MAY be selectively disclosed:
 
 * `sub`
     * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
-The value of `sub` MUST be a URI. The Issuer MAY use it to provide the Subject
+The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
 
@@ -254,6 +254,12 @@ exist between `sub` and `cnf` claims.
 
 Additional public claims MAY be used in SD-JWT VCs depending on the
 application.
+
+#### SD-JWT VC without Selectively Disclosable Claims
+
+An SD-JWT VC MAY have no selectively disclosable claims.
+In that case, the SD-JWT VC MUST NOT contain the `_sd` claim in the JWT body. It also
+MUST NOT have any Disclosures.
 
 ## Example
 
@@ -269,7 +275,7 @@ only claims about the Subject that are selectively disclosable:
 <{{examples/01/sd_jwt_payload.json}}
 
 Note that a `cnf` claim has been added to the SD-JWT payload to express the
-confirmation method of the holder binding.
+confirmation method of the Key Binding.
 
 The following are the Disclosures belonging to the SD-JWT payload above:
 
@@ -277,7 +283,7 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 
 The SD-JWT and the Disclosures would then be serialized by the Issuer into the following format for issuance to the Holder:
 
-<{{examples/01/combined_issuance.txt}}
+<{{examples/01/sd_jwt_issuance.txt}}
 
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
@@ -290,6 +296,8 @@ verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 (#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
 methods to obtain the public key to verify the signature of the SD-JWT.
+If there are no selectively disclosable claims, there is no need to process the
+`_sd` claim nor any Disclosures.
  1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
 the status SHOULD be checked. It depends on the Verifier policy to reject or
 accept a presentation of a SD-JWT VC based on the status of the Verifiable
@@ -423,48 +431,51 @@ A presentation of an SD-JWT VC MUST be encoded using the SD-JWT Combined
 Format for Presentation as defined in Section 5.4. of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-A presentation of an SD-JWT VC MAY contain a Holder Binding JWT as described in
+A presentation of an SD-JWT VC MAY contain a Key Binding JWT as described in
 Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-### Holder Binding JWT
+When there are no selectively disclosable claims, a presentation of SD-JWT VC
+does not contain any Disclosures.
 
-If the presentation of the SD-JWT VC includes a Holder Binding JWT, the
-following claims are used within the Holder Binding JWT:
+### Key Binding JWT
+
+If the presentation of the SD-JWT VC includes a Key Binding JWT, the
+following claims are used within the Key Binding JWT:
 
 * `nonce`
     * REQUIRED. String value used to associate a transaction between a Verifier
 an a Holder, and to mitigate replay attacks. The value is passed
-through unmodified from the Verifier to the Holder Binding JWT. Sufficient
+through unmodified from the Verifier to the Key Binding JWT. Sufficient
 entropy MUST be present in the `nonce` values used to prevent attackers from
 guessing values.
 * `aud`
-    * REQUIRED. The intended recipient of the Holder Binding JWT which is
+    * REQUIRED. The intended recipient of the Key Binding JWT which is
 typically the Verifier. See [@!RFC7519] for more information.
 * `iat`
-    * REQUIRED. The time of issuance of the Holder Binding JWT. See
+    * REQUIRED. The time of issuance of the Key Binding JWT. See
 [@!RFC7519] for more information.
 * `exp`
     * OPTIONAL. The expiration time of the signature when
-the Holder Binding is no longer considered valid. See [@!RFC7519]
+the Key Binding is no longer considered valid. See [@!RFC7519]
 for more information.
 
-The Holder Binding JWT MAY include addtional claims which when not understood
+The Key Binding JWT MAY include addtional claims which when not understood
 MUST be ignored.
 
 ## Examples
 
 The following is a non-normative example of a presentation of the SD-JWT shown
-above including a Holder Binding JWT:
+above including a Key Binding JWT:
 
-<{{examples/01/combined_presentation.txt}}
+<{{examples/01/sd_jwt_presentation.txt}}
 
 In this presentation, the Holder provides only the Disclosure for the claim
 `address`. Other claims are not disclosed to the Verifier.
 
 The following example shows a presentation of a (different) SD-JWT without a
-Holder Binding JWT:
+Key Binding JWT:
 
-<{{examples/02/combined_presentation.txt}}
+<{{examples/02/sd_jwt_presentation.txt}}
 
 ## Verification and Processing {#vp-sd-jwt-verification-and-processing}
 
@@ -473,9 +484,9 @@ The Verifier MUST process and verify a presentation of SD-JWT VC as follows:
  1. REQUIRED. When processing and verifying the presentation of the SD-JWT VC,
 the Verifier MUST follow the same verification and processing rules as defined
 in (#vc-sd-jwt-verification-and-processing).
- 1. OPTIONAL. If provided, the Verifier MUST verify the Holder Binding JWT
+ 1. OPTIONAL. If provided, the Verifier MUST verify the Key Binding JWT
 according to Section 6.2. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-To verify the Holder Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
+To verify the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 # Security Considerations {#security-considerations}
 
@@ -563,10 +574,20 @@ Interoperability considerations: : n/a
 
 # Acknowledgements {#Acknowledgements}
 
-We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-Giuseppe De Marco, Paul Bastian, Torsten Lodderstedt, Tobias Looker
-and Kristina Yasuda for their contributions (some of which substantial) to this
-draft and to the initial set of implementations.
+We would like to thank
+Alen Horvat,
+Andres Uribe,
+Brian Campbell,
+Christian Bormann,
+Giuseppe De Marco,
+Michael Jones,
+Mike Prorock,
+Orie Steele,
+Paul Bastian,
+Torsten Lodderstedt,
+Tobias Looker, and
+Kristina Yasuda
+for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
 
