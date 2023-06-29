@@ -502,22 +502,6 @@ TBD
 
 {backmatter}
 
-<reference anchor="W3C.VCDM" target="https://www.w3.org/TR/vc-data-model-2.0/">
-        <front>
-        <title>Verifiable Credentials Data Model v2.0</title>
-        <author fullname="Manu Sporny">
-            <organization>Digital Bazaar</organization>
-        </author>
-        <author fullname="Dave Longley">
-            <organization>Digital Bazaar</organization>
-        </author>
-        <author fullname="David Chadwick">
-            <organization>Crossword Cybersecurity PLC</organization>
-        </author>
-        <date day="4" month="May" year="2023"/>
-        </front>
-</reference>
-
 # IANA Considerations
 
 ## JSON Web Token Claims Registration
