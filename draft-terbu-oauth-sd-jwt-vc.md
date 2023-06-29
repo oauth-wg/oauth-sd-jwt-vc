@@ -111,7 +111,7 @@ SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
 
-Note: This specification does not utilize [@W3C.VCDM].
+Note: This specification does not utilize the W3C's Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
 
 ## Requirements Notation and Conventions
 
