@@ -570,6 +570,40 @@ Interoperability considerations: : n/a
   - Author: Oliver Terbu <oliver.terbu@spruceid.com>
   - Change controller: IETF
 
+
+### application/vc+jwt {#application-vc-jwt}
+
+The Internet media type for a JWT VC is `application/vc+jwt`.
+
+Type name: : `application`
+
+Subtype name: : `vc+jwt`
+
+Required parameters: : n/a
+
+Optional parameters: : n/a
+
+Encoding considerations: : binary; A VC JWT is a JWT;
+  JWT values are encoded as a series of base64url-encoded values
+  (some of which may be the empty string) separated by period ('.') characters.
+
+Security considerations: : See Security Considerations in (#security-considerations).
+
+Interoperability considerations: : n/a
+
+- Published specification: : RFC TODO
+- Applications that use this media type: : Applications that issue, present,
+  verify verifiable credentials and presentations.
+- Additional information:
+  - Magic number(s): n/a
+  - File extension(s): n/a
+  - Macintosh file type code(s): n/a
+  - Person & email address to contact for further information: TBD
+  - Intended usage: COMMON
+  - Restrictions on usage: none
+  - Author: Oliver Terbu <oliver.terbu@spruceid.com>
+  - Change controller: IETF
+
 # Acknowledgements {#Acknowledgements}
 
 We would like to thank
