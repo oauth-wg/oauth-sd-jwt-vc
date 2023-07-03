@@ -111,6 +111,8 @@ SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
 
+Note: This specification does not utilize the W3C's Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
+
 ## Requirements Notation and Conventions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -500,32 +502,6 @@ TBD
 
 {backmatter}
 
-<reference anchor="VC-DATA" target="https://www.w3.org/TR/vc-data-model-2.0/">
-        <front>
-        <title>Verifiable Credentials Data Model v2.0</title>
-        <author fullname="Manu Sporny">
-            <organization>Digital Bazaar</organization>
-        </author>
-        <author fullname="Dave Longley">
-            <organization>Digital Bazaar</organization>
-        </author>
-        <author fullname="David Chadwick">
-            <organization>Crossword Cybersecurity PLC</organization>
-        </author>
-        <date day="4" month="May" year="2023"/>
-        </front>
-</reference>
-
-<reference anchor="VC-DIR" target="https://w3c.github.io/vc-specs-dir/">
-        <front>
-        <title>VC Specifications Directory</title>
-        <author fullname="Manu Sporny">
-            <organization>Digital Bazaar</organization>
-        </author>
-        <date day="8" month="May" year="2023"/>
-        </front>
-</reference>
-
 # IANA Considerations
 
 ## JSON Web Token Claims Registration
@@ -592,6 +568,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -03
 
 * added non-selectively disclosable JWT VC
+* added a note that this is not w3c vcdm.
 
 -02
 
