@@ -565,20 +565,11 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
--03
-
-* added non-selectively disclosable JWT VC
-* added a note that this is not w3c vcdm.
-
--02
-
-* Adjusted terminology based on feedback
-
--01
-
-* Removed W3C VCDM transformation algorithm
-* Various editorial changes based on feedback
-
 -00
 
 * Initial Version
+* Removed W3C VCDM transformation algorithm
+* Various editorial changes based on feedback
+* Adjusted terminology based on feedback
+* Added non-selectively disclosable JWT VC
+* Added a note that this is not W3C VCDM
