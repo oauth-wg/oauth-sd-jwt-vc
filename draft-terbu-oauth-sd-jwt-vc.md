@@ -197,18 +197,20 @@ SD-JWT VCs.
 
 #### `type` claim {#type-claim}
 
-This specification defines the JWT claim `type`. The `type` claim is used
-to express the type of the JSON object that is secured by the
-JWT. The `type` value MUST be a case-sensitive `StringOrURI` value.
+This specification defines the JWT claim `type`. The `type` claim value is the
+identifier for a pre-defined bundle of claims associated with certain
+policies for enrollment and issuance that the respective SD-JWT VC
+conforms to. The `type` value MUST be a case-sensitive `StringOrURI` value.
 
 The following is a non-normative example of how `type` is used to express
 a type:
 
 ```
 {
-  "type": "SomeType"
+  "type": "IdentityCredential"
 }
 ```
+The example type `IdentityCredential` is defined as containing at least the claims `given_name`, `family_name`, `birthdate`, and `address` as defined in the in the "JSON Web Token Claims" registry as defined in [@!RFC7519]. SD-JWT VCs of this type might also contain the claims `email` and `phone_number` defined in the registry. Additionally, the type is defined to may include claims `is_over_18`, `is_over_21`, and `is_over_65`.
 
 #### Registered JWT Claims
 
