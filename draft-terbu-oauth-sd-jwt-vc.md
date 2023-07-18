@@ -239,7 +239,8 @@ information.
 `IdentityCredential`, as defined in (#type-claim).
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
-Credential. See [TBD] for more information.
+Credential. See [@!I-D.looker-oauth-jwt-cwt-status-list]
+ for more information.
 
 The following registered JWT claims MAY be contained in the SD-JWT or in the
 Disclosures and MAY be selectively disclosed:
