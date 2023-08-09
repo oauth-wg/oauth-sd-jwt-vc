@@ -210,7 +210,7 @@ a type:
   "type": "IdentityCredential"
 }
 ```
-The example type `IdentityCredential` is defined as containing at least the claims `given_name`, `family_name`, `birthdate`, and `address` as defined in the in the "JSON Web Token Claims" registry as defined in [@!RFC7519]. SD-JWT VCs of this type might also contain the claims `email` and `phone_number` defined in the registry. Additionally, the type is defined to may include claims `is_over_18`, `is_over_21`, and `is_over_65`.
+For example, a type `IdentityCredential` can be defined such that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that `given_name`, `family_name`, `birthdate`, `address` can be selectively disclosable.
 
 #### Registered JWT Claims
 
