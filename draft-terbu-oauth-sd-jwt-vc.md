@@ -33,7 +33,7 @@ organization="Authlete Inc. "
 This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads based on the Selective Disclosure
 for JWTs (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
-It can be used when there are no selective disclosable claims, too.
+It can be used without any selective disclosable claims, too.
 
 {mainmatter}
 
@@ -121,20 +121,20 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-This specification uses the terms "Holder", "Issuer", "Verifier", defined by
+This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding JWT" defined by
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
 :  An Issuer-signed assertion with claims about a Subject.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
-: A Verifiable Credential encoded using the Issuance format defined in
+: A Verifiable Credential encoded using the format defined in
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. It may or may not contain
 selectively disclosable claims.
 
-Unsecured payload of an SD-JWT VC:
+Unsecured Payload of an SD-JWT VC:
 : A JSON object containing all selectively disclosable and non-selectively disclosable claims
-of the SD-JWT VC. The unsecured payload acts as the input JSON object to issue
+of the SD-JWT VC. The Unsecured Payload acts as the input JSON object to issue
 an SD-JWT VC complying to this specification.
 
 Status Provider:
@@ -164,12 +164,12 @@ SD-JWT VCs compliant with this specification MUST use the media type
 
 ## Data Format
 
-SD-JWT VCs MUST be encoded using the SD-JWT Combined Format for Issuance as
-defined in Section 5.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
+contain a Key Binding JWT.
 
-When there are selectively disclosable claims, SD-JWT VCs MUST contain all
-Disclosures corresponding to their SD-JWT component
-except for Decoy Digests as per Section 5.1.1.3. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
+claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 
 ### Header Parameters
 
@@ -298,7 +298,7 @@ The recipient of the SD-JWT VC MUST process and verify an SD-JWT VC as
 follows:
 
  1. REQUIRED. Process and verify the SD-JWT as defined in
-Section 6. of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
+Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
 verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
 key from the JWT Issuer Metadata configuration (as defined in
 (#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
@@ -432,19 +432,7 @@ used.
 This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.
 
-## Data Format
-
-A presentation of an SD-JWT VC MUST be encoded using the SD-JWT Combined
-Format for Presentation as defined in Section 5.4. of
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-A presentation of an SD-JWT VC MAY contain a Key Binding JWT as described in
-Section 5.4.1. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-When there are no selectively disclosable claims, a presentation of SD-JWT VC
-does not contain any Disclosures.
-
-### Key Binding JWT
+## Key Binding JWT
 
 If the presentation of the SD-JWT VC includes a Key Binding JWT, the
 following claims are used within the Key Binding JWT:
@@ -492,7 +480,7 @@ The Verifier MUST process and verify a presentation of SD-JWT VC as follows:
 the Verifier MUST follow the same verification and processing rules as defined
 in (#vc-sd-jwt-verification-and-processing).
  1. OPTIONAL. If provided, the Verifier MUST verify the Key Binding JWT
-according to Section 6.2. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 To verify the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 # Security Considerations {#security-considerations}
@@ -571,6 +559,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-01
+
+* Aligned terminology and descriptions with latest version of SD-JWT
 
 -00
 
