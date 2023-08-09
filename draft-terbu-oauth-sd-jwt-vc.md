@@ -197,10 +197,14 @@ SD-JWT VCs.
 
 #### `type` claim {#type-claim}
 
-This specification defines the JWT claim `type`. The `type` claim value is the
-identifier for a pre-defined bundle of claims associated with certain
-policies for enrollment and issuance that the respective SD-JWT VC
-conforms to. The `type` value MUST be a case-sensitive `StringOrURI` value.
+This specification defines the JWT claim `type`. The `type` value
+MUST be a case-sensitive `StringOrURI` value serving as an identifier
+for the type of the SD-JWT VC. A type defines which claims may or must appear in the 
+Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
+selectively disclosable. This specification does not define any `type` values; instead
+it is expected that ecosystems using SD-JWT VCs define such values including
+the semantics of the respective claims and associated rules (e.g., policies for issuing and
+validating credentials beyond what is defined in this specification).
 
 The following is a non-normative example of how `type` is used to express
 a type:
