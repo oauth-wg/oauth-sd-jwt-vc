@@ -555,6 +555,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -01
+
 * Aligned terminology and descriptions with latest version of SD-JWT
 
 -00
