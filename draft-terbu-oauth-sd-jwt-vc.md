@@ -288,26 +288,30 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
-The recipient of the SD-JWT VC MUST process and verify an SD-JWT VC as
-follows:
+The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
+SD-JWT VC as described in Section 6 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
- 1. REQUIRED. Process and verify the SD-JWT as defined in
-Section 6. of [@!I-D.ietf-oauth-selective-disclosure-jwt]. For the
-verification, the `iss` claim in the SD-JWT MAY be used to retrieve the public
-key from the JWT Issuer Metadata configuration (as defined in
-(#jwt-issuer-metadata)) of the SD-JWT VC issuer. A Verifier MAY use alternative
-methods to obtain the public key to verify the signature of the SD-JWT.
+If Key Binding is required, the Verifier MUST verify the Key Binding JWT
+according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
+the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
+
+For the verification, the `iss` claim in the SD-JWT MAY be used to retrieve the
+public key from the JWT Issuer Metadata configuration (as defined in
+(#jwt-issuer-metadata)) of the SD-JWT VC issuer. Alternative methods MAY be used
+to obtain the public key to verify the signature of the SD-JWT.
+
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
- 1. OPTIONAL. If `status` is present in the verified payload of the SD-JWT,
-the status SHOULD be checked. It depends on the Verifier policy to reject or
-accept a presentation of a SD-JWT VC based on the status of the Verifiable
-Credential.
+
+If `status` is present in the verified payload of the SD-JWT, the status SHOULD
+be checked. It depends on the Verifier policy to reject or accept a presentation
+of a SD-JWT VC based on the status of the Verifiable Credential.
 
 Any claims used that are not understood MUST be ignored.
 
-Additional validation rules MAY apply, but their use is out of the scope of
-this specification.
+Additional validation rules MAY apply, but their use is out of the scope of this
+specification.
 
 # JWT Issuer Metadata {#jwt-issuer-metadata}
 
@@ -478,16 +482,6 @@ Key Binding JWT:
 
 <{{examples/02/sd_jwt_presentation.txt}}
 
-## Verification and Processing {#vp-sd-jwt-verification-and-processing}
-
-The Verifier MUST process and verify a presentation of SD-JWT VC as follows:
-
- 1. REQUIRED. When processing and verifying the presentation of the SD-JWT VC,
-the Verifier MUST follow the same verification and processing rules as defined
-in (#vc-sd-jwt-verification-and-processing).
- 1. OPTIONAL. If provided, the Verifier MUST verify the Key Binding JWT
-according to Section 6.2. of [@!I-D.ietf-oauth-selective-disclosure-jwt].
-To verify the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 # Security Considerations {#security-considerations}
 
