@@ -292,7 +292,7 @@ The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in Section 6 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-If Key Binding is required, the Verifier MUST verify the Key Binding JWT
+If Key Binding is required (refer to the security considerations in Section 9.6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
 according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
