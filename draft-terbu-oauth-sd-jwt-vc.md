@@ -426,7 +426,7 @@ used.
 This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.
 
-### Key Binding JWT
+## Key Binding JWT
 
 If the presentation of the SD-JWT VC includes a Key Binding JWT, the
 following claims are used within the Key Binding JWT:
