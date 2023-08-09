@@ -197,18 +197,24 @@ SD-JWT VCs.
 
 #### `type` claim {#type-claim}
 
-This specification defines the JWT claim `type`. The `type` claim is used
-to express the type of the JSON object that is secured by the
-JWT. The `type` value MUST be a case-sensitive `StringOrURI` value.
+This specification defines the JWT claim `type`. The `type` value
+MUST be a case-sensitive `StringOrURI` value serving as an identifier
+for the type of the SD-JWT VC. A type defines which claims may or must appear in the
+Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
+selectively disclosable. This specification does not define any `type` values; instead
+it is expected that ecosystems using SD-JWT VCs define such values including
+the semantics of the respective claims and associated rules (e.g., policies for issuing and
+validating credentials beyond what is defined in this specification).
 
 The following is a non-normative example of how `type` is used to express
 a type:
 
 ```
 {
-  "type": "SomeType"
+  "type": "IdentityCredential"
 }
 ```
+For example, a type `IdentityCredential` can be defined such that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that `given_name`, `family_name`, `birthdate`, `address` can be selectively disclosable.
 
 #### Registered JWT Claims
 
