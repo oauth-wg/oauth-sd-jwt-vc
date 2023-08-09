@@ -199,7 +199,7 @@ SD-JWT VCs.
 
 This specification defines the JWT claim `type`. The `type` value
 MUST be a case-sensitive `StringOrURI` value serving as an identifier
-for the type of the SD-JWT VC. A type defines which claims may or must appear in the 
+for the type of the SD-JWT VC. A type defines which claims may or must appear in the
 Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
 selectively disclosable. This specification does not define any `type` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
