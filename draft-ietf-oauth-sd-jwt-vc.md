@@ -2,12 +2,14 @@
 title = "SD-JWT-based Verifiable Credentials (SD-JWT VC)"
 abbrev = "SD-JWT VC"
 ipr = "trust200902"
-workgroup = "TODO Working Group"
-keyword = ["security", "openid", "sd-jwt"]
+area = "Security"
+workgroup = "Web Authorization Protocol"
+keyword = ["security", "oauth2", "sd-jwt"]
 
 [seriesInfo]
 name = "Internet-Draft"
-value = "draft-terbu-oauth-sd-jwt-vc-latest"
+value = "draft-ietf-oauth-sd-jwt-vc-latest"
+stream = "IETF"
 status = "standard"
 
 [[author]]
@@ -553,9 +555,12 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
--01
+-00
 
+* Upload as draft-ietf-oauth-sd-jwt-vc-00
 * Aligned terminology and descriptions with latest version of SD-JWT
+
+[[ pre Working Group Adoption: ]]
 
 -00
 
