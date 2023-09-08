@@ -33,9 +33,7 @@ organization="Authlete Inc. "
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payloads based on the Selective Disclosure
-for JWTs (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
-It can be used without any selective disclosable claims, too.
+rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
 
 {mainmatter}
 
@@ -43,7 +41,7 @@ It can be used without any selective disclosable claims, too.
 
 ## Issuer-Holder-Verifier Model
 
-In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Credentials to a
+In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
 Credentials are cryptographically signed statements about a Subject, typically the Holder.
 
@@ -86,10 +84,7 @@ To support revocation of Verifiable Credentials, revocation information can
 optionally be retrieved from a Status Provider. The role of a Status Provider
 can be fulfilled by either a fourth party or by the Issuer.
 
-This specification defines Verifiable Credentials based on the SD-JWT
-format with a JWT Claim Set. It can be used when there are no selective disclosable claims, too.
-
-## Rationale
+## SD-JWT as a Credential Format
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Credentials in a way that is easy to understand and process as it
@@ -105,9 +100,10 @@ disclosable claims and also supports JWS JSON serialization, which is useful for
 long term archiving and multi signatures. However, SD-JWT itself does not define
 the claims that must be used within the payload or their semantics.
 
-This specification therefore uses SD-JWT and the well-established JWT content rules and
-extensibility model as basis for representing Verifiable Credentials with JSON payload.
-Those Verifiable Credentials are called SD-JWT VCs.
+This specification uses SD-JWT and the well-established JWT content rules and
+extensibility model as basis for representing Verifiable Credentials with JSON
+payloads. These Verifiable Credentials are called SD-JWT VCs. The use of
+selective disclosure in SD-JWT VCs is OPTIONAL.
 
 SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
