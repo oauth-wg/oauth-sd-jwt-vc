@@ -144,13 +144,6 @@ Status Provider:
   - Data model and media types for Verifiable Credentials based on SD-JWTs.
   - Validation and processing rules for Verifiers and Holders.
 
-# Use Cases
-
-TBD: explain use cases of the Issuer-Holder-Verifier Model.
-
-TBD: conventional crypt, hardware security, hsm, mobile secure area,
-compliance with FIPS
-
 # Verifiable Credentials based on SD-JWT
 
 This section defines encoding, validation and processing rules for SD-JWT VCs.
