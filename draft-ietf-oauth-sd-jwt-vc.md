@@ -162,7 +162,7 @@ contain a Key Binding JWT.
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 
-### Header Parameters
+### JOSE Header
 
 This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.
@@ -181,15 +181,17 @@ The following is a non-normative example of a decoded SD-JWT header:
 }
 ```
 
-### Claims
+### JWT Claims Set
 
 This section defines the claims that can be included in the payload of
 SD-JWT VCs.
 
-#### `type` claim {#type-claim}
+#### New JWT Claims
+
+##### `type` claim {#type-claim}
 
 This specification defines the JWT claim `type`. The `type` value
-MUST be a case-sensitive `StringOrURI` value serving as an identifier
+MUST be a case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
 for the type of the SD-JWT VC. A type defines which claims may or must appear in the
 Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
 selectively disclosable. This specification does not define any `type` values; instead
