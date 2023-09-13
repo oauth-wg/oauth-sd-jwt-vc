@@ -475,18 +475,16 @@ TBD: Verifier provided `nonce`.
 
 # Privacy Considerations {#privacy-considerations}
 
-Implementers are advised to refer to the Privacy Considerations in
-Section 10 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+The Privacy Considerations in the SD-JWT specification
+[@!I-D.ietf-oauth-selective-disclosure-jwt] apply to this specification.
+Additionally, the following privacy considerations need to be taken into
+account when using SD-JWT VCs.
 
 ## Type Identifier
 
 Issuers are advised to consider issuing SD-JWT VCs using more specific
 and different types to support use cases where the type information
 would lead to unwanted leakage of additional context information.
-
-## JWT Issuer Metadata
-
-Issuers are advised to use
 
 # Relationships to Other Documents
 
