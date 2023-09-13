@@ -482,8 +482,8 @@ account when using SD-JWT VCs.
 
 ## Unlinkability
 
-Especially, the privacy considerations in 10.5. in [@!I-D.ietf-oauth-selective-disclosure-jwt]
-apply to the `cnf` claim.
+The privacy considerations in Section 10.5. in [@!I-D.ietf-oauth-selective-disclosure-jwt]
+apply especially to the `cnf` claim.
 
 ## Type Identifier
 
