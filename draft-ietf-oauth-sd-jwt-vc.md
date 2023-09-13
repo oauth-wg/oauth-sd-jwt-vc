@@ -506,7 +506,7 @@ TBD: Holder provided nonce via `jti`.
 
 TBD
 
-<reference anchor="OWASP_SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/" />
+<reference anchor="OWASP_SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">
     <front>
         <title>Server Side Request Forgery Prevention Cheat Sheet</title>
     </front>
