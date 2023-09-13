@@ -475,7 +475,8 @@ TBD: Verifier provided `nonce`.
 
 # Privacy Considerations {#privacy-considerations}
 
-TBD: Holder provided nonce via `jti`.
+Implementers are advised to refer to the Privacy Considerations in
+Section 10 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 # Relationships to Other Documents
 
