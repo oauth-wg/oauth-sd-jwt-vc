@@ -1,17 +1,17 @@
-# SD-JWT VC
+# SD-JWT-based Verifiable Credentials (SD-JWT VC)
 
-This is the working area for the individual Internet-Draft, "SD-JWT VC".
+This is the working area for the IETF [OAUTH Working Group](https://datatracker.ietf.org/wg/oauth/documents/) Internet-Draft, "SD-JWT-based Verifiable Credentials (SD-JWT VC)".
 
-* [Editor's Copy](https://vcstuff.github.io/draft-terbu-sd-jwt-vc/#go.draft-terbu-sd-jwt-vc.html)
-* [Datatracker Page](https://datatracker.ietf.org/doc/draft-terbu-oauth-sd-jwt-vc)
-* [Individual Draft](https://datatracker.ietf.org/doc/html/draft-terbu-oauth-sd-jwt-vc)
-* [Compare Editor's Copy to Individual Draft](https://vcstuff.github.io/draft-terbu-sd-jwt-vc/#go.draft-terbu-sd-jwt-vc.diff)
+* [Editor's Copy](https://oauth-wg.github.io/oauth-sd-jwt-vc/#go.draft-ietf-oauth-sd-jwt-vc.html)
+* [Datatracker Page](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc)
+* [Working Group Draft](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc)
+* [Compare Editor's Copy to Working Group Draft](https://oauth-wg.github.io/oauth-sd-jwt-vc/#go.draft-ietf-oauth-sd-jwt-vc.diff)
 
 
 ## Contributing
 
 See the
-[guidelines for contributions](https://github.com/vcstuff/draft-terbu-sd-jwt-vc/blob/main/CONTRIBUTING.md).
+[guidelines for contributions](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/CONTRIBUTING.md).
 
 Contributions can be made by creating pull requests.
 The GitHub interface supports creating pull requests using the Edit (✏) button.
