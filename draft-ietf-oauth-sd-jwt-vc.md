@@ -480,6 +480,11 @@ The Privacy Considerations in the SD-JWT specification
 Additionally, the following privacy considerations need to be taken into
 account when using SD-JWT VCs.
 
+## Unlinkability
+
+Especially, the privacy considerations in 10.5. in [@!I-D.ietf-oauth-selective-disclosure-jwt]
+apply to the `cnf` claim.
+
 ## Type Identifier
 
 Issuers are advised to consider issuing SD-JWT VCs using more specific
