@@ -471,7 +471,32 @@ Key Binding JWT:
 
 # Security Considerations {#security-considerations}
 
-TBD: Verifier provided `nonce`.
+The Security Considerations in the SD-JWT specification
+[@!I-D.ietf-oauth-selective-disclosure-jwt] apply to this specification.
+Additionally, the following security considerations need to be taken into
+account when using SD-JWT VCs:
+
+## Server-Side Request Forgery
+
+The JWT Issuer Metadata configuration is retrieved from the JWT Issuer by the
+Holder or Verifier. Similar to other metadata endpoints, the URL for the
+retrieval MUST be considered an untrusted value and could be a vector for
+Server-Side Request Forgery (SSRF) attacks.
+
+Before making a request to the JWT Issuer Metadata endpoint, the Holder or
+Verifier MUST validate the URL to ensure that it is a valid HTTPS URL and that
+it does not point to internal resources. This requires, in particular, ensuring
+that the host part of the URL does not address an internal service (by IP
+address or an internal host name) and that, if an external DNS name is used, the
+resolved DNS name does not point to an internal IPv4 or IPv6 address.
+
+When retrieving the metadata, the Holder or Verifier MUST ensure that the
+request is made in a time-bound and size-bound manner to prevent denial of
+service attacks. The Holder or Verifier MUST also ensure that the response is a
+valid JWT Issuer Metadata configuration document before processing it.
+
+Additional considerations can be found in [@OWASP_SSRF].
+
 
 # Privacy Considerations {#privacy-considerations}
 
@@ -481,6 +506,12 @@ TBD: Holder provided nonce via `jti`.
 
 TBD
 
+<reference anchor="OWASP_SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">
+  <front>
+    <author fullname="OWASP"></author>
+    <title>Server Side Request Forgery Prevention Cheat Sheet</title>
+  </front>
+</reference>
 {backmatter}
 
 # IANA Considerations
@@ -561,3 +592,4 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Adjusted terminology based on feedback
 * Added non-selectively disclosable JWT VC
 * Added a note that this is not W3C VCDM
+
