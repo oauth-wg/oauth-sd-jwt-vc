@@ -478,6 +478,16 @@ TBD: Verifier provided `nonce`.
 Implementers are advised to refer to the Privacy Considerations in
 Section 10 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
+## Type Identifier
+
+Issuers are advised to consider issuing SD-JWT VCs using more specific
+and different types to support use cases where the type information
+would lead to unwanted leakage of additional context information.
+
+## JWT Issuer Metadata
+
+Issuers are advised to use
+
 # Relationships to Other Documents
 
 TBD
