@@ -497,7 +497,7 @@ have to avoid putting information into the `type` value that allows third-partie
 to infer additional personal information about the Holder, e.g., country of residency, citizenship
 etc. A better approach is to have more generalized types, for example an age-proof SD-JWT VC type.
 
-Additionally, Holders have to be informed that besides the actual requested claims what
+Additionally, Holders have to be informed that, besides the actual requested claims, the
 `type` information is shared with the Verifier.
 
 ## Issuer Phone Home
