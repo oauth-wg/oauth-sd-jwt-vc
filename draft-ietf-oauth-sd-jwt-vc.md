@@ -518,7 +518,7 @@ and should monitor suspicious behaviour such as frequently rotating Issuer ident
 If such behaviour was detected, Verifiers are advised to reject SD-JWT VCs issued by such
 Issuers.
 
-Holders are advised to reject SD-JWT VCs if they contain easiliy correlateable information
+Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.
 
 # Relationships to Other Documents
