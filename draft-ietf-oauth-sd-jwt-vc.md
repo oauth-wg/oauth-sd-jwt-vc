@@ -493,9 +493,8 @@ In certain situations this could lead to unwanted leakage of additional context 
 
 In general, Issuers are advised to choose `type` values following data minimization principles.
 For example, government Issuers issuing an SD-JWT VC to their citizens to enable them to prove their age,
-have to avoid putting information into the `type` value that allows third-parties
-to infer additional personal information about the Holder, e.g., country of residency, citizenship
-etc. A better approach is to have more generalized types, for example an age-proof SD-JWT VC type.
+might consider using a `type` value that not allows third-parties to infer additional personal information
+about the Holder, e.g., country of residency, citizenship.
 
 Additionally, Holders have to be informed that, besides the actual requested claims, the
 `type` information is shared with the Verifier.
