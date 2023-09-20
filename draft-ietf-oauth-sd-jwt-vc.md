@@ -488,7 +488,7 @@ apply especially to the `cnf` claim.
 ## Type Identifier
 
 Issuers and Holders have to be aware that while this specification supports selective
-disclosure of claims of a given SD-JWT VC, the `type` claim is not selectively discloseable.
+disclosure of claims of a given SD-JWT VC, the `type` claim is not selectively disclosable.
 In certain situations this could lead to unwanted leakage of additional context information.
 
 In general, Issuers are advised to choose `type` values following data minimation principles.
