@@ -513,7 +513,7 @@ The Verifier would create a HTTPS GET request to the Holder-specific well-known 
 when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
 and how often the SD-JWT VC was used.
 
-Verifiers are advised to establish trust in an SD-JWT VC by pining specific Issuer identifiers
+Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
 and should monitor suspicious behaviour such as frequently rotating Issuer identifiers.
 If such behaviour was detected, Verifiers are advised to reject SD-JWT VCs issued by such
 Issuers.
