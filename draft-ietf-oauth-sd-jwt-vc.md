@@ -491,7 +491,7 @@ Issuers and Holders have to be aware that while this specification supports sele
 disclosure of claims of a given SD-JWT VC, the `type` claim is not selectively disclosable.
 In certain situations this could lead to unwanted leakage of additional context information.
 
-In general, Issuers are advised to choose `type` values following data minimation principles.
+In general, Issuers are advised to choose `type` values following data minimization principles.
 For example, an Issuer issuing a SD-JWT VC to their citizens to enable them to prove their age,
 have to avoid putting information into the `type` value that allows third-parties
 to infer additional personal information about the Holder, e.g., country of residency, citizenship
