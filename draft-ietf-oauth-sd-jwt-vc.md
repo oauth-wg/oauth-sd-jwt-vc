@@ -367,8 +367,7 @@ value in the JWT.
 * `jwks_uri`
     * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set
 [@RFC7517] document which contains the JWT Issuer's public keys. The value of
-this field MUST point to a valid JWK Set document. Use of this parameter is
-RECOMMENDED, as it allows for easy key rotation.
+this field MUST point to a valid JWK Set document.
 * `jwks`
     * OPTIONAL. JWT Issuer's JSON Web Key Set [@RFC7517] document value, which
 contains the JWT Issuer's public keys. The value of this field MUST be a JSON
