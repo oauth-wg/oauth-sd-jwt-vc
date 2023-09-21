@@ -371,8 +371,7 @@ this field MUST point to a valid JWK Set document.
 * `jwks`
     * OPTIONAL. JWT Issuer's JSON Web Key Set [@RFC7517] document value, which
 contains the JWT Issuer's public keys. The value of this field MUST be a JSON
-object containing a valid JWK Set. This parameter is intended to be used by JWT
-Issuer that cannot use the `jwks_uri` parameter.
+object containing a valid JWK Set.
 
 JWT Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT
 Issuer Metadata, but not both.
