@@ -500,7 +500,50 @@ Additional considerations can be found in [@OWASP_SSRF].
 
 # Privacy Considerations {#privacy-considerations}
 
-TBD: Holder provided nonce via `jti`.
+The Privacy Considerations in the SD-JWT specification
+[@!I-D.ietf-oauth-selective-disclosure-jwt] apply to this specification.
+Additionally, the following privacy considerations need to be taken into
+account when using SD-JWT VCs.
+
+## Unlinkability
+
+The Privacy Considerations in Section 10.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+apply especially to the `cnf` claim.
+
+## Type Identifier
+
+Issuers and Holders have to be aware that while this specification supports selective
+disclosure of claims of a given SD-JWT VC, the `type` claim is not selectively disclosable.
+In certain situations this could lead to unwanted leakage of additional context information.
+
+In general, Issuers are advised to choose `type` values following data minimization principles.
+For example, government Issuers issuing an SD-JWT VC to their citizens to enable them to prove their age,
+might consider using a `type` value that does not allow third-parties to infer additional personal information
+about the Holder, e.g., country of residency or citizenship.
+
+Additionally, Holders have to be informed that, besides the actual requested claims, the
+`type` information is shared with the Verifier.
+
+## Issuer Phone Home
+
+A malicious Issuer can choose the Issuer identifier of the SD-JWT VC to enable tracking
+the usage behavior of the Holder if the Issuer identifier is Holder-specific and if the
+resolution of the key material to verify the Issuer-signed JWT requires the Verifier
+to phone home to the Issuer.
+
+For example, a malicious Issuer could generate a unique value for the Issuer identifier
+per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT Issuer Metadata.
+The Verifier would create a HTTPS GET request to the Holder-specific well-known URI
+when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
+and how often the SD-JWT VC was used.
+
+Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
+and should monitor suspicious behaviour such as frequently rotating Issuer identifiers.
+If such behaviour was detected, Verifiers are advised to reject SD-JWT VCs issued by such
+Issuers.
+
+Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
+in the Issuer identifier.
 
 # Relationships to Other Documents
 
