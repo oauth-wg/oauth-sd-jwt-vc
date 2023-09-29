@@ -553,6 +553,14 @@ TBD
     <title>Server Side Request Forgery Prevention Cheat Sheet</title>
   </front>
 </reference>
+
+<reference anchor="EUDIW.ARF" target="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases">
+  <front>
+    <author fullname="European Commission"></author>
+    <title>The European Digital Identity Wallet Architecture and Reference Framework</title>
+  </front>
+</reference>
+
 {backmatter}
 
 # IANA Considerations
@@ -634,3 +642,102 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Added non-selectively disclosable JWT VC
 * Added a note that this is not W3C VCDM
 
+# Examples
+
+Important: The following examples are not normative and provided for
+illustration purposes only. In particular, neither the structure of the claims
+nor the selection of selectively disclosable claims are normative.
+
+Line breaks have been added for readability.
+
+## Diploma EAA
+
+This example shows an Electronic Attestation of Attributes (EAA) for a diploma.
+
+The following user claims are used as the basis for this credential:
+
+<{{examples/03-eaa-diploma/user_claims.json}}
+
+The Issuer would produce an SD-JWT with the following payload:
+
+<{{examples/03-eaa-diploma/sd_jwt_payload.json}}
+
+The following disclosures would be produced:
+
+{{examples/03-eaa-diploma/disclosures.md}}
+
+## ISO 18013-5 Mobile Driving License (mDL)
+
+This example illustrates how the artifacts defined in this specification can be
+used to express an mDL data model defined in ISO/IEC 18013-5 [@ISO.18013-5]
+encoded as JSON.
+
+In this example, Key Binding is applied and the Key Binding JWT is signed with
+the private key corresponding to the raw public key passed in a `cnf` Claim in
+the SD-JWT.
+
+The following data will be used in this example:
+
+<{{examples/04-iso18013-5/user_claims.json}}
+
+The payload of a corresponding SD-JWT looks as follows:
+
+<{{examples/04-iso18013-5/sd_jwt_payload.json}}
+
+Disclosures:
+
+{{examples/04-iso18013-5/disclosures.md}}
+
+An SD-JWT Presentation that discloses only `nameSpace`, `issuing_authority`, and
+`issuing_country`, and has a Key Binding JWT, could look as follows:
+
+<{{examples/04-iso18013-5/sd_jwt_presentation.txt}}
+
+After the validation, the Verifier (mDL reader) will have the following data for
+further processing:
+
+<{{examples/04-iso18013-5/verified_contents.json}}
+
+## ARF PID
+
+In this example, SD-JWT VC is used to express Person Identification Data (PID)
+as defined in [@EUDIW.ARF].
+
+Key Binding is applied using the Holder's public key passed in a `cnf` claim in
+the SD-JWT.
+
+
+The Issuer is using the following input claim set:
+
+<{{examples/05-arf-pid/user_claims.json}}
+
+The following payload is used for the SD-JWT:
+
+<{{examples/05-arf-pid/sd_jwt_payload.json}}
+
+The following is the issued SD-JWT:
+
+<{{examples/05-arf-pid/sd_jwt_issuance.txt}}
+
+The following Disclosures are created by the Issuer:
+
+{{examples/05-arf-pid/disclosures.md}}
+
+The following decoy digests are added:
+
+{{examples/05-arf-pid/decoy_digests.md}}
+
+The following is how a presentation of the SD-JWT with a Key Binding JWT that
+discloses only nationality and the fact that the person is over 18 years old
+could look like:
+
+<{{examples/05-arf-pid/sd_jwt_presentation.txt}}
+
+The following is the payload of a corresponding Key Binding JWT:
+
+<{{examples/05-arf-pid/kb_jwt_payload.json}}
+
+After the validation, the Verifier will have the following data for further
+processing:
+
+<{{examples/05-arf-pid/verified_contents.json}}
