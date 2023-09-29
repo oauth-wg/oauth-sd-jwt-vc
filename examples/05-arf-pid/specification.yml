@@ -2,7 +2,7 @@ user_claims:
   iss: https://pid-provider.memberstate.example.eu
   iat: 1541493724
   type: PersonIdentificationData
-  !sd first_name: Erika
+  !sd given_name: Erika
   !sd family_name: Mustermann
   !sd nationalities: [!sd "DE"]
   !sd birth_family_name: Schmidt
