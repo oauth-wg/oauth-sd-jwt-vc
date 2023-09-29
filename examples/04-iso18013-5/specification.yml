@@ -1,5 +1,6 @@
 user_claims:
   iss: "https://example.com"
+  type: "ISO_mDL"
   docType: org.iso.18013.5.1.mDL
   version: "1.0"
   validityInfo:
@@ -29,9 +30,9 @@ user_claims:
 
 holder_disclosed_claims:
   nameSpaces:
-    issuing_authority: null
-    issuing_country: null
-    nameSpace: null
+    issuing_authority: True
+    issuing_country: True
+    nameSpace: True
 
 
 key_binding: True
