@@ -561,6 +561,16 @@ TBD
   </front>
 </reference>
 
+<reference anchor="ISO.18013-5" target="https://www.iso.org/standard/69084.html">
+    <front>
+        <title>ISO/IEC 18013-5:2021 Personal identification — ISO-compliant driving licence — Part 5: Mobile driving licence (mDL)  application</title>
+        <author>
+        <organization> ISO/IEC JTC 1/SC 17 Cards and security devices for personal identification</organization>
+        </author>
+        <date year="2021"/>
+    </front>
+</reference>
+
 {backmatter}
 
 # IANA Considerations
