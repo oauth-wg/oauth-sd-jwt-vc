@@ -1,0 +1,57 @@
+user_claims:
+  binding:
+  - !sd
+      dateOfBirth: '1973-01-01'
+      famileName: Mustermann
+      givenName: Erika
+      type: ClaimsBinding2022
+  credentialSubject:
+    achieved:
+    - !sd
+        id: urn:epass:learningAchievement:1
+        title: Master of Science in Civil Engineering
+        wasDerivedFrom:
+        - assessedBy:
+          - did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1
+          grade: excellent (5)
+          id: urn:epass:assessment:1
+          specifiedBy:
+            gradingScheme:
+              definition: "The Croatian national grading scheme consists of five grades\
+                \ with numerical equivalents: izvrstan \u2013 5 (outstanding); vrlo dobar\
+                \ \u2013 4 (very good); dobar \u2013 3 (good); dovoljan \u2013 2 (sufficient);\
+                \ nedovoljan \u2013 1 (insufficient - fail). The minimum passing grade\
+                \ is dovoljan \u2013 2."
+              id: urn:epass:scoringschemespec:1
+              title: General grading scheme in Croatia
+            id: urn:epass:asssessmentspec:1
+            title: Overall Diploma Assessment
+          title: Overall Diploma Assessment
+    entitledTo:
+    - !sd
+        definition: 'Competences the student acquires after the completion of Graduate
+          university study are sufficient conditions for attending the programme of Postgraduate
+          doctoral study at the Faculty of Civil Engineering, Architecture and Geodesy
+          in Split, as well as for attending the same or similar programmes and Postgraduate
+          specialist studies at other faculties of Civil Engineering in Croatia. The acquired
+          learning outcomes enable the student to attend other postgraduate study programmes
+          in the field of technical sciences. '
+        id: urn:epass:entitlement:1
+        issuedDate: '2019-09-20'
+        specifiedBy:
+          entitlementType: http://data.europa.eu/snb/entitlement/64aad92881
+          id: urn:epass:entitlementspec:1
+          limitJurisdiction:
+          - http://publications.europa.eu/resource/authority/country/HRV
+          limitOrganisation:
+          - did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1
+          status: http://data.europa.eu/snb/entitlement-status/5b8d6b34fb
+          title: Postgraduate doctoral study
+        title: Postgraduate doctoral study
+  iss: did:ebsi:zsSgDXeYPhZ3AuKhTFneDf1
+  jti: urn:credential:5a4d5412-27e3-4540-a5e5-f1aa4d55b20c
+  type: Europass
+
+holder_disclosed_claims: {}
+
+key_binding: false
