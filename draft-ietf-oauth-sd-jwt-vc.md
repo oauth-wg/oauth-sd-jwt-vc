@@ -190,9 +190,12 @@ SD-JWT VCs.
 
 ##### `type` claim {#type-claim}
 
-This specification defines the JWT claim `type`. The `type` value
-MUST be a case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
-for the type of the SD-JWT VC. A type defines which claims may or must appear in the
+This specification defines the JWT claim `type`. The `type` value MUST be a
+case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
+for the type of the SD-JWT VC. The `type` value MUST be a Collision-Resistant
+Name as defined in Section 2 of [@!RFC7515].
+
+A type is associated with rules defining which claims may or must appear in the
 Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
 selectively disclosable. This specification does not define any `type` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
@@ -204,10 +207,10 @@ a type:
 
 ```
 {
-  "type": "IdentityCredential"
+  "type": "https://credentials.example.com/identity_credential"
 }
 ```
-For example, a type `IdentityCredential` can be defined such that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that `given_name`, `family_name`, `birthdate`, `address` can be selectively disclosable.
+For example, a type `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that `given_name`, `family_name`, `birthdate`, `address` can be selectively disclosable.
 
 #### Registered JWT Claims
 
@@ -235,7 +238,7 @@ information.
     * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800].  For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
 * `type`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
-`IdentityCredential`, as defined in (#type-claim).
+`https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@!I-D.looker-oauth-jwt-cwt-status-list]
@@ -617,6 +620,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-01
+
+* Introduce rules for type identifiers (Collision-Resistant Name)
 
 -00
 
