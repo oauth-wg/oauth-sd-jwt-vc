@@ -20,3 +20,6 @@ holder_disclosed_claims:
   address: true
 
 key_binding: false
+
+extra_header_parameters:
+  typ: "vc+sd-jwt"
