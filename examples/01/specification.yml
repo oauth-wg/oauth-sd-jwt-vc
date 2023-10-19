@@ -1,5 +1,5 @@
 user_claims:
-  type: IdentityCredential
+  type: https://credentials.example.com/identity_credential
   !sd given_name: John
   !sd family_name: Doe
   !sd email: johndoe@example.com
