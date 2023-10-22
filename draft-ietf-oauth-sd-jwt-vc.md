@@ -318,7 +318,7 @@ specification.
 The following methods are RECOMMENDED to ensure the public key to verify the
 Issuer-signed JWT corresponds to the Issuer:
 
-- Using JWT Issuer Metadata: Obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
+- JWT Issuer Metadata: Obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
 - DID Document Resolution: Retrieve the public key from the DID Document resolved from the DID in the `iss` value.
 If the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute
 DID URL of the DID in the `iss` value, identifying the public key.
