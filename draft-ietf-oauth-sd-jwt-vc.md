@@ -624,6 +624,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -01
 
 * Introduce rules for type identifiers (Collision-Resistant Name)
+* Editorial changes
 
 -00
 
