@@ -628,6 +628,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Rename `type` to `vct`
 * Removed duplicated and inconsistent requirements on KB-JWT
 * Editorial changes
+* Added verification process to confirm the correspondence of the public key with issuer.
 
 -00
 
