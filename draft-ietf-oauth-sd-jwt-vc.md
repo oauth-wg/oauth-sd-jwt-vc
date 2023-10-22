@@ -299,8 +299,7 @@ according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST verify the public key used to
-verify the Issuer-signed JWT corresponds to Issuer of the Issuer-signed JWT, as
-defined in (#verifying-public-key-for-issuer-signed-jwts).
+verify the Issuer-signed JWT corresponds to Issuer of the Issuer-signed JWT.
 
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
@@ -313,6 +312,25 @@ Any claims used that are not understood MUST be ignored.
 
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
+
+## Verifying Public Key for Issuer-signed JWTs {#verifying-public-key-for-issuer-signed-jwts}
+
+The following methods are RECOMMENDED to ensure the public key to verify the
+Issuer-signed JWT corresponds to the Issuer:
+
+- Using JWT Issuer Metadata: Obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
+- DID Document Resolution: Retrieve the public key from the DID Document resolved from the DID in the `iss` value.
+If the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute
+DID URL of the DID in the `iss` value, identifying the public key.
+- X.509 Certificates: Obtain the public key from the leaf X.509 certificate defined by the
+`x5c`, `x5c`, or `x5t` JWT header parameters of the Issuer-signed JWT and validate the X.509
+certificate chain. In this case, additionally the `iss` value of the Issuer-signed JWT MUST be
+    - a DNS name that matches a `dNSName` Subject Alternative Name (SAN) [RFC5280] entry of
+the leaf certificate,
+    - or a URN that matches a `unifiedResourceName` SAN entry of the leaf certificate.
+
+Other methods for verifying the public key belongs to the Issuer MAY be used but are
+out-of-scope of this specification.
 
 # JWT Issuer Metadata {#jwt-issuer-metadata}
 
