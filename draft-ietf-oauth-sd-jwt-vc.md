@@ -298,10 +298,9 @@ If Key Binding is required (refer to the security considerations in Section 9.6 
 according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
-For the verification, the `iss` claim in the SD-JWT MAY be used to retrieve the
-public key from the JWT Issuer Metadata configuration (as defined in
-(#jwt-issuer-metadata)) of the SD-JWT VC issuer. Alternative methods MAY be used
-to obtain the public key to verify the signature of the SD-JWT.
+Furthermore, the recipient of the SD-JWT VC MUST verify the public key used to
+verify the Issuer-signed JWT corresponds to Issuer of the Issuer-signed JWT, as
+defined in (#verifying-public-key-for-issuer-signed-jwts).
 
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
