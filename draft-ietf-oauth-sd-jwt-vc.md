@@ -300,7 +300,7 @@ the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST verify that the public key used for
 verification of the Issuer-signed JWT belongs to the Issuer of the Issuer-signed JWT,
-as defined in (#public-key-for-issuer-signed-jwts-verification).
+as defined in (#public-key-discovery-for-issuer-signed-jwts-verification).
 
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
@@ -314,10 +314,10 @@ Any claims used that are not understood MUST be ignored.
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
 
-## Public Key for Issuer-signed JWTs Verification {#public-key-for-issuer-signed-jwts-verification}
+## Public Key Discovery for Issuer-signed JWTs Verification {#public-key-discovery-for-issuer-signed-jwts-verification}
 
-A recipient of the SD-JWT VC MUST apply the following rules to verify the
-Issuer-signed JWT corresponds to the Issuer:
+A recipient of an SD-JWT VC MUST apply the following rules to obtain the public
+verification key for the Issuer-signed JWT:
 - JWT Issuer Metadata: If the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
 - DID Document Resolution: If the `iss` value contains a DID, the recipient MUST retrieve
@@ -502,7 +502,7 @@ Additional considerations can be found in [@OWASP_SSRF].
 ## Ecosystem-specific Public Key Verification Methods {#ecosystem-verification-rules}
 
 When defining ecosystem-specific rules for the verification of the public key,
-as outlined in (#public-key-for-issuer-signed-jwts-verification), it is critical
+as outlined in (#public-key-discovery-for-issuer-signed-jwts-verification), it is critical
 that those rules maintain the integrity of the relationship between the `iss` value
 within the Issuer-signed JWT and the public keys of the Issuer.
 
