@@ -188,26 +188,26 @@ SD-JWT VCs.
 
 #### New JWT Claims
 
-##### Digital Credential Type - `dct` Claim {#type-claim}
+##### Verifiable Credential Type - `vct` Claim {#type-claim}
 
-This specification defines the JWT claim `dct` (for digital credential type). The `dct` value MUST be a
+This specification defines the JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
 case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
-for the type of the SD-JWT VC. The `dct` value MUST be a Collision-Resistant
+for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
 
 A type is associated with rules defining which claims may or must appear in the
 Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
-selectively disclosable. This specification does not define any `dct` values; instead
+selectively disclosable. This specification does not define any `vct` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
 validating credentials beyond what is defined in this specification).
 
-The following is a non-normative example of how `dct` is used to express
+The following is a non-normative example of how `vct` is used to express
 a type:
 
 ```
 {
-  "dct": "https://credentials.example.com/identity_credential"
+  "vct": "https://credentials.example.com/identity_credential"
 }
 ```
 For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
@@ -235,8 +235,8 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800].  For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
-* `dct`
+    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
+* `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `status`
@@ -432,28 +432,12 @@ of SD-JWT VCs.
 
 ## Key Binding JWT
 
-If the presentation of the SD-JWT VC includes a Key Binding JWT, the
-following claims are used within the Key Binding JWT:
+If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
+JWT MUST adhere to the rules defined in Section 5.10 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-* `nonce`
-    * REQUIRED. String value used to associate a transaction between a Verifier
-an a Holder, and to mitigate replay attacks. The value is passed
-through unmodified from the Verifier to the Key Binding JWT. Sufficient
-entropy MUST be present in the `nonce` values used to prevent attackers from
-guessing values.
-* `aud`
-    * REQUIRED. The intended recipient of the Key Binding JWT which is
-typically the Verifier. See [@!RFC7519] for more information.
-* `iat`
-    * REQUIRED. The time of issuance of the Key Binding JWT. See
-[@!RFC7519] for more information.
-* `exp`
-    * OPTIONAL. The expiration time of the signature when
-the Key Binding is no longer considered valid. See [@!RFC7519]
-for more information.
-
-The Key Binding JWT MAY include addtional claims which when not understood
-MUST be ignored.
+The Key Binding JWT MAY include addtional claims which, when not understood, MUST
+be ignored by the Verifier.
 
 ## Examples
 
@@ -511,19 +495,19 @@ account when using SD-JWT VCs.
 The Privacy Considerations in Section 10.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
 apply especially to the `cnf` claim.
 
-## Digital Credential Type Identifier
+## Verifiable Credential Type Identifier
 
 Issuers and Holders have to be aware that while this specification supports selective
-disclosure of claims of a given SD-JWT VC, the `dct` claim is not selectively disclosable.
+disclosure of claims of a given SD-JWT VC, the `vct` claim is not selectively disclosable.
 In certain situations this could lead to unwanted leakage of additional context information.
 
-In general, Issuers are advised to choose `dct` values following data minimization principles.
+In general, Issuers are advised to choose `vct` values following data minimization principles.
 For example, government Issuers issuing an SD-JWT VC to their citizens to enable them to prove their age,
-might consider using a `dct` value that does not allow third-parties to infer additional personal information
+might consider using a `vct` value that does not allow third-parties to infer additional personal information
 about the Holder, e.g., country of residency or citizenship.
 
 Additionally, Holders have to be informed that, besides the actual requested claims, the
-`dct` information is shared with the Verifier.
+`vct` information is shared with the Verifier.
 
 ## Issuer Phone-Home
 
@@ -562,8 +546,8 @@ TBD
 
 ## JSON Web Token Claims Registration
 
-- Claim Name: "dct"
-  - Claim Description: Digital credential type identifier
+- Claim Name: "vct"
+  - Claim Description: Verifiable credential type identifier
   - Change Controller: IETF
   - Specification Document(s): (#type-claim) of this document
 
@@ -624,7 +608,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 -01
 
 * Introduce rules for type identifiers (Collision-Resistant Name)
-* Rename `type` to `dct`
+* Rename `type` to `vct`
+* Removed duplicated and inconsistent requirements on KB-JWT
+* Editorial changes
 
 -00
 
