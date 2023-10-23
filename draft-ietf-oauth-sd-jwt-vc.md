@@ -608,6 +608,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -01
 
 * Introduce rules for type identifiers (Collision-Resistant Name)
+* Removed duplicated and inconsistent requirements on KB-JWT
 * Editorial changes
 
 -00
