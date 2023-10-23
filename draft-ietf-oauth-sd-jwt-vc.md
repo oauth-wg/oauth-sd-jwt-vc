@@ -503,7 +503,7 @@ Additional considerations can be found in [@OWASP_SSRF].
 ## Ecosystem-specific Public Key Verification Methods
 
 When defining ecosystem-specific rules for the verification of the public key,
-as outlined in (#verifying-public-key-for-issuer-signed-jwts), it is critical
+as outlined in (#public-key-for-issuer-signed-jwts-verification), it is critical
 that those rules maintain the integrity of the relationship between the `iss` value
 within the Issuer-signed JWT and the public keys of the Issuer.
 
