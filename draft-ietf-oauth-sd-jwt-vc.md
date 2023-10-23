@@ -327,7 +327,7 @@ DID URL of the DID in the `iss` value, identifying the public key.
 - X.509 Certificates: The recipient MUST obtain the public key from the leaf X.509 certificate
 defined by the `x5c`, `x5c`, or `x5t` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain in the following cases:
-    - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501]. The DNS name MUST matche a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
+    - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501]. The DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
     - If the `iss` value contains a URN using the URN URI scheme [@RFC2141]. The URN MUST match a `unifiedResourceName` SAN entry of the leaf certificate.
 
 Additional rules for verifying the public key belongs to the Issuer MAY be used but are
