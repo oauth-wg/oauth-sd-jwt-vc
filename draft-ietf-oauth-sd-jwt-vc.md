@@ -325,7 +325,7 @@ DID URL of the DID in the `iss` value, identifying the public key.
 - X.509 Certificates: Obtain the public key from the leaf X.509 certificate defined by the
 `x5c`, `x5c`, or `x5t` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain. In this case, additionally the `iss` value of the Issuer-signed JWT MUST be
-    - a DNS name that matches a `dNSName` Subject Alternative Name (SAN) [RFC5280] entry of
+    - a DNS name that matches a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of
 the leaf certificate,
     - or a URN that matches a `unifiedResourceName` SAN entry of the leaf certificate.
 
