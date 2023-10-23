@@ -298,9 +298,8 @@ If Key Binding is required (refer to the security considerations in Section 9.6 
 according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
-Furthermore, the recipient of the SD-JWT VC MUST obtain the public key used for
-verification of the Issuer-signed JWT and verify the public key belongs to the
-Issuer of the Issuer-signed JWT, as defined in (#public-key-discovery-for-issuer-signed-jwts).
+Furthermore, the recipient of the SD-JWT VC MUST obtain the public verification key
+of the Issuer-signed JWT as defined (#public-key-discovery-for-issuer-signed-jwts).
 
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
@@ -314,7 +313,10 @@ Any claims used that are not understood MUST be ignored.
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
 
-## Public Key Discovery for Issuer-signed JWTs {#public-key-discovery-for-issuer-signed-jwts}
+## Obtaining Public Key for Issuer-signed JWTs {#public-key-discovery-for-issuer-signed-jwts}
+
+A recipient of an SD-JWT VC MUST ensure that the public verification of the Issuer-signed JWT
+belongs to the Issuer of the Issuer-signed JWT.
 
 A recipient of an SD-JWT VC MUST apply the following rules to obtain the public
 verification key for the Issuer-signed JWT:
