@@ -235,7 +235,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It SHOULD contain a JWK as defined in Section 3.2 of [@!RFC7800].  For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
+    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
 * `type`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
@@ -624,6 +624,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -01
 
 * Introduce rules for type identifiers (Collision-Resistant Name)
+* Editorial changes
 
 -00
 
