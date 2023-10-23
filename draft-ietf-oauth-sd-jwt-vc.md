@@ -326,8 +326,8 @@ DID URL of the DID in the `iss` value, identifying the public key.
 `x5c`, `x5c`, or `x5t` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain. In this case, additionally the `iss` value of the Issuer-signed JWT MUST be
     - a DNS name that matches a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of
-the leaf certificate,
-    - or a URN that matches a `unifiedResourceName` SAN entry of the leaf certificate.
+the leaf certificate, or
+    - a URN that matches a `unifiedResourceName` SAN entry of the leaf certificate.
 
 Other methods for verifying the public key belongs to the Issuer MAY be used but are
 out of scope of this specification.
