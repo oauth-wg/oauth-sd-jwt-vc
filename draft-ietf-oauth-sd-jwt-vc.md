@@ -291,11 +291,11 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
 The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
-SD-JWT VC as described in Section 6 of
+SD-JWT VC as described in Section 8 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-If Key Binding is required (refer to the security considerations in Section 9.6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
-according to Section 6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
+If Key Binding is required (refer to the security considerations in Section 11.6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
+according to Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST obtain the public verification key
@@ -450,7 +450,7 @@ of SD-JWT VCs.
 ## Key Binding JWT
 
 If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
-JWT MUST adhere to the rules defined in Section 5.10 of
+JWT MUST adhere to the rules defined in Section 5.3 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The Key Binding JWT MAY include addtional claims which, when not understood, MUST
@@ -520,7 +520,7 @@ account when using SD-JWT VCs.
 
 ## Unlinkability
 
-The Privacy Considerations in Section 10.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+The Privacy Considerations in Section 12.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
 apply especially to the `cnf` claim.
 
 ## Verifiable Credential Type Identifier
