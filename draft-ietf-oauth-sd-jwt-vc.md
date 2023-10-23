@@ -432,28 +432,12 @@ of SD-JWT VCs.
 
 ## Key Binding JWT
 
-If the presentation of the SD-JWT VC includes a Key Binding JWT, the
-following claims are used within the Key Binding JWT:
+If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
+JWT MUST adhere to the rules defined in Section 5.10 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-* `nonce`
-    * REQUIRED. String value used to associate a transaction between a Verifier
-an a Holder, and to mitigate replay attacks. The value is passed
-through unmodified from the Verifier to the Key Binding JWT. Sufficient
-entropy MUST be present in the `nonce` values used to prevent attackers from
-guessing values.
-* `aud`
-    * REQUIRED. The intended recipient of the Key Binding JWT which is
-typically the Verifier. See [@!RFC7519] for more information.
-* `iat`
-    * REQUIRED. The time of issuance of the Key Binding JWT. See
-[@!RFC7519] for more information.
-* `exp`
-    * OPTIONAL. The expiration time of the signature when
-the Key Binding is no longer considered valid. See [@!RFC7519]
-for more information.
-
-The Key Binding JWT MAY include addtional claims which when not understood
-MUST be ignored.
+The Key Binding JWT MAY include addtional claims which, when not understood, MUST
+be ignored by the Verifier.
 
 ## Examples
 
