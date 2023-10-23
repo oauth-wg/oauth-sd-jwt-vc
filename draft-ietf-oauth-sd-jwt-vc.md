@@ -506,9 +506,10 @@ as outlined in (#public-key-for-issuer-signed-jwts-verification), it is critical
 that those rules maintain the integrity of the relationship between the `iss` value
 within the Issuer-signed JWT and the public keys of the Issuer.
 
-In situations where an attacker tampers with an SD-JWT VC, it is paramount
-to ensure that they cannot exert influence over the verification process while
-employing the same `iss` value.
+It MUST be ensured that for any given `iss` value, an attacker cannot influence
+the type of verification process used. Otherwise, an attacker could attempt to make
+the Verifier use a verification process not intended by the Issuer, allowing the
+attacker to potentially manipulate the verification result to their advantage.
 
 # Privacy Considerations {#privacy-considerations}
 
