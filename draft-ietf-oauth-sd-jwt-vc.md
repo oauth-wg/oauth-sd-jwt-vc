@@ -320,7 +320,7 @@ verification key for the Issuer-signed JWT:
 
 - JWT Issuer Metadata: If the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
-- DID Document Resolution: If the `iss` value contains a DID, the recipient MUST retrieve
+- DID Document Resolution: If the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve
 the public key from the DID Document resolved from the DID in the `iss` value.
 In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute
 DID URL of the DID in the `iss` value, identifying the public key.
@@ -567,6 +567,43 @@ TBD
     <author fullname="OWASP"></author>
     <title>Server Side Request Forgery Prevention Cheat Sheet</title>
   </front>
+</reference>
+
+<reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
+    <front>
+        <author initials="M." surname="Sporny" fullname="Manu Sporny">
+            <organization>
+                <organizationName>Digital Bazaar</organizationName>
+            </organization>
+        </author>
+        <author initials="D." surname="Longley" fullname="Dave Longley">
+            <organization>
+                <organizationName>Digital Bazaar</organizationName>
+            </organization>
+        </author>
+        <author initials="M." surname="Sabadello" fullname="Markus Sabadello">
+            <organization>
+                <organizationName>Danube Tech</organizationName>
+            </organization>
+        </author>
+        <author initials="D." surname="Reed" fullname="Drummond Reed">
+            <organization>
+                <organizationName>Evernym/Avast</organizationName>
+            </organization>
+        </author>
+        <author initials="O." surname="Steele" fullname="Orie Steele">
+            <organization>
+                <organizationName>Transmute</organizationName>
+            </organization>
+        </author>
+        <author initials="C." surname="Allen" fullname="Christopher Allen">
+            <organization>
+                <organizationName>Blockchain Commons</organizationName>
+            </organization>
+        </author>
+        <title>Decentralized Identifiers (DIDs) v1.0</title>
+        <date day="19" month="July" year="2022"/>
+    </front>
 </reference>
 {backmatter}
 
