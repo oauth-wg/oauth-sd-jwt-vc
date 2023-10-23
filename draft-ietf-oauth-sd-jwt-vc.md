@@ -318,7 +318,7 @@ specification.
 
 A recipient of the SD-JWT VC MUST apply the following rules to verify the
 Issuer-signed JWT corresponds to the Issuer:
-- JWT Issuer Metadata: If the `iss` value contains a HTTPS URI, the recipient MUST
+- JWT Issuer Metadata: If the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
 - DID Document Resolution: If the `iss` value contains a DID, the recipient MUST retrieve
 the public key from the DID Document resolved from the DID in the `iss` value.
