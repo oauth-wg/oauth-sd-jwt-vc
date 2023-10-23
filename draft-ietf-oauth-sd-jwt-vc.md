@@ -330,8 +330,7 @@ certificate chain in the following cases:
     - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501]. In this case, the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
     - If the `iss` value contains a URN using the URN URI scheme [@RFC2141]. In this case, the URN MUST match a `unifiedResourceName` SAN entry of the leaf certificate.
 
-Additional rules for verifying the public key belongs to the Issuer MAY be used but are
-out of scope of this specification.
+Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
 # JWT Issuer Metadata {#jwt-issuer-metadata}
 
