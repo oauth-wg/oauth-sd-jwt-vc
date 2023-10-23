@@ -540,6 +540,13 @@ TBD
     <title>Server Side Request Forgery Prevention Cheat Sheet</title>
   </front>
 </reference>
+
+<reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
+    <front>
+        <author fullname="W3C"></author>
+        <title>Decentralized Identifiers (DIDs) v1.0</title>
+        <date day="19" month="July" year="2022"/>
+    </front>
 {backmatter}
 
 # IANA Considerations
