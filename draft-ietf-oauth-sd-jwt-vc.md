@@ -330,7 +330,7 @@ the leaf certificate,
     - or a URN that matches a `unifiedResourceName` SAN entry of the leaf certificate.
 
 Other methods for verifying the public key belongs to the Issuer MAY be used but are
-out-of-scope of this specification.
+out of scope of this specification.
 
 # JWT Issuer Metadata {#jwt-issuer-metadata}
 
