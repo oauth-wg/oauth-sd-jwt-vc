@@ -575,6 +575,7 @@ TBD
         <title>Decentralized Identifiers (DIDs) v1.0</title>
         <date day="19" month="July" year="2022"/>
     </front>
+</reference>
 {backmatter}
 
 # IANA Considerations
