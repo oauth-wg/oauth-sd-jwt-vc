@@ -498,7 +498,7 @@ valid JWT Issuer Metadata configuration document before processing it.
 
 Additional considerations can be found in [@OWASP_SSRF].
 
-## Ecosystem-specific Public Key Verification Methods
+## Ecosystem-specific Public Key Verification Methods {#ecosystem-verification-rules}
 
 When defining ecosystem-specific rules for the verification of the public key,
 as outlined in (#public-key-for-issuer-signed-jwts-verification), it is critical
