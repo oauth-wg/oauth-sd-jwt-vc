@@ -315,9 +315,6 @@ specification.
 
 ## Obtaining Public Key for Issuer-signed JWTs {#public-key-discovery-for-issuer-signed-jwts}
 
-A recipient of an SD-JWT VC MUST ensure that the public verification of the Issuer-signed JWT
-belongs to the Issuer of the Issuer-signed JWT.
-
 A recipient of an SD-JWT VC MUST apply the following rules to obtain the public
 verification key for the Issuer-signed JWT:
 - JWT Issuer Metadata: If the `iss` value contains an HTTPS URI, the recipient MUST
