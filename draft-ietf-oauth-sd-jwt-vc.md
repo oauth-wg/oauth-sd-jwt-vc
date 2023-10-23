@@ -188,29 +188,29 @@ SD-JWT VCs.
 
 #### New JWT Claims
 
-##### `type` claim {#type-claim}
+##### Verifiable Credential Type - `vct` Claim {#type-claim}
 
-This specification defines the JWT claim `type`. The `type` value MUST be a
+This specification defines the JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
 case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
-for the type of the SD-JWT VC. The `type` value MUST be a Collision-Resistant
+for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
 
 A type is associated with rules defining which claims may or must appear in the
 Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
-selectively disclosable. This specification does not define any `type` values; instead
+selectively disclosable. This specification does not define any `vct` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
 validating credentials beyond what is defined in this specification).
 
-The following is a non-normative example of how `type` is used to express
+The following is a non-normative example of how `vct` is used to express
 a type:
 
 ```
 {
-  "type": "https://credentials.example.com/identity_credential"
+  "vct": "https://credentials.example.com/identity_credential"
 }
 ```
-For example, a type `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
+For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
 
 #### Registered JWT Claims
 
@@ -236,7 +236,7 @@ Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
     * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
-* `type`
+* `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `status`
@@ -495,21 +495,21 @@ account when using SD-JWT VCs.
 The Privacy Considerations in Section 10.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
 apply especially to the `cnf` claim.
 
-## Type Identifier
+## Verifiable Credential Type Identifier
 
 Issuers and Holders have to be aware that while this specification supports selective
-disclosure of claims of a given SD-JWT VC, the `type` claim is not selectively disclosable.
+disclosure of claims of a given SD-JWT VC, the `vct` claim is not selectively disclosable.
 In certain situations this could lead to unwanted leakage of additional context information.
 
-In general, Issuers are advised to choose `type` values following data minimization principles.
+In general, Issuers are advised to choose `vct` values following data minimization principles.
 For example, government Issuers issuing an SD-JWT VC to their citizens to enable them to prove their age,
-might consider using a `type` value that does not allow third-parties to infer additional personal information
+might consider using a `vct` value that does not allow third-parties to infer additional personal information
 about the Holder, e.g., country of residency or citizenship.
 
 Additionally, Holders have to be informed that, besides the actual requested claims, the
-`type` information is shared with the Verifier.
+`vct` information is shared with the Verifier.
 
-## Issuer Phone Home
+## Issuer Phone-Home
 
 A malicious Issuer can choose the Issuer identifier of the SD-JWT VC to enable tracking
 the usage behavior of the Holder if the Issuer identifier is Holder-specific and if the
@@ -546,9 +546,9 @@ TBD
 
 ## JSON Web Token Claims Registration
 
-- Claim Name: "type"
-  - Claim Description: Credential Type
-  - Change Controller: IESG
+- Claim Name: "vct"
+  - Claim Description: Verifiable credential type identifier
+  - Change Controller: IETF
   - Specification Document(s): (#type-claim) of this document
 
 ## Media Types Registry
@@ -608,6 +608,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -01
 
 * Introduce rules for type identifiers (Collision-Resistant Name)
+* Rename `type` to `vct`
 * Removed duplicated and inconsistent requirements on KB-JWT
 * Editorial changes
 
