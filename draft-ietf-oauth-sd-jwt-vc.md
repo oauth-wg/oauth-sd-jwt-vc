@@ -677,7 +677,6 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -02
-
 * Made specific rules for public verification key validation conditional
 * Finetuned rules for obtaining public verification key
 * Editorial changes
