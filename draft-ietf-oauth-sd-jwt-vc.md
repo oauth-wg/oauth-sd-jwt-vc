@@ -332,7 +332,7 @@ obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metad
 corresponding to the `x5c` JWT header parameter of the Issuer-signed JWT if the `x5c` JWT Header is present.
 In this case, the recipient MUST validate the X.509 certificate chain and validate the `iss` value as follows:
     - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501], the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
-    - In all other cases, the `iss` value MUST match a `uniformResourceIdentifier` SAN entry of the leaf certificate.
+    - In all other cases, the `iss` value MUST match a `unifiedResourceIdentifier` SAN entry of the leaf certificate.
 - DID Document Resolution: If the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve
 the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 
