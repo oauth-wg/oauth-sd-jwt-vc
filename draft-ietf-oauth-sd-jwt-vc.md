@@ -28,6 +28,14 @@ organization="Authlete Inc. "
     [author.address]
     email = "mail@danielfett.de"
 
+[[author]]
+initials="B."
+surname="Campbell"
+fullname="Brian Campbell"
+organization="Ping Identity"
+    [author.address]
+    email = "bcampbell@pingidentity.com"
+
 %%%
 
 .# Abstract
