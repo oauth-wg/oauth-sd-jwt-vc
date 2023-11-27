@@ -552,7 +552,7 @@ resolution of the key material to verify the Issuer-signed JWT requires the Veri
 to phone home to the Issuer.
 
 For example, a malicious Issuer could generate a unique value for the Issuer identifier
-per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT Issuer Metadata.
+per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT VC Issuer Metadata.
 The Verifier would create a HTTPS GET request to the Holder-specific well-known URI
 when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
 and how often the SD-JWT VC was used.
@@ -678,9 +678,11 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -02
+
 * Made specific rules for public verification key validation conditional
 * Finetuned rules for obtaining public verification key
 * Editorial changes
+* Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
 
 -01
 
