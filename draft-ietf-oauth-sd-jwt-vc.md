@@ -466,7 +466,7 @@ configuration including `jwks_uri`:
 ```
 {
    "issuer":"https://example.com",
-   "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
+   "jwks_uri":"https://jwt-vc-issuer.example.org/my_public_keys.jwks"
 }
 ```
 
