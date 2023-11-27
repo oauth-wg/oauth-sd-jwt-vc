@@ -487,12 +487,12 @@ account when using SD-JWT VCs:
 
 ## Server-Side Request Forgery
 
-The JWT Issuer Metadata configuration is retrieved from the JWT Issuer by the
+The JWT VC Issuer Metadata configuration is retrieved from the JWT VC Issuer by the
 Holder or Verifier. Similar to other metadata endpoints, the URL for the
 retrieval MUST be considered an untrusted value and could be a vector for
 Server-Side Request Forgery (SSRF) attacks.
 
-Before making a request to the JWT Issuer Metadata endpoint, the Holder or
+Before making a request to the JWT VC Issuer Metadata endpoint, the Holder or
 Verifier MUST validate the URL to ensure that it is a valid HTTPS URL and that
 it does not point to internal resources. This requires, in particular, ensuring
 that the host part of the URL does not address an internal service (by IP
@@ -502,7 +502,7 @@ resolved DNS name does not point to an internal IPv4 or IPv6 address.
 When retrieving the metadata, the Holder or Verifier MUST ensure that the
 request is made in a time-bound and size-bound manner to prevent denial of
 service attacks. The Holder or Verifier MUST also ensure that the response is a
-valid JWT Issuer Metadata configuration document before processing it.
+valid JWT VC Issuer Metadata configuration document before processing it.
 
 Additional considerations can be found in [@OWASP_SSRF].
 
