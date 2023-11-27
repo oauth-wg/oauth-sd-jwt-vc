@@ -323,12 +323,12 @@ specification.
 
 ## Obtaining Public Key for Issuer-signed JWTs {#public-key-discovery-for-issuer-signed-jwts}
 
-A recipient of an SD-JWT VC MUST apply the following rules to obtain the public
-verification key for the Issuer-signed JWT:
+A recipient of an SD-JWT VC MAY use the following rules to validate that the public
+verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
 - JWT Issuer Metadata: If the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
-- DID Document Resolution: If the `iss` value contains a DID [@W3C.DID], the recipient SHOULD retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key. Support for DID Document Resolution is OPTIONAL.
+- DID Document Resolution: If the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 - X.509 Certificates: The recipient MUST obtain the public key from the leaf X.509 certificate
 defined by the `x5c`, `x5c`, or `x5t` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain in the following cases:
@@ -336,6 +336,9 @@ certificate chain in the following cases:
     - If the `iss` value contains a URN using the URN URI scheme [@RFC2141]. In this case, the URN MUST match a `unifiedResourceName` SAN entry of the leaf certificate.
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
+
+If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT,
+the SD-JWT VC MUST be rejected.
 
 # JWT Issuer Metadata {#jwt-issuer-metadata}
 
