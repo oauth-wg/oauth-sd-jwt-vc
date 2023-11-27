@@ -323,7 +323,7 @@ specification.
 
 ## Obtaining Public Key for Issuer-signed JWTs {#public-key-discovery-for-issuer-signed-jwts}
 
-A recipient of an SD-JWT VC MUST use the following rules to validate that the public
+A recipient of an SD-JWT VC MUST apply the following rules to validate that the public
 verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
 - JWT Issuer Metadata: If a recipient supports JWT Issuer Metadta and if the `iss` value contains an HTTPS URI, the recipient MUST
