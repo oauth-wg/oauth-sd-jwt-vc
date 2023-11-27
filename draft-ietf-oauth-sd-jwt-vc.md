@@ -339,6 +339,35 @@ Separate specifications or ecosystem regulations MAY define rules complementing 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT,
 the SD-JWT VC MUST be rejected.
 
+# Presenting Verifiable Credentials
+
+This section defines encoding, validation and processing rules for presentations
+of SD-JWT VCs.
+
+## Key Binding JWT
+
+If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
+JWT MUST adhere to the rules defined in Section 5.3 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt].
+
+The Key Binding JWT MAY include addtional claims which, when not understood, MUST
+be ignored by the Verifier.
+
+## Examples
+
+The following is a non-normative example of a presentation of the SD-JWT shown
+above including a Key Binding JWT:
+
+<{{examples/01/sd_jwt_presentation.txt}}
+
+In this presentation, the Holder provides only the Disclosure for the claim
+`address`. Other claims are not disclosed to the Verifier.
+
+The following example shows a presentation of a (different) SD-JWT without a
+Key Binding JWT:
+
+<{{examples/02/sd_jwt_presentation.txt}}
+
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
 This specification defines the JWT VC Issuer Metadata to retrieve the JWT VC
@@ -448,35 +477,6 @@ Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
 The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
 these values are not identical, the data contained in the response MUST NOT be
 used.
-
-# Presenting Verifiable Credentials
-
-This section defines encoding, validation and processing rules for presentations
-of SD-JWT VCs.
-
-## Key Binding JWT
-
-If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
-JWT MUST adhere to the rules defined in Section 5.3 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-The Key Binding JWT MAY include addtional claims which, when not understood, MUST
-be ignored by the Verifier.
-
-## Examples
-
-The following is a non-normative example of a presentation of the SD-JWT shown
-above including a Key Binding JWT:
-
-<{{examples/01/sd_jwt_presentation.txt}}
-
-In this presentation, the Holder provides only the Disclosure for the claim
-`address`. Other claims are not disclosed to the Verifier.
-
-The following example shows a presentation of a (different) SD-JWT without a
-Key Binding JWT:
-
-<{{examples/02/sd_jwt_presentation.txt}}
 
 # Security Considerations {#security-considerations}
 
