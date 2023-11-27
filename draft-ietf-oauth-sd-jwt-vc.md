@@ -327,7 +327,7 @@ A recipient of an SD-JWT VC MUST apply the following rules to validate that the 
 verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
 - JWT Issuer Metadata: If a recipient supports JWT Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
-obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
+obtain the public key using JWT Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 - X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the `x5c` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain in the following cases:
     - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501], the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
@@ -339,30 +339,30 @@ Separate specifications or ecosystem regulations MAY define rules complementing 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT,
 the SD-JWT VC MUST be rejected.
 
-# JWT Issuer Metadata {#jwt-issuer-metadata}
+# JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
-This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer
-Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is
-identified by the `iss` claim in the JWT. Use of the JWT Issuer Metadata
+This specification defines the JWT VC Issuer Metadata to retrieve the JWT VC
+Issuer Metadata configuration of the Issuer of the SD-JWT VC. The Issuer
+is identified by the `iss` claim in the JWT. Use of the JWT VC Issuer Metadata
 is OPTIONAL.
 
-JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer Metadata
+Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer Metadata
 configuration available at the path formed by concatenating the string
-`/.well-known/jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST
+`/.well-known/jwt-vc-issuer` to the `iss` claim value in the JWT. The `iss` MUST
 be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
 
-## JWT Issuer Metadata Request
+## JWT VC Issuer Metadata Request
 
-A JWT Issuer Metadata configuration MUST be queried using an HTTP `GET` request
-at the path defined in (#jwt-issuer-metadata).
+A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
+at the path defined in (#jwt-vc-issuer-metadata).
 
-The following is a non-normative example of a HTTP request for the JWT Issuer
+The following is a non-normative example of a HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
 ```
-GET /.well-known/jwt-issuer HTTP/1.1
+GET /.well-known/jwt-vc-issuer HTTP/1.1
 Host: example.com
 ```
 
@@ -370,44 +370,44 @@ If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-The following is a non-normative example of a HTTP request for the JWT Issuer
+The following is a non-normative example of a HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/user/1234`:
 
 ```
-GET /.well-known/jwt-issuer/user/1234 HTTP/1.1
+GET /.well-known/jwt-vc-issuer/user/1234 HTTP/1.1
 Host: example.com
 ```
 
-## JWT Issuer Metadata Response
+## JWT VC Issuer Metadata Response
 
-A successful response MUST use the `200 OK HTTP` and return the JWT Issuer
+A successful response MUST use the `200 OK HTTP` and return the JWT VC Issuer
 Metadata configuration using the `application/json` content type.
 
 An error response uses the applicable HTTP status code value.
 
-This specification defines the following JWT Issuer Metadata configuration
+This specification defines the following JWT VC Issuer Metadata configuration
 parameters:
 
 * `issuer`
-      REQUIRED. The JWT Issuer identifier, which MUST be identical to the `iss`
+      REQUIRED. The Issuer identifier, which MUST be identical to the `iss`
 value in the JWT.
 * `jwks_uri`
-    * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set
-[@RFC7517] document which contains the JWT Issuer's public keys. The value of
+    * OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
+[@RFC7517] document which contains the Issuer's public keys. The value of
 this field MUST point to a valid JWK Set document.
 * `jwks`
-    * OPTIONAL. JWT Issuer's JSON Web Key Set [@RFC7517] document value, which
-contains the JWT Issuer's public keys. The value of this field MUST be a JSON
+    * OPTIONAL. Issuer's JSON Web Key Set [@RFC7517] document value, which
+contains the Issuer's public keys. The value of this field MUST be a JSON
 object containing a valid JWK Set.
 
-JWT Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT
+JWT VC Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT VC
 Issuer Metadata, but not both.
 
 It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
 be used to lookup the public key in the JWK Set included by value or referenced
-in the JWT Issuer Metadata.
+in the JWT VC Issuer Metadata.
 
-The following is a non-normative example of a JWT Issuer Metadata configuration
+The following is a non-normative example of a JWT VC Issuer Metadata configuration
 including `jwks`:
 
 ```
@@ -431,7 +431,7 @@ including `jwks`:
 }
 ```
 
-The following is a non-normative example of a JWT Issuer Metadata
+The following is a non-normative example of a JWT VC Issuer Metadata
 configuration including `jwks_uri`:
 
 ```
@@ -441,9 +441,9 @@ configuration including `jwks_uri`:
 }
 ```
 
-Additional JWT Issuer Metadata configuration parameters MAY also be used.
+Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
 
-## JWT Issuer Metadata Validation
+## JWT VC Issuer Metadata Validation
 
 The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
 these values are not identical, the data contained in the response MUST NOT be
