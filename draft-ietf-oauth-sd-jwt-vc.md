@@ -675,6 +675,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-02
+* Made DID Document Resolution optional
+
 -01
 
 * Introduce rules for type identifiers (Collision-Resistant Name)
