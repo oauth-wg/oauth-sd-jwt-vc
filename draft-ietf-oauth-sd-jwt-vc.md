@@ -326,7 +326,7 @@ specification.
 A recipient of an SD-JWT VC MUST apply the following rules to validate that the public
 verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
-- JWT Issuer Metadata: If a recipient supports JWT Issuer Metadta and if the `iss` value contains an HTTPS URI, the recipient MUST
+- JWT Issuer Metadata: If a recipient supports JWT Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
 - DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 - X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the `x5c`, `x5c`, or `x5t` JWT header parameters of the Issuer-signed JWT and validate the X.509
