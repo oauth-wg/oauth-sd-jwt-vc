@@ -326,8 +326,8 @@ specification.
 A recipient of an SD-JWT VC MUST apply the following rules to validate that the public
 verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
-- JWT Issuer Metadata: If a recipient supports JWT Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
-obtain the public key using JWT Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
+- JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
+obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 - X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the `x5c` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain in the following cases:
     - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501], the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
