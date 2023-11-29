@@ -326,8 +326,8 @@ specification.
 A recipient of an SD-JWT VC MUST apply the following rules to validate that the public
 verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
-- JWT Issuer Metadata: If a recipient supports JWT Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
-obtain the public key using JWT Issuer Metadata as defined in (#jwt-issuer-metadata).
+- JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
+obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 - X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the `x5c` JWT header parameters of the Issuer-signed JWT and validate the X.509
 certificate chain in the following cases:
     - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501], the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
@@ -338,116 +338,6 @@ Separate specifications or ecosystem regulations MAY define rules complementing 
 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT,
 the SD-JWT VC MUST be rejected.
-
-# JWT Issuer Metadata {#jwt-issuer-metadata}
-
-This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer
-Metadata configuration of the JWT Issuer of the JWT. The JWT Issuer is
-identified by the `iss` claim in the JWT. Use of the JWT Issuer Metadata
-is OPTIONAL.
-
-JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer Metadata
-configuration available at the path formed by concatenating the string
-`/.well-known/jwt-issuer` to the `iss` claim value in the JWT. The `iss` MUST
-be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
-optionally, port number and path components, but no query or fragment
-components.
-
-## JWT Issuer Metadata Request
-
-A JWT Issuer Metadata configuration MUST be queried using an HTTP `GET` request
-at the path defined in (#jwt-issuer-metadata).
-
-The following is a non-normative example of a HTTP request for the JWT Issuer
-Metadata configuration when `iss` is set to `https://example.com`:
-
-```
-GET /.well-known/jwt-issuer HTTP/1.1
-Host: example.com
-```
-
-If the `iss` value contains a path component, any terminating `/` MUST be
-removed before inserting `/.well-known/` and the well-known URI suffix
-between the host component and the path component.
-
-The following is a non-normative example of a HTTP request for the JWT Issuer
-Metadata configuration when `iss` is set to `https://example.com/user/1234`:
-
-```
-GET /.well-known/jwt-issuer/user/1234 HTTP/1.1
-Host: example.com
-```
-
-## JWT Issuer Metadata Response
-
-A successful response MUST use the `200 OK HTTP` and return the JWT Issuer
-Metadata configuration using the `application/json` content type.
-
-An error response uses the applicable HTTP status code value.
-
-This specification defines the following JWT Issuer Metadata configuration
-parameters:
-
-* `issuer`
-      REQUIRED. The JWT Issuer identifier, which MUST be identical to the `iss`
-value in the JWT.
-* `jwks_uri`
-    * OPTIONAL. URL string referencing the JWT Issuer's JSON Web Key (JWK) Set
-[@RFC7517] document which contains the JWT Issuer's public keys. The value of
-this field MUST point to a valid JWK Set document.
-* `jwks`
-    * OPTIONAL. JWT Issuer's JSON Web Key Set [@RFC7517] document value, which
-contains the JWT Issuer's public keys. The value of this field MUST be a JSON
-object containing a valid JWK Set.
-
-JWT Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT
-Issuer Metadata, but not both.
-
-It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
-be used to lookup the public key in the JWK Set included by value or referenced
-in the JWT Issuer Metadata.
-
-The following is a non-normative example of a JWT Issuer Metadata configuration
-including `jwks`:
-
-```
-{
-   "issuer":"https://example.com",
-   "jwks":{
-      "keys":[
-         {
-            "kid":"doc-signer-05-25-2022",
-            "e":"AQAB",
-            "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
-   HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
-   lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
-   RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
-   2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
-   qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
-            "kty":"RSA"
-         }
-      ]
-   }
-}
-```
-
-The following is a non-normative example of a JWT Issuer Metadata
-configuration including `jwks_uri`:
-
-```
-{
-   "issuer":"https://example.com",
-   "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
-}
-```
-
-Additional JWT Issuer Metadata configuration parameters MAY also be used.
-
-## JWT Issuer Metadata Validation
-
-The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
-these values are not identical, the data contained in the response MUST NOT be
-used.
 
 # Presenting Verifiable Credentials
 
@@ -478,6 +368,116 @@ Key Binding JWT:
 
 <{{examples/02/sd_jwt_presentation.txt}}
 
+# JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
+
+This specification defines the JWT VC Issuer Metadata to retrieve the JWT VC
+Issuer Metadata configuration of the Issuer of the SD-JWT VC. The Issuer
+is identified by the `iss` claim in the JWT. Use of the JWT VC Issuer Metadata
+is OPTIONAL.
+
+Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer Metadata
+configuration available at the path formed by concatenating the string
+`/.well-known/jwt-vc-issuer` to the `iss` claim value in the JWT. The `iss` MUST
+be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
+optionally, port number and path components, but no query or fragment
+components.
+
+## JWT VC Issuer Metadata Request
+
+A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
+at the path defined in (#jwt-vc-issuer-metadata).
+
+The following is a non-normative example of a HTTP request for the JWT VC Issuer
+Metadata configuration when `iss` is set to `https://example.com`:
+
+```
+GET /.well-known/jwt-vc-issuer HTTP/1.1
+Host: example.com
+```
+
+If the `iss` value contains a path component, any terminating `/` MUST be
+removed before inserting `/.well-known/` and the well-known URI suffix
+between the host component and the path component.
+
+The following is a non-normative example of a HTTP request for the JWT VC Issuer
+Metadata configuration when `iss` is set to `https://example.com/user/1234`:
+
+```
+GET /.well-known/jwt-vc-issuer/user/1234 HTTP/1.1
+Host: example.com
+```
+
+## JWT VC Issuer Metadata Response
+
+A successful response MUST use the `200 OK HTTP` and return the JWT VC Issuer
+Metadata configuration using the `application/json` content type.
+
+An error response uses the applicable HTTP status code value.
+
+This specification defines the following JWT VC Issuer Metadata configuration
+parameters:
+
+* `issuer`
+      REQUIRED. The Issuer identifier, which MUST be identical to the `iss`
+value in the JWT.
+* `jwks_uri`
+    * OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
+[@RFC7517] document which contains the Issuer's public keys. The value of
+this field MUST point to a valid JWK Set document.
+* `jwks`
+    * OPTIONAL. Issuer's JSON Web Key Set [@RFC7517] document value, which
+contains the Issuer's public keys. The value of this field MUST be a JSON
+object containing a valid JWK Set.
+
+JWT VC Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT VC
+Issuer Metadata, but not both.
+
+It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
+be used to lookup the public key in the JWK Set included by value or referenced
+in the JWT VC Issuer Metadata.
+
+The following is a non-normative example of a JWT VC Issuer Metadata configuration
+including `jwks`:
+
+```
+{
+   "issuer":"https://example.com",
+   "jwks":{
+      "keys":[
+         {
+            "kid":"doc-signer-05-25-2022",
+            "e":"AQAB",
+            "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
+   HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
+   lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
+   RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
+   2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
+   qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
+            "kty":"RSA"
+         }
+      ]
+   }
+}
+```
+
+The following is a non-normative example of a JWT VC Issuer Metadata
+configuration including `jwks_uri`:
+
+```
+{
+   "issuer":"https://example.com",
+   "jwks_uri":"https://jwt-vc-issuer.example.org/my_public_keys.jwks"
+}
+```
+
+Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
+
+## JWT VC Issuer Metadata Validation
+
+The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
+these values are not identical, the data contained in the response MUST NOT be
+used.
+
 # Security Considerations {#security-considerations}
 
 The Security Considerations in the SD-JWT specification
@@ -487,12 +487,12 @@ account when using SD-JWT VCs:
 
 ## Server-Side Request Forgery
 
-The JWT Issuer Metadata configuration is retrieved from the JWT Issuer by the
+The JWT VC Issuer Metadata configuration is retrieved from the JWT VC Issuer by the
 Holder or Verifier. Similar to other metadata endpoints, the URL for the
 retrieval MUST be considered an untrusted value and could be a vector for
 Server-Side Request Forgery (SSRF) attacks.
 
-Before making a request to the JWT Issuer Metadata endpoint, the Holder or
+Before making a request to the JWT VC Issuer Metadata endpoint, the Holder or
 Verifier MUST validate the URL to ensure that it is a valid HTTPS URL and that
 it does not point to internal resources. This requires, in particular, ensuring
 that the host part of the URL does not address an internal service (by IP
@@ -502,7 +502,7 @@ resolved DNS name does not point to an internal IPv4 or IPv6 address.
 When retrieving the metadata, the Holder or Verifier MUST ensure that the
 request is made in a time-bound and size-bound manner to prevent denial of
 service attacks. The Holder or Verifier MUST also ensure that the response is a
-valid JWT Issuer Metadata configuration document before processing it.
+valid JWT VC Issuer Metadata configuration document before processing it.
 
 Additional considerations can be found in [@OWASP_SSRF].
 
@@ -552,7 +552,7 @@ resolution of the key material to verify the Issuer-signed JWT requires the Veri
 to phone home to the Issuer.
 
 For example, a malicious Issuer could generate a unique value for the Issuer identifier
-per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT Issuer Metadata.
+per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT VC Issuer Metadata.
 The Verifier would create a HTTPS GET request to the Holder-specific well-known URI
 when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
 and how often the SD-JWT VC was used.
@@ -678,9 +678,11 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -02
+
 * Made specific rules for public verification key validation conditional
 * Finetuned rules for obtaining public verification key
 * Editorial changes
+* Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
 
 -01
 
