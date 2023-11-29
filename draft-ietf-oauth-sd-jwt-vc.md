@@ -338,6 +338,9 @@ the public key from the DID Document resolved from the DID in the `iss` value. I
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
+If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT,
+the SD-JWT VC MUST be rejected.
+
 # JWT Issuer Metadata {#jwt-issuer-metadata}
 
 This specification defines the JWT Issuer Metadata to retrieve the JWT Issuer
