@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-12T01:21:34.731407+00:00",
+  "timestamp": "2023-12-14T01:20:09.830991+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3736,10 +3736,12 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [],
+      "labels": [
+        "wg-02"
+      ],
       "body": "moving @tlodderstedt's and my work on adding examples how to represent PID/EAA/mDLs as SD-JWT VC to this repo from the sd-jwt repo.\r\nEAA: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/211\r\nmDL: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/144 and https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/233\r\nPID as a reference point: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/304- ",
       "createdAt": "2023-06-28T17:54:26Z",
-      "updatedAt": "2023-10-24T19:08:07Z",
+      "updatedAt": "2023-12-13T16:47:48Z",
       "closedAt": null,
       "comments": []
     },
@@ -4122,12 +4124,10 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [
-        "wg-02"
-      ],
+      "labels": [],
       "body": "We need to give guidance in the spec on choosing `type` values for a credential format.\r\n\r\nWe need to think about collision resistance - either by a registry or something DNS-based like URIs or java package name notation.\r\n\r\nPersonal opinion: Use URLs, like XML namespaces. It automatically avoids collisions, there is no registry required for potentially large amounts of values, and we can think about extending this in the future with machine-readable information about credential format.",
       "createdAt": "2023-10-04T18:06:38Z",
-      "updatedAt": "2023-10-24T20:13:56Z",
+      "updatedAt": "2023-12-13T16:48:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -4444,14 +4444,21 @@
         "awoie"
       ],
       "labels": [
-        "NEEDS PR",
-        "wg-02"
+        "NEEDS PR"
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2023-11-28T19:47:23Z",
+      "updatedAt": "2023-12-13T16:50:53Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Currently blocked by SD-JWT: \r\n- https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/328\r\n- https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/369",
+          "createdAt": "2023-12-13T16:50:51Z",
+          "updatedAt": "2023-12-13T16:50:51Z"
+        }
+      ]
     },
     {
       "number": 192,
