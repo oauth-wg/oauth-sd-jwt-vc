@@ -16,9 +16,9 @@ status = "standard"
 initials="O."
 surname="Terbu"
 fullname="Oliver Terbu"
-organization="Spruce Systems, Inc."
+organization="MATTR"
     [author.address]
-    email = "oliver.terbu@spruceid.com"
+    email = "oliver.terbu@mattr.global"
 
 [[author]]
 initials="D."
@@ -655,7 +655,7 @@ Interoperability considerations: : n/a
   - Person & email address to contact for further information: TBD
   - Intended usage: COMMON
   - Restrictions on usage: none
-  - Author: Oliver Terbu <oliver.terbu@spruceid.com>
+  - Author: Oliver Terbu <oliver.terbu@mattr.global>
   - Change controller: IETF
 
 # Acknowledgements {#Acknowledgements}
