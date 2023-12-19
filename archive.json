@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-17T01:25:58.623148+00:00",
+  "timestamp": "2023-12-19T01:20:15.157528+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4127,7 +4127,7 @@
       "labels": [],
       "body": "We need to give guidance in the spec on choosing `type` values for a credential format.\r\n\r\nWe need to think about collision resistance - either by a registry or something DNS-based like URIs or java package name notation.\r\n\r\nPersonal opinion: Use URLs, like XML namespaces. It automatically avoids collisions, there is no registry required for potentially large amounts of values, and we can think about extending this in the future with machine-readable information about credential format.",
       "createdAt": "2023-10-04T18:06:38Z",
-      "updatedAt": "2023-12-13T16:48:41Z",
+      "updatedAt": "2023-12-18T18:07:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -4192,6 +4192,13 @@
           "body": "The PR is a relatively small change, and as indicated by my comment above, it is probably not the last word in this regard. I think we need to draw the bigger picture on what we expect from \"credential types\" and then think about how that needs to be reflected in the draft.\r\n\r\nBut, more generally, the IETF process is not designed around anything that happens in this git repository at all; what counts is consensus on the mailing list (both immediate discussions for larger normative changes as well as the working group last call, which can introduce substantial changes as well). Draft versions are a tool to get feedback from the working group including on smaller changes that have not been discussed on the mailing list beforehand. \r\n\r\nThe new draft version that we plan to release in the next days will be announced both on the mailing list as well as during the in-person meeting in Prague shortly after. If we receive feedback indicating that there is no consensus for a certain choice we made, we will respect that and modify the next draft accordingly. In that sense, having the PR merged is just a means to get feedback on a small step towards a solution.",
           "createdAt": "2023-10-19T14:34:20Z",
           "updatedAt": "2023-10-19T14:34:20Z"
+        },
+        {
+          "author": "decentralgabe",
+          "authorAssociation": "NONE",
+          "body": "I am not in favor of a registry. We (Block) are interested in sd-jwt-vc for its simplicity, and would leverage the property to point to JSON Schema documents.",
+          "createdAt": "2023-12-18T18:07:52Z",
+          "updatedAt": "2023-12-18T18:07:52Z"
         }
       ]
     },
@@ -4520,6 +4527,37 @@
       "updatedAt": "2023-12-05T17:10:44Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 196,
+      "id": "I_kwDOJbVClc56A-ol",
+      "title": "Consider making cnf optional",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/196",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Not all VCs require key binding. For those, cnf should be made optional.",
+      "createdAt": "2023-12-18T16:58:02Z",
+      "updatedAt": "2023-12-18T21:33:12Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I've read the text in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-3.2.2.2-3.5.2.1 that says \"REQUIRED when Cryptographic Key Binding is to be supported.\" as `cnf` being optional or not required when key binding isn't needed. Perhaps we need to discuss and/or make things more clear? ",
+          "createdAt": "2023-12-18T20:53:22Z",
+          "updatedAt": "2023-12-18T20:54:02Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Do you think we should also explain the OPTIONAL case or replace the REQUIRED with something else? CONDITIONAL is not a reserved word unfortunately. ",
+          "createdAt": "2023-12-18T21:33:11Z",
+          "updatedAt": "2023-12-18T21:33:11Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -15059,6 +15097,48 @@
           "body": "",
           "createdAt": "2023-11-28T15:01:33Z",
           "updatedAt": "2023-11-28T15:01:33Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 195,
+      "id": "PR_kwDOJbVClc5iRaoO",
+      "title": "feat: changed affiliation",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/195",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2023-12-18T14:42:36Z",
+      "updatedAt": "2023-12-18T17:53:33Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8a735f257e144dafe866e14e231980ae95aad8c7",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/change-affiliation",
+      "headRefOid": "cde372924c9ba3e1b61bae93a533b9bee0315946",
+      "closedAt": "2023-12-18T17:53:32Z",
+      "mergedAt": "2023-12-18T17:53:32Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "cd7004f6aa90c052d371fc65a709f419414afb88"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5qibSJ",
+          "commit": {
+            "abbreviatedOid": "cde3729"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2023-12-18T17:35:47Z",
+          "updatedAt": "2023-12-18T17:35:47Z",
           "comments": []
         }
       ]
