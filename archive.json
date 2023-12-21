@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-19T01:20:15.157528+00:00",
+  "timestamp": "2023-12-21T01:19:34.651760+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4558,6 +4558,38 @@
           "updatedAt": "2023-12-18T21:33:11Z"
         }
       ]
+    },
+    {
+      "number": 197,
+      "id": "I_kwDOJbVClc56EbRL",
+      "title": "out of date termenolgy",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/197",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-3.2.2.2-3.5.2.1 has \"Combined Format for Presentation\", which isn't used in SD-JWT anymore. ",
+      "createdAt": "2023-12-19T06:00:24Z",
+      "updatedAt": "2023-12-19T06:00:52Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 199,
+      "id": "I_kwDOJbVClc56P43q",
+      "title": "Consider making iat optional",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/199",
+      "state": "OPEN",
+      "author": "oed",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Using `iat` is not the only, and not always the desired way to specify when something was issued.\r\n\r\nThe use case I'm considering would make use of an \"after\" field the value of which would be set to a recent block hash (e.g. from a blockchain like Bitcoin or Ethereum). This approach would provide a more rigorous way to determine when something was issued since it would be impossible to create a claim that points to a time in the future.\r\n\r\nIf `iat` is required, it would be completely redundant to the \"after\" field in my example.",
+      "createdAt": "2023-12-20T17:29:03Z",
+      "updatedAt": "2023-12-20T17:29:03Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -15142,6 +15174,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 198,
+      "id": "PR_kwDOJbVClc5iVXQl",
+      "title": "add a .note.xml",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/198",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "see it in action @ https://drafts.oauth.net/oauth-sd-jwt-vc/bc-pi-note-in-xml/draft-ietf-oauth-sd-jwt-vc.html#name-discussion-venues ",
+      "createdAt": "2023-12-19T06:03:55Z",
+      "updatedAt": "2023-12-19T06:07:49Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "cd7004f6aa90c052d371fc65a709f419414afb88",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "bc-pi-note-in-xml",
+      "headRefOid": "bc4d3aa9ecb1f81b48dfacb55224137645a25d3c",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
