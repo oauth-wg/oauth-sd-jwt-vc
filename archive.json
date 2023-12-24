@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2023-12-21T01:19:34.651760+00:00",
+  "timestamp": "2023-12-24T01:24:04.185589+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4588,6 +4588,22 @@
       "body": "Using `iat` is not the only, and not always the desired way to specify when something was issued.\r\n\r\nThe use case I'm considering would make use of an \"after\" field the value of which would be set to a recent block hash (e.g. from a blockchain like Bitcoin or Ethereum). This approach would provide a more rigorous way to determine when something was issued since it would be impossible to create a claim that points to a time in the future.\r\n\r\nIf `iat` is required, it would be completely redundant to the \"after\" field in my example.",
       "createdAt": "2023-12-20T17:29:03Z",
       "updatedAt": "2023-12-20T17:29:03Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 200,
+      "id": "I_kwDOJbVClc56WG7N",
+      "title": "iat should be selectively disclosable",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/200",
+      "state": "OPEN",
+      "author": "peppelinux",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I propose making the iat (issued at) claim name selectively disclosable. This is because for certain types of tokens, credentials, or personal data, the creation or issuance date could potentially reveal sensitive information.\r\n\r\nFor instance, consider a credential verifying that my age is over 18. In most cases, a user would request this credential on their birthday, which would mean that the iat value would coincide with their birth date.",
+      "createdAt": "2023-12-21T15:18:52Z",
+      "updatedAt": "2023-12-21T15:18:52Z",
       "closedAt": null,
       "comments": []
     }
