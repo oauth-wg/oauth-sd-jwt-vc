@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 20 June 2024                                      Authlete Inc.
+Expires: 12 July 2024                                      Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        18 December 2023
+                                                          9 January 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -20,6 +20,17 @@ Abstract
    processing rules to express Verifiable Credentials with JSON payloads
    with and without selective disclosure based on the SD-JWT
    [I-D.ietf-oauth-selective-disclosure-jwt] format.
+
+Discussion Venues
+
+   This note is to be removed before publishing as an RFC.
+
+   Discussion of this document takes place on the Web Authorization
+   Protocol Working Group mailing list (oauth@ietf.org), which is
+   archived at https://mailarchive.ietf.org/arch/browse/oauth/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/oauth-wg/oauth-sd-jwt-vc.
 
 Status of This Memo
 
@@ -36,11 +47,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 June 2024.
+   This Internet-Draft will expire on 12 July 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -501,9 +512,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.epOzc
-   6ShMueGzXBlLwS2yyoKcpVafx_X6VsB--dh2g4T-iurSFX1t7LJ5UZjfnOeLpcLo7a59
-   MgQYhAVBudWMA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6JdM5
+   1J4cYRmvwbdgTVtUw_EYNkAKEtzGdCDBv-1At-NNXRRL1eu37xqIAIJ8zBJ_R378BM9i
+   iLMdD46s3lo9A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -616,15 +627,15 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.epOzc
-   6ShMueGzXBlLwS2yyoKcpVafx_X6VsB--dh2g4T-iurSFX1t7LJ5UZjfnOeLpcLo7a59
-   MgQYhAVBudWMA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6JdM5
+   1J4cYRmvwbdgTVtUw_EYNkAKEtzGdCDBv-1At-NNXRRL1eu37xqIAIJ8zBJ_R378BM9i
+   iLMdD46s3lo9A~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDI5M
-   jIwMzV9.udwTraaPZmS7P6CDrs0u2ad1UaN06CH3LQtaNuuMgDU0z9iPVXedNylKrBbX
-   JL4jG-XZQlh-WE2phXeSu-J0_w
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDQ4M
+   jIyNjR9.04v7BkmslseDzUvJ7RdNa9YEV0PBEvcqSi00nzEYZ0EBiZmz2yMzi_Hm8cDw
+   c1ckCv0FBJxHRTunMA3XDlyzDw
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -644,8 +655,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.44lZ9GcXZgDts-2TmXAD3vPlJKoaCgGhRqRHdayIgmEGG8
-   uKIimxaK29jinfJC0hQgC5l2ua8vdJdnVcmbqkzQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.Q4AOxQLf5hcocrEnk2LupnyLl4JeOZ5UjHPe5Fb68fZ00_
+   dCzonfCYiTIK-zoTItbRxD0bhGlsk8S2TJDwmFHQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
