@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-07T01:32:46.635691+00:00",
+  "timestamp": "2024-01-09T01:21:50.211456+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -15203,7 +15203,7 @@
       "labels": [],
       "body": "see it in action @ https://drafts.oauth.net/oauth-sd-jwt-vc/bc-pi-note-in-xml/draft-ietf-oauth-sd-jwt-vc.html#name-discussion-venues ",
       "createdAt": "2023-12-19T06:03:55Z",
-      "updatedAt": "2023-12-19T06:07:49Z",
+      "updatedAt": "2024-01-08T17:09:15Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "cd7004f6aa90c052d371fc65a709f419414afb88",
@@ -15214,8 +15214,43 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Nice, I didn't know this exists!\r\n\r\nI stumbled across it in another project you might be familiar with https://github.com/oauth-wg/oauth-selective-disclosure-jwt/blob/master/.note.xml :)  Aaron must have added it when he set up the repo. ",
+          "createdAt": "2024-01-08T17:09:14Z",
+          "updatedAt": "2024-01-08T17:09:14Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5r3FUo",
+          "commit": {
+            "abbreviatedOid": "bc4d3aa"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Nice, I didn't know this exists!",
+          "createdAt": "2024-01-08T16:50:37Z",
+          "updatedAt": "2024-01-08T16:50:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5r3Kiw",
+          "commit": {
+            "abbreviatedOid": "bc4d3aa"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-08T17:02:20Z",
+          "updatedAt": "2024-01-08T17:02:20Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
