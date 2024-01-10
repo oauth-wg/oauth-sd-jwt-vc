@@ -127,7 +127,7 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding JWT" defined by
+This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding", and "Key Binding JWT" defined by
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
@@ -243,7 +243,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.
+    * REQUIRED when cryptographic Key Binding is to be supported. Contains the confirmation method as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.
 * `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
@@ -350,7 +350,7 @@ If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
 JWT MUST adhere to the rules defined in Section 5.3 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-The Key Binding JWT MAY include addtional claims which, when not understood, MUST
+The Key Binding JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.
 
 ## Examples
@@ -433,7 +433,7 @@ JWT VC Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT VC
 Issuer Metadata, but not both.
 
 It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
-be used to lookup the public key in the JWK Set included by value or referenced
+be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.
 
 The following is a non-normative example of a JWT VC Issuer Metadata configuration
