@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-09T01:21:50.211456+00:00",
+  "timestamp": "2024-01-11T01:21:55.678442+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4562,18 +4562,35 @@
     {
       "number": 197,
       "id": "I_kwDOJbVClc56EbRL",
-      "title": "out of date termenolgy",
+      "title": "out of date terminology",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/197",
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "bc-pi"
+      ],
       "labels": [],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-3.2.2.2-3.5.2.1 has \"Combined Format for Presentation\", which isn't used in SD-JWT anymore. ",
       "createdAt": "2023-12-19T06:00:24Z",
-      "updatedAt": "2023-12-19T06:00:52Z",
+      "updatedAt": "2024-01-10T22:47:10Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I assigned you @bc-pi since you are one of the SD-JWT editor's.",
+          "createdAt": "2024-01-10T07:19:21Z",
+          "updatedAt": "2024-01-10T07:19:21Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Gotta start somewhere... hopefully I can handle this one. PR #201 has proposed changes. ",
+          "createdAt": "2024-01-10T22:47:09Z",
+          "updatedAt": "2024-01-10T22:47:09Z"
+        }
+      ]
     },
     {
       "number": 199,
@@ -15196,24 +15213,26 @@
       "id": "PR_kwDOJbVClc5iVXQl",
       "title": "add a .note.xml",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/198",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "see it in action @ https://drafts.oauth.net/oauth-sd-jwt-vc/bc-pi-note-in-xml/draft-ietf-oauth-sd-jwt-vc.html#name-discussion-venues ",
       "createdAt": "2023-12-19T06:03:55Z",
-      "updatedAt": "2024-01-08T17:09:15Z",
+      "updatedAt": "2024-01-09T17:43:59Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "cd7004f6aa90c052d371fc65a709f419414afb88",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc-pi-note-in-xml",
       "headRefOid": "bc4d3aa9ecb1f81b48dfacb55224137645a25d3c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-09T17:43:59Z",
+      "mergedAt": "2024-01-09T17:43:58Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8db131b232fb4018ad37d955612ab3af65e948bf"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -15251,6 +15270,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 201,
+      "id": "PR_kwDOJbVClc5jvJgO",
+      "title": "Remove/fix outdated SD-JWT terminology ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/201",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "also fix a typo or two \r\nfor Issue #197",
+      "createdAt": "2024-01-10T22:42:29Z",
+      "updatedAt": "2024-01-10T22:42:30Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8db131b232fb4018ad37d955612ab3af65e948bf",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "bc/fix-197",
+      "headRefOid": "64bd831817d0cefe1ad62935ce3eb62760d99461",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
