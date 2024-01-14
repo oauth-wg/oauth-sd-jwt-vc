@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-11T01:21:55.678442+00:00",
+  "timestamp": "2024-01-14T01:33:04.040927+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -15283,7 +15283,7 @@
       "labels": [],
       "body": "also fix a typo or two \r\nfor Issue #197",
       "createdAt": "2024-01-10T22:42:29Z",
-      "updatedAt": "2024-01-10T22:42:30Z",
+      "updatedAt": "2024-01-11T10:07:54Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8db131b232fb4018ad37d955612ab3af65e948bf",
@@ -15295,7 +15295,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5sMR1V",
+          "commit": {
+            "abbreviatedOid": "64bd831"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-11T10:07:54Z",
+          "updatedAt": "2024-01-11T10:07:54Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
