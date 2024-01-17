@@ -3,10 +3,12 @@
 
 
 Web Authorization Protocol                                      O. Terbu
-Internet-Draft                                      Spruce Systems, Inc.
+Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 25 April 2024                                     Authlete Inc.
-                                                         23 October 2023
+Expires: 20 July 2024                                      Authlete Inc.
+                                                             B. Campbell
+                                                           Ping Identity
+                                                         17 January 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -18,6 +20,17 @@ Abstract
    processing rules to express Verifiable Credentials with JSON payloads
    with and without selective disclosure based on the SD-JWT
    [I-D.ietf-oauth-selective-disclosure-jwt] format.
+
+Discussion Venues
+
+   This note is to be removed before publishing as an RFC.
+
+   Discussion of this document takes place on the Web Authorization
+   Protocol Working Group mailing list (oauth@ietf.org), which is
+   archived at https://mailarchive.ietf.org/arch/browse/oauth/.
+
+   Source for this draft and an issue tracker can be found at
+   https://github.com/oauth-wg/oauth-sd-jwt-vc.
 
 Status of This Memo
 
@@ -34,11 +47,11 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 25 April 2024.
+   This Internet-Draft will expire on 20 July 2024.
 
 Copyright Notice
 
-   Copyright (c) 2023 IETF Trust and the persons identified as the
+   Copyright (c) 2024 IETF Trust and the persons identified as the
    document authors.  All rights reserved.
 
    This document is subject to BCP 78 and the IETF Trust's Legal
@@ -65,22 +78,25 @@ Table of Contents
        3.2.2.  JWT Claims Set
      3.3.  Example
      3.4.  Verification and Processing
-   4.  JWT Issuer Metadata
-     4.1.  JWT Issuer Metadata Request
-     4.2.  JWT Issuer Metadata Response
-     4.3.  JWT Issuer Metadata Validation
-   5.  Presenting Verifiable Credentials
-     5.1.  Key Binding JWT
-     5.2.  Examples
+     3.5.  Issuer-signed JWT Verification Key Validation
+   4.  Presenting Verifiable Credentials
+     4.1.  Key Binding JWT
+     4.2.  Examples
+   5.  JWT VC Issuer Metadata
+     5.1.  JWT VC Issuer Metadata Request
+     5.2.  JWT VC Issuer Metadata Response
+     5.3.  JWT VC Issuer Metadata Validation
    6.  Security Considerations
      6.1.  Server-Side Request Forgery
+     6.2.  Ecosystem-specific Public Key Verification Methods
    7.  Privacy Considerations
      7.1.  Unlinkability
-     7.2.  Type Identifier
-     7.3.  Issuer Phone Home
+     7.2.  Verifiable Credential Type Identifier
+     7.3.  Issuer Phone-Home
    8.  Relationships to Other Documents
-   9.  Normative References
-   10. Informative References
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
    Appendix A.  IANA Considerations
      A.1.  JSON Web Token Claims Registration
      A.2.  Media Types Registry
@@ -185,27 +201,22 @@ Table of Contents
 
    Verifiable Credential (VC):  An Issuer-signed assertion with claims
       about a Subject.
-
    SD-JWT-based Verifiable Credential (SD-JWT VC):  A Verifiable
       Credential encoded using the format defined in
       [I-D.ietf-oauth-selective-disclosure-jwt].  It may or may not
       contain selectively disclosable claims.
-
    Unsecured Payload of an SD-JWT VC:  A JSON object containing all
       selectively disclosable and non-selectively disclosable claims of
       the SD-JWT VC.  The Unsecured Payload acts as the input JSON
       object to issue an SD-JWT VC complying to this specification.
-
    Status Provider:  An entity that provides status information (e.g.
       revocation) about a Verifiable Credential.
 
 2.  Scope
 
    *  This specification defines
-
       -  Data model and media types for Verifiable Credentials based on
          SD-JWTs.
-
       -  Validation and processing rules for Verifiers and Holders.
 
 3.  Verifiable Credentials based on SD-JWT
@@ -253,30 +264,31 @@ Table of Contents
 
 3.2.2.1.  New JWT Claims
 
-3.2.2.1.1.  type claim
+3.2.2.1.1.  Verifiable Credential Type - vct Claim
 
-   This specification defines the JWT claim type.  The type value MUST
-   be a case-sensitive StringOrURI (see [RFC7519]) value serving as an
-   identifier for the type of the SD-JWT VC.  The type value MUST be a
-   Collision-Resistant Name as defined in Section 2 of [RFC7515].
+   This specification defines the JWT claim vct (for verifiable
+   credential type).  The vct value MUST be a case-sensitive StringOrURI
+   (see [RFC7519]) value serving as an identifier for the type of the
+   SD-JWT VC.  The vct value MUST be a Collision-Resistant Name as
+   defined in Section 2 of [RFC7515].
 
    A type is associated with rules defining which claims may or must
    appear in the Unsecured Payload of the SD-JWT VC and whether they
    may, must, or must not be selectively disclosable.  This
-   specification does not define any type values; instead it is expected
+   specification does not define any vct values; instead it is expected
    that ecosystems using SD-JWT VCs define such values including the
    semantics of the respective claims and associated rules (e.g.,
    policies for issuing and validating credentials beyond what is
    defined in this specification).
 
-   The following is a non-normative example of how type is used to
+   The following is a non-normative example of how vct is used to
    express a type:
 
    {
-     "type": "https://credentials.example.com/identity_credential"
+     "vct": "https://credentials.example.com/identity_credential"
    }
 
-   For example, a type https://credentials.example.com/
+   For example, a value of https://credentials.example.com/
    identity_credential can be associated with rules that define that at
    least the registered JWT claims given_name, family_name, birthdate,
    and address must appear in the Unsecured Payload.  Additionally, the
@@ -295,44 +307,28 @@ Table of Contents
    be selectively disclosed:
 
    *  iss
-
       -  REQUIRED.  The Issuer of the Verifiable Credential.  The value
          of iss MUST be a URI.  See [RFC7519] for more information.
-
-   *  iat
-
-      -  REQUIRED.  The time of issuance of the Verifiable Credential.
-         See [RFC7519] for more information.
-
    *  nbf
-
       -  OPTIONAL.  The time before which the Verifiable Credential MUST
          NOT be accepted before validating.  See [RFC7519] for more
          information.
-
    *  exp
-
       -  OPTIONAL.  The expiry time of the Verifiable Credential after
          which the Verifiable Credential is no longer valid.  See
          [RFC7519] for more information.
-
    *  cnf
-
       -  REQUIRED when Cryptographic Key Binding is to be supported.
          Contains the confirmation method as defined in [RFC7800].  It
          is RECOMMENDED that this contains a JWK as defined in
          Section 3.2 of [RFC7800].  For Cryptographic Key Binding, the
          Key Binding JWT in the Combined Format for Presentation MUST be
          signed by the key identified in this claim.
-
-   *  type
-
+   *  vct
       -  REQUIRED.  The type of the Verifiable Credential, e.g.,
          https://credentials.example.com/identity_credential, as defined
          in Section 3.2.2.1.1.
-
    *  status
-
       -  OPTIONAL.  The information on how to read the status of the
          Verifiable Credential.  See
          [I-D.looker-oauth-jwt-cwt-status-list] for more information.
@@ -341,11 +337,13 @@ Table of Contents
    in the Disclosures and MAY be selectively disclosed:
 
    *  sub
-
       -  OPTIONAL.  The identifier of the Subject of the Verifiable
          Credential.  The Issuer MAY use it to provide the Subject
          identifier known by the Issuer.  There is no requirement for a
          binding to exist between sub and cnf claims.
+   *  iat
+      -  OPTIONAL.  The time of issuance of the Verifiable Credential.
+         See [RFC7519] for more information.
 
 3.2.2.3.  Public JWT claims
 
@@ -364,7 +362,7 @@ Table of Contents
    an SD-JWT VC.
 
    {
-     "type": "https://credentials.example.com/identity_credential",
+     "vct": "https://credentials.example.com/identity_credential",
      "given_name": "John",
      "family_name": "Doe",
      "email": "johndoe@example.com",
@@ -401,7 +399,7 @@ Table of Contents
      "iss": "https://example.com/issuer",
      "iat": 1683000000,
      "exp": 1883000000,
-     "type": "https://credentials.example.com/identity_credential",
+     "vct": "https://credentials.example.com/identity_credential",
      "_sd_alg": "sha-256",
      "cnf": {
        "jwk": {
@@ -422,54 +420,44 @@ Table of Contents
    *Claim given_name*:
 
    *  SHA-256 Hash: jsu9yVulwQQlhFlM_3JlzMaSFzglhQG0DpfayQwLUK4
-
    *  Disclosure:
       WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiSm9o
       biJd
-
    *  Contents: ["2GLC42sKQveCfGfryNRN9w", "given_name", "John"]
 
    *Claim family_name*:
 
    *  SHA-256 Hash: TGf4oLbgwd5JQaHyKVQZU9UdGE0w5rtDsrZzfUaomLo
-
    *  Disclosure:
       WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkRv
       ZSJd
-
    *  Contents: ["eluV5Og3gSNII8EYnsxA_A", "family_name", "Doe"]
 
    *Claim email*:
 
    *  SHA-256 Hash: JzYjH4svliH0R3PyEMfeZu6Jt69u5qehZo7F7EPYlSE
-
    *  Disclosure:
       WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
       ZXhhbXBsZS5jb20iXQ
-
    *  Contents: ["6Ij7tM-a5iVPGboS5tmvVA", "email",
       "johndoe@example.com"]
 
    *Claim phone_number*:
 
    *  SHA-256 Hash: PorFbpKuVu6xymJagvkFsFXAbRoc2JGlAUA2BA4o7cI
-
    *  Disclosure:
       WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251bWJlciIsICIr
       MS0yMDItNTU1LTAxMDEiXQ
-
    *  Contents: ["eI8ZWm9QnKPpNPeNenHdhQ", "phone_number",
       "+1-202-555-0101"]
 
    *Claim address*:
 
    *  SHA-256 Hash: IlDzIKeiZdDwpqpK6ZfbyphFvz5FgnWa-sN6wqQXCiw
-
    *  Disclosure:
       WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmVl
       dF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRv
       d24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0
-
    *  Contents: ["Qg_O64zqAxe412a108iroA", "address", {"street_address":
       "123 Main St", "locality": "Anytown", "region": "Anystate",
       "country": "US"}]
@@ -477,41 +465,33 @@ Table of Contents
    *Claim birthdate*:
 
    *  SHA-256 Hash: jdrTE8YcbY4EifugihiAe_BPekxJQZICeiUQwY9QqxI
-
    *  Disclosure:
       WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoZGF0ZSIsICIxOTQw
       LTAxLTAxIl0
-
    *  Contents: ["AJx-095VPrpTtN4QMOqROA", "birthdate", "1940-01-01"]
 
    *Claim is_over_18*:
 
    *  SHA-256 Hash: 09vKrJMOlyTWM0sjpu_pdOBVBQ2M1y3KhpH515nXkpY
-
    *  Disclosure:
       WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImlzX292ZXJfMTgiLCB0cnVl
       XQ
-
    *  Contents: ["Pc33JM2LchcU_lHggv_ufQ", "is_over_18", true]
 
    *Claim is_over_21*:
 
    *  SHA-256 Hash: 2rsjGbaC0ky8mT0pJrPioWTq0_daw1sX76poUlgCwbI
-
    *  Disclosure:
       WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImlzX292ZXJfMjEiLCB0cnVl
       XQ
-
    *  Contents: ["G02NSrQfjFXQ7Io09syajA", "is_over_21", true]
 
    *Claim is_over_65*:
 
    *  SHA-256 Hash: EkO8dhW0dHEJbvUHlE_VCeuC9uRELOieLZhh7XbUTtA
-
    *  Disclosure:
       WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVl
       XQ
-
    *  Contents: ["lklxF5jMYlGTPUovMNIvCA", "is_over_65", true]
 
    The SD-JWT and the Disclosures would then be serialized by the Issuer
@@ -528,41 +508,39 @@ Table of Contents
    amRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5
    eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi
    aHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4
-   cCI6IDE4ODMwMDAwMDAsICJ0eXBlIjogImh0dHBzOi8vY3JlZGVudGlhbHMuZXhhbXBs
-   ZS5jb20vaWRlbnRpdHlfY3JlZGVudGlhbCIsICJfc2RfYWxnIjogInNoYS0yNTYiLCAi
-   Y25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJU
-   Q0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAi
-   WnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.UPRB
-   UVCOPOZcCL0gVLAftbEvLjZ1H0dQ_55Ic2RMyhquVnOjOrmQ9yVepWyjOVM1oA2-V2lm
-   qnPbcIfSirOQ1Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiL
-   CAiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwg
-   IkRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2V
-   AZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251
-   bWJlciIsICIrMS0yMDItNTU1LTAxMDEiXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BI
-   iwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY
-   2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiO
-   iAiVVMifV0~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoZGF0ZSIsICIxO
-   TQwLTAxLTAxIl0~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImlzX292ZXJfMTgiL
-   CB0cnVlXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImlzX292ZXJfMjEiLCB0cn
-   VlXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
+   cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
+   LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
+   bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
+   QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.elO4q
+   CgE8yQrvW0p0oVaNdZGjdn1w9xyrCJgctO8PQNWn19PipuejtYym7VP1Od-H4_v38sNI
+   gPbP9kFIvaADw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
+   kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
+   ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
+   WJlciIsICIrMS0yMDItNTU1LTAxMDEiXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIi
+   wgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2
+   FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOi
+   AiVVMifV0~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoZGF0ZSIsICIxOT
+   QwLTAxLTAxIl0~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImlzX292ZXJfMTgiLC
+   B0cnVlXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImlzX292ZXJfMjEiLCB0cnV
+   lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 
 3.4.  Verification and Processing
 
    The recipient (Holder or Verifier) of an SD-JWT VC MUST process and
-   verify an SD-JWT VC as described in Section 6 of
+   verify an SD-JWT VC as described in Section 8 of
    [I-D.ietf-oauth-selective-disclosure-jwt].
 
    If Key Binding is required (refer to the security considerations in
-   Section 9.6 of [I-D.ietf-oauth-selective-disclosure-jwt]), the
-   Verifier MUST verify the Key Binding JWT according to Section 6 of
+   Section 11.6 of [I-D.ietf-oauth-selective-disclosure-jwt]), the
+   Verifier MUST verify the Key Binding JWT according to Section 8 of
    [I-D.ietf-oauth-selective-disclosure-jwt].  To verify the Key Binding
    JWT, the cnf claim of the SD-JWT MUST be used.
 
-   For the verification, the iss claim in the SD-JWT MAY be used to
-   retrieve the public key from the JWT Issuer Metadata configuration
-   (as defined in Section 4) of the SD-JWT VC issuer.  Alternative
-   methods MAY be used to obtain the public key to verify the signature
-   of the SD-JWT.
+   Furthermore, the recipient of the SD-JWT VC MUST validate that the
+   public verification key for the Issuer-signed JWT as defined in
+   Section 3.5.
 
    If there are no selectively disclosable claims, there is no need to
    process the _sd claim nor any Disclosures.
@@ -577,30 +555,136 @@ Table of Contents
    Additional validation rules MAY apply, but their use is out of the
    scope of this specification.
 
-4.  JWT Issuer Metadata
+3.5.  Issuer-signed JWT Verification Key Validation
 
-   This specification defines the JWT Issuer Metadata to retrieve the
-   JWT Issuer Metadata configuration of the JWT Issuer of the JWT.  The
-   JWT Issuer is identified by the iss claim in the JWT.  Use of the JWT
-   Issuer Metadata is OPTIONAL.
+   A recipient of an SD-JWT VC MUST apply the following rules to
+   validate that the public verification key for the Issuer-signed JWT
+   corresponds to the iss value:
 
-   JWT Issuers publishing JWT Issuer Metadata MUST make a JWT Issuer
+   *  JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer
+      Metadata and if the iss value contains an HTTPS URI, the recipient
+      MUST obtain the public key using JWT VC Issuer Metadata as defined
+      in Section 5.
+   *  X.509 Certificates: If the recipient supports X.509 Certificates,
+      the recipient MUST obtain the public key from the leaf X.509
+      certificate defined by the x5c JWT header parameters of the
+      Issuer-signed JWT and validate the X.509 certificate chain in the
+      following cases:
+      -  If the iss value contains a DNS name encoded as a URI using the
+         DNS URI scheme [RFC4501], the DNS name MUST match a dNSName
+         Subject Alternative Name (SAN) [RFC5280] entry of the leaf
+         certificate.
+      -  In all other cases, the iss value MUST match a
+         uniformResourceIdentifier SAN entry of the leaf certificate.
+   *  DID Document Resolution: If a recipient supports DID Document
+      Resolution and if the iss value contains a DID [W3C.DID], the
+      recipient MUST retrieve the public key from the DID Document
+      resolved from the DID in the iss value.  In this case, if the kid
+      JWT header parameter is present, the kid MUST be a relative or
+      absolute DID URL of the DID in the iss value, identifying the
+      public key.
+
+   Separate specifications or ecosystem regulations MAY define rules
+   complementing the rules defined above, but such rules are out of
+   scope of this specification.  See Section 6.2 for security
+   considerations.
+
+   If a recipient cannot validate that the public verification key
+   corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC
+   MUST be rejected.
+
+4.  Presenting Verifiable Credentials
+
+   This section defines encoding, validation and processing rules for
+   presentations of SD-JWT VCs.
+
+4.1.  Key Binding JWT
+
+   If the presentation of the SD-JWT VC includes a Key Binding JWT, the
+   Key Binding JWT MUST adhere to the rules defined in Section 5.3 of
+   [I-D.ietf-oauth-selective-disclosure-jwt].
+
+   The Key Binding JWT MAY include addtional claims which, when not
+   understood, MUST be ignored by the Verifier.
+
+4.2.  Examples
+
+   The following is a non-normative example of a presentation of the SD-
+   JWT shown above including a Key Binding JWT:
+
+   eyJhbGciOiAiRVMyNTYiLCAia2lkIjogImRvYy1zaWduZXItMDUtMjUtMjAyMiIsICJ0
+   eXAiOiAidmMrc2Qtand0In0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
+   VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
+   YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
+   ZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO
+   NndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQ
+   WWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJ
+   IiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAi
+   amRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5
+   eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi
+   aHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4
+   cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
+   LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
+   bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
+   QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.elO4q
+   CgE8yQrvW0p0oVaNdZGjdn1w9xyrCJgctO8PQNWn19PipuejtYym7VP1Od-H4_v38sNI
+   gPbP9kFIvaADw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
+   4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
+   AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDU1M
+   TczNDV9.zRsvYp6KXALXIxzjvoO9MK5BRNGZG1c7QZ2j75OPVR8SlZUJhUsI8fviY8m-
+   n81SIZRdQCYT3JSB2HdtEnXc3A
+
+   In this presentation, the Holder provides only the Disclosure for the
+   claim address.  Other claims are not disclosed to the Verifier.
+
+   The following example shows a presentation of a (different) SD-JWT
+   without a Key Binding JWT:
+
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
+   ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
+   wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
+   idlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs
+   2WmZieXBoRnZ6NUZnbldhLXNONndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmV
+   adTZKdDY5dTVxZWhabzdGN0VQWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEF
+   iUm9jMkpHbEFVQTJCQTRvN2NJIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc
+   1cnREc3JaemZVYW9tTG8iLCAiamRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUN
+   laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
+   5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
+   0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
+   jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
+   hbGciOiAic2hhLTI1NiJ9.quyw3Wb83v2auhXR34Ntgw-_P0rlyHnqt3qevQ-1AT-qe2
+   J-Zn3GeYNORDcDMYEycfFpD9U2yiMmMosidI2kig~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
+   gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
+   0cnkiOiAiVVMifV0~
+
+5.  JWT VC Issuer Metadata
+
+   This specification defines the JWT VC Issuer Metadata to retrieve the
+   JWT VC Issuer Metadata configuration of the Issuer of the SD-JWT VC.
+   The Issuer is identified by the iss claim in the JWT.  Use of the JWT
+   VC Issuer Metadata is OPTIONAL.
+
+   Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer
    Metadata configuration available at the path formed by concatenating
-   the string /.well-known/jwt-issuer to the iss claim value in the JWT.
-   The iss MUST be a case-sensitive URL using the HTTPS scheme that
-   contains scheme, host and, optionally, port number and path
+   the string /.well-known/jwt-vc-issuer to the iss claim value in the
+   JWT.  The iss MUST be a case-sensitive URL using the HTTPS scheme
+   that contains scheme, host and, optionally, port number and path
    components, but no query or fragment components.
 
-4.1.  JWT Issuer Metadata Request
+5.1.  JWT VC Issuer Metadata Request
 
-   A JWT Issuer Metadata configuration MUST be queried using an HTTP GET
-   request at the path defined in Section 4.
+   A JWT VC Issuer Metadata configuration MUST be queried using an HTTP
+   GET request at the path defined in Section 5.
 
    The following is a non-normative example of a HTTP request for the
-   JWT Issuer Metadata configuration when iss is set to
+   JWT VC Issuer Metadata configuration when iss is set to
    https://example.com:
 
-   GET /.well-known/jwt-issuer HTTP/1.1
+   GET /.well-known/jwt-vc-issuer HTTP/1.1
    Host: example.com
 
    If the iss value contains a path component, any terminating / MUST be
@@ -608,47 +692,43 @@ Table of Contents
    between the host component and the path component.
 
    The following is a non-normative example of a HTTP request for the
-   JWT Issuer Metadata configuration when iss is set to
+   JWT VC Issuer Metadata configuration when iss is set to
    https://example.com/user/1234:
 
-   GET /.well-known/jwt-issuer/user/1234 HTTP/1.1
+   GET /.well-known/jwt-vc-issuer/user/1234 HTTP/1.1
    Host: example.com
 
-4.2.  JWT Issuer Metadata Response
+5.2.  JWT VC Issuer Metadata Response
 
-   A successful response MUST use the 200 OK HTTP and return the JWT
+   A successful response MUST use the 200 OK HTTP and return the JWT VC
    Issuer Metadata configuration using the application/json content
    type.
 
    An error response uses the applicable HTTP status code value.
 
-   This specification defines the following JWT Issuer Metadata
+   This specification defines the following JWT VC Issuer Metadata
    configuration parameters:
 
-   *  issuer REQUIRED.  The JWT Issuer identifier, which MUST be
-      identical to the iss value in the JWT.
-
+   *  issuer REQUIRED.  The Issuer identifier, which MUST be identical
+      to the iss value in the JWT.
    *  jwks_uri
-
-      -  OPTIONAL.  URL string referencing the JWT Issuer's JSON Web Key
-         (JWK) Set [RFC7517] document which contains the JWT Issuer's
-         public keys.  The value of this field MUST point to a valid JWK
-         Set document.
-
+      -  OPTIONAL.  URL string referencing the Issuer's JSON Web Key
+         (JWK) Set [RFC7517] document which contains the Issuer's public
+         keys.  The value of this field MUST point to a valid JWK Set
+         document.
    *  jwks
+      -  OPTIONAL.  Issuer's JSON Web Key Set [RFC7517] document value,
+         which contains the Issuer's public keys.  The value of this
+         field MUST be a JSON object containing a valid JWK Set.
 
-      -  OPTIONAL.  JWT Issuer's JSON Web Key Set [RFC7517] document
-         value, which contains the JWT Issuer's public keys.  The value
-         of this field MUST be a JSON object containing a valid JWK Set.
-
-   JWT Issuer Metadata MUST include either jwks_uri or jwks in their JWT
-   Issuer Metadata, but not both.
+   JWT VC Issuer Metadata MUST include either jwks_uri or jwks in their
+   JWT VC Issuer Metadata, but not both.
 
    It is RECOMMENDED that the JWT contains a kid JWT header parameter
    that can be used to lookup the public key in the JWK Set included by
-   value or referenced in the JWT Issuer Metadata.
+   value or referenced in the JWT VC Issuer Metadata.
 
-   The following is a non-normative example of a JWT Issuer Metadata
+   The following is a non-normative example of a JWT VC Issuer Metadata
    configuration including jwks:
 
    {
@@ -670,113 +750,22 @@ Table of Contents
       }
    }
 
-   The following is a non-normative example of a JWT Issuer Metadata
+   The following is a non-normative example of a JWT VC Issuer Metadata
    configuration including jwks_uri:
 
    {
       "issuer":"https://example.com",
-      "jwks_uri":"https://jwt-issuer.example.org/my_public_keys.jwks"
+      "jwks_uri":"https://jwt-vc-issuer.example.org/my_public_keys.jwks"
    }
 
-   Additional JWT Issuer Metadata configuration parameters MAY also be
-   used.
+   Additional JWT VC Issuer Metadata configuration parameters MAY also
+   be used.
 
-4.3.  JWT Issuer Metadata Validation
+5.3.  JWT VC Issuer Metadata Validation
 
    The issuer value returned MUST be identical to the iss value of the
    JWT.  If these values are not identical, the data contained in the
    response MUST NOT be used.
-
-5.  Presenting Verifiable Credentials
-
-   This section defines encoding, validation and processing rules for
-   presentations of SD-JWT VCs.
-
-5.1.  Key Binding JWT
-
-   If the presentation of the SD-JWT VC includes a Key Binding JWT, the
-   following claims are used within the Key Binding JWT:
-
-   *  nonce
-
-      -  REQUIRED.  String value used to associate a transaction between
-         a Verifier an a Holder, and to mitigate replay attacks.  The
-         value is passed through unmodified from the Verifier to the Key
-         Binding JWT.  Sufficient entropy MUST be present in the nonce
-         values used to prevent attackers from guessing values.
-
-   *  aud
-
-      -  REQUIRED.  The intended recipient of the Key Binding JWT which
-         is typically the Verifier.  See [RFC7519] for more information.
-
-   *  iat
-
-      -  REQUIRED.  The time of issuance of the Key Binding JWT.  See
-         [RFC7519] for more information.
-
-   *  exp
-
-      -  OPTIONAL.  The expiration time of the signature when the Key
-         Binding is no longer considered valid.  See [RFC7519] for more
-         information.
-
-   The Key Binding JWT MAY include addtional claims which when not
-   understood MUST be ignored.
-
-5.2.  Examples
-
-   The following is a non-normative example of a presentation of the SD-
-   JWT shown above including a Key Binding JWT:
-
-   eyJhbGciOiAiRVMyNTYiLCAia2lkIjogImRvYy1zaWduZXItMDUtMjUtMjAyMiIsICJ0
-   eXAiOiAidmMrc2Qtand0In0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
-   VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
-   YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
-   ZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO
-   NndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQ
-   WWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJ
-   IiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAi
-   amRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5
-   eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi
-   aHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4
-   cCI6IDE4ODMwMDAwMDAsICJ0eXBlIjogImh0dHBzOi8vY3JlZGVudGlhbHMuZXhhbXBs
-   ZS5jb20vaWRlbnRpdHlfY3JlZGVudGlhbCIsICJfc2RfYWxnIjogInNoYS0yNTYiLCAi
-   Y25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnYiOiAiUC0yNTYiLCAieCI6ICJU
-   Q0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbERsczd2Q2VHZW1jIiwgInkiOiAi
-   WnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U2dDRqVDlGMkhaUSJ9fX0.UPRB
-   UVCOPOZcCL0gVLAftbEvLjZ1H0dQ_55Ic2RMyhquVnOjOrmQ9yVepWyjOVM1oA2-V2lm
-   qnPbcIfSirOQ1Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7I
-   nN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd
-   24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciO
-   iAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwg
-   ImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE2OTgw
-   NjIyNzV9.gQ5qojivUTUFln3MV7fbcSmSxqUgt9KaC4hZTABGQwzhGayXknHTGgNhmCC
-   Vj1V3o2PSblk5a3y9bUKfXprsAQ
-
-   In this presentation, the Holder provides only the Disclosure for the
-   claim address.  Other claims are not disclosed to the Verifier.
-
-   The following example shows a presentation of a (different) SD-JWT
-   without a Key Binding JWT:
-
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
-   ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
-   wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
-   idlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs
-   2WmZieXBoRnZ6NUZnbldhLXNONndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmV
-   adTZKdDY5dTVxZWhabzdGN0VQWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEF
-   iUm9jMkpHbEFVQTJCQTRvN2NJIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc
-   1cnREc3JaemZVYW9tTG8iLCAiamRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUN
-   laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
-   5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
-   0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ0eXBlIjogImh0dHBzOi8
-   vY3JlZGVudGlhbHMuZXhhbXBsZS5jb20vaWRlbnRpdHlfY3JlZGVudGlhbCIsICJfc2R
-   fYWxnIjogInNoYS0yNTYifQ.3wm8aKxI8oiXEH1TJA6Rhm2EvRHpaGQqVk5XCIw1gDEl
-   28kHSBL3TbEW1DglbDs8B_iG7AxiHO5eNL-65lS5NQ~WyJRZ19PNjR6cUF4ZTQxMmExM
-   Dhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0I
-   iwgImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvd
-   W50cnkiOiAiVVMifV0~
 
 6.  Security Considerations
 
@@ -787,13 +776,13 @@ Table of Contents
 
 6.1.  Server-Side Request Forgery
 
-   The JWT Issuer Metadata configuration is retrieved from the JWT
+   The JWT VC Issuer Metadata configuration is retrieved from the JWT VC
    Issuer by the Holder or Verifier.  Similar to other metadata
    endpoints, the URL for the retrieval MUST be considered an untrusted
    value and could be a vector for Server-Side Request Forgery (SSRF)
    attacks.
 
-   Before making a request to the JWT Issuer Metadata endpoint, the
+   Before making a request to the JWT VC Issuer Metadata endpoint, the
    Holder or Verifier MUST validate the URL to ensure that it is a valid
    HTTPS URL and that it does not point to internal resources.  This
    requires, in particular, ensuring that the host part of the URL does
@@ -804,10 +793,23 @@ Table of Contents
    When retrieving the metadata, the Holder or Verifier MUST ensure that
    the request is made in a time-bound and size-bound manner to prevent
    denial of service attacks.  The Holder or Verifier MUST also ensure
-   that the response is a valid JWT Issuer Metadata configuration
+   that the response is a valid JWT VC Issuer Metadata configuration
    document before processing it.
 
    Additional considerations can be found in [OWASP_SSRF].
+
+6.2.  Ecosystem-specific Public Key Verification Methods
+
+   When defining ecosystem-specific rules for the verification of the
+   public key, as outlined in Section 3.5, it is critical that those
+   rules maintain the integrity of the relationship between the iss
+   value within the Issuer-signed JWT and the public keys of the Issuer.
+
+   It MUST be ensured that for any given iss value, an attacker cannot
+   influence the type of verification process used.  Otherwise, an
+   attacker could attempt to make the Verifier use a verification
+   process not intended by the Issuer, allowing the attacker to
+   potentially manipulate the verification result to their advantage.
 
 7.  Privacy Considerations
 
@@ -818,29 +820,28 @@ Table of Contents
 
 7.1.  Unlinkability
 
-   The Privacy Considerations in Section 10.5 of
+   The Privacy Considerations in Section 12.5 of
    [I-D.ietf-oauth-selective-disclosure-jwt] apply especially to the cnf
    claim.
 
-7.2.  Type Identifier
+7.2.  Verifiable Credential Type Identifier
 
    Issuers and Holders have to be aware that while this specification
-   supports selective disclosure of claims of a given SD-JWT VC, the
-   type claim is not selectively disclosable.  In certain situations
-   this could lead to unwanted leakage of additional context
-   information.
+   supports selective disclosure of claims of a given SD-JWT VC, the vct
+   claim is not selectively disclosable.  In certain situations this
+   could lead to unwanted leakage of additional context information.
 
-   In general, Issuers are advised to choose type values following data
+   In general, Issuers are advised to choose vct values following data
    minimization principles.  For example, government Issuers issuing an
    SD-JWT VC to their citizens to enable them to prove their age, might
-   consider using a type value that does not allow third-parties to
-   infer additional personal information about the Holder, e.g., country
-   of residency or citizenship.
+   consider using a vct value that does not allow third-parties to infer
+   additional personal information about the Holder, e.g., country of
+   residency or citizenship.
 
    Additionally, Holders have to be informed that, besides the actual
-   requested claims, the type information is shared with the Verifier.
+   requested claims, the vct information is shared with the Verifier.
 
-7.3.  Issuer Phone Home
+7.3.  Issuer Phone-Home
 
    A malicious Issuer can choose the Issuer identifier of the SD-JWT VC
    to enable tracking the usage behavior of the Holder if the Issuer
@@ -850,7 +851,7 @@ Table of Contents
 
    For example, a malicious Issuer could generate a unique value for the
    Issuer identifier per Holder, e.g., https://example.com/issuer/
-   holder-1234 and host the JWT Issuer Metadata.  The Verifier would
+   holder-1234 and host the JWT VC Issuer Metadata.  The Verifier would
    create a HTTPS GET request to the Holder-specific well-known URI when
    the SD-JWT VC is verified.  This would allow the malicious Issuer to
    keep track where and how often the SD-JWT VC was used.
@@ -868,14 +869,16 @@ Table of Contents
 
    TBD
 
-9.  Normative References
+9.  References
+
+9.1.  Normative References
 
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-05, 30
-              June 2023, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-05>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-07, 11
+              December 2023, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-selective-disclosure-jwt-07>.
 
    [I-D.looker-oauth-jwt-cwt-status-list]
               Looker, T. and P. Bastian, "JWT and CWT Status List", Work
@@ -902,27 +905,38 @@ Table of Contents
               RFC 7800, DOI 10.17487/RFC7800, April 2016,
               <https://www.rfc-editor.org/info/rfc7800>.
 
-10.  Informative References
+9.2.  Informative References
 
    [OWASP_SSRF]
               OWASP, "Server Side Request Forgery Prevention Cheat
               Sheet", <https://cheatsheetseries.owasp.org/cheatsheets/
               Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/>.
 
+   [RFC4501]  Josefsson, S., "Domain Name System Uniform Resource
+              Identifiers", RFC 4501, DOI 10.17487/RFC4501, May 2006,
+              <https://www.rfc-editor.org/info/rfc4501>.
+
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/info/rfc5280>.
+
    [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
               DOI 10.17487/RFC7517, May 2015,
               <https://www.rfc-editor.org/info/rfc7517>.
+
+   [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
+              O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
+              19 July 2022, <https://www.w3.org/TR/did-core/>.
 
 Appendix A.  IANA Considerations
 
 A.1.  JSON Web Token Claims Registration
 
-   *  Claim Name: "type"
-
-      -  Claim Description: Credential Type
-
-      -  Change Controller: IESG
-
+   *  Claim Name: "vct"
+      -  Claim Description: Verifiable credential type identifier
+      -  Change Controller: IETF
       -  Specification Document(s): Section 3.2.2.1.1 of this document
 
 A.2.  Media Types Registry
@@ -949,27 +963,17 @@ A.2.1.  application/vc+sd-jwt
    Interoperability considerations: : n/a
 
    *  Published specification: : RFC TODO
-
    *  Applications that use this media type: : Applications that issue,
       present, verify verifiable credentials and presentations.
-
    *  Additional information:
-
       -  Magic number(s): n/a
-
       -  File extension(s): n/a
-
       -  Macintosh file type code(s): n/a
-
       -  Person & email address to contact for further information: TBD
-
       -  Intended usage: COMMON
-
       -  Restrictions on usage: none
-
-      -  Author: Oliver Terbu oliver.terbu@spruceid.com
-         (mailto:oliver.terbu@spruceid.com)
-
+      -  Author: Oliver Terbu oliver.terbu@mattr.global
+         (mailto:oliver.terbu@mattr.global)
       -  Change controller: IETF
 
 Appendix B.  Acknowledgements
@@ -982,16 +986,26 @@ Appendix B.  Acknowledgements
 
 Appendix C.  Document History
 
+   -02
+
+   *  Made specific rules for public verification key validation
+      conditional
+   *  Finetuned rules for obtaining public verification key
+   *  Editorial changes
+   *  Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
+   *  'iat' is now optional and allowed to be selectively disclosable
+
    -01
 
    *  Introduce rules for type identifiers (Collision-Resistant Name)
-
+   *  Rename type to vct
+   *  Removed duplicated and inconsistent requirements on KB-JWT
    *  Editorial changes
+   *  Added issuer public verification key discovery section.
 
    -00
 
    *  Upload as draft-ietf-oauth-sd-jwt-vc-00
-
    *  Aligned terminology and descriptions with latest version of SD-JWT
 
    [[ pre Working Group Adoption: ]]
@@ -999,24 +1013,24 @@ Appendix C.  Document History
    -00
 
    *  Initial Version
-
    *  Removed W3C VCDM transformation algorithm
-
    *  Various editorial changes based on feedback
-
    *  Adjusted terminology based on feedback
-
    *  Added non-selectively disclosable JWT VC
-
    *  Added a note that this is not W3C VCDM
 
 Authors' Addresses
 
    Oliver Terbu
-   Spruce Systems, Inc.
-   Email: oliver.terbu@spruceid.com
+   MATTR
+   Email: oliver.terbu@mattr.global
 
 
    Daniel Fett
    Authlete Inc.
    Email: mail@danielfett.de
+
+
+   Brian Campbell
+   Ping Identity
+   Email: bcampbell@pingidentity.com
