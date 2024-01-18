@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-16T01:21:59.707154+00:00",
+  "timestamp": "2024-01-18T01:21:39.893795+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3761,7 +3761,7 @@
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2023-11-27T03:50:15Z",
+      "updatedAt": "2024-01-17T20:52:49Z",
       "closedAt": null,
       "comments": [
         {
@@ -3812,6 +3812,20 @@
           "body": "IMO, `cnf` and its definition \"Cryptographic Key Binding\" is currently also a bit underspecified in our specification.",
           "createdAt": "2023-11-27T03:50:15Z",
           "updatedAt": "2023-11-27T03:50:15Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I know we discussed this in our paper but can we summarize what we want to achieve @Sakurann @paulbastian. Is this about specifying how the RP wants to verify the holder authenticated the transaction?\r\n\r\nI would frame it as \"give the RP guidance on how to verify legitimate ownership of the credential\". RPs are free to do whatever, they may also ignore a `cnf`.\r\n\r\nMy main argument is that the key for keybinding could be in any random claim, but people chose to standardize what the issuer of a token intended to be used for verification. There is no difference to claim-based binding. Our intuition that name, surname, date of birth on a diploma shall be used for binding or totally arbitrary despite seeming \"common knowledge\".\r\n\r\nI believe many Issuers will want to use claim-based binding as this is a 1:1 match of what they have been doing with physical documents and it would mean little changes to their processes, so this is actually very important. Same for biometric binding, e.g. mdL portrait like.\r\n\r\nHow can we move this forward?",
+          "createdAt": "2024-01-17T20:51:38Z",
+          "updatedAt": "2024-01-17T20:51:38Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Do we need a separate IETF Draft for biometric+claim-based bindings in JWT or shall this go in here?",
+          "createdAt": "2024-01-17T20:52:49Z",
+          "updatedAt": "2024-01-17T20:52:49Z"
         }
       ]
     },
@@ -4540,7 +4554,7 @@
       "labels": [],
       "body": "Not all VCs require key binding. For those, cnf should be made optional.",
       "createdAt": "2023-12-18T16:58:02Z",
-      "updatedAt": "2023-12-18T21:33:12Z",
+      "updatedAt": "2024-01-17T20:44:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -4556,6 +4570,13 @@
           "body": "Do you think we should also explain the OPTIONAL case or replace the REQUIRED with something else? CONDITIONAL is not a reserved word unfortunately. ",
           "createdAt": "2023-12-18T21:33:11Z",
           "updatedAt": "2023-12-18T21:33:11Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I would propose to clarify this. From a quick reading this is not obviously optional and it does not match the other claims that only state REQUIRED/OPTIONAL without any conditions. As cryptographic binding is optional, I think this line should begin with \"OPTIONAL. [...]\"",
+          "createdAt": "2024-01-17T20:43:59Z",
+          "updatedAt": "2024-01-17T20:43:59Z"
         }
       ]
     },
@@ -4604,9 +4625,24 @@
       "labels": [],
       "body": "Using `iat` is not the only, and not always the desired way to specify when something was issued.\r\n\r\nThe use case I'm considering would make use of an \"after\" field the value of which would be set to a recent block hash (e.g. from a blockchain like Bitcoin or Ethereum). This approach would provide a more rigorous way to determine when something was issued since it would be impossible to create a claim that points to a time in the future.\r\n\r\nIf `iat` is required, it would be completely redundant to the \"after\" field in my example.",
       "createdAt": "2023-12-20T17:29:03Z",
-      "updatedAt": "2023-12-20T17:29:03Z",
+      "updatedAt": "2024-01-17T18:46:52Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm generally supportive of allowing `iat` to be optional (and selectively disclosable as suggested in #200).  It's informational content that may not be necessary for all cases and might have privacy implications. Specific `vct`s could mandate it as appropriate but I think requiring it in sd-jwt-vc is too inflexible.",
+          "createdAt": "2024-01-16T19:03:24Z",
+          "updatedAt": "2024-01-17T18:46:52Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm also supportive.",
+          "createdAt": "2024-01-16T19:05:06Z",
+          "updatedAt": "2024-01-16T19:05:06Z"
+        }
+      ]
     },
     {
       "number": 200,
@@ -4620,9 +4656,17 @@
       "labels": [],
       "body": "I propose making the iat (issued at) claim name selectively disclosable. This is because for certain types of tokens, credentials, or personal data, the creation or issuance date could potentially reveal sensitive information.\r\n\r\nFor instance, consider a credential verifying that my age is over 18. In most cases, a user would request this credential on their birthday, which would mean that the iat value would coincide with their birth date.",
       "createdAt": "2023-12-21T15:18:52Z",
-      "updatedAt": "2023-12-21T15:18:52Z",
+      "updatedAt": "2024-01-16T19:02:58Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm generally supportive of allowing `iat` to be selectively disclosable (and being optional as suggested in #199). It's informational content that may not be necessary for all cases and might have privacy implications. Specific `vct`s could mandate it as appropriate but I think requiring it in sd-jwt-vc is too inflexible. ",
+          "createdAt": "2024-01-16T19:02:56Z",
+          "updatedAt": "2024-01-16T19:02:56Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -11381,7 +11425,7 @@
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "588ea557ea5861784bbaf7051eddefdeb6d0751f",
-      "headRepository": "OR13/draft-terbu-sd-jwt-vc",
+      "headRepository": null,
       "headRefName": "patch-1",
       "headRefOid": "3a077c11d9a07780b54e6f64cb673e10c814523b",
       "closedAt": "2023-06-26T13:54:22Z",
@@ -12058,7 +12102,7 @@
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "cfaed1134f80b3aa73d878c5bddafa72cdcfb647",
-      "headRepository": "transmute-industries/draft-terbu-sd-jwt-vc",
+      "headRepository": null,
       "headRefName": "feat/vc-jwt",
       "headRefOid": "b4ba092ef731cf24eab210d4af46a8ac9d12c841",
       "closedAt": "2023-07-17T13:53:50Z",
@@ -15283,7 +15327,7 @@
       "labels": [],
       "body": "also fix a typo or two \r\nfor Issue #197",
       "createdAt": "2024-01-10T22:42:29Z",
-      "updatedAt": "2024-01-11T10:07:54Z",
+      "updatedAt": "2024-01-17T20:45:48Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8db131b232fb4018ad37d955612ab3af65e948bf",
@@ -15307,6 +15351,80 @@
           "body": "",
           "createdAt": "2024-01-11T10:07:54Z",
           "updatedAt": "2024-01-11T10:07:54Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5s93QO",
+          "commit": {
+            "abbreviatedOid": "64bd831"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-17T20:45:48Z",
+          "updatedAt": "2024-01-17T20:45:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 202,
+      "id": "PR_kwDOJbVClc5kWC4E",
+      "title": "make iat optional and allowed to be selectively disclosable",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/202",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #199 and #200",
+      "createdAt": "2024-01-17T18:49:33Z",
+      "updatedAt": "2024-01-17T23:06:56Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8db131b232fb4018ad37d955612ab3af65e948bf",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "iat-not-required",
+      "headRefOid": "f497b2a8af49b39f1e8e241ead20a1a4bbd3cfa3",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Amen!",
+          "createdAt": "2024-01-17T23:06:44Z",
+          "updatedAt": "2024-01-17T23:06:44Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5s93hR",
+          "commit": {
+            "abbreviatedOid": "f497b2a"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "As `iat` may be correlatable identifier, I'm in favor of making it optional",
+          "createdAt": "2024-01-17T20:46:39Z",
+          "updatedAt": "2024-01-17T20:46:39Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5s-r-U",
+          "commit": {
+            "abbreviatedOid": "f497b2a"
+          },
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-17T23:06:56Z",
+          "updatedAt": "2024-01-17T23:06:56Z",
           "comments": []
         }
       ]
