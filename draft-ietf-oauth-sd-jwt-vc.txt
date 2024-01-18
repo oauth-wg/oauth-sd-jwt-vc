@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 12 July 2024                                      Authlete Inc.
+Expires: 21 July 2024                                      Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                          9 January 2024
+                                                         18 January 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 July 2024.
+   This Internet-Draft will expire on 21 July 2024.
 
 Copyright Notice
 
@@ -309,9 +309,6 @@ Table of Contents
    *  iss
       -  REQUIRED.  The Issuer of the Verifiable Credential.  The value
          of iss MUST be a URI.  See [RFC7519] for more information.
-   *  iat
-      -  REQUIRED.  The time of issuance of the Verifiable Credential.
-         See [RFC7519] for more information.
    *  nbf
       -  OPTIONAL.  The time before which the Verifiable Credential MUST
          NOT be accepted before validating.  See [RFC7519] for more
@@ -344,6 +341,9 @@ Table of Contents
          Credential.  The Issuer MAY use it to provide the Subject
          identifier known by the Issuer.  There is no requirement for a
          binding to exist between sub and cnf claims.
+   *  iat
+      -  OPTIONAL.  The time of issuance of the Verifiable Credential.
+         See [RFC7519] for more information.
 
 3.2.2.3.  Public JWT claims
 
@@ -512,9 +512,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6JdM5
-   1J4cYRmvwbdgTVtUw_EYNkAKEtzGdCDBv-1At-NNXRRL1eu37xqIAIJ8zBJ_R378BM9i
-   iLMdD46s3lo9A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
+   _XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
+   Ma9eg_NT17Y-Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -627,15 +627,15 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6JdM5
-   1J4cYRmvwbdgTVtUw_EYNkAKEtzGdCDBv-1At-NNXRRL1eu37xqIAIJ8zBJ_R378BM9i
-   iLMdD46s3lo9A~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
+   _XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
+   Ma9eg_NT17Y-Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDQ4M
-   jIyNjR9.04v7BkmslseDzUvJ7RdNa9YEV0PBEvcqSi00nzEYZ0EBiZmz2yMzi_Hm8cDw
-   c1ckCv0FBJxHRTunMA3XDlyzDw
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDU1O
+   Tc2ODB9.tVgJDjFW4vjCN4lb5TNXdiMPm5v6K-EPW_XYcvLrK0VxabOt14PcpCWb5myT
+   vc4vgRYofg5pazH2N9uh79k5Mg
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -655,8 +655,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.Q4AOxQLf5hcocrEnk2LupnyLl4JeOZ5UjHPe5Fb68fZ00_
-   dCzonfCYiTIK-zoTItbRxD0bhGlsk8S2TJDwmFHQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.MXnp41uHqVLcKpzjSTof1fKPIeO-OltJTsKuJOh_lTlUV0
+   kyviCzWn5o2uVLnBse8eraEB15-oJqQOLtd5yTLA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -993,6 +993,7 @@ Appendix C.  Document History
    *  Finetuned rules for obtaining public verification key
    *  Editorial changes
    *  Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
+   *  'iat' is now optional and allowed to be selectively disclosable
 
    -01
 

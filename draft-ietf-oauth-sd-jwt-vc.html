@@ -12,13 +12,13 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.19.0" name="generator">
+<meta content="xml2rfc 3.19.1" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.0
+  xml2rfc 3.19.1
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -31,7 +31,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
     requests 2.31.0
     setuptools 68.2.2
     six 1.16.0
-    wcwidth 0.2.12
+    wcwidth 0.2.13
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1034,7 +1034,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 12 July 2024</td>
+<td class="center">Expires 21 July 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-01-09" class="published">9 January 2024</time>
+<time datetime="2024-01-18" class="published">18 January 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-07-12">12 July 2024</time></dd>
+<dd class="expires"><time datetime="2024-07-21">21 July 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1106,7 +1106,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 21 July 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1527,51 +1527,43 @@ MUST be a URI. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</spa
                 </ul>
 </li>
               <li class="compact" id="section-3.2.2.2-3.2">
-                <p id="section-3.2.2.2-3.2.1"><code>iat</code><a href="#section-3.2.2.2-3.2.1" class="pilcrow">¶</a></p>
+                <p id="section-3.2.2.2-3.2.1"><code>nbf</code><a href="#section-3.2.2.2-3.2.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.2.2.1">REQUIRED. The time of issuance of the Verifiable Credential. See
-<span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.2.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.2.2.1">OPTIONAL. The time before which the Verifiable Credential MUST NOT be
+accepted before validating. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.2.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
               <li class="compact" id="section-3.2.2.2-3.3">
-                <p id="section-3.2.2.2-3.3.1"><code>nbf</code><a href="#section-3.2.2.2-3.3.1" class="pilcrow">¶</a></p>
+                <p id="section-3.2.2.2-3.3.1"><code>exp</code><a href="#section-3.2.2.2-3.3.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.3.2.1">OPTIONAL. The time before which the Verifiable Credential MUST NOT be
-accepted before validating. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.3.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.3.2.1">OPTIONAL. The expiry time of the Verifiable Credential after which the
+Verifiable Credential is no longer valid. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more
+information.<a href="#section-3.2.2.2-3.3.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
               <li class="compact" id="section-3.2.2.2-3.4">
-                <p id="section-3.2.2.2-3.4.1"><code>exp</code><a href="#section-3.2.2.2-3.4.1" class="pilcrow">¶</a></p>
+                <p id="section-3.2.2.2-3.4.1"><code>cnf</code><a href="#section-3.2.2.2-3.4.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.4.2.1">OPTIONAL. The expiry time of the Verifiable Credential after which the
-Verifiable Credential is no longer valid. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more
-information.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.4.2.1">REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
               <li class="compact" id="section-3.2.2.2-3.5">
-                <p id="section-3.2.2.2-3.5.1"><code>cnf</code><a href="#section-3.2.2.2-3.5.1" class="pilcrow">¶</a></p>
+                <p id="section-3.2.2.2-3.5.1"><code>vct</code><a href="#section-3.2.2.2-3.5.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.5.2.1">REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.<a href="#section-3.2.2.2-3.5.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.5.2.1">REQUIRED. The type of the Verifiable Credential, e.g.,
+<code>https://credentials.example.com/identity_credential</code>, as defined in <a href="#type-claim" class="auto internal xref">Section 3.2.2.1.1</a>.<a href="#section-3.2.2.2-3.5.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
               <li class="compact" id="section-3.2.2.2-3.6">
-                <p id="section-3.2.2.2-3.6.1"><code>vct</code><a href="#section-3.2.2.2-3.6.1" class="pilcrow">¶</a></p>
+                <p id="section-3.2.2.2-3.6.1"><code>status</code><a href="#section-3.2.2.2-3.6.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.6.2.1">REQUIRED. The type of the Verifiable Credential, e.g.,
-<code>https://credentials.example.com/identity_credential</code>, as defined in <a href="#type-claim" class="auto internal xref">Section 3.2.2.1.1</a>.<a href="#section-3.2.2.2-3.6.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
-</li>
-              <li class="compact" id="section-3.2.2.2-3.7">
-                <p id="section-3.2.2.2-3.7.1"><code>status</code><a href="#section-3.2.2.2-3.7.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.7.2.1">OPTIONAL. The information on how to read the status of the Verifiable
+<li class="compact" id="section-3.2.2.2-3.6.2.1">OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See <span>[<a href="#I-D.looker-oauth-jwt-cwt-status-list" class="cite xref">I-D.looker-oauth-jwt-cwt-status-list</a>]</span>
-for more information.<a href="#section-3.2.2.2-3.7.2.1" class="pilcrow">¶</a>
+for more information.<a href="#section-3.2.2.2-3.6.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
@@ -1586,6 +1578,14 @@ Disclosures and MAY be selectively disclosed:<a href="#section-3.2.2.2-4" class=
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2.2.2-5.1.2.1" class="pilcrow">¶</a>
+</li>
+                </ul>
+</li>
+              <li class="compact" id="section-3.2.2.2-5.2">
+                <p id="section-3.2.2.2-5.2.1"><code>iat</code><a href="#section-3.2.2.2-5.2.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-3.2.2.2-5.2.2.1">OPTIONAL. The time of issuance of the Verifiable Credential. See
+<span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-5.2.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
@@ -1808,9 +1808,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6JdM5
-1J4cYRmvwbdgTVtUw_EYNkAKEtzGdCDBv-1At-NNXRRL1eu37xqIAIJ8zBJ_R378BM9i
-iLMdD46s3lo9A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
+_XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
+Ma9eg_NT17Y-Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1922,15 +1922,15 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6JdM5
-1J4cYRmvwbdgTVtUw_EYNkAKEtzGdCDBv-1At-NNXRRL1eu37xqIAIJ8zBJ_R378BM9i
-iLMdD46s3lo9A~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
+_XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
+Ma9eg_NT17Y-Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
 N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
 4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
 AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDQ4M
-jIyNjR9.04v7BkmslseDzUvJ7RdNa9YEV0PBEvcqSi00nzEYZ0EBiZmz2yMzi_Hm8cDw
-c1ckCv0FBJxHRTunMA3XDlyzDw
+mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDU1O
+Tc2ODB9.tVgJDjFW4vjCN4lb5TNXdiMPm5v6K-EPW_XYcvLrK0VxabOt14PcpCWb5myT
+vc4vgRYofg5pazH2N9uh79k5Mg
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -1951,8 +1951,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.Q4AOxQLf5hcocrEnk2LupnyLl4JeOZ5UjHPe5Fb68fZ00_
-dCzonfCYiTIK-zoTItbRxD0bhGlsk8S2TJDwmFHQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+hbGciOiAic2hhLTI1NiJ9.MXnp41uHqVLcKpzjSTof1fKPIeO-OltJTsKuJOh_lTlUV0
+kyviCzWn5o2uVLnBse8eraEB15-oJqQOLtd5yTLA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
 pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
 gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
 0cnkiOiAiVVMifV0~
@@ -2386,6 +2386,8 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-C-2.3">Editorial changes<a href="#appendix-C-2.3" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-C-2.4">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-C-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.5">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-C-2.5" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-C-3">-01<a href="#appendix-C-3" class="pilcrow">¶</a></p>
