@@ -196,7 +196,7 @@ Table of Contents
 1.4.  Terms and Definitions
 
    This specification uses the terms "Holder", "Issuer", "Verifier",
-   "Key Binding JWT" defined by
+   "Key Binding", and "Key Binding JWT" defined by
    [I-D.ietf-oauth-selective-disclosure-jwt].
 
    Verifiable Credential (VC):  An Issuer-signed assertion with claims
@@ -318,12 +318,12 @@ Table of Contents
          which the Verifiable Credential is no longer valid.  See
          [RFC7519] for more information.
    *  cnf
-      -  REQUIRED when Cryptographic Key Binding is to be supported.
+      -  REQUIRED when cryptographic Key Binding is to be supported.
          Contains the confirmation method as defined in [RFC7800].  It
          is RECOMMENDED that this contains a JWK as defined in
-         Section 3.2 of [RFC7800].  For Cryptographic Key Binding, the
-         Key Binding JWT in the Combined Format for Presentation MUST be
-         signed by the key identified in this claim.
+         Section 3.2 of [RFC7800].  For proof of cryptographic Key
+         Binding, the Key Binding JWT in the presentation of the SD-JWT
+         MUST be signed by the key identified in this claim.
    *  vct
       -  REQUIRED.  The type of the Verifiable Credential, e.g.,
          https://credentials.example.com/identity_credential, as defined
@@ -512,9 +512,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
-   _XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
-   Ma9eg_NT17Y-Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hARzP
+   dqhfQv93sqvQ-NrQHHt57lT_nkQtd6TQ7QhBMxNE2GH9qkgS7xhmtHOB8S0UJYZNNyLL
+   z5ZAIA2c1rNaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -604,7 +604,7 @@ Table of Contents
    Key Binding JWT MUST adhere to the rules defined in Section 5.3 of
    [I-D.ietf-oauth-selective-disclosure-jwt].
 
-   The Key Binding JWT MAY include addtional claims which, when not
+   The Key Binding JWT MAY include additional claims which, when not
    understood, MUST be ignored by the Verifier.
 
 4.2.  Examples
@@ -627,15 +627,15 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
-   _XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
-   Ma9eg_NT17Y-Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hARzP
+   dqhfQv93sqvQ-NrQHHt57lT_nkQtd6TQ7QhBMxNE2GH9qkgS7xhmtHOB8S0UJYZNNyLL
+   z5ZAIA2c1rNaQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDU1O
-   Tc2ODB9.tVgJDjFW4vjCN4lb5TNXdiMPm5v6K-EPW_XYcvLrK0VxabOt14PcpCWb5myT
-   vc4vgRYofg5pazH2N9uh79k5Mg
+   Tc3MzB9.BDQghgnUY7FtrC_1j7TVreszVgbuuZ2RYAb8bACz7Yn2Us468XtuL9cZ-go6
+   GNzsYaEphkNV0SnV961haGgvQA
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -655,8 +655,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.MXnp41uHqVLcKpzjSTof1fKPIeO-OltJTsKuJOh_lTlUV0
-   kyviCzWn5o2uVLnBse8eraEB15-oJqQOLtd5yTLA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.pCjFK6hctRsyQthj0vFxoaVAElWYm2G0nqjJa6YdRv1yLz
+   ZToTIvgXH_mX7uz_RNhS1mQQWXIX0uUcFYkIrC2Q~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -725,7 +725,7 @@ Table of Contents
    JWT VC Issuer Metadata, but not both.
 
    It is RECOMMENDED that the JWT contains a kid JWT header parameter
-   that can be used to lookup the public key in the JWK Set included by
+   that can be used to look up the public key in the JWK Set included by
    value or referenced in the JWT VC Issuer Metadata.
 
    The following is a non-normative example of a JWT VC Issuer Metadata

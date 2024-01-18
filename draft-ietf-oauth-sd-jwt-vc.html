@@ -1373,7 +1373,7 @@ document are to be interpreted as described in RFC 2119 <span>[<a href="#RFC2119
         <h3 id="name-terms-and-definitions">
 <a href="#section-1.4" class="section-number selfRef">1.4. </a><a href="#name-terms-and-definitions" class="section-name selfRef">Terms and Definitions</a>
         </h3>
-<p id="section-1.4-1">This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding JWT" defined by
+<p id="section-1.4-1">This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding", and "Key Binding JWT" defined by
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-1.4-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlCompact dlParallel" id="section-1.4-2">
           <dt id="section-1.4-2.1">Verifiable Credential (VC):</dt>
@@ -1546,7 +1546,7 @@ information.<a href="#section-3.2.2.2-3.3.2.1" class="pilcrow">¶</a>
               <li class="compact" id="section-3.2.2.2-3.4">
                 <p id="section-3.2.2.2-3.4.1"><code>cnf</code><a href="#section-3.2.2.2-3.4.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.4.2.1">REQUIRED when Cryptographic Key Binding is to be supported. Contains the confirmation method as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For Cryptographic Key Binding, the Key Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.4.2.1">REQUIRED when cryptographic Key Binding is to be supported. Contains the confirmation method as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
@@ -1808,9 +1808,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
-_XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
-Ma9eg_NT17Y-Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hARzP
+dqhfQv93sqvQ-NrQHHt57lT_nkQtd6TQ7QhBMxNE2GH9qkgS7xhmtHOB8S0UJYZNNyLL
+z5ZAIA2c1rNaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1895,7 +1895,7 @@ of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
 <p id="section-4.1-1">If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
 JWT MUST adhere to the rules defined in Section 5.3 of
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">The Key Binding JWT MAY include addtional claims which, when not understood, MUST
+<p id="section-4.1-2">The Key Binding JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1922,15 +1922,15 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RKczU
-_XXdCPn87x2mWk8phtm2YQ8xEqQLCM9qdOphSpvdSzKjBWfV2LdUhypEbdhvnUTk7qBU
-Ma9eg_NT17Y-Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hARzP
+dqhfQv93sqvQ-NrQHHt57lT_nkQtd6TQ7QhBMxNE2GH9qkgS7xhmtHOB8S0UJYZNNyLL
+z5ZAIA2c1rNaQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
 N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
 4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
 AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
 mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDU1O
-Tc2ODB9.tVgJDjFW4vjCN4lb5TNXdiMPm5v6K-EPW_XYcvLrK0VxabOt14PcpCWb5myT
-vc4vgRYofg5pazH2N9uh79k5Mg
+Tc3MzB9.BDQghgnUY7FtrC_1j7TVreszVgbuuZ2RYAb8bACz7Yn2Us468XtuL9cZ-go6
+GNzsYaEphkNV0SnV961haGgvQA
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -1951,8 +1951,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.MXnp41uHqVLcKpzjSTof1fKPIeO-OltJTsKuJOh_lTlUV0
-kyviCzWn5o2uVLnBse8eraEB15-oJqQOLtd5yTLA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+hbGciOiAic2hhLTI1NiJ9.pCjFK6hctRsyQthj0vFxoaVAElWYm2G0nqjJa6YdRv1yLz
+ZToTIvgXH_mX7uz_RNhS1mQQWXIX0uUcFYkIrC2Q~WyJRZ19PNjR6cUF4ZTQxMmExMDh
 pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
 gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
 0cnkiOiAiVVMifV0~
@@ -2044,7 +2044,7 @@ object containing a valid JWK Set.<a href="#section-5.2-4.3.2.1" class="pilcrow"
 <p id="section-5.2-5">JWT VC Issuer Metadata MUST include either <code>jwks_uri</code> or <code>jwks</code> in their JWT VC
 Issuer Metadata, but not both.<a href="#section-5.2-5" class="pilcrow">¶</a></p>
 <p id="section-5.2-6">It is RECOMMENDED that the JWT contains a <code>kid</code> JWT header parameter that can
-be used to lookup the public key in the JWK Set included by value or referenced
+be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.<a href="#section-5.2-6" class="pilcrow">¶</a></p>
 <p id="section-5.2-7">The following is a non-normative example of a JWT VC Issuer Metadata configuration
 including <code>jwks</code>:<a href="#section-5.2-7" class="pilcrow">¶</a></p>
