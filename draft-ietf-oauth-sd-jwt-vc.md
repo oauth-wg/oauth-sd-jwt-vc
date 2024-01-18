@@ -232,9 +232,6 @@ disclosed:
 * `iss`
     * REQUIRED. The Issuer of the Verifiable Credential. The value of `iss`
 MUST be a URI. See [@!RFC7519] for more information.
-* `iat`
-    * REQUIRED. The time of issuance of the Verifiable Credential. See
-[@!RFC7519] for more information.
 * `nbf`
     * OPTIONAL. The time before which the Verifiable Credential MUST NOT be
 accepted before validating. See [@!RFC7519] for more information.
@@ -260,6 +257,9 @@ Disclosures and MAY be selectively disclosed:
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
+* `iat`
+    * OPTIONAL. The time of issuance of the Verifiable Credential. See
+      [@!RFC7519] for more information.
 
 #### Public JWT claims
 
@@ -683,6 +683,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Finetuned rules for obtaining public verification key
 * Editorial changes
 * Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
+* 'iat' is now optional and allowed to be selectively disclosable
 
 -01
 
