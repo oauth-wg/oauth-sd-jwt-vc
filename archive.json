@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-18T01:21:39.893795+00:00",
+  "timestamp": "2024-01-21T01:33:32.846396+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4227,10 +4227,12 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [],
+      "labels": [
+        "wg-02"
+      ],
       "body": "We should define more clearly **what a credential type (identified by the `vct` claim) actually means**.\r\n\r\nThe current description is a bit handwavy and that may be a sign that we have not yet defined the concept well.\r\n\r\nI think that there is a set of metadata usually associated with each SD-JWT VC type, for example\r\n- Display information for the whole credential\r\n- A schema for the JSON structure (may or may not be defined in JSON schema)\r\n- Information about the claims, including\r\n\t- Display information\r\n\t- Type information\r\n\t- Status information (self-attested vs. verified etc.)\r\n- Maybe: What kind of binding is supported/usually used for this credential type\r\n- Maybe: What issuers are allowed to issue this credential type\r\n\r\nSuch metadata would help **Wallets** (e.g., for displaying the credential to the user) and **Verifiers** (e.g., for determining the status of claims). It would also help **developers of Verifiers**, as they would get structured information about the credential they can expect.\r\n\r\nThe need for such metadata has been discussed in Issue #171 and similar approaches have shown up in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2).\r\n\r\nThe metadata may or may not be embedded into the credential itself, or provided externally. Assuming we allow for registered `vct` values (e.g., `UniversityCredential`), this metadata could go into the registry. It could also be distributed manually. \r\n\r\nBut it can also be made discoverable, e.g., by providing it at a .well-known URI derived from the URL in `vct`.\r\n\r\n----\r\n\r\nHere is a completely made-up example of what this metadata could look like:\r\n\r\n```json\r\n{\r\n    \"vct\": \"https://credentials.example.com/example1\",\r\n    \"display\": [\r\n        {\r\n            \"en-US\": {\r\n                \"name\": \"University Credential\",\r\n                \"logo\": {\r\n                    \"url\": \"https://exampleuniversity.com/public/logo.png\",\r\n                    \"alt_text\": \"a square logo of a university\"\r\n                },\r\n                \"background_color\": \"#12107c\",\r\n                \"text_color\": \"#FFFFFF\"\r\n            }\r\n        }\r\n    ],\r\n    \"claims\": // mapping from JSON pointer to information about this claim\r\n    {\r\n        \"/name\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Vor- und Nachname\",\r\n                    \"description\": \"Der Name des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Name\",\r\n                    \"description\": \"The name of the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        \"/degree\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Abschluss\",\r\n                    \"description\": \"Der Abschluss des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Degree\",\r\n                    \"description\": \"Degree earned by the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        // ...\r\n        \"/address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Adresse\",\r\n                    \"description\": \"Adresse zum Zeitpunkt des Abschlusses\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Address\",\r\n                    \"description\": \"Address at the time of graduation\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        },\r\n        \"/address/street_address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Stra\u00dfe\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Street Address\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n---\r\n\r\nImportant:\r\n- This mechanism will not be format-agnostic, but defined only for SD-JWT VC for now.\r\n- There are overlaps with mechanisms defined in HAIP, for example, and part of this issue here is to figure out what data should go where and to avoid duplications by getting the concept right. I think that the `claims` element defined for the credential issuer metadata in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2) could be replaced by just a `vct` identifier (the metadata could be discovered from there, or retrieved from the registry).",
       "createdAt": "2023-10-24T20:24:39Z",
-      "updatedAt": "2023-12-06T20:45:27Z",
+      "updatedAt": "2024-01-18T17:49:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -4469,7 +4471,7 @@
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2023-12-13T16:50:53Z",
+      "updatedAt": "2024-01-20T10:49:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -4478,6 +4480,20 @@
           "body": "Currently blocked by SD-JWT: \r\n- https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/328\r\n- https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/369",
           "createdAt": "2023-12-13T16:50:51Z",
           "updatedAt": "2023-12-13T16:50:51Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@paulbastian A few options we discussed on the editor's call today (cc @danielfett @bc-pi ):\r\n\r\n- not do anything in SD-JWT to enable this since SD-JWT just prohibits \"symmetric algorithms\". We could wait for an JOSE `alg` value specification to appear and to be registered in the IANA registry which states that the algorithm is not symmetric. One downside of this approach is that standard JOSE libs won't work today since the `alg` value is not supported. Note that technically one could implement this using standard `HS256` if the key was agreed/derived using an ECDH/ConcatKDF schema.\r\n- remove the normative statement completely from SD-JWT that prohibits \"symmetric algorithms\".\r\n- change the normative statement to a SHOULD NOT use \"symmetric algorithms\" and explain in the SD-JWT security - considerations section where symmetric `alg` values are acceptable and when not.\r\n- keep the MUST NOT statement in SD-JWT but add an \"... unless\" clause that explains where this could be useful, e.g., for hybrid schemes but this needs to be confirmed if this process is indeed hybrid and therefore the use case is covered.",
+          "createdAt": "2024-01-18T18:16:00Z",
+          "updatedAt": "2024-01-18T18:16:36Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think #1 is the cleanest approach, but may take more time for implementations, we will try to get some experience there. #3 also doesn't sound bad to me.",
+          "createdAt": "2024-01-20T10:49:04Z",
+          "updatedAt": "2024-01-20T10:49:04Z"
         }
       ]
     },
@@ -4585,17 +4601,19 @@
       "id": "I_kwDOJbVClc56EbRL",
       "title": "out of date terminology",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/197",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
         "bc-pi"
       ],
-      "labels": [],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-3.2.2.2-3.5.2.1 has \"Combined Format for Presentation\", which isn't used in SD-JWT anymore. ",
       "createdAt": "2023-12-19T06:00:24Z",
-      "updatedAt": "2024-01-10T22:47:10Z",
-      "closedAt": null,
+      "updatedAt": "2024-01-18T17:08:29Z",
+      "closedAt": "2024-01-18T17:08:29Z",
       "comments": [
         {
           "author": "awoie",
@@ -4618,15 +4636,17 @@
       "id": "I_kwDOJbVClc56P43q",
       "title": "Consider making iat optional",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/199",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "oed",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "Using `iat` is not the only, and not always the desired way to specify when something was issued.\r\n\r\nThe use case I'm considering would make use of an \"after\" field the value of which would be set to a recent block hash (e.g. from a blockchain like Bitcoin or Ethereum). This approach would provide a more rigorous way to determine when something was issued since it would be impossible to create a claim that points to a time in the future.\r\n\r\nIf `iat` is required, it would be completely redundant to the \"after\" field in my example.",
       "createdAt": "2023-12-20T17:29:03Z",
-      "updatedAt": "2024-01-17T18:46:52Z",
-      "closedAt": null,
+      "updatedAt": "2024-01-18T17:07:34Z",
+      "closedAt": "2024-01-18T17:07:34Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -4649,15 +4669,17 @@
       "id": "I_kwDOJbVClc56WG7N",
       "title": "iat should be selectively disclosable",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/200",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "peppelinux",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "I propose making the iat (issued at) claim name selectively disclosable. This is because for certain types of tokens, credentials, or personal data, the creation or issuance date could potentially reveal sensitive information.\r\n\r\nFor instance, consider a credential verifying that my age is over 18. In most cases, a user would request this credential on their birthday, which would mean that the iat value would coincide with their birth date.",
       "createdAt": "2023-12-21T15:18:52Z",
-      "updatedAt": "2024-01-16T19:02:58Z",
-      "closedAt": null,
+      "updatedAt": "2024-01-18T17:07:35Z",
+      "closedAt": "2024-01-18T17:07:35Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -15320,24 +15342,26 @@
       "id": "PR_kwDOJbVClc5jvJgO",
       "title": "Remove/fix outdated SD-JWT terminology ",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/201",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "also fix a typo or two \r\nfor Issue #197",
       "createdAt": "2024-01-10T22:42:29Z",
-      "updatedAt": "2024-01-17T20:45:48Z",
+      "updatedAt": "2024-01-18T17:08:28Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8db131b232fb4018ad37d955612ab3af65e948bf",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc/fix-197",
       "headRefOid": "64bd831817d0cefe1ad62935ce3eb62760d99461",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-18T17:08:28Z",
+      "mergedAt": "2024-01-18T17:08:28Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "7ab0f523d339724e1498572e55362c55eb8e83ec"
+      },
       "comments": [],
       "reviews": [
         {
@@ -15365,6 +15389,19 @@
           "createdAt": "2024-01-17T20:45:48Z",
           "updatedAt": "2024-01-17T20:45:48Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5tFm55",
+          "commit": {
+            "abbreviatedOid": "64bd831"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-18T17:08:02Z",
+          "updatedAt": "2024-01-18T17:08:02Z",
+          "comments": []
         }
       ]
     },
@@ -15373,24 +15410,26 @@
       "id": "PR_kwDOJbVClc5kWC4E",
       "title": "make iat optional and allowed to be selectively disclosable",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/202",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #199 and #200",
       "createdAt": "2024-01-17T18:49:33Z",
-      "updatedAt": "2024-01-17T23:06:56Z",
+      "updatedAt": "2024-01-18T17:07:33Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8db131b232fb4018ad37d955612ab3af65e948bf",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "iat-not-required",
       "headRefOid": "f497b2a8af49b39f1e8e241ead20a1a4bbd3cfa3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-01-18T17:07:33Z",
+      "mergedAt": "2024-01-18T17:07:33Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "25a41f124d81cd275e950bfecff0136160551519"
+      },
       "comments": [
         {
           "author": "peppelinux",
@@ -15425,6 +15464,32 @@
           "body": "",
           "createdAt": "2024-01-17T23:06:56Z",
           "updatedAt": "2024-01-17T23:06:56Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5tAaEW",
+          "commit": {
+            "abbreviatedOid": "f497b2a"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm",
+          "createdAt": "2024-01-18T05:03:41Z",
+          "updatedAt": "2024-01-18T05:03:41Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5tFmIr",
+          "commit": {
+            "abbreviatedOid": "f497b2a"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-01-18T17:06:20Z",
+          "updatedAt": "2024-01-18T17:06:20Z",
           "comments": []
         }
       ]
