@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-21T01:33:32.846396+00:00",
+  "timestamp": "2024-01-23T01:23:35.784397+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4471,7 +4471,7 @@
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2024-01-20T10:49:05Z",
+      "updatedAt": "2024-01-22T20:55:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -4484,9 +4484,9 @@
         {
           "author": "awoie",
           "authorAssociation": "COLLABORATOR",
-          "body": "@paulbastian A few options we discussed on the editor's call today (cc @danielfett @bc-pi ):\r\n\r\n- not do anything in SD-JWT to enable this since SD-JWT just prohibits \"symmetric algorithms\". We could wait for an JOSE `alg` value specification to appear and to be registered in the IANA registry which states that the algorithm is not symmetric. One downside of this approach is that standard JOSE libs won't work today since the `alg` value is not supported. Note that technically one could implement this using standard `HS256` if the key was agreed/derived using an ECDH/ConcatKDF schema.\r\n- remove the normative statement completely from SD-JWT that prohibits \"symmetric algorithms\".\r\n- change the normative statement to a SHOULD NOT use \"symmetric algorithms\" and explain in the SD-JWT security - considerations section where symmetric `alg` values are acceptable and when not.\r\n- keep the MUST NOT statement in SD-JWT but add an \"... unless\" clause that explains where this could be useful, e.g., for hybrid schemes but this needs to be confirmed if this process is indeed hybrid and therefore the use case is covered.",
+          "body": "@paulbastian A few options we discussed on the editor's call today (cc @danielfett @bc-pi ):\r\n\r\n1. not do anything in SD-JWT to enable this since SD-JWT just prohibits \"symmetric algorithms\". We could wait for an JOSE `alg` value specification to appear and to be registered in the IANA registry which states that the algorithm is not symmetric. One downside of this approach is that standard JOSE libs won't work today since the `alg` value is not supported. Note that technically one could implement this using standard `HS256` if the key was agreed/derived using an ECDH/ConcatKDF schema.\r\n2. remove the normative statement completely from SD-JWT that prohibits \"symmetric algorithms\".\r\n3. change the normative statement to a SHOULD NOT use \"symmetric algorithms\" and explain in the SD-JWT security - considerations section where symmetric `alg` values are acceptable and when not.\r\n4. keep the MUST NOT statement in SD-JWT but add an \"... unless\" clause that explains where this could be useful, e.g., for hybrid schemes but this needs to be confirmed if this process is indeed hybrid and therefore the use case is covered.",
           "createdAt": "2024-01-18T18:16:00Z",
-          "updatedAt": "2024-01-18T18:16:36Z"
+          "updatedAt": "2024-01-21T15:47:44Z"
         },
         {
           "author": "paulbastian",
@@ -4494,6 +4494,55 @@
           "body": "I think #1 is the cleanest approach, but may take more time for implementations, we will try to get some experience there. #3 also doesn't sound bad to me.",
           "createdAt": "2024-01-20T10:49:04Z",
           "updatedAt": "2024-01-20T10:49:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think I still lean towards preferring something like # 2 - just remove the explicit prohibition of symmetric algorithms from SD-JWT and not say much, if anything else about it in that spec. Let the layer above SD-JWT/JOSE (probably the presentation protocol) define how an HMAC key is agreed upon and use existing JWS HMAC algs and implementations. I.e., the verifier sends a public key in it's presentation request, which the generator uses in a key agreement with their private key to get a key that is then KDFd to produce an appropriate key for existing/established JWS HS256[384|512] algs. That layer is going to have to define much of that anyway so there's not much gain from pushing an ECDH-based MAC alg into JOSE/JWS (also note that defining and registering a new JOSE alg is far from a trivial exercise). And the prohibition of symmetric algorithms in SD-JWT makes sense from a particular perspective but is arguably just unnecessarily restrictive at the building block layer.  ",
+          "createdAt": "2024-01-21T15:47:19Z",
+          "updatedAt": "2024-01-21T15:50:38Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I would agree that removing the restriction is okay, as SD-JWT is an improvement of JWT and JWTs don't have this restriction.\n\nDo you think that ECDH-ES is an anti-pattern? It has been in JWA from the beginning and you could have the same arguments there?",
+          "createdAt": "2024-01-21T16:33:12Z",
+          "updatedAt": "2024-01-21T16:33:12Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Do you think that ECDH-ES is an anti-pattern? It has been in JWA from the beginning and you could have the same arguments there?\r\n\r\nI wouldn't take it that far. My comments/arguments here are really just in the context of the current state of JWS specs and existing library support. ",
+          "createdAt": "2024-01-22T12:06:35Z",
+          "updatedAt": "2024-01-22T12:06:35Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi @paulbastian  if option 2 is our favorite options. Should the SD-JWT VC spec then say something about that? IMO, it would be good to say something in the security considerations at least.",
+          "createdAt": "2024-01-22T12:18:02Z",
+          "updatedAt": "2024-01-22T12:18:24Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree in general that since SD-JWT is a building block, being too restrictive there regarding symmetric algorithms is probably not necessary.",
+          "createdAt": "2024-01-22T12:19:08Z",
+          "updatedAt": "2024-01-22T12:19:08Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I don't object removing the restriction, I checked RFC7519 and there is no similar statement.",
+          "createdAt": "2024-01-22T12:26:40Z",
+          "updatedAt": "2024-01-22T12:26:40Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [...]  if option 2 is our favorite options. Should the SD-JWT VC spec then say something about that? IMO, it would be good to say something in the security considerations at least.\r\n\r\nDefinitely not opposed to saying something. But it might be challenging to say something that's actually meaningful/helpful.  \r\n",
+          "createdAt": "2024-01-22T20:55:27Z",
+          "updatedAt": "2024-01-22T20:55:27Z"
         }
       ]
     },
