@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-01-25T01:23:37.195261+00:00",
+  "timestamp": "2024-01-28T01:20:53.921224+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4232,7 +4232,7 @@
       ],
       "body": "We should define more clearly **what a credential type (identified by the `vct` claim) actually means**.\r\n\r\nThe current description is a bit handwavy and that may be a sign that we have not yet defined the concept well.\r\n\r\nI think that there is a set of metadata usually associated with each SD-JWT VC type, for example\r\n- Display information for the whole credential\r\n- A schema for the JSON structure (may or may not be defined in JSON schema)\r\n- Information about the claims, including\r\n\t- Display information\r\n\t- Type information\r\n\t- Status information (self-attested vs. verified etc.)\r\n- Maybe: What kind of binding is supported/usually used for this credential type\r\n- Maybe: What issuers are allowed to issue this credential type\r\n\r\nSuch metadata would help **Wallets** (e.g., for displaying the credential to the user) and **Verifiers** (e.g., for determining the status of claims). It would also help **developers of Verifiers**, as they would get structured information about the credential they can expect.\r\n\r\nThe need for such metadata has been discussed in Issue #171 and similar approaches have shown up in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2).\r\n\r\nThe metadata may or may not be embedded into the credential itself, or provided externally. Assuming we allow for registered `vct` values (e.g., `UniversityCredential`), this metadata could go into the registry. It could also be distributed manually. \r\n\r\nBut it can also be made discoverable, e.g., by providing it at a .well-known URI derived from the URL in `vct`.\r\n\r\n----\r\n\r\nHere is a completely made-up example of what this metadata could look like:\r\n\r\n```json\r\n{\r\n    \"vct\": \"https://credentials.example.com/example1\",\r\n    \"display\": [\r\n        {\r\n            \"en-US\": {\r\n                \"name\": \"University Credential\",\r\n                \"logo\": {\r\n                    \"url\": \"https://exampleuniversity.com/public/logo.png\",\r\n                    \"alt_text\": \"a square logo of a university\"\r\n                },\r\n                \"background_color\": \"#12107c\",\r\n                \"text_color\": \"#FFFFFF\"\r\n            }\r\n        }\r\n    ],\r\n    \"claims\": // mapping from JSON pointer to information about this claim\r\n    {\r\n        \"/name\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Vor- und Nachname\",\r\n                    \"description\": \"Der Name des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Name\",\r\n                    \"description\": \"The name of the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        \"/degree\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Abschluss\",\r\n                    \"description\": \"Der Abschluss des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Degree\",\r\n                    \"description\": \"Degree earned by the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        // ...\r\n        \"/address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Adresse\",\r\n                    \"description\": \"Adresse zum Zeitpunkt des Abschlusses\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Address\",\r\n                    \"description\": \"Address at the time of graduation\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        },\r\n        \"/address/street_address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Stra\u00dfe\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Street Address\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n---\r\n\r\nImportant:\r\n- This mechanism will not be format-agnostic, but defined only for SD-JWT VC for now.\r\n- There are overlaps with mechanisms defined in HAIP, for example, and part of this issue here is to figure out what data should go where and to avoid duplications by getting the concept right. I think that the `claims` element defined for the credential issuer metadata in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2) could be replaced by just a `vct` identifier (the metadata could be discovered from there, or retrieved from the registry).",
       "createdAt": "2023-10-24T20:24:39Z",
-      "updatedAt": "2024-01-18T17:49:51Z",
+      "updatedAt": "2024-01-25T22:39:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -4262,6 +4262,20 @@
           "body": "Using the **VC type metadata**, one could also include an ecosystem-specific parameter that contains a [JSON patch](https://jsonpatch.com/) that allows you to map to any data model one want. It would also allow automatic fetching and executing the transformation algorithm quite easily.",
           "createdAt": "2023-12-06T20:44:27Z",
           "updatedAt": "2023-12-06T20:45:27Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I prepared a first draft for the SD-JWT VC metadata. I wrote this as a separate draft for working on it, but of course we can consider integrating this into SD-JWT VC \u2014 whatever works best. I'm looking forward to your feedback.\r\n\r\nhttps://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html",
+          "createdAt": "2024-01-25T17:02:38Z",
+          "updatedAt": "2024-01-25T17:02:38Z"
+        },
+        {
+          "author": "decentralgabe",
+          "authorAssociation": "NONE",
+          "body": "@danielfett I like the document and think it's a great start. I think there's a lot more to do around JSON Schema, similar to the work we've put into [this document at the W3C](https://w3c.github.io/vc-json-schema/). I'm happy to help here. Similarly, the display reminds me of [this document from DIF](https://identity.foundation/wallet-rendering/), which could be a standalone thing. Perhaps the types document should be transformed to a 'hub' document?",
+          "createdAt": "2024-01-25T22:39:40Z",
+          "updatedAt": "2024-01-25T22:39:40Z"
         }
       ]
     },
