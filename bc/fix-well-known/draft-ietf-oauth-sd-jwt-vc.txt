@@ -514,9 +514,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PgW4T
-   4NmdCWEhJQ6IZqK3WtiJ6U5f0EQurMAyLWwmKpC13RdpPv1CXFP4bgEWTwZ00ektGsS3
-   8naLWnFNWGA6w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.rezfI
+   TBBDQeH8ft1g2hryLX999O4dNjfZ_1EBAJZ384HApzKSd7TXNYc9JnvkGrIDXJYxXVgF
+   V0FdZfF-kKQ1g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -629,15 +629,15 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PgW4T
-   4NmdCWEhJQ6IZqK3WtiJ6U5f0EQurMAyLWwmKpC13RdpPv1CXFP4bgEWTwZ00ektGsS3
-   8naLWnFNWGA6w~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.rezfI
+   TBBDQeH8ft1g2hryLX999O4dNjfZ_1EBAJZ384HApzKSd7TXNYc9JnvkGrIDXJYxXVgF
+   V0FdZfF-kKQ1g~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDY4M
-   TM4ODR9.VhQQWDen6GRNimIdR1IvQJBJMerR4i4gkvBD77WDmVZ2KUVKC7QESrVd3l0R
-   gOiiar6hW53q5CjV7-I9LPfoZg
+   TQ5NTd9.dsIdltIhELSD7X0YdYsbhQ0DoL03Fz0ev2F2KNxscMntfMoa9XE7IKRx33_7
+   F-Eqqj0iUoROL0eopanaABQjjA
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -657,8 +657,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.wi6SJ-0v9GJFudDHdZ8M9ATHyrfZ4_TE0QlR5mXionq0kO
-   8TcGirl3K7DfXjek2Gw6nzh3hHBYNwgfNhZi6X3w~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.I9B90pLKDxrseRWFneNyqd4uohLZeQVQ2z7Hr_5tWn_Y67
+   uBeAlsqMsigURzwOhZzBXY6TSc15YLXDSVlNTZcQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -949,7 +949,8 @@ A.1.  JSON Web Token Claims Registration
    *  Claim Name: "vct"
    *  Claim Description: Verifiable credential type identifier
    *  Change Controller: IETF
-   *  Specification Document(s): Section 3.2.2.1.1 of this document
+   *  Specification Document(s): [[ Section 3.2.2.1.1 of this of this
+      specification ]]
 
 A.2.  Media Types Registry
 
