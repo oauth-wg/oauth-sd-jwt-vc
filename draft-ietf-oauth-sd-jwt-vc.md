@@ -669,7 +669,7 @@ by [@!RFC5785].
 
 * URI suffix: jwt-vc-issuer
 * Change controller: IETF
-* Specification document: (#jwt-vc-issuer-metadata) of [[ this of this document ]]
+* Specification document: [[ (#jwt-vc-issuer-metadata) of this of this specification ]]
 * Related information: (none)
 
 # Acknowledgements {#Acknowledgements}
