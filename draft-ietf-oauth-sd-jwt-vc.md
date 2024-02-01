@@ -632,7 +632,7 @@ TBD
 - Claim Name: "vct"
 - Claim Description: Verifiable credential type identifier
 - Change Controller: IETF
-- Specification Document(s): (#type-claim) of this document
+- Specification Document(s): [[ (#type-claim)  of this of this specification ]]
 
 ## Media Types Registry
 
