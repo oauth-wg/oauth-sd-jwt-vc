@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-01T01:19:55.677530+00:00",
+  "timestamp": "2024-02-04T01:20:50.838312+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4767,7 +4767,7 @@
       "labels": [],
       "body": "There are 2 parts of the draft discussing the path to issuer metadata:\r\n> Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer Metadata configuration available at the path formed by concatenating the string /.well-known/jwt-vc-issuer to the iss claim value in the JWT. The iss MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components.\r\n\r\nand\r\n> If the iss value contains a path component, any terminating / MUST be removed before inserting /.well-known/ and the well-known URI suffix between the host component and the path component. \r\n> The following is a non-normative example of a HTTP request for the JWT VC Issuer Metadata configuration when iss is set to \r\n> https://example.com/user/1234:\r\n> GET /.well-known/jwt-vc-issuer/user/1234 HTTP/1.1\r\n> Host: example.com\r\n\r\nI do believe the latter is the currently intended /.well-known mechanism, whereas the first section was probably not updated and would result in `https://example.com/user/1234/.well-known/jwt-vc-issuer` to resolve metadata. I guess this was an oversight in #80?",
       "createdAt": "2024-01-30T18:36:21Z",
-      "updatedAt": "2024-01-31T23:38:19Z",
+      "updatedAt": "2024-02-01T19:40:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -4787,9 +4787,9 @@
         {
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
-          "body": "#204 endeavors to fix this ",
+          "body": "#204 endeavors to fix this (and a few other little things)",
           "createdAt": "2024-01-31T23:38:18Z",
-          "updatedAt": "2024-01-31T23:38:18Z"
+          "updatedAt": "2024-02-01T19:40:15Z"
         }
       ]
     }
@@ -15609,19 +15609,113 @@
       "labels": [],
       "body": "also add associated IANA registration request and fix up formatting etc in other IANA bits  \r\n\r\nsee it live https://drafts.oauth.net/oauth-sd-jwt-vc/bc/fix-well-known/draft-ietf-oauth-sd-jwt-vc.html ",
       "createdAt": "2024-01-31T23:36:45Z",
-      "updatedAt": "2024-01-31T23:40:59Z",
+      "updatedAt": "2024-02-01T20:31:21Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "7ab0f523d339724e1498572e55362c55eb8e83ec",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc/fix-well-known",
-      "headRefOid": "3a616d44716a5418b736d01d5241c1937492049a",
+      "headRefOid": "7883e101b6625de58c01aa546b54bc3fa6df0efa",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5usRLs",
+          "commit": {
+            "abbreviatedOid": "3a616d4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "thanks, just one tiny suggestion",
+          "createdAt": "2024-02-01T17:26:42Z",
+          "updatedAt": "2024-02-01T17:27:10Z",
+          "comments": [
+            {
+              "originalPosition": 121,
+              "body": "```suggestion\r\n* Specification document: (#jwt-vc-issuer-metadata) of [[ this of this specification ]]\r\n```",
+              "createdAt": "2024-02-01T17:26:42Z",
+              "updatedAt": "2024-02-01T17:27:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5usSEv",
+          "commit": {
+            "abbreviatedOid": "3a616d4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-01T17:28:23Z",
+          "updatedAt": "2024-02-01T17:28:23Z",
+          "comments": [
+            {
+              "originalPosition": 121,
+              "body": "in SD-JWT the section is also included like this, not sure if there was a really good reason for that. In case it was an oversight, we would need to do the following:\r\n\r\n```suggestion\r\n* Specification document: [[ (#jwt-vc-issuer-metadata) of this of this specification ]]\r\n```",
+              "createdAt": "2024-02-01T17:28:23Z",
+              "updatedAt": "2024-02-01T18:50:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5utLoK",
+          "commit": {
+            "abbreviatedOid": "3a616d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-01T18:57:17Z",
+          "updatedAt": "2024-02-01T18:57:17Z",
+          "comments": [
+            {
+              "originalPosition": 121,
+              "body": "I don't think there was really a reason for that but we can do the same here anyway. ",
+              "createdAt": "2024-02-01T18:57:17Z",
+              "updatedAt": "2024-02-01T18:57:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5utMOC",
+          "commit": {
+            "abbreviatedOid": "63d9375"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-01T18:58:36Z",
+          "updatedAt": "2024-02-01T18:58:37Z",
+          "comments": [
+            {
+              "originalPosition": 60,
+              "body": "make em all consistent while we're here \r\n\r\n```suggestion\r\n- Specification Document(s): [[ (#type-claim)  of this of this specification ]]\r\n```",
+              "createdAt": "2024-02-01T18:58:36Z",
+              "updatedAt": "2024-02-01T19:00:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5uuCqY",
+          "commit": {
+            "abbreviatedOid": "7883e10"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm",
+          "createdAt": "2024-02-01T20:31:21Z",
+          "updatedAt": "2024-02-01T20:31:21Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
