@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-04T01:20:50.838312+00:00",
+  "timestamp": "2024-02-06T01:15:40.709203+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4792,6 +4792,22 @@
           "updatedAt": "2024-02-01T19:40:15Z"
         }
       ]
+    },
+    {
+      "number": 205,
+      "id": "I_kwDOJbVClc5-VCZ6",
+      "title": "defining how DID can be used as user's indetifier",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
+      "createdAt": "2024-02-05T20:57:55Z",
+      "updatedAt": "2024-02-05T20:57:55Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
