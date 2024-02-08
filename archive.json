@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-06T01:15:40.709203+00:00",
+  "timestamp": "2024-02-08T01:14:44.145998+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4805,9 +4805,134 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-02-05T20:57:55Z",
+      "updatedAt": "2024-02-07T23:33:54Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I know that some people propose to use `kid` inside `cnf`.\n\nI think that it would be better to register a new sub claim `did` in the IANA confirmation registry to use DIDs.",
+          "createdAt": "2024-02-06T16:08:46Z",
+          "updatedAt": "2024-02-06T16:08:46Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yes, we had that discussion recently. It will be something as follows:\r\n\r\n```\r\n\"cnf\":{\r\n  \"did\":{ \"url\": \"did:example:1234#some-key\" }\r\n}\r\n```",
+          "createdAt": "2024-02-06T20:46:05Z",
+          "updatedAt": "2024-02-07T12:12:16Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Where should cnf.did be defined?",
+          "createdAt": "2024-02-06T20:58:01Z",
+          "updatedAt": "2024-02-06T20:58:01Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "My intuition is that sd-jwt-vc is not an appropriate place to define and register a new DID based JWT Confirmation Method. I'm not sure where it would be done but that'd be stretching the scope of this draft. \r\n\r\nMeanwhile [cnf.kid](https://www.rfc-editor.org/rfc/rfc7800.html#section-3.4) seems sufficient for the case.   \r\n",
+          "createdAt": "2024-02-06T21:22:49Z",
+          "updatedAt": "2024-02-06T21:23:39Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "cnf.kid instead of cnf.did? why would we need to defined cnf.did if we think cnf.kid is sufficient?",
+          "createdAt": "2024-02-06T22:07:09Z",
+          "updatedAt": "2024-02-06T22:07:09Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I guess that was kinda what I was implying/suggesting. That cnf.kid is sufficient so cnf.did doesn't need to be defined.  \r\n\r\nThe interpretation of the kid value is application specific (per RFC7800) and can convey the same info as Oliver's example:\r\n\r\n```\r\n      \"cnf\":{\r\n         \"kid\": \"did:example:1234\"\r\n       }\r\n```",
+          "createdAt": "2024-02-06T22:56:28Z",
+          "updatedAt": "2024-02-06T22:56:28Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I fully agree that it is not in scope of SD-JWT VC to define the did cnf method. However, I think this would be the cleaner approach. I would expect clients using this cnf method to register a did cnf method. kid does not really help with interoperability. ",
+          "createdAt": "2024-02-06T22:59:48Z",
+          "updatedAt": "2024-02-06T22:59:48Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> kid does not really help with interoperability.\r\n\r\nWhy? either relative of absolute DID URL, it is being used as a `kid` value already.",
+          "createdAt": "2024-02-06T23:54:58Z",
+          "updatedAt": "2024-02-06T23:55:02Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > kid does not really help with interoperability.\r\n> \r\n> Why? either relative of absolute DID URL, it is being used as a `kid` value already.\r\n\r\nThere is nothing wrong with this but I would assume that most implementations won't test if `kid` is a DID URL. To make it explicit people could just use a dedicated DID `cnf` method. This is really a design decision implementer's should make. If `kid` using DID URL  is an established pattern, nothing wrong with doing this. If not, I'd recommend using a dedicated `cnf` method but this depends on personal preference. My preference is using a dedicated `cnf` method since the approach is cleaner.",
+          "createdAt": "2024-02-07T12:10:43Z",
+          "updatedAt": "2024-02-07T12:17:46Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@Sakurann is there anything where you believe we should update the SD-JWT VC specification?",
+          "createdAt": "2024-02-07T12:20:18Z",
+          "updatedAt": "2024-02-07T12:20:18Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> is there anything where you believe we should update the SD-JWT VC specification?\r\n\r\none sentence saying that \"when key is passed by reference (assuming Briand would not want to explicitly mention DIDs in the spec), cnf.kid should be used\" would be helpful, so that people reading the specification know that SD-JWT VC can be used with DIDs too.",
+          "createdAt": "2024-02-07T23:33:53Z",
+          "updatedAt": "2024-02-07T23:33:53Z"
+        }
+      ]
+    },
+    {
+      "number": 206,
+      "id": "I_kwDOJbVClc5-iErh",
+      "title": "Add sd_hash to payload of Key Biniding JWT example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/206",
+      "state": "OPEN",
+      "author": "gmirc12",
+      "authorAssociation": "NONE",
+      "assignees": [
+        "danielfett"
+      ],
+      "labels": [],
+      "body": "According to spec [Key Binding for SD-JWT-VC](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#name-key-binding-jwt), \r\n\r\n> the Key Binding JWT MUST adhere to the rules defined in Section 5.3 of [SD-JWT spec](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-07.html#section-5.3-3.2.1)\r\n\r\nThis means, that the sd_hash claim has to be included in the payload of the Key Binding JWT. Can you correct the example, given in [SD-JWT-VC with Key Binding example](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-5.2-1), so that it includes the sd_hash claim?",
+      "createdAt": "2024-02-07T11:53:41Z",
+      "updatedAt": "2024-02-07T16:29:54Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Good catch! We will fix this. Indeed, the sd_hash is missing.",
+          "createdAt": "2024-02-07T12:05:08Z",
+          "updatedAt": "2024-02-07T12:05:08Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett can you fix the example?",
+          "createdAt": "2024-02-07T12:05:34Z",
+          "updatedAt": "2024-02-07T12:05:34Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Looks like we need to switch back to the pointing at the main branch of the sd-jwt-python library for generating the examples. `sd_hash` should show up automagically once that's done. ",
+          "createdAt": "2024-02-07T16:21:39Z",
+          "updatedAt": "2024-02-07T16:21:39Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/206_sd_hash/draft-ietf-oauth-sd-jwt-vc.html#section-4.2-2 has the PR preview of the fix ",
+          "createdAt": "2024-02-07T16:29:53Z",
+          "updatedAt": "2024-02-07T16:29:53Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -15729,6 +15854,46 @@
           "body": "lgtm",
           "createdAt": "2024-02-01T20:31:21Z",
           "updatedAt": "2024-02-01T20:31:21Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 207,
+      "id": "PR_kwDOJbVClc5mSEn6",
+      "title": "Switch back to the main sd-jwt-python library branch",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/207",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Switch back to the main branch of the sd-jwt-python library for example generation.\r\n\r\nTo fix #206 where `sd_hash` was missing from the Key Binding JWT in the example. \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/206_sd_hash/draft-ietf-oauth-sd-jwt-vc.html#section-4.2-2 has the PR preview of the fix ",
+      "createdAt": "2024-02-07T16:24:00Z",
+      "updatedAt": "2024-02-07T16:29:33Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "7ab0f523d339724e1498572e55362c55eb8e83ec",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "206_sd_hash",
+      "headRefOid": "87b680e811a74380f69673422a17588460d7a278",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5vW3JO",
+          "commit": {
+            "abbreviatedOid": "87b680e"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I am not familiar with that specific python library but if you tested it, then it should be fine.",
+          "createdAt": "2024-02-07T16:28:21Z",
+          "updatedAt": "2024-02-07T16:28:21Z",
           "comments": []
         }
       ]
