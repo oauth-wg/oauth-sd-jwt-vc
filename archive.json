@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-08T01:14:44.145998+00:00",
+  "timestamp": "2024-02-11T01:20:52.877700+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4931,6 +4931,30 @@
           "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/206_sd_hash/draft-ietf-oauth-sd-jwt-vc.html#section-4.2-2 has the PR preview of the fix ",
           "createdAt": "2024-02-07T16:29:53Z",
           "updatedAt": "2024-02-07T16:29:53Z"
+        }
+      ]
+    },
+    {
+      "number": 208,
+      "id": "I_kwDOJbVClc5-3eyT",
+      "title": "SD-JWT VC Chaining / Delegation?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/208",
+      "state": "OPEN",
+      "author": "c2bo",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I've been getting increasing amounts of questions about delegation / chaining with sd-jwts (and mdoc). Especially delegation seems to be a topic that people are starting to wonder about with cases like a person acting on behalf of another person in certain scopes (e.g., tax consultant accessing a system on your behalf). \r\n\r\nMy naive thought was that this could be done similarly to how the x5c header parameter currently works: Introduce a new header parameter that contains an sd-jwt (including key binding jwt and relevant disclosures) where the chained sd-jwt is used to establish trust (via the original issuer) and resolve the key (confirmation claim) for signature validation. For implementations, this should not add too much effort as it would just be a recursive call to verify the contained sd-jwt vc.\r\n\r\nI am not entirely sure it makes sense to bring in the additional complexity (and privacy concerns) but on the other hand I do see benefit in supporting some kind of credential chaining / delegation mechanism within the credential format itself. Do you think that this is something worth discussing and would this be the right spec to do so?",
+      "createdAt": "2024-02-10T14:03:24Z",
+      "updatedAt": "2024-02-10T14:24:19Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "good point, since the delegation in a SSI model must be perfomed by the end-user and not centralized in a credential issuer, the idea that came to my mind is to:\r\n\r\n- define a credential type for this specific purpose\r\n- define a data model for this specific purpose\r\n- issue a self-issued token using SIOPv2 using a personal wallet\r\n- encapsulate in this token two credential presentation (with the disclosure minimized for the purpose of the delegation):\r\n  - the one of the delegator with the aud set to the final RP and the delegated subject\r\n  - the one of the delegated with the aud set to the final RP and the delegator subject\r\n- the token that encapsulate these two presented credentials with disclosure must be signed using the private key related to the public key to the delegator credential, contained in this token (providing the proof of possession)\r\n- the delegator provides this token to the delegated\r\n\r\nthe RP that received this token from the delegated, in a VP_Token during a presentation, recognize the type and then the corresponding data model. \r\n\r\nExtracts the two VC, evaluates the trust with both their issuers, evaluates the pop of the delegator, evaluates the pop of the delegator in the presentation, then authenticates/grants the delegated.\r\n\r\nhow these tokens can be exchanges should be further defined. In my assumoption cannot exist delegation for any RP, each delegation must be configured with a specific RP or a set of RPs (aud). the chained approach is nested using attribute and cryptografic bindinds.\r\n\r\nto be continued ... :-)\r\n",
+          "createdAt": "2024-02-10T14:24:17Z",
+          "updatedAt": "2024-02-10T14:24:17Z"
         }
       ]
     }
