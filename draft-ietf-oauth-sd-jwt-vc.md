@@ -658,12 +658,11 @@ specification can be independently used while a mapping between different data m
 
 <reference anchor="ISO.18013-5" target="https://www.iso.org/standard/69084.html">
     <front>
-      <title>ISO/IEC 18013-5:2021</title>
-      <date day="1" month="September" year="2024"/>
-      <author>
-        <organization>ISO/IEC</organization>
-      </author>
-    <date/>
+        <title>ISO/IEC 18013-5:2021</title>
+        <date day="1" month="September" year="2024"/>
+        <author>
+            <organization>ISO/IEC</organization>
+        </author>
     </front>
 </reference>
 {backmatter}
