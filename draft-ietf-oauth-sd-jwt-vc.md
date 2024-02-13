@@ -744,6 +744,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Fix inconstancy in the .well-known path construction
 * Added registration request to IANA for the well-known URI
 * Fix some formatting and text in the media type and JWT claim registration requests
+* Added relationships to other documents
 
 -01
 
