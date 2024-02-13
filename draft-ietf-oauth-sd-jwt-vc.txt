@@ -514,9 +514,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.5o1f3
-   ZxJW9iXv5-BzzRDaNy77PTkyAOKDPiKXGD2bB4Z1RTb3ifBkgqvlf4Z_6LfgU8Ca6Txd
-   itquO4bezjtHA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sD1bd
+   qzC761n790Y-eWwrlHIxOivABCjE_vKjUexI8oYFqFq_9R7YKfDXIrPQBd38Trtp7kHM
+   7Ty9T2JmemV6Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -629,16 +629,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.5o1f3
-   ZxJW9iXv5-BzzRDaNy77PTkyAOKDPiKXGD2bB4Z1RTb3ifBkgqvlf4Z_6LfgU8Ca6Txd
-   itquO4bezjtHA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sD1bd
+   qzC761n790Y-eWwrlHIxOivABCjE_vKjUexI8oYFqFq_9R7YKfDXIrPQBd38Trtp7kHM
+   7Ty9T2JmemV6Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4M
-   zQ4ODAsICJzZF9oYXNoIjogInlOV1J6RVZHTkdSanFYWWRaeW5jdm9JbWl6WS11N0lkR
-   2l2dWRXQ3dDNG8ifQ.VcKIBj8-8GT_cbEMJLXnET13aSa9jwp_DXn37v06y7pkWYIK3K
-   1mTpuxCD7qUjqHdzu58Jhrti-XxKXhDBarCQ
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4N
+   DU5OTMsICJzZF9oYXNoIjogIlljeFQxa09KTmNxYldNcU4tNjdCSWIxLWdDZEFaRFF5a
+   1BldHJOSV9WOXcifQ.OcYCKdJSKF4W7qhldD-achfVrqFq1PTv_Z7laeU8DjGxV5vB1z
+   4PVCTfHzf_hx2-NRKKGzT6AEerl5FkrWkR2w
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -658,8 +658,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.mdsjUm3OdtoIK5BQTRbNDsZ3BWbv7GlybLaBhaaUoFlCQh
-   hqd45l3HXm_SIa4J4Q4QxdyRgW4UboAe3GRe8xIQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.pElkQxPKS0vJpfEda4iuhopCiplwdJNBTYvDNo3kjI3Wl-
+   u8e35AafnDwObie8TjfXfxoIsiUiOwiQYHOWzDkg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1000,11 +1000,11 @@ A.3.1.  Registry Contents
 
 Appendix B.  Acknowledgements
 
-   We would like to thank Alen Horvat, Andres Uribe, Brian Campbell,
-   Christian Bormann, Giuseppe De Marco, Michael Jones, Mike Prorock,
-   Orie Steele, Paul Bastian, Torsten Lodderstedt, Tobias Looker, and
-   Kristina Yasuda for their contributions (some of which substantial)
-   to this draft and to the initial set of implementations.
+   We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
+   Giuseppe De Marco, Michael Jones, Mike Prorock, Orie Steele, Paul
+   Bastian, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda for
+   their contributions (some of which substantial) to this draft and to
+   the initial set of implementations.
 
 Appendix C.  Document History
 
@@ -1014,6 +1014,7 @@ Appendix C.  Document History
       conditional
    *  Finetuned rules for obtaining public verification key
    *  Editorial changes
+   *  added Brian Campbell as co-author
    *  Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
    *  'iat' is now optional and allowed to be selectively disclosable
    *  Fix inconstancy in the .well-known path construction
