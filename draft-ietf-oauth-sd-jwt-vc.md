@@ -568,7 +568,7 @@ in the Issuer identifier.
 
 # Relationships to Other Documents
 
-This specification defines validation and processing rules for verifiable credentials using a JSON-only
+This specification defines validation and processing rules for verifiable credentials using JSON-only
 payloads and secured by SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]. Other specifications exist that aim
 to have similar scope. For example, W3C Verifiable Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines
 a data model for verifiable credentials encoded as JSON-LD, ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation
