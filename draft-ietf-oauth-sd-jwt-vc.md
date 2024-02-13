@@ -573,7 +573,8 @@ payloads and secured by SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]. Othe
 to have similar scope. For example, W3C Verifiable Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines
 a data model for verifiable credentials encoded as JSON-LD, ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation
 of verifiable credentials in the mobile document (mdoc) format encoded as CBOR and secured using COSE. Each
-specification can be independently used while a mapping between different data model representations is possible.
+specification can be independently used while a mapping between different data model representations might be possible.
+Defining such a mapping falls outside the scope of this specification.
 
 <reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
     <front>
