@@ -376,8 +376,9 @@ is identified by the `iss` claim in the JWT. Use of the JWT VC Issuer Metadata
 is OPTIONAL.
 
 Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer Metadata
-configuration available at the path formed by concatenating the string
-`/.well-known/jwt-vc-issuer` to the `iss` claim value in the JWT. The `iss` MUST
+configuration available at the location formed by inserting the well-known string
+`/.well-known/jwt-vc-issuer` between the host component and the path
+component (if any) of the `iss` claim value in the JWT. The `iss` MUST
 be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components, but no query or fragment
 components.
@@ -387,7 +388,7 @@ components.
 A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#jwt-vc-issuer-metadata).
 
-The following is a non-normative example of a HTTP request for the JWT VC Issuer
+The following is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
 ```
@@ -400,10 +401,10 @@ removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
 The following is a non-normative example of a HTTP request for the JWT VC Issuer
-Metadata configuration when `iss` is set to `https://example.com/user/1234`:
+Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
-GET /.well-known/jwt-vc-issuer/user/1234 HTTP/1.1
+GET /.well-known/jwt-vc-issuer/tenant/1234 HTTP/1.1
 Host: example.com
 ```
 
@@ -569,6 +570,16 @@ in the Issuer identifier.
 
 TBD
 
+<reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
+    <front>
+      <title>Well-Known URIs</title>
+      <author>
+        <organization>IANA</organization>
+      </author>
+    <date/>
+    </front>
+</reference>
+
 <reference anchor="OWASP_SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">
   <front>
     <author fullname="OWASP"></author>
@@ -619,9 +630,9 @@ TBD
 ## JSON Web Token Claims Registration
 
 - Claim Name: "vct"
-  - Claim Description: Verifiable credential type identifier
-  - Change Controller: IETF
-  - Specification Document(s): (#type-claim) of this document
+- Claim Description: Verifiable credential type identifier
+- Change Controller: IETF
+- Specification Document(s): [[ (#type-claim)  of this of this specification ]]
 
 ## Media Types Registry
 
@@ -629,34 +640,37 @@ TBD
 
 The Internet media type for a SD-JWT VC is `application/vc+sd-jwt`.
 
-Type name: : `application`
-
-Subtype name: : `vc+sd-jwt`
-
-Required parameters: : n/a
-
-Optional parameters: : n/a
-
-Encoding considerations: : 8-bit code points; SD-JWT VC values are encoded as a
-series of base64url-encoded values (some of which may be the empty string)
-separated by period ('.') and tilde ('~') characters.
-
-Security considerations: : See Security Considerations in (#security-considerations).
-
-Interoperability considerations: : n/a
-
-- Published specification: : RFC TODO
-- Applications that use this media type: : Applications that issue, present,
-  verify verifiable credentials and presentations.
-- Additional information:
+* Type name: `application`
+* Subtype name: `vc+sd-jwt`
+* Required parameters: n/a
+* Optional parameters: n/a
+* Encoding considerations: 8-bit code points; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.
+* Security considerations: See Security Considerations in (#security-considerations).
+* Interoperability considerations: n/a
+* Published specification: [[ this specification ]]
+* Applications that use this media type: Applications that issue, present, and verify SD-JWT-based verifiable credentials.
+* Additional information:
   - Magic number(s): n/a
   - File extension(s): n/a
   - Macintosh file type code(s): n/a
-  - Person & email address to contact for further information: TBD
-  - Intended usage: COMMON
-  - Restrictions on usage: none
-  - Author: Oliver Terbu <oliver.terbu@mattr.global>
-  - Change controller: IETF
+* Person & email address to contact for further information: Oliver Terbu <oliver.terbu@mattr.global>
+* Intended usage: COMMON
+* Restrictions on usage: none
+* Author: Oliver Terbu <oliver.terbu@mattr.global>
+* Change controller: IETF
+
+## Well-Known URI Registry
+
+This specification requests the well-known URI defined in (#jwt-vc-issuer-metadata)
+in the IANA "Well-Known URIs" registry [@IANA.well-known] established
+by [@!RFC5785].
+
+### Registry Contents
+
+* URI suffix: jwt-vc-issuer
+* Change controller: IETF
+* Specification document: [[ (#jwt-vc-issuer-metadata) of this of this specification ]]
+* Related information: (none)
 
 # Acknowledgements {#Acknowledgements}
 
@@ -684,6 +698,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Editorial changes
 * Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
 * 'iat' is now optional and allowed to be selectively disclosable
+* Fix inconstancy in the .well-known path construction
+* Added registration request to IANA for the well-known URI
+* Fix some formatting and text in the media type and JWT claim registration requests
 
 -01
 
