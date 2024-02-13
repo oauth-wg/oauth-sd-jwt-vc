@@ -571,7 +571,7 @@ in the Issuer identifier.
 This specification defines validation and processing rules for verifiable credentials using a JSON-only
 payloads and secured by SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]. Other specifications exist that aim
 to have similar scope. For example, W3C Verifiable Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines
-a data model for verifiable credentials encoded as JSON-LD, ISO/IEC 18013-5:2021 defines a representation
+a data model for verifiable credentials encoded as JSON-LD, ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation
 of verifiable credentials in the mobile document (mdoc) format encoded as CBOR and secured using COSE. Each
 specification can be independently used while a mapping between different data model representations is possible.
 
