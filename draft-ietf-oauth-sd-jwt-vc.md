@@ -677,7 +677,6 @@ by [@!RFC5785].
 We would like to thank
 Alen Horvat,
 Andres Uribe,
-Brian Campbell,
 Christian Bormann,
 Giuseppe De Marco,
 Michael Jones,
@@ -696,6 +695,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Made specific rules for public verification key validation conditional
 * Finetuned rules for obtaining public verification key
 * Editorial changes
+* added Brian Campbell as co-author
 * Renamed JWT Issuer Metadata to JWT VC Issuer Metadata
 * 'iat' is now optional and allowed to be selectively disclosable
 * Fix inconstancy in the .well-known path construction
