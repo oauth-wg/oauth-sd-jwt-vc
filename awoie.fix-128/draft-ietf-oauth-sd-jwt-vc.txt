@@ -514,9 +514,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SwKdX
-   4FcG6sfnGcfuWsifGDXIjblTPVGbxk8sPfWgsqWKUQrasPkKe8ZnuwCHr4dZWTmny4VQ
-   axTxu1IxqFsgQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.A7xxL
+   HD6Q2GSTXh7JI8MWAYfZLe9JvLoLdMYOYsRbk5y8rUX1VBzDKvVexbs1ePB0kQvz4cYI
+   sLhJHPfBbYb8Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -629,16 +629,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SwKdX
-   4FcG6sfnGcfuWsifGDXIjblTPVGbxk8sPfWgsqWKUQrasPkKe8ZnuwCHr4dZWTmny4VQ
-   axTxu1IxqFsgQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.A7xxL
+   HD6Q2GSTXh7JI8MWAYfZLe9JvLoLdMYOYsRbk5y8rUX1VBzDKvVexbs1ePB0kQvz4cYI
+   sLhJHPfBbYb8Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4N
-   DYyMjMsICJzZF9oYXNoIjogIm9ENnVFeFNNNHhSY1dVNFZvYzVUOWs0QkhzbjNvUThOR
-   zJINWI2SEJwazQifQ.2BIWGeh9tXQSv7Fd6kE_ncMSdkMQV0DyaFzA965NQQ1bTbWESA
-   L0vIOtHrYqC2YdHto20IRTX3LLSRI83xjuXg
+   TExNDMsICJzZF9oYXNoIjogIlFmbjh5Uk5NWEJCSzRhc0Y3a05vX05NeC1sRFZqR0doe
+   DFMSlZGdW1HaTAifQ.tC6go7cm7JCw7nTfCCN2l75qvg_4QwIm3WNeuRYdUQ-51phZkb
+   0vEYLj7OxDTe5Qqv7Puc9MiZJADJPnDR4Usg
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -658,8 +658,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.jn4N6ZvimanMTUvkr9OBq0J1ywA0V-Hw0hQMYK-_K_fKPl
-   5bbOQfjZmLze65TGG-7c5thb17MIqiH4QuQ3DoLA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.bNTK7Gqr9zf2D5OdfT_bd5JieihY3HhzT-lqdEkctScF1b
+   udFw1a35CGHnPej_bqlXwwZPF5SWrGGiXKIo40rQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -872,8 +872,8 @@ Table of Contents
 8.  Relationships to Other Documents
 
    This specification defines validation and processing rules for
-   verifiable credentials using a JSON-only payloads and secured by SD-
-   JWT [I-D.ietf-oauth-selective-disclosure-jwt].  Other specifications
+   verifiable credentials using JSON-only payloads and secured by SD-JWT
+   [I-D.ietf-oauth-selective-disclosure-jwt].  Other specifications
    exist that aim to have similar scope.  For example, W3C Verifiable
    Credential Data Model (VCDM) 2.0 [W3C.VCDM] defines a data model for
    verifiable credentials encoded as JSON-LD, ISO/IEC 18013-5:2021
