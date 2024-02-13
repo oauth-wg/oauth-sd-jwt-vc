@@ -652,7 +652,7 @@ specification can be independently used while a mapping between different data m
             </organization>
         </author>
         <title>Verifiable Credentials Data Model v2.0</title>
-        <date day="10" month="Februray" year="2024"/>
+        <date day="10" month="February" year="2024"/>
     </front>
 </reference>
 
