@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 21 July 2024                                      Authlete Inc.
+Expires: 16 August 2024                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         18 January 2024
+                                                        13 February 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 21 July 2024.
+   This Internet-Draft will expire on 16 August 2024.
 
 Copyright Notice
 
@@ -497,8 +497,8 @@ Table of Contents
    The SD-JWT and the Disclosures would then be serialized by the Issuer
    into the following format for issuance to the Holder:
 
-   eyJhbGciOiAiRVMyNTYiLCAia2lkIjogImRvYy1zaWduZXItMDUtMjUtMjAyMiIsICJ0
-   eXAiOiAidmMrc2Qtand0In0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+   Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
    VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
    YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
    ZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO
@@ -512,9 +512,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hARzP
-   dqhfQv93sqvQ-NrQHHt57lT_nkQtd6TQ7QhBMxNE2GH9qkgS7xhmtHOB8S0UJYZNNyLL
-   z5ZAIA2c1rNaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2Sxyy
+   t84ycvIavlV5FHopyfJHoJ265YvTCwHC9xovYCIbDnCvWZnYSsVIcHaM3woeKRYgt-rk
+   IEpYf1z5BCiiw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -612,8 +612,8 @@ Table of Contents
    The following is a non-normative example of a presentation of the SD-
    JWT shown above including a Key Binding JWT:
 
-   eyJhbGciOiAiRVMyNTYiLCAia2lkIjogImRvYy1zaWduZXItMDUtMjUtMjAyMiIsICJ0
-   eXAiOiAidmMrc2Qtand0In0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+   Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
    VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
    YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
    ZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO
@@ -627,15 +627,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hARzP
-   dqhfQv93sqvQ-NrQHHt57lT_nkQtd6TQ7QhBMxNE2GH9qkgS7xhmtHOB8S0UJYZNNyLL
-   z5ZAIA2c1rNaQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2Sxyy
+   t84ycvIavlV5FHopyfJHoJ265YvTCwHC9xovYCIbDnCvWZnYSsVIcHaM3woeKRYgt-rk
+   IEpYf1z5BCiiw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDU1O
-   Tc3MzB9.BDQghgnUY7FtrC_1j7TVreszVgbuuZ2RYAb8bACz7Yn2Us468XtuL9cZ-go6
-   GNzsYaEphkNV0SnV961haGgvQA
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4M
+   zQ4MTYsICJzZF9oYXNoIjogIkF3M01JV09UZnhyblpST015OHFxS2hBdEd4ZHZsZEh3Q
+   2V4R19jazQwNHcifQ.Q_kgZS24pVLziFNsrxXiyOl8frVdMJUt4Yo1ORyPr5mECV_rtf
+   R_lsAmlJBCL-lOnzCRnrasMQIfbGjYH_2tMg
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -655,8 +656,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.pCjFK6hctRsyQthj0vFxoaVAElWYm2G0nqjJa6YdRv1yLz
-   ZToTIvgXH_mX7uz_RNhS1mQQWXIX0uUcFYkIrC2Q~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.jwm1jk2Gqc5PFJomUORutWv4W6Yl2lL1-HKJ1lsuQH49Eu
+   Dp8HeX-76M2kSIAnjnIV0EvXqhDpec9wbtclIYtg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
