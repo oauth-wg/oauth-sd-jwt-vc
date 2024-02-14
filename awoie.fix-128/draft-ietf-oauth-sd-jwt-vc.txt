@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 16 August 2024                                    Authlete Inc.
+Expires: 17 August 2024                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        13 February 2024
+                                                        14 February 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 August 2024.
+   This Internet-Draft will expire on 17 August 2024.
 
 Copyright Notice
 
@@ -514,9 +514,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.--flM
-   vBCcpwOefEnirEXoPPCZsqUVyxFwlur9v4cWBs5ewAJUeie-mweEcT87SSGvSfIAGLCQ
-   rOAjcEo-TH3aw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.l_Xw9
+   3eThDCj93QwLpnp4bPla-jFJfII-xiiCV_c0opdA2GFiZTvvW5m9OJ4kqDegEYqA0teP
+   nLTHgpTiygx1A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -629,16 +629,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.--flM
-   vBCcpwOefEnirEXoPPCZsqUVyxFwlur9v4cWBs5ewAJUeie-mweEcT87SSGvSfIAGLCQ
-   rOAjcEo-TH3aw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.l_Xw9
+   3eThDCj93QwLpnp4bPla-jFJfII-xiiCV_c0opdA2GFiZTvvW5m9OJ4kqDegEYqA0teP
+   nLTHgpTiygx1A~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4N
-   TE0ODgsICJzZF9oYXNoIjogIlh6Y05FZEx6NXlBY0dsSXA4M3NmSjVmdFNPZUMyS0RuT
-   UVvU2l5QXN1cGcifQ.HjzD9wR8vbWpVz1N55jgrEvNgEqc1aIlGxp6jOy0oo37QbkTCo
-   OsMwqqXL27_vUxytgszOFAiUkuzi8wdKoyAg
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc5M
+   DgxMTAsICJzZF9oYXNoIjogInNkLWpTS0paNlZlZmtBbE5rbmdReE1xajlyeDdtVGdDa
+   EJSVWM2NXF0RzQifQ.m3rOjHG9iKK-83B2nPvczxgTIe3R7PCw3oEAuaYLs88zKDlg_h
+   y60XjZmhNZfsG1kp2rg24S5022VgFT5jRb1A
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -658,8 +658,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.QiFMOu9RtVL0CoW38ygm-gBLYpncdT8xympsUN_OGT-T35
-   yW44WWigZ0fQfEsybxocbm2FVL7qRZwVoeixZLdw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.qr-TrQJ4acxg8pMV-giXo2bzQToJEsDdhGOX1HkcSUUzG3
+   PfoUssFjJlKngT3ynZkiFA6s-SxcancR9avwjfrw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -877,7 +877,7 @@ Table of Contents
    exist that define their own verifiable credential formats, which can
    be used independently of each other.  For example, W3C Verifiable
    Credential Data Model (VCDM) 2.0 [W3C.VCDM] defines a data model for
-   verifiable credentials encoded as JSON-LD, ISO/IEC 18013-5:2021
+   verifiable credentials encoded as JSON-LD, and ISO/IEC 18013-5:2021
    [ISO.18013-5] defines a representation of verifiable credentials in
    the mobile document (mdoc) format encoded as CBOR and secured using
    COSE.
