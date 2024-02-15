@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-13T01:16:10.753252+00:00",
+  "timestamp": "2024-02-15T01:15:48.503101+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4758,7 +4758,7 @@
       "id": "I_kwDOJbVClc59rVm0",
       "title": "metadata path description",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/203",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "c2bo",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -4767,8 +4767,8 @@
       "labels": [],
       "body": "There are 2 parts of the draft discussing the path to issuer metadata:\r\n> Issuers publishing JWT VC Issuer Metadata MUST make a JWT VC Issuer Metadata configuration available at the path formed by concatenating the string /.well-known/jwt-vc-issuer to the iss claim value in the JWT. The iss MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components.\r\n\r\nand\r\n> If the iss value contains a path component, any terminating / MUST be removed before inserting /.well-known/ and the well-known URI suffix between the host component and the path component. \r\n> The following is a non-normative example of a HTTP request for the JWT VC Issuer Metadata configuration when iss is set to \r\n> https://example.com/user/1234:\r\n> GET /.well-known/jwt-vc-issuer/user/1234 HTTP/1.1\r\n> Host: example.com\r\n\r\nI do believe the latter is the currently intended /.well-known mechanism, whereas the first section was probably not updated and would result in `https://example.com/user/1234/.well-known/jwt-vc-issuer` to resolve metadata. I guess this was an oversight in #80?",
       "createdAt": "2024-01-30T18:36:21Z",
-      "updatedAt": "2024-02-01T19:40:15Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-13T14:34:15Z",
+      "closedAt": "2024-02-13T14:34:15Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -4892,7 +4892,7 @@
       "id": "I_kwDOJbVClc5-iErh",
       "title": "Add sd_hash to payload of Key Biniding JWT example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/206",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "gmirc12",
       "authorAssociation": "NONE",
       "assignees": [
@@ -4901,8 +4901,8 @@
       "labels": [],
       "body": "According to spec [Key Binding for SD-JWT-VC](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#name-key-binding-jwt), \r\n\r\n> the Key Binding JWT MUST adhere to the rules defined in Section 5.3 of [SD-JWT spec](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-07.html#section-5.3-3.2.1)\r\n\r\nThis means, that the sd_hash claim has to be included in the payload of the Key Binding JWT. Can you correct the example, given in [SD-JWT-VC with Key Binding example](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-5.2-1), so that it includes the sd_hash claim?",
       "createdAt": "2024-02-07T11:53:41Z",
-      "updatedAt": "2024-02-07T16:29:54Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-13T14:33:11Z",
+      "closedAt": "2024-02-13T14:33:11Z",
       "comments": [
         {
           "author": "awoie",
@@ -4955,6 +4955,44 @@
           "body": "good point, since the delegation in a SSI model must be perfomed by the end-user and not centralized in a credential issuer, the idea that came to my mind is to:\r\n\r\n- define a credential type for this specific purpose\r\n- define a data model for this specific purpose\r\n- issue a self-issued token using SIOPv2 using a personal wallet\r\n- encapsulate in this token two credential presentation (with the disclosure minimized for the purpose of the delegation):\r\n  - the one of the delegator with the aud set to the final RP and the delegated subject\r\n  - the one of the delegated with the aud set to the final RP and the delegator subject\r\n- the token that encapsulate these two presented credentials with disclosure must be signed using the private key related to the public key to the delegator credential, contained in this token (providing the proof of possession)\r\n- the delegator provides this token to the delegated\r\n\r\nthe RP that received this token from the delegated, in a VP_Token during a presentation, recognize the type and then the corresponding data model. \r\n\r\nExtracts the two VC, evaluates the trust with both their issuers, evaluates the pop of the delegator, evaluates the pop of the delegator in the presentation, then authenticates/grants the delegated.\r\n\r\nhow these tokens can be exchanges should be further defined. In my assumoption cannot exist delegation for any RP, each delegation must be configured with a specific RP or a set of RPs (aud). the chained approach is nested using attribute and cryptografic bindinds.\r\n\r\nto be continued ... :-)\r\n",
           "createdAt": "2024-02-10T14:24:17Z",
           "updatedAt": "2024-02-10T14:24:17Z"
+        }
+      ]
+    },
+    {
+      "number": 211,
+      "id": "I_kwDOJbVClc5_O58b",
+      "title": "Consider supporting IPLD links in vct field",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/211",
+      "state": "OPEN",
+      "author": "oed",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently the value for the `vct` field is defined as follows:\r\n> The vct value MUST be a case-sensitive `StringOrURI` (see [[RFC7519](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#RFC7519)]) value serving as an identifier for the type of the SD-JWT VC.\r\n\r\nThis puts some unfortunate limitations on how the `vct` can be represented. [IPLD](https://ipld.io/docs/) is a data format that allows developers to represent \"merkle dags\", essentially arbitrary hash linked data structures. A key concept within IPLD is the concept of a `link`, which is represented using the hash of the linked content (encoded as a \"CID\"). Specifically for [dag-json](https://ipld.io/specs/codecs/dag-json/spec/), an link is represented as follows (example below points to a [wikipedia mirror](https://explore.ipld.io/#/explore/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze)):\r\n```json\r\n{\r\n  \"wikipedia\": { \"/\": \"bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze\" }\r\n}\r\n```\r\n\r\nIt would be great if the `vct` could be represented as an immutable object referred to as a hash, and retain compatibility with existing IPLD tooling. Therefore, it would be great if the spec for `vct` could be extended to support the following:\r\n```json\r\n{\r\n  \"vct\": { \"/\": \"bafymyhash...\" }\r\n}\r\n```\r\n\r\nAn alternative approach that would be compatible with the current `vct` spec would be to represent the hash as an ipfs url, e.g. `ipfs://bafymyhash...`. However, this would mean that compatibility is broken with existing tooling such as [explore.ipld.io](https://explore.ipld.io)",
+      "createdAt": "2024-02-14T15:29:23Z",
+      "updatedAt": "2024-02-14T18:30:54Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I think using the URL would be the appropriate way here:\r\n\r\n- it avoids us having a dependency on IPFS specs,\r\n- it is self-describing and I suppose a resolving strategy is defined somewhere, and finally\r\n- it allows implementers to treat vct as a string, which is quite important for (e.g.) comparing two vct values.",
+          "createdAt": "2024-02-14T15:56:12Z",
+          "updatedAt": "2024-02-14T15:56:12Z"
+        },
+        {
+          "author": "oed",
+          "authorAssociation": "NONE",
+          "body": "> it avoids us having a dependency on IPFS specs,\r\n\r\nDoesn't need to rely on the IPFS spec, just need more flexibility\r\n\r\n> it is self-describing and I suppose a resolving strategy is defined somewhere, and finally\r\n\r\nIt would break resolution in IPLD though. Generally you can query through an IPLD graph with a path: `<cid-object1>/field/object2/field` where `field` of object1 contains a CID. This works if the CID conforms to the IPLD data model, but not if you are using `ipfs://<cid>`\r\n\r\n",
+          "createdAt": "2024-02-14T17:26:49Z",
+          "updatedAt": "2024-02-14T17:26:49Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "> > it avoids us having a dependency on IPFS specs,\r\n> \r\n> Doesn't need to rely on the IPFS spec, just need more flexibility\r\n\r\nChanging this would have a lot of consequences for the spec, and if we wouldn't refer to the IPFS spec, allowing this flexibility without a good reason is a hard sell. \r\n\r\n> > it is self-describing and I suppose a resolving strategy is defined somewhere, and finally\r\n> \r\n> It would break resolution in IPLD though. Generally you can query through an IPLD graph with a path: `<cid-object1>/field/object2/field` where `field` of object1 contains a CID. This works if the CID conforms to the IPLD data model, but not if you are using `ipfs://<cid>`\r\n\r\nI'm not really familiar with the IPFS concepts, so please excuse my ignorance, but from the outside, what you describe seems like a shortcoming of the URI scheme to me. Or is there something I'm missing?",
+          "createdAt": "2024-02-14T18:30:53Z",
+          "updatedAt": "2024-02-14T18:30:53Z"
         }
       ]
     }
@@ -15767,24 +15805,26 @@
       "id": "PR_kwDOJbVClc5loOF-",
       "title": "Fix inconstancy in the well-known path construction",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/204",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "also add associated IANA registration request and fix up formatting etc in other IANA bits  \r\n\r\nsee it live https://drafts.oauth.net/oauth-sd-jwt-vc/bc/fix-well-known/draft-ietf-oauth-sd-jwt-vc.html ",
       "createdAt": "2024-01-31T23:36:45Z",
-      "updatedAt": "2024-02-01T20:31:21Z",
+      "updatedAt": "2024-02-13T14:34:14Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "7ab0f523d339724e1498572e55362c55eb8e83ec",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc/fix-well-known",
       "headRefOid": "7883e101b6625de58c01aa546b54bc3fa6df0efa",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-02-13T14:34:14Z",
+      "mergedAt": "2024-02-13T14:34:14Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "b41130f7adfda332ae9261591644801c977e6b20"
+      },
       "comments": [],
       "reviews": [
         {
@@ -15879,6 +15919,19 @@
           "createdAt": "2024-02-01T20:31:21Z",
           "updatedAt": "2024-02-01T20:31:21Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5v8cLe",
+          "commit": {
+            "abbreviatedOid": "7883e10"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-13T14:34:09Z",
+          "updatedAt": "2024-02-13T14:34:09Z",
+          "comments": []
         }
       ]
     },
@@ -15887,24 +15940,26 @@
       "id": "PR_kwDOJbVClc5mSEn6",
       "title": "Switch back to the main sd-jwt-python library branch",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/207",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Switch back to the main branch of the sd-jwt-python library for example generation.\r\n\r\nTo fix #206 where `sd_hash` was missing from the Key Binding JWT in the example. \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/206_sd_hash/draft-ietf-oauth-sd-jwt-vc.html#section-4.2-2 has the PR preview of the fix ",
       "createdAt": "2024-02-07T16:24:00Z",
-      "updatedAt": "2024-02-07T16:29:33Z",
+      "updatedAt": "2024-02-13T14:33:10Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "7ab0f523d339724e1498572e55362c55eb8e83ec",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "206_sd_hash",
       "headRefOid": "87b680e811a74380f69673422a17588460d7a278",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-02-13T14:33:09Z",
+      "mergedAt": "2024-02-13T14:33:09Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "6df9cb0e9f83d793d787d552fdd839e9b42b6254"
+      },
       "comments": [],
       "reviews": [
         {
@@ -15918,6 +15973,214 @@
           "body": "I am not familiar with that specific python library but if you tested it, then it should be fine.",
           "createdAt": "2024-02-07T16:28:21Z",
           "updatedAt": "2024-02-07T16:28:21Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5v8bNp",
+          "commit": {
+            "abbreviatedOid": "87b680e"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-13T14:33:03Z",
+          "updatedAt": "2024-02-13T14:33:03Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 209,
+      "id": "PR_kwDOJbVClc5mxcF-",
+      "title": "Added \"added Brian Campbell as co-author\" to doc history and removed from Acknowledgements",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/209",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "forgotten tasks from PR #187 ",
+      "createdAt": "2024-02-13T16:20:03Z",
+      "updatedAt": "2024-02-13T19:39:34Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "b41130f7adfda332ae9261591644801c977e6b20",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "bc-bc-bc-etc",
+      "headRefOid": "872be1b47754e0732b7ba10dd929c73fa67aa37c",
+      "closedAt": "2024-02-13T17:39:24Z",
+      "mergedAt": "2024-02-13T17:39:24Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "49c4d3d913f7c56cb23ffc97f572dc116d8cb08c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5v-HAH",
+          "commit": {
+            "abbreviatedOid": "872be1b"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-13T17:23:53Z",
+          "updatedAt": "2024-02-13T17:23:53Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5v-OCS",
+          "commit": {
+            "abbreviatedOid": "872be1b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-13T17:39:17Z",
+          "updatedAt": "2024-02-13T17:39:17Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 210,
+      "id": "PR_kwDOJbVClc5mx1uP",
+      "title": "feat: add relationships to other docs section",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/210",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR:\r\n- adds relationship to other docs section\r\n- fixes #128 \r\n- preview here: https://drafts.oauth.net/oauth-sd-jwt-vc/awoie.fix-128/draft-ietf-oauth-sd-jwt-vc.html",
+      "createdAt": "2024-02-13T17:25:35Z",
+      "updatedAt": "2024-02-14T17:18:11Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "b41130f7adfda332ae9261591644801c977e6b20",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie.fix-128",
+      "headRefOid": "478fca1f5fcc0d00d6b91e282bb3b8c1fa904d00",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "One little nit on the text but otherwise looks okay (after the couple iterations by @awoie and @danielfett, thanks for those). ",
+          "createdAt": "2024-02-13T21:14:46Z",
+          "updatedAt": "2024-02-13T21:14:46Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5v-ui4",
+          "commit": {
+            "abbreviatedOid": "c0727e4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-13T18:57:48Z",
+          "updatedAt": "2024-02-13T18:59:41Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "'similar scope' sounds as if those other documents also use JSON-only payloads with SD-JWT. I think they can be compared in that they all define credential formats.",
+              "createdAt": "2024-02-13T18:57:48Z",
+              "updatedAt": "2024-02-13T18:59:41Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nThis specification defines validation and processing rules for verifiable credentials using JSON-only\r\n```",
+              "createdAt": "2024-02-13T18:57:55Z",
+              "updatedAt": "2024-02-13T18:59:41Z"
+            },
+            {
+              "originalPosition": 10,
+              "body": "As discussed on our call, I'm not sure how this helps the reader. Theoretically I can map between all tree structures. But what could be the purpose of that excercise and why do we need to mention it here?",
+              "createdAt": "2024-02-13T18:59:30Z",
+              "updatedAt": "2024-02-13T18:59:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5v-zds",
+          "commit": {
+            "abbreviatedOid": "c0727e4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-13T19:11:19Z",
+          "updatedAt": "2024-02-13T19:11:19Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "I updated the text.",
+              "createdAt": "2024-02-13T19:11:19Z",
+              "updatedAt": "2024-02-13T19:11:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5v-zhC",
+          "commit": {
+            "abbreviatedOid": "c0727e4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-13T19:11:29Z",
+          "updatedAt": "2024-02-13T19:11:29Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "I updated the text.",
+              "createdAt": "2024-02-13T19:11:29Z",
+              "updatedAt": "2024-02-13T19:11:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5v_i1j",
+          "commit": {
+            "abbreviatedOid": "619862a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-13T21:12:34Z",
+          "updatedAt": "2024-02-13T21:12:35Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "```suggestion\r\nCredential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and\r\nISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of verifiable credentials in the mobile document (mdoc)\r\n```",
+              "createdAt": "2024-02-13T21:12:35Z",
+              "updatedAt": "2024-02-13T21:15:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wG4bW",
+          "commit": {
+            "abbreviatedOid": "478fca1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-14T17:18:11Z",
+          "updatedAt": "2024-02-14T17:18:11Z",
           "comments": []
         }
       ]
