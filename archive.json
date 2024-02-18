@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-15T01:15:48.503101+00:00",
+  "timestamp": "2024-02-18T01:19:54.958544+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4805,7 +4805,7 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-02-07T23:33:54Z",
+      "updatedAt": "2024-02-17T01:38:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -4884,6 +4884,20 @@
           "body": "> is there anything where you believe we should update the SD-JWT VC specification?\r\n\r\none sentence saying that \"when key is passed by reference (assuming Briand would not want to explicitly mention DIDs in the spec), cnf.kid should be used\" would be helpful, so that people reading the specification know that SD-JWT VC can be used with DIDs too.",
           "createdAt": "2024-02-07T23:33:53Z",
           "updatedAt": "2024-02-07T23:33:53Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I took a try at the following proposed new text to replace [cnf here](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-01.html#section-3.2.2.2-3.5.1) that attempts to be inclusive of opinions expressed in this issue and also addresses issue #196 :\r\n\r\n>  cnf\r\n> - OPTIONAL. Contains the confirmation method identifying the proof of possession key as defined in [[RFC7800](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#RFC7800)]. This claim MUST be present when cryptographic Key Binding is to be supported. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [[RFC7800](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#RFC7800)]. When the key is to be conveyed by reference (e.g., via a key thumbprint or DID [[W3C.DID](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#W3C.DID)]), other JWT confirmation methods MAY be used, such as a key identifier defined in Section 3.4 of [[RFC7800](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#RFC7800)].   For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.",
+          "createdAt": "2024-02-15T22:25:21Z",
+          "updatedAt": "2024-02-15T22:25:21Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "+1 to the proposed text - thank you, Brian!",
+          "createdAt": "2024-02-17T01:38:20Z",
+          "updatedAt": "2024-02-17T01:38:20Z"
         }
       ]
     },
@@ -4993,6 +5007,44 @@
           "body": "> > it avoids us having a dependency on IPFS specs,\r\n> \r\n> Doesn't need to rely on the IPFS spec, just need more flexibility\r\n\r\nChanging this would have a lot of consequences for the spec, and if we wouldn't refer to the IPFS spec, allowing this flexibility without a good reason is a hard sell. \r\n\r\n> > it is self-describing and I suppose a resolving strategy is defined somewhere, and finally\r\n> \r\n> It would break resolution in IPLD though. Generally you can query through an IPLD graph with a path: `<cid-object1>/field/object2/field` where `field` of object1 contains a CID. This works if the CID conforms to the IPLD data model, but not if you are using `ipfs://<cid>`\r\n\r\nI'm not really familiar with the IPFS concepts, so please excuse my ignorance, but from the outside, what you describe seems like a shortcoming of the URI scheme to me. Or is there something I'm missing?",
           "createdAt": "2024-02-14T18:30:53Z",
           "updatedAt": "2024-02-14T18:30:53Z"
+        }
+      ]
+    },
+    {
+      "number": 212,
+      "id": "I_kwDOJbVClc5_diFv",
+      "title": "Embedded Issuer Policies",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212",
+      "state": "OPEN",
+      "author": "paulbastian",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
+      "createdAt": "2024-02-16T11:52:19Z",
+      "updatedAt": "2024-02-17T01:44:24Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "interesting feature, it brings some requirements:\r\n\r\n- definition of entity categories, a grouping of entities for specific purpose or compliance profile\r\n- verifiable attestations/trust marks to proof the compliance of an entity to a specific purpose\r\n\r\nI would not call it issuer_policy otherwise it seems that the subject of the policy is the issuer, while the issuer is the issuer and the subject is the credential, then credential_policy seems more appropriate if you agree. At the same time the issuer does not represent an authority in the trust ecosystem. The policy should be defined in a trust framework by trust authorities in a large ecosystem where multiple issuers operates. Ideally, the trust authority publishes the catalogue of the issuers granted for some credential issuances (eg: using OpenID Federation we have trust_mark_issuers that maps trust mark ids with entities id).\r\n\r\nIn your proposal once the wallet has obtained the credential, evaluates the credential_policy to kow to which entity categories it can present it. \r\n\r\nThe RP should send a presentation request providing the trust mark/verifiable attestation that give the proof of its compliance to some profile/entity categories enabled in the credential_policy. Then the wallet evaluates the trust with the RP, then evaluates the Trust Marks and present the credential.\r\n\r\nthe model you propose is interesting but can be simplified and make more flexible by saying that:\r\n\r\n- the credential_policy should be provided in the credential definition published in the issuer metadata, preventing the revocation of the credential when the policy might change in the future (or be extended with additional audiences)\r\n\r\nthe requirement of the trust-markls/verifiable attestation remains for the RP.\r\n\r\na question is: is these policy enables with a sort of policy language (as the openid federation metadata policy) or are static and audience focused?",
+          "createdAt": "2024-02-16T12:05:49Z",
+          "updatedAt": "2024-02-16T12:05:49Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Do you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework? \r\n\r\nI don't know, to be honest, but my intuition is that SD-JWT VC isn't the right place. I'm not sure putting that kind of policy in credential itself is the right place either.  ",
+          "createdAt": "2024-02-16T23:21:12Z",
+          "updatedAt": "2024-02-16T23:21:12Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "we did have a use-case where the issuers wanted to ensure that credentials are not being used by unauthorized verifiers, and wanted to ensure that by including legal policy reference inside the credential.",
+          "createdAt": "2024-02-17T01:44:23Z",
+          "updatedAt": "2024-02-17T01:44:23Z"
         }
       ]
     }
@@ -16057,7 +16109,7 @@
       "labels": [],
       "body": "This PR:\r\n- adds relationship to other docs section\r\n- fixes #128 \r\n- preview here: https://drafts.oauth.net/oauth-sd-jwt-vc/awoie.fix-128/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-02-13T17:25:35Z",
-      "updatedAt": "2024-02-14T17:18:11Z",
+      "updatedAt": "2024-02-17T01:40:59Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b41130f7adfda332ae9261591644801c977e6b20",
@@ -16182,6 +16234,26 @@
           "createdAt": "2024-02-14T17:18:11Z",
           "updatedAt": "2024-02-14T17:18:11Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wbqww",
+          "commit": {
+            "abbreviatedOid": "478fca1"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-17T01:40:52Z",
+          "updatedAt": "2024-02-17T01:40:59Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "`using JSON-only` stood out here for me. `using only JSON payload` or just `using JSON payloads` should be fine? (sure, some can say JSON-LD is also JSON, but JSON-only does not really make that point clearer IMO)",
+              "createdAt": "2024-02-17T01:40:52Z",
+              "updatedAt": "2024-02-17T01:40:59Z"
+            }
+          ]
         }
       ]
     }
