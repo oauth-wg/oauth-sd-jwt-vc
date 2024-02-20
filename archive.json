@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-18T01:19:54.958544+00:00",
+  "timestamp": "2024-02-20T01:14:32.400918+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4805,7 +4805,7 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-02-17T01:38:22Z",
+      "updatedAt": "2024-02-19T12:54:33Z",
       "closedAt": null,
       "comments": [
         {
@@ -4898,6 +4898,20 @@
           "body": "+1 to the proposed text - thank you, Brian!",
           "createdAt": "2024-02-17T01:38:20Z",
           "updatedAt": "2024-02-17T01:38:20Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'd be ok with this change although we need to adjust the language a bit. \r\n\r\nOption 1:\r\n- We should restrict this (`kid` as `cnf`) to being a DID URL instead of allowing `kid` being a DID. This is because a DID URL refers to one specific key whereas a DID is associated with multiple keys. I don't want to encourage implementations where the verifier has to try to verify the signature with potentially multiple keys unsuccessfully until they found one that matches. The proposed language would result in that if we don't limit it to DID URLs.\r\n\r\nOption 2:\r\n- We should adapt the language as follows: `For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by a key or key set identified by this claim`. A DID is not a key and needs resolution. \r\n\r\nI would prefer Option 1 and recommend that if having a DID as a being included in the `cnf` value is required, defining a dedicated `cnf` method for that would be needed which is a much cleaner approach. I don't think we need to put this recommendation into the spec. \r\n\r\nNote that I think that using DID URL for the `kid` value in the signed KB-JWT/Issuer-signed JWT is totally fine.\r\n\r\nThere is a reason why there is a dedicated `x5c` `cnf` method instead of putting the base64url-DER-encoded certificate in the `kid` in the `cnf` claim.",
+          "createdAt": "2024-02-19T12:45:20Z",
+          "updatedAt": "2024-02-19T12:52:23Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I agree with Oliver. \n\nKid is described as application specific and having a dedicated cnf.did method gives it a more universal touch that may be beneficial for interoperability.",
+          "createdAt": "2024-02-19T12:54:32Z",
+          "updatedAt": "2024-02-19T12:54:32Z"
         }
       ]
     },
@@ -16109,7 +16123,7 @@
       "labels": [],
       "body": "This PR:\r\n- adds relationship to other docs section\r\n- fixes #128 \r\n- preview here: https://drafts.oauth.net/oauth-sd-jwt-vc/awoie.fix-128/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-02-13T17:25:35Z",
-      "updatedAt": "2024-02-17T01:40:59Z",
+      "updatedAt": "2024-02-19T21:52:49Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b41130f7adfda332ae9261591644801c977e6b20",
@@ -16252,6 +16266,26 @@
               "body": "`using JSON-only` stood out here for me. `using only JSON payload` or just `using JSON payloads` should be fine? (sure, some can say JSON-LD is also JSON, but JSON-only does not really make that point clearer IMO)",
               "createdAt": "2024-02-17T01:40:52Z",
               "updatedAt": "2024-02-17T01:40:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wmxN5",
+          "commit": {
+            "abbreviatedOid": "478fca1"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-19T21:52:49Z",
+          "updatedAt": "2024-02-19T21:52:49Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "We could also add something like:\r\n> Compared to other credential formats, SD-JWT VC was created to be focused on developers who use JSON-based data models and who are familiar with the JOSE stack.",
+              "createdAt": "2024-02-19T21:52:49Z",
+              "updatedAt": "2024-02-19T21:52:49Z"
             }
           ]
         }
