@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 23 August 2024                                    Authlete Inc.
+Expires: 24 August 2024                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        20 February 2024
+                                                        21 February 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 August 2024.
+   This Internet-Draft will expire on 24 August 2024.
 
 Copyright Notice
 
@@ -516,9 +516,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.31lQM
-   2G8qKHAyQiJBlGKny-3rRULegu3d1CzVl48XT-1G_jynYjnaQcTHpPKze3JpZJElyKzb
-   KeMMD8KfARp3g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.b5p_R
+   MliNsgA0Wq3eMbI_KMMs9u75OEqFuZGdudSfe-euP84McfpDBc6OXHmP27DEhqR6fs4u
+   91yM7vbF2pbdQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -631,16 +631,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.31lQM
-   2G8qKHAyQiJBlGKny-3rRULegu3d1CzVl48XT-1G_jynYjnaQcTHpPKze3JpZJElyKzb
-   KeMMD8KfARp3g~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.b5p_R
+   MliNsgA0Wq3eMbI_KMMs9u75OEqFuZGdudSfe-euP84McfpDBc6OXHmP27DEhqR6fs4u
+   91yM7vbF2pbdQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg0N
-   jU3MTgsICJzZF9oYXNoIjogIkhNcVNMdXVhcDNtNVN4WVd4SlFFdmxWQV9PRGhXZVRFd
-   Dc5SDZDbFBZTUEifQ.uOz305jKQBXk95_AhHdU4HnogkJbP838gPqKa66n5QKEIX0fyg
-   X7onu3agiojNH0raa67rnIqbvKXTDV4oaEGQ
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg1N
+   DQ1NDUsICJzZF9oYXNoIjogIktad1NFT3NOU1Uza2pPSUpOX0hxQzgwVFNhMWVZZWlnS
+   1FBRjRSc1Z4T2cifQ.iT55Lufg0zindoFa8GvRScw_zF1B87oEmk_dBI7kdYW5N3_5ty
+   ozY_2B-lmr_ZxhgtxU27zq204y-ifbX23AGg
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -660,8 +660,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.rp9I5p4fPdrxV8B2TSdRLlP7jARGdoqZHdnLn38J9FUtIf
-   DjqJgmjhLTBHhYuU83TcvFoetWHFR5iZ9HX8XMzQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.AY_dtq65jkea7CtVkFkm69Z96asU03UU4PZ8MmCxfGTTqH
+   Gvt6vM7UAyB2tGEMmgl06wxWQBJMe3Ku0TFqRMSw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -873,7 +873,15 @@ Table of Contents
 
 8.  Relationships to Other Documents
 
-   TBD
+   This specification defines validation and processing rules for
+   verifiable credentials using JSON payloads and secured by SD-JWT
+   [I-D.ietf-oauth-selective-disclosure-jwt].  Other specifications
+   exist that define their own verifiable credential formats; for
+   example, W3C Verifiable Credential Data Model (VCDM) 2.0 [W3C.VCDM]
+   defines a data model for verifiable credentials encoded as JSON-LD,
+   and ISO/IEC 18013-5:2021 [ISO.18013-5] defines a representation of
+   verifiable credentials in the mobile document (mdoc) format encoded
+   as CBOR and secured using COSE.
 
 9.  References
 
@@ -922,6 +930,10 @@ Table of Contents
               IANA, "Well-Known URIs",
               <http://www.iana.org/assignments/well-known-uris>.
 
+   [ISO.18013-5]
+              ISO/IEC, "ISO/IEC 18013-5:2021", 1 September 2024,
+              <https://www.iso.org/standard/69084.html>.
+
    [OWASP_SSRF]
               OWASP, "Server Side Request Forgery Prevention Cheat
               Sheet", <https://cheatsheetseries.owasp.org/cheatsheets/
@@ -944,6 +956,10 @@ Table of Contents
    [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
               O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
               19 July 2022, <https://www.w3.org/TR/did-core/>.
+
+   [W3C.VCDM] Sporny, M., Longley, D., Chadwick, D., and O. Steele,
+              "Verifiable Credentials Data Model v2.0", 10 February
+              2024, <https://www.w3.org/TR/vc-data-model-2.0/>.
 
 Appendix A.  IANA Considerations
 
@@ -1024,6 +1040,7 @@ Appendix C.  Document History
    *  Fix some formatting and text in the media type and JWT claim
       registration requests
    *  Clarify the optionality of the cnf claim
+   *  Added relationships to other documents
 
    -01
 
