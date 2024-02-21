@@ -12,13 +12,13 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.19.2" name="generator">
+<meta content="xml2rfc 3.19.4" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.19.2
+  xml2rfc 3.19.4
     Python 3.11.6
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
@@ -1034,7 +1034,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 16 August 2024</td>
+<td class="center">Expires 24 August 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-02-13" class="published">13 February 2024</time>
+<time datetime="2024-02-21" class="published">21 February 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-08-16">16 August 2024</time></dd>
+<dd class="expires"><time datetime="2024-08-24">24 August 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1106,7 +1106,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 16 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 24 August 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1816,9 +1816,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sD1bd
-qzC761n790Y-eWwrlHIxOivABCjE_vKjUexI8oYFqFq_9R7YKfDXIrPQBd38Trtp7kHM
-7Ty9T2JmemV6Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BL3hI
+GJnL6-ECCGBWDhvbFSJi591poVJ4cpJDnUDdRCcOYDT5c27Zqk4GmmZ11XQQEEvTi-Va
+rc-I83M_zi7kA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1930,16 +1930,16 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sD1bd
-qzC761n790Y-eWwrlHIxOivABCjE_vKjUexI8oYFqFq_9R7YKfDXIrPQBd38Trtp7kHM
-7Ty9T2JmemV6Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BL3hI
+GJnL6-ECCGBWDhvbFSJi591poVJ4cpJDnUDdRCcOYDT5c27Zqk4GmmZ11XQQEEvTi-Va
+rc-I83M_zi7kA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
 N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
 4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
 AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4N
-DU5OTMsICJzZF9oYXNoIjogIlljeFQxa09KTmNxYldNcU4tNjdCSWIxLWdDZEFaRFF5a
-1BldHJOSV9WOXcifQ.OcYCKdJSKF4W7qhldD-achfVrqFq1PTv_Z7laeU8DjGxV5vB1z
-4PVCTfHzf_hx2-NRKKGzT6AEerl5FkrWkR2w
+mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg1M
+zk4NTEsICJzZF9oYXNoIjogIk1PZ2xqVTVQR04wcHNoZy1ya3AwN0YyT3Y5NC1Tc210O
+GxfWHBwWDhYNnMifQ.BIDL_G9FXHydQFItaStnUJhphBnSz-YiTMzyrkDKXLwiue0gnZ
+uCNfxqDjP8_JXTDF_eZXarOxbB3LN4yO2ZrA
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -1960,8 +1960,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.pElkQxPKS0vJpfEda4iuhopCiplwdJNBTYvDNo3kjI3Wl-
-u8e35AafnDwObie8TjfXfxoIsiUiOwiQYHOWzDkg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+hbGciOiAic2hhLTI1NiJ9.Bh3rgPGyZff4cY2nQUPjqk8p7ZXtRF55_ljU4afAMjA3FF
+dQO_SNb_m1tzHLyuoTl-Dn6tGE2UvsME7_btWGWQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
 pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
 gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
 0cnkiOiAiVVMifV0~
@@ -2216,7 +2216,12 @@ in the Issuer identifier.<a href="#section-7.3-4" class="pilcrow">¶</a></p>
       <h2 id="name-relationships-to-other-docu">
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-relationships-to-other-docu" class="section-name selfRef">Relationships to Other Documents</a>
       </h2>
-<p id="section-8-1">TBD<a href="#section-8-1" class="pilcrow">¶</a></p>
+<p id="section-8-1">This specification defines validation and processing rules for verifiable credentials using JSON
+payloads and secured by SD-JWT <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. Other specifications exist
+that define their own verifiable credential formats; for example, W3C Verifiable
+Credential Data Model (VCDM) 2.0 <span>[<a href="#W3C.VCDM" class="cite xref">W3C.VCDM</a>]</span> defines a data model for verifiable credentials encoded as JSON-LD, and
+ISO/IEC 18013-5:2021 <span>[<a href="#ISO.18013-5" class="cite xref">ISO.18013-5</a>]</span> defines a representation of verifiable credentials in the mobile document (mdoc)
+format encoded as CBOR and secured using COSE.<a href="#section-8-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <section id="section-9">
@@ -2267,6 +2272,10 @@ in the Issuer identifier.<a href="#section-7.3-4" class="pilcrow">¶</a></p>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Well-Known URIs"</span>, <span>&lt;<a href="http://www.iana.org/assignments/well-known-uris">http://www.iana.org/assignments/well-known-uris</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="ISO.18013-5">[ISO.18013-5]</dt>
+        <dd>
+<span class="refAuthor">ISO/IEC</span>, <span class="refTitle">"ISO/IEC 18013-5:2021"</span>, <time datetime="2024-09-01" class="refDate">1 September 2024</time>, <span>&lt;<a href="https://www.iso.org/standard/69084.html">https://www.iso.org/standard/69084.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="OWASP_SSRF">[OWASP_SSRF]</dt>
         <dd>
 <span class="refAuthor">OWASP</span>, <span class="refTitle">"Server Side Request Forgery Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/</a>&gt;</span>. </dd>
@@ -2284,8 +2293,12 @@ in the Issuer identifier.<a href="#section-7.3-4" class="pilcrow">¶</a></p>
 <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="W3C.DID">[W3C.DID]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Sporny, M.</span>, <span class="refAuthor">Longley, D.</span>, <span class="refAuthor">Sabadello, M.</span>, <span class="refAuthor">Reed, D.</span>, <span class="refAuthor">Steele, O.</span>, and <span class="refAuthor">C. Allen</span>, <span class="refTitle">"Decentralized Identifiers (DIDs) v1.0"</span>, <time datetime="2022-07-19" class="refDate">19 July 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.VCDM">[W3C.VCDM]</dt>
+      <dd>
+<span class="refAuthor">Sporny, M.</span>, <span class="refAuthor">Longley, D.</span>, <span class="refAuthor">Chadwick, D.</span>, and <span class="refAuthor">O. Steele</span>, <span class="refTitle">"Verifiable Credentials Data Model v2.0"</span>, <time datetime="2024-02-10" class="refDate">10 February 2024</time>, <span>&lt;<a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -2441,6 +2454,8 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-C-2.8">Added registration request to IANA for the well-known URI<a href="#appendix-C-2.8" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-C-2.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-C-2.9" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.10">Added relationships to other documents<a href="#appendix-C-2.10" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-C-3">-01<a href="#appendix-C-3" class="pilcrow">¶</a></p>

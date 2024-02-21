@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 16 August 2024                                    Authlete Inc.
+Expires: 24 August 2024                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        13 February 2024
+                                                        21 February 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 August 2024.
+   This Internet-Draft will expire on 24 August 2024.
 
 Copyright Notice
 
@@ -514,9 +514,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sD1bd
-   qzC761n790Y-eWwrlHIxOivABCjE_vKjUexI8oYFqFq_9R7YKfDXIrPQBd38Trtp7kHM
-   7Ty9T2JmemV6Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BL3hI
+   GJnL6-ECCGBWDhvbFSJi591poVJ4cpJDnUDdRCcOYDT5c27Zqk4GmmZ11XQQEEvTi-Va
+   rc-I83M_zi7kA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -629,16 +629,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sD1bd
-   qzC761n790Y-eWwrlHIxOivABCjE_vKjUexI8oYFqFq_9R7YKfDXIrPQBd38Trtp7kHM
-   7Ty9T2JmemV6Q~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BL3hI
+   GJnL6-ECCGBWDhvbFSJi591poVJ4cpJDnUDdRCcOYDT5c27Zqk4GmmZ11XQQEEvTi-Va
+   rc-I83M_zi7kA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDc4N
-   DU5OTMsICJzZF9oYXNoIjogIlljeFQxa09KTmNxYldNcU4tNjdCSWIxLWdDZEFaRFF5a
-   1BldHJOSV9WOXcifQ.OcYCKdJSKF4W7qhldD-achfVrqFq1PTv_Z7laeU8DjGxV5vB1z
-   4PVCTfHzf_hx2-NRKKGzT6AEerl5FkrWkR2w
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg1M
+   zk4NTEsICJzZF9oYXNoIjogIk1PZ2xqVTVQR04wcHNoZy1ya3AwN0YyT3Y5NC1Tc210O
+   GxfWHBwWDhYNnMifQ.BIDL_G9FXHydQFItaStnUJhphBnSz-YiTMzyrkDKXLwiue0gnZ
+   uCNfxqDjP8_JXTDF_eZXarOxbB3LN4yO2ZrA
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -658,8 +658,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.pElkQxPKS0vJpfEda4iuhopCiplwdJNBTYvDNo3kjI3Wl-
-   u8e35AafnDwObie8TjfXfxoIsiUiOwiQYHOWzDkg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.Bh3rgPGyZff4cY2nQUPjqk8p7ZXtRF55_ljU4afAMjA3FF
+   dQO_SNb_m1tzHLyuoTl-Dn6tGE2UvsME7_btWGWQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -871,7 +871,15 @@ Table of Contents
 
 8.  Relationships to Other Documents
 
-   TBD
+   This specification defines validation and processing rules for
+   verifiable credentials using JSON payloads and secured by SD-JWT
+   [I-D.ietf-oauth-selective-disclosure-jwt].  Other specifications
+   exist that define their own verifiable credential formats; for
+   example, W3C Verifiable Credential Data Model (VCDM) 2.0 [W3C.VCDM]
+   defines a data model for verifiable credentials encoded as JSON-LD,
+   and ISO/IEC 18013-5:2021 [ISO.18013-5] defines a representation of
+   verifiable credentials in the mobile document (mdoc) format encoded
+   as CBOR and secured using COSE.
 
 9.  References
 
@@ -920,6 +928,10 @@ Table of Contents
               IANA, "Well-Known URIs",
               <http://www.iana.org/assignments/well-known-uris>.
 
+   [ISO.18013-5]
+              ISO/IEC, "ISO/IEC 18013-5:2021", 1 September 2024,
+              <https://www.iso.org/standard/69084.html>.
+
    [OWASP_SSRF]
               OWASP, "Server Side Request Forgery Prevention Cheat
               Sheet", <https://cheatsheetseries.owasp.org/cheatsheets/
@@ -942,6 +954,10 @@ Table of Contents
    [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
               O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
               19 July 2022, <https://www.w3.org/TR/did-core/>.
+
+   [W3C.VCDM] Sporny, M., Longley, D., Chadwick, D., and O. Steele,
+              "Verifiable Credentials Data Model v2.0", 10 February
+              2024, <https://www.w3.org/TR/vc-data-model-2.0/>.
 
 Appendix A.  IANA Considerations
 
@@ -1021,6 +1037,7 @@ Appendix C.  Document History
    *  Added registration request to IANA for the well-known URI
    *  Fix some formatting and text in the media type and JWT claim
       registration requests
+   *  Added relationships to other documents
 
    -01
 
