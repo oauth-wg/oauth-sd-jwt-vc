@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-20T01:14:32.400918+00:00",
+  "timestamp": "2024-02-22T01:15:18.638494+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3135,7 +3135,7 @@
       "id": "I_kwDOJbVClc5oo3Ec",
       "title": "What is the benefit of defining a VC-like data model with JWT claims?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/128",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [
@@ -3147,8 +3147,8 @@
       ],
       "body": "Data model in this document resembles to the ID Token data model as defined in OIDC (with the addition of cnf).\r\n\r\nOn the other hand, the data model is trying to follow the W3C VC data model.\r\nWhat is the benefit of this data model over the W3C VC data model (except that the claim names are different and iss can be a URI, and not an object and that JSON-LD is not supported by the data model, which basically excludes some significant use cases such as Europass that are leveraging JSON-LD for internationalization, for example)?",
       "createdAt": "2023-06-13T19:39:17Z",
-      "updatedAt": "2023-10-24T20:13:56Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-21T18:23:51Z",
+      "closedAt": "2024-02-21T18:23:50Z",
       "comments": [
         {
           "author": "tlodderstedt",
@@ -4633,7 +4633,7 @@
       "labels": [],
       "body": "Not all VCs require key binding. For those, cnf should be made optional.",
       "createdAt": "2023-12-18T16:58:02Z",
-      "updatedAt": "2024-01-17T20:44:00Z",
+      "updatedAt": "2024-02-20T21:53:38Z",
       "closedAt": null,
       "comments": [
         {
@@ -4656,6 +4656,13 @@
           "body": "I would propose to clarify this. From a quick reading this is not obviously optional and it does not match the other claims that only state REQUIRED/OPTIONAL without any conditions. As cryptographic binding is optional, I think this line should begin with \"OPTIONAL. [...]\"",
           "createdAt": "2024-01-17T20:43:59Z",
           "updatedAt": "2024-01-17T20:43:59Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I would propose to clarify this. From a quick reading this is not obviously optional and it does not match the other claims that only state REQUIRED/OPTIONAL without any conditions. As cryptographic binding is optional, I think this line should begin with \"OPTIONAL. [...]\"\r\n\r\nhttps://github.com/oauth-wg/oauth-sd-jwt-vc/pull/213 attempts to do just that ",
+          "createdAt": "2024-02-20T21:53:36Z",
+          "updatedAt": "2024-02-20T21:53:36Z"
         }
       ]
     },
@@ -4805,7 +4812,7 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-02-19T12:54:33Z",
+      "updatedAt": "2024-02-20T22:20:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -4912,6 +4919,13 @@
           "body": "I agree with Oliver. \n\nKid is described as application specific and having a dedicated cnf.did method gives it a more universal touch that may be beneficial for interoperability.",
           "createdAt": "2024-02-19T12:54:32Z",
           "updatedAt": "2024-02-19T12:54:32Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think the most beneficial thing for interoperability would be always and only using `cnf.jwk` for key binding. But that's a digression... \r\n\r\nThis document is not going to define a dedicated cnf.did method.\r\n\r\nThe sentence, \"When the key is to be conveyed by reference (e.g., via a key thumbprint or DID [W3C.DID]), other JWT confirmation methods MAY be used, such as a key identifier defined in Section 3.4 of [RFC7800].\" in the proposed text [above](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330) is a just `MAY` to say that a `cnf.kid` or to-be-defined `cnf.did` could be used to conveyed the key binding key by reference.   I'd honestly rather not have it that sentence at all (note that using `cnf.kid` or to-be-defined `cnf.did` isn't prohibited now it's just not mentioned) but it was my attempt to accommodate the ask by @Sakurann.  Saying DID URL rather than just DID in that sentence would be okay for me too. But I don't think much more in this area would be appropriate here. \r\n\r\n\r\n",
+          "createdAt": "2024-02-20T22:20:00Z",
+          "updatedAt": "2024-02-20T22:20:00Z"
         }
       ]
     },
@@ -16116,24 +16130,26 @@
       "id": "PR_kwDOJbVClc5mx1uP",
       "title": "feat: add relationships to other docs section",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/210",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR:\r\n- adds relationship to other docs section\r\n- fixes #128 \r\n- preview here: https://drafts.oauth.net/oauth-sd-jwt-vc/awoie.fix-128/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-02-13T17:25:35Z",
-      "updatedAt": "2024-02-19T21:52:49Z",
+      "updatedAt": "2024-02-21T18:23:49Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b41130f7adfda332ae9261591644801c977e6b20",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie.fix-128",
-      "headRefOid": "478fca1f5fcc0d00d6b91e282bb3b8c1fa904d00",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "3881b6875247bebacd1415693a0dd790d62d41bc",
+      "closedAt": "2024-02-21T18:23:49Z",
+      "mergedAt": "2024-02-21T18:23:49Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "f2643039f9780cf740da5b4279183e48e805db73"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -16141,6 +16157,13 @@
           "body": "One little nit on the text but otherwise looks okay (after the couple iterations by @awoie and @danielfett, thanks for those). ",
           "createdAt": "2024-02-13T21:14:46Z",
           "updatedAt": "2024-02-13T21:14:46Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@Sakurann pls approve if you are happy with the latest language, then we will merge the PR.",
+          "createdAt": "2024-02-21T12:26:45Z",
+          "updatedAt": "2024-02-21T12:26:45Z"
         }
       ],
       "reviews": [
@@ -16288,6 +16311,208 @@
               "updatedAt": "2024-02-19T21:52:49Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wt_-Y",
+          "commit": {
+            "abbreviatedOid": "478fca1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-20T17:54:21Z",
+          "updatedAt": "2024-02-20T17:54:21Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "@Sakurann's suggestion of just `using JSON payloads` seems good \r\n```suggestion\r\nThis specification defines validation and processing rules for verifiable credentials using JSON\r\n```",
+              "createdAt": "2024-02-20T17:54:21Z",
+              "updatedAt": "2024-02-20T17:54:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wuwuG",
+          "commit": {
+            "abbreviatedOid": "9aca89b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-20T19:03:35Z",
+          "updatedAt": "2024-02-20T19:03:35Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nthat define their own verifiable credential formats; for example, W3C Verifiable\r\n```",
+              "createdAt": "2024-02-20T19:03:35Z",
+              "updatedAt": "2024-02-20T19:03:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wuxOC",
+          "commit": {
+            "abbreviatedOid": "9aca89b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Approved with a minor proposed improvment.",
+          "createdAt": "2024-02-20T19:04:13Z",
+          "updatedAt": "2024-02-20T19:04:13Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5w48pT",
+          "commit": {
+            "abbreviatedOid": "3881b68"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-21T17:33:31Z",
+          "updatedAt": "2024-02-21T17:33:31Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 213,
+      "id": "PR_kwDOJbVClc5ncoiB",
+      "title": "Clarify the optionality of the cnf claim",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/213",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarify the optionality of the cnf claim (to fix #196)",
+      "createdAt": "2024-02-20T21:49:01Z",
+      "updatedAt": "2024-02-21T19:42:05Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f2643039f9780cf740da5b4279183e48e805db73",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "clarify-cnf-optionality",
+      "headRefOid": "3d43b7be891b799fe87cdffc3c6303bbfb97502d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Hang on. Even if there might be a difference in how a key inside cnf claim is represented (jwk, kid, etc) it should still be cnf claim for the interop purposes, no? What are you trying to account for by making cnf optional?\r\n\r\nplease see issue #196 and note that the text in this PR has \"This [cnf] claim MUST be present when cryptographic Key Binding is to be supported.\" \r\n\r\nAlso note this PR isn't for issue #205 and it was probably a mistake on my part to have suggested text there that touches two issues. But they were both on cnf so I did what I did [no pun intended]. This PR *only* attempts to clarify the optionality of the cnf claim for issue #196. There doesn't yet seem to be consensus on #205.  ",
+          "createdAt": "2024-02-20T21:56:04Z",
+          "updatedAt": "2024-02-20T22:30:22Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/clarify-cnf-optionality/draft-ietf-oauth-sd-jwt-vc.html#section-3.2.2.2-3.4.1 ",
+          "createdAt": "2024-02-20T22:45:41Z",
+          "updatedAt": "2024-02-20T22:45:41Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bc-pi you probably made the comment while I was updating my original comment based on re-reading the PR. I still think it should remain \"required when cryptographic binding is used\"",
+          "createdAt": "2024-02-21T06:39:02Z",
+          "updatedAt": "2024-02-21T06:39:02Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> CNF is more optional to me\r\n\r\nwhat does this mean? you believe sd-jwt-vc should have more than one way to do cryptographic holder binding? or that many of the credentials will not use cryptographic holder binding?",
+          "createdAt": "2024-02-21T17:34:34Z",
+          "updatedAt": "2024-02-21T17:34:43Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "No, I just mean SD-JWT VCs can be key bound, but they don't need to be. Therefore it is an optional feature.",
+          "createdAt": "2024-02-21T17:42:13Z",
+          "updatedAt": "2024-02-21T17:42:13Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I see, the difference here is that if key binding shall be used, then cnf must be used while the other formulation leaves more space?",
+          "createdAt": "2024-02-21T17:45:54Z",
+          "updatedAt": "2024-02-21T17:45:54Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "If that's the intent, `required when cryptographic binding is used` sounds more appropriate to me. just saying `optional` would lead to confusion that it is optional even when cryptographic binding is used.",
+          "createdAt": "2024-02-21T17:51:15Z",
+          "updatedAt": "2024-02-21T17:51:15Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I also like the proposed version more. The proposed language addresses #196 which is based on developer feedback that were confused by the current language that uses REQUIRED if ... . \r\n\r\nSo I think that OPTIONAL seems to solve that issue. IMO, it is also appropriate since we have the additional requirement in the paragraph that says MUST be present if cryptographic binding is required.",
+          "createdAt": "2024-02-21T19:33:38Z",
+          "updatedAt": "2024-02-21T19:33:38Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5wwG0b",
+          "commit": {
+            "abbreviatedOid": "ab32c85"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-20T21:51:48Z",
+          "updatedAt": "2024-02-20T21:51:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wwH8t",
+          "commit": {
+            "abbreviatedOid": "ab32c85"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "Even if there might be a difference in how a key inside cnf claim is represented (jwk, kid, etc) it should still be cnf claim for the interop purposes, no? What are you trying to account for by making cnf optional?\n\nI think it should remain \"required when cryptographic binding is used\"",
+          "createdAt": "2024-02-20T21:55:09Z",
+          "updatedAt": "2024-02-20T22:10:41Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5wycOX",
+          "commit": {
+            "abbreviatedOid": "ab32c85"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "I like this version. CNF is more optional to me and having required as the first keyword seems less right",
+          "createdAt": "2024-02-21T07:26:05Z",
+          "updatedAt": "2024-02-21T07:26:05Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5w6ALE",
+          "commit": {
+            "abbreviatedOid": "ab32c85"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm, see my comment in the discussion.",
+          "createdAt": "2024-02-21T19:34:58Z",
+          "updatedAt": "2024-02-21T19:34:58Z",
+          "comments": []
         }
       ]
     }
