@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-22T01:15:18.638494+00:00",
+  "timestamp": "2024-02-25T01:19:48.283281+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -16392,7 +16392,7 @@
       "labels": [],
       "body": "Clarify the optionality of the cnf claim (to fix #196)",
       "createdAt": "2024-02-20T21:49:01Z",
-      "updatedAt": "2024-02-21T19:42:05Z",
+      "updatedAt": "2024-02-23T18:52:02Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f2643039f9780cf740da5b4279183e48e805db73",
@@ -16459,6 +16459,41 @@
           "body": "I also like the proposed version more. The proposed language addresses #196 which is based on developer feedback that were confused by the current language that uses REQUIRED if ... . \r\n\r\nSo I think that OPTIONAL seems to solve that issue. IMO, it is also appropriate since we have the additional requirement in the paragraph that says MUST be present if cryptographic binding is required.",
           "createdAt": "2024-02-21T19:33:38Z",
           "updatedAt": "2024-02-21T19:33:38Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> if key binding shall be used, then cnf must be used while the other formulation leaves more space?\n\nSorry, I don't understand why more space is needed here? The less optionality in key binding, more interop. with the current PR, it would be ok to use a top level sub claim and put a DID there (instead of using cnf.kid). I think it is harmful for the interop, that SD-JWT VC is hoped to bring",
+          "createdAt": "2024-02-23T12:45:02Z",
+          "updatedAt": "2024-02-23T12:45:02Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > if key binding shall be used, then cnf must be used while the other formulation leaves more space?\r\n> \r\n> Sorry, I don't understand why more space is needed here? The less optionality in key binding, more interop. with the current PR, it would be ok to use a top level sub claim and put a DID there (instead of using cnf.kid). I think it is harmful for the interop, that SD-JWT VC is hoped to bring\r\n\r\nI don't see that this optionality is allowed by the following?\r\n>  This claim MUST be present when cryptographic Key Binding is to be supported.",
+          "createdAt": "2024-02-23T13:33:16Z",
+          "updatedAt": "2024-02-23T13:33:16Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > if key binding shall be used, then cnf must be used while the other formulation leaves more space?\n> \n> Sorry, I don't understand why more space is needed here? The less optionality in key binding, more interop. with the current PR, it would be ok to use a top level sub claim and put a DID there (instead of using cnf.kid). I think it is harmful for the interop, that SD-JWT VC is hoped to bring\n\nI see your point. The proposed text opens a door for key binding without using the cnf claim. However, the new text is more initiative and we could add this constraint as an additional sentence or in the section on key binding",
+          "createdAt": "2024-02-23T16:52:27Z",
+          "updatedAt": "2024-02-23T16:52:27Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Okay, it is already present. Sorry I didn't recheck the changes. Lgtm then",
+          "createdAt": "2024-02-23T18:10:17Z",
+          "updatedAt": "2024-02-23T18:10:17Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm struggling to understand the disagreement/argument here. But I'm trying...\r\n\r\nThe text for cnf in the PR has:\r\n\r\n>  OPTIONAL. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. This claim MUST be present when cryptographic Key Binding is to be supported. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.\r\n\r\nwhich seems to me to clearly says that cnf is the required way to do key binding, if doing key binding. Especially the \"This claim MUST be present when cryptographic Key Binding is to be supported\" sentence. \r\n\r\nWould changing that sentence to \"This claim is REQUIRED when cryptographic Key Binding is to be supported\" help? Maybe I'm missing the point of contention but that and the current PR text and the current text in the draft all say the same thing - that cnf is the one and only way to do key binding in SD-JWT VC but b/c key binding isn't itself required, the claim also isn't required. \r\n\r\n\r\n\r\n\r\n\r\n",
+          "createdAt": "2024-02-23T18:52:01Z",
+          "updatedAt": "2024-02-23T18:52:01Z"
         }
       ],
       "reviews": [
