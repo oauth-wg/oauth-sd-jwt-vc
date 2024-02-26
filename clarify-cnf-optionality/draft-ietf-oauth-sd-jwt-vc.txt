@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 24 August 2024                                    Authlete Inc.
+Expires: 29 August 2024                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        21 February 2024
+                                                        26 February 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2024.
+   This Internet-Draft will expire on 29 August 2024.
 
 Copyright Notice
 
@@ -321,13 +321,12 @@ Table of Contents
          [RFC7519] for more information.
    *  cnf
       -  OPTIONAL.  Contains the confirmation method identifying the
-         proof of possession key as defined in [RFC7800].  This claim
-         MUST be present when cryptographic Key Binding is to be
-         supported.  It is RECOMMENDED that this contains a JWK as
-         defined in Section 3.2 of [RFC7800].  For proof of
-         cryptographic Key Binding, the Key Binding JWT in the
-         presentation of the SD-JWT MUST be signed by the key identified
-         in this claim.
+         proof of possession key as defined in [RFC7800].  This claim is
+         REQUIRED when cryptographic Key Binding is to be supported.  It
+         is RECOMMENDED that this contains a JWK as defined in
+         Section 3.2 of [RFC7800].  For proof of cryptographic Key
+         Binding, the Key Binding JWT in the presentation of the SD-JWT
+         MUST be signed by the key identified in this claim.
    *  vct
       -  REQUIRED.  The type of the Verifiable Credential, e.g.,
          https://credentials.example.com/identity_credential, as defined
@@ -516,9 +515,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.b5p_R
-   MliNsgA0Wq3eMbI_KMMs9u75OEqFuZGdudSfe-euP84McfpDBc6OXHmP27DEhqR6fs4u
-   91yM7vbF2pbdQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.45URq
+   qj4A15CQ2igwpXcicsrK1xVLWQLxk5s9Ste8qe79CfvtO6oEdo4P0ccnYDqB0M0_kaxs
+   -AihHBC-1zXlQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -631,16 +630,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.b5p_R
-   MliNsgA0Wq3eMbI_KMMs9u75OEqFuZGdudSfe-euP84McfpDBc6OXHmP27DEhqR6fs4u
-   91yM7vbF2pbdQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.45URq
+   qj4A15CQ2igwpXcicsrK1xVLWQLxk5s9Ste8qe79CfvtO6oEdo4P0ccnYDqB0M0_kaxs
+   -AihHBC-1zXlQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg1N
-   DQ1NDUsICJzZF9oYXNoIjogIktad1NFT3NOU1Uza2pPSUpOX0hxQzgwVFNhMWVZZWlnS
-   1FBRjRSc1Z4T2cifQ.iT55Lufg0zindoFa8GvRScw_zF1B87oEmk_dBI7kdYW5N3_5ty
-   ozY_2B-lmr_ZxhgtxU27zq204y-ifbX23AGg
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg5N
+   zAwNDIsICJzZF9oYXNoIjogIk1tczBwUThkNXRrZGFpeVZUMVY3aE9jSXNMc3VMNldhR
+   3ZCdGxKQ01lcXcifQ.jTDEeC_LgcOsU-uh6l5m87WgIP8NfqEMwEZty2fOiaGrlP6eJM
+   2LEaDv1oMcHUt_YV9hN3leElH7v6Rq-ShSug
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -660,8 +659,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.AY_dtq65jkea7CtVkFkm69Z96asU03UU4PZ8MmCxfGTTqH
-   Gvt6vM7UAyB2tGEMmgl06wxWQBJMe3Ku0TFqRMSw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.JRuSm34MLSjwgvyy6PuClPRmOnWTwaExzGCklc7s2sXQKS
+   1-_VgGCMfXp38ACVGgTZH24axfhGIlt0KE6v2cug~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
