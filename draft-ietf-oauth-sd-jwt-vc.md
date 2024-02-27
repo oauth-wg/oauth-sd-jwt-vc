@@ -738,7 +738,7 @@ be used to represent the concept of a Person Identification Data (PID)
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
 
-The Issuer is using the following input claim set:
+The Issuer is using the following input claims set:
 
 <{{examples/03-pid/user_claims.json}}
 
