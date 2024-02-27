@@ -30,8 +30,8 @@ user_claims:
 holder_disclosed_claims:
   nationalities:
     - true
-  age_equal_or_over:
-    '18': true
+  #age_equal_or_over:
+  #  '18': true
 
 add_decoy_claims: false
 key_binding: true
