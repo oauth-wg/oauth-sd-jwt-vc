@@ -665,6 +665,13 @@ format encoded as CBOR and secured using COSE.
         </author>
     </front>
 </reference>
+
+<reference anchor="EUDIW.ARF" target="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases">
+  <front>
+    <author fullname="European Commission"></author>
+    <title>The European Digital Identity Wallet Architecture and Reference Framework</title>
+  </front>
+</reference>
 {backmatter}
 
 # IANA Considerations
@@ -713,6 +720,51 @@ by [@!RFC5785].
 * Change controller: IETF
 * Specification document: [[ (#jwt-vc-issuer-metadata) of this of this specification ]]
 * Related information: (none)
+
+# Examples
+
+Important: The following examples are not normative and provided for
+illustration purposes only. In particular, neither the structure of the claims
+nor the selection of selectively disclosable claims are normative.
+
+Line breaks have been added for readability.
+
+## Example 1: Person Identification Data (PID) Credential
+
+This example shows how the artifacts defined in this specification could
+be used to represent the concept of a Person Identification Data (PID)
+[@EUDIW.ARF] using the data of a German citizen.
+
+Key Binding is applied
+using the Holder's public key passed in a `cnf` claim in the SD-JWT.
+
+The Issuer is using the following input claim set:
+
+<{{examples/03-pid/user_claims.json}}
+
+The following is the issued SD-JWT:
+
+<{{examples/03-pid/sd_jwt_issuance.txt}}
+
+The following payload is used for the SD-JWT:
+
+<{{examples/03-pid/sd_jwt_payload.json}}
+
+The following Disclosures are created by the Issuer:
+
+{{examples/03-pid/disclosures.md}}
+
+The following is how a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old could look like:
+
+<{{examples/03-pid/sd_jwt_presentation.txt}}
+
+The following is the payload of a corresponding Key Binding JWT:
+
+<{{examples/03-pid/kb_jwt_payload.json}}
+
+After the validation, the Verifier will have the following data for further processing:
+
+<{{examples/03-pid/verified_contents.json}}
 
 # Acknowledgements {#Acknowledgements}
 
