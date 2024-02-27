@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-25T01:19:48.283281+00:00",
+  "timestamp": "2024-02-27T01:14:33.179160+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4485,7 +4485,7 @@
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2024-01-22T20:55:28Z",
+      "updatedAt": "2024-02-26T18:55:36Z",
       "closedAt": null,
       "comments": [
         {
@@ -4557,6 +4557,13 @@
           "body": "> [...]  if option 2 is our favorite options. Should the SD-JWT VC spec then say something about that? IMO, it would be good to say something in the security considerations at least.\r\n\r\nDefinitely not opposed to saying something. But it might be challenging to say something that's actually meaningful/helpful.  \r\n",
           "createdAt": "2024-01-22T20:55:27Z",
           "updatedAt": "2024-01-22T20:55:27Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": " https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/400 removes the explicit prohibition on MAC from SD-JWT (which will be in the -08 draft-ietf-oauth-selective-disclosure-jwt)",
+          "createdAt": "2024-02-26T18:42:50Z",
+          "updatedAt": "2024-02-26T18:43:09Z"
         }
       ]
     },
@@ -4812,7 +4819,7 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-02-20T22:20:01Z",
+      "updatedAt": "2024-02-26T13:15:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -4923,9 +4930,51 @@
         {
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
-          "body": "I think the most beneficial thing for interoperability would be always and only using `cnf.jwk` for key binding. But that's a digression... \r\n\r\nThis document is not going to define a dedicated cnf.did method.\r\n\r\nThe sentence, \"When the key is to be conveyed by reference (e.g., via a key thumbprint or DID [W3C.DID]), other JWT confirmation methods MAY be used, such as a key identifier defined in Section 3.4 of [RFC7800].\" in the proposed text [above](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330) is a just `MAY` to say that a `cnf.kid` or to-be-defined `cnf.did` could be used to conveyed the key binding key by reference.   I'd honestly rather not have it that sentence at all (note that using `cnf.kid` or to-be-defined `cnf.did` isn't prohibited now it's just not mentioned) but it was my attempt to accommodate the ask by @Sakurann.  Saying DID URL rather than just DID in that sentence would be okay for me too. But I don't think much more in this area would be appropriate here. \r\n\r\n\r\n",
+          "body": "I think the most beneficial thing for interoperability would be always and only use `cnf.jwk` for key binding. But that's a digression... \r\n\r\nThis document is not going to define a dedicated cnf.did method.\r\n\r\nThe sentence, \"When the key is to be conveyed by reference (e.g., via a key thumbprint or DID [W3C.DID]), other JWT confirmation methods MAY be used, such as a key identifier defined in Section 3.4 of [RFC7800].\" in the proposed text [above](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330) is a just `MAY` to say that a `cnf.kid` or to-be-defined `cnf.did` could be used to convey the key binding key by reference.   I'd honestly rather not have it that sentence at all (note that using `cnf.kid` or to-be-defined `cnf.did` isn't prohibited now it's just not mentioned) but it was my attempt to accommodate the ask by @Sakurann.  Saying DID URL rather than just DID in that sentence would be okay for me too. But I don't think much more in this area would be appropriate here. \r\n\r\n\r\n",
           "createdAt": "2024-02-20T22:20:00Z",
-          "updatedAt": "2024-02-20T22:20:00Z"
+          "updatedAt": "2024-02-26T13:15:15Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "NONE",
+          "body": "It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n\r\nKey rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n",
+          "createdAt": "2024-02-26T11:00:55Z",
+          "updatedAt": "2024-02-26T11:02:25Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> \r\n> Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n\r\nYes, this makes sense. However, cnf.did might be more appropriate to encode this information. \r\n",
+          "createdAt": "2024-02-26T11:05:46Z",
+          "updatedAt": "2024-02-26T11:05:46Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "NONE",
+          "body": "> > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n> \r\n> Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\r\n\r\nYeah, since we can not reuse this approach from the spec since it has a defined response.\r\n```\r\n\"cnf\":{\r\n  \"jku\": \"did:exmaple.com\",\r\n  \"kid\": \"key123\"\r\n}\r\n```\r\nWouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard",
+          "createdAt": "2024-02-26T11:26:01Z",
+          "updatedAt": "2024-02-26T11:26:01Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> > > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n> > \r\n> > \r\n> > Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\r\n> \r\n> Yeah, since we can not reuse this approach from the spec since it has a defined response.\r\n> \r\n> ```\r\n> \"cnf\":{\r\n>   \"jku\": \"did:exmaple.com\",\r\n>   \"kid\": \"key123\"\r\n> }\r\n> ```\r\n> \r\n> Wouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard\r\n\r\n`jku` can not be used in my opinion.\r\n\r\nRFC7800 says:\r\n\r\n> This is done using the \"jku\" member.  Its  value is a URI [[RFC3986](https://www.rfc-editor.org/rfc/rfc3986)] that refers to a resource for a set of JSON-encoded public keys represented as a [JWK](https://www.rfc-editor.org/rfc/rfc7800.html#ref-JWK) Set [JWK], one of which is the proof-of-possession key.\r\n\r\nI do not think that this matches to (most) DID documents.",
+          "createdAt": "2024-02-26T11:35:04Z",
+          "updatedAt": "2024-02-26T11:35:04Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "NONE",
+          "body": "> > > > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\n> > > > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\n> > > \n> > > \n> > > Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\n> > \n> > Yeah, since we can not reuse this approach from the spec since it has a defined response.\n> > \n> > ```\n> > \"cnf\":{\n> >   \"jku\": \"did:exmaple.com\",\n> >   \"kid\": \"key123\"\n> > }\n> > ```\n> > \n> > Wouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard\n> \n> `jku` can not be used in my opinion.\n> \n> RFC7800 says:\n> \n> > This is done using the \"jku\" member.  Its  value is a URI [[RFC3986](https://www.rfc-editor.org/rfc/rfc3986)] that refers to a resource for a set of JSON-encoded public keys represented as a [JWK](https://www.rfc-editor.org/rfc/rfc7800.html#ref-JWK) Set [JWK], one of which is the proof-of-possession key.\n> \n> I do not think that this matches to (most) DID documents.\n\nThat's why I mentioned we need to update or extend the spec so it is compliant with the response of a did doc.\nWe either extend the jku usage or define a new field like did.",
+          "createdAt": "2024-02-26T12:11:14Z",
+          "updatedAt": "2024-02-26T12:11:14Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > > > > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> > > > > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n> > > > \r\n> > > > \r\n> > > > Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\r\n> > > \r\n> > > \r\n> > > Yeah, since we can not reuse this approach from the spec since it has a defined response.\r\n> > > ```\r\n> > > \"cnf\":{\r\n> > >   \"jku\": \"did:exmaple.com\",\r\n> > >   \"kid\": \"key123\"\r\n> > > }\r\n> > > ```\r\n> > > \r\n> > > \r\n> > >     \r\n> > >       \r\n> > >     \r\n> > > \r\n> > >       \r\n> > >     \r\n> > > \r\n> > >     \r\n> > >   \r\n> > > Wouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard\r\n> > \r\n> > \r\n> > `jku` can not be used in my opinion.\r\n> > RFC7800 says:\r\n> > > This is done using the \"jku\" member.  Its  value is a URI [[RFC3986](https://www.rfc-editor.org/rfc/rfc3986)] that refers to a resource for a set of JSON-encoded public keys represented as a [JWK](https://www.rfc-editor.org/rfc/rfc7800.html#ref-JWK) Set [JWK], one of which is the proof-of-possession key.\r\n> > \r\n> > \r\n> > I do not think that this matches to (most) DID documents.\r\n> \r\n> That's why I mentioned we need to update or extend the spec so it is compliant with the response of a did doc. We either extend the jku usage or define a new field like did.\r\n\r\nA standalone `kid` is also valid according to RFC7800 3.4, but for interoperability the best solution would be a new method `did`. But @bc-pi said, he thinks that this spec is not the right home for such an IANA registration.",
+          "createdAt": "2024-02-26T12:13:54Z",
+          "updatedAt": "2024-02-26T12:13:54Z"
         }
       ]
     },
@@ -16392,13 +16441,13 @@
       "labels": [],
       "body": "Clarify the optionality of the cnf claim (to fix #196)",
       "createdAt": "2024-02-20T21:49:01Z",
-      "updatedAt": "2024-02-23T18:52:02Z",
+      "updatedAt": "2024-02-26T19:22:15Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f2643039f9780cf740da5b4279183e48e805db73",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "clarify-cnf-optionality",
-      "headRefOid": "3d43b7be891b799fe87cdffc3c6303bbfb97502d",
+      "headRefOid": "9edae9d4aa1dc2b647c77029b7d415d384cded49",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -16494,6 +16543,20 @@
           "body": "I'm struggling to understand the disagreement/argument here. But I'm trying...\r\n\r\nThe text for cnf in the PR has:\r\n\r\n>  OPTIONAL. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. This claim MUST be present when cryptographic Key Binding is to be supported. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.\r\n\r\nwhich seems to me to clearly says that cnf is the required way to do key binding, if doing key binding. Especially the \"This claim MUST be present when cryptographic Key Binding is to be supported\" sentence. \r\n\r\nWould changing that sentence to \"This claim is REQUIRED when cryptographic Key Binding is to be supported\" help? Maybe I'm missing the point of contention but that and the current PR text and the current text in the draft all say the same thing - that cnf is the one and only way to do key binding in SD-JWT VC but b/c key binding isn't itself required, the claim also isn't required. \r\n\r\n\r\n\r\n\r\n\r\n",
           "createdAt": "2024-02-23T18:52:01Z",
           "updatedAt": "2024-02-23T18:52:01Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Would changing that sentence to \"This claim is REQUIRED when cryptographic Key Binding is to be supported\" help?\r\n\r\nI thought that was better phrasing anyway so made the change w/ 9edae9d4aa1dc2b647c77029b7d415d384cded49 \r\n\r\n",
+          "createdAt": "2024-02-26T17:58:23Z",
+          "updatedAt": "2024-02-26T17:58:23Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > Would changing that sentence to \"This claim is REQUIRED when cryptographic Key Binding is to be supported\" help?\r\n> \r\n> I thought that was better phrasing anyway so made the change w/ [9edae9d](https://github.com/oauth-wg/oauth-sd-jwt-vc/commit/9edae9d4aa1dc2b647c77029b7d415d384cded49)\r\n\r\nSeems great to me.",
+          "createdAt": "2024-02-26T19:22:13Z",
+          "updatedAt": "2024-02-26T19:22:13Z"
         }
       ],
       "reviews": [
@@ -16548,6 +16611,26 @@
           "createdAt": "2024-02-21T19:34:58Z",
           "updatedAt": "2024-02-21T19:34:58Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xWIOU",
+          "commit": {
+            "abbreviatedOid": "3d43b7b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-26T17:52:44Z",
+          "updatedAt": "2024-02-26T17:52:45Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "changing that one sentence to \"This claim is REQUIRED when cryptographic Key Binding is to be supported\"\r\n\r\n```suggestion\r\n    * OPTIONAL. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. This claim is REQUIRED when cryptographic Key Binding is to be supported. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.\r\n```",
+              "createdAt": "2024-02-26T17:52:45Z",
+              "updatedAt": "2024-02-26T17:52:45Z"
+            }
+          ]
         }
       ]
     }
