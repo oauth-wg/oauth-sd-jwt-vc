@@ -724,7 +724,7 @@ by [@!RFC5785].
 # Examples
 
 Important: The following examples are not normative and provided for
-illustration purposes only. In particular, neither the structure of the claims
+illustrative purposes only. In particular, neither the structure of the claims
 nor the selection of selectively disclosable claims are normative.
 
 Line breaks have been added for readability.
@@ -754,7 +754,7 @@ The following Disclosures are created by the Issuer:
 
 {{examples/03-pid/disclosures.md}}
 
-The following is how a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old could look like:
+The following is how a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old might look:
 
 <{{examples/03-pid/sd_jwt_presentation.txt}}
 
