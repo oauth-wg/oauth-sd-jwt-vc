@@ -26,13 +26,6 @@ user_claims:
     !sd '21': true
     !sd '65': false
 
-  #cnf:
-  #  jwk:
-  #    kty: EC
-  #    crv: P-256
-  #    x: 52aDI_ur05n1f_p3jiYGUU82oKZr3m4LsAErM536crQ
-  #    "y": ckhZ-KQ5aXNL91R8Eufg1aOf8Z5pZJnIvuCzNGfdnzo
-
 
 holder_disclosed_claims:
   nationalities:
