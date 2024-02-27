@@ -240,7 +240,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * OPTIONAL. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. This claim is REQUIRED when cryptographic Key Binding is to be supported. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.
+    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.
 * `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
