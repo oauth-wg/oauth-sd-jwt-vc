@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 24 August 2024                                    Authlete Inc.
+Expires: 30 August 2024                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        21 February 2024
+                                                        27 February 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 24 August 2024.
+   This Internet-Draft will expire on 30 August 2024.
 
 Copyright Notice
 
@@ -320,12 +320,14 @@ Table of Contents
          which the Verifiable Credential is no longer valid.  See
          [RFC7519] for more information.
    *  cnf
-      -  REQUIRED when cryptographic Key Binding is to be supported.
-         Contains the confirmation method as defined in [RFC7800].  It
-         is RECOMMENDED that this contains a JWK as defined in
-         Section 3.2 of [RFC7800].  For proof of cryptographic Key
-         Binding, the Key Binding JWT in the presentation of the SD-JWT
-         MUST be signed by the key identified in this claim.
+      -  OPTIONAL unless cryptographic Key Binding is to be supported,
+         in which case it is REQUIRED.  Contains the confirmation method
+         identifying the proof of possession key as defined in
+         [RFC7800].  It is RECOMMENDED that this contains a JWK as
+         defined in Section 3.2 of [RFC7800].  For proof of
+         cryptographic Key Binding, the Key Binding JWT in the
+         presentation of the SD-JWT MUST be signed by the key identified
+         in this claim.
    *  vct
       -  REQUIRED.  The type of the Verifiable Credential, e.g.,
          https://credentials.example.com/identity_credential, as defined
@@ -514,9 +516,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BL3hI
-   GJnL6-ECCGBWDhvbFSJi591poVJ4cpJDnUDdRCcOYDT5c27Zqk4GmmZ11XQQEEvTi-Va
-   rc-I83M_zi7kA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2qcQf
+   Vy8dg7E8FmpFrfFzeb_cXb0OCGXp-M0w5JdufAvDrYVw3xCSmZfX3oHpEFGZiEVHkmb2
+   j9PdKbvCm2Wrg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -629,16 +631,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BL3hI
-   GJnL6-ECCGBWDhvbFSJi591poVJ4cpJDnUDdRCcOYDT5c27Zqk4GmmZ11XQQEEvTi-Va
-   rc-I83M_zi7kA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2qcQf
+   Vy8dg7E8FmpFrfFzeb_cXb0OCGXp-M0w5JdufAvDrYVw3xCSmZfX3oHpEFGZiEVHkmb2
+   j9PdKbvCm2Wrg~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDg1M
-   zk4NTEsICJzZF9oYXNoIjogIk1PZ2xqVTVQR04wcHNoZy1ya3AwN0YyT3Y5NC1Tc210O
-   GxfWHBwWDhYNnMifQ.BIDL_G9FXHydQFItaStnUJhphBnSz-YiTMzyrkDKXLwiue0gnZ
-   uCNfxqDjP8_JXTDF_eZXarOxbB3LN4yO2ZrA
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDkwN
+   jA3NDIsICJzZF9oYXNoIjogIjRic1pVY19FQWJoSGl6ZVZhU01yZHdtcWxfZkhOTlFiX
+   1lldmhVSVZlYlEifQ.hpFvfKqHp-rIqv6EfUWzBqtEkl89MqZLC_m7qv3hH3z5szUYRz
+   ZfX64s3LcBiXkh9R8jDaflHhuYE_9moTDB2w
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -658,8 +660,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.Bh3rgPGyZff4cY2nQUPjqk8p7ZXtRF55_ljU4afAMjA3FF
-   dQO_SNb_m1tzHLyuoTl-Dn6tGE2UvsME7_btWGWQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.Hg23BnVG3wQgYzD-X-B5KHHYwvQNG0qqO62zccVQRwuRnh
+   VdTAbHXFWPM02S_-Ucm60hZvCFUAYkmd-IKpJh1Q~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1037,6 +1039,7 @@ Appendix C.  Document History
    *  Added registration request to IANA for the well-known URI
    *  Fix some formatting and text in the media type and JWT claim
       registration requests
+   *  Clarify the optionality of the cnf claim
    *  Added relationships to other documents
 
    -01
