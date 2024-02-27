@@ -754,7 +754,7 @@ The following Disclosures are created by the Issuer:
 
 {{examples/03-pid/disclosures.md}}
 
-The following is how a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality:
+The following shows a presentation of the SD-JWT with a Key Binding JWT that discloses only the nationality of the Holder:
 
 <{{examples/03-pid/sd_jwt_presentation.txt}}
 
