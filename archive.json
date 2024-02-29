@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-27T01:14:33.179160+00:00",
+  "timestamp": "2024-02-29T01:14:48.416685+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4633,15 +4633,15 @@
       "id": "I_kwDOJbVClc56A-ol",
       "title": "Consider making cnf optional",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/196",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Not all VCs require key binding. For those, cnf should be made optional.",
       "createdAt": "2023-12-18T16:58:02Z",
-      "updatedAt": "2024-02-20T21:53:38Z",
-      "closedAt": null,
+      "updatedAt": "2024-02-27T19:05:14Z",
+      "closedAt": "2024-02-27T19:05:14Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -5124,6 +5124,22 @@
           "updatedAt": "2024-02-17T01:44:23Z"
         }
       ]
+    },
+    {
+      "number": 215,
+      "id": "I_kwDOJbVClc6AnYEv",
+      "title": "the wallet finding the user claims in the credential",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/215",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
+      "createdAt": "2024-02-27T23:44:20Z",
+      "updatedAt": "2024-02-27T23:44:20Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -13632,7 +13648,7 @@
       "id": "PR_kwDOJbVClc5bg-uE",
       "title": "Adding examples for ARF/mDL, fixes #144",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/170",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -13641,14 +13657,14 @@
       ],
       "body": "This adds the examples previously provided for SD-JWT to this specification, with minor adaptions.\r\n\r\nSee rendered text here: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/arf-examples/draft-ietf-oauth-sd-jwt-vc.html#name-examples-2\r\n\r\nFixes #144 ",
       "createdAt": "2023-09-29T08:42:55Z",
-      "updatedAt": "2023-10-24T20:12:36Z",
+      "updatedAt": "2024-02-27T18:06:44Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "a8193ae7bb17b4b8679561eb4b64cfb8d78a7dbc",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/arf-examples",
       "headRefOid": "847a627f01c313d5424920abd1dc141338d1f151",
-      "closedAt": null,
+      "closedAt": "2024-02-27T18:06:44Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -13701,6 +13717,13 @@
           "body": "Note: I changed this PR from \"ready\" to \"draft\" since we identified various problems in the examples, some of which were created quite a while ago. Further discussions and modifications are needed.",
           "createdAt": "2023-10-19T14:36:02Z",
           "updatedAt": "2023-10-19T14:36:02Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "As discussed, separate PRs will be created for the examples.",
+          "createdAt": "2024-02-27T18:06:44Z",
+          "updatedAt": "2024-02-27T18:06:44Z"
         }
       ],
       "reviews": [
@@ -16434,24 +16457,26 @@
       "id": "PR_kwDOJbVClc5ncoiB",
       "title": "Clarify the optionality of the cnf claim",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/213",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Clarify the optionality of the cnf claim (to fix #196)",
       "createdAt": "2024-02-20T21:49:01Z",
-      "updatedAt": "2024-02-26T19:22:15Z",
+      "updatedAt": "2024-02-27T19:05:13Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f2643039f9780cf740da5b4279183e48e805db73",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "clarify-cnf-optionality",
-      "headRefOid": "9edae9d4aa1dc2b647c77029b7d415d384cded49",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "c6b138036e035e6df2a2f983aa4cf8b183d39fc2",
+      "closedAt": "2024-02-27T19:05:13Z",
+      "mergedAt": "2024-02-27T19:05:13Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "e4e3b6996780e390912a4f04ff80816fd4ee6458"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -16557,6 +16582,13 @@
           "body": "> > Would changing that sentence to \"This claim is REQUIRED when cryptographic Key Binding is to be supported\" help?\r\n> \r\n> I thought that was better phrasing anyway so made the change w/ [9edae9d](https://github.com/oauth-wg/oauth-sd-jwt-vc/commit/9edae9d4aa1dc2b647c77029b7d415d384cded49)\r\n\r\nSeems great to me.",
           "createdAt": "2024-02-26T19:22:13Z",
           "updatedAt": "2024-02-26T19:22:13Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I'm generally fine with the change, but I think I want to be pedantic here and resolve the contradiction.\r\n\r\nYou're suggested pedantic wording is indeed better than what I'd had. Thanks. I've accepted it w/ c6b138036e035e6df2a2f983aa4cf8b183d39fc2",
+          "createdAt": "2024-02-27T16:27:12Z",
+          "updatedAt": "2024-02-27T16:27:12Z"
         }
       ],
       "reviews": [
@@ -16631,6 +16663,162 @@
               "updatedAt": "2024-02-26T17:52:45Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xfQKF",
+          "commit": {
+            "abbreviatedOid": "9edae9d"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-27T16:12:12Z",
+          "updatedAt": "2024-02-27T16:12:13Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "_Technically,_ the REQUIRED contradicts the OPTIONAL. So in order to not trigger any RFC2119 nerds, we could use: \r\n```suggestion\r\n    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.\r\n```",
+              "createdAt": "2024-02-27T16:12:12Z",
+              "updatedAt": "2024-02-27T16:12:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xfRfj",
+          "commit": {
+            "abbreviatedOid": "9edae9d"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "I'm generally fine with the change, but I think I want to be pedantic here and resolve the contradiction.",
+          "createdAt": "2024-02-27T16:14:08Z",
+          "updatedAt": "2024-02-27T16:14:08Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xg8fh",
+          "commit": {
+            "abbreviatedOid": "c6b1380"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "thank you!",
+          "createdAt": "2024-02-27T18:22:20Z",
+          "updatedAt": "2024-02-27T18:22:20Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 214,
+      "id": "PR_kwDOJbVClc5oFX0l",
+      "title": "Add PID example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/214",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "PID example in line with our current thinking about PID design.",
+      "createdAt": "2024-02-27T18:08:21Z",
+      "updatedAt": "2024-02-27T19:24:44Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f2643039f9780cf740da5b4279183e48e805db73",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/pid-example",
+      "headRefOid": "3a527d16929416ddd16341d9449850aaf0a0ae56",
+      "closedAt": "2024-02-27T19:24:44Z",
+      "mergedAt": "2024-02-27T19:24:44Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "5b93e96c6da0b926b7e52501e3f36352233bca5d"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/pid-example/draft-ietf-oauth-sd-jwt-vc.html#appendix-B for folks playing along at home ",
+          "createdAt": "2024-02-27T18:33:32Z",
+          "updatedAt": "2024-02-27T18:33:32Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "can haz document history entry? ",
+          "createdAt": "2024-02-27T18:43:57Z",
+          "updatedAt": "2024-02-27T18:43:57Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5xhIM2",
+          "commit": {
+            "abbreviatedOid": "2a87163"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-27T18:36:22Z",
+          "updatedAt": "2024-02-27T18:36:22Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "```suggestion\r\nillustrative purposes only. In particular, neither the structure of the claims\r\n```",
+              "createdAt": "2024-02-27T18:36:22Z",
+              "updatedAt": "2024-02-27T18:36:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xhNEV",
+          "commit": {
+            "abbreviatedOid": "2a87163"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-02-27T18:42:39Z",
+          "updatedAt": "2024-02-27T18:42:39Z",
+          "comments": [
+            {
+              "originalPosition": 51,
+              "body": "\"could look like\" has never sounded right to me\r\n\r\n```suggestion\r\nThe following is how a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old might look:\r\n```",
+              "createdAt": "2024-02-27T18:42:39Z",
+              "updatedAt": "2024-02-27T18:42:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xheLO",
+          "commit": {
+            "abbreviatedOid": "b2b04fa"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-27T19:14:06Z",
+          "updatedAt": "2024-02-27T19:14:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5xhlhE",
+          "commit": {
+            "abbreviatedOid": "3a527d1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-02-27T19:24:29Z",
+          "updatedAt": "2024-02-27T19:24:29Z",
+          "comments": []
         }
       ]
     }
