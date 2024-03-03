@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-02-29T01:14:48.416685+00:00",
+  "timestamp": "2024-03-03T01:19:00.143404+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5137,9 +5137,17 @@
       "labels": [],
       "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
       "createdAt": "2024-02-27T23:44:20Z",
-      "updatedAt": "2024-02-27T23:44:20Z",
+      "updatedAt": "2024-03-01T18:54:41Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Maybe that top-level claim could be called `credentialSubject`...\r\n\r\nMore seriously though I think this is something that's just kinda inherent to JWT in general and while there are potential issues there as you describe there are also things in place to help.  https://datatracker.ietf.org/doc/html/rfc7519#section-4 says to ignore claims not understood (`aud` is defined and registered so needs to be understood btw) and `vct` with something like prospective [SD-JWT VC Type Metadata](https://github.com/vcstuff/sd-jwt-vc-types) and/or [OID4VCI's credential issuer metadata](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html#name-credential-issuer-metadata-6) give tools to \"understand\" claims in a given context.  \r\n\r\n",
+          "createdAt": "2024-03-01T18:52:38Z",
+          "updatedAt": "2024-03-01T18:54:41Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -16821,6 +16829,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 216,
+      "id": "PR_kwDOJbVClc5oU7w-",
+      "title": "Include disclosure of age_equal_or_over/18 in the PID example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/216",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Related to https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/411 disclosure of age_equal_or_over/18 in the example wasn't working quite right and so was pulled out right before publication of -02 in #214. This PR puts disclosure of age_equal_or_over/18 back in the example. \r\n\r\nSee it starting here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/pid_example_disclose_age_over_18/draft-ietf-oauth-sd-jwt-vc.html#appendix-B.1-52 \r\n",
+      "createdAt": "2024-02-29T18:38:03Z",
+      "updatedAt": "2024-02-29T18:45:35Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "5b93e96c6da0b926b7e52501e3f36352233bca5d",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "pid_example_disclose_age_over_18",
+      "headRefOid": "6a54f5016008dd77e58e71e75258d5b56c0a8204",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
