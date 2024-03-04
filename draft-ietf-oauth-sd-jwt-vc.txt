@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 30 August 2024                                    Authlete Inc.
+Expires: 5 September 2024                                  Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        27 February 2024
+                                                            4 March 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 August 2024.
+   This Internet-Draft will expire on 5 September 2024.
 
 Copyright Notice
 
@@ -518,9 +518,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0qTMd
-   ITE0fOOWpjHeGLAjqib8jSTiNwjc_qHIxnNInAMVa1_pfjb6kwNPoS85p0dNeSj-HMTk
-   b4gUSXimhUTjQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.T_WJh
+   MRz6vpxkWXUWtjic17rjPznFZYFKeu5gURZkSCivRP3d7VmAlL-8tbVX0Ws7MlBMeelb
+   -lvbxxAIFDwCw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -633,16 +633,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0qTMd
-   ITE0fOOWpjHeGLAjqib8jSTiNwjc_qHIxnNInAMVa1_pfjb6kwNPoS85p0dNeSj-HMTk
-   b4gUSXimhUTjQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.T_WJh
+   MRz6vpxkWXUWtjic17rjPznFZYFKeu5gURZkSCivRP3d7VmAlL-8tbVX0Ws7MlBMeelb
+   -lvbxxAIFDwCw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDkwN
-   jE5MTYsICJzZF9oYXNoIjogIlNtdHhfclp6YlZKVkR3SGhHbG50WWNWclFrMTc4WnZFU
-   DNDS25XN2x5bHMifQ.45uoX7TSchfdZgHjBcWc8AoNWoH8iU4VkuamosXl63t8EBAajc
-   pAPAXILX1SlNSaHfD51Mw44jMt6wcVrAQA8w
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDk1N
+   zAyMzMsICJzZF9oYXNoIjogIktJOHR4S0w2eFIyc2lnSzh2R0NxaTc3dlVkQ25wZDgyL
+   TlGc2daaG5BYWsifQ.3oVqB45CwYNypKmpuqpXMeu50k24lieHYotNjgLGf5wDsge4Ez
+   VFy4gb1-kA3sOT9D7ac18aIOHcgirWhE_qJA
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -662,8 +662,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.hKOWGlDZkbtTtmM-Du434_K_MNrPaYcf8BSIMsH2Sv3iLE
-   bTRks2la65R0pjqLwT4ksYc3JFm9xjiP5L7tkyjw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.rOWji9ypetVRUhLtu4OLt6qv5OGRm_GhzaPobrVeB4Ir4q
+   SvqfZ-VoedeKqbkSeUE3ReqYBahxlJrg0bQnNmXA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1091,17 +1091,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    ZRFEiXSwgImlzcyI6ICJodHRwczovL2V4YW1wbGUuY29tL2lzc3VlciIsICJpYXQiOiA
    xNjgzMDAwMDAwLCAiZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJodHRwczovL2JtaS5
    idW5kLmV4YW1wbGUvY3JlZGVudGlhbC9waWQvMS4wIiwgImFnZV9lcXVhbF9vcl9vdmV
-   yIjogeyJfc2QiOiBbIkJ3akFZZVpldGZQTGVYaGNsQzhoWXpJSVlmUHdxQ3lFWWNiSGN
-   pT2JCem8iLCAiQzhxaV8tMVFOMGJpYmtiWDhVVlFVd1B6N1ZGM3VydVU3Z3V1a1JlZWh
-   aQSIsICJEVnY5UHgtaV9hRVp6OUtxVC0wMWxJdUh4clZ0b0RHMHpEajI3RWV2N2dFIiw
-   gIkZWXzkzZUkzQ1A5Ym52RUlqN2hjOGFOcS1pcXBRQmtWU25xckZ3NDc0ZjQiLCAiSW5
-   JbUxwTUVXa0J3dHVCQlBwZ3l4MHZEZmtxRzRaMGZlcVhtbmh1YndJUSIsICJMdTlGejc
-   1UWV4ajduNnp5di1NZ1BOanNSRUx3czVtSDdtUVcxTm00UW9rIl19LCAiX3NkX2FsZyI
+   yIjogeyJfc2QiOiBbIkZjOElfMDdMT2NnUHdyREpLUXlJR085N3dWc09wbE1Makh2UkM
+   0UjQtV2ciLCAiWEx0TGphZFVXYzl6Tl85aE1KUm9xeTQ2VXNDS2IxSXNoWnV1cVVGS1N
+   DQSIsICJhb0NDenNDN3A0cWhaSUFoX2lkUkNTQ2E2NDF1eWNuYzh6UGZOV3o4bngwIiw
+   gImYxLVAwQTJkS1dhdnYxdUZuTVgyQTctRVh4dmhveHY1YUhodUVJTi1XNjQiLCAiazV
+   oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
+   5MVlpcDBzWWdETzN6VnVnMk1GdVBOakh4a3NCRG5KWjRhSS1jIl19LCAiX3NkX2FsZyI
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.lptuLqW7uieXFnSteDjxn3dV0wgwG05w6S4zjHnmx8-YEIBgZBYy7D
-   Yne4AVMLNlV-LQFjCtAgbh1d5R0IYyKw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.UJB6jN1gN_n1oiuskFOx9xb7z5Ad1ttetn6J1pc4FyagSMuLhfA--C
+   6M80C1Sqt6YPMOKWdBNCCRqVQgdWLyug~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1122,11 +1122,11 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    1FEeG5JSmRxeU9BIiwgInBsYWNlX29mX2JpcnRoIiwgeyJfc2QiOiBbIldwaEhvSUR5b
    1diQXBEQzR6YnV3UjQweGwweExoRENfY3Y0dHNTNzFyRUEiXSwgImNvdW50cnkiOiAiR
    EUifV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgImFsc29fa25vd25fYXMiLCAiU
-   2Nod2VzdGVyIEFnbmVzIl0~WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgMTIsIHRyd
-   WVd~WyJIM28xdXN3UDc2MEZpMnllR2RWQ0VRIiwgMTQsIHRydWVd~WyJPQktsVFZsdkx
-   nLUFkd3FZR2JQOFpBIiwgMTYsIHRydWVd~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
-   wgMTgsIHRydWVd~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgMjEsIHRydWVd~WyJl
-   SzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgNjUsIGZhbHNlXQ~
+   2Nod2VzdGVyIEFnbmVzIl0~WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjEyIiwgd
+   HJ1ZV0~WyJIM28xdXN3UDc2MEZpMnllR2RWQ0VRIiwgIjE0IiwgdHJ1ZV0~WyJPQktsV
+   FZsdkxnLUFkd3FZR2JQOFpBIiwgIjE2IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5c
+   kRUM3hBIiwgIjE4IiwgdHJ1ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjIxI
+   iwgdHJ1ZV0~WyJlSzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgIjY1IiwgZmFsc2Vd~
 
    The following payload is used for the SD-JWT:
 
@@ -1149,12 +1149,12 @@ B.1.  Example 1: Person Identification Data (PID) Credential
      "vct": "https://bmi.bund.example/credential/pid/1.0",
      "age_equal_or_over": {
        "_sd": [
-         "BwjAYeZetfPLeXhclC8hYzIIYfPwqCyEYcbHciObBzo",
-         "C8qi_-1QN0bibkbX8UVQUwPz7VF3uruU7guukReehZA",
-         "DVv9Px-i_aEZz9KqT-01lIuHxrVtoDG0zDj27Eev7gE",
-         "FV_93eI3CP9bnvEIj7hc8aNq-iqpQBkVSnqrFw474f4",
-         "InImLpMEWkBwtuBBPpgyx0vDfkqG4Z0feqXmnhubwIQ",
-         "Lu9Fz75Qexj7n6zyv-MgPNjsRELws5mH7mQW1Nm4Qok"
+         "Fc8I_07LOcgPwrDJKQyIGO97wVsOplMLjHvRC4R4-Wg",
+         "XLtLjadUWc9zN_9hMJRoqy46UsCKb1IshZuuqUFKSCA",
+         "aoCCzsC7p4qhZIAh_idRCSCa641uycnc8zPfNWz8nx0",
+         "f1-P0A2dKWavv1uFnMX2A7-EXxvhoxv5aHhuEIN-W64",
+         "k5hy2r018vrsJjo-Vjd6g6yt7AaonKonniuJ9zel3jo",
+         "qp7Z_Ky1Yip0sYgDO3zVug2MFuPNjHxksBDnJZ4aI-c"
        ]
      },
      "_sd_alg": "sha-256",
@@ -1306,48 +1306,49 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim 12*:
 
-   *  SHA-256 Hash: DVv9Px-i_aEZz9KqT-01lIuHxrVtoDG0zDj27Eev7gE
+   *  SHA-256 Hash: Fc8I_07LOcgPwrDJKQyIGO97wVsOplMLjHvRC4R4-Wg
    *  Disclosure:
-      WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgMTIsIHRydWVd
-   *  Contents: ["kx5kF17V-x0JmwUx9vgvtw", 12, true]
+      WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjEyIiwgdHJ1ZV0
+   *  Contents: ["kx5kF17V-x0JmwUx9vgvtw", "12", true]
 
    *Claim 14*:
 
-   *  SHA-256 Hash: BwjAYeZetfPLeXhclC8hYzIIYfPwqCyEYcbHciObBzo
+   *  SHA-256 Hash: f1-P0A2dKWavv1uFnMX2A7-EXxvhoxv5aHhuEIN-W64
    *  Disclosure:
-      WyJIM28xdXN3UDc2MEZpMnllR2RWQ0VRIiwgMTQsIHRydWVd
-   *  Contents: ["H3o1uswP760Fi2yeGdVCEQ", 14, true]
+      WyJIM28xdXN3UDc2MEZpMnllR2RWQ0VRIiwgIjE0IiwgdHJ1ZV0
+   *  Contents: ["H3o1uswP760Fi2yeGdVCEQ", "14", true]
 
    *Claim 16*:
 
-   *  SHA-256 Hash: InImLpMEWkBwtuBBPpgyx0vDfkqG4Z0feqXmnhubwIQ
+   *  SHA-256 Hash: k5hy2r018vrsJjo-Vjd6g6yt7AaonKonniuJ9zel3jo
    *  Disclosure:
-      WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgMTYsIHRydWVd
-   *  Contents: ["OBKlTVlvLg-AdwqYGbP8ZA", 16, true]
+      WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE2IiwgdHJ1ZV0
+   *  Contents: ["OBKlTVlvLg-AdwqYGbP8ZA", "16", true]
 
    *Claim 18*:
 
-   *  SHA-256 Hash: FV_93eI3CP9bnvEIj7hc8aNq-iqpQBkVSnqrFw474f4
+   *  SHA-256 Hash: qp7Z_Ky1Yip0sYgDO3zVug2MFuPNjHxksBDnJZ4aI-c
    *  Disclosure:
-      WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgMTgsIHRydWVd
-   *  Contents: ["M0Jb57t41ubrkSuyrDT3xA", 18, true]
+      WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjE4IiwgdHJ1ZV0
+   *  Contents: ["M0Jb57t41ubrkSuyrDT3xA", "18", true]
 
    *Claim 21*:
 
-   *  SHA-256 Hash: C8qi_-1QN0bibkbX8UVQUwPz7VF3uruU7guukReehZA
+   *  SHA-256 Hash: aoCCzsC7p4qhZIAh_idRCSCa641uycnc8zPfNWz8nx0
    *  Disclosure:
-      WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgMjEsIHRydWVd
-   *  Contents: ["DsmtKNgpV4dAHpjrcaosAw", 21, true]
+      WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjIxIiwgdHJ1ZV0
+   *  Contents: ["DsmtKNgpV4dAHpjrcaosAw", "21", true]
 
    *Claim 65*:
 
-   *  SHA-256 Hash: Lu9Fz75Qexj7n6zyv-MgPNjsRELws5mH7mQW1Nm4Qok
+   *  SHA-256 Hash: XLtLjadUWc9zN_9hMJRoqy46UsCKb1IshZuuqUFKSCA
    *  Disclosure:
-      WyJlSzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgNjUsIGZhbHNlXQ
-   *  Contents: ["eK5o5pHfgupPpltj1qhAJw", 65, false]
+      WyJlSzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgIjY1IiwgZmFsc2Vd
+   *  Contents: ["eK5o5pHfgupPpltj1qhAJw", "65", false]
 
    The following shows a presentation of the SD-JWT with a Key Binding
-   JWT that discloses only the nationality of the Holder:
+   JWT that discloses only nationality and the fact that the person is
+   over 18 years old:
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
    uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiOVpicGxDN1R
@@ -1362,31 +1363,31 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    ZRFEiXSwgImlzcyI6ICJodHRwczovL2V4YW1wbGUuY29tL2lzc3VlciIsICJpYXQiOiA
    xNjgzMDAwMDAwLCAiZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJodHRwczovL2JtaS5
    idW5kLmV4YW1wbGUvY3JlZGVudGlhbC9waWQvMS4wIiwgImFnZV9lcXVhbF9vcl9vdmV
-   yIjogeyJfc2QiOiBbIkJ3akFZZVpldGZQTGVYaGNsQzhoWXpJSVlmUHdxQ3lFWWNiSGN
-   pT2JCem8iLCAiQzhxaV8tMVFOMGJpYmtiWDhVVlFVd1B6N1ZGM3VydVU3Z3V1a1JlZWh
-   aQSIsICJEVnY5UHgtaV9hRVp6OUtxVC0wMWxJdUh4clZ0b0RHMHpEajI3RWV2N2dFIiw
-   gIkZWXzkzZUkzQ1A5Ym52RUlqN2hjOGFOcS1pcXBRQmtWU25xckZ3NDc0ZjQiLCAiSW5
-   JbUxwTUVXa0J3dHVCQlBwZ3l4MHZEZmtxRzRaMGZlcVhtbmh1YndJUSIsICJMdTlGejc
-   1UWV4ajduNnp5di1NZ1BOanNSRUx3czVtSDdtUVcxTm00UW9rIl19LCAiX3NkX2FsZyI
+   yIjogeyJfc2QiOiBbIkZjOElfMDdMT2NnUHdyREpLUXlJR085N3dWc09wbE1Makh2UkM
+   0UjQtV2ciLCAiWEx0TGphZFVXYzl6Tl85aE1KUm9xeTQ2VXNDS2IxSXNoWnV1cVVGS1N
+   DQSIsICJhb0NDenNDN3A0cWhaSUFoX2lkUkNTQ2E2NDF1eWNuYzh6UGZOV3o4bngwIiw
+   gImYxLVAwQTJkS1dhdnYxdUZuTVgyQTctRVh4dmhveHY1YUhodUVJTi1XNjQiLCAiazV
+   oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
+   5MVlpcDBzWWdETzN6VnVnMk1GdVBOakh4a3NCRG5KWjRhSS1jIl19LCAiX3NkX2FsZyI
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.lptuLqW7uieXFnSteDjxn3dV0wgwG05w6S4zjHnmx8-YEIBgZBYy7D
-   Yne4AVMLNlV-LQFjCtAgbh1d5R0IYyKw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
-   gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogIm
-   tiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4Y
-   W1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDkwNjE5MTYsICJzZF9oYXNoIjogI
-   lVDeDhfQmtXaTZ2RzN2TXVUWWtzVDZJNEhpNnA1T19pTFRQWnh2WmYzemcifQ.i8i9sE
-   YTS5FIjc_u4R3JrdwqkYN9a4zFWoDdAtO-oRVeh8rcv7vE9U_EcGT4DWIAc7SFrfxtcM
-   Kxi8FqHZYC0w
+   5RjJIWlEifX19.UJB6jN1gN_n1oiuskFOx9xb7z5Ad1ttetn6J1pc4FyagSMuLhfA--C
+   6M80C1Sqt6YPMOKWdBNCCRqVQgdWLyug~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
+   wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
+   25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
+   mlmaWVyIiwgImlhdCI6IDE3MDk1NzAyMzMsICJzZF9oYXNoIjogImlwY0hScmlWTzJOd
+   2g1cDQ4aXhLSV9GZS0xR083ZVpsMzl5cVRQSHVyckEifQ.R-gYbLRwI_sYvJRo5QfEng
+   9q9D_HGVKQ-uA9HPgtqofe6jdiV44J55w2NXoZ8Uw1rHP04VKzPq3x3QjxgWOS6w
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1709061916,
-     "sd_hash": "UCx8_BkWi6vG3vMuTYksT6I4Hi6p5O_iLTPZxvZf3zg"
+     "iat": 1709570233,
+     "sd_hash": "ipcHRriVO2Nwh5p48ixKI_Fe-1GO7eZl39yqTPHurrA"
    }
 
    After the validation, the Verifier will have the following data for
@@ -1397,7 +1398,9 @@ B.1.  Example 1: Person Identification Data (PID) Credential
      "iat": 1683000000,
      "exp": 1883000000,
      "vct": "https://bmi.bund.example/credential/pid/1.0",
-     "age_equal_or_over": {},
+     "age_equal_or_over": {
+       "18": true
+     },
      "cnf": {
        "jwk": {
          "kty": "EC",
@@ -1420,6 +1423,10 @@ Appendix C.  Acknowledgements
    the initial set of implementations.
 
 Appendix D.  Document History
+
+   -03
+
+   *  Include disclosure of age_equal_or_over/18 in the PID example
 
    -02
 
