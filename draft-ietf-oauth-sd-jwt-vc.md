@@ -754,7 +754,7 @@ The following Disclosures are created by the Issuer:
 
 {{examples/03-pid/disclosures.md}}
 
-The following shows a presentation of the SD-JWT with a Key Binding JWT that discloses only the nationality of the Holder:
+The following shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:
 
 <{{examples/03-pid/sd_jwt_presentation.txt}}
 
@@ -783,6 +783,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-03
+
+*  Include disclosure of age_equal_or_over/18 in the PID example
 
 -02
 
