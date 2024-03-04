@@ -518,9 +518,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sQowV
-   f2GobGyxUn9R5JAEyS2ZVKl59hHNx8Bi3tezs4P86Qovisw6N391vYtMEmmboVzHL_-c
-   G1zkms9XR_4yQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eE0s4
+   Rq00_gEOx2aZw43Y6nw-bs0Gg7-L8vida9PqInIK_phiwsibGNslEU3u3itRHDGDGe0W
+   P7Od2Ay0N4GLQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -633,16 +633,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sQowV
-   f2GobGyxUn9R5JAEyS2ZVKl59hHNx8Bi3tezs4P86Qovisw6N391vYtMEmmboVzHL_-c
-   G1zkms9XR_4yQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eE0s4
+   Rq00_gEOx2aZw43Y6nw-bs0Gg7-L8vida9PqInIK_phiwsibGNslEU3u3itRHDGDGe0W
+   P7Od2Ay0N4GLQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDk1N
-   zkxNDUsICJzZF9oYXNoIjogIm9fSThWUU5Qb3RRdnZ5aWdMRnZ4UlAzWUJfZEpVRW80d
-   V8zVkhWTlI4bzAifQ.iBB76CtnqGQwzQukQrYxgg2l2tebtx1obtoza2rRuHcplyG5fr
-   19ly-AGHZOiFOvlj4wuZXW3G05mtb269oQfA
+   zkzODgsICJzZF9oYXNoIjogIjNkWDhxZ19GZVhybmNkTEhMM00yUjNYaFRncEhZX01iM
+   ldLLU91azZLU0EifQ.7qupSNXg7eICdoAIF8SEkD6dQx-kBVwkQM1W6RP9xmN4BWUw_W
+   38liLyXjUljjTzj_hY4p8G3swzDSPRAMio0g
 
    In this presentation, the Holder provides only the Disclosure for the
    claim address.  Other claims are not disclosed to the Verifier.
@@ -662,8 +662,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.RJiO6F4xLFM_YmzRDuuRdPyKIRDh2pIELs2uNYTn_mgROz
-   HhSWHIWXmBJgopUd_nPHqcNywT4d4f1amqHQUmwg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.g5ccBQd-2AmPNMTasraoW8dULtD42WWYHrTH3bpU2X6ALC
+   iPPUHFuFn9yjyNq6KbPsknHCwc08FQqqZm4OlaHQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1100,8 +1100,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.gzRRhPkONYwCnTlmDZRaNgvKwtt1yiZQqY53v5r0t1jSpGkZCVw81M
-   jKwBCn35JPjZO0xDikQ7Opatbv1WzuWw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.YXDuqpuaKnfUeCRgKRt4m14GPMUyri9tu8sN5lsof-2JqRBhLMV9nC
+   pthbgrQLdccFKzmWhLqCwWDUYYnxSWiw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1372,22 +1372,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.gzRRhPkONYwCnTlmDZRaNgvKwtt1yiZQqY53v5r0t1jSpGkZCVw81M
-   jKwBCn35JPjZO0xDikQ7Opatbv1WzuWw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.YXDuqpuaKnfUeCRgKRt4m14GPMUyri9tu8sN5lsof-2JqRBhLMV9nC
+   pthbgrQLdccFKzmWhLqCwWDUYYnxSWiw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MDk1NzkxNDUsICJzZF9oYXNoIjogImdwTnJXUUFsaHlkV
-   Ex4ek10TnR1QTdzZEU1NlVFTFkyZ3RMYW5idHkxNTQifQ.ZbabDcmCpLTchvTgUya6M3
-   eceDeuk_g5C88DQp6p2Kr5Z7u0yqP0a31yArcgCLgp1dnOzeBjvTGVVvNPaJKXvQ
+   mlmaWVyIiwgImlhdCI6IDE3MDk1NzkzODgsICJzZF9oYXNoIjogIk1WcDhPY0RENC02V
+   mNNZl9wOVdnRDdQRE9sWks1NGRhTjJFdUtzc0VxOEEifQ.AVg15T6UCEkMSiO4xEj31J
+   CeSn7tVAg8HyYOUnvMI_R9y4PPc6g5_OE0Py0MZ9Num_qcj6Sa3pTvcZ-VPj386w
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1709579145,
-     "sd_hash": "gpNrWQAlhydTLxzMtNtuA7sdE56UELY2gtLanbty154"
+     "iat": 1709579388,
+     "sd_hash": "MVp8OcDD4-6VcMf_p9WgD7PDOlZK54daN2EuKssEq8A"
    }
 
    After the validation, the Verifier will have the following data for
