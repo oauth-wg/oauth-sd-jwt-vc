@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-03T01:19:00.143404+00:00",
+  "timestamp": "2024-03-05T01:14:47.748872+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -16835,26 +16835,105 @@
       "id": "PR_kwDOJbVClc5oU7w-",
       "title": "Include disclosure of age_equal_or_over/18 in the PID example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/216",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Related to https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/411 disclosure of age_equal_or_over/18 in the example wasn't working quite right and so was pulled out right before publication of -02 in #214. This PR puts disclosure of age_equal_or_over/18 back in the example. \r\n\r\nSee it starting here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/pid_example_disclose_age_over_18/draft-ietf-oauth-sd-jwt-vc.html#appendix-B.1-52 \r\n",
       "createdAt": "2024-02-29T18:38:03Z",
-      "updatedAt": "2024-02-29T18:45:35Z",
+      "updatedAt": "2024-03-04T16:36:48Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "5b93e96c6da0b926b7e52501e3f36352233bca5d",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "pid_example_disclose_age_over_18",
       "headRefOid": "6a54f5016008dd77e58e71e75258d5b56c0a8204",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-03-04T16:36:48Z",
+      "mergedAt": "2024-03-04T16:36:48Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "e9e02bf9bf0088de42a85da3c8491c6a1a7456d9"
+      },
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi Two approvals, I believe we can merge this.",
+          "createdAt": "2024-03-04T16:32:43Z",
+          "updatedAt": "2024-03-04T16:32:43Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5yIOHs",
+          "commit": {
+            "abbreviatedOid": "6a54f50"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-04T16:24:43Z",
+          "updatedAt": "2024-03-04T16:24:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5yISxf",
+          "commit": {
+            "abbreviatedOid": "6a54f50"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm",
+          "createdAt": "2024-03-04T16:32:15Z",
+          "updatedAt": "2024-03-04T16:32:15Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 217,
+      "id": "PR_kwDOJbVClc5ooNBH",
+      "title": "Just add -04 to the Document History to help future PRs remember",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/217",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-03-04T19:09:39Z",
+      "updatedAt": "2024-03-04T19:14:58Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "e9e02bf9bf0088de42a85da3c8491c6a1a7456d9",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "starting-04",
+      "headRefOid": "33ef041ecf19a45a3686241caaf942f77b902b8f",
+      "closedAt": "2024-03-04T19:14:57Z",
+      "mergedAt": "2024-03-04T19:14:57Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "f3e8ceb7637f351112dc02d9a9ea274f8a7cf040"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5yJr3t",
+          "commit": {
+            "abbreviatedOid": "33ef041"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-04T19:14:30Z",
+          "updatedAt": "2024-03-04T19:14:30Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
