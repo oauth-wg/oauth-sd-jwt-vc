@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-05T01:14:47.748872+00:00",
+  "timestamp": "2024-03-07T01:02:31.090486+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -2743,7 +2743,7 @@
       ],
       "body": "I found it hard to understand the relationship between VC's and the spec. Specifically, it's not clear to me how to go from VC (as in `application/vc+ld+json`) to `SD-JWT VC`, nor the other way. ",
       "createdAt": "2023-05-26T21:41:46Z",
-      "updatedAt": "2023-11-27T03:30:45Z",
+      "updatedAt": "2024-03-05T15:01:24Z",
       "closedAt": null,
       "comments": [
         {
@@ -2766,6 +2766,13 @@
           "body": "IMO, it would be needed to define a mapping based on specific VC types, otherwise it would be inaccurate. For that reason, I'd argue that the transformation algorithm should not be in this specification but rather in concrete VC type specifications, e.g., driver's license, vehicle registration etc. Otherwise, one wouldn't be able to add the appropriate JSON-LD context URLs to the `@context` array. It might be also hard to distinguish what is W3C VCDM metadata and what are claims about the W3C VCDM credential subject. If folks are fine with this approach, I'd suggest adding something that describes this approach to the   \"relationships to other documents\" section to close this issue.\r\n\r\nThoughts?",
           "createdAt": "2023-11-27T03:29:47Z",
           "updatedAt": "2023-11-27T03:30:45Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "\r\n> Thoughts?\r\n\r\nI really like the fact that SD JWT VC is not related to the W3C VC DM, or any other format.\r\nThis independence allows this specification to present SD JWT VC as a new clean format.\r\n\r\nI really see no point in adding mapping rules or describing approaches to map between formats.\r\n\r\n\r\n\r\n \r\n\r\n",
+          "createdAt": "2024-03-05T15:01:23Z",
+          "updatedAt": "2024-03-05T15:01:23Z"
         }
       ]
     },
