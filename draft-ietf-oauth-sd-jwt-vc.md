@@ -355,13 +355,11 @@ be ignored by the Verifier.
 
 ## Examples
 
-The following is a non-normative example of a presentation of the SD-JWT shown
-above including a Key Binding JWT:
+The following is a non-normative example of a presentation of the SD-JWT shown in Section 3.3.
+In this presentation, the Holder provides only the Disclosure for the claim `address`
+including a Key Binding JWT. Other claims are not disclosed to the Verifier:
 
 <{{examples/01/sd_jwt_presentation.txt}}
-
-In this presentation, the Holder provides only the Disclosure for the claim
-`address`. Other claims are not disclosed to the Verifier.
 
 The following example shows a presentation of a (different) SD-JWT without a
 Key Binding JWT:
