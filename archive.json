@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-07T01:02:31.090486+00:00",
+  "timestamp": "2024-03-10T01:19:52.838694+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -402,7 +402,7 @@
         },
         {
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "> What is the value of a VC without type information? Or let me put it the other way around. If the Verifier is supposed to be able to process a VC without knowing the type (which also means it can request the VC presentation without specifying the type), why do we need the type at all?\r\n\r\nI was wondering about that point as well - what is revealed information worth without information about credential type (and corresponding trust framework).",
           "createdAt": "2023-05-25T07:24:54Z",
           "updatedAt": "2023-05-25T07:24:54Z"
@@ -2275,7 +2275,7 @@
         },
         {
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "> @TakahikoKawasaki raises an important question that we need to address, at least by giving guidance. I don't have a good answer to that at the moment.\r\n> \r\n> Besides that, I don't see a need to rename to `jwt-vc-issuer`.\r\n\r\nWe had a small discussion on this and I created a new issue #143 so we can separate between the 2 discussions overlapping here (name of the endpoint and intended usage). ",
           "createdAt": "2023-06-27T20:37:59Z",
           "updatedAt": "2023-06-27T20:37:59Z"
@@ -3696,7 +3696,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/143",
       "state": "CLOSED",
       "author": "c2bo",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [
         "awoie"
       ],
@@ -4588,9 +4588,17 @@
       ],
       "body": "The topic concerns the `status` JWT claim specifically, but more broadly, we should discuss how to handle security-critical extensions (new claims or headers) not covered by our specification. At the IETF, someone mentioned supporting other status methods (e.g., based on ZKPs) in the future.\r\n\r\nShould we allow the issuer to express that a verifier should fail validation if, for example, somebody uses a different status method than the one specified by SD-JWT VC, which is not understood? This is a specific example, but the same applies to other similar security-critical extensions, so we are not purely talking about premature optimization such as in the case of the status method.\r\n\r\n1. Before you say that unknown JWT claims and headers should be ignored, and this is a policy validation decision, keep in mind that we already require the processing of the `status` claim in SD-JWT VC. I believe the same ability might have to be granted to ecosystem-specific `status`-like JWT claims or headers too.\r\n\r\n2. I realize that it is hard to understand what falls into this category of security-critical extensions. In my opinion, it is important that policy decisions are out of the scope of SD-JWT VC. One approach would be to limit it to JWT claims and headers related to validating the Issuer-signed JWT or the KB-JWT. `status` processing is part of SD-JWT VC validation at the moment.\r\n\r\n3. Now, how to express this? We already have a tool in JOSE that allows us to express security-critical extensions that must be understood by verifiers, which is the `crit` JWT header. But `crit` is limited to include only JWT headers, not JWT claims. Consequently, a new status method would need to be referenced in the `crit` header. This also has the consequence that the new header cannot be selectively disclosed and remains sticky. This is an SD-JWT limitation, and I'm not saying we should necessarily change that.\r\n\r\n4. This made me think whether the `status` claim should be put into the JWT header since it would be more consistent with how extensibility might work in the future and because it is actually not wanted that the `status` is omitted.\r\n\r\n5. Alternatively, we could introduce a `crit`-like JWT claim or define `crit` as a JWT claim and allow the `crit` claim to include JWT claims.\r\n\r\nSome references below...\r\n\r\nSD-JWT does not allow JWT headers to be selectively disclosed.\r\n\r\nRFC 7519 says in section 9.2 Validating a JWT:\r\n> Verify that the resulting JOSE Header includes only parameters and values whose syntax and semantics are both understood and supported or that are specified as being ignored when not understood.\r\n\r\nRFC 7519 says in section 4 JWT claims:\r\n> However, in the absence of such requirements, all claims that are not understood by implementations MUST be ignored.",
       "createdAt": "2023-11-28T23:23:42Z",
-      "updatedAt": "2023-11-29T01:16:06Z",
+      "updatedAt": "2024-03-08T19:19:29Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "With https://github.com/oauth-wg/draft-ietf-oauth-status-list/pull/90/ the -01 draft-ietf-oauth-status-list attempts to allow for supporting other status methods within the `status` claim. Which somewhat addresses the specific example cited in this issue.\r\n",
+          "createdAt": "2024-03-08T19:19:27Z",
+          "updatedAt": "2024-03-08T19:19:27Z"
+        }
+      ]
     },
     {
       "number": 193,
@@ -4781,7 +4789,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/203",
       "state": "CLOSED",
       "author": "c2bo",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [
         "bc-pi"
       ],
@@ -4826,7 +4834,7 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-02-26T13:15:15Z",
+      "updatedAt": "2024-03-08T03:14:35Z",
       "closedAt": null,
       "comments": [
         {
@@ -4982,6 +4990,20 @@
           "body": "> > > > > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> > > > > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n> > > > \r\n> > > > \r\n> > > > Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\r\n> > > \r\n> > > \r\n> > > Yeah, since we can not reuse this approach from the spec since it has a defined response.\r\n> > > ```\r\n> > > \"cnf\":{\r\n> > >   \"jku\": \"did:exmaple.com\",\r\n> > >   \"kid\": \"key123\"\r\n> > > }\r\n> > > ```\r\n> > > \r\n> > > \r\n> > >     \r\n> > >       \r\n> > >     \r\n> > > \r\n> > >       \r\n> > >     \r\n> > > \r\n> > >     \r\n> > >   \r\n> > > Wouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard\r\n> > \r\n> > \r\n> > `jku` can not be used in my opinion.\r\n> > RFC7800 says:\r\n> > > This is done using the \"jku\" member.  Its  value is a URI [[RFC3986](https://www.rfc-editor.org/rfc/rfc3986)] that refers to a resource for a set of JSON-encoded public keys represented as a [JWK](https://www.rfc-editor.org/rfc/rfc7800.html#ref-JWK) Set [JWK], one of which is the proof-of-possession key.\r\n> > \r\n> > \r\n> > I do not think that this matches to (most) DID documents.\r\n> \r\n> That's why I mentioned we need to update or extend the spec so it is compliant with the response of a did doc. We either extend the jku usage or define a new field like did.\r\n\r\nA standalone `kid` is also valid according to RFC7800 3.4, but for interoperability the best solution would be a new method `did`. But @bc-pi said, he thinks that this spec is not the right home for such an IANA registration.",
           "createdAt": "2024-02-26T12:13:54Z",
           "updatedAt": "2024-02-26T12:13:54Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > kid does not really help with interoperability.\r\n> \r\n> Why? either relative of absolute DID URL, it is being used as a `kid` value already.\r\n\r\nWe should have further restrictions on the DID URL. a `kid` containing a DID URL that is a DID would resolve to multiple keys potentially, which would cause ambiguity. \r\n\r\nI made a mistake previously when I said using a DID URL would solve the problem since a DID is also a DID URL:\r\n> did-url = did path-abempty [ \"?\" query ] [ \"#\" fragment ]\r\n\r\nwhereas path-abempty can be literally completely empty which allows a DID to be a DID URL which makes sense because it is the location of the DID Document.\r\n\r\nWe would need to say that kid must be a DID URL that when dereferenced results in a single key (ideally JWK).",
+          "createdAt": "2024-03-07T13:28:19Z",
+          "updatedAt": "2024-03-07T13:28:19Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I think the text Brian suggested originally is sufficient: https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330\r\n\r\n(at least initially) please keep the option to use cnf.kid, as limiting the use of DIDs only with cnf.did could be a significant blocker for some implementations to implement sd-jwt vc. especially if sd-jwt vc will not define cnf.did (and I won't even attempt to try convince Brian to do so).\r\n\r\nI also think it is probably better to say DID URL as opposed to just DID.",
+          "createdAt": "2024-03-08T03:14:34Z",
+          "updatedAt": "2024-03-08T03:14:34Z"
         }
       ]
     },
@@ -5039,7 +5061,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/208",
       "state": "OPEN",
       "author": "c2bo",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "I've been getting increasing amounts of questions about delegation / chaining with sd-jwts (and mdoc). Especially delegation seems to be a topic that people are starting to wonder about with cases like a person acting on behalf of another person in certain scopes (e.g., tax consultant accessing a system on your behalf). \r\n\r\nMy naive thought was that this could be done similarly to how the x5c header parameter currently works: Introduce a new header parameter that contains an sd-jwt (including key binding jwt and relevant disclosures) where the chained sd-jwt is used to establish trust (via the original issuer) and resolve the key (confirmation claim) for signature validation. For implementations, this should not add too much effort as it would just be a recursive call to verify the contained sd-jwt vc.\r\n\r\nI am not entirely sure it makes sense to bring in the additional complexity (and privacy concerns) but on the other hand I do see benefit in supporting some kind of credential chaining / delegation mechanism within the credential format itself. Do you think that this is something worth discussing and would this be the right spec to do so?",
@@ -5153,6 +5175,51 @@
           "body": "Maybe that top-level claim could be called `credentialSubject`...\r\n\r\nMore seriously though I think this is something that's just kinda inherent to JWT in general and while there are potential issues there as you describe there are also things in place to help.  https://datatracker.ietf.org/doc/html/rfc7519#section-4 says to ignore claims not understood (`aud` is defined and registered so needs to be understood btw) and `vct` with something like prospective [SD-JWT VC Type Metadata](https://github.com/vcstuff/sd-jwt-vc-types) and/or [OID4VCI's credential issuer metadata](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html#name-credential-issuer-metadata-6) give tools to \"understand\" claims in a given context.  \r\n\r\n",
           "createdAt": "2024-03-01T18:52:38Z",
           "updatedAt": "2024-03-01T18:54:41Z"
+        }
+      ]
+    },
+    {
+      "number": 218,
+      "id": "I_kwDOJbVClc6Bxjmp",
+      "title": "example for key binding",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/218",
+      "state": "OPEN",
+      "author": "c2bo",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "The example at 4.2 (https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-examples) seems to be broken in its current state:\r\n\r\n```\r\neyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp\r\nZ25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C\r\nVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k\r\nYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p\r\nZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO\r\nNndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQ\r\nWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJ\r\nIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAi\r\namRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5\r\neVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi\r\naHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4\r\ncCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl\r\nLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj\r\nbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD\r\nQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa\r\neGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RYAGd\r\n0CrhTtnSJeZX9TlAxOqVq1cHg9DeVlzGMQ5GcPLMli_ymAThQVm9lP-XDndP2heaTjQd\r\ncAvTNtbe2sOfg~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In\r\nN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2\r\n4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi\r\nAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI\r\nmF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDk1N\r\nzk3MjYsICJzZF9oYXNoIjogIjYyZjM0eDRmRTRZZG1SU3RHSVdBQ1FpemdoVUFzdEE1Y\r\nW9GV2JTUFA4VlUifQ.H0Fi2Wc3UjuAsZbhfhKWqgZYd2oj20bnY_tKWP6sg3cKbhDpRC\r\nh_vCPmoHgR6MNGC1B4JcmftOxPMJ13dE3g5w\r\n```\r\nhas only 1 disclosure and the digest does not match any of the ones defined in the payload.",
+      "createdAt": "2024-03-09T14:45:27Z",
+      "updatedAt": "2024-03-09T23:36:55Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "Never mind regarding the digest, that matches - that was a mistake on my side.\r\nDo you think it makes sense to add a short remark that this example only discloses the address? It reads like it should have the same disclosures as the ones given before, but is configured to only disclose the address.",
+          "createdAt": "2024-03-09T14:55:36Z",
+          "updatedAt": "2024-03-09T14:55:36Z"
+        },
+        {
+          "author": "lukasjhan",
+          "authorAssociation": "NONE",
+          "body": "I think that example is originated from encoded example in section 3.3 (https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-example). They have `address` disclosure.\r\n\r\nAnd also short description exist in 4.2. but it's separated before and after the example. So I guess I'm a little confused.\r\n\r\n> The following is a non-normative example of a presentation of the SD-JWT shown above including a Key Binding JWT:\r\n\r\n> In this presentation, the Holder provides only the Disclosure for the claim address. Other claims are not disclosed to the Verifier.\r\n\r\nHow about writing it all at once? I'm proposing like:\r\n\r\n> The following is a non-normative example of a presentation of the SD-JWT  shown above(3.3). In this presentation, the Holder provides only the Disclosure for the claim address including a Key Binding JWT. Other claims are not disclosed to the Verifier:\r\n",
+          "createdAt": "2024-03-09T15:18:25Z",
+          "updatedAt": "2024-03-09T15:19:45Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "Yeah, that would help imho. My main concern was that the example didn't properly work for some reason but that was an error on my part / my implementation.\r\nI am also fine with just closing this as it would only be a very minor change, but I do believe it would be a bit easier to understand if it's together in one part - especially if people are just searching for some examples to test with implementations.",
+          "createdAt": "2024-03-09T16:17:32Z",
+          "updatedAt": "2024-03-09T16:33:52Z"
+        },
+        {
+          "author": "lukasjhan",
+          "authorAssociation": "NONE",
+          "body": "@c2bo Good I'll open a PR for it :) ",
+          "createdAt": "2024-03-09T23:36:53Z",
+          "updatedAt": "2024-03-09T23:36:53Z"
         }
       ]
     }
@@ -5322,7 +5389,7 @@
       "comments": [
         {
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Please correct me if I am wrong, but I would understand VCDM2.0 `validFrom` as a mix of `iat` and `nbf`? \r\nVCDM 2.0 does not have a issued at field and only defines `validFrom`. \r\n\r\nSo my understanding would be:\r\n- if only `iat` is defined, we set the `validFrom` to the value of `iat`\r\n- if both are defined, we set `validFrom` to the value of `nbf` (and lose the iat information in the VCDM2.0 representation)\r\n\r\nSo either remove nbf completely or make it optional and basically overwrite iat (for the VCDM2.0) if it exists?\r\nDoes that make sense?\r\n",
           "createdAt": "2023-05-11T14:47:01Z",
           "updatedAt": "2023-05-11T14:47:01Z"
@@ -5343,7 +5410,7 @@
         },
         {
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "Hmm yeah, vc-jwt seems to do exactly that - drop `iat` and use `nbf` for `validFrom`. ",
           "createdAt": "2023-05-11T17:38:39Z",
           "updatedAt": "2023-05-11T17:38:39Z"
@@ -5364,7 +5431,7 @@
         },
         {
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "body": "> > I disagree with the request for changes. We don't have to follow VC-JWT mapping. The cleanest is to map iat to ValidFrom.\r\n> \r\n> I see where you are coming from. Would you be ok with the following:\r\n> \r\n> * make `nbf` optional\r\n> * in the mapping section:\r\n>   \r\n>   * if `nbf` was omitted, use `iat` as default for `ValidFrom`\r\n>   * if `nbf` is present, use `nbf` for `ValidFrom`\r\n> \r\n> IMO, that would be the cleanest.\r\n\r\nThis feels more natural to me and is pretty much what I was thinking about \ud83d\udc4d ",
           "createdAt": "2023-05-16T13:18:50Z",
           "updatedAt": "2023-05-16T13:18:50Z"
@@ -8177,7 +8244,7 @@
             "abbreviatedOid": "f554526"
           },
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-25T14:57:30Z",
@@ -10320,7 +10387,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/122",
       "state": "MERGED",
       "author": "c2bo",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Status Provider should be either 4th party or issuer (not verifier).",
@@ -10513,7 +10580,7 @@
             "abbreviatedOid": "264a080"
           },
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-16T15:02:11Z",
@@ -10771,7 +10838,7 @@
             "abbreviatedOid": "b1f0b4a"
           },
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-19T17:26:29Z",
@@ -11807,7 +11874,7 @@
             "abbreviatedOid": "0ec7de6"
           },
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-20T19:58:01Z",
@@ -12552,7 +12619,7 @@
             "abbreviatedOid": "480f67d"
           },
           "author": "c2bo",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-29T20:53:00Z",
