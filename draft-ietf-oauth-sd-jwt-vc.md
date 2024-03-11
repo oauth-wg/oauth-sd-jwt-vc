@@ -272,7 +272,7 @@ An SD-JWT VC MAY have no selectively disclosable claims.
 In that case, the SD-JWT VC MUST NOT contain the `_sd` claim in the JWT body. It also
 MUST NOT have any Disclosures.
 
-## Example
+## Example {#vc-sd-jwt-example}
 
 The following is a non-normative example of an unsecured payload of an
 SD-JWT VC.
@@ -355,9 +355,9 @@ be ignored by the Verifier.
 
 ## Examples
 
-The following is a non-normative example of a presentation of the SD-JWT shown in Section 3.3.
-In this presentation, the Holder provides only the Disclosure for the claim `address`
-including a Key Binding JWT. Other claims are not disclosed to the Verifier:
+The following is a non-normative example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a Key Binding JWT.
+In this presentation, the Holder provides only the Disclosure for the  `address` claim.
+Other claims are not disclosed to the Verifier.
 
 <{{examples/01/sd_jwt_presentation.txt}}
 
