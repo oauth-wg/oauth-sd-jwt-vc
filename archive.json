@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-10T01:19:52.838694+00:00",
+  "timestamp": "2024-03-12T00:21:47.129335+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -17005,6 +17005,101 @@
           "body": "",
           "createdAt": "2024-03-04T19:14:30Z",
           "updatedAt": "2024-03-04T19:14:30Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 219,
+      "id": "PR_kwDOJbVClc5pK6vC",
+      "title": "doc: improve description for a example of Key Binding JWT",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/219",
+      "state": "OPEN",
+      "author": "lukasjhan",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi. I modified the example explanation to make it better understandable.\r\nSince the example of SD-JWT is long, I think separate explanations may not be easy to see at once.\r\nSo I combined the separate explanations into one.\r\nYou can check the discussion in #218\r\n\r\nThis is my first contribution here. If there is anything that needs to be corrected, \r\nplease feel free to let me know. :)\r\n\r\nThank you",
+      "createdAt": "2024-03-10T14:41:02Z",
+      "updatedAt": "2024-03-11T05:25:52Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f3e8ceb7637f351112dc02d9a9ea274f8a7cf040",
+      "headRepository": "lukasjhan/oauth-sd-jwt-vc",
+      "headRefName": "doc/improve-description-kbjwt",
+      "headRefOid": "3a6589c229790a62c6ef4acdda82836d1e0f0421",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "You should add yourself to the acknowledgements too",
+          "createdAt": "2024-03-11T04:53:10Z",
+          "updatedAt": "2024-03-11T04:53:10Z"
+        },
+        {
+          "author": "lukasjhan",
+          "authorAssociation": "NONE",
+          "body": "> You should add yourself to the acknowledgements too\r\n\r\nThank you :) I added.",
+          "createdAt": "2024-03-11T05:25:50Z",
+          "updatedAt": "2024-03-11T05:25:50Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc5y1Ur_",
+          "commit": {
+            "abbreviatedOid": "087d1e4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-10T16:27:07Z",
+          "updatedAt": "2024-03-10T16:27:07Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Thanks Lukas! \r\nThe suggestion below has a few editorial updates and changes the way the section 3.3 reference works. \r\n\r\n```suggestion\r\nThe following is a non-normative example of a presentation of the SD-JWT shown in (#example) including a Key Binding JWT.\r\nIn this presentation, the Holder provides only the Disclosure for the  `address` claim. \r\nOther claims are not disclosed to the Verifier.\r\n```",
+              "createdAt": "2024-03-10T16:27:07Z",
+              "updatedAt": "2024-03-11T01:21:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5y2CYs",
+          "commit": {
+            "abbreviatedOid": "087d1e4"
+          },
+          "author": "lukasjhan",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-11T01:00:41Z",
+          "updatedAt": "2024-03-11T01:00:41Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "@bc-pi I updated with the link to reference section 3.3 :)",
+              "createdAt": "2024-03-11T01:00:41Z",
+              "updatedAt": "2024-03-11T01:00:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5y2J7f",
+          "commit": {
+            "abbreviatedOid": "5ce3408"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-11T01:55:46Z",
+          "updatedAt": "2024-03-11T01:55:46Z",
           "comments": []
         }
       ]
