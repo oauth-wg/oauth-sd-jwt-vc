@@ -618,7 +618,7 @@ array instead of retrieving the respective Type Metadata elsewhere as follows:
    Type Metadata document matches that of the `vct` in the Type Metadata document, and it MUST verify the integrity of the Type Metadata document as defined in
    (#document-integrity). The consuming application MUST NOT use the Type Metadata if no hash for integrity protection was provided.
 
-## Document Integrity {#document-integrity}
+# Document Integrity {#document-integrity}
 
 Both the `vct` claim in the SD-JWT VC and various URIs in the metadata
 document MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
