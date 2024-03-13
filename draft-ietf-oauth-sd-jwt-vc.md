@@ -220,7 +220,7 @@ a type:
 ```
 For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
 
-#### Registered JWT Claims
+#### Registered JWT Claims {#claims}
 
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
@@ -419,7 +419,7 @@ This specification defines the following JWT VC Issuer Metadata configuration
 parameters:
 
 * `issuer`
-      REQUIRED. The Issuer identifier, which MUST be identical to the `iss`
+    * REQUIRED. The Issuer identifier, which MUST be identical to the `iss`
 value in the JWT.
 * `jwks_uri`
     * OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
@@ -475,9 +475,160 @@ Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
 
 ## JWT VC Issuer Metadata Validation
 
-The `issuer` value returned MUST be identical to the `iss` value of the JWT. If
-these values are not identical, the data contained in the response MUST NOT be
-used.
+The `issuer` value returned MUST be identical to the `iss` value of the
+JWT. If these values are not identical, the data contained in the response
+MUST NOT be used.
+
+# Type Metadata {#type-metadata}
+
+A type is associated with rules defining which claims may or must appear in the SD-JWT VC and whether they may, must, or must not be selectively disclosable.
+
+This specification defines Type Metadata that can be associated with a type of a SD-JWT VC as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
+
+ * Developers of Issuers and Verifiers can use the Typ Metadata to understand the
+   semantics of the type and the associated rules. While in some cases,
+   Issuers are the parties that define types (credential formats), this is
+   not always the case. For example, a type can be defined by a
+   standardization body or a community.
+ * Verifiers can use the metadata to determine whether a credential is valid
+   according to the rules of the type. For example, a Verifier can check
+   whether a credential contains all required claims and whether the claims
+   are selectively disclosable.
+ * Wallets can use the metadata to display the credential in a way that is
+   consistent with the Issuer's intent.
+
+Applications using this specification are called "consuming applications" in the following. This typically includes Issuers, Verifiers, and Wallets.
+
+## Type Metadata Example {#type-metadata-example}
+
+All examples in this section are non-normative.
+
+Type Metadata about the value of a `vct` claim value can be retrieved as described in (#retrieving-metadata).
+
+```json
+{
+  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct#integrity": "sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0",
+  ...
+}
+```
+
+Here, the type is `https://betelgeuse.example.com/education_credential`. The
+Type Metadata is retrieved from the URL
+`https://betelgeuse.example.com/.well-known/vct/education_credential`.
+
+The following is an example for a Type Metadata document:
+
+```json
+{
+  "vct":"https://betelgeuse.example.com/education_credential",
+  "name":"Betelgeuse Education Credential - Preliminary Version",
+  "description":"This is our development version of the education credential. Don't panic.",
+  "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
+  "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5"
+}
+```
+
+## Type Metadata Format {#type-metadata-format}
+
+The Type Metadata document MUST be a JSON object. The following properties are
+defined:
+
+* `name`
+  * OPTIONAL. A human-readable name for the type, intended for developers reading
+  the JSON document.
+* `description`
+  * OPTIONAL. A human-readable description for the type, intended for
+  developers reading the JSON document.
+* `extends`
+  * OPTIONAL. A URI of another type that this type extends, as described in
+  (#extending-type-metadata).
+
+## Extending Type Metadata {#extending-type-metadata}
+
+A type can extend another type. The extended type is identified by the URI in
+the `extends` property. The consuming application MUST retrieve and process
+Type Metadata for the extended type before processing the Type Metadata for the extending
+type.
+
+The extended type MAY itself extend another type. This can be used to create a
+chain or hierarchy of types. The security considerations described in
+(#circular-extends) apply in order to avoid problems with circular dependencies.
+
+## Retrieving Type Metadata {#retrieving-type-metadata}
+
+### From a URL in the `vct` Claim {#retrieval-from-vct-claim}
+
+A URI in the `vct` claim can be used to express a type. If the
+type is a URL using the HTTPS scheme, Type Metadata can be retrieved from the URL
+`https://<authority>/.well-known/vct/<type>`, i.e., by inserting
+`/.well-known/vct` after the authority part of the URL.
+
+The Type Metadata is retrieved using the HTTP GET method. The response MUST be a JSON
+object as defined in (#type-metadata-format).
+
+If the claim `vct#integrity` is present in the SD-JWT VC, its value
+`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
+
+### From a Registry {#retieval-from-registry}
+
+A consuming application MAY use a registry to retrieve Type Metadata for a type,
+e.g., if the type is not a HTTPS URL or if the consuming application does not have
+access to the URL. The registry MUST be a trusted registry, i.e., the consuming
+application MUST trust the registry to provide correct Type Metadata for the type.
+
+The registry MUST provide the Type Metadata in the same format as described in
+(#type-metadata-format).
+
+### Using a Defined Retrieval Method {#defined-retrieval-method}
+
+Ecosystems MAY define additional methods for retrieving Type Metadata. For example, a
+standardization body or a community MAY define a service which has to be used to
+retrieve Type Metadata based on a URN in the `vct` claim.
+
+### From a Local Cache {#retrieval-from-local-cache}
+
+A consuming application MAY cache Type metadata for a type. If a hash for integrity
+protection is present in the Type Metadata as defined in (#document-integrity), the consuming
+application MAY assume that the Type Metadata is static and can be cached
+indefinitely. Otherwise, the consuming application MUST use the `Cache-Control`
+header of the HTTP response to determine how long the metadata can be cached.
+
+### From Type Metadata Glue Documents {#glue-documents}
+
+Credentials MAY encode Type Metadata directly, providing it as "glue
+information" to the consumer.
+
+For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be
+included in the unprotected header of the JWS. In this case, the key `vctm` MUST
+be used in the unprotected header and its value MUST be an array of
+base64url-encoded Type Metadata documents as defined in this specification.
+Multiple documents MAY be included for providing a whole chain of types to the
+consuming application (see (#extending-type-metadata)).
+
+A consuming application of a credential MAY use the documents in the `vctm`
+array instead of retrieving the respective Type Metadata elsewhere as follows:
+
+ * When resolving a `vct` in a credential, the consuming application MUST ensure
+   that the `vct` claim in the credential matches the one in the Type Metadata
+   document, and it MUST verify the integrity of the Type Metadata document as
+   defined in (#document-integrity). The consuming application MUST NOT use the Type Metadata if no hash for integrity protection was provided in `vct#integrity`.
+ * When resolving an `extends` property in a Type Metadata document, the consuming
+   application MUST ensure that the value of the `extends` property in the
+   Type Metadata document matches that of the `vct` in the Type Metadata document, and it MUST verify the integrity of the Type Metadata document as defined in
+   (#document-integrity). The consuming application MUST NOT use the Type Metadata if no hash for integrity protection was provided.
+
+## Document Integrity {#document-integrity}
+
+Both the `vct` claim in the SD-JWT VC and various URIs in the metadata
+document MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
+
+ * `vct` as defined in (#claims),
+ * `extends` as defined in (#extending-type-metadata)
+
+The value MUST be an "integrity metadata" string as defined in Section 3 of
+[@!W3C.SRI]. A consuming application of the respective documents MUST verify the
+integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 # Security Considerations {#security-considerations}
 
@@ -518,6 +669,34 @@ It MUST be ensured that for any given `iss` value, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
 the Verifier use a verification process not intended by the Issuer, allowing the
 attacker to potentially manipulate the verification result to their advantage.
+
+## Circular "extends" Dependencies of Types {#circular-extends}
+
+A type MUST NOT extend another type that extends (either directly or with steps
+in-between) the first type. This would result in a circular dependency that
+could lead to infinite recursion when retrieving and processing the metadata.
+
+Consuming applications MUST detect such circular dependencies and reject the
+credential.
+
+## Robust Retrieval of Type Metadata {#robust-retrieval}
+
+In (#retrieving-metadata), various methods for distributing and retrieving
+metadata are described. Methods relying on a network connection may fail due to
+network issues or unavailability of a network connection due to offline usage of
+credentials, temporary server outages, or denial of service attacks on the
+metadata server.
+
+Consuming applications SHOULD therefore implement a local cache as described in
+(#local-cache) if possible. Such a cache MAY be populated with metadata before
+the credential is used.
+
+Issuers MAY provide glue documents as described in (#glue-documents) to provide
+metadata directly with the credential and avoid the need for network requests.
+
+These measures allow the consuming application to continue to function even if
+the metadata server is temporarily unavailable and avoid privacy issues as
+described in (#privacy-preserving-retrieval).
 
 # Privacy Considerations {#privacy-considerations}
 
@@ -574,6 +753,17 @@ that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
 ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of verifiable credentials in the mobile document (mdoc)
 format encoded as CBOR and secured using COSE.
+
+## Privacy-Preserving Retrieval of Type Metadata {#PrivacyPreservingRetrieval}
+
+In (#retrieving-metadata), various methods for distributing and retrieving
+Type Metadata are described. For methods which rely on a network connection to a
+URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
+to track the usage of a credential by observing requests to the Type Metadata URL.
+
+Consuming applications SHOULD prefer methods for retrieving Type Metadata that do not
+leak information about the usage of a credential to third parties. The
+recommendations in (#robust-retrieval) apply.
 
 <reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
     <front>
@@ -683,6 +873,11 @@ format encoded as CBOR and secured using COSE.
 - Change Controller: IETF
 - Specification Document(s): [[ (#type-claim)  of this of this specification ]]
 
+- Claim Name: "vct#integrity"
+- Claim Description: SD-JWT VC vct claim "integrity metadata" value
+- Change Controller: IETF
+- Specification Document(s): [[ (#document-integrity)  of this of this specification ]]
+
 ## Media Types Registry
 
 ### application/vc+sd-jwt {#application-vc-sd-jwt}
@@ -785,6 +980,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -04
+
+* Include Type Metadata
+* Editorial changes
 
 -03
 
