@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-12T00:21:47.129335+00:00",
+  "timestamp": "2024-03-14T00:21:38.080865+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -87,6 +87,11 @@
       "name": "wg-02",
       "description": "wg-02",
       "color": "3B153E"
+    },
+    {
+      "name": "wg-04",
+      "description": "",
+      "color": "525FF7"
     }
   ],
   "issues": [
@@ -2739,11 +2744,11 @@
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [
-        "discuss"
+        "pending close"
       ],
       "body": "I found it hard to understand the relationship between VC's and the spec. Specifically, it's not clear to me how to go from VC (as in `application/vc+ld+json`) to `SD-JWT VC`, nor the other way. ",
       "createdAt": "2023-05-26T21:41:46Z",
-      "updatedAt": "2024-03-05T15:01:24Z",
+      "updatedAt": "2024-03-12T14:01:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -2773,6 +2778,13 @@
           "body": "\r\n> Thoughts?\r\n\r\nI really like the fact that SD JWT VC is not related to the W3C VC DM, or any other format.\r\nThis independence allows this specification to present SD JWT VC as a new clean format.\r\n\r\nI really see no point in adding mapping rules or describing approaches to map between formats.\r\n\r\n\r\n\r\n \r\n\r\n",
           "createdAt": "2024-03-05T15:01:23Z",
           "updatedAt": "2024-03-05T15:01:23Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think, we had a lot of discussions on this and nobody argued for having a transformation algorithm being defined in this specification. I suggest to close this issue after 1 week unless anybody feels very strongly.",
+          "createdAt": "2024-03-12T14:01:37Z",
+          "updatedAt": "2024-03-12T14:01:37Z"
         }
       ]
     },
@@ -2930,11 +2942,12 @@
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
-        "question"
+        "question",
+        "pending close"
       ],
       "body": "<img width=\"591\" alt=\"image\" src=\"https://github.com/vcstuff/draft-terbu-sd-jwt-vc/assets/10848802/48c0ead3-3657-4cf5-8380-6bcb6063ce08\">\r\n\r\nAll the claims need to be present, along with the @context.\r\n\r\nWould this be a valid SD-JWT-VC?",
       "createdAt": "2023-06-09T15:18:28Z",
-      "updatedAt": "2023-12-04T17:01:48Z",
+      "updatedAt": "2024-03-12T14:11:41Z",
       "closedAt": null,
       "comments": [
         {
@@ -3048,6 +3061,13 @@
           "body": "Perhaps we can add a JSON patch to the Credential Metadata which is type-specific that converts the SD-JWT VC to a VCDM.",
           "createdAt": "2023-12-04T17:01:48Z",
           "updatedAt": "2023-12-04T17:01:48Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I suggest we mark this as pending close since we agreed to move towards https://github.com/danielfett/sd-jwt-vc-dm. I suggest closing this issue after 1 week unless somebody disagrees.",
+          "createdAt": "2024-03-12T14:11:23Z",
+          "updatedAt": "2024-03-12T14:11:23Z"
         }
       ]
     },
@@ -3744,13 +3764,21 @@
         "danielfett"
       ],
       "labels": [
-        "wg-02"
+        "wg-04"
       ],
       "body": "moving @tlodderstedt's and my work on adding examples how to represent PID/EAA/mDLs as SD-JWT VC to this repo from the sd-jwt repo.\r\nEAA: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/211\r\nmDL: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/144 and https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/233\r\nPID as a reference point: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/304- ",
       "createdAt": "2023-06-28T17:54:26Z",
-      "updatedAt": "2023-12-13T16:47:48Z",
+      "updatedAt": "2024-03-12T14:00:17Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "With the PID example included, can we close this issue, or are there other examples needed as well?",
+          "createdAt": "2024-03-12T14:00:16Z",
+          "updatedAt": "2024-03-12T14:00:16Z"
+        }
+      ]
     },
     {
       "number": 145,
@@ -4235,11 +4263,12 @@
         "danielfett"
       ],
       "labels": [
-        "wg-02"
+        "NEEDS PR",
+        "wg-04"
       ],
       "body": "We should define more clearly **what a credential type (identified by the `vct` claim) actually means**.\r\n\r\nThe current description is a bit handwavy and that may be a sign that we have not yet defined the concept well.\r\n\r\nI think that there is a set of metadata usually associated with each SD-JWT VC type, for example\r\n- Display information for the whole credential\r\n- A schema for the JSON structure (may or may not be defined in JSON schema)\r\n- Information about the claims, including\r\n\t- Display information\r\n\t- Type information\r\n\t- Status information (self-attested vs. verified etc.)\r\n- Maybe: What kind of binding is supported/usually used for this credential type\r\n- Maybe: What issuers are allowed to issue this credential type\r\n\r\nSuch metadata would help **Wallets** (e.g., for displaying the credential to the user) and **Verifiers** (e.g., for determining the status of claims). It would also help **developers of Verifiers**, as they would get structured information about the credential they can expect.\r\n\r\nThe need for such metadata has been discussed in Issue #171 and similar approaches have shown up in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2).\r\n\r\nThe metadata may or may not be embedded into the credential itself, or provided externally. Assuming we allow for registered `vct` values (e.g., `UniversityCredential`), this metadata could go into the registry. It could also be distributed manually. \r\n\r\nBut it can also be made discoverable, e.g., by providing it at a .well-known URI derived from the URL in `vct`.\r\n\r\n----\r\n\r\nHere is a completely made-up example of what this metadata could look like:\r\n\r\n```json\r\n{\r\n    \"vct\": \"https://credentials.example.com/example1\",\r\n    \"display\": [\r\n        {\r\n            \"en-US\": {\r\n                \"name\": \"University Credential\",\r\n                \"logo\": {\r\n                    \"url\": \"https://exampleuniversity.com/public/logo.png\",\r\n                    \"alt_text\": \"a square logo of a university\"\r\n                },\r\n                \"background_color\": \"#12107c\",\r\n                \"text_color\": \"#FFFFFF\"\r\n            }\r\n        }\r\n    ],\r\n    \"claims\": // mapping from JSON pointer to information about this claim\r\n    {\r\n        \"/name\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Vor- und Nachname\",\r\n                    \"description\": \"Der Name des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Name\",\r\n                    \"description\": \"The name of the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        \"/degree\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Abschluss\",\r\n                    \"description\": \"Der Abschluss des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Degree\",\r\n                    \"description\": \"Degree earned by the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        // ...\r\n        \"/address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Adresse\",\r\n                    \"description\": \"Adresse zum Zeitpunkt des Abschlusses\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Address\",\r\n                    \"description\": \"Address at the time of graduation\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        },\r\n        \"/address/street_address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Stra\u00dfe\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Street Address\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n---\r\n\r\nImportant:\r\n- This mechanism will not be format-agnostic, but defined only for SD-JWT VC for now.\r\n- There are overlaps with mechanisms defined in HAIP, for example, and part of this issue here is to figure out what data should go where and to avoid duplications by getting the concept right. I think that the `claims` element defined for the credential issuer metadata in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2) could be replaced by just a `vct` identifier (the metadata could be discovered from there, or retrieved from the registry).",
       "createdAt": "2023-10-24T20:24:39Z",
-      "updatedAt": "2024-01-25T22:39:41Z",
+      "updatedAt": "2024-03-12T14:12:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -4492,7 +4521,7 @@
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2024-02-26T18:55:36Z",
+      "updatedAt": "2024-03-12T14:03:04Z",
       "closedAt": null,
       "comments": [
         {
@@ -4571,6 +4600,13 @@
           "body": " https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/400 removes the explicit prohibition on MAC from SD-JWT (which will be in the -08 draft-ietf-oauth-selective-disclosure-jwt)",
           "createdAt": "2024-02-26T18:42:50Z",
           "updatedAt": "2024-02-26T18:43:09Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Then, we need a PR that cleans up the language in this specification, so MAC is not going to be prohibited.",
+          "createdAt": "2024-03-12T14:03:03Z",
+          "updatedAt": "2024-03-12T14:03:03Z"
         }
       ]
     },
@@ -4579,7 +4615,7 @@
       "id": "I_kwDOJbVClc54IeNa",
       "title": "Should `status` be a JWT header?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/192",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -4588,8 +4624,8 @@
       ],
       "body": "The topic concerns the `status` JWT claim specifically, but more broadly, we should discuss how to handle security-critical extensions (new claims or headers) not covered by our specification. At the IETF, someone mentioned supporting other status methods (e.g., based on ZKPs) in the future.\r\n\r\nShould we allow the issuer to express that a verifier should fail validation if, for example, somebody uses a different status method than the one specified by SD-JWT VC, which is not understood? This is a specific example, but the same applies to other similar security-critical extensions, so we are not purely talking about premature optimization such as in the case of the status method.\r\n\r\n1. Before you say that unknown JWT claims and headers should be ignored, and this is a policy validation decision, keep in mind that we already require the processing of the `status` claim in SD-JWT VC. I believe the same ability might have to be granted to ecosystem-specific `status`-like JWT claims or headers too.\r\n\r\n2. I realize that it is hard to understand what falls into this category of security-critical extensions. In my opinion, it is important that policy decisions are out of the scope of SD-JWT VC. One approach would be to limit it to JWT claims and headers related to validating the Issuer-signed JWT or the KB-JWT. `status` processing is part of SD-JWT VC validation at the moment.\r\n\r\n3. Now, how to express this? We already have a tool in JOSE that allows us to express security-critical extensions that must be understood by verifiers, which is the `crit` JWT header. But `crit` is limited to include only JWT headers, not JWT claims. Consequently, a new status method would need to be referenced in the `crit` header. This also has the consequence that the new header cannot be selectively disclosed and remains sticky. This is an SD-JWT limitation, and I'm not saying we should necessarily change that.\r\n\r\n4. This made me think whether the `status` claim should be put into the JWT header since it would be more consistent with how extensibility might work in the future and because it is actually not wanted that the `status` is omitted.\r\n\r\n5. Alternatively, we could introduce a `crit`-like JWT claim or define `crit` as a JWT claim and allow the `crit` claim to include JWT claims.\r\n\r\nSome references below...\r\n\r\nSD-JWT does not allow JWT headers to be selectively disclosed.\r\n\r\nRFC 7519 says in section 9.2 Validating a JWT:\r\n> Verify that the resulting JOSE Header includes only parameters and values whose syntax and semantics are both understood and supported or that are specified as being ignored when not understood.\r\n\r\nRFC 7519 says in section 4 JWT claims:\r\n> However, in the absence of such requirements, all claims that are not understood by implementations MUST be ignored.",
       "createdAt": "2023-11-28T23:23:42Z",
-      "updatedAt": "2024-03-08T19:19:29Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-12T14:04:34Z",
+      "closedAt": "2024-03-12T14:04:33Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -4597,6 +4633,13 @@
           "body": "With https://github.com/oauth-wg/draft-ietf-oauth-status-list/pull/90/ the -01 draft-ietf-oauth-status-list attempts to allow for supporting other status methods within the `status` claim. Which somewhat addresses the specific example cited in this issue.\r\n",
           "createdAt": "2024-03-08T19:19:27Z",
           "updatedAt": "2024-03-08T19:19:27Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm closing this issue since status claim has an extensibility mechanism. The crit topic might be subject to another issue.",
+          "createdAt": "2024-03-12T14:04:33Z",
+          "updatedAt": "2024-03-12T14:04:33Z"
         }
       ]
     },
@@ -4635,13 +4678,21 @@
       "assignees": [],
       "labels": [
         "NEEDS PR",
-        "wg-02"
+        "wg-04"
       ],
       "body": "I think the understanding of the spec could be further facilitated by adding an example of a SD-JWT VC after the verifier has processed the SD-JWT VC and (basically) has constructed a JWT representation for further processing in the application. ",
       "createdAt": "2023-12-05T16:26:58Z",
-      "updatedAt": "2023-12-05T17:10:44Z",
+      "updatedAt": "2024-03-12T19:15:46Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The new PID example in draft -02/-03 shows the JSON data for \"further processing\" after validation: https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html#appendix-B.1-56\r\n\r\nDoes that seem sufficient? Or perhaps a similar addition to the example used in the main body of the draft ([around here maybe](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-03.html#section-4.2))? Or something different/more?",
+          "createdAt": "2024-03-12T19:15:10Z",
+          "updatedAt": "2024-03-12T19:15:46Z"
+        }
+      ]
     },
     {
       "number": 196,
@@ -4834,7 +4885,7 @@
       "labels": [],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-03-08T03:14:35Z",
+      "updatedAt": "2024-03-12T14:05:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -5004,6 +5055,13 @@
           "body": "I think the text Brian suggested originally is sufficient: https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330\r\n\r\n(at least initially) please keep the option to use cnf.kid, as limiting the use of DIDs only with cnf.did could be a significant blocker for some implementations to implement sd-jwt vc. especially if sd-jwt vc will not define cnf.did (and I won't even attempt to try convince Brian to do so).\r\n\r\nI also think it is probably better to say DID URL as opposed to just DID.",
           "createdAt": "2024-03-08T03:14:34Z",
           "updatedAt": "2024-03-08T03:14:34Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I think the text Brian suggested originally is sufficient: [#205 (comment)](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330)\r\n> \r\n> (at least initially) please keep the option to use cnf.kid, as limiting the use of DIDs only with cnf.did could be a significant blocker for some implementations to implement sd-jwt vc. especially if sd-jwt vc will not define cnf.did (and I won't even attempt to try convince Brian to do so).\r\n> \r\n> I also think it is probably better to say DID URL as opposed to just DID.\r\n\r\nWhy is it a blocker if they use cnf.did instead of cnf.kid?",
+          "createdAt": "2024-03-12T14:05:20Z",
+          "updatedAt": "2024-03-12T14:05:20Z"
         }
       ]
     },
@@ -5166,7 +5224,7 @@
       "labels": [],
       "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
       "createdAt": "2024-02-27T23:44:20Z",
-      "updatedAt": "2024-03-01T18:54:41Z",
+      "updatedAt": "2024-03-12T14:08:42Z",
       "closedAt": null,
       "comments": [
         {
@@ -5175,6 +5233,20 @@
           "body": "Maybe that top-level claim could be called `credentialSubject`...\r\n\r\nMore seriously though I think this is something that's just kinda inherent to JWT in general and while there are potential issues there as you describe there are also things in place to help.  https://datatracker.ietf.org/doc/html/rfc7519#section-4 says to ignore claims not understood (`aud` is defined and registered so needs to be understood btw) and `vct` with something like prospective [SD-JWT VC Type Metadata](https://github.com/vcstuff/sd-jwt-vc-types) and/or [OID4VCI's credential issuer metadata](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html#name-credential-issuer-metadata-6) give tools to \"understand\" claims in a given context.  \r\n\r\n",
           "createdAt": "2024-03-01T18:52:38Z",
           "updatedAt": "2024-03-01T18:54:41Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This issue raises a point that we discussed a while ago, essentially having all metadata-related claims in the header. What about having a dedicated metadata claim instead of having a dedicated claims claim?",
+          "createdAt": "2024-03-12T14:07:25Z",
+          "updatedAt": "2024-03-12T14:07:25Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Also what metadata are you interested in? Or are you including things like status/iat/nbf/cnf as metadata?",
+          "createdAt": "2024-03-12T14:08:41Z",
+          "updatedAt": "2024-03-12T14:08:41Z"
         }
       ]
     },
@@ -5183,15 +5255,15 @@
       "id": "I_kwDOJbVClc6Bxjmp",
       "title": "example for key binding",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/218",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "c2bo",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "The example at 4.2 (https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-examples) seems to be broken in its current state:\r\n\r\n```\r\neyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp\r\nZ25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C\r\nVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k\r\nYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p\r\nZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO\r\nNndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQ\r\nWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJ\r\nIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAi\r\namRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5\r\neVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi\r\naHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4\r\ncCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl\r\nLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj\r\nbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD\r\nQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa\r\neGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RYAGd\r\n0CrhTtnSJeZX9TlAxOqVq1cHg9DeVlzGMQ5GcPLMli_ymAThQVm9lP-XDndP2heaTjQd\r\ncAvTNtbe2sOfg~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In\r\nN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2\r\n4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi\r\nAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI\r\nmF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MDk1N\r\nzk3MjYsICJzZF9oYXNoIjogIjYyZjM0eDRmRTRZZG1SU3RHSVdBQ1FpemdoVUFzdEE1Y\r\nW9GV2JTUFA4VlUifQ.H0Fi2Wc3UjuAsZbhfhKWqgZYd2oj20bnY_tKWP6sg3cKbhDpRC\r\nh_vCPmoHgR6MNGC1B4JcmftOxPMJ13dE3g5w\r\n```\r\nhas only 1 disclosure and the digest does not match any of the ones defined in the payload.",
       "createdAt": "2024-03-09T14:45:27Z",
-      "updatedAt": "2024-03-09T23:36:55Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-12T20:22:48Z",
+      "closedAt": "2024-03-12T20:22:48Z",
       "comments": [
         {
           "author": "c2bo",
@@ -5202,7 +5274,7 @@
         },
         {
           "author": "lukasjhan",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I think that example is originated from encoded example in section 3.3 (https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-example). They have `address` disclosure.\r\n\r\nAnd also short description exist in 4.2. but it's separated before and after the example. So I guess I'm a little confused.\r\n\r\n> The following is a non-normative example of a presentation of the SD-JWT shown above including a Key Binding JWT:\r\n\r\n> In this presentation, the Holder provides only the Disclosure for the claim address. Other claims are not disclosed to the Verifier.\r\n\r\nHow about writing it all at once? I'm proposing like:\r\n\r\n> The following is a non-normative example of a presentation of the SD-JWT  shown above(3.3). In this presentation, the Holder provides only the Disclosure for the claim address including a Key Binding JWT. Other claims are not disclosed to the Verifier:\r\n",
           "createdAt": "2024-03-09T15:18:25Z",
           "updatedAt": "2024-03-09T15:19:45Z"
@@ -5216,7 +5288,7 @@
         },
         {
           "author": "lukasjhan",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "@c2bo Good I'll open a PR for it :) ",
           "createdAt": "2024-03-09T23:36:53Z",
           "updatedAt": "2024-03-09T23:36:53Z"
@@ -17014,24 +17086,26 @@
       "id": "PR_kwDOJbVClc5pK6vC",
       "title": "doc: improve description for a example of Key Binding JWT",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/219",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "lukasjhan",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Hi. I modified the example explanation to make it better understandable.\r\nSince the example of SD-JWT is long, I think separate explanations may not be easy to see at once.\r\nSo I combined the separate explanations into one.\r\nYou can check the discussion in #218\r\n\r\nThis is my first contribution here. If there is anything that needs to be corrected, \r\nplease feel free to let me know. :)\r\n\r\nThank you",
       "createdAt": "2024-03-10T14:41:02Z",
-      "updatedAt": "2024-03-11T05:25:52Z",
+      "updatedAt": "2024-03-12T20:22:47Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f3e8ceb7637f351112dc02d9a9ea274f8a7cf040",
       "headRepository": "lukasjhan/oauth-sd-jwt-vc",
       "headRefName": "doc/improve-description-kbjwt",
       "headRefOid": "3a6589c229790a62c6ef4acdda82836d1e0f0421",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-03-12T20:22:47Z",
+      "mergedAt": "2024-03-12T20:22:47Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "4e9c49e2578ae8041de81205e2b32dc06a63a201"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -17042,7 +17116,7 @@
         },
         {
           "author": "lukasjhan",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "> You should add yourself to the acknowledgements too\r\n\r\nThank you :) I added.",
           "createdAt": "2024-03-11T05:25:50Z",
           "updatedAt": "2024-03-11T05:25:50Z"
@@ -17075,7 +17149,7 @@
             "abbreviatedOid": "087d1e4"
           },
           "author": "lukasjhan",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2024-03-11T01:00:41Z",
@@ -17101,8 +17175,47 @@
           "createdAt": "2024-03-11T01:55:46Z",
           "updatedAt": "2024-03-11T01:55:46Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc5zHQAx",
+          "commit": {
+            "abbreviatedOid": "3a6589c"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-12T14:43:42Z",
+          "updatedAt": "2024-03-12T14:43:42Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 220,
+      "id": "PR_kwDOJbVClc5pjGPv",
+      "title": "feat: add SD-JWT VC Type Metadata based on https://github.dev/vcstu\u2026",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html",
+      "createdAt": "2024-03-13T20:03:41Z",
+      "updatedAt": "2024-03-13T21:30:03Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "4e9c49e2578ae8041de81205e2b32dc06a63a201",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/feat-metadata",
+      "headRefOid": "f3479b53af20e13253a6dbbc1eafcbe5c8a269d4",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
