@@ -846,6 +846,33 @@ recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
+<reference anchor="W3C.SRI" target="https://www.w3.org/TR/SRI/">
+    <front>
+        <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
+            <organization>
+                <organizationName>Dropbox, Inc.</organizationName>
+            </organization>
+        </author>
+        <author initials="F." surname="Braun" fullname="Frederik Braun">
+            <organization>
+                <organizationName>Mozilla</organizationName>
+            </organization>
+        </author>
+        <author initials="F." surname="Marier" fullname="François Marier">
+            <organization>
+                <organizationName>Mozilla</organizationName>
+            </organization>
+        </author>
+        <author initials="J." surname="Weinberger" fullname="Joel Weinberger">
+            <organization>
+                <organizationName>Google, Inc.</organizationName>
+            </organization>
+        </author>
+        <title>Subresource Integrity</title>
+        <date day="23" month="June" year="2016"/>
+    </front>
+</reference>
+
 <reference anchor="ISO.18013-5" target="https://www.iso.org/standard/69084.html">
     <front>
         <title>ISO/IEC 18013-5:2021</title>
