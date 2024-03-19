@@ -503,7 +503,7 @@ Applications using this specification are called "consuming applications" in the
 
 All examples in this section are non-normative.
 
-Type Metadata about the value of a `vct` claim value can be retrieved as described in (#retrieving-metadata).
+Type Metadata about the value of a `vct` claim value can be retrieved as described in (#retrieving-type-metadata).
 
 ```json
 {
@@ -681,14 +681,14 @@ credential.
 
 ## Robust Retrieval of Type Metadata {#robust-retrieval}
 
-In (#retrieving-metadata), various methods for distributing and retrieving
+In (#retrieving-type-metadata), various methods for distributing and retrieving
 metadata are described. Methods relying on a network connection may fail due to
 network issues or unavailability of a network connection due to offline usage of
 credentials, temporary server outages, or denial of service attacks on the
 metadata server.
 
 Consuming applications SHOULD therefore implement a local cache as described in
-(#local-cache) if possible. Such a cache MAY be populated with metadata before
+(#retrieval-from-local-cache) if possible. Such a cache MAY be populated with metadata before
 the credential is used.
 
 Issuers MAY provide glue documents as described in (#glue-documents) to provide
@@ -696,7 +696,7 @@ metadata directly with the credential and avoid the need for network requests.
 
 These measures allow the consuming application to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
-described in (#privacy-preserving-retrieval).
+described in (#privacy-preserving-retrieval-of-type-metadata).
 
 # Privacy Considerations {#privacy-considerations}
 
@@ -754,9 +754,9 @@ Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable
 ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of verifiable credentials in the mobile document (mdoc)
 format encoded as CBOR and secured using COSE.
 
-## Privacy-Preserving Retrieval of Type Metadata {#PrivacyPreservingRetrieval}
+## Privacy-Preserving Retrieval of Type Metadata {#privacy-preserving-retrieval-of-type-metadata}
 
-In (#retrieving-metadata), various methods for distributing and retrieving
+In (#retrieving-type-metadata), various methods for distributing and retrieving
 Type Metadata are described. For methods which rely on a network connection to a
 URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
 to track the usage of a credential by observing requests to the Type Metadata URL.
