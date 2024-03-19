@@ -782,6 +782,33 @@ recommendations in (#robust-retrieval) apply.
   </front>
 </reference>
 
+<reference anchor="W3C.SRI" target="https://www.w3.org/TR/SRI/">
+    <front>
+        <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
+            <organization>
+                <organizationName>Dropbox, Inc.</organizationName>
+            </organization>
+        </author>
+        <author initials="F." surname="Braun" fullname="Frederik Braun">
+            <organization>
+                <organizationName>Mozilla</organizationName>
+            </organization>
+        </author>
+        <author initials="F." surname="Marier" fullname="François Marier">
+            <organization>
+                <organizationName>Mozilla</organizationName>
+            </organization>
+        </author>
+        <author initials="J." surname="Weinberger" fullname="Joel Weinberger">
+            <organization>
+                <organizationName>Google, Inc.</organizationName>
+            </organization>
+        </author>
+        <title>Subresource Integrity</title>
+        <date day="23" month="June" year="2016"/>
+    </front>
+</reference>
+
 <reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
     <front>
         <author initials="M." surname="Sporny" fullname="Manu Sporny">
@@ -843,33 +870,6 @@ recommendations in (#robust-retrieval) apply.
         </author>
         <title>Verifiable Credentials Data Model v2.0</title>
         <date day="10" month="February" year="2024"/>
-    </front>
-</reference>
-
-<reference anchor="W3C.SRI" target="https://www.w3.org/TR/SRI/">
-    <front>
-        <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
-            <organization>
-                <organizationName>Dropbox, Inc.</organizationName>
-            </organization>
-        </author>
-        <author initials="F." surname="Braun" fullname="Frederik Braun">
-            <organization>
-                <organizationName>Mozilla</organizationName>
-            </organization>
-        </author>
-        <author initials="F." surname="Marier" fullname="François Marier">
-            <organization>
-                <organizationName>Mozilla</organizationName>
-            </organization>
-        </author>
-        <author initials="J." surname="Weinberger" fullname="Joel Weinberger">
-            <organization>
-                <organizationName>Google, Inc.</organizationName>
-            </organization>
-        </author>
-        <title>Subresource Integrity</title>
-        <date day="23" month="June" year="2016"/>
     </front>
 </reference>
 
