@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-19T00:22:15.657640+00:00",
+  "timestamp": "2024-03-21T00:22:58.141840+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5224,7 +5224,7 @@
       "labels": [],
       "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
       "createdAt": "2024-02-27T23:44:20Z",
-      "updatedAt": "2024-03-12T14:08:42Z",
+      "updatedAt": "2024-03-20T23:57:33Z",
       "closedAt": null,
       "comments": [
         {
@@ -5247,6 +5247,13 @@
           "body": "Also what metadata are you interested in? Or are you including things like status/iat/nbf/cnf as metadata?",
           "createdAt": "2024-03-12T14:08:41Z",
           "updatedAt": "2024-03-12T14:08:41Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I am not necessarily arguing to put metadata in the header - that would probably make it harder to leverage the existing JWT libraries. and for the sake of this point, I am calling metadata anything that is not a claim about the holder/subject.\r\n\r\nI mean, nothing stops implementations from using \"claims\" JWT claim on top of what is currently defined in sd-jwt vc draft, but I worry that that would result in non-interoperable implementations, defining \"claims\" parameter seems like a non-brainer that could help with interoperability here..",
+          "createdAt": "2024-03-20T23:57:32Z",
+          "updatedAt": "2024-03-20T23:57:32Z"
         }
       ]
     },
@@ -17201,15 +17208,15 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html",
+      "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/feat-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-03-13T20:03:41Z",
-      "updatedAt": "2024-03-13T21:30:03Z",
+      "updatedAt": "2024-03-19T15:47:30Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "4e9c49e2578ae8041de81205e2b32dc06a63a201",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/feat-metadata",
-      "headRefOid": "f3479b53af20e13253a6dbbc1eafcbe5c8a269d4",
+      "headRefOid": "06c75f41af0338e16c05c1fad8163c4b6a00c8d5",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
