@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-03-26T00:21:44.899009+00:00",
+  "timestamp": "2024-03-28T00:22:25.093103+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3757,7 +3757,7 @@
       "id": "I_kwDOJbVClc5qD_W2",
       "title": "examples for ARF.",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/144",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -3768,8 +3768,8 @@
       ],
       "body": "moving @tlodderstedt's and my work on adding examples how to represent PID/EAA/mDLs as SD-JWT VC to this repo from the sd-jwt repo.\r\nEAA: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/211\r\nmDL: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/144 and https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/233\r\nPID as a reference point: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/304- ",
       "createdAt": "2023-06-28T17:54:26Z",
-      "updatedAt": "2024-03-12T14:00:17Z",
-      "closedAt": null,
+      "updatedAt": "2024-03-26T18:17:30Z",
+      "closedAt": "2024-03-26T18:17:30Z",
       "comments": [
         {
           "author": "awoie",
@@ -3777,6 +3777,13 @@
           "body": "With the PID example included, can we close this issue, or are there other examples needed as well?",
           "createdAt": "2024-03-12T14:00:16Z",
           "updatedAt": "2024-03-12T14:00:16Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Yes, this can be closed now.",
+          "createdAt": "2024-03-26T18:17:30Z",
+          "updatedAt": "2024-03-26T18:17:30Z"
         }
       ]
     },
@@ -4173,10 +4180,13 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [],
+      "labels": [
+        "HAS PR",
+        "wg-04"
+      ],
       "body": "We need to give guidance in the spec on choosing `type` values for a credential format.\r\n\r\nWe need to think about collision resistance - either by a registry or something DNS-based like URIs or java package name notation.\r\n\r\nPersonal opinion: Use URLs, like XML namespaces. It automatically avoids collisions, there is no registry required for potentially large amounts of values, and we can think about extending this in the future with machine-readable information about credential format.",
       "createdAt": "2023-10-04T18:06:38Z",
-      "updatedAt": "2023-12-18T18:07:54Z",
+      "updatedAt": "2024-03-26T18:18:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -4263,12 +4273,12 @@
         "danielfett"
       ],
       "labels": [
-        "NEEDS PR",
+        "HAS PR",
         "wg-04"
       ],
       "body": "We should define more clearly **what a credential type (identified by the `vct` claim) actually means**.\r\n\r\nThe current description is a bit handwavy and that may be a sign that we have not yet defined the concept well.\r\n\r\nI think that there is a set of metadata usually associated with each SD-JWT VC type, for example\r\n- Display information for the whole credential\r\n- A schema for the JSON structure (may or may not be defined in JSON schema)\r\n- Information about the claims, including\r\n\t- Display information\r\n\t- Type information\r\n\t- Status information (self-attested vs. verified etc.)\r\n- Maybe: What kind of binding is supported/usually used for this credential type\r\n- Maybe: What issuers are allowed to issue this credential type\r\n\r\nSuch metadata would help **Wallets** (e.g., for displaying the credential to the user) and **Verifiers** (e.g., for determining the status of claims). It would also help **developers of Verifiers**, as they would get structured information about the credential they can expect.\r\n\r\nThe need for such metadata has been discussed in Issue #171 and similar approaches have shown up in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2).\r\n\r\nThe metadata may or may not be embedded into the credential itself, or provided externally. Assuming we allow for registered `vct` values (e.g., `UniversityCredential`), this metadata could go into the registry. It could also be distributed manually. \r\n\r\nBut it can also be made discoverable, e.g., by providing it at a .well-known URI derived from the URL in `vct`.\r\n\r\n----\r\n\r\nHere is a completely made-up example of what this metadata could look like:\r\n\r\n```json\r\n{\r\n    \"vct\": \"https://credentials.example.com/example1\",\r\n    \"display\": [\r\n        {\r\n            \"en-US\": {\r\n                \"name\": \"University Credential\",\r\n                \"logo\": {\r\n                    \"url\": \"https://exampleuniversity.com/public/logo.png\",\r\n                    \"alt_text\": \"a square logo of a university\"\r\n                },\r\n                \"background_color\": \"#12107c\",\r\n                \"text_color\": \"#FFFFFF\"\r\n            }\r\n        }\r\n    ],\r\n    \"claims\": // mapping from JSON pointer to information about this claim\r\n    {\r\n        \"/name\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Vor- und Nachname\",\r\n                    \"description\": \"Der Name des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Name\",\r\n                    \"description\": \"The name of the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        \"/degree\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Abschluss\",\r\n                    \"description\": \"Der Abschluss des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Degree\",\r\n                    \"description\": \"Degree earned by the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        // ...\r\n        \"/address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Adresse\",\r\n                    \"description\": \"Adresse zum Zeitpunkt des Abschlusses\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Address\",\r\n                    \"description\": \"Address at the time of graduation\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        },\r\n        \"/address/street_address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Stra\u00dfe\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Street Address\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n---\r\n\r\nImportant:\r\n- This mechanism will not be format-agnostic, but defined only for SD-JWT VC for now.\r\n- There are overlaps with mechanisms defined in HAIP, for example, and part of this issue here is to figure out what data should go where and to avoid duplications by getting the concept right. I think that the `claims` element defined for the credential issuer metadata in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2) could be replaced by just a `vct` identifier (the metadata could be discovered from there, or retrieved from the registry).",
       "createdAt": "2023-10-24T20:24:39Z",
-      "updatedAt": "2024-03-12T14:12:20Z",
+      "updatedAt": "2024-03-26T18:17:37Z",
       "closedAt": null,
       "comments": [
         {
@@ -5301,6 +5311,38 @@
           "updatedAt": "2024-03-09T23:36:53Z"
         }
       ]
+    },
+    {
+      "number": 221,
+      "id": "I_kwDOJbVClc6DnEfy",
+      "title": "Integrity of Type Metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/221",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
+      "createdAt": "2024-03-26T12:04:25Z",
+      "updatedAt": "2024-03-26T12:04:26Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 222,
+      "id": "I_kwDOJbVClc6Dqvi_",
+      "title": "Add JWS example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/222",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
+      "createdAt": "2024-03-26T18:33:42Z",
+      "updatedAt": "2024-03-26T18:33:42Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -17201,16 +17243,16 @@
     {
       "number": 220,
       "id": "PR_kwDOJbVClc5pjGPv",
-      "title": "feat: add SD-JWT VC Type Metadata based on https://github.dev/vcstu\u2026",
+      "title": "feat: add SD-JWT VC Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220",
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/feat-metadata/draft-ietf-oauth-sd-jwt-vc.html",
+      "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/feat-metadata/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes #181, #171 ",
       "createdAt": "2024-03-13T20:03:41Z",
-      "updatedAt": "2024-03-19T15:47:30Z",
+      "updatedAt": "2024-03-26T18:17:25Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "4e9c49e2578ae8041de81205e2b32dc06a63a201",
@@ -17222,7 +17264,81 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc501SzB",
+          "commit": {
+            "abbreviatedOid": "06c75f4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-26T11:50:50Z",
+          "updatedAt": "2024-03-26T11:50:50Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "```suggestion\r\nA type is associated with metadata defining, for example, information about the type, a schema defining which claims may or must appear in the SD-JWT VC, and how they can be displayed.\r\n```",
+              "createdAt": "2024-03-26T11:50:50Z",
+              "updatedAt": "2024-03-26T11:50:51Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc501TRW",
+          "commit": {
+            "abbreviatedOid": "06c75f4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-26T11:51:53Z",
+          "updatedAt": "2024-03-26T11:51:53Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "We might also just call them \"consumers\".",
+              "createdAt": "2024-03-26T11:51:53Z",
+              "updatedAt": "2024-03-26T11:51:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc501UJ6",
+          "commit": {
+            "abbreviatedOid": "06c75f4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-03-26T11:52:59Z",
+          "updatedAt": "2024-03-26T11:52:59Z",
+          "comments": [
+            {
+              "originalPosition": 120,
+              "body": "```suggestion\r\n### From a Registry {#retrieval-from-registry}\r\n```",
+              "createdAt": "2024-03-26T11:52:59Z",
+              "updatedAt": "2024-03-26T11:52:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc501j7u",
+          "commit": {
+            "abbreviatedOid": "06c75f4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-03-26T12:19:34Z",
+          "updatedAt": "2024-03-26T12:19:34Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
