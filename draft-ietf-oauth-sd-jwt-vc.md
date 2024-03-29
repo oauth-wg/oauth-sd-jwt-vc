@@ -497,7 +497,7 @@ This specification defines Type Metadata that can be associated with a type of a
  * Wallets can use the metadata to display the credential in a way that is
    consistent with the Issuer's intent.
 
-Applications using this specification are called "consuming applications" in the following. This typically includes Issuers, Verifiers, and Wallets.
+Applications using this specification are called "Consumers" in the following. This typically includes Issuers, Verifiers, and Wallets.
 
 ## Type Metadata Example {#type-metadata-example}
 
@@ -547,7 +547,7 @@ defined:
 ## Extending Type Metadata {#extending-type-metadata}
 
 A type can extend another type. The extended type is identified by the URI in
-the `extends` property. The consuming application MUST retrieve and process
+the `extends` property. Consumers MUST retrieve and process
 Type Metadata for the extended type before processing the Type Metadata for the extending
 type.
 
@@ -572,10 +572,9 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 
 ### From a Registry {#retrieval-from-registry}
 
-A consuming application MAY use a registry to retrieve Type Metadata for a type,
-e.g., if the type is not a HTTPS URL or if the consuming application does not have
-access to the URL. The registry MUST be a trusted registry, i.e., the consuming
-application MUST trust the registry to provide correct Type Metadata for the type.
+A Consumer MAY use a registry to retrieve Type Metadata for a type,
+e.g., if the type is not a HTTPS URL or if the Consumer does not have
+access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
 
 The registry MUST provide the Type Metadata in the same format as described in
 (#type-metadata-format).
@@ -588,10 +587,9 @@ retrieve Type Metadata based on a URN in the `vct` claim.
 
 ### From a Local Cache {#retrieval-from-local-cache}
 
-A consuming application MAY cache Type metadata for a type. If a hash for integrity
-protection is present in the Type Metadata as defined in (#document-integrity), the consuming
-application MAY assume that the Type Metadata is static and can be cached
-indefinitely. Otherwise, the consuming application MUST use the `Cache-Control`
+A Consumer MAY cache Type metadata for a type. If a hash for integrity
+protection is present in the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
+indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
 header of the HTTP response to determine how long the metadata can be cached.
 
 ### From Type Metadata Glue Documents {#glue-documents}
@@ -604,19 +602,18 @@ included in the unprotected header of the JWS. In this case, the key `vctm` MUST
 be used in the unprotected header and its value MUST be an array of
 base64url-encoded Type Metadata documents as defined in this specification.
 Multiple documents MAY be included for providing a whole chain of types to the
-consuming application (see (#extending-type-metadata)).
+Consumer (see (#extending-type-metadata)).
 
-A consuming application of a credential MAY use the documents in the `vctm`
+A Consumer of a credential MAY use the documents in the `vctm`
 array instead of retrieving the respective Type Metadata elsewhere as follows:
 
- * When resolving a `vct` in a credential, the consuming application MUST ensure
+ * When resolving a `vct` in a credential, the Consumer MUST ensure
    that the `vct` claim in the credential matches the one in the Type Metadata
    document, and it MUST verify the integrity of the Type Metadata document as
-   defined in (#document-integrity). The consuming application MUST NOT use the Type Metadata if no hash for integrity protection was provided in `vct#integrity`.
- * When resolving an `extends` property in a Type Metadata document, the consuming
-   application MUST ensure that the value of the `extends` property in the
+   defined in (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided in `vct#integrity`.
+ * When resolving an `extends` property in a Type Metadata document, the Consumer MUST ensure that the value of the `extends` property in the
    Type Metadata document matches that of the `vct` in the Type Metadata document, and it MUST verify the integrity of the Type Metadata document as defined in
-   (#document-integrity). The consuming application MUST NOT use the Type Metadata if no hash for integrity protection was provided.
+   (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided.
 
 # Document Integrity {#document-integrity}
 
@@ -627,7 +624,7 @@ document MAY be accompanied by a respective claim suffixed with `#integrity`, in
  * `extends` as defined in (#extending-type-metadata)
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. A consuming application of the respective documents MUST verify the
+[@!W3C.SRI]. A Consumer of the respective documents MUST verify the
 integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 # Security Considerations {#security-considerations}
@@ -676,7 +673,7 @@ A type MUST NOT extend another type that extends (either directly or with steps
 in-between) the first type. This would result in a circular dependency that
 could lead to infinite recursion when retrieving and processing the metadata.
 
-Consuming applications MUST detect such circular dependencies and reject the
+Consumers MUST detect such circular dependencies and reject the
 credential.
 
 ## Robust Retrieval of Type Metadata {#robust-retrieval}
@@ -687,14 +684,14 @@ network issues or unavailability of a network connection due to offline usage of
 credentials, temporary server outages, or denial of service attacks on the
 metadata server.
 
-Consuming applications SHOULD therefore implement a local cache as described in
+Consumers SHOULD therefore implement a local cache as described in
 (#retrieval-from-local-cache) if possible. Such a cache MAY be populated with metadata before
 the credential is used.
 
 Issuers MAY provide glue documents as described in (#glue-documents) to provide
 metadata directly with the credential and avoid the need for network requests.
 
-These measures allow the consuming application to continue to function even if
+These measures allow the Consumders to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
 described in (#privacy-preserving-retrieval-of-type-metadata).
 
@@ -761,7 +758,7 @@ Type Metadata are described. For methods which rely on a network connection to a
 URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
 to track the usage of a credential by observing requests to the Type Metadata URL.
 
-Consuming applications SHOULD prefer methods for retrieving Type Metadata that do not
+Consumers SHOULD prefer methods for retrieving Type Metadata that do not
 leak information about the usage of a credential to third parties. The
 recommendations in (#robust-retrieval) apply.
 
