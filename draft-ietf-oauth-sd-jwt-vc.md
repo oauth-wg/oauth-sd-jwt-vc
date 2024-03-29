@@ -481,7 +481,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-A type is associated with rules defining which claims may or must appear in the SD-JWT VC and whether they may, must, or must not be selectively disclosable.
+A type is associated with metadata defining, for example, information about the type, a schema defining which claims MAY or MUST appear in the SD-JWT VC, and how they can be displayed.
 
 This specification defines Type Metadata that can be associated with a type of a SD-JWT VC as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
@@ -570,7 +570,7 @@ object as defined in (#type-metadata-format).
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
 `vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
 
-### From a Registry {#retieval-from-registry}
+### From a Registry {#retrieval-from-registry}
 
 A consuming application MAY use a registry to retrieve Type Metadata for a type,
 e.g., if the type is not a HTTPS URL or if the consuming application does not have
