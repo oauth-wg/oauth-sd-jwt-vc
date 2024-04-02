@@ -483,7 +483,7 @@ MUST NOT be used.
 
 A type is associated with metadata defining, for example, information about the type, a schema defining which claims MAY or MUST appear in the SD-JWT VC, and how they can be displayed.
 
-This specification defines Type Metadata that can be associated with a type of a SD-JWT VC as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
+This section defines Type Metadata that can be associated with a type of a SD-JWT VC as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
  * Developers of Issuers and Verifiers can use the Typ Metadata to understand the
    semantics of the type and the associated rules. While in some cases,
@@ -497,7 +497,7 @@ This specification defines Type Metadata that can be associated with a type of a
  * Wallets can use the metadata to display the credential in a way that is
    consistent with the Issuer's intent.
 
-Applications using this specification are called "Consumers" in the following. This typically includes Issuers, Verifiers, and Wallets.
+Applications using Type Metadata defined in this specification are called "Consumers" in the following. This typically includes Issuers, Verifiers, and Wallets.
 
 ## Type Metadata Example {#type-metadata-example}
 
