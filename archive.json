@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-02T00:22:33.137086+00:00",
+  "timestamp": "2024-04-04T00:23:09.951606+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -92,6 +92,11 @@
       "name": "wg-04",
       "description": "",
       "color": "525FF7"
+    },
+    {
+      "name": "metadata",
+      "description": "",
+      "color": "02C876"
     }
   ],
   "issues": [
@@ -2739,7 +2744,7 @@
       "id": "I_kwDOJbVClc5nA11T",
       "title": "Provide W3C VCDM transformation algorithm",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/114",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "andresuribe87",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -2748,8 +2753,8 @@
       ],
       "body": "I found it hard to understand the relationship between VC's and the spec. Specifically, it's not clear to me how to go from VC (as in `application/vc+ld+json`) to `SD-JWT VC`, nor the other way. ",
       "createdAt": "2023-05-26T21:41:46Z",
-      "updatedAt": "2024-03-12T14:01:56Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-02T18:20:32Z",
+      "closedAt": "2024-04-02T18:20:32Z",
       "comments": [
         {
           "author": "awoie",
@@ -2937,7 +2942,7 @@
       "id": "I_kwDOJbVClc5oUDwc",
       "title": "Is the following a valid SD-JWT-VC or how can it be mapped to the SD-JWT-VC?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/121",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -2947,8 +2952,8 @@
       ],
       "body": "<img width=\"591\" alt=\"image\" src=\"https://github.com/vcstuff/draft-terbu-sd-jwt-vc/assets/10848802/48c0ead3-3657-4cf5-8380-6bcb6063ce08\">\r\n\r\nAll the claims need to be present, along with the @context.\r\n\r\nWould this be a valid SD-JWT-VC?",
       "createdAt": "2023-06-09T15:18:28Z",
-      "updatedAt": "2024-03-12T14:11:41Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-02T18:21:12Z",
+      "closedAt": "2024-04-02T18:21:11Z",
       "comments": [
         {
           "author": "tlodderstedt",
@@ -5331,7 +5336,7 @@
     {
       "number": 222,
       "id": "I_kwDOJbVClc6Dqvi_",
-      "title": "Add JWS example",
+      "title": "Add JWS JSON serialization example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/222",
       "state": "OPEN",
       "author": "awoie",
@@ -5340,7 +5345,75 @@
       "labels": [],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-03-26T18:33:42Z",
+      "updatedAt": "2024-04-02T17:25:57Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 223,
+      "id": "I_kwDOJbVClc6EU2up",
+      "title": "I18N for Metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/223",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "metadata"
+      ],
+      "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
+      "createdAt": "2024-04-02T09:51:21Z",
+      "updatedAt": "2024-04-02T18:10:16Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'd think it should be only for information that is intended for display to end-users.",
+          "createdAt": "2024-04-02T17:59:32Z",
+          "updatedAt": "2024-04-02T17:59:32Z"
+        }
+      ]
+    },
+    {
+      "number": 224,
+      "id": "I_kwDOJbVClc6EY7J4",
+      "title": "claims and display etc in type metadata ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/224",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "metadata"
+      ],
+      "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
+      "createdAt": "2024-04-02T18:07:46Z",
+      "updatedAt": "2024-04-03T15:02:14Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "For an MVP (i.e., our next draft release), we should IMO add:\r\n\r\n- [ ] Basic display/rendering information for the credential itself\r\n- [ ] Basic display/rendering information for claims\r\n- [ ] JSON schema",
+          "createdAt": "2024-04-03T07:18:35Z",
+          "updatedAt": "2024-04-03T07:18:35Z"
+        }
+      ]
+    },
+    {
+      "number": 225,
+      "id": "I_kwDOJbVClc6EZG6q",
+      "title": "Consider recommending a way to encode other data types.",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/225",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "The spec should define a way to support other data types. Pictures of the credential holders will be a common case, but other data types might occur as well.\r\n\r\nOpenID Connect already defines a claim:\r\n> `picture` \tstring \tURL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.\r\n\r\nIn that sense, we could just recommend that data types other than the native JSON types should be encoded, for example, as data URIs (that would be compatible to the definition of `picture` above).",
+      "createdAt": "2024-04-02T18:35:55Z",
+      "updatedAt": "2024-04-02T18:35:55Z",
       "closedAt": null,
       "comments": []
     }
@@ -17252,18 +17325,26 @@
       "labels": [],
       "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/feat-metadata/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes #181, #171 ",
       "createdAt": "2024-03-13T20:03:41Z",
-      "updatedAt": "2024-03-30T18:11:02Z",
+      "updatedAt": "2024-04-02T18:17:22Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "4e9c49e2578ae8041de81205e2b32dc06a63a201",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/feat-metadata",
-      "headRefOid": "ac974c4570fcdeb27cf9d157faeb11210b799fea",
+      "headRefOid": "20690db2302b92432e94b08bfffae5b1d4ef1b19",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> For all these \"human readable strings\", please make sure to have an i18n story, and ideally reference PRECIS, or DisplayStrings, etc .\r\n\r\nYep, good point. I18N is definitely needed although I'm not too sure about name/description since those are intended for developers only, not for end-users. I'll create a ticket to consider I18N, and also discuss whether this is needed for dev-only fields. I18N is definitely something we should add to metadata but needed some PR to start with first.",
+          "createdAt": "2024-04-02T09:49:53Z",
+          "updatedAt": "2024-04-02T09:49:53Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc501SzB",
@@ -17389,6 +17470,199 @@
           "body": "For all these \"human readable strings\", please make sure to have an i18n story, and ideally reference PRECIS, or DisplayStrings, etc .",
           "createdAt": "2024-03-30T18:11:02Z",
           "updatedAt": "2024-03-30T18:11:02Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sNMT",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T17:45:39Z",
+          "updatedAt": "2024-04-02T17:45:40Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue? ",
+              "createdAt": "2024-04-02T17:45:39Z",
+              "updatedAt": "2024-04-02T17:45:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sNbx",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T17:46:13Z",
+          "updatedAt": "2024-04-02T17:46:13Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "similar comment as https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220/files#r1548311395 here ",
+              "createdAt": "2024-04-02T17:46:13Z",
+              "updatedAt": "2024-04-02T17:46:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sN6N",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T17:47:08Z",
+          "updatedAt": "2024-04-02T17:47:09Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\nThis section defines Type Metadata that can be associated with a type of a SD-JWT VC as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:\r\n```",
+              "createdAt": "2024-04-02T17:47:09Z",
+              "updatedAt": "2024-04-02T17:47:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sOM6",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T17:47:48Z",
+          "updatedAt": "2024-04-02T17:47:48Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "```suggestion\r\nApplications using Type Metadata defined in this specification are called \"Consumers\" in the following. This typically includes Issuers, Verifiers, and Wallets.\r\n```",
+              "createdAt": "2024-04-02T17:47:48Z",
+              "updatedAt": "2024-04-02T17:47:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sQn6",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T17:52:28Z",
+          "updatedAt": "2024-04-02T17:52:29Z",
+          "comments": [
+            {
+              "originalPosition": 165,
+              "body": "This should maybe be a subsection of Type Metadata so... ?\r\n```suggestion\r\n## Document Integrity {#document-integrity}\r\n```",
+              "createdAt": "2024-04-02T17:52:29Z",
+              "updatedAt": "2024-04-02T17:52:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sU-K",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T18:00:58Z",
+          "updatedAt": "2024-04-02T18:00:59Z",
+          "comments": [
+            {
+              "originalPosition": 165,
+              "body": "It is meant as a mechanism that can be used for multiple claims defined in the spec. If we only need it for the Type Metadata claims, this should be a subsection. Otherwise, a top-level section.",
+              "createdAt": "2024-04-02T18:00:58Z",
+              "updatedAt": "2024-04-02T18:00:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sZKN",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T18:07:26Z",
+          "updatedAt": "2024-04-02T18:07:26Z",
+          "comments": [
+            {
+              "originalPosition": 165,
+              "body": "It should be a top-level section imo since it is a general mechanism.",
+              "createdAt": "2024-04-02T18:07:26Z",
+              "updatedAt": "2024-04-02T18:07:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sbJJ",
+          "commit": {
+            "abbreviatedOid": "20690db"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T18:10:33Z",
+          "updatedAt": "2024-04-02T18:10:33Z",
+          "comments": [
+            {
+              "originalPosition": 31,
+              "body": "created #224 ",
+              "createdAt": "2024-04-02T18:10:33Z",
+              "updatedAt": "2024-04-02T18:10:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51scSG",
+          "commit": {
+            "abbreviatedOid": "ac974c4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-02T18:13:10Z",
+          "updatedAt": "2024-04-02T18:13:10Z",
+          "comments": [
+            {
+              "originalPosition": 165,
+              "body": "agreed on the april 2nd call that it should stay a top-level claim.",
+              "createdAt": "2024-04-02T18:13:10Z",
+              "updatedAt": "2024-04-02T18:13:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc51sfD-",
+          "commit": {
+            "abbreviatedOid": "20690db"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-02T18:17:22Z",
+          "updatedAt": "2024-04-02T18:17:22Z",
           "comments": []
         }
       ]
