@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-04T00:23:09.951606+00:00",
+  "timestamp": "2024-04-07T00:25:37.398487+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5329,9 +5329,17 @@
       "labels": [],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2024-03-26T12:04:26Z",
+      "updatedAt": "2024-04-05T17:47:13Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "I was wondering about this part as well when reading the PR. My gut feeling would be that It might make sense to provide some mechanism with signed metadata as an option (for the cases where cannot make meaningful assumptions about the transport/provider of the metadata).",
+          "createdAt": "2024-04-05T17:47:12Z",
+          "updatedAt": "2024-04-05T17:47:12Z"
+        }
+      ]
     },
     {
       "number": 222,
@@ -5413,9 +5421,17 @@
       "labels": [],
       "body": "The spec should define a way to support other data types. Pictures of the credential holders will be a common case, but other data types might occur as well.\r\n\r\nOpenID Connect already defines a claim:\r\n> `picture` \tstring \tURL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.\r\n\r\nIn that sense, we could just recommend that data types other than the native JSON types should be encoded, for example, as data URIs (that would be compatible to the definition of `picture` above).",
       "createdAt": "2024-04-02T18:35:55Z",
-      "updatedAt": "2024-04-02T18:35:55Z",
+      "updatedAt": "2024-04-06T09:39:05Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "Hi @danielfett \r\n\r\nI find your proposal really useful. \r\n\r\n \"Data URIs\" are those described in [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397) ?\r\n\r\n",
+          "createdAt": "2024-04-06T09:39:04Z",
+          "updatedAt": "2024-04-06T09:39:04Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -17325,7 +17341,7 @@
       "labels": [],
       "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/feat-metadata/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes #181, #171 ",
       "createdAt": "2024-03-13T20:03:41Z",
-      "updatedAt": "2024-04-02T18:17:22Z",
+      "updatedAt": "2024-04-05T13:13:20Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "4e9c49e2578ae8041de81205e2b32dc06a63a201",
@@ -17663,6 +17679,59 @@
           "body": "",
           "createdAt": "2024-04-02T18:17:22Z",
           "updatedAt": "2024-04-02T18:17:22Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc52Lrxh",
+          "commit": {
+            "abbreviatedOid": "20690db"
+          },
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-05T10:56:54Z",
+          "updatedAt": "2024-04-05T10:56:54Z",
+          "comments": [
+            {
+              "originalPosition": 103,
+              "body": "I do believe we need a bit more text here on how exactly extending works:\r\n- Can we only introduce new claims and re-use the parts we are extending (which is what I would assume so far?)\r\n- Can we also override existing information?",
+              "createdAt": "2024-04-05T10:56:54Z",
+              "updatedAt": "2024-04-05T10:56:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc52L6PF",
+          "commit": {
+            "abbreviatedOid": "20690db"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-04-05T11:13:32Z",
+          "updatedAt": "2024-04-05T11:13:32Z",
+          "comments": [
+            {
+              "originalPosition": 103,
+              "body": "Indeed, but that should be defined in the context (and the PR) of the particular property, e.g., the display property or the schema.",
+              "createdAt": "2024-04-05T11:13:32Z",
+              "updatedAt": "2024-04-05T11:13:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc52NGiU",
+          "commit": {
+            "abbreviatedOid": "20690db"
+          },
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-04-05T13:13:20Z",
+          "updatedAt": "2024-04-05T13:13:20Z",
           "comments": []
         }
       ]
