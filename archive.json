@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-11T00:23:17.500100+00:00",
+  "timestamp": "2024-04-14T00:25:42.499063+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3808,7 +3808,7 @@
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2024-01-17T20:52:49Z",
+      "updatedAt": "2024-04-12T12:47:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -3873,6 +3873,13 @@
           "body": "Do we need a separate IETF Draft for biometric+claim-based bindings in JWT or shall this go in here?",
           "createdAt": "2024-01-17T20:52:49Z",
           "updatedAt": "2024-01-17T20:52:49Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "A Draft was proposed at OAuth Security Workshop 2024, showing the examples above, advice was more in this direction:\r\n```\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"date_of_birth\" : \"1970-01-01\",\r\n  \"cbb\" : [ \"given_name\", \"family_name\", \"date_of_birth\" ]\r\n}\r\n```\r\n\r\nDiscussion was around whether things should be in policies or metadata, a good argument for this approach/putting it into the JWT is that data available  to the Issuer for binding may not always be the same based on the quality of his user database.\r\n\r\nThe approach would work really well for countries like Estonia that have a unique national identifier in the PID.",
+          "createdAt": "2024-04-12T12:47:43Z",
+          "updatedAt": "2024-04-12T12:47:43Z"
         }
       ]
     },
@@ -5397,7 +5404,7 @@
       ],
       "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
       "createdAt": "2024-04-02T18:07:46Z",
-      "updatedAt": "2024-04-03T15:02:14Z",
+      "updatedAt": "2024-04-12T07:58:17Z",
       "closedAt": null,
       "comments": [
         {
@@ -5406,6 +5413,20 @@
           "body": "For an MVP (i.e., our next draft release), we should IMO add:\r\n\r\n- [ ] Basic display/rendering information for the credential itself\r\n- [ ] Basic display/rendering information for claims\r\n- [ ] JSON schema",
           "createdAt": "2024-04-03T07:18:35Z",
           "updatedAt": "2024-04-03T07:18:35Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "A single issue tracking the features to be added (from types),  I think, is not so convenient.\r\n\r\nPerhaps it would be better to use some more specific labels like for instance `meta-display` and /or `meta-claims` for annotate related issues. In this way, issues reported to types repo can be transferred here and new issues can be added freely.\r\n",
+          "createdAt": "2024-04-11T15:34:14Z",
+          "updatedAt": "2024-04-11T15:34:14Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> A single issue tracking the features to be added (from types), I think, is not so convenient.\r\n> \r\n> Perhaps it would be better to use some more specific labels like for instance `meta-display` and /or `meta-claims` for annotate related issues. In this way, issues reported to types repo can be transferred here and new issues can be added freely.\r\n\r\nYou can also create new issues if you believe other things are missing for your use case.",
+          "createdAt": "2024-04-12T07:58:17Z",
+          "updatedAt": "2024-04-12T07:58:17Z"
         }
       ]
     },
@@ -5430,6 +5451,58 @@
           "body": "Hi @danielfett \r\n\r\nI find your proposal really useful. \r\n\r\n \"Data URIs\" are those described in [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397) ?\r\n\r\n",
           "createdAt": "2024-04-06T09:39:04Z",
           "updatedAt": "2024-04-06T09:39:04Z"
+        }
+      ]
+    },
+    {
+      "number": 226,
+      "id": "I_kwDOJbVClc6FXArS",
+      "title": "SD-JWT-VC Types repository",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/226",
+      "state": "CLOSED",
+      "author": "babisRoutis",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "There is a companion specification for metadata hosted at [SD-JWT-VC Types](https://github.com/vcstuff/sd-jwt-vc-types)\r\n\r\nI would like to ask if the aforementioned repository is the correct place to raise some questions or comments about the metadata or the metadata specification will be merged here in SD-JWT-VC?",
+      "createdAt": "2024-04-11T10:26:46Z",
+      "updatedAt": "2024-04-12T07:59:18Z",
+      "closedAt": "2024-04-12T07:59:18Z",
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "IMO, it would be best if you could already comment on this https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220 which tries to establish the common framework. If this gets merged, we will create PRs for individual parameters and features of metadata. ",
+          "createdAt": "2024-04-11T12:07:07Z",
+          "updatedAt": "2024-04-11T12:07:07Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "> IMO, it would be best if you could already comment on this #220 which tries to establish the common framework. If this gets merged, we will create PRs for individual parameters and features of metadata.\r\n\r\nHi @awoie thanks for the reply.\r\n\r\nPerhaps yet another naive question, I hope you bear with me :  \r\n\r\nIs SD-JWT-VC Types to become a specification on its own thus #220 just tries to connect SD-JWT-VC and SD-JWT-VC types or SD-JWT-VC is going to \"absorb\" SD-JWT-VC Types ?\r\n\r\nI am asking this because the #220 keeps just a sort sub-set of the metadata attributes defined in SD-JWT-VC Types.",
+          "createdAt": "2024-04-11T14:11:06Z",
+          "updatedAt": "2024-04-11T14:11:06Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > IMO, it would be best if you could already comment on this #220 which tries to establish the common framework. If this gets merged, we will create PRs for individual parameters and features of metadata.\r\n> \r\n> Hi @awoie thanks for the reply.\r\n> \r\n> Perhaps yet another naive question, I hope you bear with me :\r\n> \r\n> Is SD-JWT-VC Types to become a specification on its own thus #220 just tries to connect SD-JWT-VC and SD-JWT-VC types or SD-JWT-VC is going to \"absorb\" SD-JWT-VC Types ?\r\n> \r\n> I am asking this because the #220 keeps just a sort sub-set of the metadata attributes defined in SD-JWT-VC Types.\r\n\r\nThe idea is SD-JWT VC absorbs SD-JWT VC Types feature-by-feature incrementally to give the community a chance to comment on each feature individually. PR #220 is a first step that will allow us to extend the metadata as needed. We have an issue that keeps track of features that were raised by the community already and we are considering for SD-JWT VC here https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/224. \r\n\r\nIt is best if you provide your feedback on the PR #220 and/or on the issue here https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/224.",
+          "createdAt": "2024-04-11T14:20:10Z",
+          "updatedAt": "2024-04-11T14:20:10Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "Thanks @awoie It is clear now",
+          "createdAt": "2024-04-11T14:22:31Z",
+          "updatedAt": "2024-04-11T14:22:31Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing this issue since the question was answered. @babisRoutis please create new issues if you think something else is missing that is not already covered by other issues.",
+          "createdAt": "2024-04-12T07:59:16Z",
+          "updatedAt": "2024-04-12T07:59:16Z"
         }
       ]
     }
