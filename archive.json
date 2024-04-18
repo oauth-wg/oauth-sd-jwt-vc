@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-04-16T00:22:21.410773+00:00",
+  "timestamp": "2024-04-18T00:22:36.853964+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3808,7 +3808,7 @@
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2024-04-12T12:47:44Z",
+      "updatedAt": "2024-04-17T18:23:42Z",
       "closedAt": null,
       "comments": [
         {
@@ -3877,9 +3877,23 @@
         {
           "author": "paulbastian",
           "authorAssociation": "CONTRIBUTOR",
-          "body": "A Draft was proposed at OAuth Security Workshop 2024, showing the examples above, advice was more in this direction:\r\n```\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"date_of_birth\" : \"1970-01-01\",\r\n  \"cbb\" : [ \"given_name\", \"family_name\", \"date_of_birth\" ]\r\n}\r\n```\r\n\r\nDiscussion was around whether things should be in policies or metadata, a good argument for this approach/putting it into the JWT is that data available  to the Issuer for binding may not always be the same based on the quality of his user database.\r\n\r\nThe approach would work really well for countries like Estonia that have a unique national identifier in the PID.",
+          "body": "A Draft was proposed at OAuth Security Workshop 2024, showing the examples above, advice was more in this direction:\r\n```json\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"date_of_birth\" : \"1970-01-01\",\r\n  \"cbb\" : [ \"given_name\", \"family_name\", \"date_of_birth\" ]\r\n}\r\n```\r\n\r\nDiscussion was around whether things should be in policies or metadata, a good argument for this approach/putting it into the JWT is that data available  to the Issuer for binding may not always be the same based on the quality of his user database.\r\n\r\nThe approach would work really well for countries like Estonia that have a unique national identifier in the PID.\r\n\r\n```json\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"some-memberstate.eu/credentials/schemas/pid/national_id\" : \"572047251836\",\r\n  \"cbb\" : [ \"some-memberstate.eu/credentials/schemas/pid/national_id\" ]\r\n}\r\n```\r\n",
           "createdAt": "2024-04-12T12:47:43Z",
-          "updatedAt": "2024-04-12T12:47:43Z"
+          "updatedAt": "2024-04-16T17:05:14Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "FYI, I created in issue in eKYC-IDA to see if there is some overlap: https://bitbucket.org/openid/ekyc-ida/issues/1414/discuss-a-way-to-express-binding-claims",
+          "createdAt": "2024-04-17T15:18:50Z",
+          "updatedAt": "2024-04-17T15:18:50Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "WDYT about using an object like\r\n\r\n````\r\n\"binding\": {$type: {claim: ..., any other required by future proof binding type}}\r\n````\r\n\r\nexample\r\n\r\n````\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"some-memberstate.eu/credentials/schemas/pid/national_id\" : \"572047251836\",\r\n  \"credential_binding\" : {\r\n     \"claims\": [\"some-memberstate.eu/credentials/schemas/pid/national_id\" ]\r\n  }\r\n}\r\n````\r\n\r\nthis may open the possibility to specify other types, like`credential_binding.hkb` referencing cnf.jwk or any other key binding type\r\n\r\n",
+          "createdAt": "2024-04-17T18:23:42Z",
+          "updatedAt": "2024-04-17T18:23:42Z"
         }
       ]
     },
@@ -4278,7 +4292,7 @@
       "id": "I_kwDOJbVClc5004U7",
       "title": "Define the concept of a credential type",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/181",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -4290,8 +4304,8 @@
       ],
       "body": "We should define more clearly **what a credential type (identified by the `vct` claim) actually means**.\r\n\r\nThe current description is a bit handwavy and that may be a sign that we have not yet defined the concept well.\r\n\r\nI think that there is a set of metadata usually associated with each SD-JWT VC type, for example\r\n- Display information for the whole credential\r\n- A schema for the JSON structure (may or may not be defined in JSON schema)\r\n- Information about the claims, including\r\n\t- Display information\r\n\t- Type information\r\n\t- Status information (self-attested vs. verified etc.)\r\n- Maybe: What kind of binding is supported/usually used for this credential type\r\n- Maybe: What issuers are allowed to issue this credential type\r\n\r\nSuch metadata would help **Wallets** (e.g., for displaying the credential to the user) and **Verifiers** (e.g., for determining the status of claims). It would also help **developers of Verifiers**, as they would get structured information about the credential they can expect.\r\n\r\nThe need for such metadata has been discussed in Issue #171 and similar approaches have shown up in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2).\r\n\r\nThe metadata may or may not be embedded into the credential itself, or provided externally. Assuming we allow for registered `vct` values (e.g., `UniversityCredential`), this metadata could go into the registry. It could also be distributed manually. \r\n\r\nBut it can also be made discoverable, e.g., by providing it at a .well-known URI derived from the URL in `vct`.\r\n\r\n----\r\n\r\nHere is a completely made-up example of what this metadata could look like:\r\n\r\n```json\r\n{\r\n    \"vct\": \"https://credentials.example.com/example1\",\r\n    \"display\": [\r\n        {\r\n            \"en-US\": {\r\n                \"name\": \"University Credential\",\r\n                \"logo\": {\r\n                    \"url\": \"https://exampleuniversity.com/public/logo.png\",\r\n                    \"alt_text\": \"a square logo of a university\"\r\n                },\r\n                \"background_color\": \"#12107c\",\r\n                \"text_color\": \"#FFFFFF\"\r\n            }\r\n        }\r\n    ],\r\n    \"claims\": // mapping from JSON pointer to information about this claim\r\n    {\r\n        \"/name\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Vor- und Nachname\",\r\n                    \"description\": \"Der Name des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Name\",\r\n                    \"description\": \"The name of the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        \"/degree\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Abschluss\",\r\n                    \"description\": \"Der Abschluss des Studenten\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Degree\",\r\n                    \"description\": \"Degree earned by the student\"\r\n                }\r\n            },\r\n            \"status\": \"verified\"\r\n        },\r\n        // ...\r\n        \"/address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Adresse\",\r\n                    \"description\": \"Adresse zum Zeitpunkt des Abschlusses\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Address\",\r\n                    \"description\": \"Address at the time of graduation\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        },\r\n        \"/address/street_address\": {\r\n            \"display\": {\r\n                \"de-DE\": {\r\n                    \"label\": \"Stra\u00dfe\"\r\n                },\r\n                \"en-US\": {\r\n                    \"label\": \"Street Address\"\r\n                }\r\n            },\r\n            \"status\": \"self-attested\"\r\n        }\r\n    }\r\n}\r\n```\r\n\r\n---\r\n\r\nImportant:\r\n- This mechanism will not be format-agnostic, but defined only for SD-JWT VC for now.\r\n- There are overlaps with mechanisms defined in HAIP, for example, and part of this issue here is to figure out what data should go where and to avoid duplications by getting the concept right. I think that the `claims` element defined for the credential issuer metadata in [HAIP](https://vcstuff.github.io/oid4vc-haip-sd-jwt-vc/draft-oid4vc-haip-sd-jwt-vc.html#section-7.2.2) could be replaced by just a `vct` identifier (the metadata could be discovered from there, or retrieved from the registry).",
       "createdAt": "2023-10-24T20:24:39Z",
-      "updatedAt": "2024-03-26T18:17:37Z",
-      "closedAt": null,
+      "updatedAt": "2024-04-17T18:33:39Z",
+      "closedAt": "2024-04-17T18:33:39Z",
       "comments": [
         {
           "author": "peppelinux",
@@ -17407,24 +17421,26 @@
       "id": "PR_kwDOJbVClc5pjGPv",
       "title": "feat: add SD-JWT VC Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Add general SD-JWT VC Type Metadata framework based on @danielfett work: https://vcstuff.github.io/sd-jwt-vc-types/draft-fett-oauth-sd-jwt-vc-types.html\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/feat-metadata/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes #181, #171 ",
       "createdAt": "2024-03-13T20:03:41Z",
-      "updatedAt": "2024-04-05T13:13:20Z",
+      "updatedAt": "2024-04-17T18:33:38Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "4e9c49e2578ae8041de81205e2b32dc06a63a201",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/feat-metadata",
-      "headRefOid": "20690db2302b92432e94b08bfffae5b1d4ef1b19",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "26cad108bca16e7a526f14789d88f59ef6095b26",
+      "closedAt": "2024-04-17T18:33:38Z",
+      "mergedAt": "2024-04-17T18:33:38Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "10bf0acab8094347d3826b4ab4138994454683dc"
+      },
       "comments": [
         {
           "author": "awoie",
@@ -17432,6 +17448,13 @@
           "body": "> For all these \"human readable strings\", please make sure to have an i18n story, and ideally reference PRECIS, or DisplayStrings, etc .\r\n\r\nYep, good point. I18N is definitely needed although I'm not too sure about name/description since those are intended for developers only, not for end-users. I'll create a ticket to consider I18N, and also discuss whether this is needed for dev-only fields. I18N is definitely something we should add to metadata but needed some PR to start with first.",
           "createdAt": "2024-04-02T09:49:53Z",
           "updatedAt": "2024-04-02T09:49:53Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We have 3 approvals and no new comments coming in after 2 weeks. I propose to merge this PR @bc-pi @danielfett . PR was created 1 month ago.",
+          "createdAt": "2024-04-17T18:17:22Z",
+          "updatedAt": "2024-04-17T18:17:51Z"
         }
       ],
       "reviews": [
@@ -17744,14 +17767,14 @@
         {
           "id": "PRR_kwDOJbVClc51sfD-",
           "commit": {
-            "abbreviatedOid": "20690db"
+            "abbreviatedOid": "26cad10"
           },
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-04-02T18:17:22Z",
-          "updatedAt": "2024-04-02T18:17:22Z",
+          "updatedAt": "2024-04-17T18:29:58Z",
           "comments": []
         },
         {
@@ -17797,14 +17820,14 @@
         {
           "id": "PRR_kwDOJbVClc52NGiU",
           "commit": {
-            "abbreviatedOid": "20690db"
+            "abbreviatedOid": "26cad10"
           },
           "author": "c2bo",
           "authorAssociation": "MEMBER",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-04-05T13:13:20Z",
-          "updatedAt": "2024-04-05T13:13:20Z",
+          "updatedAt": "2024-04-17T18:29:58Z",
           "comments": []
         }
       ]
