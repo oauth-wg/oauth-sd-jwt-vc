@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-02T00:22:43.980852+00:00",
+  "timestamp": "2024-05-05T00:24:53.359128+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3808,7 +3808,7 @@
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2024-04-30T18:08:22Z",
+      "updatedAt": "2024-05-03T14:39:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -3908,6 +3908,13 @@
           "body": "I am not convinced this should be in the JWT itself or that this spec is the appropriate place to define such a thing. Having said that, something like the `\"cbb\" : [ \"given_name\", \"family_name\", \"date_of_birth\" ]` seems the most reasonable/logical of the ideas in this issue thus far. ",
           "createdAt": "2024-04-30T18:08:21Z",
           "updatedAt": "2024-04-30T18:08:21Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "cross comment from https://github.com/openid/OpenID4VP/issues/161 -> This is a somewhat tangential friendly reminder that the cnf claim specified in [Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs) ](https://datatracker.ietf.org/doc/html/rfc7800)is strictly about representing a proof-of-possession key and is therefore entirely inappropriate as a means of conveying 'claims based binding'.",
+          "createdAt": "2024-05-03T14:39:51Z",
+          "updatedAt": "2024-05-03T14:39:51Z"
         }
       ]
     },
