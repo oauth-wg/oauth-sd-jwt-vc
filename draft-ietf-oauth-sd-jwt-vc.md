@@ -1004,6 +1004,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -04
 
+* update reference to IETF Status List
 * Include Type Metadata
 * Editorial changes
 
