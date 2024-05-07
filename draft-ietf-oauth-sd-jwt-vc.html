@@ -12,20 +12,20 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.20.1" name="generator">
+<meta content="xml2rfc 3.21.0" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.20.1
-    Python 3.11.8
+  xml2rfc 3.21.0
+    Python 3.11.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.0
     intervaltree 3.1.0
     Jinja2 3.1.2
     lxml 4.9.3
-    platformdirs 4.2.0
+    platformdirs 4.2.1
     pycountry 22.3.5
     PyYAML 6.0.1
     requests 2.31.0
@@ -1030,11 +1030,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">April 2024</td>
+<td class="right">May 2024</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 19 October 2024</td>
+<td class="center">Expires 8 November 2024</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1047,12 +1047,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-04-17" class="published">17 April 2024</time>
+<time datetime="2024-05-07" class="published">7 May 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2024-10-19">19 October 2024</time></dd>
+<dd class="expires"><time datetime="2024-11-08">8 November 2024</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1106,7 +1106,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 October 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 8 November 2024.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1626,7 +1626,7 @@ information.<a href="#section-3.2.2.2-3.3.2.1" class="pilcrow">¶</a>
                 <p id="section-3.2.2.2-3.6.1"><code>status</code><a href="#section-3.2.2.2-3.6.1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-3.6.2.1">OPTIONAL. The information on how to read the status of the Verifiable
-Credential. See <span>[<a href="#I-D.looker-oauth-jwt-cwt-status-list" class="cite xref">I-D.looker-oauth-jwt-cwt-status-list</a>]</span>
+Credential. See <span>[<a href="#I-D.ietf-oauth-status-list" class="cite xref">I-D.ietf-oauth-status-list</a>]</span>
 for more information.<a href="#section-3.2.2.2-3.6.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
@@ -1872,9 +1872,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CN8cf
-3P0IXYt74J42kV7nxIxie_Ck_6WEkjC0TKOmUBMK-7HABfnUoItKLvb1F8WgF0Oblp1r
-ViHpreABcPG8w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.T-Ps7
+DWQ6hL-nN3n6BG6laiFUKypr9gbRQ1mYYc90VOWvwl-Y0awnFTeka3deiC2hc3C5zLgD
+qGhJIN07-TFLw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1987,16 +1987,16 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CN8cf
-3P0IXYt74J42kV7nxIxie_Ck_6WEkjC0TKOmUBMK-7HABfnUoItKLvb1F8WgF0Oblp1r
-ViHpreABcPG8w~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.T-Ps7
+DWQ6hL-nN3n6BG6laiFUKypr9gbRQ1mYYc90VOWvwl-Y0awnFTeka3deiC2hc3C5zLgD
+qGhJIN07-TFLw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
 N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
 4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
 AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTMzN
-zg4NDMsICJzZF9oYXNoIjogIlRNYzhGOHdkUl9KSUEwUVVkQTBDYm4yZ21BNEVFb2FhQ
-lpma2o3QlNHSzgifQ.hqv2ouanStSDakRRx_O6JJQ92MKSrjq1ZLdEyhmWNPvscPUnCI
-fd91O-3854RQ0gfd38krKujyuxAnn5jUkWpQ
+mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTUwN
+zE2NzIsICJzZF9oYXNoIjogInRteEZNallfaWpuTzNMbTRpRGlrOWY4N0FzZTRNUldqS
+zcwLXdUcFBWbzAifQ.4lNNDDeQdqezWZN_cTNd13QqA50-maHwt62cDJrKxgpxuwO4fV
+Z8z3nlYccQiLN8WA0T_dpg3wPILO06KIiDOA
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2015,8 +2015,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.W10dOs7TUk0de9sVz6iZaCuHS89BK_7AzpoIritn8ZyVNt
-DgO90iR18SLL8Z-gMjL4AbCkiqa2DgTiWSbcI5kg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+hbGciOiAic2hhLTI1NiJ9.IIPdRrpMoquf_uO5nDHbbnzMsi9mE4KeMup9VqEqmAOK4u
+Qxta0G3tfQCSNxwqF8NDkdhpm2a28suqWewwZo7w~WyJRZ19PNjR6cUF4ZTQxMmExMDh
 pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
 gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
 0cnkiOiAiVVMifV0~
@@ -2552,9 +2552,9 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-08</span>, <time datetime="2024-03-04" class="refDate">4 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-08">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-08</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.looker-oauth-jwt-cwt-status-list">[I-D.looker-oauth-jwt-cwt-status-list]</dt>
+<dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
         <dd>
-<span class="refAuthor">Looker, T.</span> and <span class="refAuthor">P. Bastian</span>, <span class="refTitle">"JWT and CWT Status List"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-looker-oauth-jwt-cwt-status-list-01</span>, <time datetime="2023-07-10" class="refDate">10 July 2023</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-looker-oauth-jwt-cwt-status-list-01">https://datatracker.ietf.org/doc/html/draft-looker-oauth-jwt-cwt-status-list-01</a>&gt;</span>. </dd>
+<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-02</span>, <time datetime="2024-03-03" class="refDate">3 March 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-02">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-02</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -2825,8 +2825,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.CQzH-dsYPmccLSWGGxr9tmHUPhO2dQhK1BuTXE43Pq7JCKavDd8MTw
-d4nyFk6mzwZMhU_hzSxnpCXhj_W03KRQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.Hrk_rLYuqZE4fz9ZJB32XDk0Gd7unLVS5_zYBZDHfgwiJN4onzZmld
+MHvprV4bMghKtfI6ZZQauuJS1NEygtBA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3181,14 +3181,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.CQzH-dsYPmccLSWGGxr9tmHUPhO2dQhK1BuTXE43Pq7JCKavDd8MTw
-d4nyFk6mzwZMhU_hzSxnpCXhj_W03KRQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.Hrk_rLYuqZE4fz9ZJB32XDk0Gd7unLVS5_zYBZDHfgwiJN4onzZmld
+MHvprV4bMghKtfI6ZZQauuJS1NEygtBA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3MTMzNzg4NDMsICJzZF9oYXNoIjogInY1WExUWWRwcE5NV
-zRFQjdEMTJWSVdQNFZrRm82YUJwaFpQaHBtWTVVSEUifQ.Qc3relzrFb-0fOZU33Ezx3
-GC3R-hCVum3SQMo5QDH8JEtAaf71QkxqbjtzGaxeboXpGb7xyCIxap8zqhtUQS6g
+mlmaWVyIiwgImlhdCI6IDE3MTUwNzE2NzIsICJzZF9oYXNoIjogIlJva2NZQ2FTZGFvV
+XUzOGg2MFJBWTBTVmpFelhUcG1pZEtpYWJJX1RBczgifQ.7-wtQf-h3KwF7V5Za3jqmG
+Vx_qgF9tARWnHYLaMfl4C-gNrBTBqjShR0mja_LcziA05pV2eswHh9p0fOK1Nu7w
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3197,8 +3197,8 @@ GC3R-hCVum3SQMo5QDH8JEtAaf71QkxqbjtzGaxeboXpGb7xyCIxap8zqhtUQS6g
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1713378843,
-  "sd_hash": "v5XLTYdppNMW4EB7D12VIWP4VkFo6aBphZPhpmY5UHE"
+  "iat": 1715071672,
+  "sd_hash": "RokcYCaSdaoUu38h60RAY0SVjEzXTpmidKiabI_TAs8"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
@@ -3260,9 +3260,11 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-D-1">-04<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-2.1">Include Type Metadata<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-2.1">update reference to IETF Status List<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.2">Editorial changes<a href="#appendix-D-2.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.2">Include Type Metadata<a href="#appendix-D-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.3">Editorial changes<a href="#appendix-D-2.3" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-03<a href="#appendix-D-3" class="pilcrow">¶</a></p>
