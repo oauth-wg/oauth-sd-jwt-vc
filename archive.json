@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-05T00:24:53.359128+00:00",
+  "timestamp": "2024-05-07T00:23:06.462457+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -440,7 +440,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "The `iss` field is always disclosed, hence not revealing the `type` only offers privacy if the same issuer with the same key offers multiple VCs that share the same claim name that is being requested. It seems like an unrealistic scenario that this is a privacy benefit. It seems to me the usecase would be merely a fillout help, where the verifier does not care about the origin of claims and handles those as self-attested",
           "createdAt": "2023-05-25T19:04:00Z",
           "updatedAt": "2023-05-25T19:04:00Z"
@@ -1847,7 +1847,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/93",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
         "individual-03"
@@ -1866,7 +1866,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Yes",
           "createdAt": "2023-06-21T16:22:57Z",
           "updatedAt": "2023-06-21T16:22:57Z"
@@ -1887,7 +1887,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/94",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "paulbastian"
       ],
@@ -1915,7 +1915,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I can do, just wanted to make sure its not for waste. Issue is less effort ;P",
           "createdAt": "2023-05-25T15:46:04Z",
           "updatedAt": "2023-05-25T15:46:04Z"
@@ -1936,7 +1936,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/96",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
         "individual-01",
@@ -1949,7 +1949,7 @@
       "comments": [
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Additionally, headline 4.2.2.1 would better fit saying \"New JWT Claims\"?",
           "createdAt": "2023-05-25T16:15:07Z",
           "updatedAt": "2023-05-25T16:15:07Z"
@@ -1963,7 +1963,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/97",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
         "NEEDS PR",
@@ -1997,7 +1997,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "@awoie I don't understand your concerns. Can you provide examples?",
           "createdAt": "2023-06-21T19:17:49Z",
           "updatedAt": "2023-06-21T19:17:49Z"
@@ -2039,7 +2039,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/98",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
         "discuss"
@@ -2072,7 +2072,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/99",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [
         "danielfett"
       ],
@@ -2455,7 +2455,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Aren't all the example in the spec right now using private claims instead of public claims? I don't see any problem with private claims",
           "createdAt": "2023-05-27T08:55:57Z",
           "updatedAt": "2023-05-27T08:55:57Z"
@@ -2476,7 +2476,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "If we want to encourage public claims instead of private claims, then this should be reflected in some examples of the document",
           "createdAt": "2023-05-27T08:59:24Z",
           "updatedAt": "2023-05-27T08:59:24Z"
@@ -2524,14 +2524,14 @@
       "comments": [
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I agree moving the HB-JWT to SD-JWT spec and removing it from SD-JWT-VC but I would like to keep cryptographic holder binding optional. Claim based holder binding is a simple and easy solution that will be requested by adopters. ",
           "createdAt": "2023-05-27T08:45:13Z",
           "updatedAt": "2023-05-27T08:45:13Z"
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "At the same time it might make sense to give more guidance in this direction in the spec",
           "createdAt": "2023-05-27T08:45:58Z",
           "updatedAt": "2023-05-27T08:45:58Z"
@@ -3041,7 +3041,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I believe there will be situations where both\n- an SD-JWT-VC vct already exists\n- an corresponding jsonld type already exists\n\nIn these cases an automatic general purpose transformation would not work.\nSo in my opinion it depends on the use case.",
           "createdAt": "2023-11-27T17:47:51Z",
           "updatedAt": "2023-11-27T17:47:51Z"
@@ -3107,7 +3107,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I think having both options is valid. I agree that I don't see enough reason to recommend one over the other",
           "createdAt": "2023-06-16T08:43:52Z",
           "updatedAt": "2023-06-16T08:43:52Z"
@@ -3268,7 +3268,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "> @Sakurann \n> \n> _- the way VCDM 2.0 is going, it requires data model to be JSON-LD and processed according to JSON-LD rules, so things like @context is in the payload, we put it to be conformant, but are not processing it will not be conformant._\n> \n> Please check the discussion in https://github.com/w3c/vc-data-model/pull/1088 since the conclusion is different.\n> @Sakurann What do you understand under LD processing?  (LD processing with VCs is used only by: data integrity proofs, selective disclosure that's been just defined, internationalisation, identity matching, some advanced querying)\n> Since JWS is not using any of that, JWS protection mechanism is not affected by the -LD part.\n> However, it enable use cases, that want to use the -LD (e.g., ELM v3) for internationalisation etc., to use it.\n> \n> When VCs are secured with JWS, LD processing is not performed. It MAY be performed, if use case requires it, in the post-processing (after the validation) or rendering phase.\n> \n> _- the value of VCDM IMO is defining the concept of a credential in a three party model: issued credential must contain the issuer, the subject, claims about the subject, metadata about the issuance of that credential (iat, exp, etc.) and optionally a cryptographic key. that's it. How to map it to the JWT claims is not the expertise of w3c vc wg nor is well-defined in the documents produced by that group._\n> \n> That's perfectly fine. W3C VCDM is focusing on the VCDM data model.\n> Note that the current VCDM v2.0, without any JWT claim, is a valid JWT.\n> \n> _- VCDM itself is silent about how to sign/process the data model_\n> \n> I think this is a good approach of the specification, since it defines a data model. Securing mechanism should be defined by specifications like JAdES which defines a profile for JSON-based AdES.\n> \n> \n> \n> \n> \n\nI agree that securing JSON-LD as payload with SD-JWT is important work that should be considered and investigated.\nI don't agree that it is a good idea to take VCDM claims and use all of those to secure JWTs, because there are existing claims from JWT claims registry and existing implementations depend on those",
           "createdAt": "2023-06-16T17:44:42Z",
           "updatedAt": "2023-06-16T17:44:42Z"
@@ -3289,7 +3289,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "As an example, iss and cnf are registered claim names for JWTs that are used to secure the VC. Existing RFCs are using those. Therefore it doesn't make sense to overwrite those by the w3c data model in my opinion",
           "createdAt": "2023-06-18T13:33:04Z",
           "updatedAt": "2023-06-18T13:33:04Z"
@@ -3379,7 +3379,7 @@
       "comments": [
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I don't think that this document is the right place for these things, as things should and are being described in the corresponding specification: https://github.com/vcstuff/draft-looker-jwt-cwt-status-list \r\nIf there a discussions on the claim names, this should happen over there",
           "createdAt": "2023-06-16T12:35:25Z",
           "updatedAt": "2023-06-16T12:35:25Z"
@@ -3428,7 +3428,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I started the very similar discussion here: https://github.com/vcstuff/draft-looker-oauth-jwt-cwt-status-list/issues/21\n@alenhorvat please take a look at the first draft of jwt status list",
           "createdAt": "2023-06-22T21:43:55Z",
           "updatedAt": "2023-06-22T21:43:55Z"
@@ -3615,7 +3615,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "My points towards the current approach solving everything with SD-JWT and keeping the tilde:\n- the specification is much cleaner\r\n- I expect implementations to be much cleaner\r\n- I don't see confusion with trailing tilde, because typ is not jwt but sd-jwt\r\n- most interop profiles will require SD support anyway",
           "createdAt": "2023-06-21T19:21:53Z",
           "updatedAt": "2023-06-21T19:21:53Z"
@@ -3841,7 +3841,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "We had a Session on this topic at IIW#37.\r\nI still support the ideas that Oliver, I and others described at RWOT#11 Holding Binding Paper.\r\n\r\nIn my opinion, the `cnf` claim is the form of binding for cryptogaphic keys.\r\nThe alternative binding mechanisms are either claim-based bindings or biometric (claim-based) binding.\r\nToday, there is no equivalent for these claim-based bindings in the SD-JWT-VC Data model and I would suggest something like `cbb` for claim-based bindings.\r\n\r\nLets take an example as a diploma. The trivial data model could look like:\r\n```json\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"date_of_birth\" : \"1970-01-01\"\r\n}\r\n```\r\n\r\nHowever, this does not communicate which claims are \"actually\" about the diploma and which ones the diploma issuer used to authenticate the subject and are intended for a relying party to validate user binding of the diploma. The fact that firstname, lastname and birthdate are used for \"binding\" the diploma is just common human knowledge but not explicitly communicated, the semantic meaning is missing.\r\n\r\nA simple approach therefore could be:\r\n```json\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"cbb\" : {\r\n    \"given_name\" : \"Erika\",\r\n    \"family_name\" : \"Mustermann\",\r\n    \"date_of_birth\" : \"1970-01-01\"\r\n  }\r\n}\r\n```\r\nOther approaches inside `cbb` are possible.\r\n\r\n`cbb` is not anything mandatory for the Relying Party and things might be different in various jurisdictions. One of the key questions is wehther these policy shall be inside vc or in metadata. I would prefer to have some guidance inside the VC.",
           "createdAt": "2023-10-18T08:56:12Z",
           "updatedAt": "2023-10-18T08:56:12Z"
@@ -3862,21 +3862,21 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "> I know we discussed this in our paper but can we summarize what we want to achieve @Sakurann @paulbastian. Is this about specifying how the RP wants to verify the holder authenticated the transaction?\r\n\r\nI would frame it as \"give the RP guidance on how to verify legitimate ownership of the credential\". RPs are free to do whatever, they may also ignore a `cnf`.\r\n\r\nMy main argument is that the key for keybinding could be in any random claim, but people chose to standardize what the issuer of a token intended to be used for verification. There is no difference to claim-based binding. Our intuition that name, surname, date of birth on a diploma shall be used for binding or totally arbitrary despite seeming \"common knowledge\".\r\n\r\nI believe many Issuers will want to use claim-based binding as this is a 1:1 match of what they have been doing with physical documents and it would mean little changes to their processes, so this is actually very important. Same for biometric binding, e.g. mdL portrait like.\r\n\r\nHow can we move this forward?",
           "createdAt": "2024-01-17T20:51:38Z",
           "updatedAt": "2024-01-17T20:51:38Z"
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Do we need a separate IETF Draft for biometric+claim-based bindings in JWT or shall this go in here?",
           "createdAt": "2024-01-17T20:52:49Z",
           "updatedAt": "2024-01-17T20:52:49Z"
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "A Draft was proposed at OAuth Security Workshop 2024, showing the examples above, advice was more in this direction:\r\n```json\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"date_of_birth\" : \"1970-01-01\",\r\n  \"cbb\" : [ \"given_name\", \"family_name\", \"date_of_birth\" ]\r\n}\r\n```\r\n\r\nDiscussion was around whether things should be in policies or metadata, a good argument for this approach/putting it into the JWT is that data available  to the Issuer for binding may not always be the same based on the quality of his user database.\r\n\r\nThe approach would work really well for countries like Estonia that have a unique national identifier in the PID.\r\n\r\n```json\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"some-memberstate.eu/credentials/schemas/pid/national_id\" : \"572047251836\",\r\n  \"cbb\" : [ \"some-memberstate.eu/credentials/schemas/pid/national_id\" ]\r\n}\r\n```\r\n",
           "createdAt": "2024-04-12T12:47:43Z",
           "updatedAt": "2024-04-16T17:05:14Z"
@@ -4161,7 +4161,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/159",
       "state": "CLOSED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
         "wg-01"
@@ -4344,7 +4344,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "we may add:\r\n- type of binding of the vc ,e.g. key-binding, claim-based-binding, none\r\n- vct could be either URL linking to the resource directly or an identifier that links to e.g. an (ISO) specification to get the credential metdata\r\n- IANA registry is probably not a good option\r\n- versioning of the metadata\r\n- protection against change e.g. put a hash of metadata in the vc\r\n\r\nIt might be worth to consider reducing the credential format specific Issuer metadata defined in OpenID4VCI and define that in a credential format specific credential metadata resource:\r\n\r\n```\r\n{\r\n    \"credential_issuer\": \"https://credential-issuer.example.com\",\r\n    \"authorization_servers\": [ \"https://server.example.com\" ],\r\n    \"credential_endpoint\": \"https://credential-issuer.example.com\",\r\n    \"batch_credential_endpoint\": \"https://credential-issuer.example.com/batch_credential\",\r\n    \"deferred_credential_endpoint\": \"https://credential-issuer.example.com/deferred_credential\",\r\n    \"display\": [\r\n        {\r\n            \"name\": \"Example University\",\r\n            \"locale\": \"en-US\"\r\n        },\r\n        {\r\n            \"name\": \"Example Universit\u00e9\",\r\n            \"locale\": \"fr-FR\"\r\n        }\r\n    ],\r\n    \"credentials_supported\": {\r\n        \"UniversityDegreeCredential-jwt-vc\": { //issuer-specific\r\n            \"format\": \"jwt_vc_json\",\r\n            ...\r\n        },\r\n       \"UniversityDegreeCredential-sd-jwt-vc\": { //issuer-specific\r\n            \"format\": \"sd-jwt+vc\",\r\n            \"vct\": \"https://link-to-a-resolvable-crednetial-metadata.com/UniversityDegreeCredentialSelectiveDisclosable\"\r\n        },\r\n        \"mDL\": { //issuer-specific\r\n            \"format\": \"mso_mdoc\",\r\n            \"uri\": \"org.iso.18013.5.1.mDL\"\r\n        }\r\n   }\r\n}\r\n```\r\n\r\nHowever, there will remain issuer-specific things e.g. cryptographic support that should stay in the Issuer Metadata. These would need to be defined in SD-JWT-VC.",
           "createdAt": "2023-11-08T12:57:50Z",
           "updatedAt": "2023-11-08T14:07:40Z"
@@ -4470,7 +4470,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "> FWIW, the following are the various permutations as intended by the current spec (as best I understand anyway).\n> \n> SD-JWT without disclosures and without KB JWT:\n> `<Issuer-signed JWT>~`\n> \n> SD-JWT without disclosures and with KB JWT: \n> `<Issuer-signed JWT>~<KB-JWT>`\n> \n> SD-JWT with disclosures and without KB JWT:\n> `<Issuer-signed JWT>~<Disclosure 1>~<Disclosure N>~`\n> \n> SD-JWT with disclosures and with KB JWT: \n> `<Issuer-signed JWT>~<Disclosure 1>~<Disclosure N>~<KB-JWT>`\n\nIt could be valuable to list these four basic categories in the specification",
           "createdAt": "2023-11-16T06:18:44Z",
           "updatedAt": "2023-11-16T06:18:44Z"
@@ -4597,7 +4597,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I think #1 is the cleanest approach, but may take more time for implementations, we will try to get some experience there. #3 also doesn't sound bad to me.",
           "createdAt": "2024-01-20T10:49:04Z",
           "updatedAt": "2024-01-20T10:49:04Z"
@@ -4611,7 +4611,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I would agree that removing the restriction is okay, as SD-JWT is an improvement of JWT and JWTs don't have this restriction.\n\nDo you think that ECDH-ES is an anti-pattern? It has been in JWA from the beginning and you could have the same arguments there?",
           "createdAt": "2024-01-21T16:33:12Z",
           "updatedAt": "2024-01-21T16:33:12Z"
@@ -4639,7 +4639,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I don't object removing the restriction, I checked RFC7519 and there is no similar statement.",
           "createdAt": "2024-01-22T12:26:40Z",
           "updatedAt": "2024-01-22T12:26:40Z"
@@ -4789,7 +4789,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I would propose to clarify this. From a quick reading this is not obviously optional and it does not match the other claims that only state REQUIRED/OPTIONAL without any conditions. As cryptographic binding is optional, I think this line should begin with \"OPTIONAL. [...]\"",
           "createdAt": "2024-01-17T20:43:59Z",
           "updatedAt": "2024-01-17T20:43:59Z"
@@ -4956,7 +4956,7 @@
       "comments": [
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I know that some people propose to use `kid` inside `cnf`.\n\nI think that it would be better to register a new sub claim `did` in the IANA confirmation registry to use DIDs.",
           "createdAt": "2024-02-06T16:08:46Z",
           "updatedAt": "2024-02-06T16:08:46Z"
@@ -5054,7 +5054,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I agree with Oliver. \n\nKid is described as application specific and having a dedicated cnf.did method gives it a more universal touch that may be beneficial for interoperability.",
           "createdAt": "2024-02-19T12:54:32Z",
           "updatedAt": "2024-02-19T12:54:32Z"
@@ -5089,7 +5089,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "> > > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> > > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n> > \r\n> > \r\n> > Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\r\n> \r\n> Yeah, since we can not reuse this approach from the spec since it has a defined response.\r\n> \r\n> ```\r\n> \"cnf\":{\r\n>   \"jku\": \"did:exmaple.com\",\r\n>   \"kid\": \"key123\"\r\n> }\r\n> ```\r\n> \r\n> Wouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard\r\n\r\n`jku` can not be used in my opinion.\r\n\r\nRFC7800 says:\r\n\r\n> This is done using the \"jku\" member.  Its  value is a URI [[RFC3986](https://www.rfc-editor.org/rfc/rfc3986)] that refers to a resource for a set of JSON-encoded public keys represented as a [JWK](https://www.rfc-editor.org/rfc/rfc7800.html#ref-JWK) Set [JWK], one of which is the proof-of-possession key.\r\n\r\nI do not think that this matches to (most) DID documents.",
           "createdAt": "2024-02-26T11:35:04Z",
           "updatedAt": "2024-02-26T11:35:04Z"
@@ -5103,7 +5103,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "> > > > > It depends how we define \"proof of possession key\" in context of a DID document, where multiple keys can be used to proof the identity. In case of natural persons when they prefer to use dids, it's more likely they use `did:key` or `did:jwk`. But since SD-JWT-VCs can also be issued to a legal person that can be using `did:web`, `did:ethr` it is able to register multiple keys.\r\n> > > > > Key rotation in this scenario are a good security feature because they allow me to update my crypto material without issuing me new credentials that are directly bound to it. On the other hand I am unable to insert security mechanism like hashlinks since I want to point not directly to one specific public key, but to one having specific rights.\r\n> > > > \r\n> > > > \r\n> > > > Yes, this makes sense. However, cnf.did might be more appropriate to encode this information.\r\n> > > \r\n> > > \r\n> > > Yeah, since we can not reuse this approach from the spec since it has a defined response.\r\n> > > ```\r\n> > > \"cnf\":{\r\n> > >   \"jku\": \"did:exmaple.com\",\r\n> > >   \"kid\": \"key123\"\r\n> > > }\r\n> > > ```\r\n> > > \r\n> > > \r\n> > >     \r\n> > >       \r\n> > >     \r\n> > > \r\n> > >       \r\n> > >     \r\n> > > \r\n> > >     \r\n> > >   \r\n> > > Wouldn't it be the best way to extend the RFC for CNF to include the did resolution as an option? Of course this is more work, but then we can reference to a standard\r\n> > \r\n> > \r\n> > `jku` can not be used in my opinion.\r\n> > RFC7800 says:\r\n> > > This is done using the \"jku\" member.  Its  value is a URI [[RFC3986](https://www.rfc-editor.org/rfc/rfc3986)] that refers to a resource for a set of JSON-encoded public keys represented as a [JWK](https://www.rfc-editor.org/rfc/rfc7800.html#ref-JWK) Set [JWK], one of which is the proof-of-possession key.\r\n> > \r\n> > \r\n> > I do not think that this matches to (most) DID documents.\r\n> \r\n> That's why I mentioned we need to update or extend the spec so it is compliant with the response of a did doc. We either extend the jku usage or define a new field like did.\r\n\r\nA standalone `kid` is also valid according to RFC7800 3.4, but for interoperability the best solution would be a new method `did`. But @bc-pi said, he thinks that this spec is not the right home for such an IANA registration.",
           "createdAt": "2024-02-26T12:13:54Z",
           "updatedAt": "2024-02-26T12:13:54Z"
@@ -5272,7 +5272,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212",
       "state": "OPEN",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
         "discuss"
@@ -5592,6 +5592,22 @@
           "updatedAt": "2024-04-12T07:59:16Z"
         }
       ]
+    },
+    {
+      "number": 227,
+      "id": "I_kwDOJbVClc6H9sWD",
+      "title": "Add reference to new status list ietf",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/227",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Old: https://datatracker.ietf.org/doc/html/draft-looker-oauth-jwt-cwt-status-list-01\r\n\r\nNew: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/",
+      "createdAt": "2024-05-06T15:04:36Z",
+      "updatedAt": "2024-05-06T15:04:49Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -8033,7 +8049,7 @@
             "abbreviatedOid": "2358f97"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-25T10:01:30Z",
@@ -8053,7 +8069,7 @@
             "abbreviatedOid": "2358f97"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-25T10:02:00Z",
@@ -8073,7 +8089,7 @@
             "abbreviatedOid": "2358f97"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-25T10:03:23Z",
@@ -8637,7 +8653,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/95",
       "state": "MERGED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "See #94 ",
@@ -8753,7 +8769,7 @@
             "abbreviatedOid": "2e1ea0b"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-05-25T20:14:49Z",
@@ -9189,7 +9205,7 @@
             "abbreviatedOid": "21ed8a0"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-16T10:12:57Z",
@@ -10804,7 +10820,7 @@
             "abbreviatedOid": "41a80cf"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-13T13:11:30Z",
@@ -10937,7 +10953,7 @@
             "abbreviatedOid": "264a080"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-16T11:41:02Z",
@@ -11142,7 +11158,7 @@
       "comments": [
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Would it be intresting to add a holder binding section that references to the options of\r\n- claim based binding with PII (name, birthday etc)\r\n- claim based binding with biometrics (porttrait)\r\n- key binding (referencing to this part here)\r\n?",
           "createdAt": "2023-06-16T11:38:31Z",
           "updatedAt": "2023-06-16T11:38:31Z"
@@ -11182,7 +11198,7 @@
             "abbreviatedOid": "b1f0b4a"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-16T11:36:03Z",
@@ -11258,7 +11274,7 @@
       "comments": [
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Generally, I really like this approach!\r\nSome examples could be useful for key binding with JWT (no disclosures)",
           "createdAt": "2023-06-16T11:42:35Z",
           "updatedAt": "2023-06-16T11:42:35Z"
@@ -11392,7 +11408,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T10:46:32Z",
@@ -11412,7 +11428,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T10:54:38Z",
@@ -11432,7 +11448,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T10:55:54Z",
@@ -11452,7 +11468,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T10:57:25Z",
@@ -11472,7 +11488,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T10:57:46Z",
@@ -11492,7 +11508,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T11:00:27Z",
@@ -11512,7 +11528,7 @@
             "abbreviatedOid": "2ac2b2f"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-16T11:01:55Z",
@@ -11865,7 +11881,7 @@
             "abbreviatedOid": "f3a04a7"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-18T10:33:22Z",
@@ -12198,7 +12214,7 @@
             "abbreviatedOid": "1582aec"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-20T19:54:25Z",
@@ -12270,7 +12286,7 @@
             "abbreviatedOid": "0ec7de6"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "I approve this approach over #120 as,\r\n- the specification is much cleaner\r\n- I expect implementations to be much cleaner\r\n- I don't see confusion with trailing tilde, because typ is not jwt but sd-jwt\r\n- most interop profiles will require SD support anyway",
           "createdAt": "2023-06-20T19:59:20Z",
@@ -12751,7 +12767,7 @@
             "abbreviatedOid": "b1f4d16"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-23T21:58:51Z",
@@ -13376,7 +13392,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/154",
       "state": "MERGED",
       "author": "paulbastian",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "<!-- If this pull request closes an issue, please mention the issue number below -->\r\nCloses #142 \r\n\r\n## \ud83d\udcd1 Description\r\nAdd reference to https://vcstuff.github.io/draft-looker-oauth-jwt-cwt-status-list/draft-looker-oauth-jwt-cwt-status-list.html\r\n\r\n## Preview Link\r\n\r\n<!-- Update the link below to provide reviewers with a convenient link to view a rendered version of the PR-->\r\n<!-- In general the link should be of the form https://github.com/<repo-name>/<branch-name>/<draft-name>.html-->\r\n\r\n[click here for rendered preview of PR](https://github.com/<repo-name>/<branch-name>/<draft-name>.html)",
@@ -14130,7 +14146,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Fyi: To my knowledge, the examples will be split into separate PRs and will undergo some changes",
           "createdAt": "2023-10-14T20:53:56Z",
           "updatedAt": "2023-10-14T20:53:56Z"
@@ -14144,7 +14160,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "In my opinion, examples with credentialSubject are deprecated",
           "createdAt": "2023-10-16T11:57:43Z",
           "updatedAt": "2023-10-16T11:57:43Z"
@@ -14185,7 +14201,7 @@
             "abbreviatedOid": "3f91c50"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "CHANGES_REQUESTED",
           "body": "",
           "createdAt": "2023-09-29T09:10:23Z",
@@ -14300,7 +14316,7 @@
             "abbreviatedOid": "aad6523"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-10-18T12:57:27Z",
@@ -14404,7 +14420,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Naming is hard. Regarding dct: isn't it obvious for an internet standard that we refer to digital credentials? ",
           "createdAt": "2023-10-22T18:25:58Z",
           "updatedAt": "2023-10-22T18:25:58Z"
@@ -16047,7 +16063,7 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "While I understand your points, I think some of them are not true.\n\nDIDs may be decentralized, may support key rotations and may have other features. There are enough examples of DID methods that do not have those properties. \n\nMaking DIDs mandatory would limit optionality. But also with DIDs the optionality in my view shifts just shifts a layer further down as there are many DID methods. Indeed allowing DIDs expands optionality by 200+ did methods, so this could indeed be a counterargument.\n\n\"Cnf\" isn't actually far away from DIDs, as the content can vary, there is a registry at IANA for supported methods, with different properties. In my view the cleanest approach for the keybinding would be to register a new cnf type \"did\" in this registry. But that's off topic in this PR.\n\nI'm fine to keep some optionality in the specification at the beginning and then see what is actually being used",
           "createdAt": "2023-11-27T17:44:31Z",
           "updatedAt": "2023-11-27T17:44:31Z"
@@ -16293,7 +16309,7 @@
             "abbreviatedOid": "64bd831"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-01-17T20:45:48Z",
@@ -16356,7 +16372,7 @@
             "abbreviatedOid": "f497b2a"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "As `iat` may be correlatable identifier, I'm in favor of making it optional",
           "createdAt": "2024-01-17T20:46:39Z",
@@ -16960,14 +16976,14 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "No, I just mean SD-JWT VCs can be key bound, but they don't need to be. Therefore it is an optional feature.",
           "createdAt": "2024-02-21T17:42:13Z",
           "updatedAt": "2024-02-21T17:42:13Z"
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "I see, the difference here is that if key binding shall be used, then cnf must be used while the other formulation leaves more space?",
           "createdAt": "2024-02-21T17:45:54Z",
           "updatedAt": "2024-02-21T17:45:54Z"
@@ -17002,14 +17018,14 @@
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "> > if key binding shall be used, then cnf must be used while the other formulation leaves more space?\n> \n> Sorry, I don't understand why more space is needed here? The less optionality in key binding, more interop. with the current PR, it would be ok to use a top level sub claim and put a DID there (instead of using cnf.kid). I think it is harmful for the interop, that SD-JWT VC is hoped to bring\n\nI see your point. The proposed text opens a door for key binding without using the cnf claim. However, the new text is more initiative and we could add this constraint as an additional sentence or in the section on key binding",
           "createdAt": "2024-02-23T16:52:27Z",
           "updatedAt": "2024-02-23T16:52:27Z"
         },
         {
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "body": "Okay, it is already present. Sorry I didn't recheck the changes. Lgtm then",
           "createdAt": "2024-02-23T18:10:17Z",
           "updatedAt": "2024-02-23T18:10:17Z"
@@ -17076,7 +17092,7 @@
             "abbreviatedOid": "ab32c85"
           },
           "author": "paulbastian",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "I like this version. CNF is more optional to me and having required as the first keyword seems less right",
           "createdAt": "2024-02-21T07:26:05Z",
@@ -17901,6 +17917,59 @@
           "body": "",
           "createdAt": "2024-04-05T13:13:20Z",
           "updatedAt": "2024-04-17T18:29:58Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 228,
+      "id": "PR_kwDOJbVClc5up17Z",
+      "title": "Update Reference to IETF OAuth Token Status List",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/228",
+      "state": "OPEN",
+      "author": "paulbastian",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-05-06T15:48:54Z",
+      "updatedAt": "2024-05-06T17:15:55Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "10bf0acab8094347d3826b4ab4138994454683dc",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "227-add-reference-to-new-status-list-ietf",
+      "headRefOid": "b7b55397644591b5e4c0b10ac27940bf9c1b7224",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc55q3aS",
+          "commit": {
+            "abbreviatedOid": "b7b5539"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-06T17:12:30Z",
+          "updatedAt": "2024-05-06T17:12:30Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc55q4wq",
+          "commit": {
+            "abbreviatedOid": "b7b5539"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-06T17:15:55Z",
+          "updatedAt": "2024-05-06T17:15:55Z",
           "comments": []
         }
       ]
