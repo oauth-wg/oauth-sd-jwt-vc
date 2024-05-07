@@ -246,7 +246,7 @@ information.
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
-Credential. See [@!I-D.looker-oauth-jwt-cwt-status-list]
+Credential. See [@!I-D.ietf-oauth-status-list]
  for more information.
 
 The following registered JWT claims MAY be contained in the SD-JWT or in the
@@ -1004,6 +1004,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -04
 
+* update reference to IETF Status List
 * Include Type Metadata
 * Editorial changes
 
