@@ -1352,7 +1352,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         </h3>
 <p id="section-1.1-1">In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
-Credentials are cryptographically secured statements about a Subject, typically the Holder. A Holder can present these statements to a Verifier in a repudiable or non-repudiable way.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
+Credentials are cryptographically secured statements about a Subject, typically the Holder.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <span id="name-issuer-holder-verifier-model"></span><figure id="figure-1">
           <div class="lang-ascii-art sourcecode" id="section-1.1-2.1">
 <pre>         +------------+
@@ -1441,7 +1441,7 @@ document are to be interpreted as described in RFC 2119 <span>[<a href="#RFC2119
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-1.4-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlCompact dlParallel" id="section-1.4-2">
           <dt id="section-1.4-2.1">Verifiable Credential (VC):</dt>
-          <dd style="margin-left: 1.5em" id="section-1.4-2.2">An assertion with claims about a Subject that is cryptographically secured by an Issuer, which a Verifier can authenticate in a repudiable or non-repudiable manner. Repudiable assertions can employ MAC-based securing mechanisms, provided that the Issuer of the assertion can be confirmed.<a href="#section-1.4-2.2" class="pilcrow">¶</a>
+          <dd style="margin-left: 1.5em" id="section-1.4-2.2">An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).<a href="#section-1.4-2.2" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.4-2.3">SD-JWT-based Verifiable Credential (SD-JWT VC):</dt>
@@ -1872,9 +1872,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C9U_R
-xo0C-OdXZpmS_0vn2eA1x0XLdKYvbeJeO1FytnMRDBvzzwi_5CtbLeWN5uduFw5_PQ4Z
-wnaQtdt34c0Kg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MUnsr
+tYDxOkxEERFowq1lpzpiTuiglNykzq65P2hLMoB73nYOfy7OSiAv32ye3zgUxYWyE_y7
+ofLrN7Sl12Acw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1986,16 +1986,16 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C9U_R
-xo0C-OdXZpmS_0vn2eA1x0XLdKYvbeJeO1FytnMRDBvzzwi_5CtbLeWN5uduFw5_PQ4Z
-wnaQtdt34c0Kg~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MUnsr
+tYDxOkxEERFowq1lpzpiTuiglNykzq65P2hLMoB73nYOfy7OSiAv32ye3zgUxYWyE_y7
+ofLrN7Sl12Acw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
 N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
 4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
 AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTUwO
-DI4NTQsICJzZF9oYXNoIjogIl9NbjJOTzdjQW1BQ3RmWkVTb2NwcjAyWjlYc3NOYk9sc
-Es1NkF2eExGOVkifQ.VC-_Z3Az1RcoX92ovS-5-09lkgz8AO1PxcLRN_wgOlwWM4-KR4
-COKcY8LGWnKFXRrOiRJcPhmwFzIKgPZhnKpA
+mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTUxM
+DYyODIsICJzZF9oYXNoIjogImNzR0xHTHRyVGhlc1NsdWk0eG1GdVBqRTg3NDREQXdYU
+FBhVkt6Z2pURFUifQ.FI_m1-12Ba5SxMMCjW8sVzZWbctGkkKs6eJbE3MokTzqEsvgun
+Mzz_vocGPDQ_V2_z2dgtO2jNHdF-a_1mFVuw
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2014,8 +2014,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.JLL8Wuxww-UPTEoKzH7TOX-p3QUwMWOh64bC6e7XI6izU4
-KD5OTrd_5jElYyNkdMZPZAdvqGr49y62YR-i1wNQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+hbGciOiAic2hhLTI1NiJ9.dkbI9n8uFFjRoY9Qi6mdWxXlJkneShEU7ULXuwmswPF1oa
+GHQ7fbJxyZOJtN0Q7mGwhW3QTcDrwktMKF4AF9uA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
 pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
 gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
 0cnkiOiAiVVMifV0~
@@ -2824,8 +2824,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.oJKS0Ate0YAaFSDqolRRc2I31E-jYyTEccn-3l139G9ot2O3JbuBqa
-pJLN-LGUxdNYYeqZJO3SGP5leo_dooPA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.eY8uBnFhVIr5c6h85JRj9LZ8wUZiGSyW4d8wtZtdy5cz6nU8AvT60l
+_ZsjXJJ-dZP997p-DzwbKhxU3xlfGijg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3180,14 +3180,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.oJKS0Ate0YAaFSDqolRRc2I31E-jYyTEccn-3l139G9ot2O3JbuBqa
-pJLN-LGUxdNYYeqZJO3SGP5leo_dooPA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.eY8uBnFhVIr5c6h85JRj9LZ8wUZiGSyW4d8wtZtdy5cz6nU8AvT60l
+_ZsjXJJ-dZP997p-DzwbKhxU3xlfGijg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3MTUwODI4NTQsICJzZF9oYXNoIjogIlU2UktfMmJ3Vjdad
-2UwNEtPUURhcXVEX0dVVDFnV0FDUDJhVzNxT1VOOWMifQ.0pRgMRDJIo8kSpXxSscp0G
-GYRlne5jGkvUVM7AYb0ZDkZiOmGwPsUgjIaiMPbSPUiRBp6X77xYR1u0Dh_L1law
+mlmaWVyIiwgImlhdCI6IDE3MTUxMDYyODIsICJzZF9oYXNoIjogIkRQSHpFLXhkVmtVb
+XRrWUx3RVI1Z1BXOUJ6Y3NXV2p5Yno0MG5OQzFOM1kifQ.4Ij3BW-aVSSuNsRJbYRtfu
+InaZEDud-AzeIcHooiSQTSjoRWVmKwA0I4dRsqAOrCu90uGzbHpPoKLhmYYTFa-g
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3196,8 +3196,8 @@ GYRlne5jGkvUVM7AYb0ZDkZiOmGwPsUgjIaiMPbSPUiRBp6X77xYR1u0Dh_L1law
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1715082854,
-  "sd_hash": "U6RK_2bwV7Zwe04KOQDaquD_GUT1gWACP2aW3qOUN9c"
+  "iat": 1715106282,
+  "sd_hash": "DPHzE-xdVkUmtkYLwER5gPW9BzcsWWjybz40nNC1N3Y"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
@@ -3265,7 +3265,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 </li>
         <li class="compact" id="appendix-D-2.3">Editorial changes<a href="#appendix-D-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.4">Updated terminology and other sections to clarify VCs and presentations can be repudiable or non-repudiable<a href="#appendix-D-2.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.4">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-D-2.4" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-03<a href="#appendix-D-3" class="pilcrow">¶</a></p>
