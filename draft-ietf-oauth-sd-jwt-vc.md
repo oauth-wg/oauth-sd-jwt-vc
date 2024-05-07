@@ -131,7 +131,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding",
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
-:  An assertion with claims about a Subject that is cryptographically secured by an Issuer, which a Verifier can verify in a repudiable or non-repudiable way.
+:  An assertion with claims about a Subject that is cryptographically secured by an Issuer, which a Verifier can authenticate in a repudiable or non-repudiable manner. Repudiable assertions can employ MAC-based securing mechanisms, ensuring that the Issuer of the assertion can be confirmed.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the format defined in
@@ -1006,7 +1006,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * update reference to IETF Status List
 * Include Type Metadata
 * Editorial changes
-* Clarify MAC algorithm support for certain cases
+* Updated terminology and other sections to clarify VCs and presentations can be repudiable or non-repudiable
 
 -03
 
