@@ -51,7 +51,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 
 In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
-Credentials are cryptographically secured statements about a Subject, typically the Holder. A Subject can present these statements to a Verifier in a repudiable or non-repudiable way.
+Credentials are cryptographically secured statements about a Subject, typically the Holder. A Holder can present these statements to a Verifier in a repudiable or non-repudiable way.
 
 ~~~ ascii-art
          +------------+
@@ -131,7 +131,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding",
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
-:  An assertion with claims about a Subject that is cryptographically secured by an Issuer, which a Verifier can authenticate in a repudiable or non-repudiable manner. Repudiable assertions can employ MAC-based securing mechanisms, ensuring that the Issuer of the assertion can be confirmed.
+:  An assertion with claims about a Subject that is cryptographically secured by an Issuer, which a Verifier can authenticate in a repudiable or non-repudiable manner. Repudiable assertions can employ MAC-based securing mechanisms, provided that the Issuer of the assertion can be confirmed.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the format defined in
