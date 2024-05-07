@@ -131,7 +131,7 @@ Table of Contents
    called Verifiable Credentials to a Holder, who can then present the
    Verifiable Credentials to Verifiers.  Verifiable Credentials are
    cryptographically secured statements about a Subject, typically the
-   Holder.  A Subject can present these statements to a Verifier in a
+   Holder.  A Holder can present these statements to a Verifier in a
    repudiable or non-repudiable way.
 
             +------------+
@@ -222,7 +222,7 @@ Table of Contents
       that is cryptographically secured by an Issuer, which a Verifier
       can authenticate in a repudiable or non-repudiable manner.
       Repudiable assertions can employ MAC-based securing mechanisms,
-      ensuring that the Issuer of the assertion can be confirmed.
+      provided that the Issuer of the assertion can be confirmed.
    SD-JWT-based Verifiable Credential (SD-JWT VC):  A Verifiable
       Credential encoded using the format defined in
       [I-D.ietf-oauth-selective-disclosure-jwt].  It may or may not
@@ -536,9 +536,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HzYH1
-   Bv_iuKrBAHRrHFcId3NqeNJoz-EFhmTWGkaNONzP1iybCg8iugl9YKFIcw5xhETcTldI
-   rqmuTXdyaeOkA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C9U_R
+   xo0C-OdXZpmS_0vn2eA1x0XLdKYvbeJeO1FytnMRDBvzzwi_5CtbLeWN5uduFw5_PQ4Z
+   wnaQtdt34c0Kg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -652,16 +652,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HzYH1
-   Bv_iuKrBAHRrHFcId3NqeNJoz-EFhmTWGkaNONzP1iybCg8iugl9YKFIcw5xhETcTldI
-   rqmuTXdyaeOkA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C9U_R
+   xo0C-OdXZpmS_0vn2eA1x0XLdKYvbeJeO1FytnMRDBvzzwi_5CtbLeWN5uduFw5_PQ4Z
+   wnaQtdt34c0Kg~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTUwN
-   zQ0OTIsICJzZF9oYXNoIjogIjN5UVVWVktTdTJNT1FNY285aFNrQjhTU1hUTnlzQ0hoL
-   U9zaUZXX0xqR0UifQ.VKUsovgoVSiKXAdr9IvnCwkgtORNk2FIukhtOPVCD1thvcsEWd
-   WA_yFK-lasrZmYUMOcx2Bo_BJiiqLEWAVG9Q
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTUwO
+   DI4NTQsICJzZF9oYXNoIjogIl9NbjJOTzdjQW1BQ3RmWkVTb2NwcjAyWjlYc3NOYk9sc
+   Es1NkF2eExGOVkifQ.VC-_Z3Az1RcoX92ovS-5-09lkgz8AO1PxcLRN_wgOlwWM4-KR4
+   COKcY8LGWnKFXRrOiRJcPhmwFzIKgPZhnKpA
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -678,8 +678,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.e9qMh7ShlCxJNeEw8-Vf-oQqLiGBDC5WJ4WD1AGTitsDni
-   ECT-MijCFEpqMOeBNhwjYpfeoAkL6EDTq9rgkkIg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.JLL8Wuxww-UPTEoKzH7TOX-p3QUwMWOh64bC6e7XI6izU4
+   KD5OTrd_5jElYyNkdMZPZAdvqGr49y62YR-i1wNQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1344,8 +1344,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.jnUWbNBZ44h5nmS5xqapV7N3oS9sayMLAn0ogCkoXgNsBNp8d939g2
-   MALq1vITEVUqXsp1saWvF9FWLHj8TQ8Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.oJKS0Ate0YAaFSDqolRRc2I31E-jYyTEccn-3l139G9ot2O3JbuBqa
+   pJLN-LGUxdNYYeqZJO3SGP5leo_dooPA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1616,22 +1616,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.jnUWbNBZ44h5nmS5xqapV7N3oS9sayMLAn0ogCkoXgNsBNp8d939g2
-   MALq1vITEVUqXsp1saWvF9FWLHj8TQ8Q~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.oJKS0Ate0YAaFSDqolRRc2I31E-jYyTEccn-3l139G9ot2O3JbuBqa
+   pJLN-LGUxdNYYeqZJO3SGP5leo_dooPA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MTUwNzQ0OTIsICJzZF9oYXNoIjogImg3MVV0bG82cjUzT
-   lNzeGxtNWVVTTZ4YlFZbkhvWFJCcGw5UEpSZTY2eWsifQ.yl3GEzG_yNaij58KMvlEES
-   7CnDT4EAxrWnupGd7xrN2jTjmGyPqkKzKi_GY5Bq1iK0giA1JsRLW6n6xVgzjD9Q
+   mlmaWVyIiwgImlhdCI6IDE3MTUwODI4NTQsICJzZF9oYXNoIjogIlU2UktfMmJ3Vjdad
+   2UwNEtPUURhcXVEX0dVVDFnV0FDUDJhVzNxT1VOOWMifQ.0pRgMRDJIo8kSpXxSscp0G
+   GYRlne5jGkvUVM7AYb0ZDkZiOmGwPsUgjIaiMPbSPUiRBp6X77xYR1u0Dh_L1law
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1715074492,
-     "sd_hash": "h71Utlo6r53NSsxlm5eUM6xbQYnHoXRBpl9PJRe66yk"
+     "iat": 1715082854,
+     "sd_hash": "U6RK_2bwV7Zwe04KOQDaquD_GUT1gWACP2aW3qOUN9c"
    }
 
    After the validation, the Verifier will have the following data for
