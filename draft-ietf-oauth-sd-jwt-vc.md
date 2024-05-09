@@ -51,7 +51,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 
 In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
-Credentials are cryptographically signed statements about a Subject, typically the Holder.
+Credentials are cryptographically secured statements about a Subject, typically the Holder.
 
 ~~~ ascii-art
          +------------+
@@ -131,7 +131,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding",
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Verifiable Credential (VC):
-:  An Issuer-signed assertion with claims about a Subject.
+:  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the format defined in
@@ -240,7 +240,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be signed by the key identified in this claim.
+    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.
 * `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
@@ -306,7 +306,7 @@ If Key Binding is required (refer to the security considerations in Section 11.6
 according to Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
-Furthermore, the recipient of the SD-JWT VC MUST validate that the public verification key
+Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
 for the Issuer-signed JWT as defined in (#issuer-signed-jwt-verification-key-validation).
 
 If there are no selectively disclosable claims, there is no need to process the
@@ -336,8 +336,7 @@ certificate chain in the following cases:
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
-If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT,
-the SD-JWT VC MUST be rejected.
+If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
 
 # Presenting Verifiable Credentials
 
@@ -1007,6 +1006,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * update reference to IETF Status List
 * Include Type Metadata
 * Editorial changes
+* Updated terminology to clarify digital signatures are one way to secure VCs and presentations
 
 -03
 
