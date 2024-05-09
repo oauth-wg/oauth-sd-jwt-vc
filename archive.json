@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-07T00:23:06.462457+00:00",
+  "timestamp": "2024-05-09T00:23:07.037421+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -97,6 +97,11 @@
       "name": "metadata",
       "description": "",
       "color": "02C876"
+    },
+    {
+      "name": "PRIO",
+      "description": "",
+      "color": "35FD30"
     }
   ],
   "issues": [
@@ -4574,11 +4579,11 @@
         "awoie"
       ],
       "labels": [
-        "NEEDS PR"
+        "HAS PR"
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2024-03-12T14:03:04Z",
+      "updatedAt": "2024-05-07T09:40:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -5199,7 +5204,7 @@
       ],
       "body": "I've been getting increasing amounts of questions about delegation / chaining with sd-jwts (and mdoc). Especially delegation seems to be a topic that people are starting to wonder about with cases like a person acting on behalf of another person in certain scopes (e.g., tax consultant accessing a system on your behalf). \r\n\r\nMy naive thought was that this could be done similarly to how the x5c header parameter currently works: Introduce a new header parameter that contains an sd-jwt (including key binding jwt and relevant disclosures) where the chained sd-jwt is used to establish trust (via the original issuer) and resolve the key (confirmation claim) for signature validation. For implementations, this should not add too much effort as it would just be a recursive call to verify the contained sd-jwt vc.\r\n\r\nI am not entirely sure it makes sense to bring in the additional complexity (and privacy concerns) but on the other hand I do see benefit in supporting some kind of credential chaining / delegation mechanism within the credential format itself. Do you think that this is something worth discussing and would this be the right spec to do so?",
       "createdAt": "2024-02-10T14:03:24Z",
-      "updatedAt": "2024-04-30T18:01:10Z",
+      "updatedAt": "2024-05-08T13:12:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -5222,6 +5227,20 @@
           "body": "I would concur that this is beyond the scope of this spec.",
           "createdAt": "2024-04-30T18:01:09Z",
           "updatedAt": "2024-04-30T18:01:09Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "I generally agree (which is also why I was unsure if I should raise this issue here), but that poses the question: Where would we propose a structure for this? Imho it would make sense to propose a general approach that is shared at least to some degree between different credential types.",
+          "createdAt": "2024-05-07T14:26:45Z",
+          "updatedAt": "2024-05-07T14:26:45Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@c2bo a brand new draft should born explaining a \"shared credential\", where the holder of this shared credential presents the enveloped credential(s) is a brand new type of credential specifically born for this use case\r\n\r\nI share to you my Car key credential (shortlived), you present this to my Car and drive it untill the credential is valid (unexpired/revoked).\r\n\r\nthis - definitively - exalts concepts of sharing vs. presentation and also delegated presentation.",
+          "createdAt": "2024-05-08T13:12:52Z",
+          "updatedAt": "2024-05-08T13:12:52Z"
         }
       ]
     },
@@ -5416,11 +5435,12 @@
       "labels": [
         "NEEDS PR",
         "wg-04",
-        "metadata"
+        "metadata",
+        "PRIO"
       ],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2024-04-30T17:24:29Z",
+      "updatedAt": "2024-05-07T18:27:11Z",
       "closedAt": null,
       "comments": [
         {
@@ -5461,11 +5481,12 @@
       "assignees": [],
       "labels": [
         "discuss",
-        "metadata"
+        "metadata",
+        "PRIO"
       ],
       "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
       "createdAt": "2024-04-02T09:51:21Z",
-      "updatedAt": "2024-04-30T17:25:11Z",
+      "updatedAt": "2024-05-07T18:27:12Z",
       "closedAt": null,
       "comments": [
         {
@@ -5487,11 +5508,12 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "metadata"
+        "metadata",
+        "PRIO"
       ],
       "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
       "createdAt": "2024-04-02T18:07:46Z",
-      "updatedAt": "2024-04-12T07:58:17Z",
+      "updatedAt": "2024-05-07T18:27:12Z",
       "closedAt": null,
       "comments": [
         {
@@ -5598,14 +5620,34 @@
       "id": "I_kwDOJbVClc6H9sWD",
       "title": "Add reference to new status list ietf",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/227",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "cre8",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Old: https://datatracker.ietf.org/doc/html/draft-looker-oauth-jwt-cwt-status-list-01\r\n\r\nNew: https://datatracker.ietf.org/doc/draft-ietf-oauth-status-list/",
       "createdAt": "2024-05-06T15:04:36Z",
-      "updatedAt": "2024-05-06T15:04:49Z",
+      "updatedAt": "2024-05-07T08:47:31Z",
+      "closedAt": "2024-05-07T08:47:31Z",
+      "comments": []
+    },
+    {
+      "number": 229,
+      "id": "I_kwDOJbVClc6IDqZ1",
+      "title": "Schema for type metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "wg-04",
+        "metadata",
+        "PRIO"
+      ],
+      "body": "Define how schemas can be included in type metadata.\r\n\r\nRequirement is that it should allow JSON schema.",
+      "createdAt": "2024-05-07T08:48:40Z",
+      "updatedAt": "2024-05-07T18:27:13Z",
       "closedAt": null,
       "comments": []
     }
@@ -17926,25 +17968,35 @@
       "id": "PR_kwDOJbVClc5up17Z",
       "title": "Update Reference to IETF OAuth Token Status List",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/228",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "paulbastian",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-05-06T15:48:54Z",
-      "updatedAt": "2024-05-06T17:15:55Z",
+      "updatedAt": "2024-05-07T08:47:31Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "10bf0acab8094347d3826b4ab4138994454683dc",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "227-add-reference-to-new-status-list-ietf",
       "headRefOid": "b7b55397644591b5e4c0b10ac27940bf9c1b7224",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2024-05-07T08:47:31Z",
+      "mergedAt": "2024-05-07T08:47:30Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "fd8288b5c8c5142a6ef21546eb042bca34c743ee"
+      },
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Two approvals and this is a minor update. Will merge now.",
+          "createdAt": "2024-05-07T08:47:28Z",
+          "updatedAt": "2024-05-07T08:47:28Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc55q3aS",
@@ -17970,6 +18022,172 @@
           "body": "",
           "createdAt": "2024-05-06T17:15:55Z",
           "updatedAt": "2024-05-06T17:15:55Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 230,
+      "id": "PR_kwDOJbVClc5uvHQg",
+      "title": "Clarify that MAC is supported for VCs and presentations",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/230",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "- Updated terminology and other sections to clarify VCs and presentations can be repudiable or non-repudiable\r\n- Minor typo fixed\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-191-mac-language/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes #191 ",
+      "createdAt": "2024-05-07T09:36:03Z",
+      "updatedAt": "2024-05-08T16:13:45Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "fd8288b5c8c5142a6ef21546eb042bca34c743ee",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-191-mac-language",
+      "headRefOid": "2bf19ed8a641373923ca63d0c585245b000d57e7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc55xoFS",
+          "commit": {
+            "abbreviatedOid": "7626bf4"
+          },
+          "author": "paulbastian",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-07T12:30:47Z",
+          "updatedAt": "2024-05-07T12:30:47Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc550hh9",
+          "commit": {
+            "abbreviatedOid": "7626bf4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-07T17:43:15Z",
+          "updatedAt": "2024-05-07T17:43:15Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I'm not sure if we can just drop those words here and expect people to understand what this means.",
+              "createdAt": "2024-05-07T17:43:15Z",
+              "updatedAt": "2024-05-07T17:43:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc550iA2",
+          "commit": {
+            "abbreviatedOid": "7626bf4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-07T17:44:25Z",
+          "updatedAt": "2024-05-07T17:44:25Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "As above, I'm not sure the first sentence works without further explanation.",
+              "createdAt": "2024-05-07T17:44:25Z",
+              "updatedAt": "2024-05-07T17:44:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc550yFc",
+          "commit": {
+            "abbreviatedOid": "7626bf4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-07T18:22:38Z",
+          "updatedAt": "2024-05-07T18:22:39Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n:  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).\r\n```",
+              "createdAt": "2024-05-07T18:22:38Z",
+              "updatedAt": "2024-05-07T18:22:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc550yLZ",
+          "commit": {
+            "abbreviatedOid": "7626bf4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-07T18:22:53Z",
+          "updatedAt": "2024-05-07T18:22:53Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nCredentials are cryptographically secured statements about a Subject, typically the Holder.\r\n```",
+              "createdAt": "2024-05-07T18:22:53Z",
+              "updatedAt": "2024-05-07T18:22:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc550ykP",
+          "commit": {
+            "abbreviatedOid": "7626bf4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-07T18:23:47Z",
+          "updatedAt": "2024-05-07T18:23:48Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "```suggestion\r\n* Updated terminology to clarify digital signatures are one way to secure VCs and presentations\r\n```",
+              "createdAt": "2024-05-07T18:23:47Z",
+              "updatedAt": "2024-05-07T18:23:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc5500Aw",
+          "commit": {
+            "abbreviatedOid": "2bf19ed"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-07T18:27:14Z",
+          "updatedAt": "2024-05-07T18:27:14Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc559PnO",
+          "commit": {
+            "abbreviatedOid": "2bf19ed"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-05-08T16:13:45Z",
+          "updatedAt": "2024-05-08T16:13:45Z",
           "comments": []
         }
       ]
