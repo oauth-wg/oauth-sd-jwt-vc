@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-09T00:23:07.037421+00:00",
+  "timestamp": "2024-05-12T00:25:43.295709+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4572,7 +4572,7 @@
       "id": "I_kwDOJbVClc53_UVb",
       "title": "Double check the spec that MAC is not prohibited",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/191",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -4583,8 +4583,8 @@
       ],
       "body": "The specification currently uses terms like public key validation and potentially other things when it comes to the verification of the KB-JWT. We should make sure there is no language that would prohibit the use of MAC authentication for KB-JWT and Issuer-signed JWT.",
       "createdAt": "2023-11-27T20:58:31Z",
-      "updatedAt": "2024-05-07T09:40:51Z",
-      "closedAt": null,
+      "updatedAt": "2024-05-09T15:48:34Z",
+      "closedAt": "2024-05-09T15:48:34Z",
       "comments": [
         {
           "author": "awoie",
@@ -18031,25 +18031,35 @@
       "id": "PR_kwDOJbVClc5uvHQg",
       "title": "Clarify that MAC is supported for VCs and presentations",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/230",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "- Updated terminology and other sections to clarify VCs and presentations can be repudiable or non-repudiable\r\n- Minor typo fixed\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-191-mac-language/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes #191 ",
       "createdAt": "2024-05-07T09:36:03Z",
-      "updatedAt": "2024-05-08T16:13:45Z",
+      "updatedAt": "2024-05-09T15:48:33Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "fd8288b5c8c5142a6ef21546eb042bca34c743ee",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-191-mac-language",
       "headRefOid": "2bf19ed8a641373923ca63d0c585245b000d57e7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2024-05-09T15:48:33Z",
+      "mergedAt": "2024-05-09T15:48:33Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "baa28104c0cc62b202a52505819054510b7c4618"
+      },
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "3 approvals, merging",
+          "createdAt": "2024-05-09T15:47:07Z",
+          "updatedAt": "2024-05-09T15:47:07Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc55xoFS",
