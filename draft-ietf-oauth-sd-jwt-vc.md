@@ -625,7 +625,7 @@ The `schema` or `schema_uri` property of the extending type MUST be evaluated fo
 Afterwards, or if there is no such property, the `schema` or `schema_uri` property of the extended type MUST evaluated.
 This means that all schemas in the chain of extended types MUST be evaluated for a particular Verifiable Credential.
 
-## Schema Metadata {#schema-type-metadata}
+## Schema Type Metadata {#schema-type-metadata}
 
 If a `schema` or `schema_uri` property is present, a Consumer that intends to validate the Verifiable Credential
 (in particular, Verifiers) MUST validate the Verifiable Credential against the provided JSON Schema document.
