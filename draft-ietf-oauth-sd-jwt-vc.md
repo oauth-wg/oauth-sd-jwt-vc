@@ -544,7 +544,7 @@ defined:
 * `schema`
   * OPTIONAL. An embedded JSON Schema document describing the structure of
   the Verifiable Credential as described in (#schema-type-metadata). `schema` MUST NOT be used
-  if `schema_url` is present.
+  if `schema_uri` is present.
 * `schema_uri`
   * OPTIONAL. A URL pointing to a JSON Schema document describing the structure
   of the Verifiable Credential as described in (#schema-type-metadata). `schema_uri` MUST NOT
