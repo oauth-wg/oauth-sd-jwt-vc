@@ -51,7 +51,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 
 In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
 Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
-Credentials are cryptographically secured statements about a Subject, typically the Holder.
+Credentials are cryptographically secured statements about a Subject, typically the Holder. A Holder can present these statements to a Verifier in a repudiable or non-repudiable way.
 
 ~~~ ascii-art
          +------------+
@@ -134,7 +134,7 @@ Consumer:
 : Applications using this specification are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
 
 Verifiable Credential (VC):
-:  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
+:  An assertion with claims about a Subject that is cryptographically secured by an Issuer, which a Verifier can authenticate in a repudiable or non-repudiable manner. Repudiable assertions can employ MAC-based securing mechanisms, provided that the Issuer of the assertion can be confirmed.
 
 SD-JWT-based Verifiable Credential (SD-JWT VC):
 : A Verifiable Credential encoded using the format defined in
@@ -481,7 +481,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining which claims MAY or MUST appear in the SD-JWT VC.
+A SD-JWT VC type, i.e., the `vct` value, is associated with metadata defining, for example, information about the type or a schema defining which claims MAY or MUST appear in the SD-JWT VC.
 
 This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
@@ -495,11 +495,11 @@ This section defines Type Metadata that can be associated with a type of a SD-JW
    whether a credential contains all required claims and whether the claims
    are selectively disclosable.
 
-Type Metadata can be retrieved as described in (#retrieving-type-metadata).
-
 ## Type Metadata Example {#type-metadata-example}
 
 All examples in this section are non-normative.
+
+Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
 ```json
 {
@@ -523,8 +523,7 @@ The following is an example for a Type Metadata document:
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
   "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
   "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
-}
+  "schema_uri#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"}
 ```
 
 ## Type Metadata Format {#type-metadata-format}
@@ -567,7 +566,7 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 
 ### From a Registry {#retrieval-from-registry}
 
-A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT VC type,
+A Consumer MAY use a registry to retrieve Type Metadata for a type,
 e.g., if the type is not a HTTPS URL or if the Consumer does not have
 access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
 
@@ -582,7 +581,7 @@ retrieve Type Metadata based on a URN in the `vct` claim.
 
 ### From a Local Cache {#retrieval-from-local-cache}
 
-A Consumer MAY cache Type Metadata for a SD-JWT VC type. If a hash for integrity
+A Consumer MAY cache Type metadata for a type. If a hash for integrity
 protection is present in the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
 indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
 header of the HTTP response to determine how long the metadata can be cached.
@@ -612,7 +611,7 @@ array instead of retrieving the respective Type Metadata elsewhere as follows:
 
 ## Extending Type Metadata {#extending-type-metadata}
 
-A SD-JWT VC type can extend another type. The extended type is identified by the URI in
+A type can extend another type. The extended type is identified by the URI in
 the `extends` property. Consumers MUST retrieve and process
 Type Metadata for the extended type before processing the Type Metadata for the extending
 type.
@@ -633,9 +632,11 @@ If a `schema` or `schema_uri` property is present, a Consumer that intends to va
 TBD: provide details about the base JSON document the JSON Schema document MUST be validated against.
 
 TBD: Full JSON Schema example
+
 # Document Integrity {#document-integrity}
 
-Both the `vct` claim in the SD-JWT VC and various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
+Both the `vct` claim in the SD-JWT VC and various URIs in the Type Metadata
+MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
 
  * `vct` as defined in (#claims),
  * `extends` as defined in (#extending-type-metadata)
@@ -1027,8 +1028,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * update reference to IETF Status List
 * Include Type Metadata
 * Editorial changes
-* Updated terminology to clarify digital signatures are one way to secure VCs and presentations
-* Include schema Type Metadata
+* Updated terminology and other sections to clarify VCs and presentations can be repudiable or non-repudiable
 
 -03
 
