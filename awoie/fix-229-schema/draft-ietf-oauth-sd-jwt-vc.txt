@@ -96,7 +96,7 @@ Table of Contents
        6.3.4.  From a Local Cache
        6.3.5.  From Type Metadata Glue Documents
      6.4.  Extending Type Metadata
-     6.5.  Schema Metadata
+     6.5.  Schema Type Metadata
    7.  Document Integrity
    8.  Security Considerations
      8.1.  Server-Side Request Forgery
@@ -536,9 +536,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.TL0IO
-   fWr-M5tGg3XMR42Q99XXoDOYOU3k2Vg_oKlcTev4X9ZXAG7oV8vkyCqcLV0NBJkm5QuQ
-   XBaYRj2IJCBtw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E0uFN
+   T5jE9GeodXNXpisebf2pd-4_EIsAU7ScM7eHsKMFDB-XEmeiKRcTgi0x6Ae4yMcoeXPl
+   74O9g7dVX29iQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -652,16 +652,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.TL0IO
-   fWr-M5tGg3XMR42Q99XXoDOYOU3k2Vg_oKlcTev4X9ZXAG7oV8vkyCqcLV0NBJkm5QuQ
-   XBaYRj2IJCBtw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E0uFN
+   T5jE9GeodXNXpisebf2pd-4_EIsAU7ScM7eHsKMFDB-XEmeiKRcTgi0x6Ae4yMcoeXPl
+   74O9g7dVX29iQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTU3M
-   DU5MjgsICJzZF9oYXNoIjogIlpCSU1fRUd6YUVhTFU3dUQzTTdlSl90clhETXp4ai1ld
-   jlOeV9GWE84WW8ifQ.6Yx82wxOl8UbPzL3y2YOrPIFBOz8GumH3nfZXZlLDuIwjWM1PH
-   W8_YrGpnpMRiJWA2NuUur7VkS5tNnTNMWTOA
+   DU5NzAsICJzZF9oYXNoIjogImI0bnNyQUxNb0FDWU5UNTJwNVVIYjZRVnNCanZPRG1nN
+   TlJUnpqSmNDS1kifQ.ehPqJleqkrc_tSb7lRT8qRuh-PH2AWS6Bk9jbDYewTytjiBJ2d
+   ehcPf2ahJ2YlvEY0bHBdeyEwuTyWd35XcBLQ
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -678,8 +678,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.z7p258rMiaDTbbBOMBqD4n9B5cyhpO7p2ceZJFuKeef6Hm
-   8SYzwrDMJjQbpB2pjcSyirgBpXYY1cCKGI50v6zw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.GZeTUiQ1XUumJLouP619v6P_4nokTPv8w70nqXLvvRvIxD
+   wyteVL8PIVqVXKq0CPluih4xRPTIf_fgb3tHJiqA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -958,7 +958,7 @@ Table of Contents
    chain of extended types MUST be evaluated for a particular Verifiable
    Credential.
 
-6.5.  Schema Metadata
+6.5.  Schema Type Metadata
 
    If a schema or schema_uri property is present, a Consumer that
    intends to validate the Verifiable Credential (in particular,
@@ -1368,8 +1368,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.EkIMiFAOZ2qGTRCIYhErSB7NHYqrpE3lx2Z6sC8UVKwukXfliYi7xX
-   -76VhJMpdo7FhEuWwH_Lum_OW0nCdK8Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.1jL0pWDi4zREOmpjoP701nRVHEFediu1xWALXIGRO645Z_DC5r3GFx
+   AXJCbtaUX78jawrmJQ65VrYI9djvcCYQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1640,22 +1640,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.EkIMiFAOZ2qGTRCIYhErSB7NHYqrpE3lx2Z6sC8UVKwukXfliYi7xX
-   -76VhJMpdo7FhEuWwH_Lum_OW0nCdK8Q~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.1jL0pWDi4zREOmpjoP701nRVHEFediu1xWALXIGRO645Z_DC5r3GFx
+   AXJCbtaUX78jawrmJQ65VrYI9djvcCYQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MTU3MDU5MjgsICJzZF9oYXNoIjogIkdnUHZhcFI2SGV4L
-   WtuMXhOS1k3Z0lvalI0N19COG43bXc3UkVtSUJlcmsifQ.PHp1Xfn7FvLlz6PH_rRJr-
-   D9I-3GG7hdTyzMnpt4evtZ1nP3msemHa2Vd1Jh97gX0bsXDWGWEtbjyiyZnhLPVw
+   mlmaWVyIiwgImlhdCI6IDE3MTU3MDU5NzAsICJzZF9oYXNoIjogIkVZc3pvUGVEc0VIT
+   0lEVl90SGJ3d0JXWFE5U0VlSnc3WGFobzd3dmpoUjgifQ.-VgZjV0wJgT_Fk3vTkN1wS
+   AbGisc2ZYCIHnLjhxd1w14NPLEClDABI7xLrdCj0_xEeMVltloALNdNif2vyz5PA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1715705928,
-     "sd_hash": "GgPvapR6Hex-kn1xNKY7gIojR47_B8n7mw7REmIBerk"
+     "iat": 1715705970,
+     "sd_hash": "EYszoPeDsEHOIDV_tHbwwBWXQ9SEeJw7Xaho7wvjhR8"
    }
 
    After the validation, the Verifier will have the following data for
