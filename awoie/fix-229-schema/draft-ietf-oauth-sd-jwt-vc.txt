@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 15 November 2024                                  Authlete Inc.
+Expires: 16 November 2024                                  Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                             14 May 2024
+                                                             15 May 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 November 2024.
+   This Internet-Draft will expire on 16 November 2024.
 
 Copyright Notice
 
@@ -218,8 +218,9 @@ Table of Contents
    "Key Binding", and "Key Binding JWT" defined by
    [I-D.ietf-oauth-selective-disclosure-jwt].
 
-   Consumer:  Applications using this specification are called Consumer.
-      This typically includes Issuers, Verifiers, and Wallets.
+   Consumer:  Applications using the Type Metadata specified in
+      Section 6 are called Consumer.  This typically includes Issuers,
+      Verifiers, and Wallets.
    Verifiable Credential (VC):  An assertion with claims about a Subject
       that is cryptographically secured by an Issuer (usually by a
       digital signature).
@@ -536,9 +537,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E0uFN
-   T5jE9GeodXNXpisebf2pd-4_EIsAU7ScM7eHsKMFDB-XEmeiKRcTgi0x6Ae4yMcoeXPl
-   74O9g7dVX29iQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jspnN
+   1w7uPhKxi_V2-3RPOJ9xoDEEDMSPGkeSCkWpan-QB-l00wTfHBYlTEd_bfHH4CAY2A-3
+   ICwHjHzMRnHOw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -652,16 +653,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E0uFN
-   T5jE9GeodXNXpisebf2pd-4_EIsAU7ScM7eHsKMFDB-XEmeiKRcTgi0x6Ae4yMcoeXPl
-   74O9g7dVX29iQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jspnN
+   1w7uPhKxi_V2-3RPOJ9xoDEEDMSPGkeSCkWpan-QB-l00wTfHBYlTEd_bfHH4CAY2A-3
+   ICwHjHzMRnHOw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTU3M
-   DU5NzAsICJzZF9oYXNoIjogImI0bnNyQUxNb0FDWU5UNTJwNVVIYjZRVnNCanZPRG1nN
-   TlJUnpqSmNDS1kifQ.ehPqJleqkrc_tSb7lRT8qRuh-PH2AWS6Bk9jbDYewTytjiBJ2d
-   ehcPf2ahJ2YlvEY0bHBdeyEwuTyWd35XcBLQ
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTU3O
+   DY0MTUsICJzZF9oYXNoIjogImNhblRtc21qVzhUS3ZTNmFHNTY5QU9KM1h4ZUhHUGZsX
+   3JGT0R5ODBUSDAifQ.kn7-nLinxGC0kiI6o8s69jhss5M2H_Y3CqgHtahNFWeyJ7mPN1
+   3nXPbI6-RGG8Wr2j9k86cvCI8dffrIPksa3g
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -678,8 +679,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.GZeTUiQ1XUumJLouP619v6P_4nokTPv8w70nqXLvvRvIxD
-   wyteVL8PIVqVXKq0CPluih4xRPTIf_fgb3tHJiqA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.i5NnKenj1ivctzJkehIScGUchivmW-Mbf1xpp6imEl2nk1
+   VUIaUvJnb0UIOT-1OKHXukra36TdHuJCLcE99TpA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -794,7 +795,7 @@ Table of Contents
 
 6.  Type Metadata
 
-   A SD-JWT VC type, i.e., the vct value, is associated with Type
+   An SD-JWT VC type, i.e., a vct value, is associated with Type
    Metadata defining, for example, information about the type or a
    schema defining which claims MAY or MUST appear in the SD-JWT VC.
 
@@ -1368,8 +1369,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.1jL0pWDi4zREOmpjoP701nRVHEFediu1xWALXIGRO645Z_DC5r3GFx
-   AXJCbtaUX78jawrmJQ65VrYI9djvcCYQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.2PGdpEh3G_vxS6j8tfb0ovlLu25vbnQTVAes9AkTOvjDB02V_FoWQ0
+   XZyTe7DtDwB-Dz5Di0PIWp0cLvL2rMkQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1640,22 +1641,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.1jL0pWDi4zREOmpjoP701nRVHEFediu1xWALXIGRO645Z_DC5r3GFx
-   AXJCbtaUX78jawrmJQ65VrYI9djvcCYQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.2PGdpEh3G_vxS6j8tfb0ovlLu25vbnQTVAes9AkTOvjDB02V_FoWQ0
+   XZyTe7DtDwB-Dz5Di0PIWp0cLvL2rMkQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MTU3MDU5NzAsICJzZF9oYXNoIjogIkVZc3pvUGVEc0VIT
-   0lEVl90SGJ3d0JXWFE5U0VlSnc3WGFobzd3dmpoUjgifQ.-VgZjV0wJgT_Fk3vTkN1wS
-   AbGisc2ZYCIHnLjhxd1w14NPLEClDABI7xLrdCj0_xEeMVltloALNdNif2vyz5PA
+   mlmaWVyIiwgImlhdCI6IDE3MTU3ODY0MTUsICJzZF9oYXNoIjogIjBqRU1xWXlzWFl0T
+   Fk4TS1QMFRUel9ZR3dKbzNJQ0hQRDZ2NmVYc1laUm8ifQ.CeLCfp6pnoOBy03iK6ZwTO
+   r9_xO-UvCTrzZQXkvF__RSuIQ38VV-xnAcGnUGpv3LH9PRpbfak-7Ghm2wx3m-8A
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1715705970,
-     "sd_hash": "EYszoPeDsEHOIDV_tHbwwBWXQ9SEeJw7Xaho7wvjhR8"
+     "iat": 1715786415,
+     "sd_hash": "0jEMqYysXYtLY8M-P0TTz_YGwJo3ICHPD6v6eXsYZRo"
    }
 
    After the validation, the Verifier will have the following data for
