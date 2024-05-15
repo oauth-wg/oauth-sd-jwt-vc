@@ -131,7 +131,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding",
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Consumer:
-: Applications using this specification are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
+: Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
 
 Verifiable Credential (VC):
 :  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
@@ -481,7 +481,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining which claims MAY or MUST appear in the SD-JWT VC.
+An SD-JWT VC type, i.e., a `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining which claims MAY or MUST appear in the SD-JWT VC.
 
 This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
