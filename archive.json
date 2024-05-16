@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-14T00:23:23.073449+00:00",
+  "timestamp": "2024-05-16T00:23:06.669798+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -46,12 +46,12 @@
     {
       "name": "discuss",
       "description": "Discuss",
-      "color": "24F09A"
+      "color": "6DBCE0"
     },
     {
       "name": "NEEDS PR",
       "description": "Needs PR (typically after resolved discussion)",
-      "color": "9D719F"
+      "color": "B71DC5"
     },
     {
       "name": "pending close",
@@ -102,6 +102,11 @@
       "name": "PRIO",
       "description": "",
       "color": "35FD30"
+    },
+    {
+      "name": "blocked",
+      "description": "Blocked",
+      "color": "d93f0b"
     }
   ],
   "issues": [
@@ -4233,12 +4238,11 @@
         "danielfett"
       ],
       "labels": [
-        "HAS PR",
         "wg-04"
       ],
       "body": "We need to give guidance in the spec on choosing `type` values for a credential format.\r\n\r\nWe need to think about collision resistance - either by a registry or something DNS-based like URIs or java package name notation.\r\n\r\nPersonal opinion: Use URLs, like XML namespaces. It automatically avoids collisions, there is no registry required for potentially large amounts of values, and we can think about extending this in the future with machine-readable information about credential format.",
       "createdAt": "2023-10-04T18:06:38Z",
-      "updatedAt": "2024-03-26T18:18:01Z",
+      "updatedAt": "2024-05-14T15:28:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -5426,7 +5430,7 @@
     {
       "number": 221,
       "id": "I_kwDOJbVClc6DnEfy",
-      "title": "Integrity of Type Metadata",
+      "title": "Security considerations on integrity of Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/221",
       "state": "OPEN",
       "author": "danielfett",
@@ -5440,7 +5444,7 @@
       ],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2024-05-07T18:27:11Z",
+      "updatedAt": "2024-05-14T17:06:38Z",
       "closedAt": null,
       "comments": [
         {
@@ -5449,6 +5453,13 @@
           "body": "I was wondering about this part as well when reading the PR. My gut feeling would be that It might make sense to provide some mechanism with signed metadata as an option (for the cases where cannot make meaningful assumptions about the transport/provider of the metadata).",
           "createdAt": "2024-04-05T17:47:12Z",
           "updatedAt": "2024-04-05T17:47:12Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The (largely unwritten?) threat model behind all this credential and token stuff assumes trust in the issuer.  I recognize this is potentially perceived different because the provider of type metadata is likely/sometimes not the same entity as the issuer. But the issuer still needs to be trusted and if not, aren't there bigger concerns than the integrity of Type Metadata?",
+          "createdAt": "2024-05-14T17:06:37Z",
+          "updatedAt": "2024-05-14T17:06:37Z"
         }
       ]
     },
@@ -5462,13 +5473,22 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR"
+        "wg-04",
+        "blocked"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-04-30T17:24:02Z",
+      "updatedAt": "2024-05-14T16:52:28Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This is blocked by the pending JWS JSON Serialization in SD-JWT: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/414/",
+          "createdAt": "2024-05-14T16:51:03Z",
+          "updatedAt": "2024-05-14T16:51:03Z"
+        }
+      ]
     },
     {
       "number": 223,
@@ -5501,19 +5521,20 @@
     {
       "number": 224,
       "id": "I_kwDOJbVClc6EY7J4",
-      "title": "claims and display etc in type metadata ",
+      "title": "Add type metadata for basic display/rendering information",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/224",
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [
-        "metadata",
-        "PRIO"
+        "metadata"
       ],
       "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
       "createdAt": "2024-04-02T18:07:46Z",
-      "updatedAt": "2024-05-07T18:27:12Z",
+      "updatedAt": "2024-05-14T17:00:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -5521,7 +5542,7 @@
           "authorAssociation": "MEMBER",
           "body": "For an MVP (i.e., our next draft release), we should IMO add:\r\n\r\n- [ ] Basic display/rendering information for the credential itself\r\n- [ ] Basic display/rendering information for claims\r\n- [ ] JSON schema",
           "createdAt": "2024-04-03T07:18:35Z",
-          "updatedAt": "2024-04-03T07:18:35Z"
+          "updatedAt": "2024-05-14T15:32:55Z"
         },
         {
           "author": "babisRoutis",
@@ -5639,15 +5660,18 @@
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [
+        "HAS PR",
         "wg-04",
         "metadata",
         "PRIO"
       ],
       "body": "Define how schemas can be included in type metadata.\r\n\r\nRequirement is that it should allow JSON schema.",
       "createdAt": "2024-05-07T08:48:40Z",
-      "updatedAt": "2024-05-07T18:27:13Z",
+      "updatedAt": "2024-05-14T15:27:10Z",
       "closedAt": null,
       "comments": []
     }
@@ -18199,6 +18223,154 @@
           "createdAt": "2024-05-08T16:13:45Z",
           "updatedAt": "2024-05-08T16:13:45Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 231,
+      "id": "PR_kwDOJbVClc5vavvO",
+      "title": "Add schema type metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/231",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
+      "createdAt": "2024-05-14T15:19:12Z",
+      "updatedAt": "2024-05-15T15:19:53Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-229-schema",
+      "headRefOid": "7f3493ae37def82aa321d04dd829fd9aebaa3ee6",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett @bc-pi Do you think it makes sense to describe the base document for schema type metadata validation? For example, a verifier receiving an SD-JWT VC with Disclosures won't be able to validate the JSON schema against it before transforming the entire SD-JWT VC with Disclosures to expanded JSON document first.",
+          "createdAt": "2024-05-14T15:22:53Z",
+          "updatedAt": "2024-05-14T15:22:53Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett @bc-pi Should we restrict schema to specific JSON schema versions?",
+          "createdAt": "2024-05-14T15:23:25Z",
+          "updatedAt": "2024-05-14T15:23:25Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc56qeqY",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "oed",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-15T13:05:00Z",
+          "updatedAt": "2024-05-15T13:05:00Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "Is the `vct` field required in a metadata JSON object? This would break compatibility with content addressable storage systems. For example, if I want to use `ipfs://<hash>` as a `vct` uri. It would be easy to use the ipfs-uri in the JWT, but it's impossible to put it inside of the metadata JSON object, since it would require knowing the hash of that object before calculating it.\r\n\r\nSeems like `vct` needs to be optional here.",
+              "createdAt": "2024-05-15T13:05:00Z",
+              "updatedAt": "2024-05-15T13:05:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc56qpDa",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-15T13:19:17Z",
+          "updatedAt": "2024-05-15T13:19:17Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "Yes, I agree that this would not work with content addressable storage systems the way it is defined now. It is a chicken and egg problem. IMO, we should support content addressable hash URIs for `vct` and make `vct` optional in the type metadata.\r\n\r\n@danielfett @bc-pi is there a security-related reason to make `vct` in type metadata mandatory?",
+              "createdAt": "2024-05-15T13:19:17Z",
+              "updatedAt": "2024-05-15T13:19:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc56rcg2",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-15T14:31:00Z",
+          "updatedAt": "2024-05-15T14:31:00Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n: Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.\r\n```",
+              "createdAt": "2024-05-15T14:31:00Z",
+              "updatedAt": "2024-05-15T14:32:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc56rc_x",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2024-05-15T14:31:45Z",
+          "updatedAt": "2024-05-15T14:34:30Z",
+          "comments": [
+            {
+              "originalPosition": 15,
+              "body": "```suggestion\r\nAn SD-JWT VC type, i.e., a `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining which claims MAY or MUST appear in the SD-JWT VC.\r\n```",
+              "createdAt": "2024-05-15T14:31:45Z",
+              "updatedAt": "2024-05-15T14:34:31Z"
+            },
+            {
+              "originalPosition": 46,
+              "body": "As it is designed at the moment, vct is at least required for usage in glue documents. We need to figure out how to address this.",
+              "createdAt": "2024-05-15T14:33:40Z",
+              "updatedAt": "2024-05-15T14:34:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc56r8vY",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-15T15:19:12Z",
+          "updatedAt": "2024-05-15T15:19:12Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Thanks, I wanted to change this as well :)",
+              "createdAt": "2024-05-15T15:19:12Z",
+              "updatedAt": "2024-05-15T15:19:12Z"
+            }
+          ]
         }
       ]
     }
