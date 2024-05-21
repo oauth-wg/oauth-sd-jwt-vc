@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-19T00:25:48.249745+00:00",
+  "timestamp": "2024-05-21T00:23:48.831813+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -18348,7 +18348,7 @@
       "labels": [],
       "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-05-15T15:19:53Z",
+      "updatedAt": "2024-05-20T07:05:21Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18373,6 +18373,20 @@
           "body": "@danielfett @bc-pi Should we restrict schema to specific JSON schema versions?",
           "createdAt": "2024-05-14T15:23:25Z",
           "updatedAt": "2024-05-14T15:23:25Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @danielfett @bc-pi Should we restrict schema to specific JSON schema versions?\r\n\r\nI'm honestly not familiar with the intricacies of JSON schema. Is/are there a stable standard version(s) that can be referenced from a prospective RFC? The current content of the PR seems to have some normative statements but no reference. I'd think that's kind of a prerequisite to discussing version restrictions/requirements.   \r\n\r\nA few minutes of looking around and I found this https://json-schema.org/specification-links which at least suggests it's a bit messy. \r\n\r\nAny idea if/how other actual standards documents utilize JSON schema?",
+          "createdAt": "2024-05-19T13:10:49Z",
+          "updatedAt": "2024-05-19T13:10:49Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @danielfett @bc-pi Do you think it makes sense to describe the base document for schema type metadata validation? For example, a verifier receiving an SD-JWT VC with Disclosures won't be able to validate the JSON schema against it before transforming the entire SD-JWT VC with Disclosures to expanded JSON document first.\r\n\r\nWell, statements like \"MUST validate the Verifiable Credential against the provided JSON Schema document.\" probably need some more clarity about what part of the VC and at what stage of transformation/processing. ",
+          "createdAt": "2024-05-19T14:16:53Z",
+          "updatedAt": "2024-05-19T14:16:53Z"
         }
       ],
       "reviews": [
@@ -18479,6 +18493,126 @@
               "body": "Thanks, I wanted to change this as well :)",
               "createdAt": "2024-05-15T15:19:12Z",
               "updatedAt": "2024-05-15T15:19:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc57FmZn",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-19T12:19:04Z",
+          "updatedAt": "2024-05-19T12:19:04Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Thank you, yes, this needed the additional context. ",
+              "createdAt": "2024-05-19T12:19:04Z",
+              "updatedAt": "2024-05-19T12:19:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc57FpHj",
+          "commit": {
+            "abbreviatedOid": "7f3493a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-19T13:12:53Z",
+          "updatedAt": "2024-05-19T13:12:53Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "are both really needed?",
+              "createdAt": "2024-05-19T13:12:53Z",
+              "updatedAt": "2024-05-19T13:12:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc57Fpfz",
+          "commit": {
+            "abbreviatedOid": "7f3493a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-19T13:21:47Z",
+          "updatedAt": "2024-05-19T13:21:47Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "I'm not sure that storage and retrieval of Type Metadata from content addressable storage systems is or should a goal. ",
+              "createdAt": "2024-05-19T13:21:47Z",
+              "updatedAt": "2024-05-19T13:21:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc57F6gn",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-19T21:42:28Z",
+          "updatedAt": "2024-05-19T21:42:28Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "IMO, there is a community that uses this and SD-JWT VC and if possible we should help them to support this.",
+              "createdAt": "2024-05-19T21:42:28Z",
+              "updatedAt": "2024-05-19T21:42:28Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc57HPMz",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "oed",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-20T06:57:55Z",
+          "updatedAt": "2024-05-20T06:57:55Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "> I'm not sure that storage and retrieval of Type Metadata from content addressable storage systems is or should a goal.\r\n\r\nThis makes me sad. If sd-jwt vc actively is trying to disallow usage by CAS systems we won't be able to adopt it. \r\nThere are a few reasons why I think using CAS (over something like http) is nice:\r\n1. Less trust assumptions, if the url is the hash, I know what I get is correct no matter who gives it to me\r\n2. Less technical assumptions, hashes are generally technically simpler than https signatures\r\n3. Content can't be arbitrarily changed, with https the DNS controller ultimately decides what content is served",
+              "createdAt": "2024-05-20T06:57:55Z",
+              "updatedAt": "2024-05-20T06:57:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc57HSFu",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-05-20T07:05:21Z",
+          "updatedAt": "2024-05-20T07:05:21Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "The goal should be to not prohibit it, we don't need to add normative language around that.",
+              "createdAt": "2024-05-20T07:05:21Z",
+              "updatedAt": "2024-05-20T07:05:21Z"
             }
           ]
         }
