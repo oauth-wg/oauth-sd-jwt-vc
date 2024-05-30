@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-05-28T00:23:47.206195+00:00",
+  "timestamp": "2024-05-30T00:24:03.763672+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5729,7 +5729,7 @@
       "labels": [],
       "body": "The text currently says:\r\n\r\n> JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the iss value contains an HTTPS URI, the recipient MUST obtain the public key using JWT VC Issuer Metadata as defined in [Section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-03#jwt-vc-issuer-metadata).\r\n\r\n> X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the x5c JWT header parameters of the Issuer-signed JWT and validate the X.509 certificate chain in the following cases: [...]\r\n\r\nIt must by the Issuer's choice to support either x5c, jwt-vc metadata or both, this is also how HAIP defines it. Extending this thought, the Verifier has no means of understanding what the issuer supports, given that `iss` may be an HTTPS URI but no support is avaiblable for jwt-vc metadata. This is because `kid` is the best indicator but in Section 5 only described as RECOMMENDED.\r\n\r\nProposal is that the Issuer may chose this and that the presence of `kid` in SD-JWT VC indicates jwt-vc metadata.",
       "createdAt": "2024-05-16T11:48:36Z",
-      "updatedAt": "2024-05-24T20:02:35Z",
+      "updatedAt": "2024-05-28T20:51:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -5822,6 +5822,13 @@
           "body": "I support this, see my reasoning here:\nhttps://github.com/openid/oid4vc-haip-sd-jwt-vc/issues/103#issuecomment-2129485355",
           "createdAt": "2024-05-24T20:02:34Z",
           "updatedAt": "2024-05-24T20:02:34Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@awoie and I chatted briefly and are leaning towards keeping the requirement on iss to be a URI while using an https scheme for both key resolution mechanisms. ",
+          "createdAt": "2024-05-28T20:51:04Z",
+          "updatedAt": "2024-05-28T20:51:04Z"
         }
       ]
     },
