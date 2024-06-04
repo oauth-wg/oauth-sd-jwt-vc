@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-02T00:26:15.873081+00:00",
+  "timestamp": "2024-06-04T00:23:52.745006+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5229,7 +5229,7 @@
       ],
       "body": "I've been getting increasing amounts of questions about delegation / chaining with sd-jwts (and mdoc). Especially delegation seems to be a topic that people are starting to wonder about with cases like a person acting on behalf of another person in certain scopes (e.g., tax consultant accessing a system on your behalf). \r\n\r\nMy naive thought was that this could be done similarly to how the x5c header parameter currently works: Introduce a new header parameter that contains an sd-jwt (including key binding jwt and relevant disclosures) where the chained sd-jwt is used to establish trust (via the original issuer) and resolve the key (confirmation claim) for signature validation. For implementations, this should not add too much effort as it would just be a recursive call to verify the contained sd-jwt vc.\r\n\r\nI am not entirely sure it makes sense to bring in the additional complexity (and privacy concerns) but on the other hand I do see benefit in supporting some kind of credential chaining / delegation mechanism within the credential format itself. Do you think that this is something worth discussing and would this be the right spec to do so?",
       "createdAt": "2024-02-10T14:03:24Z",
-      "updatedAt": "2024-05-24T13:08:09Z",
+      "updatedAt": "2024-06-03T11:48:42Z",
       "closedAt": null,
       "comments": [
         {
@@ -5287,6 +5287,13 @@
           "body": "> I agree that this is likely going to be somewhat ecosystem specific, but I do believe one place to create an \"example\" / best practice could still help though. I agree that this draft is probably not the right place though -> let's figure out where this would fit.\r\n\r\nBest practices depend on ecosystem-specific requirements. For instance, in some countries you won't have (Q)EEAs that are bound to a public key, or won't have an identifier in the PID that can be used to bind the (Q)EEAs to the PID, and and and.\r\n\r\nThere are many different ways how this can be solved. Simple and more complex. The following is no guidance but should show there are many different options and they depend heavily on ecosystem capabilities such as the presence of a PID, usage policy of PIDs (one-time vs multipe-times, ...) etc, and the anticipated user experience.\r\n\r\nFor example, the delegation could be a SD-JWT VC (a (Q)EAA) issued by the delegator that contains:\r\n- claims about the delegator.\r\n- claims about the delegate or the PID key of the delegate to establish some form of linking later.\r\n- In case the SD-JWT VC was signed by the PID key of the delegator, then it would probably also contain the PID of the delegator with the claims to allow the verifier to do claims matching at presentation time. In that case, you probably don't need the claims about the delegate explicitly.\r\n- signature of the delegator (produced by the key bound to the delegator's PID, or by a QES or AES authorized by the delegator potentially by presenting their PID)\r\n- if the signature was produced by the PID, it would probably even include the PID of the delegator, or QES/AES cert.\r\n\r\nInstead of binding this to claims about the delegate, you could also include the key of the PID of the delegate instead (or some other key the delegate controls) which will require that the delegator has that information.\r\n\r\nPerhaps a simpler example would be, the SD-JWT VC would be issued by the receiving party, e.g., delivery website, let's call it Foo, in case somebody else wants to get a delivery on behalf of the delegator. In that case, a flow could be,\r\n- delegator goes to Foo website and authenticates using their PID\r\n- delegator enters information about the delegate, e.g., firstname, lastname\r\n- Foo issues an SD-JWT VC with no cryptographic binding, delegator receives it and stores in their wallet.\r\n- Delegator sends SD-JWT VC to delegate and delegate stores the SD-JWT VC in their wallet as well.\r\n- Delegate presents their PID and the SD-JWT VC (with no KB-JWT) to Foo\r\n- Foo verifies linking based on claim matching\r\n\r\nIn the above example, Foo could be also the wallet of the delegator, and instead of claims, one could issue the SD-JWT VC to a specific key provided by the delegate.\r\n\r\nI can think of many many variations of this. Without understanding requirements of the specific use case better, I'm not sure if we could come up with best practices and include such an example.\r\n\r\n@c2bo is there a list of use cases with more specific requirements? ",
           "createdAt": "2024-05-24T12:56:03Z",
           "updatedAt": "2024-05-24T13:08:09Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "I am not aware of a somewhat complete list of use-cases. The main use-cases that I have seen mentioned and been asked about (and also ones that we are most interested in) goes into the direction of Power of Attorney. Acting on behalf of another entity via some sort of signed credential/document.\r\n\r\nShould we close this issue here and figure out a better place to have this discussion?",
+          "createdAt": "2024-06-03T11:48:41Z",
+          "updatedAt": "2024-06-03T11:48:41Z"
         }
       ]
     },
@@ -18411,7 +18418,7 @@
       "labels": [],
       "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-05-20T07:05:21Z",
+      "updatedAt": "2024-06-03T09:18:52Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18676,6 +18683,46 @@
               "body": "The goal should be to not prohibit it, we don't need to add normative language around that.",
               "createdAt": "2024-05-20T07:05:21Z",
               "updatedAt": "2024-05-20T07:05:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc58xPXm",
+          "commit": {
+            "abbreviatedOid": "7f3493a"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-03T09:18:20Z",
+          "updatedAt": "2024-06-03T09:18:20Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "I would be fine with adding a mechanism to allow that. We should not omit vct, but set it to a defined value in such cases, e.g., empty string, a URN, or null.",
+              "createdAt": "2024-06-03T09:18:20Z",
+              "updatedAt": "2024-06-03T09:18:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc58xPpG",
+          "commit": {
+            "abbreviatedOid": "7f3493a"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-03T09:18:52Z",
+          "updatedAt": "2024-06-03T09:18:52Z",
+          "comments": [
+            {
+              "originalPosition": 80,
+              "body": "I think so, yes. Some schemas already exist, they can be referenced here. In other cases, embedding is useful.",
+              "createdAt": "2024-06-03T09:18:52Z",
+              "updatedAt": "2024-06-03T09:18:52Z"
             }
           ]
         }
