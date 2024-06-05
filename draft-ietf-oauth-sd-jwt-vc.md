@@ -540,6 +540,10 @@ defined:
 * `extends`
   * OPTIONAL. A URI of another type that this type extends, as described in
   (#extending-type-metadata).
+* `display`: An object containing display information for the type, as described
+  in (#DisplayMetadata). This property is OPTIONAL.
+* `claims`: An object containing claim information for the type, as described in
+  (#ClaimMetadata). This property is OPTIONAL.
 
 ## Extending Type Metadata {#extending-type-metadata}
 
@@ -623,6 +627,215 @@ document MAY be accompanied by a respective claim suffixed with `#integrity`, in
 The value MUST be an "integrity metadata" string as defined in Section 3 of
 [@!W3C.SRI]. A Consumer of the respective documents MUST verify the
 integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
+
+
+
+# Display Metadata {#DisplayMetadata}
+
+The `display` property is an object containing display information for the type.
+The object MUST contain a property for each language that is supported by the
+type. The property name MUST be a language tag as defined in Section 2 of
+[@!RFC5646]. The property value MUST be an object containing the following
+properties:
+
+- `name`: A human-readable name for the type, intended for end users. This
+  property is OPTIONAL.
+- `description`: A human-readable description for the type, intended for end
+  users. This property is OPTIONAL.
+- `rendering`: An object containing rendering information for the type, as
+  described in (#RenderingMetadata). This property is OPTIONAL.
+
+## Rendering Metadata {#RenderingMetadata}
+
+The `rendering` property is an object containing rendering information for the
+type. The object MUST contain a property for each rendering method that is
+supported by the type. The property name MUST be a rendering method identifier
+and the property value MUST be an object containing the properties defined for
+the rendering method.
+
+### Rendering Method "simple" {#RenderingMethodSimple}
+
+The `simple` rendering method is intended for use in applications that do not
+support SVG rendering. The object MUST contain the following properties:
+
+- `logo`: An object containing information about the logo to be displayed for
+  the type, as described in (#LogoMetadata). This property is OPTIONAL.
+- `background_color`: A CSS color value for the background of the credential.
+  This property is OPTIONAL.
+- `text_color`: A CSS color value for the text of the credential. This property
+  is OPTIONAL.
+
+#### Logo Metadata {#LogoMetadata}
+
+The `logo` property is an object containing information about the logo to be
+displayed for the type. The object contains the following properties:
+
+- `uri`: A URI pointing to the logo image. This property is REQUIRED.
+- `uri#integrity`: An "integrity metadata" string as described in
+  (#Integrity). This property is OPTIONAL.
+- `alt_text`: A string containing alternative text for the logo image. This
+  property is OPTIONAL.
+
+### Rendering Method "svg_template" {#RenderingMethodSvg}
+
+The `svg_template` rendering method is intended for use in applications that
+support SVG rendering. The object MUST contain an array of objects containing
+information about the SVG templates available for the type. Each object contains
+the following properties:
+
+- `uri`: A URI pointing to the SVG template. This property is REQUIRED.
+- `uri#integrity`: An "integrity metadata" string as described in
+  (#Integrity). This property is OPTIONAL.
+- `properties`: An object containing properties for the SVG template, as
+  described in (#SvgTemplateProperties). This property is REQUIRED if more than
+  one SVG template is present, otherwise it is OPTIONAL.
+
+#### SVG Template Properties {#SvgTemplateProperties}
+
+The `properties` property is an object containing properties for the SVG
+template. Consuming applications MUST use these properties to find the best SVG
+template available for display to the user based on the display properties
+(landscape/portrait) and user preferences (color scheme, contrast). The object
+MUST contain at least one of the following properties:
+
+- `orientation`: The orientation for which the SVG template is optimized, with
+  valid values being `portrait` and `landscape`. This property is OPTIONAL.
+- `color_scheme`: The color scheme for which the SVG template is optimized, with
+  valid values being `light` and `dark`. This property is OPTIONAL.
+- `contrast`: The contrast for which the SVG template is optimized, with valid
+  values being `normal` and `high`. This property is OPTIONAL.
+
+# Claim Metadata {#ClaimMetadata}
+
+The `claims` property is an array of objects containing information about
+particular claims for displaying and validating the claims.
+
+The array MAY contain an object for each claim that is supported by the type.
+Each object contains the following properties:
+
+- `path`: An array indicating the claim or claims that are being addressed, as
+  described below. This property is REQUIRED.
+- `display`: An object containing display information for the claim, as
+  described in (#ClaimDisplayMetadata). This property is OPTIONAL.
+- `verification`: A string indicating how the claim is verified, as described in
+  (#ClaimVerificationMetadata). This property is OPTIONAL.
+- `sd`: A string indicating whether the claim is selectively disclosable, as
+  described in (#ClaimSelectiveDisclosureMetadata). This property is OPTIONAL.
+
+## Claim Path {#ClaimPath}
+
+The `path` property MUST be a non-empty array of strings, `null` values, or
+non-negative integers. It is used to select a particular claim in the credential
+or a set of claims. A string indicates that the respective key is to be
+selected, a `null` value indicates that all elements of the currently selected
+array(s) are to be selected, and a non-negative integer indicates that the
+respective index in an array is to be selected.
+
+The following shows a non-normative, reduced example of a credential:
+
+```json
+{
+  "vct": "https://betelgeuse.example.com/education_credential",
+  "name": "Arthur Dent",
+  "address": {
+    "street_address": "42 Market Street",
+    "city": "Milliways",
+    "postal_code": "12345"
+  },
+  "degrees": [
+    {
+      "type": "Bachelor of Science",
+      "university": "University of Betelgeuse"
+    },
+    {
+      "type": "Master of Science",
+      "university": "University of Betelgeuse"
+    }
+  ],
+  "nationalities": ["British", "Betelgeusian"]
+}
+```
+
+The following shows examples of `path` values and the respective selected
+claims in the credential above:
+
+- `["name"]`: The claim `name` with the value `Arthur Dent` is selected.
+- `["address"]`: The claim `address` with its sub-claims as the value is selected.
+- `["address", "street_address"]`: The claim `street_address` with the value
+  `42 Market Street` is selected.
+- `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
+  selected.
+
+In detail, the array is processed from left to right as follows:
+
+ 1. Select the root element of the credential, i.e., the top-level JSON object.
+ 2. Process the `path` components from left to right:
+    1. If the `path` component is a string, select the element in the respective
+       key in the currently selected element(s). If any of the currently
+       selected element(s) is not an object, abort processing and return an
+       error. If the key does not exist in any element currently selected,
+       remove that element from the selection.
+    2. If the `path` component is `null`, select all elements of the currently
+       selected array(s). If any of the currently selected element(s) is not an
+       array, abort processing and return an error.
+    3. If the `path` component is a non-negative integer, select the element at
+       the respective index in the currently selected array(s). If any of the
+       currently selected element(s) is not an array, abort processing and
+       return an error. If the index does not exist in a selected array, remove
+       that array from the selection.
+  3. If the set of elements currently selected is empty, abort processing and
+     return an error.
+
+The result of the processing is the set of elements to which the respective
+claim metadata applies.
+
+Note: The `path` property MUST point to the respective claim as if all
+selectively disclosable claims were disclosed to a Verifier. That means that a
+consuming application which does not have access to all disclosures may not be
+able to identify the claim which is being addressed.
+
+## Claim Display Metadata {#ClaimDisplayMetadata}
+
+The `display` property is an object containing display information for the
+claim. The object MUST contain a property for each language that is supported by
+the type. The property name MUST be a language tag as defined in Section 2 of
+[@!RFC5646]. The consuming application MUST use the language tag it considers most
+appropriate for the user.
+
+The property value MUST be an object containing the following properties:
+
+- `label`: A human-readable label for the claim, intended for end users. This
+  property is OPTIONAL.
+- `description`: A human-readable description for the claim, intended for end
+  users. This property is OPTIONAL.
+
+## Claim Verification Metadata {#ClaimVerificationMetadata}
+
+The `verification` property is a string indicating how the claim is verified.
+The following values are defined:
+
+- `self-attested`: The claim's value was self-attested by the End-User towards
+  the Issuer. The Issuer did not verify the claim. For example, in a diploma,
+  the residential address of the student may be self-attested.
+- `verified`: The claim's value was verified by the Issuer. The Issuer may have
+  used a third party to verify the claim. For example, in a diploma, the birth
+  date of the student may have been verified by the university using the
+  student's passport.
+- `authoritative`: The Issuer claims to be the authority to make a statement
+  about the claim's value. For example, in a diploma, the degree earned by the
+  student may be authoritative if the Issuer is the university that issued the
+  degree.
+
+## Claim Selective Disclosure Metadata {#ClaimSelectiveDisclosureMetadata}
+
+The `sd` property is a string indicating whether the claim is selectively
+disclosable. The following values are defined:
+
+- `always`: The Issuer MUST make the claim selectively disclosable.
+- `allowed`: The Issuer MAY make the claim selectively disclosable.
+- `never`: The Issuer MUST NOT make the claim selectively disclosable.
+
+If omitted, the default value is `allowed`.
 
 # Security Considerations {#security-considerations}
 
