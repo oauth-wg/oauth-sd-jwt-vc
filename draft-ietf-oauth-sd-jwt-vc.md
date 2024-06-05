@@ -623,6 +623,7 @@ document MAY be accompanied by a respective claim suffixed with `#integrity`, in
 
  * `vct` as defined in (#claims),
  * `extends` as defined in (#extending-type-metadata)
+ * `uri` as used in two places in (#rendering-metadata)
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
 [@!W3C.SRI]. A Consumer of the respective documents MUST verify the
