@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-04T00:23:52.745006+00:00",
+  "timestamp": "2024-06-06T00:23:50.737628+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -107,6 +107,11 @@
       "name": "blocked",
       "description": "Blocked",
       "color": "d93f0b"
+    },
+    {
+      "name": "editorial",
+      "description": "",
+      "color": "D94EE8"
     }
   ],
   "issues": [
@@ -5311,7 +5316,7 @@
       ],
       "body": "Currently the value for the `vct` field is defined as follows:\r\n> The vct value MUST be a case-sensitive `StringOrURI` (see [[RFC7519](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#RFC7519)]) value serving as an identifier for the type of the SD-JWT VC.\r\n\r\nThis puts some unfortunate limitations on how the `vct` can be represented. [IPLD](https://ipld.io/docs/) is a data format that allows developers to represent \"merkle dags\", essentially arbitrary hash linked data structures. A key concept within IPLD is the concept of a `link`, which is represented using the hash of the linked content (encoded as a \"CID\"). Specifically for [dag-json](https://ipld.io/specs/codecs/dag-json/spec/), an link is represented as follows (example below points to a [wikipedia mirror](https://explore.ipld.io/#/explore/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze)):\r\n```json\r\n{\r\n  \"wikipedia\": { \"/\": \"bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze\" }\r\n}\r\n```\r\n\r\nIt would be great if the `vct` could be represented as an immutable object referred to as a hash, and retain compatibility with existing IPLD tooling. Therefore, it would be great if the spec for `vct` could be extended to support the following:\r\n```json\r\n{\r\n  \"vct\": { \"/\": \"bafymyhash...\" }\r\n}\r\n```\r\n\r\nAn alternative approach that would be compatible with the current `vct` spec would be to represent the hash as an ipfs url, e.g. `ipfs://bafymyhash...`. However, this would mean that compatibility is broken with existing tooling such as [explore.ipld.io](https://explore.ipld.io)",
       "createdAt": "2024-02-14T15:29:23Z",
-      "updatedAt": "2024-04-30T17:18:55Z",
+      "updatedAt": "2024-06-04T15:46:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -5334,6 +5339,13 @@
           "body": "> > it avoids us having a dependency on IPFS specs,\r\n> \r\n> Doesn't need to rely on the IPFS spec, just need more flexibility\r\n\r\nChanging this would have a lot of consequences for the spec, and if we wouldn't refer to the IPFS spec, allowing this flexibility without a good reason is a hard sell. \r\n\r\n> > it is self-describing and I suppose a resolving strategy is defined somewhere, and finally\r\n> \r\n> It would break resolution in IPLD though. Generally you can query through an IPLD graph with a path: `<cid-object1>/field/object2/field` where `field` of object1 contains a CID. This works if the CID conforms to the IPLD data model, but not if you are using `ipfs://<cid>`\r\n\r\nI'm not really familiar with the IPFS concepts, so please excuse my ignorance, but from the outside, what you describe seems like a shortcoming of the URI scheme to me. Or is there something I'm missing?",
           "createdAt": "2024-02-14T18:30:53Z",
           "updatedAt": "2024-02-14T18:30:53Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "There has been some discussion on this here: https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/231#discussion_r1601608898\r\n\r\nMy questions above are still open - please address @oed ",
+          "createdAt": "2024-06-04T15:46:52Z",
+          "updatedAt": "2024-06-04T15:46:52Z"
         }
       ]
     },
@@ -5522,12 +5534,12 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "wg-04",
-        "blocked"
+        "NEEDS PR",
+        "wg-04"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-05-14T16:52:28Z",
+      "updatedAt": "2024-06-05T08:24:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -5536,6 +5548,13 @@
           "body": "This is blocked by the pending JWS JSON Serialization in SD-JWT: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/414/",
           "createdAt": "2024-05-14T16:51:03Z",
           "updatedAt": "2024-05-14T16:51:03Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "The PR has been merged, this can now be added.",
+          "createdAt": "2024-06-05T08:24:44Z",
+          "updatedAt": "2024-06-05T08:24:44Z"
         }
       ]
     },
@@ -5583,15 +5602,15 @@
       ],
       "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
       "createdAt": "2024-04-02T18:07:46Z",
-      "updatedAt": "2024-05-14T17:00:43Z",
+      "updatedAt": "2024-06-05T08:23:42Z",
       "closedAt": null,
       "comments": [
         {
           "author": "danielfett",
           "authorAssociation": "MEMBER",
-          "body": "For an MVP (i.e., our next draft release), we should IMO add:\r\n\r\n- [ ] Basic display/rendering information for the credential itself\r\n- [ ] Basic display/rendering information for claims\r\n- [ ] JSON schema",
+          "body": "For an MVP (i.e., our next draft release), we should IMO add:\r\n\r\n- [ ] Basic display/rendering information for the credential itself\r\n- [ ] Basic display/rendering information for claims\r\n- [x] JSON schema",
           "createdAt": "2024-04-03T07:18:35Z",
-          "updatedAt": "2024-05-14T15:32:55Z"
+          "updatedAt": "2024-06-05T08:23:42Z"
         },
         {
           "author": "babisRoutis",
@@ -5736,7 +5755,7 @@
       "labels": [],
       "body": "The text currently says:\r\n\r\n> JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the iss value contains an HTTPS URI, the recipient MUST obtain the public key using JWT VC Issuer Metadata as defined in [Section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-03#jwt-vc-issuer-metadata).\r\n\r\n> X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the x5c JWT header parameters of the Issuer-signed JWT and validate the X.509 certificate chain in the following cases: [...]\r\n\r\nIt must by the Issuer's choice to support either x5c, jwt-vc metadata or both, this is also how HAIP defines it. Extending this thought, the Verifier has no means of understanding what the issuer supports, given that `iss` may be an HTTPS URI but no support is avaiblable for jwt-vc metadata. This is because `kid` is the best indicator but in Section 5 only described as RECOMMENDED.\r\n\r\nProposal is that the Issuer may chose this and that the presence of `kid` in SD-JWT VC indicates jwt-vc metadata.",
       "createdAt": "2024-05-16T11:48:36Z",
-      "updatedAt": "2024-05-28T20:51:05Z",
+      "updatedAt": "2024-06-04T15:54:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -5836,6 +5855,13 @@
           "body": "@awoie and I chatted briefly and are leaning towards keeping the requirement on iss to be a URI while using an https scheme for both key resolution mechanisms. ",
           "createdAt": "2024-05-28T20:51:04Z",
           "updatedAt": "2024-05-28T20:51:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @awoie and I chatted briefly and are leaning towards keeping the requirement on iss to be a URI while using an https scheme for both key resolution mechanisms.\r\n\r\n@Sakurann said she *might* have some suggested text or a PR along those lines ",
+          "createdAt": "2024-06-04T15:54:21Z",
+          "updatedAt": "2024-06-04T15:54:21Z"
         }
       ]
     },
@@ -5852,6 +5878,25 @@
       "body": "Current text:\r\n> In an SD-JWT VC, a URI in the `vct` claim can be used to express a type. If the type is a URL, metadata can be retrieved from the URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nSince well-known only applies to HTTPS URLs, we should limit the section to HTTPS URLs although other URLs would be still possible, e.g., `ipfs://...`.\r\n\r\nAdditionally, also the `<type>` in `https://<authority>/.well-known/vct/<type>` is probably not correct since the type refers to the `vct` value itself which would not make sense to the full `vct` value here which would also include the scheme for instance.\r\n\r\nI suggest we update the title to \"From an HTTPS URL in the `vct` claim\" and update the language to something like this:\r\n> If the `vct` value is an HTTPS URL, Type Metadata can be retrieved from the URL constructed by inserting `\"/.well-known/vct\"` after the authority part of the URL in the `vct` value. For example, a `vct` value of `\"https://example.com/foo/bar/mytype\"` would result in `\"https://example.com/.well-known/vct/foo/bar/mytype\"`.\r\n",
       "createdAt": "2024-05-17T11:00:57Z",
       "updatedAt": "2024-05-17T11:03:38Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 234,
+      "id": "I_kwDOJbVClc6LG_kJ",
+      "title": "Label example in Section 6.1",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/234",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [
+        "HAS PR",
+        "editorial"
+      ],
+      "body": "The first example in Section 6.1 shows a credential, not a type metadata document, but is not labelled as such.\r\n\r\nThe example in question:\r\n```\r\n{\r\n  \"vct\": \"https://betelgeuse.example.com/education_credential\",\r\n  \"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\",\r\n  ...\r\n}\r\n```\r\n",
+      "createdAt": "2024-06-04T15:50:16Z",
+      "updatedAt": "2024-06-05T08:37:07Z",
       "closedAt": null,
       "comments": []
     }
@@ -18418,7 +18463,7 @@
       "labels": [],
       "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-06-03T09:18:52Z",
+      "updatedAt": "2024-06-05T07:47:30Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18457,6 +18502,13 @@
           "body": "> @danielfett @bc-pi Do you think it makes sense to describe the base document for schema type metadata validation? For example, a verifier receiving an SD-JWT VC with Disclosures won't be able to validate the JSON schema against it before transforming the entire SD-JWT VC with Disclosures to expanded JSON document first.\r\n\r\nWell, statements like \"MUST validate the Verifiable Credential against the provided JSON Schema document.\" probably need some more clarity about what part of the VC and at what stage of transformation/processing. ",
           "createdAt": "2024-05-19T14:16:53Z",
           "updatedAt": "2024-05-19T14:16:53Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "> A few minutes of looking around and I found this https://json-schema.org/specification-links which at least suggests it's a bit messy.\r\n> \r\n> Any idea if/how other actual standards documents utilize JSON schema?\r\n\r\nI suggest that we proceed with merging this PR nonetheless and have a separate discussion on JSON Schema versions in an issue.\r\n",
+          "createdAt": "2024-06-05T07:47:29Z",
+          "updatedAt": "2024-06-05T07:47:29Z"
         }
       ],
       "reviews": [
@@ -18725,8 +18777,94 @@
               "updatedAt": "2024-06-03T09:18:52Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc58-qD8",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-04T15:45:58Z",
+          "updatedAt": "2024-06-04T15:45:58Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "As this question is not directly related to the PR, please continue the discussion in this issue: https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/211",
+              "createdAt": "2024-06-04T15:45:58Z",
+              "updatedAt": "2024-06-04T15:45:59Z"
+            }
+          ]
         }
       ]
+    },
+    {
+      "number": 235,
+      "id": "PR_kwDOJbVClc5xhQ4Q",
+      "title": "Fix #234 (Improve Example)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/235",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #234",
+      "createdAt": "2024-06-05T08:36:52Z",
+      "updatedAt": "2024-06-05T16:59:37Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-234",
+      "headRefOid": "c9333ef712a42f92f6839af136666c035d1f972e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc59J-lL",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-06-05T16:59:37Z",
+          "updatedAt": "2024-06-05T16:59:37Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 236,
+      "id": "PR_kwDOJbVClc5xiR58",
+      "title": "Add display and claim metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/236",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
+      "createdAt": "2024-06-05T10:42:42Z",
+      "updatedAt": "2024-06-05T11:00:18Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-224-add-display-metadata",
+      "headRefOid": "9aac8d4413e661aa9a9541723a58ab5854e51f57",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
