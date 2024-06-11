@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-09T00:27:49.401119+00:00",
+  "timestamp": "2024-06-11T00:24:17.810168+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5307,7 +5307,7 @@
       "id": "I_kwDOJbVClc5_O58b",
       "title": "Consider supporting IPLD links in vct field",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/211",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "oed",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -5316,8 +5316,8 @@
       ],
       "body": "Currently the value for the `vct` field is defined as follows:\r\n> The vct value MUST be a case-sensitive `StringOrURI` (see [[RFC7519](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#RFC7519)]) value serving as an identifier for the type of the SD-JWT VC.\r\n\r\nThis puts some unfortunate limitations on how the `vct` can be represented. [IPLD](https://ipld.io/docs/) is a data format that allows developers to represent \"merkle dags\", essentially arbitrary hash linked data structures. A key concept within IPLD is the concept of a `link`, which is represented using the hash of the linked content (encoded as a \"CID\"). Specifically for [dag-json](https://ipld.io/specs/codecs/dag-json/spec/), an link is represented as follows (example below points to a [wikipedia mirror](https://explore.ipld.io/#/explore/bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze)):\r\n```json\r\n{\r\n  \"wikipedia\": { \"/\": \"bafybeiaysi4s6lnjev27ln5icwm6tueaw2vdykrtjkwiphwekaywqhcjze\" }\r\n}\r\n```\r\n\r\nIt would be great if the `vct` could be represented as an immutable object referred to as a hash, and retain compatibility with existing IPLD tooling. Therefore, it would be great if the spec for `vct` could be extended to support the following:\r\n```json\r\n{\r\n  \"vct\": { \"/\": \"bafymyhash...\" }\r\n}\r\n```\r\n\r\nAn alternative approach that would be compatible with the current `vct` spec would be to represent the hash as an ipfs url, e.g. `ipfs://bafymyhash...`. However, this would mean that compatibility is broken with existing tooling such as [explore.ipld.io](https://explore.ipld.io)",
       "createdAt": "2024-02-14T15:29:23Z",
-      "updatedAt": "2024-06-04T15:46:54Z",
-      "closedAt": null,
+      "updatedAt": "2024-06-10T13:51:11Z",
+      "closedAt": "2024-06-10T13:51:11Z",
       "comments": [
         {
           "author": "danielfett",
@@ -5346,6 +5346,13 @@
           "body": "There has been some discussion on this here: https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/231#discussion_r1601608898\r\n\r\nMy questions above are still open - please address @oed ",
           "createdAt": "2024-06-04T15:46:52Z",
           "updatedAt": "2024-06-04T15:46:52Z"
+        },
+        {
+          "author": "oed",
+          "authorAssociation": "NONE",
+          "body": "@danielfett so this issue actually got resolved by a PR to the dag-jose codec spec: https://github.com/ipld/ipld/pull/326\r\nEssentially making the jose spec use `ipfs://<cid>` instead of the object approach.\r\n\r\nThe issue described in #231 is different, basically it wants to avoid a self reference on the `vct` field since that's incompatible with content addressing. ",
+          "createdAt": "2024-06-10T13:51:11Z",
+          "updatedAt": "2024-06-10T13:51:11Z"
         }
       ]
     },
@@ -18463,7 +18470,7 @@
       "labels": [],
       "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-06-05T07:47:30Z",
+      "updatedAt": "2024-06-10T13:52:00Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18797,6 +18804,26 @@
               "updatedAt": "2024-06-04T15:45:59Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59o5cR",
+          "commit": {
+            "abbreviatedOid": "c386f8f"
+          },
+          "author": "oed",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T13:52:00Z",
+          "updatedAt": "2024-06-10T13:52:00Z",
+          "comments": [
+            {
+              "originalPosition": 46,
+              "body": "@danielfett I would say it's actually directly related ro the PR since the issue only exist in the context of the `vct` field inside of the type metadata object.",
+              "createdAt": "2024-06-10T13:52:00Z",
+              "updatedAt": "2024-06-10T13:52:00Z"
+            }
+          ]
         }
       ]
     },
@@ -18812,7 +18839,7 @@
       "labels": [],
       "body": "Fixes #234",
       "createdAt": "2024-06-05T08:36:52Z",
-      "updatedAt": "2024-06-05T16:59:37Z",
+      "updatedAt": "2024-06-10T21:50:44Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18837,6 +18864,59 @@
           "createdAt": "2024-06-05T16:59:37Z",
           "updatedAt": "2024-06-05T16:59:37Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sfm3",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:49:05Z",
+          "updatedAt": "2024-06-10T21:49:05Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "wait... `oTxxE//FNomPebw6yH9aNuEPUjbiYqaxBj1ZgMMBsxHmjTOBDhRiVCUD2bhVlzYg` decodes to 48 bytes, which doesn't track too well with `sha256` while `WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0` is the 32 bytes one would expect. Why'd you change this value?  ",
+              "createdAt": "2024-06-10T21:49:05Z",
+              "updatedAt": "2024-06-10T21:49:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sfsY",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:49:20Z",
+          "updatedAt": "2024-06-10T21:49:20Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "see also https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/235/files#r1633871626 ",
+              "createdAt": "2024-06-10T21:49:20Z",
+              "updatedAt": "2024-06-10T21:49:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sgOQ",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "how many bytes would a vct#integrity byte if a vct#integrity could byte integrity? ",
+          "createdAt": "2024-06-10T21:50:44Z",
+          "updatedAt": "2024-06-10T21:50:44Z",
+          "comments": []
         }
       ]
     },
@@ -18852,7 +18932,7 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-06-05T11:00:18Z",
+      "updatedAt": "2024-06-10T21:44:07Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18864,7 +18944,148 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc59sTwq",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:16:20Z",
+          "updatedAt": "2024-06-10T21:16:20Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "I don't love the property name as a language tag value approach. And I know it's been discussed in other forums too. We can discuss during a call a day later than usual and maybe an hour or two earlier but I'm wondering about an array of objects with the language tag as a property of each alongside name, description, etc.  ",
+              "createdAt": "2024-06-10T21:16:20Z",
+              "updatedAt": "2024-06-10T21:16:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sV__",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:23:17Z",
+          "updatedAt": "2024-06-10T21:23:17Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "same thought for #claim-display-metadata ",
+              "createdAt": "2024-06-10T21:23:17Z",
+              "updatedAt": "2024-06-10T21:23:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sYlt",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:32:08Z",
+          "updatedAt": "2024-06-10T21:32:08Z",
+          "comments": [
+            {
+              "originalPosition": 110,
+              "body": "to me, the phrasing \"how the claim is verified\" kinda suggests that it's something the verifier needs to be doing when verifying/validating the credential. I think \"\"how the claim was verified\" better conveys what I think you're intent is.\r\n\r\n```suggestion\r\n- `verification`: A string indicating how the claim was verified, as described in\r\n```",
+              "createdAt": "2024-06-10T21:32:08Z",
+              "updatedAt": "2024-06-10T21:32:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sYuT",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:32:39Z",
+          "updatedAt": "2024-06-10T21:32:39Z",
+          "comments": [
+            {
+              "originalPosition": 204,
+              "body": "same as https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/236/files#r1633851709 \r\n```suggestion\r\nThe `verification` property is a string indicating how the claim was verified.\r\n```",
+              "createdAt": "2024-06-10T21:32:39Z",
+              "updatedAt": "2024-06-10T21:32:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59scEM",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:39:29Z",
+          "updatedAt": "2024-06-10T21:39:29Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "at some point (not necessarily this PR tho) an example type metadata document showing some/many of these options would be very helpful ",
+              "createdAt": "2024-06-10T21:39:29Z",
+              "updatedAt": "2024-06-10T21:39:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59sdMb",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:40:53Z",
+          "updatedAt": "2024-06-10T21:40:53Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "i know there's something over in https://github.com/vcstuff/sd-jwt-vc-types ",
+              "createdAt": "2024-06-10T21:40:53Z",
+              "updatedAt": "2024-06-10T21:40:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc59seOQ",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-06-10T21:44:06Z",
+          "updatedAt": "2024-06-10T21:44:07Z",
+          "comments": [
+            {
+              "originalPosition": 229,
+              "body": "are we keeping track of any of this type meta stuff in the document history? ",
+              "createdAt": "2024-06-10T21:44:06Z",
+              "updatedAt": "2024-06-10T21:44:07Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
