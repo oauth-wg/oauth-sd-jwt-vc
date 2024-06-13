@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-11T00:24:17.810168+00:00",
+  "timestamp": "2024-06-13T00:24:21.914685+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5225,7 +5225,7 @@
       "id": "I_kwDOJbVClc5-3eyT",
       "title": "SD-JWT VC Chaining / Delegation?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/208",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "c2bo",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -5234,8 +5234,8 @@
       ],
       "body": "I've been getting increasing amounts of questions about delegation / chaining with sd-jwts (and mdoc). Especially delegation seems to be a topic that people are starting to wonder about with cases like a person acting on behalf of another person in certain scopes (e.g., tax consultant accessing a system on your behalf). \r\n\r\nMy naive thought was that this could be done similarly to how the x5c header parameter currently works: Introduce a new header parameter that contains an sd-jwt (including key binding jwt and relevant disclosures) where the chained sd-jwt is used to establish trust (via the original issuer) and resolve the key (confirmation claim) for signature validation. For implementations, this should not add too much effort as it would just be a recursive call to verify the contained sd-jwt vc.\r\n\r\nI am not entirely sure it makes sense to bring in the additional complexity (and privacy concerns) but on the other hand I do see benefit in supporting some kind of credential chaining / delegation mechanism within the credential format itself. Do you think that this is something worth discussing and would this be the right spec to do so?",
       "createdAt": "2024-02-10T14:03:24Z",
-      "updatedAt": "2024-06-03T11:48:42Z",
-      "closedAt": null,
+      "updatedAt": "2024-06-11T17:56:43Z",
+      "closedAt": "2024-06-11T17:56:43Z",
       "comments": [
         {
           "author": "peppelinux",
@@ -5299,6 +5299,13 @@
           "body": "I am not aware of a somewhat complete list of use-cases. The main use-cases that I have seen mentioned and been asked about (and also ones that we are most interested in) goes into the direction of Power of Attorney. Acting on behalf of another entity via some sort of signed credential/document.\r\n\r\nShould we close this issue here and figure out a better place to have this discussion?",
           "createdAt": "2024-06-03T11:48:41Z",
           "updatedAt": "2024-06-03T11:48:41Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing now since it is out of scope.",
+          "createdAt": "2024-06-11T17:56:43Z",
+          "updatedAt": "2024-06-11T17:56:43Z"
         }
       ]
     },
@@ -18468,9 +18475,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
+      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-06-10T13:52:00Z",
+      "updatedAt": "2024-06-11T15:55:55Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18516,6 +18523,13 @@
           "body": "> A few minutes of looking around and I found this https://json-schema.org/specification-links which at least suggests it's a bit messy.\r\n> \r\n> Any idea if/how other actual standards documents utilize JSON schema?\r\n\r\nI suggest that we proceed with merging this PR nonetheless and have a separate discussion on JSON Schema versions in an issue.\r\n",
           "createdAt": "2024-06-05T07:47:29Z",
           "updatedAt": "2024-06-05T07:47:29Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Update: We don't need IANA registration for schema, schema_uri and schema_uri#integrity since type metadata is not a JWT.",
+          "createdAt": "2024-06-11T15:55:54Z",
+          "updatedAt": "2024-06-11T15:55:54Z"
         }
       ],
       "reviews": [
