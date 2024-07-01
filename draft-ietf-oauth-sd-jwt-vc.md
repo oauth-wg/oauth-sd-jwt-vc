@@ -630,7 +630,7 @@ chain or hierarchy of types. The security considerations described in
 Schemas for Verifiable Credentials are contained in the `schema` or retrieved via the `schema_uri` Type Metadata parameters (as defined in (#type-metadata-format)).
 A Schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12], or above.
 
-The Schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT change their cardinality.
+The Schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.
 
 The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example) requiring the presence of the `cnf` claim in an SD-JWT VC presentation:
 
