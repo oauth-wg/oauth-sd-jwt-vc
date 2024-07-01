@@ -506,7 +506,7 @@ with the value `https://betelgeuse.example.com/education_credential`:
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-oTxxE//FNomPebw6yH9aNuEPUjbiYqaxBj1ZgMMBsxHmjTOBDhRiVCUD2bhVlzYg",
+  "vct#integrity": "sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0",
   ...
 }
 ```
