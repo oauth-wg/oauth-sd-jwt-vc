@@ -312,6 +312,8 @@ the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
 for the Issuer-signed JWT as defined in (#issuer-signed-jwt-verification-key-validation).
 
+If Schema Type Metadata is provided, a recipient MUST validate the JSON Schema as defined in (#schema-type-metadata).
+
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
@@ -481,7 +483,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-An SD-JWT VC type, i.e., a `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining which claims MAY or MUST appear in the SD-JWT VC.
+A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a Schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
 
 This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
@@ -543,11 +545,11 @@ defined:
   (#extending-type-metadata).
 * `schema`
   * OPTIONAL. An embedded JSON Schema document describing the structure of
-  the Verifiable Credential as described in (#schema-type-metadata). `schema` MUST NOT be used
+  the Verifiable Credential as described in (#schema-definition). `schema` MUST NOT be used
   if `schema_uri` is present.
 * `schema_uri`
   * OPTIONAL. A URL pointing to a JSON Schema document describing the structure
-  of the Verifiable Credential as described in (#schema-type-metadata). `schema_uri` MUST NOT
+  of the Verifiable Credential as described in (#schema-definition). `schema_uri` MUST NOT
   be used if `schema` is present.
 
 ## Retrieving Type Metadata {#retrieving-type-metadata}
@@ -621,21 +623,39 @@ The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 (#circular-extends) apply in order to avoid problems with circular dependencies.
 
-The `schema` or `schema_uri` property of the extending type MUST be evaluated for validation purposes if it exists.
-Afterwards, or if there is no such property, the `schema` or `schema_uri` property of the extended type MUST evaluated.
-This means that all schemas in the chain of extended types MUST be evaluated for a particular Verifiable Credential.
-
 ## Schema Type Metadata {#schema-type-metadata}
 
-If a `schema` or `schema_uri` property is present, a Consumer that intends to validate the Verifiable Credential
-(in particular, Verifiers) MUST validate the Verifiable Credential against the provided JSON Schema document.
+### Schema Definition {#schema-definition}
 
-TBD: provide details about the base JSON document the JSON Schema document MUST be validated against.
+Schemas for Verifiable Credentials are contained in the `schema` or retrieved via the `schema_uri` Type Metadata parameters (as defined in (#type-metadata-format)).
+A Schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12], or above.
 
-TBD: Full JSON Schema example
+The Schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT change their cardinality.
+
+The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example):
+
+<{{examples/04-schema/schema.json}}
+
+### Schema Validation {#schema-validation}
+
+If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
+(as outlined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
+
+If an `extends` property is present, the Schema Type Metadata of the extended type MUST also be validated in the same manner. This process includes
+validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
+Each Schema Type Metadata in this chain MUST be evaluated for a specific Verifiable Credential.
+
+If the Schema Type Metadata validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.
+
+The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in (#schema-definition):
+
+<{{examples/04-schema/result.json}}
+
+Note, the example above does not contain any `_sd_alg`, `_sd`, or `...` claims.
+
 # Document Integrity {#document-integrity}
 
-Both the `vct` claim in the SD-JWT VC and various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
+Both the `vct` claim in the SD-JWT VC and the various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
 
  * `vct` as defined in (#claims),
  * `extends` as defined in (#extending-type-metadata)
@@ -904,6 +924,13 @@ recommendations in (#robust-retrieval) apply.
     <title>The European Digital Identity Wallet Architecture and Reference Framework</title>
   </front>
 </reference>
+
+<reference anchor="JSON.SCHEMA.2020-12" target="https://json-schema.org/draft/2020-12/release-notes">
+  <front>
+    <author fullname="OpenJS Foundation"></author>
+    <title>JSON Schema (2020-12)</title>
+  </front>
+</reference>
 {backmatter}
 
 # IANA Considerations
@@ -913,12 +940,12 @@ recommendations in (#robust-retrieval) apply.
 - Claim Name: "vct"
 - Claim Description: Verifiable credential type identifier
 - Change Controller: IETF
-- Specification Document(s): [[ (#type-claim)  of this of this specification ]]
+- Specification Document(s): [[ (#type-claim) of this of this specification ]]
 
 - Claim Name: "vct#integrity"
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
-- Specification Document(s): [[ (#document-integrity)  of this of this specification ]]
+- Specification Document(s): [[ (#document-integrity) of this of this specification ]]
 
 ## Media Types Registry
 
