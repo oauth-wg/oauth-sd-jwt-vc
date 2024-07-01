@@ -530,7 +530,7 @@ retrieved from the URL
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`oTxxE//FNomPebw6yH9aNuEPUjbiYqaxBj1ZgMMBsxHmjTOBDhRiVCUD2bhVlzYg`.
+`WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0`.
 
 ## Type Metadata Format {#type-metadata-format}
 
