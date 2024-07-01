@@ -328,10 +328,7 @@ verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
 - JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
-- X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the `x5c` JWT header parameters of the Issuer-signed JWT and validate the X.509
-certificate chain in the following cases:
-    - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501], the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
-    - In all other cases, the `iss` value MUST match a `uniformResourceIdentifier` SAN entry of the leaf certificate.
+- X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate X.509 certificate chain accordingly. It MUST also ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
 - DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
@@ -1007,6 +1004,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Include Type Metadata
 * Editorial changes
 * Updated terminology to clarify digital signatures are one way to secure VCs and presentations
+* Rework key resolution/validation for x5c
 
 -03
 
