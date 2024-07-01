@@ -632,7 +632,7 @@ A Schema MUST be represented by a JSON Schema document according to draft versio
 
 The Schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT change their cardinality.
 
-The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example):
+The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example) requiring the presence of the `cnf` claim in an SD-JWT VC presentation:
 
 ```
 {
@@ -701,10 +701,13 @@ The following is a non-normative example of a JSON Schema document for the examp
   },
   "required":[
     "iss",
-    "vct"
+    "vct",
+    "cnf"
   ]
 }
 ```
+
+Note, that `iss` and `vct` are always required by this specification.
 
 ### Schema Validation {#schema-validation}
 
