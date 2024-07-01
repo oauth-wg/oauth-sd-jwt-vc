@@ -634,7 +634,77 @@ The Schema of a Verifiable Credential MUST include all properties that are requi
 
 The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example):
 
-<{{examples/04-schema/schema.json}}
+```
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object",
+  "properties":{
+    "vct":{
+      "type":"string"
+    },
+    "iss":{
+      "type":"string"
+    },
+    "nbf":{
+      "type":"number"
+    },
+    "exp":{
+      "type":"number"
+    },
+    "cnf":{
+      "type":"object"
+    },
+    "status":{
+      "type":"object"
+    },
+    "given_name":{
+      "type":"string"
+    },
+    "family_name":{
+      "type":"string"
+    },
+    "email":{
+      "type":"string"
+    },
+    "phone_number":{
+      "type":"string"
+    },
+    "address":{
+      "type":"object",
+      "properties":{
+        "street_address":{
+          "type":"string"
+        },
+        "locality":{
+          "type":"string"
+        },
+        "region":{
+          "type":"string"
+        },
+        "country":{
+          "type":"string"
+        }
+      }
+    },
+    "birthdate":{
+      "type":"string"
+    },
+    "is_over_18":{
+      "type":"boolean"
+    },
+    "is_over_21":{
+      "type":"boolean"
+    },
+    "is_over_65":{
+      "type":"boolean"
+    }
+  },
+  "required":[
+    "iss",
+    "vct"
+  ]
+}
+```
 
 ### Schema Validation {#schema-validation}
 
@@ -649,7 +719,26 @@ If the Schema Type Metadata validation fails for any of the types in the chain, 
 
 The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in (#schema-definition):
 
-<{{examples/04-schema/result.json}}
+```
+{
+  "vct":"https://credentials.example.com/identity_credential",
+  "iss":"https://example.com/issuer",
+  "iat":1683000000,
+  "exp":1883000000,
+  "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
+  "address":{
+    "country":"DE"
+  },
+  "cnf":{
+    "jwk":{
+      "kty":"EC",
+      "crv":"P-256",
+      "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}
+```
 
 Note, the example above does not contain any `_sd_alg`, `_sd`, or `...` claims.
 
