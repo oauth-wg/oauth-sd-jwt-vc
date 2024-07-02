@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-06-30T00:27:20.664694+00:00",
+  "timestamp": "2024-07-02T00:25:00.003385+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4242,12 +4242,10 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [
-        "wg-04"
-      ],
+      "labels": [],
       "body": "We need to give guidance in the spec on choosing `type` values for a credential format.\r\n\r\nWe need to think about collision resistance - either by a registry or something DNS-based like URIs or java package name notation.\r\n\r\nPersonal opinion: Use URLs, like XML namespaces. It automatically avoids collisions, there is no registry required for potentially large amounts of values, and we can think about extending this in the future with machine-readable information about credential format.",
       "createdAt": "2023-10-04T18:06:38Z",
-      "updatedAt": "2024-05-14T15:28:07Z",
+      "updatedAt": "2024-07-01T19:59:29Z",
       "closedAt": null,
       "comments": [
         {
@@ -4746,14 +4744,16 @@
       "state": "OPEN",
       "author": "tlodderstedt",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [
         "discuss",
         "wg-04"
       ],
       "body": "I think the understanding of the spec could be further facilitated by adding an example of a SD-JWT VC after the verifier has processed the SD-JWT VC and (basically) has constructed a JWT representation for further processing in the application. ",
       "createdAt": "2023-12-05T16:26:58Z",
-      "updatedAt": "2024-05-24T11:40:08Z",
+      "updatedAt": "2024-07-01T19:57:33Z",
       "closedAt": null,
       "comments": [
         {
@@ -5548,12 +5548,11 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR",
-        "wg-04"
+        "NEEDS PR"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-06-05T08:24:54Z",
+      "updatedAt": "2024-07-01T19:54:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -5765,11 +5764,16 @@
       "state": "OPEN",
       "author": "paulbastian",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "bc-pi"
+      ],
+      "labels": [
+        "HAS PR",
+        "wg-04"
+      ],
       "body": "The text currently says:\r\n\r\n> JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the iss value contains an HTTPS URI, the recipient MUST obtain the public key using JWT VC Issuer Metadata as defined in [Section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-03#jwt-vc-issuer-metadata).\r\n\r\n> X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the x5c JWT header parameters of the Issuer-signed JWT and validate the X.509 certificate chain in the following cases: [...]\r\n\r\nIt must by the Issuer's choice to support either x5c, jwt-vc metadata or both, this is also how HAIP defines it. Extending this thought, the Verifier has no means of understanding what the issuer supports, given that `iss` may be an HTTPS URI but no support is avaiblable for jwt-vc metadata. This is because `kid` is the best indicator but in Section 5 only described as RECOMMENDED.\r\n\r\nProposal is that the Issuer may chose this and that the presence of `kid` in SD-JWT VC indicates jwt-vc metadata.",
       "createdAt": "2024-05-16T11:48:36Z",
-      "updatedAt": "2024-06-04T15:54:22Z",
+      "updatedAt": "2024-07-01T20:02:13Z",
       "closedAt": null,
       "comments": [
         {
@@ -5876,6 +5880,13 @@
           "body": "> @awoie and I chatted briefly and are leaning towards keeping the requirement on iss to be a URI while using an https scheme for both key resolution mechanisms.\r\n\r\n@Sakurann said she *might* have some suggested text or a PR along those lines ",
           "createdAt": "2024-06-04T15:54:21Z",
           "updatedAt": "2024-06-04T15:54:21Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > @awoie and I chatted briefly and are leaning towards keeping the requirement on iss to be a URI while using an https scheme for both key resolution mechanisms.\r\n> \r\n> @Sakurann said she _might_ have some suggested text or a PR along those lines\r\n\r\n@Sakurann, I'm going to work on this tomorrow (hopefully) so if you have anything that might help in that effort, please comment or post it or whatever works. ",
+          "createdAt": "2024-06-30T12:46:35Z",
+          "updatedAt": "2024-06-30T12:46:35Z"
         }
       ]
     },
@@ -5900,7 +5911,7 @@
       "id": "I_kwDOJbVClc6LG_kJ",
       "title": "Label example in Section 6.1",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/234",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -5910,7 +5921,39 @@
       ],
       "body": "The first example in Section 6.1 shows a credential, not a type metadata document, but is not labelled as such.\r\n\r\nThe example in question:\r\n```\r\n{\r\n  \"vct\": \"https://betelgeuse.example.com/education_credential\",\r\n  \"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\",\r\n  ...\r\n}\r\n```\r\n",
       "createdAt": "2024-06-04T15:50:16Z",
-      "updatedAt": "2024-06-05T08:37:07Z",
+      "updatedAt": "2024-07-01T19:32:59Z",
+      "closedAt": "2024-07-01T19:32:58Z",
+      "comments": []
+    },
+    {
+      "number": 237,
+      "id": "I_kwDOJbVClc6OGc-H",
+      "title": "Distinguish between issuance and presentation schemas",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Since a holder is interested in receiving a valid credential, and a verifier a valid presentation of a credential, perhaps the cardinality of both schemas might be slightly different. \r\n\r\nShould we consider introducing a dedicated schema for presentation to reflect changes in cardinality?",
+      "createdAt": "2024-07-01T14:49:31Z",
+      "updatedAt": "2024-07-01T14:49:31Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 238,
+      "id": "I_kwDOJbVClc6OG6d9",
+      "title": "Is it required to validate the whole chain of schemas?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/238",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "If the leaf JSON Schema document includes the full schema, it might be easier to just validate against the leaf and not against all schemas in the chain? ",
+      "createdAt": "2024-07-01T15:46:14Z",
+      "updatedAt": "2024-07-01T15:46:24Z",
       "closedAt": null,
       "comments": []
     }
@@ -18475,15 +18518,15 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [ ] Add full schema type metadata examples\r\n- [ ] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
+      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [x] Add full schema type metadata examples\r\n- [x] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-06-11T15:55:55Z",
+      "updatedAt": "2024-07-01T20:03:55Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-229-schema",
-      "headRefOid": "7f3493ae37def82aa321d04dd829fd9aebaa3ee6",
+      "headRefOid": "2338d3860d5bb1fbd67075a67d0864a18bda60be",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -18530,6 +18573,27 @@
           "body": "Update: We don't need IANA registration for schema, schema_uri and schema_uri#integrity since type metadata is not a JWT.",
           "createdAt": "2024-06-11T15:55:54Z",
           "updatedAt": "2024-06-11T15:55:54Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi @danielfett Can you please check the examples I added. ",
+          "createdAt": "2024-07-01T15:20:12Z",
+          "updatedAt": "2024-07-01T15:20:12Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @bc-pi @danielfett Can you please check the examples I added.\r\n\r\nI believe we will need to distinguish between presentation and issuance schemas -> see #237 ",
+          "createdAt": "2024-07-01T15:21:19Z",
+          "updatedAt": "2024-07-01T15:21:19Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> \\@bc-pi \\@danielfett Can you please check the examples I added.\r\n\r\nI don't really speak JSON schema but it looks ok ",
+          "createdAt": "2024-07-01T17:15:20Z",
+          "updatedAt": "2024-07-01T17:15:20Z"
         }
       ],
       "reviews": [
@@ -18838,6 +18902,179 @@
               "updatedAt": "2024-06-10T13:52:00Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQfhJ",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T16:35:54Z",
+          "updatedAt": "2024-07-01T16:35:55Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "This change effectively removes the definition of \"Consumer\" but the term is used a few times later on. ",
+              "createdAt": "2024-07-01T16:35:54Z",
+              "updatedAt": "2024-07-01T16:35:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQgLY",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T16:37:43Z",
+          "updatedAt": "2024-07-01T16:37:43Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "is this not true? or moved?",
+              "createdAt": "2024-07-01T16:37:43Z",
+              "updatedAt": "2024-07-01T16:37:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQgQl",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T16:37:57Z",
+          "updatedAt": "2024-07-01T16:37:57Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "nevermind, I see it moved ",
+              "createdAt": "2024-07-01T16:37:57Z",
+              "updatedAt": "2024-07-01T16:37:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQlKu",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T16:50:48Z",
+          "updatedAt": "2024-07-01T16:50:48Z",
+          "comments": [
+            {
+              "originalPosition": 142,
+              "body": "must not change their type either or anything else that might affect their syntactic validity or semantic intent ",
+              "createdAt": "2024-07-01T16:50:48Z",
+              "updatedAt": "2024-07-01T16:50:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ARfoO",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T18:55:58Z",
+          "updatedAt": "2024-07-01T18:55:58Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "Not yet :) because the display feature is still pending",
+              "createdAt": "2024-07-01T18:55:58Z",
+              "updatedAt": "2024-07-01T18:55:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ARgie",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T18:58:17Z",
+          "updatedAt": "2024-07-01T18:58:18Z",
+          "comments": [
+            {
+              "originalPosition": 142,
+              "body": "Can a JSON schema change the type of a credential? on the other hand, it is a good point that technically, it is possible to assert a specific `vct` value in the JSON schema which would be weird as it would prevent other types to extend that type, right?",
+              "createdAt": "2024-07-01T18:58:18Z",
+              "updatedAt": "2024-07-01T18:58:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ARotl",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T19:21:17Z",
+          "updatedAt": "2024-07-01T19:21:17Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "sigh... I really dislike how we've elected to do this. Is that bullet thereby included in the PR for that feature? ",
+              "createdAt": "2024-07-01T19:21:17Z",
+              "updatedAt": "2024-07-01T19:21:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ARpSk",
+          "commit": {
+            "abbreviatedOid": "22b9e67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T19:23:09Z",
+          "updatedAt": "2024-07-01T19:23:09Z",
+          "comments": [
+            {
+              "originalPosition": 142,
+              "body": "I meant the data type where the \"their\" seemed to refer to any particular property. But what you said too. ",
+              "createdAt": "2024-07-01T19:23:09Z",
+              "updatedAt": "2024-07-01T19:23:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AR2Im",
+          "commit": {
+            "abbreviatedOid": "2338d38"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-01T20:03:55Z",
+          "updatedAt": "2024-07-01T20:03:55Z",
+          "comments": []
         }
       ]
     },
@@ -18846,24 +19083,26 @@
       "id": "PR_kwDOJbVClc5xhQ4Q",
       "title": "Fix #234 (Improve Example)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/235",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Fixes #234",
       "createdAt": "2024-06-05T08:36:52Z",
-      "updatedAt": "2024-06-10T21:50:44Z",
+      "updatedAt": "2024-07-01T19:32:58Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-234",
-      "headRefOid": "c9333ef712a42f92f6839af136666c035d1f972e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "1e73ea0b0bf682ec24570082fc3c9c4e1a9990f7",
+      "closedAt": "2024-07-01T19:32:58Z",
+      "mergedAt": "2024-07-01T19:32:58Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "a8eedd93e2e6f02fe0c7f308658d07d854ebf9dc"
+      },
       "comments": [],
       "reviews": [
         {
@@ -18931,6 +19170,85 @@
           "createdAt": "2024-06-10T21:50:44Z",
           "updatedAt": "2024-06-10T21:50:44Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQIvc",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "looks good to me but @bc-pi comment has to be fixed",
+          "createdAt": "2024-07-01T15:43:27Z",
+          "updatedAt": "2024-07-01T15:43:27Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQpes",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T17:00:58Z",
+          "updatedAt": "2024-07-01T17:00:58Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\n  \"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\",\r\n```",
+              "createdAt": "2024-07-01T17:00:58Z",
+              "updatedAt": "2024-07-01T17:00:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQpoG",
+          "commit": {
+            "abbreviatedOid": "c9333ef"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-01T17:01:22Z",
+          "updatedAt": "2024-07-01T17:01:22Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "```suggestion\r\n`WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0`.\r\n```",
+              "createdAt": "2024-07-01T17:01:22Z",
+              "updatedAt": "2024-07-01T17:01:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AQrJ7",
+          "commit": {
+            "abbreviatedOid": "1e73ea0"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-01T17:05:24Z",
+          "updatedAt": "2024-07-01T17:05:24Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ARfQ1",
+          "commit": {
+            "abbreviatedOid": "1e73ea0"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-01T18:55:08Z",
+          "updatedAt": "2024-07-01T18:55:08Z",
+          "comments": []
         }
       ]
     },
@@ -18946,7 +19264,7 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-06-10T21:44:07Z",
+      "updatedAt": "2024-07-01T20:11:31Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -18957,7 +19275,15 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> We had to remove the display feature language in the schema PR for consistency reasons and because we didn't want to suggest features are included that are in fact not there yet. So, this PR should re-introduce the language in the type metadata intro:\r\n> \r\n> > , and how they can be displayed.\r\n\r\nhttps://github.com/oauth-wg/oauth-sd-jwt-vc/pull/231/files#r1661453204 and https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/231/files#diff-e750c0958ca10e395b4d3b77bb5aafccc668b4a1a50675dda79a8d90b39a2468L494 are where that happened or will happen ",
+          "createdAt": "2024-07-01T20:11:29Z",
+          "updatedAt": "2024-07-01T20:11:29Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc59sTwq",
@@ -19098,6 +19424,59 @@
               "updatedAt": "2024-06-10T21:44:07Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ARwXy",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "We had to remove the display feature language in the schema PR for consistency reasons and because we didn't want to suggest features are included that are in fact not there yet. So, this PR should re-introduce the language in the type metadata intro:\r\n> , and how they can be displayed.",
+          "createdAt": "2024-07-01T19:45:50Z",
+          "updatedAt": "2024-07-01T19:45:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 239,
+      "id": "PR_kwDOJbVClc50GizN",
+      "title": "Rework key resolution/validation for x5c (tryin' to fix #232)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/239",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-07-01T17:55:45Z",
+      "updatedAt": "2024-07-01T18:54:21Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "bc-iss-not-dns-uri-scheme-wtf-x5t-kid-url-ffs-https-etc-etc",
+      "headRefOid": "4baf016e49ae6a6193f75473e5bb422272b68e1e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6ARe8C",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm",
+          "createdAt": "2024-07-01T18:54:21Z",
+          "updatedAt": "2024-07-01T18:54:21Z",
+          "comments": []
         }
       ]
     }
