@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 3 January 2025                                    Authlete Inc.
+Expires: 4 January 2025                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                             2 July 2024
+                                                             3 July 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 January 2025.
+   This Internet-Draft will expire on 4 January 2025.
 
 Copyright Notice
 
@@ -533,9 +533,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oyAbJ
-   NL4rMQng4RL18Fqmghblf0pMapubK-F58sO2bS0QZNPar79h-sFilyAzs86UBwqnJCrG
-   lxGEOJnlF3w2A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.-7SUF
+   6kq71-M8oyJIdL3BJ6zu6w9T00KszqKg3xV6Pk-9yOHipyrtASi50kYZQNdiHed6HPwA
+   hYJAWE6GqhQAw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -589,10 +589,11 @@ Table of Contents
       and the iss value contains an HTTPS URI, the recipient MUST obtain
       the public key from the end-entity certificate of the certificates
       from the x5c header parameter of the Issuer-signed JWT and
-      validate X.509 certificate chain accordingly.  It MUST also ensure
-      that the iss value matches a uniformResourceIdentifier SAN entry
-      of the end-entity certificate or that the domain name in the iss
-      value matches the dNSName SAN entry of the end-entity certificate.
+      validate the X.509 certificate chain accordingly.  It MUST also
+      ensure that the iss value matches a uniformResourceIdentifier SAN
+      entry of the end-entity certificate or that the domain name in the
+      iss value matches the dNSName SAN entry of the end-entity
+      certificate.
    *  DID Document Resolution: If a recipient supports DID Document
       Resolution and if the iss value contains a DID [W3C.DID], the
       recipient MUST retrieve the public key from the DID Document
@@ -646,16 +647,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oyAbJ
-   NL4rMQng4RL18Fqmghblf0pMapubK-F58sO2bS0QZNPar79h-sFilyAzs86UBwqnJCrG
-   lxGEOJnlF3w2A~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.-7SUF
+   6kq71-M8oyJIdL3BJ6zu6w9T00KszqKg3xV6Pk-9yOHipyrtASi50kYZQNdiHed6HPwA
+   hYJAWE6GqhQAw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTk5N
-   TI1NzUsICJzZF9oYXNoIjogImxXYkdWMWJ6ZWVXa1NjWWgtS3ZKTlc0R29pQ3V5VWhFT
-   WF0RUVQU2k5OTAifQ.AiGRf8zhlB4GQjSNjyYCPU9546ltY-DHlQsxzo4U4-SEvGvC5v
-   XJvNCZgopj5RTnOSMKAxSKNuqTEYGqZPADJA
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjAwM
+   Dg2MTAsICJzZF9oYXNoIjogIjN6ZmE1TEtISmJtaG1iYmVHYXRtbUpvSlJoaEU1cDZ6Q
+   1dCdkFSWVIxM28ifQ.OzT-HXzgryXxfX0Jo512jqh0yYKDGsl-niD6eNCVjU4pKveKO4
+   cEDiyHYjEnTmJYf0Zr-4HyTMZ0nMP7EHOSaA
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -672,8 +673,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.Jq0CsIe2Y7_IVN2poZ_UYPZkLxuImKZeX-3wR85hAYPM71
-   HpENl45m6XCeWm6sK1UH0DlHqRg5Eee26o8ilYAQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.sHEHLAy8eGgkqKpOUylhHkNjmRZ32sbctygxk9N2rx8X-7
+   Taehyr4wB25xmVn2bg1liDCkx9A1JSBrcw08Tjmg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1328,8 +1329,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.RLmKIzmVvQ1_AJvXpZcfFZROz2P42yquKhE56zZJI0vKbnagy2sh_J
-   i8iQ55qyJJKpMQXEXFjTX0n2IS3SRIag~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.yQDY4rTNgbJVta50lE5do3u3eDTIqfVLxUoyfe4Phq76n8wlRmoiDE
+   Y2THXU1aH1-JkgLhmW97QeSJ4vQNasRg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1600,22 +1601,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.RLmKIzmVvQ1_AJvXpZcfFZROz2P42yquKhE56zZJI0vKbnagy2sh_J
-   i8iQ55qyJJKpMQXEXFjTX0n2IS3SRIag~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.yQDY4rTNgbJVta50lE5do3u3eDTIqfVLxUoyfe4Phq76n8wlRmoiDE
+   Y2THXU1aH1-JkgLhmW97QeSJ4vQNasRg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MTk5NTI1NzUsICJzZF9oYXNoIjogIm0wSmhQN2VGN0ZSS
-   3RpaEFjUlZ2WDl4MU5QSndiOGZ6RVRLdWpuV0ptLTAifQ.PGfbMMZ3msDPaR1zNL0-qK
-   BAa2ElRVAoALUPEMONRY0FKeB-KKowQC8NYxdeSZ1aiQ3-kZmqf36Ar2HwlJvBbQ
+   mlmaWVyIiwgImlhdCI6IDE3MjAwMDg2MTAsICJzZF9oYXNoIjogInFMcDFSekNWRlo4S
+   2xYNFN3YTNpMXhqVVRtancxRURIWXpRQ2wtVDJxN3MifQ.p5sCqgyf2ekP25m2SXxSTN
+   EJdY2-JLuPdcEajjrQt-8_fIvXXr-WzQo7Ns6kWBEeTbiK6qFvkVu7hQqI81tZdA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1719952575,
-     "sd_hash": "m0JhP7eF7FRKtihAcRVvX9x1NPJwb8fzETKujnWJm-0"
+     "iat": 1720008610,
+     "sd_hash": "qLp1RzCVFZ8KlX4Swa3i1xjUTmjw1EDHYzQCl-T2q7s"
    }
 
    After the validation, the Verifier will have the following data for
