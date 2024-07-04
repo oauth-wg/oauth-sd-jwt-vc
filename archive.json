@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-02T00:25:00.003385+00:00",
+  "timestamp": "2024-07-04T00:24:36.306834+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -18518,9 +18518,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [x] Add full schema type metadata examples\r\n- [x] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [ ] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
+      "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [x] Add full schema type metadata examples\r\n- [x] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [x] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-07-01T20:03:55Z",
+      "updatedAt": "2024-07-02T09:53:17Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -19452,13 +19452,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-07-01T17:55:45Z",
-      "updatedAt": "2024-07-01T18:54:21Z",
+      "updatedAt": "2024-07-03T12:09:46Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc-iss-not-dns-uri-scheme-wtf-x5t-kid-url-ffs-https-etc-etc",
-      "headRefOid": "4baf016e49ae6a6193f75473e5bb422272b68e1e",
+      "headRefOid": "e4138165df4681ec474cae5053f4f38960773918",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -19477,6 +19477,159 @@
           "createdAt": "2024-07-01T18:54:21Z",
           "updatedAt": "2024-07-01T18:54:21Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AWrBN",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-02T10:39:53Z",
+          "updatedAt": "2024-07-02T10:39:53Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "I find the following part confusing\r\n\r\n> or that the domain name in the `iss` value\r\n\r\nI believe it would be more clear something like:\r\n\r\nIt MUST also ensure that the `iss` value matches a `uniformResourceIdentifier` or a `dNSName` SAN entry of the end-entity certificate.\r\n\r\n",
+              "createdAt": "2024-07-02T10:39:53Z",
+              "updatedAt": "2024-07-02T10:39:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AWs-v",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-02T10:44:01Z",
+          "updatedAt": "2024-07-02T10:44:02Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "PS: After this PR, my understanding is that the following options would be available\r\n\r\n- `iss` is HTTPS URL, `x5c` is not provided, `kid` maybe used (recommended) => Resolve pub key via metadata\r\n- `iss` is DID, `x5c is not provided, `kid` is DID-URL => Resolve pub key via DID resolution\r\n- `iss` is a HTTPS URL, `x5c` is provided  => Pub Key is the leaf certificate, `iss` must be a SAN `uniformResourceIdentifier` entry\r\n- `iss` is a string, `x5c` is provided => Pub key is the leaf certificate, `iss` must be a SAN `dNSName`  entry",
+              "createdAt": "2024-07-02T10:44:01Z",
+              "updatedAt": "2024-07-02T10:44:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AbpdB",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-02T19:52:21Z",
+          "updatedAt": "2024-07-02T19:52:21Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Sigh, yeah. I was just going to say something about iss always having to be an HTTPS URL. And then I realized I was confused about what layer what restriction is coming from due to being careless and having carelessly internalized some of the discussion in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/232 and https://github.com/openid/oid4vc-haip-sd-jwt-vc/issues/103. ",
+              "createdAt": "2024-07-02T19:52:21Z",
+              "updatedAt": "2024-07-02T19:52:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Ab9eL",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-02T20:27:02Z",
+          "updatedAt": "2024-07-02T20:27:02Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "could be cleaner but hopefully this clarifies somewhat  \r\n```suggestion\r\n- X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate X.509 certificate chain accordingly. It MUST also ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.\r\n```",
+              "createdAt": "2024-07-02T20:27:02Z",
+              "updatedAt": "2024-07-02T20:33:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Aex17",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-03T06:22:10Z",
+          "updatedAt": "2024-07-03T06:22:11Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Dear @bc-pi \r\nThanks for the clarification. I think it is clear now. ",
+              "createdAt": "2024-07-03T06:22:10Z",
+              "updatedAt": "2024-07-03T06:22:11Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AeyCf",
+          "commit": {
+            "abbreviatedOid": "2e6e35e"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-07-03T06:22:45Z",
+          "updatedAt": "2024-07-03T06:22:45Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AgwAg",
+          "commit": {
+            "abbreviatedOid": "4baf016"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-03T10:26:58Z",
+          "updatedAt": "2024-07-03T10:26:58Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Thanks for catching the mistake ",
+              "createdAt": "2024-07-03T10:26:58Z",
+              "updatedAt": "2024-07-03T10:26:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6AhPNI",
+          "commit": {
+            "abbreviatedOid": "2e6e35e"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-03T11:29:25Z",
+          "updatedAt": "2024-07-03T11:29:25Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "```suggestion\r\n- X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly. It MUST also ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.\r\n```",
+              "createdAt": "2024-07-03T11:29:25Z",
+              "updatedAt": "2024-07-03T11:29:25Z"
+            }
+          ]
         }
       ]
     }
