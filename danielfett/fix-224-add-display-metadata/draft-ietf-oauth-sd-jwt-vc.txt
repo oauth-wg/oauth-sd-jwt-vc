@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 7 December 2024                                   Authlete Inc.
+Expires: 7 January 2025                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                             5 June 2024
+                                                             6 July 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 December 2024.
+   This Internet-Draft will expire on 7 January 2025.
 
 Copyright Notice
 
@@ -542,9 +542,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yRcok
-   96HaDSCtUTEXnu3D3fNuv0ZrPPUPQ75M98vi9mycJhBEDMBPnJpHSgpZO5lj8MzODaZR
-   hEH4pKSV_t2cg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.u0JqA
+   Mr5elbbyZaG6bPR5QPcmpDHIYeR0Ek5V8pYoQqmzUIjs2eYzjkK2RrzmjcodNE-oy-rT
+   nak1oG23YKPWw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -658,16 +658,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yRcok
-   96HaDSCtUTEXnu3D3fNuv0ZrPPUPQ75M98vi9mycJhBEDMBPnJpHSgpZO5lj8MzODaZR
-   hEH4pKSV_t2cg~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.u0JqA
+   Mr5elbbyZaG6bPR5QPcmpDHIYeR0Ek5V8pYoQqmzUIjs2eYzjkK2RrzmjcodNE-oy-rT
+   nak1oG23YKPWw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MTc1O
-   DUyMzgsICJzZF9oYXNoIjogIm1BVVd4VVpSS3hQQUZzZ21RUkFReUxFVUk3ZGh2bHFnZ
-   1A0aHRObDRnV0UifQ.KJAWY9yTZVpTGkL6tJ5eEnvFIpOfSE5moPcdWSC713dh8PIgBE
-   5QutWF23PEeXUZK_A6xiXsqwgOOThoLYoeGg
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjAyO
+   TQ3NTksICJzZF9oYXNoIjogIm05SUR1OHh5WlNOaTdQRklwdWxoelFDYXR1Qkp4alViV
+   U05UjJQc0R2bjgifQ.AbVBYHsc7F6hRk4OfulHDR6ikyTdG0EpgbmQuGOLKzV8j9rXkq
+   sX1V3dWmwm6o0VdcWGiR-J2lPLvD1-5MUlMA
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -684,8 +684,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.U4vMH2PTKTWuNVYXJUyL-WqnbFRJ61WzzNXnSWL4QSnRk5
-   2Po6wG-Ce--20X3PfaXEPrYj-joJXZWxGepaxZpA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.fCSCRZUlAERsYrI-IV-V8VzpDAipl0KPSQsFltiCbv_9om
+   KY1O5oGmrqOm3pa7B0mUQ-S89WIL9RUsy4Dw8gdg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1067,7 +1067,7 @@ Table of Contents
       addressed, as described below.  This property is REQUIRED.
    *  display: An object containing display information for the claim,
       as described in Section 9.2.  This property is OPTIONAL.
-   *  verification: A string indicating how the claim is verified, as
+   *  verification: A string indicating how the claim was verified, as
       described in Section 9.3.  This property is OPTIONAL.
    *  sd: A string indicating whether the claim is selectively
       disclosable, as described in Section 9.4.  This property is
@@ -1168,7 +1168,7 @@ Table of Contents
 
 9.3.  Claim Verification Metadata
 
-   The verification property is a string indicating how the claim is
+   The verification property is a string indicating how the claim was
    verified.  The following values are defined:
 
    *  self-attested: The claim's value was self-attested by the End-User
@@ -1354,9 +1354,9 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-08, 4
-              March 2024, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-08>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-09, 13
+              June 2024, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-selective-disclosure-jwt-09>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
@@ -1583,8 +1583,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.SMQDN-mR-d3c70MnypQlnu22bD9PGDfTYhAyN0FmgLapj4ofKDOJZu
-   vBeKXE4rb8s3Y824mNkFGU7zaHLwqc4w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.KF8BicldKER6rLbSaFRu5sOCR1jVrlmiBl1aY1cY8d0h1swVxSbbnx
+   uyuoLiwVvckQ1ZOLB6LsS3PHcBX1lKpA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1855,22 +1855,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.SMQDN-mR-d3c70MnypQlnu22bD9PGDfTYhAyN0FmgLapj4ofKDOJZu
-   vBeKXE4rb8s3Y824mNkFGU7zaHLwqc4w~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.KF8BicldKER6rLbSaFRu5sOCR1jVrlmiBl1aY1cY8d0h1swVxSbbnx
+   uyuoLiwVvckQ1ZOLB6LsS3PHcBX1lKpA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MTc1ODUyMzgsICJzZF9oYXNoIjogIlpFYzdqQUYyNWdFU
-   3VCa3R2MldJaGExeUNYVWdtNGZQaUtkWGxmR2xOdXMifQ.05hrffwCL_FuG03kTlUldc
-   BjJmDdeqEUC-2PCaDX2io11NC3BUspS5RiwCA7VsBhytx27V1xUMr1jI7-nGjkuQ
+   mlmaWVyIiwgImlhdCI6IDE3MjAyOTQ3NTksICJzZF9oYXNoIjogIjJ2U0ZtaGlxVGt5W
+   WVwOER3VUpGNEdTcG5FbzVjSXNoNzJ6eWVtUmozWVkifQ.fQbqJhkD6Z59a_OygZNz4v
+   Ba8ETplN5iidn3VYr1vo_Nnv9WC-42WpPlg8EwkdRyT88DC9XpsubFNeIwcbddRg
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1717585238,
-     "sd_hash": "ZEc7jAF25gESuBktv2WIha1yCXUgm4fPiKdXlfGlNus"
+     "iat": 1720294759,
+     "sd_hash": "2vSFmhiqTkyYep8DwUJF4GSpnEo5cIsh72zyemRj3YY"
    }
 
    After the validation, the Verifier will have the following data for
