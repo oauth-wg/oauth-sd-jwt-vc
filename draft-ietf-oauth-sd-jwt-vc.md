@@ -718,7 +718,7 @@ Each object contains the following properties:
   described below. This property is REQUIRED.
 - `display`: An object containing display information for the claim, as
   described in (#claim-display-metadata). This property is OPTIONAL.
-- `verification`: A string indicating how the claim is verified, as described in
+- `verification`: A string indicating how the claim was verified, as described in
   (#claim-verification-metadata). This property is OPTIONAL.
 - `sd`: A string indicating whether the claim is selectively disclosable, as
   described in (#claim-selective-disclosure-metadata). This property is OPTIONAL.
@@ -812,7 +812,7 @@ The property value MUST be an object containing the following properties:
 
 ## Claim Verification Metadata {#claim-verification-metadata}
 
-The `verification` property is a string indicating how the claim is verified.
+The `verification` property is a string indicating how the claim was verified.
 The following values are defined:
 
 - `self-attested`: The claim's value was self-attested by the End-User towards
