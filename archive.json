@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-04T00:24:36.306834+00:00",
+  "timestamp": "2024-07-07T00:27:33.400452+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -18520,7 +18520,7 @@
       "labels": [],
       "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [x] Add full schema type metadata examples\r\n- [x] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [x] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-07-02T09:53:17Z",
+      "updatedAt": "2024-07-06T19:37:36Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -19075,6 +19075,84 @@
           "createdAt": "2024-07-01T20:03:55Z",
           "updatedAt": "2024-07-01T20:03:55Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A1yi_",
+          "commit": {
+            "abbreviatedOid": "2338d38"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T19:31:19Z",
+          "updatedAt": "2024-07-06T19:31:19Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "\"Schema\" should only be uppercased when used in \"JSON Schema\", otherwise I'd use lowercase (unless we define the term).",
+              "createdAt": "2024-07-06T19:31:19Z",
+              "updatedAt": "2024-07-06T19:31:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A1yjh",
+          "commit": {
+            "abbreviatedOid": "2338d38"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T19:31:41Z",
+          "updatedAt": "2024-07-06T19:31:41Z",
+          "comments": [
+            {
+              "originalPosition": 24,
+              "body": "\"Schema\" as above",
+              "createdAt": "2024-07-06T19:31:41Z",
+              "updatedAt": "2024-07-06T19:31:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A1ylO",
+          "commit": {
+            "abbreviatedOid": "2338d38"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "left a couple of editorial remarks, but generally this looks good to me, thank you!",
+          "createdAt": "2024-07-06T19:32:44Z",
+          "updatedAt": "2024-07-06T19:37:36Z",
+          "comments": [
+            {
+              "originalPosition": 126,
+              "body": "```suggestion\r\nAn SD-JWT VC type can extend another type. The extended type is identified by the URI in\r\n```",
+              "createdAt": "2024-07-06T19:32:44Z",
+              "updatedAt": "2024-07-06T19:37:36Z"
+            },
+            {
+              "originalPosition": 140,
+              "body": "```suggestion\r\nA Schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12] or above.\r\n```",
+              "createdAt": "2024-07-06T19:34:45Z",
+              "updatedAt": "2024-07-06T19:37:36Z"
+            },
+            {
+              "originalPosition": 219,
+              "body": "```suggestion\r\nNote that `iss` and `vct` are always required by this specification.\r\n```",
+              "createdAt": "2024-07-06T19:35:23Z",
+              "updatedAt": "2024-07-06T19:37:36Z"
+            },
+            {
+              "originalPosition": 224,
+              "body": "```suggestion\r\n(as defined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.\r\n```",
+              "createdAt": "2024-07-06T19:36:04Z",
+              "updatedAt": "2024-07-06T19:37:36Z"
+            }
+          ]
         }
       ]
     },
@@ -19264,13 +19342,13 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-07-01T20:11:31Z",
+      "updatedAt": "2024-07-06T19:38:59Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "9aac8d4413e661aa9a9541723a58ab5854e51f57",
+      "headRefOid": "078e8f126968f258177439da0012599bf28f62b9",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -19452,7 +19530,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-07-01T17:55:45Z",
-      "updatedAt": "2024-07-03T12:09:46Z",
+      "updatedAt": "2024-07-06T19:44:16Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
@@ -19628,6 +19706,46 @@
               "body": "```suggestion\r\n- X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly. It MUST also ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.\r\n```",
               "createdAt": "2024-07-03T11:29:25Z",
               "updatedAt": "2024-07-03T11:29:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A10BU",
+          "commit": {
+            "abbreviatedOid": "e413816"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T19:43:41Z",
+          "updatedAt": "2024-07-06T19:43:42Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "To avoid any ambiguity around the \"it\" in the second sentence and make it more clear that both steps are important:\r\n\r\n```suggestion\r\n- X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST\r\n     1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and\r\n     2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.\r\n```\r\n\r\n(Not sure if the indentation works.)",
+              "createdAt": "2024-07-06T19:43:42Z",
+              "updatedAt": "2024-07-06T19:43:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A10HT",
+          "commit": {
+            "abbreviatedOid": "e413816"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-06T19:44:16Z",
+          "updatedAt": "2024-07-06T19:44:16Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "Is it necessary to say what happens if no `x5c` header is present?",
+              "createdAt": "2024-07-06T19:44:16Z",
+              "updatedAt": "2024-07-06T19:44:17Z"
             }
           ]
         }
