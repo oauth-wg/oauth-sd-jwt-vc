@@ -614,7 +614,7 @@ array instead of retrieving the respective Type Metadata elsewhere as follows:
 
 ## Extending Type Metadata {#extending-type-metadata}
 
-A SD-JWT VC type can extend another type. The extended type is identified by the URI in
+An SD-JWT VC type can extend another type. The extended type is identified by the URI in
 the `extends` property. Consumers MUST retrieve and process
 Type Metadata for the extended type before processing the Type Metadata for the extending
 type.
