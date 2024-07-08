@@ -542,9 +542,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vn0NB
-   gnqG661d-QmOBFESmLAu_MtEqiUOnf1gGDqT_kfLHGTSRbzGlvBlhRAspHmR90PBLH9a
-   Y78Vmqcn9CSog~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SJz-L
+   bYlh01LM5mprslGPvWv-Uxg_pasSBhtWfBV6Y4kZBkBAYumj9_K4ff4sfkmJJz4L_QKG
+   zcxlEUq94Epcw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -658,16 +658,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vn0NB
-   gnqG661d-QmOBFESmLAu_MtEqiUOnf1gGDqT_kfLHGTSRbzGlvBlhRAspHmR90PBLH9a
-   Y78Vmqcn9CSog~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SJz-L
+   bYlh01LM5mprslGPvWv-Uxg_pasSBhtWfBV6Y4kZBkBAYumj9_K4ff4sfkmJJz4L_QKG
+   zcxlEUq94Epcw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjA0N
-   TEwNDksICJzZF9oYXNoIjogIkktczJPSURWeFRZaHNFT0ZMUWFCUTZDeUpzVE54d0gxc
-   lhMTXpmT2dyMlkifQ.8mRn2r_Dbzoze3cUGk26xIE4rIXPLa80klCYbkHHjbkqtW2Qqb
-   E-oRIdGcLey0yGiMZbklU0evkIqy-EkCPynQ
+   TE1ODUsICJzZF9oYXNoIjogIlhDMThIQ211dHNOcGQ2aktCMThrb05jbGhOcWFZWGdyO
+   DFIY0E4R0dXMDQifQ.VEvw_-gPzfOjvpStzZuMU_AZdoTUSrAvp7eZJAQVD24DXtmiyS
+   6eZIn9d02fhI-wDz_CmtE4mU2lFmiUsEOOJQ
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -684,8 +684,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.ZmL3jGVFe8MwutbSGfyYkIsj1aB6y0DakEWHTfnnnBcRlp
-   l92V7D5mHuRXnLaONmh5dHlEa7k1ZudEn9cUQBWg~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.EoguB13BhtPUCy73O5y8NWSemDeqOO823rGLJ6jwz-tcTB
+   9cjMkmo1gq-mJQoS5W-c8Tllutc9W5py1jsnZBgQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1589,8 +1589,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.dI4pFV9hXYDk4IWfagCOL9R3kmXSw6tGfZjdDQtlaaBDu_PX6Wt0Kc
-   Lv3aM6ktMhN4UYKvsa5lGDGRiReNr5KQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.A29cgJECiaO26yutAUbMeaVQPbtOUbwaU0LU1u9V_fNF1Gwd7FI4S7
+   4n2JUUkDdb9xh4QjQSmsVQ58ELQ1lRqw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1861,22 +1861,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.dI4pFV9hXYDk4IWfagCOL9R3kmXSw6tGfZjdDQtlaaBDu_PX6Wt0Kc
-   Lv3aM6ktMhN4UYKvsa5lGDGRiReNr5KQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.A29cgJECiaO26yutAUbMeaVQPbtOUbwaU0LU1u9V_fNF1Gwd7FI4S7
+   4n2JUUkDdb9xh4QjQSmsVQ58ELQ1lRqw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MjA0NTEwNDksICJzZF9oYXNoIjogIk9lWHAxVFp2R2RTS
-   GZTd2FTV3UyVUVsQ01iUi02aVBZdTlfVFE4TXlhcmsifQ.L0_ssjsDLWyphuBNhPuRXA
-   hcA8xKnABvlVd0n_pCMKgyG9pznIV9Q57du3AkoINrWeeE_aLu9V8CZvmkbxe5Ww
+   mlmaWVyIiwgImlhdCI6IDE3MjA0NTE1ODUsICJzZF9oYXNoIjogIjNRbDc0eEZFSzRSd
+   WlEX3lGbXNzc0FvdW44UTBuam5odUhWYklQM0RzTTgifQ.taAS94bxdvFggMOpP5Hqhe
+   uIUoIQPcrrNBgSgaObbyjDeje9DB2yyCtLQnz9bv413gec3KMoAwfqfg3EyjbSAg
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1720451049,
-     "sd_hash": "OeXp1TZvGdSHfSwaSWu2UElCMbR-6iPYu9_TQ8Myark"
+     "iat": 1720451585,
+     "sd_hash": "3Ql74xFEK4RuiD_yFmsssAoun8Q0njnhuHVbIP3DsM8"
    }
 
    After the validation, the Verifier will have the following data for
@@ -1917,6 +1917,7 @@ Appendix D.  Document History
 
    *  update reference to IETF Status List
    *  Include Type Metadata
+   *  Include display and claim type metadata
    *  Editorial changes
    *  Updated terminology to clarify digital signatures are one way to
       secure VCs and presentations
