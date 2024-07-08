@@ -312,7 +312,7 @@ the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
 for the Issuer-signed JWT as defined in (#issuer-signed-jwt-verification-key-validation).
 
-If Schema Type Metadata is provided, a recipient MUST validate the JSON Schema as defined in (#schema-type-metadata).
+If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in (#schema-type-metadata).
 
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
@@ -483,7 +483,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a Schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
+A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
 
 This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
@@ -628,9 +628,9 @@ chain or hierarchy of types. The security considerations described in
 ### Schema Definition {#schema-definition}
 
 Schemas for Verifiable Credentials are contained in the `schema` or retrieved via the `schema_uri` Type Metadata parameters (as defined in (#type-metadata-format)).
-A Schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12] or above.
+A schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12] or above.
 
-The Schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.
+The schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.
 
 The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example) requiring the presence of the `cnf` claim in an SD-JWT VC presentation:
 
@@ -714,11 +714,11 @@ Note that `iss` and `vct` are always required by this specification.
 If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
 (as defined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
 
-If an `extends` property is present, the Schema Type Metadata of the extended type MUST also be validated in the same manner. This process includes
+If an `extends` property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
 validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
-Each Schema Type Metadata in this chain MUST be evaluated for a specific Verifiable Credential.
+Each schema in this chain MUST be evaluated for a specific Verifiable Credential.
 
-If the Schema Type Metadata validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.
+If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.
 
 The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in (#schema-definition):
 
