@@ -712,7 +712,7 @@ Note that `iss` and `vct` are always required by this specification.
 ### Schema Validation {#schema-validation}
 
 If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
-(as outlined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
+(as defined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
 
 If an `extends` property is present, the Schema Type Metadata of the extended type MUST also be validated in the same manner. This process includes
 validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
