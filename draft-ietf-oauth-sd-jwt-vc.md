@@ -499,7 +499,8 @@ Applications using Type Metadata defined in this specification are called "Consu
 
 All examples in this section are non-normative.
 
-Type Metadata about the value of a `vct` claim value can be retrieved as described in (#retrieving-type-metadata).
+The following is an example of an SD-JWT VC payload, containing a `vct` claim
+with the value `https://betelgeuse.example.com/education_credential`:
 
 ```json
 {
@@ -509,11 +510,12 @@ Type Metadata about the value of a `vct` claim value can be retrieved as describ
 }
 ```
 
-Here, the type is `https://betelgeuse.example.com/education_credential`. The
-Type Metadata is retrieved from the URL
-`https://betelgeuse.example.com/.well-known/vct/education_credential`.
-
-The following is an example for a Type Metadata document:
+Type Metadata for the type `https://betelgeuse.example.com/education_credential`
+can be retrieved using various mechanisms as described in
+(#retrieving-type-metadata). For this example, the well-known URL as defined in
+(#retrieval-from-vct-claim) is used and the following Type Metadata Document is
+retrieved from the URL
+`https://betelgeuse.example.com/.well-known/vct/education_credential`:
 
 ```json
 {
@@ -524,6 +526,10 @@ The following is an example for a Type Metadata document:
   "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5"
 }
 ```
+
+Note: The hash of the Type Metadata document shown in the second example must be equal
+to the one in the `vct#integrity` claim in the SD-JWT VC payload,
+`WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0`.
 
 ## Type Metadata Format {#type-metadata-format}
 
