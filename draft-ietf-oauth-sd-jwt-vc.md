@@ -1225,6 +1225,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * update reference to IETF Status List
 * Include Type Metadata
+* Include display and claim type metadata
 * Editorial changes
 * Updated terminology to clarify digital signatures are one way to secure VCs and presentations
 
