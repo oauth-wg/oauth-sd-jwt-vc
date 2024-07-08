@@ -707,7 +707,7 @@ The following is a non-normative example of a JSON Schema document for the examp
 }
 ```
 
-Note, that `iss` and `vct` are always required by this specification.
+Note that `iss` and `vct` are always required by this specification.
 
 ### Schema Validation {#schema-validation}
 
