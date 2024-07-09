@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-07T00:27:33.400452+00:00",
+  "timestamp": "2024-07-09T00:24:45.740702+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -112,6 +112,11 @@
       "name": "editorial",
       "description": "",
       "color": "D94EE8"
+    },
+    {
+      "name": "wg-05",
+      "description": "",
+      "color": "F72899"
     }
   ],
   "issues": [
@@ -4748,12 +4753,11 @@
         "awoie"
       ],
       "labels": [
-        "discuss",
-        "wg-04"
+        "wg-05"
       ],
       "body": "I think the understanding of the spec could be further facilitated by adding an example of a SD-JWT VC after the verifier has processed the SD-JWT VC and (basically) has constructed a JWT representation for further processing in the application. ",
       "createdAt": "2023-12-05T16:26:58Z",
-      "updatedAt": "2024-07-01T19:57:33Z",
+      "updatedAt": "2024-07-08T16:12:27Z",
       "closedAt": null,
       "comments": [
         {
@@ -5513,13 +5517,13 @@
       "assignees": [],
       "labels": [
         "NEEDS PR",
-        "wg-04",
         "metadata",
-        "PRIO"
+        "PRIO",
+        "wg-05"
       ],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2024-05-14T17:06:38Z",
+      "updatedAt": "2024-07-08T16:12:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -5548,11 +5552,12 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR"
+        "NEEDS PR",
+        "wg-05"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-07-01T19:54:53Z",
+      "updatedAt": "2024-07-08T16:12:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -5738,7 +5743,7 @@
       "id": "I_kwDOJbVClc6IDqZ1",
       "title": "Schema for type metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -5752,8 +5757,8 @@
       ],
       "body": "Define how schemas can be included in type metadata.\r\n\r\nRequirement is that it should allow JSON schema.",
       "createdAt": "2024-05-07T08:48:40Z",
-      "updatedAt": "2024-05-14T15:27:10Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T15:50:10Z",
+      "closedAt": "2024-07-08T15:50:10Z",
       "comments": []
     },
     {
@@ -5761,7 +5766,7 @@
       "id": "I_kwDOJbVClc6JGgxv",
       "title": "Constraints on using JWT VC Isser metadata and x5c",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/232",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "paulbastian",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -5773,8 +5778,8 @@
       ],
       "body": "The text currently says:\r\n\r\n> JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the iss value contains an HTTPS URI, the recipient MUST obtain the public key using JWT VC Issuer Metadata as defined in [Section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-03#jwt-vc-issuer-metadata).\r\n\r\n> X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the x5c JWT header parameters of the Issuer-signed JWT and validate the X.509 certificate chain in the following cases: [...]\r\n\r\nIt must by the Issuer's choice to support either x5c, jwt-vc metadata or both, this is also how HAIP defines it. Extending this thought, the Verifier has no means of understanding what the issuer supports, given that `iss` may be an HTTPS URI but no support is avaiblable for jwt-vc metadata. This is because `kid` is the best indicator but in Section 5 only described as RECOMMENDED.\r\n\r\nProposal is that the Issuer may chose this and that the presence of `kid` in SD-JWT VC indicates jwt-vc metadata.",
       "createdAt": "2024-05-16T11:48:36Z",
-      "updatedAt": "2024-07-01T20:02:13Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-08T15:54:36Z",
+      "closedAt": "2024-07-08T15:54:36Z",
       "comments": [
         {
           "author": "awoie",
@@ -5956,6 +5961,30 @@
       "updatedAt": "2024-07-01T15:46:24Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 240,
+      "id": "I_kwDOJbVClc6O0GWM",
+      "title": "Add language on x5c protection",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/240",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "To mitigate attacks described in the X.509 IETF RFC [here](https://www.rfc-editor.org/rfc/rfc2634#section-5.1), we should add something like the following language:\r\n\r\nIf `x5c` is the in unprotected header or was received out-of-band, the verifier MUST check the `x5t` **protected** header.\r\n\r\nNote that COSE has this language built in, but JOSE leaves that open.\r\n",
+      "createdAt": "2024-07-08T16:04:08Z",
+      "updatedAt": "2024-07-08T16:21:02Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Noting that the current text requires using x5c and says nothing about protected vs. unprotected \r\n\r\nhttps://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-issuer-signed-jwt-verificat",
+          "createdAt": "2024-07-08T16:21:01Z",
+          "updatedAt": "2024-07-08T16:21:01Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -18513,24 +18542,26 @@
       "id": "PR_kwDOJbVClc5vavvO",
       "title": "Add schema type metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/231",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR includes the following:\r\n\r\n- [x] Add schema type metadata\r\n- [x] Add full schema type metadata examples\r\n- [x] Describe base document for schema validation\r\n- [x] Minor editorial fixes\r\n- [x] Moved type metadata retrieval section for readability purposes \r\n- [x] ~IANA considerations for `schema`, `schema_uri` and `schema_uri#integrity`~\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-229-schema/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\nFixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/229",
       "createdAt": "2024-05-14T15:19:12Z",
-      "updatedAt": "2024-07-06T19:37:36Z",
+      "updatedAt": "2024-07-08T15:50:09Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "baseRefOid": "a8eedd93e2e6f02fe0c7f308658d07d854ebf9dc",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-229-schema",
-      "headRefOid": "2338d3860d5bb1fbd67075a67d0864a18bda60be",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "b44d32cd0ad1315b1b5f740fb7141847fef202f2",
+      "closedAt": "2024-07-08T15:50:09Z",
+      "mergedAt": "2024-07-08T15:50:09Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "ec6d9b97d301c95b7daf2c9ed425998cd01580ae"
+      },
       "comments": [
         {
           "author": "awoie",
@@ -18594,6 +18625,20 @@
           "body": "> \\@bc-pi \\@danielfett Can you please check the examples I added.\r\n\r\nI don't really speak JSON schema but it looks ok ",
           "createdAt": "2024-07-01T17:15:20Z",
           "updatedAt": "2024-07-01T17:15:20Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> left a couple of editorial remarks, but generally this looks good to me, thank you!\r\n\r\nThanks a lot. I updated the PR. Will merge later on the editor's call.",
+          "createdAt": "2024-07-08T06:51:13Z",
+          "updatedAt": "2024-07-08T06:51:13Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merging this since all comments were addressed.",
+          "createdAt": "2024-07-08T15:34:08Z",
+          "updatedAt": "2024-07-08T15:34:08Z"
         }
       ],
       "reviews": [
@@ -19342,13 +19387,13 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-07-06T19:38:59Z",
+      "updatedAt": "2024-07-08T20:43:00Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "baseRefOid": "a8eedd93e2e6f02fe0c7f308658d07d854ebf9dc",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "078e8f126968f258177439da0012599bf28f62b9",
+      "headRefOid": "0a26a60bd8ae80776df4d2efc424d0815b6de385",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -19515,6 +19560,66 @@
           "createdAt": "2024-07-01T19:45:50Z",
           "updatedAt": "2024-07-01T19:45:50Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A9mm6",
+          "commit": {
+            "abbreviatedOid": "9abc5d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T15:08:53Z",
+          "updatedAt": "2024-07-08T15:08:54Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "duly noted by me ",
+              "createdAt": "2024-07-08T15:08:53Z",
+              "updatedAt": "2024-07-08T15:08:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A9rBd",
+          "commit": {
+            "abbreviatedOid": "0a26a60"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T15:14:40Z",
+          "updatedAt": "2024-07-08T15:14:40Z",
+          "comments": [
+            {
+              "originalPosition": 229,
+              "body": "0a26a60bd8ae80776df4d2efc424d0815b6de385 kinda sorta ",
+              "createdAt": "2024-07-08T15:14:40Z",
+              "updatedAt": "2024-07-08T15:14:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6BAaa0",
+          "commit": {
+            "abbreviatedOid": "0a26a60"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T20:43:00Z",
+          "updatedAt": "2024-07-08T20:43:00Z",
+          "comments": [
+            {
+              "originalPosition": 237,
+              "body": "-04 has been released to the wild so this needs to move into a -05  ",
+              "createdAt": "2024-07-08T20:43:00Z",
+              "updatedAt": "2024-07-08T20:43:01Z"
+            }
+          ]
         }
       ]
     },
@@ -19523,25 +19628,35 @@
       "id": "PR_kwDOJbVClc50GizN",
       "title": "Rework key resolution/validation for x5c (tryin' to fix #232)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/239",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-07-01T17:55:45Z",
-      "updatedAt": "2024-07-06T19:44:16Z",
+      "updatedAt": "2024-07-08T15:54:35Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "baa28104c0cc62b202a52505819054510b7c4618",
+      "baseRefOid": "ec6d9b97d301c95b7daf2c9ed425998cd01580ae",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc-iss-not-dns-uri-scheme-wtf-x5t-kid-url-ffs-https-etc-etc",
-      "headRefOid": "e4138165df4681ec474cae5053f4f38960773918",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "12ac5d263808109a4862b5f05839d625894a1262",
+      "closedAt": "2024-07-08T15:54:35Z",
+      "mergedAt": "2024-07-08T15:54:35Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "c9cfe8cf33a61c3d889e3112d5bac299b0708a0e"
+      },
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Two approvals, merging now.",
+          "createdAt": "2024-07-08T15:54:18Z",
+          "updatedAt": "2024-07-08T15:54:18Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6ARe8C",
@@ -19746,6 +19861,46 @@
               "body": "Is it necessary to say what happens if no `x5c` header is present?",
               "createdAt": "2024-07-06T19:44:16Z",
               "updatedAt": "2024-07-06T19:44:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A6ya2",
+          "commit": {
+            "abbreviatedOid": "e413816"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T10:21:57Z",
+          "updatedAt": "2024-07-08T10:21:57Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "> (Not sure if the indentation works.)\r\n\r\nIt seems to have worked okay:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/bc-iss-not-dns-uri-scheme-wtf-x5t-kid-url-ffs-https-etc-etc/draft-ietf-oauth-sd-jwt-vc.html#name-issuer-signed-jwt-verificat",
+              "createdAt": "2024-07-08T10:21:57Z",
+              "updatedAt": "2024-07-08T10:21:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6A616G",
+          "commit": {
+            "abbreviatedOid": "e413816"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-08T10:29:31Z",
+          "updatedAt": "2024-07-08T10:29:32Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "I don't think so - none of this applies then (\"If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI\" = false) and _processing_ falls through to the end of that section,\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/bc-iss-not-dns-uri-scheme-wtf-x5t-kid-url-ffs-https-etc-etc/draft-ietf-oauth-sd-jwt-vc.html#section-3.5-4\r\n\r\n> If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.",
+              "createdAt": "2024-07-08T10:29:31Z",
+              "updatedAt": "2024-07-08T10:29:32Z"
             }
           ]
         }
