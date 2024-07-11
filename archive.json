@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-09T00:24:45.740702+00:00",
+  "timestamp": "2024-07-11T00:25:38.537353+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5588,11 +5588,12 @@
       "labels": [
         "discuss",
         "metadata",
-        "PRIO"
+        "PRIO",
+        "wg-05"
       ],
       "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
       "createdAt": "2024-04-02T09:51:21Z",
-      "updatedAt": "2024-05-07T18:27:12Z",
+      "updatedAt": "2024-07-09T08:18:52Z",
       "closedAt": null,
       "comments": [
         {
@@ -5616,11 +5617,12 @@
         "danielfett"
       ],
       "labels": [
-        "metadata"
+        "metadata",
+        "wg-05"
       ],
       "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
       "createdAt": "2024-04-02T18:07:46Z",
-      "updatedAt": "2024-06-05T08:23:42Z",
+      "updatedAt": "2024-07-09T08:19:14Z",
       "closedAt": null,
       "comments": [
         {
@@ -5939,10 +5941,12 @@
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "Since a holder is interested in receiving a valid credential, and a verifier a valid presentation of a credential, perhaps the cardinality of both schemas might be slightly different. \r\n\r\nShould we consider introducing a dedicated schema for presentation to reflect changes in cardinality?",
       "createdAt": "2024-07-01T14:49:31Z",
-      "updatedAt": "2024-07-01T14:49:31Z",
+      "updatedAt": "2024-07-09T08:19:46Z",
       "closedAt": null,
       "comments": []
     },
@@ -19387,7 +19391,7 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-07-08T20:43:00Z",
+      "updatedAt": "2024-07-09T15:59:50Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "a8eedd93e2e6f02fe0c7f308658d07d854ebf9dc",
@@ -19618,6 +19622,26 @@
               "body": "-04 has been released to the wild so this needs to move into a -05  ",
               "createdAt": "2024-07-08T20:43:00Z",
               "updatedAt": "2024-07-08T20:43:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6BJndB",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-07-09T15:59:50Z",
+          "updatedAt": "2024-07-09T15:59:50Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "which is also fwiw more similar to how oid4vi approached it https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-13.html#name-credential-issuer-metadata-6 ",
+              "createdAt": "2024-07-09T15:59:50Z",
+              "updatedAt": "2024-07-09T15:59:50Z"
             }
           ]
         }
