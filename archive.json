@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-11T00:25:38.537353+00:00",
+  "timestamp": "2024-07-14T00:28:15.044341+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5989,6 +5989,38 @@
           "updatedAt": "2024-07-08T16:21:01Z"
         }
       ]
+    },
+    {
+      "number": 241,
+      "id": "I_kwDOJbVClc6PX2yc",
+      "title": "Claim 'vct' is missing in Type Metadata Format",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/241",
+      "state": "OPEN",
+      "author": "jtalir",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I'm not sure why 'vct' is not (as REQUIRED) in 6.2 Type Metadata Format. Is it bug or is this some sort of implicit? It is in the  6.1. Type Metadata Example and also it is twice referenced in 6.3.5 From Type Metadata Glue Documents: \"the Consumer MUST ensure that the vct claim in the credential matches the one in the Type Metadata document\" and \"the Consumer MUST ensure that the value of the extends property in the Type Metadata document matches that of the vct in the Type Metadata document\"\r\n",
+      "createdAt": "2024-07-12T11:49:07Z",
+      "updatedAt": "2024-07-12T11:49:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 242,
+      "id": "I_kwDOJbVClc6PX6oC",
+      "title": "Add 'vct' in well-known registry",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/242",
+      "state": "OPEN",
+      "author": "jtalir",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Type Metadata introduced new well-known URI /.well-known/vct/ in \"6.3.1. From a URL in the vct\" , but this is not reflected in appendix-A.3 Well-Known URI Registry.\r\n\r\nAdditionally, using <type> in sentence \"Metadata can be retrieved from the URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\" seems to me a little bit confusing as type is considered to refer to whole URI. Maybe use <path> or <uri_suffix>(to include also query and fragment URI components)?",
+      "createdAt": "2024-07-12T11:59:16Z",
+      "updatedAt": "2024-07-12T11:59:16Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
