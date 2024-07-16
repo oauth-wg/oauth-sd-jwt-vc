@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-14T00:28:15.044341+00:00",
+  "timestamp": "2024-07-16T00:25:26.384559+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6021,6 +6021,30 @@
       "updatedAt": "2024-07-12T11:59:16Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 243,
+      "id": "I_kwDOJbVClc6PoGFM",
+      "title": "use SD-JWT+KB in place of SD-JWT with a Key Binding JWT",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/243",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "As of [SD-JWT -09](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/09/) which \"[Distinguished SD-JWT from SD-JWT+KB](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-09.html#name-document-history)\" the phrase \"SD-JWT with a Key Binding JWT\" may/should be replaced with \"SD-JWT+KB\" ",
+      "createdAt": "2024-07-15T21:13:05Z",
+      "updatedAt": "2024-07-15T22:07:53Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "NONE",
+          "body": "I disagree with this, as this textual substitution would make the meaning of the specification less clear.  \"SD-JWT with a Key Binding JWT\" is an accurate, self-evident description, whereas \"SD-JWT+KB\" is opaque (at best).  It's not like having an optional key binding be present makes the SD-JWT any less of an SD-JWT, just like having a \"cnf\" claim present doesn't make a JWT any less a JWT.  In both cases, they are simply utilizing an optional feature, and should continue to be described that way.",
+          "createdAt": "2024-07-15T22:07:52Z",
+          "updatedAt": "2024-07-15T22:07:52Z"
+        }
+      ]
     }
   ],
   "pulls": [
