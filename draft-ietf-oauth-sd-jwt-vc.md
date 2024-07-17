@@ -828,7 +828,7 @@ the credential is used.
 Issuers MAY provide glue documents as described in (#glue-documents) to provide
 metadata directly with the credential and avoid the need for network requests.
 
-These measures allow the Consumders to continue to function even if
+These measures allow the Consumers to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
 described in (#privacy-preserving-retrieval-of-type-metadata).
 
