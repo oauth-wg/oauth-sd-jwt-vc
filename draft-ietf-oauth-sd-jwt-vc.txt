@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 9 January 2025                                    Authlete Inc.
+Expires: 18 January 2025                                   Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                             8 July 2024
+                                                            17 July 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 January 2025.
+   This Internet-Draft will expire on 18 January 2025.
 
 Copyright Notice
 
@@ -539,9 +539,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.K3vBu
-   D6pg6yBOLZ2PbrcCWJ5j8ZfPcX4Wbs6CcjzVEEJ1EnWsFJX_F5YLTDaMyQr_9LGaWzQh
-   _IGDF_RoM6wDQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UUG_K
+   h_RUxJ_wHre_5g3eUyOqBebRLlB4ksFYqXZFvacp4zY0OVMty-Cajn0CG6t24kHApj8q
+   h1rrBk1BB8e0w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -657,16 +657,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.K3vBu
-   D6pg6yBOLZ2PbrcCWJ5j8ZfPcX4Wbs6CcjzVEEJ1EnWsFJX_F5YLTDaMyQr_9LGaWzQh
-   _IGDF_RoM6wDQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UUG_K
+   h_RUxJ_wHre_5g3eUyOqBebRLlB4ksFYqXZFvacp4zY0OVMty-Cajn0CG6t24kHApj8q
+   h1rrBk1BB8e0w~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjA0N
-   TQwOTksICJzZF9oYXNoIjogIjd3NW1wQnJma0txVHZuNGJOYjI3NzZITGstTzNhakhFQ
-   zVSMVpFZWVURjAifQ.mivVrcKu6oa-NQjFYbISYtPzRKky9WIGahBl4TLIS7FUN3lwCo
-   x8zvVdaUXPmdxBOGtAp_0Jhyg7lt11dYGA9w
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjEyM
+   Tg0ODcsICJzZF9oYXNoIjogIkhnSjNxLVFmdWlRbUtIUlpjT1F0ZFdhTmdlc0w1YUIxM
+   0YwMDlPendOancifQ.zksIkDWdbFGfx-myOAqMaO2sQ4xlwK9R4x-TDAGrhjo5cZ-TUu
+   -3IAet02JEKjcEW5RzfSvyZ2SkBWzKTdETKw
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -683,8 +683,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.hELQ35EXZmercZbj6xXUtDbiB-8bBgeFkUlHgBj2CyenPJ
-   Raui9vEVO4e2HYVteiiujAMnXCRg-RYmGIfgjETw~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.Hl2KE24jsKFzgrF1NoD7xlE6SQIo5XABHXVnBnasoEOenL
+   -6iFsbnznV7jZt71nU3VXRO4qtPQ0A7-MvygNRQQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1188,7 +1188,7 @@ Table of Contents
    provide metadata directly with the credential and avoid the need for
    network requests.
 
-   These measures allow the Consumders to continue to function even if
+   These measures allow the Consumers to continue to function even if
    the metadata server is temporarily unavailable and avoid privacy
    issues as described in Section 10.1.
 
@@ -1277,16 +1277,16 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-09, 13
-              June 2024, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-09>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-10, 8
+              July 2024, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-selective-disclosure-jwt-10>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-02, 3 March 2024,
+              status-list-03, 8 July 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-02>.
+              status-list-03>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1495,8 +1495,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.ecQnA-QddQTP8ug5Kvmhx6rUk34BiNS8XYHODJkECSFYLXpggU-TpG
-   JJtClVmuesJOSOwbkxrpKJnUAtttO8IQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.1pgvb-vbMha6citrDh1pr6OyhyqTOw9R4FLBHgUK4hcLl66vvILd7r
+   1T-HnZS0GQmcC8rOfSVhTG9iHTKXIYxw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1767,22 +1767,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.ecQnA-QddQTP8ug5Kvmhx6rUk34BiNS8XYHODJkECSFYLXpggU-TpG
-   JJtClVmuesJOSOwbkxrpKJnUAtttO8IQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.1pgvb-vbMha6citrDh1pr6OyhyqTOw9R4FLBHgUK4hcLl66vvILd7r
+   1T-HnZS0GQmcC8rOfSVhTG9iHTKXIYxw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MjA0NTQwOTksICJzZF9oYXNoIjogIkoyQU9wU1Bkdy1xe
-   lk2UjRDQ0F3YzBiWUZzajl6MFNIanE1ZWNvN0J3UUUifQ.KJPI0mayIB58I4JzdObAbu
-   JmEF9z43bDLsX2QBvVwgwUStCkwQGh5dDMM9J_LDFU4fuPa9RYCpE6Mg-DHLPRFA
+   mlmaWVyIiwgImlhdCI6IDE3MjEyMTg0ODcsICJzZF9oYXNoIjogImtqd3Y2Vl9xWi1Ue
+   EstcEJGWVctdnBDTUs1a2N2UjloV3pBRl9sUU5HbDQifQ.myEg678bxuP0JW9tv-OWRf
+   XlN6tmr79ijXavG_ZhmquBjh_m3hVpINcs2uChVJ4Yd_kL-UFfGekUaBZAar7RIQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1720454099,
-     "sd_hash": "J2AOpSPdw-qzY6R4CCAwc0bYFsj9z0SHjq5eco7BwQE"
+     "iat": 1721218487,
+     "sd_hash": "kjwv6V_qZ-TxK-pBFYW-vpCMK5kcvR9hWzAF_lQNGl4"
    }
 
    After the validation, the Verifier will have the following data for
