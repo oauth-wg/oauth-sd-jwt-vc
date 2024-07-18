@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-16T00:25:26.384559+00:00",
+  "timestamp": "2024-07-18T00:25:10.431517+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -19983,6 +19983,48 @@
               "updatedAt": "2024-07-08T10:29:32Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 244,
+      "id": "PR_kwDOJbVClc51m52f",
+      "title": "Fixed a small typo",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/244",
+      "state": "MERGED",
+      "author": "bit-jniestroj",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixed a small typo i saw while reading the documentation",
+      "createdAt": "2024-07-17T08:16:48Z",
+      "updatedAt": "2024-07-17T12:14:26Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c9cfe8cf33a61c3d889e3112d5bac299b0708a0e",
+      "headRepository": "bit-jniestroj/oauth-sd-jwt-vc",
+      "headRefName": "main",
+      "headRefOid": "0865ef637034a5b9cd6a01e955cff05a397fbf00",
+      "closedAt": "2024-07-17T12:14:26Z",
+      "mergedAt": "2024-07-17T12:14:26Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6CGZXF",
+          "commit": {
+            "abbreviatedOid": "0865ef6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks!",
+          "createdAt": "2024-07-17T11:57:37Z",
+          "updatedAt": "2024-07-17T11:57:37Z",
+          "comments": []
         }
       ]
     }
