@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-21T00:28:05.698906+00:00",
+  "timestamp": "2024-07-23T00:25:29.106743+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6045,6 +6045,54 @@
           "updatedAt": "2024-07-15T22:07:52Z"
         }
       ]
+    },
+    {
+      "number": 245,
+      "id": "I_kwDOJbVClc6QZHWN",
+      "title": "Ambiguity what should happen when no `kid` parameter is present in header when DID is used as `iss` value",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/245",
+      "state": "OPEN",
+      "author": "TimoGlastra",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The spec mentions that a `kid` is optional when the `iss` value is a DID. The same seems to be true when using JWT Issuer Metadata (although there it mentions it is RECOMMENDED at least). It doesn't describe however what should happen if no KID is present.\r\n\r\nThis has caused some interop issues with implementations not including a `kid` field when a DID is used when e.g. `did:key` or `did:jwk` is used as you can infer which key is meant. However this means you have to make exceptions for specific did methods instead of following a general pattern.\r\n\r\nIs there a specific reason to make the `kid` optional if the `iss` value is a DID (and also similarly when JWT Issuer Metadata is used)? If a DID is used, it MUST be signed with a key in the did document right? And it also mentions that \"If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.\"\r\n\r\nSo I don't see a very good reason here to make the usage of `kid` optional, as it results in ambiguity. If there is a good reason to make it optional, would it be possible to also add the RECOMMENDED to using a `kid` when `iss` is a DID, that way we can at least promote other implementation to always include a `kid` when using a DID.",
+      "createdAt": "2024-07-22T10:19:55Z",
+      "updatedAt": "2024-07-22T10:19:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 246,
+      "id": "I_kwDOJbVClc6Qb0Um",
+      "title": "clarify example(s)  ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/246",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Select parts of a conversation from an encrypted messaging service copied here. Editorial liberties have been taken to extract the most relevant parts of the discussion and protect the identities of the participants. \r\n\r\n> ... why does the example in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc#section-3.3 not include an \"iss\" claim?  \\[ note specifically https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 ]\r\n\r\n> ...\r\n\r\n> the idea, as I understand it from the guy that wrote the tool and most of the \\[\"...\"] around it, is that first JSON in sec 3.3 https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 is just showing stuff about the user and the \"meta\" claims like iss, exp, and iat show up in the next part of the example https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-4\r\n\r\n> ...\r\n\r\n> I would find it useful to have an example showing the payload of the credential in clear text (not the salted hashes) + all the metadata required to do validity checks and trust checks. Basically how the data would look like before it gets chopped into pieces or after they have been reverted. A credential without iss value does not make sense to me.\r\n\r\n> ...\r\n\r\n> ... useful if we could give this thing a name: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/443\r\n\r\n> ...\r\n\r\n> it is intentional that that part does not include iss, iat, exp, etc\r\n> maybe we can clarify the intro text more, but basically the idea has been to make a distinction between the user claims and all the metadata around it.\r\n>- the first example is just user claims that are being secured\r\n>- the second example is user claims + metadata that is necessary to be added when signing the sd-jwt\r\n\r\nIMHO it would be worthwhile to expand the example in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#vc-sd-jwt-example and https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-examples to also show the content of the thing that needs a name.\r\n",
+      "createdAt": "2024-07-22T15:52:27Z",
+      "updatedAt": "2024-07-22T15:52:27Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 247,
+      "id": "I_kwDOJbVClc6Qdy1b",
+      "title": "Potential Privacy implications of verifier knowing display information",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Per John Bradley comment during IETF 120",
+      "createdAt": "2024-07-22T20:37:32Z",
+      "updatedAt": "2024-07-22T20:37:32Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
