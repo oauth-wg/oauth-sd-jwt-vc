@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-23T00:25:29.106743+00:00",
+  "timestamp": "2024-07-25T00:25:22.436525+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6058,9 +6058,17 @@
       "labels": [],
       "body": "The spec mentions that a `kid` is optional when the `iss` value is a DID. The same seems to be true when using JWT Issuer Metadata (although there it mentions it is RECOMMENDED at least). It doesn't describe however what should happen if no KID is present.\r\n\r\nThis has caused some interop issues with implementations not including a `kid` field when a DID is used when e.g. `did:key` or `did:jwk` is used as you can infer which key is meant. However this means you have to make exceptions for specific did methods instead of following a general pattern.\r\n\r\nIs there a specific reason to make the `kid` optional if the `iss` value is a DID (and also similarly when JWT Issuer Metadata is used)? If a DID is used, it MUST be signed with a key in the did document right? And it also mentions that \"If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.\"\r\n\r\nSo I don't see a very good reason here to make the usage of `kid` optional, as it results in ambiguity. If there is a good reason to make it optional, would it be possible to also add the RECOMMENDED to using a `kid` when `iss` is a DID, that way we can at least promote other implementation to always include a `kid` when using a DID.",
       "createdAt": "2024-07-22T10:19:55Z",
-      "updatedAt": "2024-07-22T10:19:55Z",
+      "updatedAt": "2024-07-23T20:45:26Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "I agree that there should not be any DID method specific exceptions. Even though we know that `did:key` and `did:jwk` basically encode a single public key, there should not be any logic in this specification which assumes this for all DIDs. DIDs resolve to DID documents that can potentially contain several public keys, therefore it is necessary to identify the specific public key using a DID URL, not just a DID.",
+          "createdAt": "2024-07-23T20:45:25Z",
+          "updatedAt": "2024-07-23T20:45:25Z"
+        }
+      ]
     },
     {
       "number": 246,
@@ -6093,6 +6101,30 @@
       "updatedAt": "2024-07-22T20:37:32Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 248,
+      "id": "I_kwDOJbVClc6QkO4N",
+      "title": "Provide information where a credential can be obtained",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/248",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "We should consider adding type metadata that can help a wallet to guide a user to a place where they can have a credential of a specific type issued.",
+      "createdAt": "2024-07-23T14:51:01Z",
+      "updatedAt": "2024-07-23T17:12:29Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Would this type metadata be different if the same `vct` was used by multiple different issuers? It might be hard to make this work across issuers since the type metadata is static, right?",
+          "createdAt": "2024-07-23T17:12:28Z",
+          "updatedAt": "2024-07-23T17:12:28Z"
+        }
+      ]
     }
   ],
   "pulls": [
