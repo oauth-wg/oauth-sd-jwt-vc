@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-25T00:25:22.436525+00:00",
+  "timestamp": "2024-07-28T00:28:26.194912+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6058,7 +6058,7 @@
       "labels": [],
       "body": "The spec mentions that a `kid` is optional when the `iss` value is a DID. The same seems to be true when using JWT Issuer Metadata (although there it mentions it is RECOMMENDED at least). It doesn't describe however what should happen if no KID is present.\r\n\r\nThis has caused some interop issues with implementations not including a `kid` field when a DID is used when e.g. `did:key` or `did:jwk` is used as you can infer which key is meant. However this means you have to make exceptions for specific did methods instead of following a general pattern.\r\n\r\nIs there a specific reason to make the `kid` optional if the `iss` value is a DID (and also similarly when JWT Issuer Metadata is used)? If a DID is used, it MUST be signed with a key in the did document right? And it also mentions that \"If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.\"\r\n\r\nSo I don't see a very good reason here to make the usage of `kid` optional, as it results in ambiguity. If there is a good reason to make it optional, would it be possible to also add the RECOMMENDED to using a `kid` when `iss` is a DID, that way we can at least promote other implementation to always include a `kid` when using a DID.",
       "createdAt": "2024-07-22T10:19:55Z",
-      "updatedAt": "2024-07-23T20:45:26Z",
+      "updatedAt": "2024-07-27T14:51:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -6067,6 +6067,13 @@
           "body": "I agree that there should not be any DID method specific exceptions. Even though we know that `did:key` and `did:jwk` basically encode a single public key, there should not be any logic in this specification which assumes this for all DIDs. DIDs resolve to DID documents that can potentially contain several public keys, therefore it is necessary to identify the specific public key using a DID URL, not just a DID.",
           "createdAt": "2024-07-23T20:45:25Z",
           "updatedAt": "2024-07-23T20:45:25Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The resolution described in #250 would address this.",
+          "createdAt": "2024-07-27T14:51:18Z",
+          "updatedAt": "2024-07-27T14:51:18Z"
         }
       ]
     },
@@ -6123,6 +6130,53 @@
           "body": "Would this type metadata be different if the same `vct` was used by multiple different issuers? It might be hard to make this work across issuers since the type metadata is static, right?",
           "createdAt": "2024-07-23T17:12:28Z",
           "updatedAt": "2024-07-23T17:12:28Z"
+        }
+      ]
+    },
+    {
+      "number": 249,
+      "id": "I_kwDOJbVClc6Q2tO8",
+      "title": "Suggestion: Should this spec be more open to multiple Credential formats? [W3C Verifiable Credentials 2.0]",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/249",
+      "state": "OPEN",
+      "author": "goncalo-frade-iohk",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi there. Hope everyone is ok. I would like to know your opinion on this subject.\r\n\r\nAfter I read the spec I got the feeling that this spec could be more open to other credential types like W3C Verifiable Credentials 2.0.\r\n\r\nAn Appendix already exists for W3C Verifiable credentials 2.0 in the [SD-JWT spec](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/).\r\n\r\nThe important missing part is about the revocation payload that should always be in plain format.\r\nThe problem is in W3C VC 2.0 spec this is called `credentialStatus` not `status` like in this spec and the status-list is of a different type.\r\n\r\nI was wondering if this Spec could be more broad so it can support other credentials formats and their revocation mechanisms? Maybe more examples with other credential formats and not describe a single mechanism like `I-D.ietf-oauth-status-list` and leave this to the credential specification itself.",
+      "createdAt": "2024-07-25T15:09:50Z",
+      "updatedAt": "2024-07-25T15:24:01Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 250,
+      "id": "I_kwDOJbVClc6Q_dWH",
+      "title": "Drop all references to DIDs and DID resolution",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/250",
+      "state": "OPEN",
+      "author": "leifj",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
+      "createdAt": "2024-07-26T16:16:43Z",
+      "updatedAt": "2024-07-26T22:50:03Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "NONE",
+          "body": "DIDs are non-interoperable, since there are no mandatory-to-implement DID methods.  It's easy for the spec to say \"the recipient MUST retrieve the public key from the DID Document resolved from the DID in the iss value\" but that doesn't make it practically implementable.\r\n\r\nTherefore, I agree with dropping DIDs from the spec.  As the spec says, \"Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above\".  Let DIDs be handled in that manner.",
+          "createdAt": "2024-07-26T18:10:41Z",
+          "updatedAt": "2024-07-26T18:10:41Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[Speaking as an individual] I am in 100% agreement with @leifj and @selfissued and favor (or favour here in Canada) of completely removing all the DID content from this draft. For reasons already mentioned.",
+          "createdAt": "2024-07-26T21:31:18Z",
+          "updatedAt": "2024-07-26T22:50:03Z"
         }
       ]
     }
