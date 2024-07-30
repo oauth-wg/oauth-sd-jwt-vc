@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-28T00:28:26.194912+00:00",
+  "timestamp": "2024-07-30T00:25:36.002832+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6058,7 +6058,7 @@
       "labels": [],
       "body": "The spec mentions that a `kid` is optional when the `iss` value is a DID. The same seems to be true when using JWT Issuer Metadata (although there it mentions it is RECOMMENDED at least). It doesn't describe however what should happen if no KID is present.\r\n\r\nThis has caused some interop issues with implementations not including a `kid` field when a DID is used when e.g. `did:key` or `did:jwk` is used as you can infer which key is meant. However this means you have to make exceptions for specific did methods instead of following a general pattern.\r\n\r\nIs there a specific reason to make the `kid` optional if the `iss` value is a DID (and also similarly when JWT Issuer Metadata is used)? If a DID is used, it MUST be signed with a key in the did document right? And it also mentions that \"If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.\"\r\n\r\nSo I don't see a very good reason here to make the usage of `kid` optional, as it results in ambiguity. If there is a good reason to make it optional, would it be possible to also add the RECOMMENDED to using a `kid` when `iss` is a DID, that way we can at least promote other implementation to always include a `kid` when using a DID.",
       "createdAt": "2024-07-22T10:19:55Z",
-      "updatedAt": "2024-07-27T14:51:19Z",
+      "updatedAt": "2024-07-29T17:46:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -6074,6 +6074,13 @@
           "body": "The resolution described in #250 would address this.",
           "createdAt": "2024-07-27T14:51:18Z",
           "updatedAt": "2024-07-27T14:51:18Z"
+        },
+        {
+          "author": "decentralgabe",
+          "authorAssociation": "NONE",
+          "body": "In implementations of DIDs I have worked on, with JWTs, we have required that `kid` is always a _fully-qualified key identifier_ such as `did:example:abcd#key-1`, where the `iss` would be `did:example:abcd`.\r\n\r\nHandling all the variations of using fragments (`#key-1`, `key-1`, etc.) make things complex, so clearly requiring fully qualified key identifiers from DID Document Verification Methods is a simple choice.",
+          "createdAt": "2024-07-29T17:46:46Z",
+          "updatedAt": "2024-07-29T17:46:46Z"
         }
       ]
     },
@@ -6161,7 +6168,7 @@
       "labels": [],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-07-26T22:50:03Z",
+      "updatedAt": "2024-07-29T18:13:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -6177,6 +6184,20 @@
           "body": "[Speaking as an individual] I am in 100% agreement with @leifj and @selfissued and favor (or favour here in Canada) of completely removing all the DID content from this draft. For reasons already mentioned.",
           "createdAt": "2024-07-26T21:31:18Z",
           "updatedAt": "2024-07-26T22:50:03Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "-1, this is a bad idea for various reasons:\r\n\r\n- DIDs provide an extensibility mechanism that makes it much easier to plug in different public key distribution and discovery mechanisms through DID methods. If you want to use a different discovery mechanism than HTTP, you can simply use a DID method for your favorite (decentralized) public key infrastructure. Several DID methods are already specified, implemented, and used in production.\r\n- The argument \"DIDs are non-interoperable, since there are no mandatory-to-implement DID methods\" has been discussed many times (e.g. [here](https://www.w3.org/2019/did-wg/faqs/2021-formal-objections/)), so it makes no sense to repeat that here. Due to the design mentioned above, DIDs actually enable interoperability.\r\n- DIDs are used in various large EU projects that also have an interest in SD-JWT VC, e.g. EBSI, Gaia-X, etc. Removing DIDs would create unnecessary interoperability issues for these projects.\r\n- A [proposal](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/issues/278) to include DIDs in the EUDI Wallet's ARF has received more thumbs-ups than any other issue in that repository.\r\n- DIDs are used in various ways in connection with OID4VC and OAuth2, which have a close relationship with this specification here.\r\n- Many implementations and applications of the [Verifiable Credentials Data Model (VCDMs)](https://www.w3.org/TR/vc-data-model-2.0/) use DIDs. The fact that this specification here has adopted and overloaded the term \"VC\" is already causing a lot of [confusion](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/249) and [technical ambiguity](https://github.com/w3c/vc-jose-cose/pull/283). Removing DIDs from this specification would only lead to further unnecessary divergence.\r\n- The [W3C DID Working Group](https://www.w3.org/2024/04/did-wg-charter.html) is currently standardizing DID Resolution, and efforts to standardize specific DID methods are also underway.\r\n- The [SD-JWT VCDM proposal](https://github.com/danielfett/sd-jwt-vc-dm), which apparently [is already being standardized](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/issues/200#issuecomment-2184162532) somewhere, mentions that it is based on SD-JWT VC and that it supports DIDs.\r\n- There is also an ideological argument. The concept of VCs has historically emerged out of a desire to enable decentralized identity, self-sovereign identity (SSI), and decentralized public key infrastructure (DPKI), and to use identifiers that are independent of central authorities and intermediaries. To attempt to eliminate elements of decentralization from a specification that contains the term \"VC\" raises concerns about the goals and values behind this effort.\r\n\r\nPlease don't reply with \"nobody stops you from creating a profile that uses DIDs\" or with \"standards are about making choices\". Support for DIDs is described as optional anyway, so there are no downsides of supporting them, but many upsides (see list above).",
+          "createdAt": "2024-07-29T13:55:40Z",
+          "updatedAt": "2024-07-29T18:13:00Z"
+        },
+        {
+          "author": "decentralgabe",
+          "authorAssociation": "NONE",
+          "body": "The arguments made against DIDs are not only inaccurate (as @peacekeeper notes), they're irrelevant. Retrieving keys from DID Documents in a consistent manner should be all that is needed. This is a close analog to how well-known issuer metadata is resolved with JWKs.\r\n\r\nDIDs are and will continue to be used by many organizations, companies, and individuals. Dropping support for them harms interoperability.\r\n\r\nWhat the specification can do, is make it clearer how DIDs can be used with SD-JWT-VCs in a consistent manner. I made [a comment here speaking to one such recommendation](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/245#issuecomment-2256555560).\r\n\r\nThere are already plenty of [open source tools](https://dev.uniresolver.io/) and [demonstrations](https://w3c.github.io/did-test-suite/) that meet this set of capabilities. Not only that, like Markus mentioned, the DID WG is currently working on a Recommendation-track document to further specify DID Resolution, which will only make things better.\r\n\r\nThere are other ideas we can explore too, like requiring DID Documents to have [`publicKeyJwk` based Verification Methods](https://www.w3.org/TR/did-spec-registries/#publickeyjwk), which should even further lower the barrier to interoperability.\r\n\r\nI am happy to help construct language improvements to [Section 3.5](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-3.5) in service of this effort.",
+          "createdAt": "2024-07-29T17:57:00Z",
+          "updatedAt": "2024-07-29T17:57:00Z"
         }
       ]
     }
