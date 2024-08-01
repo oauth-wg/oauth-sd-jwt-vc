@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-07-30T00:25:36.002832+00:00",
+  "timestamp": "2024-08-01T00:28:35.590256+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -2849,7 +2849,7 @@
       "id": "I_kwDOJbVClc5oF6gH",
       "title": "Need a way to define confidence or assurance levels",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/116",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -2858,8 +2858,8 @@
       ],
       "body": "If SD-JWT holder binding is focusing on key (device/wallet) binding in terms of cloning/replay protection, we will need some mechanism to define how we want to communicate how the holder was authenticated if certain claims are presented to verifiers. To verifiers it will be also interesting to understand the confidence (ISO 23220-5) / assurance levels (eIDAS) especially if credentials and wallets support multiple levels. This information could be conveyed by another claim, or it could be just some annotations in form of new members of the specific `cnf` method.\r\n\r\nFor example:\r\n\r\n```\r\n\"cnf\": {\r\n  \"jwk\": {\r\n     ... JWK members ...,\r\n     \"trust_framework\": \"some-ecosystem\",\r\n     \"profile\": \"some-configuration-type\"\r\n  }\r\n}\r\n```\r\n\r\nVS something like the following ...\r\n\r\n```\r\n\"cnf\": {\r\n  \"jwk\": {\r\n     ... JWK members ...\r\n  }\r\n},\r\n\"holder_authentication\": {\r\n  \"trust_framework\": \"some-ecosystem\",\r\n  \"profile\": \"some-configuration-type\"\r\n}\r\n\r\n```\r\n\r\nIMO, it makes no sense to provide the authenticator assertion directly to the verifier. ",
       "createdAt": "2023-06-07T17:37:11Z",
-      "updatedAt": "2023-10-24T20:06:16Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-30T18:16:01Z",
+      "closedAt": "2024-07-30T18:16:01Z",
       "comments": [
         {
           "author": "tlodderstedt",
@@ -2895,6 +2895,13 @@
           "body": "As discussed on the editor's call on June 22, we won't define any normative requirements but we will add some language to some considerations section.",
           "createdAt": "2023-06-22T10:09:46Z",
           "updatedAt": "2023-06-22T10:09:46Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "We revisited this issue on the editors' call and agreed to not add considerations for now. The exact encoding of assurance or confidence levels will be left to the profiles of the specification.",
+          "createdAt": "2024-07-30T18:16:01Z",
+          "updatedAt": "2024-07-30T18:16:01Z"
         }
       ]
     },
@@ -3821,14 +3828,14 @@
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
-        "awoie"
+        "danielfett"
       ],
       "labels": [
         "discuss"
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2024-05-03T14:39:52Z",
+      "updatedAt": "2024-07-30T18:16:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -4241,7 +4248,7 @@
       "id": "I_kwDOJbVClc5y14vY",
       "title": "How to choose `type` values for your credential format?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/171",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -4250,8 +4257,8 @@
       "labels": [],
       "body": "We need to give guidance in the spec on choosing `type` values for a credential format.\r\n\r\nWe need to think about collision resistance - either by a registry or something DNS-based like URIs or java package name notation.\r\n\r\nPersonal opinion: Use URLs, like XML namespaces. It automatically avoids collisions, there is no registry required for potentially large amounts of values, and we can think about extending this in the future with machine-readable information about credential format.",
       "createdAt": "2023-10-04T18:06:38Z",
-      "updatedAt": "2024-07-01T19:59:29Z",
-      "closedAt": null,
+      "updatedAt": "2024-07-30T18:24:48Z",
+      "closedAt": "2024-07-30T18:24:48Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -4322,6 +4329,13 @@
           "body": "I am not in favor of a registry. We (Block) are interested in sd-jwt-vc for its simplicity, and would leverage the property to point to JSON Schema documents.",
           "createdAt": "2023-12-18T18:07:52Z",
           "updatedAt": "2023-12-18T18:07:52Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "In the editors' call we agreed to close this issue, as the main points have been addressed in the meantime (how to choose type and discoverability).",
+          "createdAt": "2024-07-30T18:24:48Z",
+          "updatedAt": "2024-07-30T18:24:48Z"
         }
       ]
     },
@@ -6002,9 +6016,17 @@
       "labels": [],
       "body": "I'm not sure why 'vct' is not (as REQUIRED) in 6.2 Type Metadata Format. Is it bug or is this some sort of implicit? It is in the  6.1. Type Metadata Example and also it is twice referenced in 6.3.5 From Type Metadata Glue Documents: \"the Consumer MUST ensure that the vct claim in the credential matches the one in the Type Metadata document\" and \"the Consumer MUST ensure that the value of the extends property in the Type Metadata document matches that of the vct in the Type Metadata document\"\r\n",
       "createdAt": "2024-07-12T11:49:07Z",
-      "updatedAt": "2024-07-12T11:49:07Z",
+      "updatedAt": "2024-07-30T23:42:02Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This does seem like an oversight but I'll defer to @danielfett to ask if there was a reason behind the omission or if vct needs to be added to that section https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-type-metadata-format ",
+          "createdAt": "2024-07-30T23:42:02Z",
+          "updatedAt": "2024-07-30T23:42:02Z"
+        }
+      ]
     },
     {
       "number": 242,
@@ -6018,9 +6040,17 @@
       "labels": [],
       "body": "Type Metadata introduced new well-known URI /.well-known/vct/ in \"6.3.1. From a URL in the vct\" , but this is not reflected in appendix-A.3 Well-Known URI Registry.\r\n\r\nAdditionally, using <type> in sentence \"Metadata can be retrieved from the URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\" seems to me a little bit confusing as type is considered to refer to whole URI. Maybe use <path> or <uri_suffix>(to include also query and fragment URI components)?",
       "createdAt": "2024-07-12T11:59:16Z",
-      "updatedAt": "2024-07-12T11:59:16Z",
+      "updatedAt": "2024-07-30T23:36:18Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thank you and yes, the registration request is missing and needs to be added. And that sentence could also be improved. ",
+          "createdAt": "2024-07-30T23:36:17Z",
+          "updatedAt": "2024-07-30T23:36:17Z"
+        }
+      ]
     },
     {
       "number": 243,
@@ -6149,12 +6179,29 @@
       "author": "goncalo-frade-iohk",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "Hi there. Hope everyone is ok. I would like to know your opinion on this subject.\r\n\r\nAfter I read the spec I got the feeling that this spec could be more open to other credential types like W3C Verifiable Credentials 2.0.\r\n\r\nAn Appendix already exists for W3C Verifiable credentials 2.0 in the [SD-JWT spec](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/).\r\n\r\nThe important missing part is about the revocation payload that should always be in plain format.\r\nThe problem is in W3C VC 2.0 spec this is called `credentialStatus` not `status` like in this spec and the status-list is of a different type.\r\n\r\nI was wondering if this Spec could be more broad so it can support other credentials formats and their revocation mechanisms? Maybe more examples with other credential formats and not describe a single mechanism like `I-D.ietf-oauth-status-list` and leave this to the credential specification itself.",
       "createdAt": "2024-07-25T15:09:50Z",
-      "updatedAt": "2024-07-25T15:24:01Z",
+      "updatedAt": "2024-07-31T11:04:20Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It sounds like [Securing Verifiable Credentials using JOSE and COSE](https://www.w3.org/TR/vc-jose-cose/) is more along the lines of what you're looking for. ",
+          "createdAt": "2024-07-30T23:00:59Z",
+          "updatedAt": "2024-07-30T23:00:59Z"
+        },
+        {
+          "author": "goncalo-frade-iohk",
+          "authorAssociation": "NONE",
+          "body": "Hi @bc-pi. First thanks for pointing me to that spec, I had not find it before.",
+          "createdAt": "2024-07-31T11:04:19Z",
+          "updatedAt": "2024-07-31T11:04:19Z"
+        }
+      ]
     },
     {
       "number": 250,
@@ -6168,7 +6215,7 @@
       "labels": [],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-07-29T18:13:00Z",
+      "updatedAt": "2024-08-01T00:11:13Z",
       "closedAt": null,
       "comments": [
         {
@@ -6198,6 +6245,41 @@
           "body": "The arguments made against DIDs are not only inaccurate (as @peacekeeper notes), they're irrelevant. Retrieving keys from DID Documents in a consistent manner should be all that is needed. This is a close analog to how well-known issuer metadata is resolved with JWKs.\r\n\r\nDIDs are and will continue to be used by many organizations, companies, and individuals. Dropping support for them harms interoperability.\r\n\r\nWhat the specification can do, is make it clearer how DIDs can be used with SD-JWT-VCs in a consistent manner. I made [a comment here speaking to one such recommendation](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/245#issuecomment-2256555560).\r\n\r\nThere are already plenty of [open source tools](https://dev.uniresolver.io/) and [demonstrations](https://w3c.github.io/did-test-suite/) that meet this set of capabilities. Not only that, like Markus mentioned, the DID WG is currently working on a Recommendation-track document to further specify DID Resolution, which will only make things better.\r\n\r\nThere are other ideas we can explore too, like requiring DID Documents to have [`publicKeyJwk` based Verification Methods](https://www.w3.org/TR/did-spec-registries/#publickeyjwk), which should even further lower the barrier to interoperability.\r\n\r\nI am happy to help construct language improvements to [Section 3.5](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-3.5) in service of this effort.",
           "createdAt": "2024-07-29T17:57:00Z",
           "updatedAt": "2024-07-29T17:57:00Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I understand there are some ardent supporters of DIDs and the VCDM. And some folks who are not. But this issue isn't the place to try and litigate any of that. ",
+          "createdAt": "2024-07-30T23:18:11Z",
+          "updatedAt": "2024-07-30T23:18:11Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "@bc-pi What do you mean by \"litigate any of that\"? Isn't the point of Github issues to discuss (and ideally, offer arguments) whether a certain change should be made or not, in this case, removing DIDs and DID resolution from this specification?",
+          "createdAt": "2024-07-31T00:17:31Z",
+          "updatedAt": "2024-07-31T00:17:31Z"
+        },
+        {
+          "author": "ssanchocanela",
+          "authorAssociation": "NONE",
+          "body": "I'm afraid I have to disagree with this proposal; I don't see any argument in its favour. My proposal is the opposite: to specify examples of DID usage in SD-JWT VC to increase adoption and strengthen the specification. A broad community of wallets supports DIDs, including all those EBSI Conformance. Ignoring DIDs in the specification is a statement of intent.",
+          "createdAt": "2024-07-31T17:39:38Z",
+          "updatedAt": "2024-07-31T17:39:38Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @bc-pi What do you mean by \"litigate any of that\"? Isn't the point of Github issues to discuss (and ideally, offer arguments) whether a certain change should be made or not, in this case, removing DIDs and DID resolution from this specification?\r\n\r\nWell, it sure seems to me that the arguments offered veered well into the territory of general advocacy for the wonders of Decentralized Identifiers from the DID community itself. While also misunderstanding or misconstruing the actual implications of removal from this draft. This issue isn't the place for that. And honestly it's tiresome. Also probably not having the effect you think or hope it is. ",
+          "createdAt": "2024-07-31T22:47:02Z",
+          "updatedAt": "2024-07-31T22:47:02Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "> Well, it sure seems to me that the arguments offered veered well into the territory of general advocacy for the wonders of Decentralized Identifiers from the DID community itself. While also misunderstanding or misconstruing the actual implications of removal from this draft.\r\n\r\nApologies, I admit I'm not so familiar with the process and culture of this group. If advocacy for the benefits (not \"wonders\") of a feature that is being proposed for removal are not welcome here, and considered \"tiresome\", then what would be a more acceptable way of expressing a dissenting opinion about this proposal?",
+          "createdAt": "2024-08-01T00:11:12Z",
+          "updatedAt": "2024-08-01T00:11:12Z"
         }
       ]
     }
