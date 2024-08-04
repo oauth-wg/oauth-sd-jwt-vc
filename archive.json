@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-01T00:28:35.590256+00:00",
+  "timestamp": "2024-08-04T00:28:08.438404+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6215,7 +6215,7 @@
       "labels": [],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-08-01T00:11:13Z",
+      "updatedAt": "2024-08-01T12:35:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -6277,9 +6277,16 @@
         {
           "author": "peacekeeper",
           "authorAssociation": "NONE",
-          "body": "> Well, it sure seems to me that the arguments offered veered well into the territory of general advocacy for the wonders of Decentralized Identifiers from the DID community itself. While also misunderstanding or misconstruing the actual implications of removal from this draft.\r\n\r\nApologies, I admit I'm not so familiar with the process and culture of this group. If advocacy for the benefits (not \"wonders\") of a feature that is being proposed for removal are not welcome here, and considered \"tiresome\", then what would be a more acceptable way of expressing a dissenting opinion about this proposal?",
+          "body": "> Well, it sure seems to me that the arguments offered veered well into the territory of general advocacy for the wonders of Decentralized Identifiers from the DID community itself. While also misunderstanding or misconstruing the actual implications of removal from this draft.\r\n\r\nApologies, I admit I'm not so familiar with the process and culture of this group. If advocacy for the benefits (not \"wonders\") of a feature that is being proposed for removal is not welcome here, and considered \"tiresome\", then what would be a more acceptable way of expressing a dissenting opinion about this proposal?",
           "createdAt": "2024-08-01T00:11:12Z",
-          "updatedAt": "2024-08-01T00:11:12Z"
+          "updatedAt": "2024-08-01T01:13:31Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Apologies if I've been unable to articulate myself in a meaningful way but I believe the point has been missed. ",
+          "createdAt": "2024-08-01T12:35:54Z",
+          "updatedAt": "2024-08-01T12:35:54Z"
         }
       ]
     }
