@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-06T00:25:31.988357+00:00",
+  "timestamp": "2024-08-08T00:25:33.563841+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4979,11 +4979,11 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "discuss"
+        "pending close"
       ],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-05-23T09:08:22Z",
+      "updatedAt": "2024-08-06T18:48:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -5188,6 +5188,20 @@
           "body": "As i mentioned in my post, we're happy to change our implementation on what comes out of this discussion.\n\nBut until then re-using existing fields is a lot easier to integrate. `kid` been used for did key identifiers for multiple years already\n\n",
           "createdAt": "2024-05-23T09:08:20Z",
           "updatedAt": "2024-05-23T09:08:20Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "We discussed this on our editors' call and agreed that this method should be defined in a separate spec. ",
+          "createdAt": "2024-08-06T18:13:50Z",
+          "updatedAt": "2024-08-06T18:13:50Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "I don't really have a strong opinion on whether \"kid\" or \"jku\" a new DID-based \"cnf\" method should be used.\r\n\r\nIn any case however, it would still make sense to have language such as what has been proposed by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330, considering existing implementations and use cases. Also, an example using a DID as a user's identifier would be useful.",
+          "createdAt": "2024-08-06T18:48:55Z",
+          "updatedAt": "2024-08-06T18:48:55Z"
         }
       ]
     },
@@ -5391,11 +5405,11 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "discuss"
+        "pending close"
       ],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-04-30T17:19:48Z",
+      "updatedAt": "2024-08-06T18:18:37Z",
       "closedAt": null,
       "comments": [
         {
@@ -5418,6 +5432,13 @@
           "body": "we did have a use-case where the issuers wanted to ensure that credentials are not being used by unauthorized verifiers, and wanted to ensure that by including legal policy reference inside the credential.",
           "createdAt": "2024-02-17T01:44:23Z",
           "updatedAt": "2024-02-17T01:44:23Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "It seems that there is not much interest in this topic, at least it has not come up in any discussions in the last months. Unless there is a really good use case, we will close this issue.",
+          "createdAt": "2024-08-06T18:18:25Z",
+          "updatedAt": "2024-08-06T18:18:25Z"
         }
       ]
     },
@@ -5431,11 +5452,11 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "discuss"
+        "NEEDS PR"
       ],
       "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
       "createdAt": "2024-02-27T23:44:20Z",
-      "updatedAt": "2024-04-30T17:22:11Z",
+      "updatedAt": "2024-08-06T18:25:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -5472,6 +5493,13 @@
           "body": "Would it make sense to instead put dedicated VC metadata that is SD-JWT VC instance (not `vct`) specific into a dedicated metadata claim instead? This way, existing JWT claims can be used.",
           "createdAt": "2024-04-30T17:21:59Z",
           "updatedAt": "2024-04-30T17:21:59Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "This can be solved with metadata. In particular, the wallet can check if there is display metadata associated with a certain claim or not. We should add a sentence explaining how that works to the metadata spec as soon as the display metadata was added, see #236 ",
+          "createdAt": "2024-08-06T18:24:00Z",
+          "updatedAt": "2024-08-06T18:24:59Z"
         }
       ]
     },
@@ -6126,9 +6154,17 @@
       "labels": [],
       "body": "Select parts of a conversation from an encrypted messaging service copied here. Editorial liberties have been taken to extract the most relevant parts of the discussion and protect the identities of the participants. \r\n\r\n> ... why does the example in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc#section-3.3 not include an \"iss\" claim?  \\[ note specifically https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 ]\r\n\r\n> ...\r\n\r\n> the idea, as I understand it from the guy that wrote the tool and most of the \\[\"...\"] around it, is that first JSON in sec 3.3 https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 is just showing stuff about the user and the \"meta\" claims like iss, exp, and iat show up in the next part of the example https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-4\r\n\r\n> ...\r\n\r\n> I would find it useful to have an example showing the payload of the credential in clear text (not the salted hashes) + all the metadata required to do validity checks and trust checks. Basically how the data would look like before it gets chopped into pieces or after they have been reverted. A credential without iss value does not make sense to me.\r\n\r\n> ...\r\n\r\n> ... useful if we could give this thing a name: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/443\r\n\r\n> ...\r\n\r\n> it is intentional that that part does not include iss, iat, exp, etc\r\n> maybe we can clarify the intro text more, but basically the idea has been to make a distinction between the user claims and all the metadata around it.\r\n>- the first example is just user claims that are being secured\r\n>- the second example is user claims + metadata that is necessary to be added when signing the sd-jwt\r\n\r\nIMHO it would be worthwhile to expand the example in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#vc-sd-jwt-example and https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-examples to also show the content of the thing that needs a name.\r\n",
       "createdAt": "2024-07-22T15:52:27Z",
-      "updatedAt": "2024-07-22T15:52:27Z",
+      "updatedAt": "2024-08-06T18:19:13Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Seems related to #194",
+          "createdAt": "2024-08-06T18:19:12Z",
+          "updatedAt": "2024-08-06T18:19:12Z"
+        }
+      ]
     },
     {
       "number": 247,
