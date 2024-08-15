@@ -23,5 +23,8 @@ report.xml
 !requirements.txt
 
 # Ignore output of examples except for specification.yml
-examples/*/*
-!examples/*/specification.yml
+examples/*/kb_jwt_*
+examples/*/sd_jwt_*
+examples/*/user_claims.json
+examples/*/verified_contents.json
+examples/*/disclosures.md

@@ -528,6 +528,8 @@ retrieved from the URL
 }
 ```
 
+This example is shortened for presentation, a full Type Metadata example can be found in (#ExampleTypeMetadata).
+
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
 `WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0`.
@@ -550,6 +552,8 @@ defined:
   in (#display-metadata). This property is OPTIONAL.
 * `claims`: An object containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
+
+An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
 ## Extending Type Metadata {#extending-type-metadata}
 
@@ -639,12 +643,14 @@ integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 # Display Metadata {#display-metadata}
 
-The `display` property is an object containing display information for the type.
-The object MUST contain a property for each language that is supported by the
-type. The property name MUST be a language tag as defined in Section 2 of
-[@!RFC5646]. The property value MUST be an object containing the following
-properties:
+The `display` property is an array containing display information for the type.
+The array MUST contain an object for each language that is supported by the
+type. The consuming application MUST use the language tag it considers most
+appropriate for the user.
 
+The objects in the array MUST have the following properties:
+
+- `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `name`: A human-readable name for the type, intended for end users. This
   property is OPTIONAL.
 - `description`: A human-readable description for the type, intended for end
@@ -803,14 +809,14 @@ able to identify the claim which is being addressed.
 
 ## Claim Display Metadata {#claim-display-metadata}
 
-The `display` property is an object containing display information for the
-claim. The object MUST contain a property for each language that is supported by
-the type. The property name MUST be a language tag as defined in Section 2 of
-[@!RFC5646]. The consuming application MUST use the language tag it considers most
+The `display` property is an array containing display information for the
+claim. The array MUST contain an object for each language that is supported by
+the type. The consuming application MUST use the language tag it considers most
 appropriate for the user.
 
-The property value MUST be an object containing the following properties:
+The objects in the array MUST have the following properties:
 
+- `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `label`: A human-readable label for the claim, intended for end users. This
   property is OPTIONAL.
 - `description`: A human-readable description for the claim, intended for end
@@ -1202,6 +1208,10 @@ After the validation, the Verifier will have the following data for further proc
 
 <{{examples/03-pid/verified_contents.json}}
 
+## Example 2: Type Metadata {#ExampleTypeMetadata}
+
+<{{examples/typemetadata/example.json}}
+
 # Acknowledgements {#Acknowledgements}
 
 We would like to thank
@@ -1221,11 +1231,14 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-05
+
+* Include Type Metadata
+* Include display and claim type metadata
+
 -04
 
 * update reference to IETF Status List
-* Include Type Metadata
-* Include display and claim type metadata
 * Editorial changes
 * Updated terminology to clarify digital signatures are one way to secure VCs and presentations
 
