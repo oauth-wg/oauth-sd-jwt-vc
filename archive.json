@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-13T00:26:45.436397+00:00",
+  "timestamp": "2024-08-15T00:25:13.941961+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3835,7 +3835,7 @@
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2024-07-30T18:16:43Z",
+      "updatedAt": "2024-08-14T12:46:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -3942,6 +3942,13 @@
           "body": "cross comment from https://github.com/openid/OpenID4VP/issues/161 -> This is a somewhat tangential friendly reminder that the cnf claim specified in [Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs) ](https://datatracker.ietf.org/doc/html/rfc7800)is strictly about representing a proof-of-possession key and is therefore entirely inappropriate as a means of conveying 'claims based binding'.",
           "createdAt": "2024-05-03T14:39:51Z",
           "updatedAt": "2024-05-03T14:39:51Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I talked to Mark Haine today and during the call we identified two ways to stretch the ekyc-IDA spec a bit:\r\n\r\n\u2460 Introduce a new element `claims_ptrs` to point to the relevant claims:\r\n```json\r\n{\r\n  \"iss\": \"https://server.example.com\",\r\n  \"exp\": 1544645174,\r\n  \"given_name\": \"Max\",\r\n  \"family_name\": \"Mustermann\",\r\n  \"verified_claims\": {\r\n    \"verification\": {\r\n      \"trust_framework\": \"example\"\r\n    },\r\n    \"claims_ptrs\": [\r\n      [\"given_name\"],\r\n      [\"family_name\"]\r\n    ]\r\n  }\r\n}\r\n```\r\n\r\n\u2461 Define a new special \"claim\" (like `_ptrs`) to point to the verified claims:\r\n```json\r\n{\r\n  \"iss\": \"https://server.example.com\",\r\n  \"exp\": 1544645174,\r\n  \"given_name\": \"Max\",\r\n  \"family_name\": \"Mustermann\",\r\n  \"verified_claims\": {\r\n    \"verification\": {\r\n      \"trust_framework\": \"example\"\r\n    },\r\n    \"claims\": {\r\n        \"_ptrs\": [\r\n          [\"given_name\"],\r\n          [\"family_name\"]\r\n      ]\r\n    }\r\n  }\r\n}\r\n```\r\n",
+          "createdAt": "2024-08-14T12:46:43Z",
+          "updatedAt": "2024-08-14T12:46:43Z"
         }
       ]
     },
@@ -5409,7 +5416,7 @@
       ],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-08-06T18:18:37Z",
+      "updatedAt": "2024-08-14T17:47:06Z",
       "closedAt": null,
       "comments": [
         {
@@ -5439,6 +5446,13 @@
           "body": "It seems that there is not much interest in this topic, at least it has not come up in any discussions in the last months. Unless there is a really good use case, we will close this issue.",
           "createdAt": "2024-08-06T18:18:25Z",
           "updatedAt": "2024-08-06T18:18:25Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It has been suggested that there might still be interest in this topic. But the path forward is still unclear (at best). The aud claim could potentially be (mis)used for this? Or nothing here at this layer. Or expressed in metadata. Or part of a vct or sub-vct definition. ",
+          "createdAt": "2024-08-13T18:23:51Z",
+          "updatedAt": "2024-08-14T17:47:06Z"
         }
       ]
     },
@@ -6092,7 +6106,7 @@
       "labels": [],
       "body": "As of [SD-JWT -09](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/09/) which \"[Distinguished SD-JWT from SD-JWT+KB](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-09.html#name-document-history)\" the phrase \"SD-JWT with a Key Binding JWT\" may/should be replaced with \"SD-JWT+KB\" ",
       "createdAt": "2024-07-15T21:13:05Z",
-      "updatedAt": "2024-07-15T22:07:53Z",
+      "updatedAt": "2024-08-14T19:32:34Z",
       "closedAt": null,
       "comments": [
         {
@@ -6101,6 +6115,13 @@
           "body": "I disagree with this, as this textual substitution would make the meaning of the specification less clear.  \"SD-JWT with a Key Binding JWT\" is an accurate, self-evident description, whereas \"SD-JWT+KB\" is opaque (at best).  It's not like having an optional key binding be present makes the SD-JWT any less of an SD-JWT, just like having a \"cnf\" claim present doesn't make a JWT any less a JWT.  In both cases, they are simply utilizing an optional feature, and should continue to be described that way.",
           "createdAt": "2024-07-15T22:07:52Z",
           "updatedAt": "2024-07-15T22:07:52Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This issue was mostly a note/todo to reconcile terminology usage here with the contributions @bifurcation made to the underlying core SD-JWT document, which were iterated on for over six months before being incorporated https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/394 \r\n\r\nBut I honestly don't care enough about this one to push either way and would happily close, if the other editors are okay with it. ",
+          "createdAt": "2024-08-14T19:32:33Z",
+          "updatedAt": "2024-08-14T19:32:33Z"
         }
       ]
     },
@@ -19734,7 +19755,7 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-07-09T15:59:50Z",
+      "updatedAt": "2024-08-13T18:19:25Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "a8eedd93e2e6f02fe0c7f308658d07d854ebf9dc",
@@ -19987,6 +20008,19 @@
               "updatedAt": "2024-07-09T15:59:50Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6FSq1q",
+          "commit": {
+            "abbreviatedOid": "0a26a60"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "please update the language tag approach to reflect the rough consensus achieved briefly in the room (where you were not present) at IETF 120 ",
+          "createdAt": "2024-08-13T18:19:25Z",
+          "updatedAt": "2024-08-13T18:19:25Z",
+          "comments": []
         }
       ]
     },
