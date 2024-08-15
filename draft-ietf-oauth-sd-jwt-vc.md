@@ -130,6 +130,9 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding", and "Key Binding JWT" defined by
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
+Consumer:
+: Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
+
 Verifiable Credential (VC):
 :  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
 
@@ -309,6 +312,8 @@ the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
 for the Issuer-signed JWT as defined in (#issuer-signed-jwt-verification-key-validation).
 
+If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in (#schema-type-metadata).
+
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
@@ -328,10 +333,9 @@ verification key for the Issuer-signed JWT corresponds to the `iss` value:
 
 - JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
 obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
-- X.509 Certificates: If the recipient supports X.509 Certificates, the recipient MUST obtain the public key from the leaf X.509 certificate defined by the `x5c` JWT header parameters of the Issuer-signed JWT and validate the X.509
-certificate chain in the following cases:
-    - If the `iss` value contains a DNS name encoded as a URI using the DNS URI scheme [@RFC4501], the DNS name MUST match a `dNSName` Subject Alternative Name (SAN) [@RFC5280] entry of the leaf certificate.
-    - In all other cases, the `iss` value MUST match a `uniformResourceIdentifier` SAN entry of the leaf certificate.
+- X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST
+     1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and
+     2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
 - DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
@@ -478,23 +482,21 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-A type is associated with metadata defining, for example, information about the type, a schema defining which claims MAY or MUST appear in the SD-JWT VC, and how they can be displayed.
+A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
 
-This section defines Type Metadata that can be associated with a type of a SD-JWT VC as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
+This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
- * Developers of Issuers and Verifiers can use the Typ Metadata to understand the
+ * Developers of Issuers and Verifiers can use the Type Metadata to understand the
    semantics of the type and the associated rules. While in some cases,
-   Issuers are the parties that define types (credential formats), this is
+   Issuers are the parties that define types, this is
    not always the case. For example, a type can be defined by a
    standardization body or a community.
- * Verifiers can use the metadata to determine whether a credential is valid
+ * Verifiers can use the Type Metadata to determine whether a credential is valid
    according to the rules of the type. For example, a Verifier can check
    whether a credential contains all required claims and whether the claims
    are selectively disclosable.
- * Wallets can use the metadata to display the credential in a way that is
-   consistent with the Issuer's intent.
 
-Applications using Type Metadata defined in this specification are called "Consumers" in the following. This typically includes Issuers, Verifiers, and Wallets.
+Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
 ## Type Metadata Example {#type-metadata-example}
 
@@ -524,7 +526,9 @@ retrieved from the URL
   "name":"Betelgeuse Education Credential - Preliminary Version",
   "description":"This is our development version of the education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-  "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5"
+  "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+  "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
+  "schema_uri#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
 ```
 
@@ -552,6 +556,14 @@ defined:
   in (#display-metadata). This property is OPTIONAL.
 * `claims`: An object containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
+* `schema`
+  * OPTIONAL. An embedded JSON Schema document describing the structure of
+  the Verifiable Credential as described in (#schema-definition). `schema` MUST NOT be used
+  if `schema_uri` is present.
+* `schema_uri`
+  * OPTIONAL. A URL pointing to a JSON Schema document describing the structure
+  of the Verifiable Credential as described in (#schema-definition). `schema_uri` MUST NOT
+  be used if `schema` is present.
 
 An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
@@ -583,7 +595,7 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 
 ### From a Registry {#retrieval-from-registry}
 
-A Consumer MAY use a registry to retrieve Type Metadata for a type,
+A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT VC type,
 e.g., if the type is not a HTTPS URL or if the Consumer does not have
 access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
 
@@ -598,7 +610,7 @@ retrieve Type Metadata based on a URN in the `vct` claim.
 
 ### From a Local Cache {#retrieval-from-local-cache}
 
-A Consumer MAY cache Type metadata for a type. If a hash for integrity
+A Consumer MAY cache Type Metadata for a SD-JWT VC type. If a hash for integrity
 protection is present in the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
 indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
 header of the HTTP response to determine how long the metadata can be cached.
@@ -606,7 +618,7 @@ header of the HTTP response to determine how long the metadata can be cached.
 ### From Type Metadata Glue Documents {#glue-documents}
 
 Credentials MAY encode Type Metadata directly, providing it as "glue
-information" to the consumer.
+information" to the Consumer.
 
 For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be
 included in the unprotected header of the JWS. In this case, the key `vctm` MUST
@@ -626,14 +638,147 @@ array instead of retrieving the respective Type Metadata elsewhere as follows:
    Type Metadata document matches that of the `vct` in the Type Metadata document, and it MUST verify the integrity of the Type Metadata document as defined in
    (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided.
 
+## Extending Type Metadata {#extending-type-metadata}
+
+An SD-JWT VC type can extend another type. The extended type is identified by the URI in
+the `extends` property. Consumers MUST retrieve and process
+Type Metadata for the extended type before processing the Type Metadata for the extending
+type.
+
+The extended type MAY itself extend another type. This can be used to create a
+chain or hierarchy of types. The security considerations described in
+(#circular-extends) apply in order to avoid problems with circular dependencies.
+
+## Schema Type Metadata {#schema-type-metadata}
+
+### Schema Definition {#schema-definition}
+
+Schemas for Verifiable Credentials are contained in the `schema` or retrieved via the `schema_uri` Type Metadata parameters (as defined in (#type-metadata-format)).
+A schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12] or above.
+
+The schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.
+
+The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example) requiring the presence of the `cnf` claim in an SD-JWT VC presentation:
+
+```
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "type":"object",
+  "properties":{
+    "vct":{
+      "type":"string"
+    },
+    "iss":{
+      "type":"string"
+    },
+    "nbf":{
+      "type":"number"
+    },
+    "exp":{
+      "type":"number"
+    },
+    "cnf":{
+      "type":"object"
+    },
+    "status":{
+      "type":"object"
+    },
+    "given_name":{
+      "type":"string"
+    },
+    "family_name":{
+      "type":"string"
+    },
+    "email":{
+      "type":"string"
+    },
+    "phone_number":{
+      "type":"string"
+    },
+    "address":{
+      "type":"object",
+      "properties":{
+        "street_address":{
+          "type":"string"
+        },
+        "locality":{
+          "type":"string"
+        },
+        "region":{
+          "type":"string"
+        },
+        "country":{
+          "type":"string"
+        }
+      }
+    },
+    "birthdate":{
+      "type":"string"
+    },
+    "is_over_18":{
+      "type":"boolean"
+    },
+    "is_over_21":{
+      "type":"boolean"
+    },
+    "is_over_65":{
+      "type":"boolean"
+    }
+  },
+  "required":[
+    "iss",
+    "vct",
+    "cnf"
+  ]
+}
+```
+
+Note that `iss` and `vct` are always required by this specification.
+
+### Schema Validation {#schema-validation}
+
+If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
+(as defined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
+
+If an `extends` property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
+validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
+Each schema in this chain MUST be evaluated for a specific Verifiable Credential.
+
+If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.
+
+The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in (#schema-definition):
+
+```
+{
+  "vct":"https://credentials.example.com/identity_credential",
+  "iss":"https://example.com/issuer",
+  "iat":1683000000,
+  "exp":1883000000,
+  "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
+  "address":{
+    "country":"DE"
+  },
+  "cnf":{
+    "jwk":{
+      "kty":"EC",
+      "crv":"P-256",
+      "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}
+```
+
+Note, the example above does not contain any `_sd_alg`, `_sd`, or `...` claims.
+
 # Document Integrity {#document-integrity}
 
-Both the `vct` claim in the SD-JWT VC and various URIs in the metadata
-document MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
+Both the `vct` claim in the SD-JWT VC and the various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
 
  * `vct` as defined in (#claims),
  * `extends` as defined in (#extending-type-metadata)
  * `uri` as used in two places in (#rendering-metadata)
+ * `schema_uri` as defined in (#schema-type-metadata)
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
 [@!W3C.SRI]. A Consumer of the respective documents MUST verify the
@@ -914,7 +1059,7 @@ the credential is used.
 Issuers MAY provide glue documents as described in (#glue-documents) to provide
 metadata directly with the credential and avoid the need for network requests.
 
-These measures allow the Consumders to continue to function even if
+These measures allow the Consumers to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
 described in (#privacy-preserving-retrieval-of-type-metadata).
 
@@ -1109,6 +1254,13 @@ recommendations in (#robust-retrieval) apply.
     <title>The European Digital Identity Wallet Architecture and Reference Framework</title>
   </front>
 </reference>
+
+<reference anchor="JSON.SCHEMA.2020-12" target="https://json-schema.org/draft/2020-12/release-notes">
+  <front>
+    <author fullname="OpenJS Foundation"></author>
+    <title>JSON Schema (2020-12)</title>
+  </front>
+</reference>
 {backmatter}
 
 # IANA Considerations
@@ -1118,12 +1270,12 @@ recommendations in (#robust-retrieval) apply.
 - Claim Name: "vct"
 - Claim Description: Verifiable credential type identifier
 - Change Controller: IETF
-- Specification Document(s): [[ (#type-claim)  of this of this specification ]]
+- Specification Document(s): [[ (#type-claim) of this of this specification ]]
 
 - Claim Name: "vct#integrity"
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
-- Specification Document(s): [[ (#document-integrity)  of this of this specification ]]
+- Specification Document(s): [[ (#document-integrity) of this of this specification ]]
 
 ## Media Types Registry
 
@@ -1233,14 +1385,18 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -05
 
-* Include Type Metadata
 * Include display and claim type metadata
+* Added example for type metadata
 
 -04
 
 * update reference to IETF Status List
+* Include Type Metadata
+* Include schema Type Metadata
 * Editorial changes
 * Updated terminology to clarify digital signatures are one way to secure VCs and presentations
+* Rework key resolution/validation for x5c
+
 
 -03
 
