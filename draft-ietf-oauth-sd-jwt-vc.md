@@ -482,7 +482,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-A SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
+An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
 
 This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
