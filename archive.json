@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-15T00:25:13.941961+00:00",
+  "timestamp": "2024-08-18T00:28:12.751014+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6272,7 +6272,7 @@
       "labels": [],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-08-10T03:04:15Z",
+      "updatedAt": "2024-08-15T07:19:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -6351,6 +6351,13 @@
           "body": "Of relevance; for any interested in contributing to DID method standardization: https://identity.foundation/publications/LOI-DIDMethodStandardization.pdf\r\n",
           "createdAt": "2024-08-09T23:56:41Z",
           "updatedAt": "2024-08-09T23:56:41Z"
+        },
+        {
+          "author": "leifj",
+          "authorAssociation": "NONE",
+          "body": "Getting back to this (apologies for the late feedback). Much has been made in this thread of the importance of DIDs in the ecosystem. My proposal has nothing to do with the importance or non-importance of DIDs but is all about weather the current language is appropriate guidance for implementors. If in fact DIDs are important they deserve more care than half a paragraph and a separate specification that profiles this specification for use with DIDs is imo entirely appropriate in that case. IETF standards are not marketing documents but technical specifications and as such the current language on DIDs is unusable for an implementer.\r\n\r\nI propose that the the proponents of keeping DIDs in the current specification open a PR with language that ensures interoperability - something which is clearly a requirement for a standards-track IETF document.",
+          "createdAt": "2024-08-15T07:19:04Z",
+          "updatedAt": "2024-08-15T07:19:04Z"
         }
       ]
     }
@@ -19753,15 +19760,15 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
-      "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.",
+      "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-08-13T18:19:25Z",
+      "updatedAt": "2024-08-16T07:11:45Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "a8eedd93e2e6f02fe0c7f308658d07d854ebf9dc",
+      "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "0a26a60bd8ae80776df4d2efc424d0815b6de385",
+      "headRefOid": "acbba6eabbff020f6ffb91ff12156a4b07c7898b",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -20021,6 +20028,46 @@
           "createdAt": "2024-08-13T18:19:25Z",
           "updatedAt": "2024-08-13T18:19:25Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6FgnL6",
+          "commit": {
+            "abbreviatedOid": "9e3c3e5"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-15T08:07:30Z",
+          "updatedAt": "2024-08-15T08:07:31Z",
+          "comments": [
+            {
+              "originalPosition": 237,
+              "body": "Thanks, fixed!",
+              "createdAt": "2024-08-15T08:07:30Z",
+              "updatedAt": "2024-08-15T08:07:31Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Fgn9W",
+          "commit": {
+            "abbreviatedOid": "9aac8d4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-15T08:09:52Z",
+          "updatedAt": "2024-08-15T08:09:52Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "Thanks, I changed this, but used `lang` instead of `locale`. I think this might a more fitting name as this is about translations, less about the other aspects of localization.",
+              "createdAt": "2024-08-15T08:09:52Z",
+              "updatedAt": "2024-08-15T08:09:52Z"
+            }
+          ]
         }
       ]
     },
