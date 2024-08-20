@@ -550,9 +550,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.r-HSd
-   zSvw61RqMJXzFBhH-Hhp-y6Vvad0WllyR0Vc4szdksj9k-EDZv7ydUNHftjewSb28kuR
-   Y78apUNESN6Qw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1JEdh
+   Ae1UXjdtLQOtTO83CwNi3aEasBZOAFB7Cmccv59UZblByExyecYTrOtb7X7mhd5nuqsD
+   ssXv43-WY0_nA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -668,16 +668,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.r-HSd
-   zSvw61RqMJXzFBhH-Hhp-y6Vvad0WllyR0Vc4szdksj9k-EDZv7ydUNHftjewSb28kuR
-   Y78apUNESN6Qw~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1JEdh
+   Ae1UXjdtLQOtTO83CwNi3aEasBZOAFB7Cmccv59UZblByExyecYTrOtb7X7mhd5nuqsD
+   ssXv43-WY0_nA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
    mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjQxN
-   zc3ODQsICJzZF9oYXNoIjogIko2T1ZVSEs0aWgzTlRybGoyazJTMS1nVVZDa0ZrZlhhW
-   VNKcmxFdXhaUEUifQ.q6IJbEx3WMRHIYL5_a0VQ7iaXDG5Vqq9Rrk28ITExKBgoJmsp7
-   yXxygscwzWIul8GoeEJsPZAJl59xRbp2zksA
+   zgxMDQsICJzZF9oYXNoIjogIk1BQ0lEYmVmS0txUHBDZEJIeFdRRzItLWpOUk1GY1FfQ
+   VR5VjJ4RXhsVHcifQ.IX1VrT1tQGsVS14P2CeKBc5eCXMXFpi1diMNZCNltsCDpegNjU
+   m2hxeHjIUHN6iXIqhftZXascjbwqqtmcTByA
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -694,8 +694,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.fgj9ZyyTDstJx45QijTRVp5atYvR7JyPaaZgoYq1G9PQqp
-   MCTn-yb_su3KmVPJjQR1YTMTCkbtE7lvqkSykaog~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.AapcyJy91DNGvApC93IvxPFhbLj44mWIPSqcFeoySzyuV3
+   ahp_8H6xpD1RxnUbIFYgmzHjlWK6n4BlFyLr4ZVQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -813,7 +813,7 @@ Table of Contents
    An SD-JWT VC type, i.e., the vct value, is associated with Type
    Metadata defining, for example, information about the type or a
    schema defining (see Section 6.6.1) which claims MAY or MUST appear
-   in the SD-JWT VC.
+   in the SD-JWT VC, and how credentials are displayed.
 
    This section defines Type Metadata that can be associated with a type
    of a SD-JWT VC, as well as a method for retrieving the Type Metadata
@@ -830,6 +830,8 @@ Table of Contents
       example, a Verifier can check whether a credential contains all
       required claims and whether the claims are selectively
       disclosable.
+   *  Wallets can use the metadata to display the credential in a way
+      that is consistent with the Issuer's intent.
 
    Type Metadata can be retrieved as described in Section 6.4.
 
@@ -1759,8 +1761,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.sq7WvN9p-MnwbClJBjcn-0hWEUTF9yCXYiS5dRDXEZzzPjJbdZ4CRS
-   x4vVHenfh55B6egBSZ-Ict7bcQn1PQVA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19._qbPBQNQ8MChkDo2EwulHNmiq5Sf4ioltlPoBRjqcH2vAEq3uQEtnr
+   06Iq299L_NKATPUEP9-dDmJSHdGqEoXg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2031,22 +2033,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.sq7WvN9p-MnwbClJBjcn-0hWEUTF9yCXYiS5dRDXEZzzPjJbdZ4CRS
-   x4vVHenfh55B6egBSZ-Ict7bcQn1PQVA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19._qbPBQNQ8MChkDo2EwulHNmiq5Sf4ioltlPoBRjqcH2vAEq3uQEtnr
+   06Iq299L_NKATPUEP9-dDmJSHdGqEoXg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MjQxNzc3ODMsICJzZF9oYXNoIjogIm8zM2xxNU14YVNEU
-   nFjRHR1ODdWdEZKNmd0Q1I3bVl6UTVOMU5pMHhvSDQifQ.dt1NO5IcVokodgQaWEmiGL
-   Gvnkc5AknPaWOhHfySumZ-ux26SKrdLZV53BzuxxkcI8pGNRFEpj0oiPmPIJJMBw
+   mlmaWVyIiwgImlhdCI6IDE3MjQxNzgxMDQsICJzZF9oYXNoIjogIlE4elA3UkFxSl9mW
+   VhlTjE0ZE56YnFkTmZ1UFVGX2l0amIzaWJFMGJJVmsifQ.MIqQYv9Kz91TngSN_FEnMG
+   1veMe3_gr9X-gD0QU3HXhaGTJo6Lx_bqELFwnpLGljrXq1XhY7l3JTVNDLk7zlpA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1724177783,
-     "sd_hash": "o33lq5MxaSDRqcDtu87VtFJ6gtCR7mYzQ5N1Ni0xoH4"
+     "iat": 1724178104,
+     "sd_hash": "Q8zP7RAqJ_fYXeN14dNzbqdNfuPUF_itjb3ibE0bIVk"
    }
 
    After the validation, the Verifier will have the following data for
