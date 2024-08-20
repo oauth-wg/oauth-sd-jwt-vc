@@ -942,43 +942,6 @@ recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
-<reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
-    <front>
-        <author initials="M." surname="Sporny" fullname="Manu Sporny">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Longley" fullname="Dave Longley">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="M." surname="Sabadello" fullname="Markus Sabadello">
-            <organization>
-                <organizationName>Danube Tech</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Reed" fullname="Drummond Reed">
-            <organization>
-                <organizationName>Evernym/Avast</organizationName>
-            </organization>
-        </author>
-        <author initials="O." surname="Steele" fullname="Orie Steele">
-            <organization>
-                <organizationName>Transmute</organizationName>
-            </organization>
-        </author>
-        <author initials="C." surname="Allen" fullname="Christopher Allen">
-            <organization>
-                <organizationName>Blockchain Commons</organizationName>
-            </organization>
-        </author>
-        <title>Decentralized Identifiers (DIDs) v1.0</title>
-        <date day="19" month="July" year="2022"/>
-    </front>
-</reference>
-
 <reference anchor="W3C.VCDM" target="https://www.w3.org/TR/vc-data-model-2.0/">
     <front>
         <author initials="M." surname="Sporny" fullname="Manu Sporny">
