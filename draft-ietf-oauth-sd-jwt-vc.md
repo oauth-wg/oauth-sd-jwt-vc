@@ -482,7 +482,7 @@ MUST NOT be used.
 
 # Type Metadata {#type-metadata}
 
-An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC.
+An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.
 
 This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
@@ -495,6 +495,8 @@ This section defines Type Metadata that can be associated with a type of a SD-JW
    according to the rules of the type. For example, a Verifier can check
    whether a credential contains all required claims and whether the claims
    are selectively disclosable.
+ * Wallets can use the metadata to display the credential in a way that is
+   consistent with the Issuer's intent.
 
 Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
