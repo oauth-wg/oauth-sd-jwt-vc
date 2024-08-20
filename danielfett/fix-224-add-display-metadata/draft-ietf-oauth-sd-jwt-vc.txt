@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 17 February 2025                                  Authlete Inc.
+Expires: 21 February 2025                                  Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                          16 August 2024
+                                                          20 August 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 February 2025.
+   This Internet-Draft will expire on 21 February 2025.
 
 Copyright Notice
 
@@ -550,9 +550,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sYJWa
-   MqB2cEhSlIrrSm2qMSwEz-tCTN3Vz82AOw4YOU92Nqm06mQj9spdnEEI7uKykkcBgib_
-   _5PMNiHwVszdQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.L06Ad
+   Nc9OSnr9Gu3J7XJ4Qc0IXK627sTH4QVXffKuCUwzs2jwNojp7q4NLm9Gf7pdORVnP2Zu
+   gVAiJZX8UfZ2g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -668,16 +668,16 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.sYJWa
-   MqB2cEhSlIrrSm2qMSwEz-tCTN3Vz82AOw4YOU92Nqm06mQj9spdnEEI7uKykkcBgib_
-   _5PMNiHwVszdQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.L06Ad
+   Nc9OSnr9Gu3J7XJ4Qc0IXK627sTH4QVXffKuCUwzs2jwNojp7q4NLm9Gf7pdORVnP2Zu
+   gVAiJZX8UfZ2g~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
    N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
    4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
    AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjM3O
-   TIzMjgsICJzZF9oYXNoIjogIm1vdWs3ckctcWp1S0pqODZrRWZtcWpxdFlfVU43VlVue
-   W1ZUC10T1A2M2sifQ.VGon-dodAMXXL7JHgL0476CTeT8FfPpR369Gns1MR8Po2Qff2-
-   pKXR9ifR2PwUrAsqKiU3t9whSTetlPNw1ZKA
+   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjQxN
+   zc3MjcsICJzZF9oYXNoIjogIk1XaHhEQURyOEhSS2xrNThrRDYxM0tQYWozU24tUEk5T
+   jB6REVBLUxTVG8ifQ.HHGbHOHHbs58TImvMq_D82yegLJIzukd2phY06HgBu6tQ-lh4k
+   Q5dx3LYfa-VB39ndCp5O4ryASgC01BpQ5Hew
 
    The following example shows a presentation of a (different) SD-JWT
    without a Key Binding JWT:
@@ -694,8 +694,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.mvzNn439XyV2fm2wX3pASBMnrTf6eUMKlfhXe2X88oRqsZ
-   oBl-fz5ZNKX4aqtGZA2O5ZAkGxGgfIW8G784KXyA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
+   hbGciOiAic2hhLTI1NiJ9.FS4CrcmwEDiOgUWac9uI5lheDQwjSKWIjahTOM8etMzWNk
+   07tIkBvKRNq3RBs0mfO1IBWBWsrnQO8xt05eDdMA~WyJRZ19PNjR6cUF4ZTQxMmExMDh
    pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
    gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
    0cnkiOiAiVVMifV0~
@@ -1759,8 +1759,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.h7e98Du-iYLwP6dPmyhHnxTebGUdacjJduqY4tX_f56cpG_oB7E4u3
-   rOVyEjZiO_fS8Z__8tHNoOTwOUKlR3hw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.vgl35HlLD6ak-66ubRXYzhF8LO2mqoF9d3wgFBAFHf-Uz6Tt-EBxN8
+   4jVzPg1QCsiHyRZOOpsiR7WOgi4WM1jw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2031,22 +2031,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.h7e98Du-iYLwP6dPmyhHnxTebGUdacjJduqY4tX_f56cpG_oB7E4u3
-   rOVyEjZiO_fS8Z__8tHNoOTwOUKlR3hw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.vgl35HlLD6ak-66ubRXYzhF8LO2mqoF9d3wgFBAFHf-Uz6Tt-EBxN8
+   4jVzPg1QCsiHyRZOOpsiR7WOgi4WM1jw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MjM3OTIzMjgsICJzZF9oYXNoIjogIm9wQjBiMERWeFZ2e
-   nJrZmJBdlVoN0xsb2dFZGVaekxKT0tyaEkyQnV1TzgifQ.86wlJcNclvFNCUf90Vjwt4
-   vhLs51G6wV6IN4E1bs9zjHuN3huZrf4Vw4QZRKm-VH0Ddfe2KllD10hRsGCGZGjA
+   mlmaWVyIiwgImlhdCI6IDE3MjQxNzc3MjcsICJzZF9oYXNoIjogIlgwUFYyeU5EY01Ed
+   nV5SmdCdGp3NDZGTTlqTnBTc2k5cy1LamNPdVZRYVUifQ.A_wOHhG-rJTYFER3t98ZpJ
+   ygtcCOd-jsqgzc00B6x4XaAKsq4Id9jkwhFosr_HIDVHiuPZv8uN5ybq5-bjwovQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1723792328,
-     "sd_hash": "opB0b0DVxVvzrkfbAvUh7LlogEdeZzLJOKrhI2BuuO8"
+     "iat": 1724177727,
+     "sd_hash": "X0PV2yNDcMDvuyJgBtjw46FM9jNpSsi9s-KjcOuVQaU"
    }
 
    After the validation, the Verifier will have the following data for
@@ -2074,149 +2074,6 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    }
 
 B.2.  Example 2: Type Metadata
-
-   {
-       "vct": "https://betelgeuse.example.com/education_credential",
-       "name": "Betelgeuse Education Credential - Preliminary Version",
-       "description": "This is our development version of the education credential. Don't panic.",
-       "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
-       "extends#integrity": "sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
-       "display": [
-           {
-               "lang": "en-US",
-               "name": "Betelgeuse Education Credential",
-               "description": "An education credential for all carbon-based life forms on Betelgeusians",
-               "rendering": {
-                   "simple": {
-                       "logo": {
-                           "uri": "https://betelgeuse.example.com/public/education-logo.png",
-                           "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
-                           "alt_text": "Betelgeuse Ministry of Education logo"
-                       },
-                       "background_color": "#12107c",
-                       "text_color": "#FFFFFF"
-                   },
-                   "svg_templates": [
-                       {
-                           "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-                           "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
-                           "properties": {
-                               "orientation": "landscape",
-                               "color_scheme": "light",
-                               "contrast": "high"
-                           }
-                       }
-                   ]
-               }
-           },
-           {
-               "lang": "de-DE",
-               "name": "Betelgeuse-Bildungsnachweis",
-               "rendering": {
-                   "simple": {
-                       "logo": {
-                           "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-                           "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
-                           "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
-                       },
-                       "background_color": "#12107c",
-                       "text_color": "#FFFFFF"
-                   },
-                   "svg_templates": [
-                       {
-                           "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-                           "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
-                           "properties": {
-                               "orientation": "landscape",
-                               "color_scheme": "light",
-                               "contrast": "high"
-                           }
-                       }
-                   ]
-               }
-           }
-       ],
-       "claims": [
-           {
-               "path": [
-                   "name"
-               ],
-               "display": [
-                   {
-                       "lang": "de-DE",
-                       "label": "Vor- und Nachname",
-                       "description": "Der Name des Studenten"
-                   },
-                   {
-                       "lang": "en-US",
-                       "label": "Name",
-                       "description": "The name of the student"
-                   }
-               ],
-               "verification": "verified",
-               "sd": "allowed"
-           },
-           {
-               "path": [
-                   "address"
-               ],
-               "display": [
-                   {
-                       "lang": "de-DE",
-                       "label": "Adresse",
-                       "description": "Adresse zum Zeitpunkt des Abschlusses"
-                   },
-                   {
-                       "lang": "en-US",
-                       "label": "Address",
-                       "description": "Address at the time of graduation"
-                   }
-               ],
-               "verification": "self-attested",
-               "sd": "always"
-           },
-           {
-               "path": [
-                   "address",
-                   "street_address"
-               ],
-               "display": [
-                   {
-                       "lang": "de-DE",
-                       "label": "Straße"
-                   },
-                   {
-                       "lang": "en-US",
-                       "label": "Street Address"
-                   }
-               ],
-               "verification": "self-attested",
-               "sd": "always"
-           },
-           {
-               "path": [
-                   "degrees",
-                   null
-               ],
-               "display": [
-                   {
-                       "lang": "de-DE",
-                       "label": "Abschluss",
-                       "description": "Der Abschluss des Studenten"
-                   },
-                   {
-                       "lang": "en-US",
-                       "label": "Degree",
-                       "description": "Degree earned by the student"
-                   }
-               ],
-               "verification": "authoritative",
-               "sd": "allowed"
-           }
-       ],
-       "schema_url": "https://exampleuniversity.com/public/credential-schema-0.9",
-       "schema_url#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
-   }
 
 Appendix C.  Acknowledgements
 
