@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-20T00:25:44.197618+00:00",
+  "timestamp": "2024-08-22T00:25:49.819110+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -19762,13 +19762,13 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-08-16T07:11:45Z",
+      "updatedAt": "2024-08-21T17:45:46Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "acbba6eabbff020f6ffb91ff12156a4b07c7898b",
+      "headRefOid": "be04290ff182c65921c633a46859a4bc03962667",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -20066,6 +20066,72 @@
               "body": "Thanks, I changed this, but used `lang` instead of `locale`. I think this might a more fitting name as this is about translations, less about the other aspects of localization.",
               "createdAt": "2024-08-15T08:09:52Z",
               "updatedAt": "2024-08-15T08:09:52Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GCD9Z",
+          "commit": {
+            "abbreviatedOid": "acbba6e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-20T18:01:10Z",
+          "updatedAt": "2024-08-20T18:01:10Z",
+          "comments": [
+            {
+              "originalPosition": 280,
+              "body": "I know there's a certain appeal to this kind of file include in the abstract but IMHO hard won experience with the technique has shown that it makes maintenance, contributions, and general progress on the whole document project much more difficult and error prone. Unless there's compelling reason to have a separate file (e.g., automated generation or preprocessing or similar), I will *highly* suggest we just inline these things.",
+              "createdAt": "2024-08-20T18:01:10Z",
+              "updatedAt": "2024-08-20T18:08:33Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GCKnN",
+          "commit": {
+            "abbreviatedOid": "acbba6e"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-20T18:15:13Z",
+          "updatedAt": "2024-08-20T18:15:14Z",
+          "comments": [
+            {
+              "originalPosition": 280,
+              "body": "Fixed!",
+              "createdAt": "2024-08-20T18:15:13Z",
+              "updatedAt": "2024-08-20T18:15:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GMx9j",
+          "commit": {
+            "abbreviatedOid": "be04290"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "`Request changes` sorry... but the issuer isn't always the owner of the type metadata \r\n\r\n",
+          "createdAt": "2024-08-21T17:39:05Z",
+          "updatedAt": "2024-08-21T17:45:46Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "but `Type Metadata` is not necessarily or even typically produced or hosted by an issuer... ",
+              "createdAt": "2024-08-21T17:39:05Z",
+              "updatedAt": "2024-08-21T17:45:46Z"
+            },
+            {
+              "originalPosition": 267,
+              "body": "This entire section seems to assume that the Issuer is the same entity that produces/owns/controls/etc the type metadata. Which isn't always or even often the case. ",
+              "createdAt": "2024-08-21T17:44:09Z",
+              "updatedAt": "2024-08-21T17:45:46Z"
             }
           ]
         }
@@ -20392,6 +20458,46 @@
           "body": "Thanks!",
           "createdAt": "2024-07-17T11:57:37Z",
           "updatedAt": "2024-07-17T11:57:37Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 251,
+      "id": "PR_kwDOJbVClc544qFl",
+      "title": "Tightened exposition of Issuer-signed JWT Verification Key Validation section",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/251",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-08-20T17:18:34Z",
+      "updatedAt": "2024-08-20T18:32:09Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "tighten-key-validation-section",
+      "headRefOid": "40ec09761b0f925bfa082416070a08d2b00a774d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6GCT4A",
+          "commit": {
+            "abbreviatedOid": "2883693"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-20T18:30:58Z",
+          "updatedAt": "2024-08-20T18:30:58Z",
           "comments": []
         }
       ]
