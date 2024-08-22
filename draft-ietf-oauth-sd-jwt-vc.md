@@ -496,7 +496,7 @@ This section defines Type Metadata that can be associated with a type of a SD-JW
    whether a credential contains all required claims and whether the claims
    are selectively disclosable.
  * Wallets can use the metadata to display the credential in a way that is
-   consistent with the Issuer's intent.
+   consistent with the intent of the provider of the Type Metadata.
 
 Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
