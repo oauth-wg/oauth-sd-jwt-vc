@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-22T00:25:49.819110+00:00",
+  "timestamp": "2024-08-25T00:28:47.992094+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6137,7 +6137,7 @@
       "labels": [],
       "body": "The spec mentions that a `kid` is optional when the `iss` value is a DID. The same seems to be true when using JWT Issuer Metadata (although there it mentions it is RECOMMENDED at least). It doesn't describe however what should happen if no KID is present.\r\n\r\nThis has caused some interop issues with implementations not including a `kid` field when a DID is used when e.g. `did:key` or `did:jwk` is used as you can infer which key is meant. However this means you have to make exceptions for specific did methods instead of following a general pattern.\r\n\r\nIs there a specific reason to make the `kid` optional if the `iss` value is a DID (and also similarly when JWT Issuer Metadata is used)? If a DID is used, it MUST be signed with a key in the did document right? And it also mentions that \"If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.\"\r\n\r\nSo I don't see a very good reason here to make the usage of `kid` optional, as it results in ambiguity. If there is a good reason to make it optional, would it be possible to also add the RECOMMENDED to using a `kid` when `iss` is a DID, that way we can at least promote other implementation to always include a `kid` when using a DID.",
       "createdAt": "2024-07-22T10:19:55Z",
-      "updatedAt": "2024-07-29T17:46:47Z",
+      "updatedAt": "2024-08-22T08:58:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -6160,6 +6160,13 @@
           "body": "In implementations of DIDs I have worked on, with JWTs, we have required that `kid` is always a _fully-qualified key identifier_ such as `did:example:abcd#key-1`, where the `iss` would be `did:example:abcd`.\r\n\r\nHandling all the variations of using fragments (`#key-1`, `key-1`, etc.) make things complex, so clearly requiring fully qualified key identifiers from DID Document Verification Methods is a simple choice.",
           "createdAt": "2024-07-29T17:46:46Z",
           "updatedAt": "2024-07-29T17:46:46Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "I also believe that `kid` should be:\r\n\r\n- mandatory and perhaps most importantly\r\n- a fully-qualified DID URL (as per @decentralgabe  comment)\r\n\r\nIn addition, a check should be required to ensure that `kid` is a DID URL (sub-resource) of the DID in the `iss` claim.",
+          "createdAt": "2024-08-22T08:58:55Z",
+          "updatedAt": "2024-08-22T08:58:55Z"
         }
       ]
     },
@@ -6272,7 +6279,7 @@
       "labels": [],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-08-15T07:19:05Z",
+      "updatedAt": "2024-08-23T18:36:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -6358,6 +6365,20 @@
           "body": "Getting back to this (apologies for the late feedback). Much has been made in this thread of the importance of DIDs in the ecosystem. My proposal has nothing to do with the importance or non-importance of DIDs but is all about weather the current language is appropriate guidance for implementors. If in fact DIDs are important they deserve more care than half a paragraph and a separate specification that profiles this specification for use with DIDs is imo entirely appropriate in that case. IETF standards are not marketing documents but technical specifications and as such the current language on DIDs is unusable for an implementer.\r\n\r\nI propose that the the proponents of keeping DIDs in the current specification open a PR with language that ensures interoperability - something which is clearly a requirement for a standards-track IETF document.",
           "createdAt": "2024-08-15T07:19:04Z",
           "updatedAt": "2024-08-15T07:19:04Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@peacekeeper @kimdhamilton @decentralgabe Do you have an implementation of SD-JWT VC that uses DIDs and did you have the feeling the current spec was clear enough?",
+          "createdAt": "2024-08-23T13:40:03Z",
+          "updatedAt": "2024-08-23T13:40:03Z"
+        },
+        {
+          "author": "decentralgabe",
+          "authorAssociation": "NONE",
+          "body": "@awoie we are planning an implementation at TBD. Reviewing the spec, here is where I think there's room for improvement to support DIDs:\r\n\r\n* [Section 5](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-5) on Issuer Metadata. Supporting other mechanisms to fetch metadata besides `/.well-known/jwt-vc-issuer` would be useful. \r\n  * Something like being able to fetch this metadata by resolving a DID Document. It could be included directly in a DID Document itself, through a service, or another property registered as an extension. Language speaking to these possibilities and examples would be great.\r\n  * Today, if issuers wanted to use DIDs it would be quite tough to interop with the JWT VC Issuer Metadata ... there would need to be intermediary/translating services to map what a DID surfaces to the expected request/response model defined by this spec. \r\n\r\n* Similarly the guidance in [8.1. Server-Side Request Forgery](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-server-side-request-forgery) would need to be updated to note retrieving issuer metadata from sources other than the issuer itself, such as a Verifiable Data Registry (VDR) that could house a DID Document.\r\n\r\n* The guidance in [8.4 Robust Retrieval of Type Metadata](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-robust-retrieval-of-type-me) would need to be updated to include deferring resolution guidance to a DID method's best practices. Caching may not always be a recommended approach.\r\n\r\n* [9.3. Issuer Phone-Home](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-9.3) could mention that certain DID methods prevent this vector entirely, since with DID methods like [did:dht](https://did-dht.com/) issuers would have no way of forcing a phone home.\r\n\r\n* As I [commented here](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/245#issuecomment-2256555560) I would recommend updating [this guidance in 3.5](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-issuer-signed-jwt-verificat) to require absolute DID URL references when using DIDs.\r\n\r\n* In [4.1 Key Binding JWT](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-key-binding-jwt) there is room to improve guidance on key binding when interfacing with DIDs. The simple approach would to something like \"DID Documents may have multiple keys, or rotate keys over time; however, key binding relies on a persistent key. If that key is removed from a DID Document binding is no longer possible.\" IOW -- there is no _DID Binding_ but instead there is _binding to a key present in a DID Document_.\r\n\r\n* Another concern when interfacing with DIDs is accessing key material that's not in a JWK format (`publicKeyJwk`), since other key formats are supported like [`publicKeyMultibase`](https://www.w3.org/TR/did-core/#verification-material). A simple solution would be to only support `publicKeyJwk`, or require those using non-JWK key representations to support a transformation to a JWK.\r\n\r\nWith these tweaks (and maybe some more...) I would say the spec is \"clear enough\" in interfacing with DIDs. I hope these points illustrate why I believe it's a bad idea to remove DID content from this spec. Doing so would maintain the existing confusion I highlighted and guarantee interoperability issues.",
+          "createdAt": "2024-08-23T18:35:59Z",
+          "updatedAt": "2024-08-23T18:35:59Z"
         }
       ]
     }
@@ -19762,13 +19783,13 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-08-21T17:45:46Z",
+      "updatedAt": "2024-08-23T15:04:10Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "be04290ff182c65921c633a46859a4bc03962667",
+      "headRefOid": "daf13d2a7fe15ac57efd089294237c77eaf21bbf",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -20132,6 +20153,142 @@
               "body": "This entire section seems to assume that the Issuer is the same entity that produces/owns/controls/etc the type metadata. Which isn't always or even often the case. ",
               "createdAt": "2024-08-21T17:44:09Z",
               "updatedAt": "2024-08-21T17:45:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GaoWH",
+          "commit": {
+            "abbreviatedOid": "be04290"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-22T16:30:21Z",
+          "updatedAt": "2024-08-22T16:30:22Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n   consistent with the intent of the provider of the Type Metadata.\r\n```",
+              "createdAt": "2024-08-22T16:30:21Z",
+              "updatedAt": "2024-08-22T16:30:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Gaqm7",
+          "commit": {
+            "abbreviatedOid": "be04290"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-22T16:34:43Z",
+          "updatedAt": "2024-08-22T16:34:43Z",
+          "comments": [
+            {
+              "originalPosition": 267,
+              "body": "As agreed on the call, I'll remove that feature for now",
+              "createdAt": "2024-08-22T16:34:43Z",
+              "updatedAt": "2024-08-22T16:34:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GdsR-",
+          "commit": {
+            "abbreviatedOid": "daf13d2"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-22T22:49:18Z",
+          "updatedAt": "2024-08-22T22:49:19Z",
+          "comments": [
+            {
+              "originalPosition": 267,
+              "body": "As said on the call, thanks. Perhaps put an issue in, if you want to keep track of it? Unless you feel #145 or other is enough.",
+              "createdAt": "2024-08-22T22:49:19Z",
+              "updatedAt": "2024-08-22T22:49:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GjD9z",
+          "commit": {
+            "abbreviatedOid": "daf13d2"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-23T14:03:10Z",
+          "updatedAt": "2024-08-23T14:07:10Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "Why is this part of this PR?",
+              "createdAt": "2024-08-23T14:03:10Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            },
+            {
+              "originalPosition": 81,
+              "body": "Why is this optional?",
+              "createdAt": "2024-08-23T14:03:31Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            },
+            {
+              "originalPosition": 88,
+              "body": "Should this require at least one rendering method to be present?",
+              "createdAt": "2024-08-23T14:03:46Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            },
+            {
+              "originalPosition": 103,
+              "body": "CSS color reference is missing.",
+              "createdAt": "2024-08-23T14:05:36Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            },
+            {
+              "originalPosition": 232,
+              "body": "IMO, this shouldn't be a note if it contains normative MUST.\r\n```suggestion\r\nThe `path` property MUST point to the respective claim as if all\r\n```",
+              "createdAt": "2024-08-23T14:06:13Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            },
+            {
+              "originalPosition": 247,
+              "body": "Why is this optional?",
+              "createdAt": "2024-08-23T14:06:38Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            },
+            {
+              "originalPosition": 252,
+              "body": "Can you explain how this applies to NIST 800-63 IAL assurance levels.",
+              "createdAt": "2024-08-23T14:07:03Z",
+              "updatedAt": "2024-08-23T14:07:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6GjknJ",
+          "commit": {
+            "abbreviatedOid": "daf13d2"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-23T15:04:10Z",
+          "updatedAt": "2024-08-23T15:04:10Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "> Why is this part of this PR?\r\n\r\ngood catch and excellent question \r\n\r\nif I have my links right, this is already at \r\nhttps://github.com/oauth-wg/oauth-sd-jwt-vc/pull/236/files#diff-e750c0958ca10e395b4d3b77bb5aafccc668b4a1a50675dda79a8d90b39a2468R642",
+              "createdAt": "2024-08-23T15:04:10Z",
+              "updatedAt": "2024-08-23T15:04:53Z"
             }
           ]
         }
