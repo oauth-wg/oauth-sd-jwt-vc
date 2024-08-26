@@ -277,13 +277,13 @@ MUST NOT have any Disclosures.
 
 ## Example {#vc-sd-jwt-example}
 
-The following is a non-normative example of an unsecured payload of an
+The following is a non-normative example of the user data of an unsecured payload of an
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
 
 The following is a non-normative example of how the unsecured payload of the
-SD-JWT VC above can be used in a SD-JWT where the resulting SD-JWT VC contains
+SD-JWT VC above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:
 
 <{{examples/01/sd_jwt_payload.json}}
@@ -298,6 +298,8 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 The SD-JWT and the Disclosures would then be serialized by the Issuer into the following format for issuance to the Holder:
 
 <{{examples/01/sd_jwt_issuance.txt}}
+
+Examples of what presentations of SD-JWT VCs might look like are provided in (#presentation-examples).
 
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
@@ -356,18 +358,26 @@ JWT MUST adhere to the rules defined in Section 5.3 of
 The Key Binding JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.
 
-## Examples
+## Examples {#presentation-examples}
 
 The following is a non-normative example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a Key Binding JWT.
-In this presentation, the Holder provides only the Disclosure for the  `address` claim.
+In this presentation, the Holder provides only the Disclosures for the  `address` and `is_over_65` claims.
 Other claims are not disclosed to the Verifier.
 
 <{{examples/01/sd_jwt_presentation.txt}}
 
-The following example shows a presentation of a (different) SD-JWT without a
+After validation, the Verifier will have the following processed SD-JWT payload available for further handling:
+
+<{{examples/01/verified_contents.json}}
+
+The following example shows a presentation of a (similar but different) SD-JWT without a
 Key Binding JWT:
 
 <{{examples/02/sd_jwt_presentation.txt}}
+
+The Verifier will have the following processed SD-JWT payload after validation:
+
+<{{examples/02/verified_contents.json}}
 
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
@@ -1101,7 +1111,7 @@ be used to represent the concept of a Person Identification Data (PID)
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
 
-The Issuer is using the following input claims set:
+The following data about the citizen comprises the input JWT Claims Set used by the Issuer:
 
 <{{examples/03-pid/user_claims.json}}
 
@@ -1109,15 +1119,15 @@ The following is the issued SD-JWT:
 
 <{{examples/03-pid/sd_jwt_issuance.txt}}
 
-The following payload is used for the SD-JWT:
+This is the payload of that SD-JWT:
 
 <{{examples/03-pid/sd_jwt_payload.json}}
 
-The following Disclosures are created by the Issuer:
+The digests in the SD-JWT payload reference the following Disclosures:
 
 {{examples/03-pid/disclosures.md}}
 
-The following shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:
+This shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:
 
 <{{examples/03-pid/sd_jwt_presentation.txt}}
 
@@ -1125,7 +1135,7 @@ The following is the payload of a corresponding Key Binding JWT:
 
 <{{examples/03-pid/kb_jwt_payload.json}}
 
-After the validation, the Verifier will have the following data for further processing:
+After validation, the Verifier will have the following processed SD-JWT payload available for further handling:
 
 <{{examples/03-pid/verified_contents.json}}
 
@@ -1147,6 +1157,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-05
+
+* Clarify, add context, or otherwise improved the examples
 
 -04
 

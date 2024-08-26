@@ -16,6 +16,7 @@ user_claims:
 
 holder_disclosed_claims:
   address: true
+  is_over_65: true
 
 key_binding: true
 
