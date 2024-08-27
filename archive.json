@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-25T00:28:47.992094+00:00",
+  "timestamp": "2024-08-27T00:26:32.642394+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5416,7 +5416,7 @@
       ],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-08-14T17:47:06Z",
+      "updatedAt": "2024-08-26T07:04:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -5453,6 +5453,13 @@
           "body": "It has been suggested that there might still be interest in this topic. But the path forward is still unclear (at best). The aud claim could potentially be (mis)used for this? Or nothing here at this layer. Or expressed in metadata. Or part of a vct or sub-vct definition. ",
           "createdAt": "2024-08-13T18:23:51Z",
           "updatedAt": "2024-08-14T17:47:06Z"
+        },
+        {
+          "author": "paulbastian",
+          "authorAssociation": "COLLABORATOR",
+          "body": "From the eIDAS implementing act proposals there is:\r\n(12) \u2018embedded disclosure policy\u2019 means a set of rules, embedded in an electronic\r\nattestation of attributes by its provider, that indicates the conditions that a wallet\r\nrelying party has to meet to access the electronic attestation of attributes;",
+          "createdAt": "2024-08-26T07:04:04Z",
+          "updatedAt": "2024-08-26T07:04:04Z"
         }
       ]
     },
@@ -6180,9 +6187,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "Select parts of a conversation from an encrypted messaging service copied here. Editorial liberties have been taken to extract the most relevant parts of the discussion and protect the identities of the participants. \r\n\r\n> ... why does the example in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc#section-3.3 not include an \"iss\" claim?  \\[ note specifically https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 ]\r\n\r\n> ...\r\n\r\n> the idea, as I understand it from the guy that wrote the tool and most of the \\[\"...\"] around it, is that first JSON in sec 3.3 https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 is just showing stuff about the user and the \"meta\" claims like iss, exp, and iat show up in the next part of the example https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-4\r\n\r\n> ...\r\n\r\n> I would find it useful to have an example showing the payload of the credential in clear text (not the salted hashes) + all the metadata required to do validity checks and trust checks. Basically how the data would look like before it gets chopped into pieces or after they have been reverted. A credential without iss value does not make sense to me.\r\n\r\n> ...\r\n\r\n> ... useful if we could give this thing a name: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/443\r\n\r\n> ...\r\n\r\n> it is intentional that that part does not include iss, iat, exp, etc\r\n> maybe we can clarify the intro text more, but basically the idea has been to make a distinction between the user claims and all the metadata around it.\r\n>- the first example is just user claims that are being secured\r\n>- the second example is user claims + metadata that is necessary to be added when signing the sd-jwt\r\n\r\nIMHO it would be worthwhile to expand the example in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#vc-sd-jwt-example and https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-examples to also show the content of the thing that needs a name.\r\n",
+      "body": "Select parts of a conversation from an encrypted messaging service copied here. Editorial liberties have been taken to extract the most relevant parts of the discussion and protect the identities of the participants. \r\n\r\n> ... why does the example in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc#section-3.3 not include an \"iss\" claim?  \\[ note specifically https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 ]\r\n\r\n> ...\r\n\r\n> the idea, as I understand it from the guy that wrote the tool and most of the \\[\"...\"] around it, is that first JSON in sec 3.3 https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 is just showing stuff about the user and the \"meta\" claims like iss, exp, and iat show up in the next part of the example https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-4\r\n\r\n> ...\r\n\r\n> I would find it useful to have an example showing the payload of the credential in clear text (not the salted hashes) + all the metadata required to do validity checks and trust checks. Basically how the data would look like before it gets chopped into pieces or after they have been reverted. A credential without iss value does not make sense to me.\r\n\r\n> ...\r\n\r\n> ... useful if we could give this thing a name: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/443\r\n\r\n> ...\r\n\r\n> it is intentional that that part does not include iss, iat, exp, etc\r\n> maybe we can clarify the intro text more, but basically the idea has been to make a distinction between the user claims and all the metadata around it.\r\n>- the first example is just user claims that are being secured\r\n>- the second example is user claims + metadata that is necessary to be added when signing the sd-jwt\r\n\r\nIMHO it would be worthwhile to expand the example in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#vc-sd-jwt-example with some additions to https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-examples to also show the content of the thing that needs a name.\r\n",
       "createdAt": "2024-07-22T15:52:27Z",
-      "updatedAt": "2024-08-06T18:19:13Z",
+      "updatedAt": "2024-08-26T21:14:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -20658,6 +20665,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 252,
+      "id": "PR_kwDOJbVClc55fd4S",
+      "title": "clarify, add context, or otherwise improve examples",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/252",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #246 and hopefully/maybe #194 too \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-examples\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example-1-person-identifica",
+      "createdAt": "2024-08-26T21:27:07Z",
+      "updatedAt": "2024-08-26T21:30:11Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "clarify-examples-more",
+      "headRefOid": "98255779ba47bafc8dcc825580cfa2049341df5b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
