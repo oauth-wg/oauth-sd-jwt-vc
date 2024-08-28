@@ -799,7 +799,7 @@ The objects in the array MUST have the following properties:
 
 - `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `name`: A human-readable name for the type, intended for end users. This
-  property is OPTIONAL.
+  property is REQUIRED.
 - `description`: A human-readable description for the type, intended for end
   users. This property is OPTIONAL.
 - `rendering`: An object containing rendering information for the type, as
@@ -965,26 +965,9 @@ The objects in the array MUST have the following properties:
 
 - `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `label`: A human-readable label for the claim, intended for end users. This
-  property is OPTIONAL.
+  property is REQUIRED.
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
-
-## Claim Verification Metadata {#claim-verification-metadata}
-
-The `verification` property is a string indicating how the claim was verified.
-The following values are defined:
-
-- `self-attested`: The claim's value was self-attested by the End-User towards
-  the Issuer. The Issuer did not verify the claim. For example, in a diploma,
-  the residential address of the student may be self-attested.
-- `verified`: The claim's value was verified by the Issuer. The Issuer may have
-  used a third party to verify the claim. For example, in a diploma, the birth
-  date of the student may have been verified by the university using the
-  student's passport.
-- `authoritative`: The Issuer claims to be the authority to make a statement
-  about the claim's value. For example, in a diploma, the degree earned by the
-  student may be authoritative if the Issuer is the university that issued the
-  degree.
 
 ## Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
 
