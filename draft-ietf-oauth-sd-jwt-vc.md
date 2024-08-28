@@ -949,7 +949,7 @@ In detail, the array is processed from left to right as follows:
 The result of the processing is the set of elements to which the respective
 claim metadata applies.
 
-Note: The `path` property MUST point to the respective claim as if all
+The `path` property MUST point to the respective claim as if all
 selectively disclosable claims were disclosed to a Verifier. That means that a
 consuming application which does not have access to all disclosures may not be
 able to identify the claim which is being addressed.
