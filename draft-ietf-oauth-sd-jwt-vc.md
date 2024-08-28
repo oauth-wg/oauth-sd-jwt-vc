@@ -569,17 +569,6 @@ defined:
 
 An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
-## Extending Type Metadata {#extending-type-metadata}
-
-A type can extend another type. The extended type is identified by the URI in
-the `extends` property. Consumers MUST retrieve and process
-Type Metadata for the extended type before processing the Type Metadata for the extending
-type.
-
-The extended type MAY itself extend another type. This can be used to create a
-chain or hierarchy of types. The security considerations described in
-(#circular-extends) apply in order to avoid problems with circular dependencies.
-
 ## Retrieving Type Metadata {#retrieving-type-metadata}
 
 ### From a URL in the `vct` Claim {#retrieval-from-vct-claim}
