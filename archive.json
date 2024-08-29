@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-08-27T00:26:32.642394+00:00",
+  "timestamp": "2024-08-29T00:26:43.149441+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6286,7 +6286,7 @@
       "labels": [],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-08-23T18:36:00Z",
+      "updatedAt": "2024-08-28T21:46:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -6386,6 +6386,20 @@
           "body": "@awoie we are planning an implementation at TBD. Reviewing the spec, here is where I think there's room for improvement to support DIDs:\r\n\r\n* [Section 5](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-5) on Issuer Metadata. Supporting other mechanisms to fetch metadata besides `/.well-known/jwt-vc-issuer` would be useful. \r\n  * Something like being able to fetch this metadata by resolving a DID Document. It could be included directly in a DID Document itself, through a service, or another property registered as an extension. Language speaking to these possibilities and examples would be great.\r\n  * Today, if issuers wanted to use DIDs it would be quite tough to interop with the JWT VC Issuer Metadata ... there would need to be intermediary/translating services to map what a DID surfaces to the expected request/response model defined by this spec. \r\n\r\n* Similarly the guidance in [8.1. Server-Side Request Forgery](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-server-side-request-forgery) would need to be updated to note retrieving issuer metadata from sources other than the issuer itself, such as a Verifiable Data Registry (VDR) that could house a DID Document.\r\n\r\n* The guidance in [8.4 Robust Retrieval of Type Metadata](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-robust-retrieval-of-type-me) would need to be updated to include deferring resolution guidance to a DID method's best practices. Caching may not always be a recommended approach.\r\n\r\n* [9.3. Issuer Phone-Home](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-9.3) could mention that certain DID methods prevent this vector entirely, since with DID methods like [did:dht](https://did-dht.com/) issuers would have no way of forcing a phone home.\r\n\r\n* As I [commented here](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/245#issuecomment-2256555560) I would recommend updating [this guidance in 3.5](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-issuer-signed-jwt-verificat) to require absolute DID URL references when using DIDs.\r\n\r\n* In [4.1 Key Binding JWT](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#name-key-binding-jwt) there is room to improve guidance on key binding when interfacing with DIDs. The simple approach would to something like \"DID Documents may have multiple keys, or rotate keys over time; however, key binding relies on a persistent key. If that key is removed from a DID Document binding is no longer possible.\" IOW -- there is no _DID Binding_ but instead there is _binding to a key present in a DID Document_.\r\n\r\n* Another concern when interfacing with DIDs is accessing key material that's not in a JWK format (`publicKeyJwk`), since other key formats are supported like [`publicKeyMultibase`](https://www.w3.org/TR/did-core/#verification-material). A simple solution would be to only support `publicKeyJwk`, or require those using non-JWK key representations to support a transformation to a JWK.\r\n\r\nWith these tweaks (and maybe some more...) I would say the spec is \"clear enough\" in interfacing with DIDs. I hope these points illustrate why I believe it's a bad idea to remove DID content from this spec. Doing so would maintain the existing confusion I highlighted and guarantee interoperability issues.",
           "createdAt": "2024-08-23T18:35:59Z",
           "updatedAt": "2024-08-23T18:35:59Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "@awoie We are also working on an implementation, and will be happy to share updates as our work progresses.",
+          "createdAt": "2024-08-28T20:19:28Z",
+          "updatedAt": "2024-08-28T20:19:28Z"
+        },
+        {
+          "author": "kimdhamilton",
+          "authorAssociation": "NONE",
+          "body": "In a former life I made a toy implementation of it and had some minor issues with the sd-jwt spec at the time, but I'm sure those have been addressed. No issues with DIDs in my recollection. Here's the [writeup with links to code](https://hackmd.io/XhUd63TaRVSdbTzSf3JXpA) fwiw, but take this with a grain of salt.",
+          "createdAt": "2024-08-28T21:46:58Z",
+          "updatedAt": "2024-08-28T21:46:58Z"
         }
       ]
     }
@@ -19790,13 +19804,13 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-08-23T15:04:10Z",
+      "updatedAt": "2024-08-28T16:46:02Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "daf13d2a7fe15ac57efd089294237c77eaf21bbf",
+      "headRefOid": "982f49fe165fcf08865e662f2a3ca164fc22b211",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -20298,6 +20312,86 @@
               "updatedAt": "2024-08-23T15:04:53Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6HHGVf",
+          "commit": {
+            "abbreviatedOid": "88467bf"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-28T16:41:13Z",
+          "updatedAt": "2024-08-28T16:41:14Z",
+          "comments": [
+            {
+              "originalPosition": 248,
+              "body": "```suggestion\r\n  property is REQUIRED.\r\n```",
+              "createdAt": "2024-08-28T16:41:13Z",
+              "updatedAt": "2024-08-28T16:41:14Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6HHGkE",
+          "commit": {
+            "abbreviatedOid": "88467bf"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-28T16:41:42Z",
+          "updatedAt": "2024-08-28T16:41:42Z",
+          "comments": [
+            {
+              "originalPosition": 267,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2024-08-28T16:41:42Z",
+              "updatedAt": "2024-08-28T16:41:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6HHG45",
+          "commit": {
+            "abbreviatedOid": "88467bf"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-28T16:42:23Z",
+          "updatedAt": "2024-08-28T16:42:23Z",
+          "comments": [
+            {
+              "originalPosition": 82,
+              "body": "```suggestion\r\n  property is REQUIRED.\r\n```",
+              "createdAt": "2024-08-28T16:42:23Z",
+              "updatedAt": "2024-08-28T16:42:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6HHIty",
+          "commit": {
+            "abbreviatedOid": "17b29d8"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-08-28T16:45:47Z",
+          "updatedAt": "2024-08-28T16:45:47Z",
+          "comments": [
+            {
+              "originalPosition": 54,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2024-08-28T16:45:47Z",
+              "updatedAt": "2024-08-28T16:45:47Z"
+            }
+          ]
         }
       ]
     },
@@ -20678,7 +20772,7 @@
       "labels": [],
       "body": "for #246 and hopefully/maybe #194 too \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-examples\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example-1-person-identifica",
       "createdAt": "2024-08-26T21:27:07Z",
-      "updatedAt": "2024-08-26T21:30:11Z",
+      "updatedAt": "2024-08-28T16:50:19Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
@@ -20689,8 +20783,30 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@tlodderstedt this work and https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/457 were largely undertaken as a result of your questions/feedback",
+          "createdAt": "2024-08-28T16:50:17Z",
+          "updatedAt": "2024-08-28T16:50:17Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6HHEgu",
+          "commit": {
+            "abbreviatedOid": "9825577"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-08-28T16:37:24Z",
+          "updatedAt": "2024-08-28T16:37:24Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
