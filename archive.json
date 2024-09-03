@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-01T00:33:02.487589+00:00",
+  "timestamp": "2024-09-03T00:26:55.151072+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5416,7 +5416,7 @@
       ],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-08-26T07:04:05Z",
+      "updatedAt": "2024-09-01T19:40:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -5460,6 +5460,13 @@
           "body": "From the eIDAS implementing act proposals there is:\r\n(12) \u2018embedded disclosure policy\u2019 means a set of rules, embedded in an electronic\r\nattestation of attributes by its provider, that indicates the conditions that a wallet\r\nrelying party has to meet to access the electronic attestation of attributes;",
           "createdAt": "2024-08-26T07:04:04Z",
           "updatedAt": "2024-08-26T07:04:04Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "Recent discussions about transaction data in OpenID4VP have also brought up the topic of issuer policy regarding intended usage (not only allowed audience) of a credential (https://github.com/openid/OpenID4VP/pull/197#issuecomment-2318238646). Should this be a new issue or do you think it fits in this one?",
+          "createdAt": "2024-09-01T19:40:19Z",
+          "updatedAt": "2024-09-01T19:40:19Z"
         }
       ]
     },
@@ -20772,7 +20779,7 @@
       "labels": [],
       "body": "for #246 and hopefully/maybe #194 too \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-examples\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example-1-person-identifica",
       "createdAt": "2024-08-26T21:27:07Z",
-      "updatedAt": "2024-08-28T16:50:19Z",
+      "updatedAt": "2024-09-01T19:36:21Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
@@ -20805,6 +20812,26 @@
           "createdAt": "2024-08-28T16:37:24Z",
           "updatedAt": "2024-08-28T16:37:24Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6HkbzA",
+          "commit": {
+            "abbreviatedOid": "9825577"
+          },
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-01T19:33:08Z",
+          "updatedAt": "2024-09-01T19:36:21Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\r\nIn this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.\r\n```",
+              "createdAt": "2024-09-01T19:33:08Z",
+              "updatedAt": "2024-09-01T19:36:21Z"
+            }
+          ]
         }
       ]
     }
