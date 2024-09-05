@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-03T00:26:55.151072+00:00",
+  "timestamp": "2024-09-05T00:27:09.943682+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -19811,7 +19811,7 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-08-28T16:46:02Z",
+      "updatedAt": "2024-09-04T10:07:38Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
@@ -20397,6 +20397,26 @@
               "body": "```suggestion\r\n```",
               "createdAt": "2024-08-28T16:45:47Z",
               "updatedAt": "2024-08-28T16:45:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6H4APM",
+          "commit": {
+            "abbreviatedOid": "982f49f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-04T10:07:38Z",
+          "updatedAt": "2024-09-04T10:07:38Z",
+          "comments": [
+            {
+              "originalPosition": 113,
+              "body": "Todo: Add details about the template itself.\r\n",
+              "createdAt": "2024-09-04T10:07:38Z",
+              "updatedAt": "2024-09-04T10:07:38Z"
             }
           ]
         }
