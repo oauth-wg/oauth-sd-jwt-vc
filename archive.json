@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-05T00:27:09.943682+00:00",
+  "timestamp": "2024-09-08T00:30:18.083759+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5416,7 +5416,7 @@
       ],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-09-01T19:40:20Z",
+      "updatedAt": "2024-09-06T14:16:33Z",
       "closedAt": null,
       "comments": [
         {
@@ -5467,6 +5467,13 @@
           "body": "Recent discussions about transaction data in OpenID4VP have also brought up the topic of issuer policy regarding intended usage (not only allowed audience) of a credential (https://github.com/openid/OpenID4VP/pull/197#issuecomment-2318238646). Should this be a new issue or do you think it fits in this one?",
           "createdAt": "2024-09-01T19:40:19Z",
           "updatedAt": "2024-09-01T19:40:19Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "This issue seems to be related to the discussion: https://github.com/openid/OpenID4VP/issues/232\r\n\r\nIMO, there are 2 options going forward\r\n\r\n- defining how to express policies in this specification\r\n- leave it to the \"trust framework\" by allowing custom claims to express different policies\r\n\r\nIf this specification is/plans to be decoupled from the VC issuance/presentation protocols and/or trust frameworks, option 2 should be considered.\r\n\r\nWe introduced an approach: https://hub.ebsi.eu/vc-framework/trust-model/policies, but this approach is exchange-protocol dependent (at least query language dependent), which comes with limitations and certain specification lock-in.",
+          "createdAt": "2024-09-06T14:16:33Z",
+          "updatedAt": "2024-09-06T14:16:33Z"
         }
       ]
     },
@@ -20799,13 +20806,13 @@
       "labels": [],
       "body": "for #246 and hopefully/maybe #194 too \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-examples\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example-1-person-identifica",
       "createdAt": "2024-08-26T21:27:07Z",
-      "updatedAt": "2024-09-01T19:36:21Z",
+      "updatedAt": "2024-09-06T15:07:00Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "clarify-examples-more",
-      "headRefOid": "98255779ba47bafc8dcc825580cfa2049341df5b",
+      "headRefOid": "0ee3dac0764dfc5dfa0913aa18515c00a91b6836",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -20850,6 +20857,26 @@
               "body": "```suggestion\r\nIn this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.\r\n```",
               "createdAt": "2024-09-01T19:33:08Z",
               "updatedAt": "2024-09-01T19:36:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ISWif",
+          "commit": {
+            "abbreviatedOid": "9825577"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-06T15:06:42Z",
+          "updatedAt": "2024-09-06T15:06:42Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "Pretty sure extra spaces are overcome somewhere in the document building process but fixing it early can't hurt ",
+              "createdAt": "2024-09-06T15:06:42Z",
+              "updatedAt": "2024-09-06T15:06:43Z"
             }
           ]
         }
