@@ -854,6 +854,48 @@ MUST contain at least one of the following properties:
 - `contrast`: The contrast for which the SVG template is optimized, with valid
   values being `normal` and `high`. This property is OPTIONAL.
 
+#### SVG Rendering {#svg-rendering}
+
+Consuming application MUST preprocess the SVG template by replacing placeholders
+in the SVG template with properly escaped values of the claims in the credential. The
+placeholders MUST be defined in the SVG template using the syntax
+`{{svg_id}}`, where `svg_id` is an identifier defined in the claim metadata as
+described in (#claim-metadata).
+
+Placeholders MUST only be used in the text content of the SVG template and MUST NOT
+be used in any other part of the SVG template, e.g., in attributes or comments.
+
+A consuming application MUST ensure that all special characters in the claim
+values are properly escaped before inserting them into the SVG template. At
+least the following characters MUST be escaped:
+
+- `&` as `&amp;`
+- `<` as `&lt;`
+- `>` as `&gt;`
+- `"` as `&quot;`
+- `'` as `&apos;`
+
+If the `svg_id` is not present in the claim metadata, the consuming application
+SHOULD reject not render the SVG template. If the `svg_id` is present in the
+claim metadata, but the claim is not present in the credential, the placeholder
+MUST be replaced with an empty string.
+
+The following non-normative example shows a minimal SVG with one placeholder
+using the `svg_id` value `address_street_address` which is defined in the
+example in (#ExampleTypeMetadata):
+
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
+  <text x="10" y="20">{{address_street_address}}</text>
+</svg>
+```
+
+When rendering the SVG template, the consuming application MUST ensure that
+malicious schema providers or issuers cannot inject executable code into the SVG
+template and thereby compromise the security of the consuming application. The
+consuming application MUST NOT execute any code in the SVG template. If code
+execution cannot be prevented reliably, the SVG display MUST be sandboxed.
+
 # Claim Metadata {#claim-metadata}
 
 The `claims` property is an array of objects containing information about
@@ -866,10 +908,12 @@ Each object contains the following properties:
   described below. This property is REQUIRED.
 - `display`: An object containing display information for the claim, as
   described in (#claim-display-metadata). This property is OPTIONAL.
-- `verification`: A string indicating how the claim was verified, as described in
-  (#claim-verification-metadata). This property is OPTIONAL.
 - `sd`: A string indicating whether the claim is selectively disclosable, as
   described in (#claim-selective-disclosure-metadata). This property is OPTIONAL.
+- `svg_id`: A string defining the ID of the claim for reference in the SVG
+  template, as described in (#svg-rendering). The ID MUST be unique within the
+  type metadata. It MUST consist of only alphanumeric characters and underscores
+  and MUST NOT start with a digit. This property is OPTIONAL.
 
 ## Claim Path {#claim-path}
 
@@ -1457,7 +1501,8 @@ After the validation, the Verifier will have the following data for further proc
           "label": "Street Address"
         }
       ],
-      "sd": "always"
+      "sd": "always",
+      "svg_id": "address_street_address"
     },
     {
       "path": [
