@@ -1284,6 +1284,21 @@ recommendations in (#robust-retrieval) apply.
   <front>
     <title>CSS Color Module Level 3</title>
     <date day="18" month="January" year="2022"/>
+    <author initials="T." surname="Çelik" fullname="Tantek Çelik">
+      <organization>
+        <organizationName>Mozilla Corporation</organizationName>
+      </organization>
+    </author>
+    <author initials="C." surname="Lilley" fullname="Chris Lilley">
+      <organization>
+        <organizationName>W3C</organizationName>
+      </organization>
+    </author>
+    <author initials="L. D." surname="Baron" fullname="L. David Baron">
+      <organization>
+        <organizationName>W3C Invited Experts</organizationName>
+      </organization>
+    </author>
   </front>
 </reference>
 {backmatter}
