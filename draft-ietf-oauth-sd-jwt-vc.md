@@ -809,9 +809,9 @@ support SVG rendering. The object MUST contain the following properties:
 
 - `logo`: An object containing information about the logo to be displayed for
   the type, as described in (#logo-metadata). This property is OPTIONAL.
-- `background_color`: A CSS color value for the background of the credential.
+- `background_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] for the background of the credential.
   This property is OPTIONAL.
-- `text_color`: A CSS color value for the text of the credential. This property
+- `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
   is OPTIONAL.
 
 #### Logo Metadata {#logo-metadata}
@@ -1235,6 +1235,13 @@ recommendations in (#robust-retrieval) apply.
     <title>JSON Schema (2020-12)</title>
   </front>
 </reference>
+
+<reference anchor="W3C.CSS-COLOR" target="https://www.w3.org/TR/css-color-3">
+  <front>
+    <title>CSS Color Module Level 3</title>
+    <date day="18" month="January" year="2022"/>
+  </front>
+</reference>
 {backmatter}
 
 # IANA Considerations
@@ -1415,7 +1422,6 @@ After the validation, the Verifier will have the following data for further proc
           "description": "The name of the student"
         }
       ],
-      "verification": "verified",
       "sd": "allowed"
     },
     {
@@ -1434,7 +1440,6 @@ After the validation, the Verifier will have the following data for further proc
           "description": "Address at the time of graduation"
         }
       ],
-      "verification": "self-attested",
       "sd": "always"
     },
     {
@@ -1452,7 +1457,6 @@ After the validation, the Verifier will have the following data for further proc
           "label": "Street Address"
         }
       ],
-      "verification": "self-attested",
       "sd": "always"
     },
     {
@@ -1472,7 +1476,6 @@ After the validation, the Verifier will have the following data for further proc
           "description": "Degree earned by the student"
         }
       ],
-      "verification": "authoritative",
       "sd": "allowed"
     }
   ],
