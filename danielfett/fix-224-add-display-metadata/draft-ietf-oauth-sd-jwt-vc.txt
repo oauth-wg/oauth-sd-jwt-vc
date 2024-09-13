@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 15 March 2025                                     Authlete Inc.
+Expires: 17 March 2025                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                       11 September 2024
+                                                       13 September 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 March 2025.
+   This Internet-Draft will expire on 17 March 2025.
 
 Copyright Notice
 
@@ -394,8 +394,8 @@ Table of Contents
 
 3.3.  Example
 
-   The following is a non-normative example of an unsecured payload of
-   an SD-JWT VC.
+   The following is a non-normative example of the user data of an
+   unsecured payload of an SD-JWT VC.
 
    {
      "vct": "https://credentials.example.com/identity_credential",
@@ -416,7 +416,7 @@ Table of Contents
    }
 
    The following is a non-normative example of how the unsecured payload
-   of the SD-JWT VC above can be used in a SD-JWT where the resulting
+   of the SD-JWT VC above can be used in an SD-JWT where the resulting
    SD-JWT VC contains only claims about the Subject that are selectively
    disclosable:
 
@@ -548,9 +548,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RxOQC
-   en1mUCeXVObqHuKBXvsFTYML0UaTmMFkdCRvnLbNymCjn99Rt2Mrbb7r1Q-VJSs30uRO
-   kCXBwBIAjgcCA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oAGhO
+   Dej7wDFvsl7hY5ZX0UfNGOTfoG_Spl33v708e4SywynxPJSTzRTro6eGo7l0lwQwNVFk
+   CYvOwgFgUkyxA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -561,6 +561,9 @@ Table of Contents
    QwLTAxLTAxIl0~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImlzX292ZXJfMTgiLC
    B0cnVlXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImlzX292ZXJfMjEiLCB0cnV
    lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
+
+   Examples of what presentations of SD-JWT VCs might look like are
+   provided in Section 4.2.
 
 3.4.  Verification and Processing
 
@@ -648,8 +651,9 @@ Table of Contents
 
    The following is a non-normative example of a presentation of the SD-
    JWT shown in Section 3.3 including a Key Binding JWT.  In this
-   presentation, the Holder provides only the Disclosure for the address
-   claim.  Other claims are not disclosed to the Verifier.
+   presentation, the Holder provides only the Disclosures for the
+   address and is_over_65 claims.  Other claims are not disclosed to the
+   Verifier.
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
    Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
@@ -666,19 +670,45 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RxOQC
-   en1mUCeXVObqHuKBXvsFTYML0UaTmMFkdCRvnLbNymCjn99Rt2Mrbb7r1Q-VJSs30uRO
-   kCXBwBIAjgcCA~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7In
-   N0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd2
-   4iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOi
-   AiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgI
-   mF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjYwN
-   TY2NDYsICJzZF9oYXNoIjogInpCa1M1SEtrM05wLTFNVklFR3hGNl9hMDlxUjRtSFU2b
-   kZKTUU2Z3I1ZkEifQ.GH_Gkn6Z7t3Cf0nBji7H5wOcZuXExsU2PZNrKglwdWtEkdmV_P
-   ww9xSvH7ZhRWyVDIhJlzzmXRP5nHY6uqEC4w
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oAGhO
+   Dej7wDFvsl7hY5ZX0UfNGOTfoG_Spl33v708e4SywynxPJSTzRTro6eGo7l0lwQwNVFk
+   CYvOwgFgUkyxA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
+   ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
+   icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
+   yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjYyNTg1ND
+   YsICJzZF9oYXNoIjogIkJmUVl6VTN3Z3VaUXFpeXVId2t5SWF2Uy1OWW1YMTdXOFhKRz
+   lydW82d3cifQ.MiMUN3XAjyTmvN3e1o3zdadDVAnPCnLczUpQIcxuHHsTVzQODFRAp5I
+   YOo6Jvvja5DADSXVKbsUtJvujoze7ug
 
-   The following example shows a presentation of a (different) SD-JWT
-   without a Key Binding JWT:
+   After validation, the Verifier will have the following processed SD-
+   JWT payload available for further handling:
+
+   {
+     "iss": "https://example.com/issuer",
+     "iat": 1683000000,
+     "exp": 1883000000,
+     "vct": "https://credentials.example.com/identity_credential",
+     "cnf": {
+       "jwk": {
+         "kty": "EC",
+         "crv": "P-256",
+         "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+         "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+       }
+     },
+     "is_over_65": true,
+     "address": {
+       "street_address": "123 Main St",
+       "locality": "Anytown",
+       "region": "Anystate",
+       "country": "US"
+     }
+   }
+
+   The following example shows a presentation of a (similar but
+   different) SD-JWT without a Key Binding JWT:
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
    ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
@@ -692,11 +722,29 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.2pLXWpbsAAKxEqrHbLIYoOj06049kBjEbML7p5_Z9ZeCby
-   Q6u21OnKmSuKt3rCfCWA8WIarb0zdRhOEZFGjUZQ~WyJRZ19PNjR6cUF4ZTQxMmExMDh
-   pcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0Iiw
-   gImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW5
-   0cnkiOiAiVVMifV0~
+   hbGciOiAic2hhLTI1NiJ9.AwRviSmxaFnSlVyNSTLDhk_jFhK7gw7iI2XDixIdqPH0eH
+   6W6VINj3DmTxvtBXpOiBOjGKB9yXVVeCT_Xa4jFg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
+   IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
+   Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
+   OiAiVVMifV0~
+
+   The Verifier will have the following processed SD-JWT payload after
+   validation:
+
+   {
+     "iss": "https://example.com/issuer",
+     "iat": 1683000000,
+     "exp": 1883000000,
+     "vct": "https://credentials.example.com/identity_credential",
+     "is_over_65": true,
+     "address": {
+       "street_address": "123 Main St",
+       "locality": "Anytown",
+       "region": "Anystate",
+       "country": "US"
+     }
+   }
 
 5.  JWT VC Issuer Metadata
 
@@ -1722,7 +1770,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    Key Binding is applied using the Holder's public key passed in a cnf
    claim in the SD-JWT.
 
-   The Issuer is using the following input claims set:
+   The following data about the citizen comprises the input JWT Claims
+   Set used by the Issuer:
 
    {
      "vct": "https://bmi.bund.example/credential/pid/1.0",
@@ -1780,8 +1829,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.01VhwnQkNbi_z5mijBV5ehDd-u4EUHTTnMkcDrvw7UCDAJKTSKFbl3
-   BjFpaGY-nq7nRZvVeWepc2jWqyLn2UXg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.vjwWm-Z68v016JuildJXJ2CAMq5dSDvs_4gOMjpLFln_MSjmVrzhMv
+   SYqyTq7ucNXzTyosT8lUd1AJL5ULVsWg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -1808,7 +1857,7 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    kRUM3hBIiwgIjE4IiwgdHJ1ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjIxI
    iwgdHJ1ZV0~WyJlSzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgIjY1IiwgZmFsc2Vd~
 
-   The following payload is used for the SD-JWT:
+   This is the payload of that SD-JWT:
 
    {
      "_sd": [
@@ -1848,7 +1897,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
      }
    }
 
-   The following Disclosures are created by the Issuer:
+   The digests in the SD-JWT payload reference the following
+   Disclosures:
 
    *Claim given_name*:
 
@@ -2026,9 +2076,9 @@ B.1.  Example 1: Person Identification Data (PID) Credential
       WyJlSzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgIjY1IiwgZmFsc2Vd
    *  Contents: ["eK5o5pHfgupPpltj1qhAJw", "65", false]
 
-   The following shows a presentation of the SD-JWT with a Key Binding
-   JWT that discloses only nationality and the fact that the person is
-   over 18 years old:
+   This shows a presentation of the SD-JWT with a Key Binding JWT that
+   discloses only nationality and the fact that the person is over 18
+   years old:
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
    uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiOVpicGxDN1R
@@ -2052,26 +2102,26 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.01VhwnQkNbi_z5mijBV5ehDd-u4EUHTTnMkcDrvw7UCDAJKTSKFbl3
-   BjFpaGY-nq7nRZvVeWepc2jWqyLn2UXg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.vjwWm-Z68v016JuildJXJ2CAMq5dSDvs_4gOMjpLFln_MSjmVrzhMv
+   SYqyTq7ucNXzTyosT8lUd1AJL5ULVsWg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MjYwNTY2NDYsICJzZF9oYXNoIjogIkpmWUtoZUtoczdNY
-   UJHcFhxaGhEV1VYNjhSZ1hLaVlHSHZ2cmpGTFo2bmsifQ.kmiUH0iKNld8uBCxYh_ak0
-   4JNZTO-E7Pgphr8reS75MPXj4AjK6to3HYUl-9aoGN9DlP1VbTy28FKc61Fug-BA
+   mlmaWVyIiwgImlhdCI6IDE3MjYyNTg1NDYsICJzZF9oYXNoIjogIlFJcDFZcWM4Yng0S
+   jR6WHd5em5vdDBrSUgtQnFtUXMwT3I5QU4zMjdmdzAifQ.Q6EGkeu3FvntVttxn5b0PY
+   dxVLUqkJOBxSIQn2WA7O9FIW7CeqWvFJjOp9t-uCZn2fecwXhZ3r3VE7Hss92kXA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1726056646,
-     "sd_hash": "JfYKheKhs7MaBGpXqhhDWUX68RgXKiYGHvvrjFLZ6nk"
+     "iat": 1726258546,
+     "sd_hash": "QIp1Yqc8bx4J4zXwyznot0kIH-BqmQs0Or9AN327fw0"
    }
 
-   After the validation, the Verifier will have the following data for
-   further processing:
+   After validation, the Verifier will have the following processed SD-
+   JWT payload available for further handling:
 
    {
      "iss": "https://example.com/issuer",
@@ -2250,6 +2300,7 @@ Appendix D.  Document History
 
    *  Include display and claim type metadata
    *  Added example for type metadata
+   *  Clarify, add context, or otherwise improved the examples
 
    -04
 
