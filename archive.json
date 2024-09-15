@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-12T00:27:31.700523+00:00",
+  "timestamp": "2024-09-15T00:31:12.049467+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4767,7 +4767,7 @@
       "id": "I_kwDOJbVClc54y6W_",
       "title": "Add output example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/194",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tlodderstedt",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
@@ -4778,8 +4778,8 @@
       ],
       "body": "I think the understanding of the spec could be further facilitated by adding an example of a SD-JWT VC after the verifier has processed the SD-JWT VC and (basically) has constructed a JWT representation for further processing in the application. ",
       "createdAt": "2023-12-05T16:26:58Z",
-      "updatedAt": "2024-07-08T16:12:27Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-12T21:04:36Z",
+      "closedAt": "2024-09-12T21:04:36Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -6196,15 +6196,15 @@
       "id": "I_kwDOJbVClc6Qb0Um",
       "title": "clarify example(s)  ",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/246",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Select parts of a conversation from an encrypted messaging service copied here. Editorial liberties have been taken to extract the most relevant parts of the discussion and protect the identities of the participants. \r\n\r\n> ... why does the example in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc#section-3.3 not include an \"iss\" claim?  \\[ note specifically https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 ]\r\n\r\n> ...\r\n\r\n> the idea, as I understand it from the guy that wrote the tool and most of the \\[\"...\"] around it, is that first JSON in sec 3.3 https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-2 is just showing stuff about the user and the \"meta\" claims like iss, exp, and iat show up in the next part of the example https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#section-3.3-4\r\n\r\n> ...\r\n\r\n> I would find it useful to have an example showing the payload of the credential in clear text (not the salted hashes) + all the metadata required to do validity checks and trust checks. Basically how the data would look like before it gets chopped into pieces or after they have been reverted. A credential without iss value does not make sense to me.\r\n\r\n> ...\r\n\r\n> ... useful if we could give this thing a name: https://github.com/oauth-wg/oauth-selective-disclosure-jwt/issues/443\r\n\r\n> ...\r\n\r\n> it is intentional that that part does not include iss, iat, exp, etc\r\n> maybe we can clarify the intro text more, but basically the idea has been to make a distinction between the user claims and all the metadata around it.\r\n>- the first example is just user claims that are being secured\r\n>- the second example is user claims + metadata that is necessary to be added when signing the sd-jwt\r\n\r\nIMHO it would be worthwhile to expand the example in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#vc-sd-jwt-example with some additions to https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-examples to also show the content of the thing that needs a name.\r\n",
       "createdAt": "2024-07-22T15:52:27Z",
-      "updatedAt": "2024-08-26T21:14:53Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-12T21:04:36Z",
+      "closedAt": "2024-09-12T21:04:36Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -19818,13 +19818,13 @@
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-09-11T12:10:28Z",
+      "updatedAt": "2024-09-13T20:15:17Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
+      "baseRefOid": "1a3dd92e53b8a757601df845190b59918872bfb8",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "b448cc9c2b5d938c1e0bd14cff8c7c59634143e9",
+      "headRefOid": "99bbad5eea4e849570e39bf309ccd3b9729672ba",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -20426,6 +20426,135 @@
               "updatedAt": "2024-09-04T10:07:38Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6JJaII",
+          "commit": {
+            "abbreviatedOid": "b448cc9"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T17:12:04Z",
+          "updatedAt": "2024-09-12T17:12:04Z",
+          "comments": [
+            {
+              "originalPosition": 169,
+              "body": "```suggestion\r\n  <text x=\"10\" y=\"20\">Street address: {{address_street_address}}</text>\r\n```",
+              "createdAt": "2024-09-12T17:12:04Z",
+              "updatedAt": "2024-09-12T17:12:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6JJdrR",
+          "commit": {
+            "abbreviatedOid": "b448cc9"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T17:20:12Z",
+          "updatedAt": "2024-09-12T17:20:12Z",
+          "comments": [
+            {
+              "originalPosition": 161,
+              "body": "```suggestion\r\nMUST be replaced with an empty string or a string appropriate to indicate that\r\nthe value is empty.\r\n```\r\n... or something like this.",
+              "createdAt": "2024-09-12T17:20:12Z",
+              "updatedAt": "2024-09-12T17:20:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6JJlmo",
+          "commit": {
+            "abbreviatedOid": "b448cc9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-09-12T17:36:15Z",
+          "updatedAt": "2024-09-12T17:36:16Z",
+          "comments": [
+            {
+              "originalPosition": 161,
+              "body": "```suggestion\r\nMUST be replaced with an empty string or a string appropriate to indicate that\r\nthe value is absent.\r\n```\r\n... or something like that ? ",
+              "createdAt": "2024-09-12T17:36:15Z",
+              "updatedAt": "2024-09-12T17:36:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6JTs5V",
+          "commit": {
+            "abbreviatedOid": "b448cc9"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-13T17:07:53Z",
+          "updatedAt": "2024-09-13T17:07:53Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6JVCMU",
+          "commit": {
+            "abbreviatedOid": "b448cc9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "some nit picky suggestions but overall lgtm ",
+          "createdAt": "2024-09-13T19:54:52Z",
+          "updatedAt": "2024-09-13T20:14:40Z",
+          "comments": [
+            {
+              "originalPosition": 67,
+              "body": "To me, the \"MUST have the following\" followed by a list of things where each thing is itself REQUIRED or OPTIONAL is an awkward construction. \r\n\r\n```suggestion\r\nThe objects in the array have the following properties:\r\n```",
+              "createdAt": "2024-09-13T19:54:52Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            },
+            {
+              "originalPosition": 88,
+              "body": "To me, the \"MUST have the following\" followed by a list of things where each thing is itself OPTIONAL is an awkward construction.\r\n```suggestion\r\nsupport SVG rendering. The object contains the following properties:\r\n```",
+              "createdAt": "2024-09-13T19:58:59Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            },
+            {
+              "originalPosition": 277,
+              "body": "```suggestion\r\nThe objects in the array have the following properties:\r\n```",
+              "createdAt": "2024-09-13T20:06:48Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            },
+            {
+              "originalPosition": 418,
+              "body": "I know it's not consistent with the other JSON formatting in this example but I think showing `path` this way conveys the idea much more intuitively.  \r\n```suggestion\r\n      \"path\": [\"address\"],\r\n```",
+              "createdAt": "2024-09-13T20:12:22Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            },
+            {
+              "originalPosition": 437,
+              "body": "I know it's not consistent with the other JSON formatting in this example but I think showing `path` this way conveys the idea much more intuitively.  \r\n\r\n```suggestion\r\n      \"path\": [\"address\", \"street_address\"],\r\n```",
+              "createdAt": "2024-09-13T20:13:02Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            },
+            {
+              "originalPosition": 455,
+              "body": "```suggestion\r\n      \"path\": [\"degrees\", null],\r\n```",
+              "createdAt": "2024-09-13T20:13:34Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            },
+            {
+              "originalPosition": 400,
+              "body": "I know it's not consistent with the other JSON formatting in this example but I think showing path this way conveys the idea much more intuitively.\r\n```suggestion\r\n      \"path\": [\"name\"],\r\n```",
+              "createdAt": "2024-09-13T20:14:00Z",
+              "updatedAt": "2024-09-13T20:14:40Z"
+            }
+          ]
         }
       ]
     },
@@ -20799,24 +20928,26 @@
       "id": "PR_kwDOJbVClc55fd4S",
       "title": "clarify, add context, or otherwise improve examples",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/252",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #246 and hopefully/maybe #194 too \r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-examples\r\n\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/clarify-examples-more/draft-ietf-oauth-sd-jwt-vc.html#name-example-1-person-identifica",
       "createdAt": "2024-08-26T21:27:07Z",
-      "updatedAt": "2024-09-06T15:07:00Z",
+      "updatedAt": "2024-09-12T21:04:35Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "clarify-examples-more",
       "headRefOid": "0ee3dac0764dfc5dfa0913aa18515c00a91b6836",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-09-12T21:04:35Z",
+      "mergedAt": "2024-09-12T21:04:35Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "1a3dd92e53b8a757601df845190b59918872bfb8"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -20879,6 +21010,19 @@
               "updatedAt": "2024-09-06T15:06:43Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6JKt1L",
+          "commit": {
+            "abbreviatedOid": "0ee3dac"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-12T19:55:11Z",
+          "updatedAt": "2024-09-12T19:55:11Z",
+          "comments": []
         }
       ]
     }
