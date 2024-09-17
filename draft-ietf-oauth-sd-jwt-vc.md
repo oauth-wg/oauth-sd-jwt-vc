@@ -794,7 +794,7 @@ The array MUST contain an object for each language that is supported by the
 type. The consuming application MUST use the language tag it considers most
 appropriate for the user.
 
-The objects in the array MUST have the following properties:
+The objects in the array have the following properties:
 
 - `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `name`: A human-readable name for the type, intended for end users. This
@@ -815,7 +815,7 @@ the rendering method.
 ### Rendering Method "simple" {#rendering-method-simple}
 
 The `simple` rendering method is intended for use in applications that do not
-support SVG rendering. The object MUST contain the following properties:
+support SVG rendering. The object contains the following properties:
 
 - `logo`: An object containing information about the logo to be displayed for
   the type, as described in (#logo-metadata). This property is OPTIONAL.
@@ -888,7 +888,8 @@ least the following characters MUST be escaped:
 If the `svg_id` is not present in the claim metadata, the consuming application
 SHOULD reject not render the SVG template. If the `svg_id` is present in the
 claim metadata, but the claim is not present in the credential, the placeholder
-MUST be replaced with an empty string.
+MUST be replaced with an empty string or a string appropriate to indicate that
+the value is absent.
 
 The following non-normative example shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
@@ -896,7 +897,7 @@ example in (#ExampleTypeMetadata):
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
-  <text x="10" y="20">{{address_street_address}}</text>
+  <text x="10" y="20">Street address: {{address_street_address}}</text>
 </svg>
 ```
 
@@ -1004,7 +1005,7 @@ claim. The array MUST contain an object for each language that is supported by
 the type. The consuming application MUST use the language tag it considers most
 appropriate for the user.
 
-The objects in the array MUST have the following properties:
+The objects in the array have the following properties:
 
 - `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `label`: A human-readable label for the claim, intended for end users. This
@@ -1476,9 +1477,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
   ],
   "claims": [
     {
-      "path": [
-        "name"
-      ],
+      "path": ["name"],
       "display": [
         {
           "lang": "de-DE",
@@ -1494,9 +1493,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "sd": "allowed"
     },
     {
-      "path": [
-        "address"
-      ],
+      "path": ["address"],
       "display": [
         {
           "lang": "de-DE",
@@ -1512,10 +1509,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "sd": "always"
     },
     {
-      "path": [
-        "address",
-        "street_address"
-      ],
+      "path": ["address", "street_address"],
       "display": [
         {
           "lang": "de-DE",
@@ -1530,10 +1524,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "svg_id": "address_street_address"
     },
     {
-      "path": [
-        "degrees",
-        null
-      ],
+      "path": ["degrees", null],
       "display": [
         {
           "lang": "de-DE",
