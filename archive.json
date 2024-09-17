@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-15T00:31:12.049467+00:00",
+  "timestamp": "2024-09-17T00:23:23.204786+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6416,6 +6416,22 @@
           "updatedAt": "2024-08-28T21:46:58Z"
         }
       ]
+    },
+    {
+      "number": 253,
+      "id": "I_kwDOJbVClc6Wr3og",
+      "title": "Issuer-signed JWT Verification Key Validation - Separation of signature and identity verification/validation?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/253",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "There seem to be several mechanisms for issuer key validation (section 3.5).\r\n\r\nTwo mechanisms define fetching of keys (issuer metadata, DID), and one can be embedded or referenced (x509).\r\n\r\nWould it make sense to enable signature validation at all times and\r\n- require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\nSignature is always verified using this key.\r\n\r\nPublic key - identity binding can be verified\r\n- using x509 certificate that is in the jwk.x5c claim (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7) - key certificate or the full chain.\r\n\r\n`kid` could be misused to express the validation mechanism or one could define an additional header claim where identity verification mechanism is specified:\r\n- calling the /.well-known/jwt-vc-issuer\r\n- resolving a DID\r\n- using Federation ...\r\n- ...",
+      "createdAt": "2024-09-16T10:31:44Z",
+      "updatedAt": "2024-09-16T10:31:44Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
