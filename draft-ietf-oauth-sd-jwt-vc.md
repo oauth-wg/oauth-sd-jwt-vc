@@ -24,7 +24,7 @@ organization="MATTR"
 initials="D."
 surname="Fett"
 fullname="Daniel Fett"
-organization="Authlete Inc. "
+organization="Authlete Inc."
     [author.address]
     email = "mail@danielfett.de"
 
