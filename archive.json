@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-17T00:23:23.204786+00:00",
+  "timestamp": "2024-09-19T00:27:57.756155+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6430,6 +6430,22 @@
       "body": "There seem to be several mechanisms for issuer key validation (section 3.5).\r\n\r\nTwo mechanisms define fetching of keys (issuer metadata, DID), and one can be embedded or referenced (x509).\r\n\r\nWould it make sense to enable signature validation at all times and\r\n- require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\nSignature is always verified using this key.\r\n\r\nPublic key - identity binding can be verified\r\n- using x509 certificate that is in the jwk.x5c claim (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7) - key certificate or the full chain.\r\n\r\n`kid` could be misused to express the validation mechanism or one could define an additional header claim where identity verification mechanism is specified:\r\n- calling the /.well-known/jwt-vc-issuer\r\n- resolving a DID\r\n- using Federation ...\r\n- ...",
       "createdAt": "2024-09-16T10:31:44Z",
       "updatedAt": "2024-09-16T10:31:44Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 256,
+      "id": "I_kwDOJbVClc6XElX_",
+      "title": "Fetch vct from URL or from registry",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/256",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#section-6.3.1\r\n\r\nIs defining that if vct is an https:// it should check the metadata under the well known (at least the 2nd part of the text reads like this:\r\n>  i.e., by inserting /.well-known/vct after the authority part of the URL.)\r\n\r\nMany registries are, and will be accessible via URLs, hence the metadata type is expressed via an URL; Adding or maintaining a .well-known might not fit in the existing API designs. Also note that .well-known has well-known issues with multi-tenancy. Most use cases will delegate the hosting of the information to registries.\r\n\r\nAlso\r\n> URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nQuestions:\r\n- if schema is https, should the full URL be provided? (no ambiguity with .well-known, you can host schema on github, ...)\r\n- metadata retrieval category re-consideration:\r\n\r\n1) Fetch vct from a remote source:\r\n    a) URL: HTTPS schema -> full URL that points to a schema\r\n    b) URN: domain-defined URN that MUST be understood by the wallet; The URN method defines how to map the URN to URL and retrieve the data\r\n\r\n2) Fetch vct the metadata locally\r\n    a) local cache\r\n    b) Signature (signed or unsigned header); Whether or not metadata is shared in the (un)protected header is defined by the signature format, hence out of scope of this document.\r\n\r\n2b: point to consider for the OID4VP: should there be a flag: \"archival mode\" or similar, that would flag that the wallet needs to provide all the referenced content in an unprotected JWS header?",
+      "createdAt": "2024-09-18T19:45:34Z",
+      "updatedAt": "2024-09-18T19:45:34Z",
       "closedAt": null,
       "comments": []
     }
@@ -19827,24 +19843,26 @@
       "id": "PR_kwDOJbVClc5xiR58",
       "title": "Add display and claim metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/236",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "This PR adds the display and claim metadata as defined in the Type Metadata draft (with minor changes).\r\n\r\nNote that this includes the \"claim verification metadata\" and \"claim selective disclosure metadata\", where there were some discussions around the requirements and mechanisms to use. I left them in here to foster a discussion, but we can also split them out into separate PRs.\r\n\r\nRendered version: https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/fix-224-add-display-metadata/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-06-05T10:42:42Z",
-      "updatedAt": "2024-09-13T20:15:17Z",
+      "updatedAt": "2024-09-17T18:20:00Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "1a3dd92e53b8a757601df845190b59918872bfb8",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-224-add-display-metadata",
-      "headRefOid": "99bbad5eea4e849570e39bf309ccd3b9729672ba",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "ee6c131d87dfc11de8d444682ea331c697041e6a",
+      "closedAt": "2024-09-17T18:20:00Z",
+      "mergedAt": "2024-09-17T18:20:00Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "7f525e7c6cfa11905b578a5079f8ce74da6eda8a"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -21041,6 +21059,76 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 254,
+      "id": "PR_kwDOJbVClc578Fze",
+      "title": "hope is a waking dream",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/254",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-09-18T18:44:39Z",
+      "updatedAt": "2024-09-18T19:44:49Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "7f525e7c6cfa11905b578a5079f8ce74da6eda8a",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "sadness",
+      "headRefOid": "67502aebd54a0017d545082389a0a9290b9419b6",
+      "closedAt": "2024-09-18T18:53:34Z",
+      "mergedAt": "2024-09-18T18:53:34Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "3c98dddf12baf6ea59cab70b0abee9d27cb39781"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "this forced my email into a commit or tag or PR or something, which \"fixed\" the email scrobbling for the -05\r\n\r\nhopefully #255 will help with proper scrobbling going forward \r\n\r\n",
+          "createdAt": "2024-09-18T19:44:47Z",
+          "updatedAt": "2024-09-18T19:44:47Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 255,
+      "id": "PR_kwDOJbVClc578Q4y",
+      "title": "Set upload email in makefile",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/255",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "attempt to avoid future failures uploading to the IETF datatracker due to scrobbling the wrong email \r\n\r\nsee:\r\nhttps://github.com/martinthomson/i-d-template/commit/638eeb4a9d39ed632176c3b0645b3e0ee59962b0#diff-008e429a10bb721eeba15490213909aebf09cda078e9942e524df5bd5837fc54R81-R86\r\n\r\n\r\nwas seeing:\r\n```\r\nRun martinthomson/i-d-template@v1\r\n/usr/bin/docker run --name ghcriomartinthomsonidtemplateactionlatest_49ecb8 --label f5dd11 --workdir /github/workspace --rm -e \"INPUT_MAKE\" -e \"INPUT_TOKEN\" -e \"GITHUB_TOKEN\" -e \"HOME\" -e \"GITHUB_JOB\" -e \"GITHUB_REF\" -e \"GITHUB_SHA\" -e \"GITHUB_REPOSITORY\" -e \"GITHUB_REPOSITORY_OWNER\" -e \"GITHUB_REPOSITORY_OWNER_ID\" -e \"GITHUB_RUN_ID\" -e \"GITHUB_RUN_NUMBER\" -e \"GITHUB_RETENTION_DAYS\" -e \"GITHUB_RUN_ATTEMPT\" -e \"GITHUB_REPOSITORY_ID\" -e \"GITHUB_ACTOR_ID\" -e \"GITHUB_ACTOR\" -e \"GITHUB_TRIGGERING_ACTOR\" -e \"GITHUB_WORKFLOW\" -e \"GITHUB_HEAD_REF\" -e \"GITHUB_BASE_REF\" -e \"GITHUB_EVENT_NAME\" -e \"GITHUB_SERVER_URL\" -e \"GITHUB_API_URL\" -e \"GITHUB_GRAPHQL_URL\" -e \"GITHUB_REF_NAME\" -e \"GITHUB_REF_PROTECTED\" -e \"GITHUB_REF_TYPE\" -e \"GITHUB_WORKFLOW_REF\" -e \"GITHUB_WORKFLOW_SHA\" -e \"GITHUB_WORKSPACE\" -e \"GITHUB_ACTION\" -e \"GITHUB_EVENT_PATH\" -e \"GITHUB_ACTION_REPOSITORY\" -e \"GITHUB_ACTION_REF\" -e \"GITHUB_PATH\" -e \"GITHUB_ENV\" -e \"GITHUB_STEP_SUMMARY\" -e \"GITHUB_STATE\" -e \"GITHUB_OUTPUT\" -e \"RUNNER_OS\" -e \"RUNNER_ARCH\" -e \"RUNNER_NAME\" -e \"RUNNER_ENVIRONMENT\" -e \"RUNNER_TOOL_CACHE\" -e \"RUNNER_TEMP\" -e \"RUNNER_WORKSPACE\" -e \"ACTIONS_RUNTIME_URL\" -e \"ACTIONS_RUNTIME_TOKEN\" -e \"ACTIONS_CACHE_URL\" -e \"ACTIONS_RESULTS_URL\" -e GITHUB_ACTIONS=true -e CI=true -v \"/var/run/docker.sock\":\"/var/run/docker.sock\" -v \"/home/runner/work/_temp/_github_home\":\"/github/home\" -v \"/home/runner/work/_temp/_github_workflow\":\"/github/workflow\" -v \"/home/runner/work/_temp/_runner_file_commands\":\"/github/file_commands\" -v \"/home/runner/work/oauth-sd-jwt-vc/oauth-sd-jwt-vc\":\"/github/workspace\" ghcr.io/martinthomson/i-d-template-action:latest  \"upload\"\r\nwarning: lib/default-branch.py: correcting the default branch locally:\r\nwarning: lib/default-branch.py:     git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main\r\nmake: '.targets.mk' is up to date.\r\nwarning: lib/default-branch.py: correcting the default branch locally:\r\nwarning: lib/default-branch.py:     git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main\r\ngit show \"draft-ietf-oauth-sd-jwt-vc-05:draft-ietf-oauth-sd-jwt-vc.md\" | sed -e 's/draft-ietf-oauth-sd-jwt-vc-latest/draft-ietf-oauth-sd-jwt-vc-05/g' >versioned/draft-ietf-oauth-sd-jwt-vc-05.md\r\ncat versioned/draft-ietf-oauth-sd-jwt-vc-05.md  | mmark | lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s venue python3 lib/add-note.py | lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s v2v3 xml2rfc -q --rfc-base-url https://www.rfc-editor.org/rfc/ --id-base-url https://datatracker.ietf.org/doc/html/ --cache=/github/workspace/.refcache --v2v3 /dev/stdin -o /dev/stdout >versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\r\nrm versioned/draft-ietf-oauth-sd-jwt-vc-05.md\r\nset -ex; tag=\"draft-ietf-oauth-sd-jwt-vc-05\"; \\\r\nemail=\"$(lib/get-email.sh \"$tag\" \"versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\")\"; \\\r\n[ -z \"$email\" ] && exit 1; \\\r\nreplaces() { \\\r\n  [ \"${1##*-}\" = \"00\" ] || return; \\\r\n  file=\"$(git ls-files \"${1%-[0-9][0-9]}.*\")\"; \\\r\n  for last in $(git log --follow --name-only --format=format: -- \"${file%-[0-9][0-9]}\" | sed -e '/^$/d' | grep -v draft-todo-yourname-protocol | cut -f 2 | uniq | tail +2); do \\\r\n    if [ -n \"$(git tag -l \"${last%.*}\")\" ]; then \\\r\n      echo -F; echo \"replaces=${last%.*}\"; break; \\\r\n    fi; \\\r\n  done; \\\r\n}; \\\r\nlib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-request curl -sS -D \"versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\" \\\r\n    -F \"user=$email\" -F \"xml=@versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\" $(replaces \"$tag\") \\\r\n    \"https://datatracker.ietf.org/api/submission\" && echo && \\\r\n  (head -1 \"versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\" | grep -q '^HTTP/\\S\\S* 20[01]\\b' || lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-result ! cat \"versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\" 1>&2)\r\n+ tag=draft-ietf-oauth-sd-jwt-vc-05\r\n++ lib/get-email.sh draft-ietf-oauth-sd-jwt-vc-05 versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\r\n+ email=fett@danielfett.de\r\n+ '[' -z fett@danielfett.de ']'\r\n++ replaces draft-ietf-oauth-sd-jwt-vc-05\r\n++ '[' 05 = 00 ']'\r\n++ return\r\n+ lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-request curl -sS -D versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload -F user=fett@danielfett.de -F xml=@versioned/draft-ietf-oauth-sd-jwt-vc-05.xml https://datatracker.ietf.org/api/submission\r\n+ echo\r\n{\"error\": \"No person with username fett@danielfett.de\"}\r\n+ head -1 versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\r\n+ grep -q '^HTTP/\\S\\S* 20[01]\\b'\r\n+ lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-result '!' cat versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\r\nHTTP/2 400 \r\ndate: Wed, 18 Sep 2024 18:10:56 GMT\r\ncontent-type: application/json\r\ncontent-length: 55\r\ncross-origin-opener-policy: unsafe-none\r\nreferrer-policy: strict-origin-when-cross-origin\r\nstrict-transport-security: max-age=3600; includeSubDomains\r\nvary: Cookie, origin\r\nx-content-type-options: nosniff\r\nx-frame-options: SAMEORIGIN\r\ncf-cache-status: DYNAMIC\r\nserver: cloudflare\r\ncf-ray: 8c534bad5c667ac2-SJC\r\nalt-svc: h3=\":443\"; ma=86400\r\n\r\nmake[2]: *** [lib/upload.mk:27: versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload] Error 1\r\nmake[2]: *** Deleting file 'versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload'\r\nmake[1]: *** [lib/upload.mk:47: versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload] Error 2\r\nmake: *** [lib/upload.mk:22: upload] Error 2\r\n0s\r\n0s\r\n0s\r\n```",
+      "createdAt": "2024-09-18T19:15:58Z",
+      "updatedAt": "2024-09-18T19:26:17Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "3c98dddf12baf6ea59cab70b0abee9d27cb39781",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "hopefully-less-future-sadness",
+      "headRefOid": "73c114ed070b6df1e5f419543ee40d55f7c62b7d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "kinda related to https://github.com/martinthomson/i-d-template/issues/438 ",
+          "createdAt": "2024-09-18T19:26:15Z",
+          "updatedAt": "2024-09-18T19:26:15Z"
+        }
+      ],
+      "reviews": []
     }
   ]
 }
