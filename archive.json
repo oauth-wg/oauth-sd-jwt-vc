@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-09-24T00:28:44.699806+00:00",
+  "timestamp": "2024-09-26T00:28:18.502126+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6234,9 +6234,17 @@
       "labels": [],
       "body": "Per John Bradley comment during IETF 120",
       "createdAt": "2024-07-22T20:37:32Z",
-      "updatedAt": "2024-07-22T20:37:32Z",
+      "updatedAt": "2024-09-24T18:28:08Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Per the meeting minutes:\r\n\r\n> John B: Metadata is interesting - nothing in metadata is disclosed to\r\n> verifier?\r\n> Brian: intended for holder, but could be used by verifier - not secret\r\n> and is retrievable\r\n> John B: Might leak what claims are availabile - might be some reasons\r\n> not to disclose to the verifier\r\n> John B: Should disucss policies for wallets, etc? e.g. Some gov may only\r\n> want to permit disclosure or presentation to approved parties - if we\r\n> want interop we should consider issuer to wallet policies - could\r\n> metadata help with this?\r\n> Question - is metadata a way of annotating policy type info?\r\n> Brian: metadata could be, but debate around this and it is yet to be\r\n> determined\r\n> John B: we should figure this out\r\n> Brian: agree\r\n> John B: we should have an answer around privacy and consider it\r\n> especially in regards to metadata",
+          "createdAt": "2024-09-24T18:28:07Z",
+          "updatedAt": "2024-09-24T18:28:07Z"
+        }
+      ]
     },
     {
       "number": 248,
@@ -6267,7 +6275,7 @@
       "id": "I_kwDOJbVClc6Q2tO8",
       "title": "Suggestion: Should this spec be more open to multiple Credential formats? [W3C Verifiable Credentials 2.0]",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/249",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "goncalo-frade-iohk",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -6276,8 +6284,8 @@
       ],
       "body": "Hi there. Hope everyone is ok. I would like to know your opinion on this subject.\r\n\r\nAfter I read the spec I got the feeling that this spec could be more open to other credential types like W3C Verifiable Credentials 2.0.\r\n\r\nAn Appendix already exists for W3C Verifiable credentials 2.0 in the [SD-JWT spec](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/).\r\n\r\nThe important missing part is about the revocation payload that should always be in plain format.\r\nThe problem is in W3C VC 2.0 spec this is called `credentialStatus` not `status` like in this spec and the status-list is of a different type.\r\n\r\nI was wondering if this Spec could be more broad so it can support other credentials formats and their revocation mechanisms? Maybe more examples with other credential formats and not describe a single mechanism like `I-D.ietf-oauth-status-list` and leave this to the credential specification itself.",
       "createdAt": "2024-07-25T15:09:50Z",
-      "updatedAt": "2024-07-31T11:04:20Z",
-      "closedAt": null,
+      "updatedAt": "2024-09-24T18:19:28Z",
+      "closedAt": "2024-09-24T18:19:28Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -6292,6 +6300,13 @@
           "body": "Hi @bc-pi. First thanks for pointing me to that spec, I had not find it before.",
           "createdAt": "2024-07-31T11:04:19Z",
           "updatedAt": "2024-07-31T11:04:19Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Two months since pending close, no further activity, closing this issue.",
+          "createdAt": "2024-09-24T18:19:28Z",
+          "updatedAt": "2024-09-24T18:19:28Z"
         }
       ]
     },
@@ -21211,24 +21226,26 @@
       "id": "PR_kwDOJbVClc578Q4y",
       "title": "Set upload email in makefile",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/255",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "attempt to avoid future failures uploading to the IETF datatracker due to scrobbling the wrong email \r\n\r\nsee:\r\nhttps://github.com/martinthomson/i-d-template/commit/638eeb4a9d39ed632176c3b0645b3e0ee59962b0#diff-008e429a10bb721eeba15490213909aebf09cda078e9942e524df5bd5837fc54R81-R86\r\n\r\n\r\nwas seeing:\r\n```\r\nRun martinthomson/i-d-template@v1\r\n/usr/bin/docker run --name ghcriomartinthomsonidtemplateactionlatest_49ecb8 --label f5dd11 --workdir /github/workspace --rm -e \"INPUT_MAKE\" -e \"INPUT_TOKEN\" -e \"GITHUB_TOKEN\" -e \"HOME\" -e \"GITHUB_JOB\" -e \"GITHUB_REF\" -e \"GITHUB_SHA\" -e \"GITHUB_REPOSITORY\" -e \"GITHUB_REPOSITORY_OWNER\" -e \"GITHUB_REPOSITORY_OWNER_ID\" -e \"GITHUB_RUN_ID\" -e \"GITHUB_RUN_NUMBER\" -e \"GITHUB_RETENTION_DAYS\" -e \"GITHUB_RUN_ATTEMPT\" -e \"GITHUB_REPOSITORY_ID\" -e \"GITHUB_ACTOR_ID\" -e \"GITHUB_ACTOR\" -e \"GITHUB_TRIGGERING_ACTOR\" -e \"GITHUB_WORKFLOW\" -e \"GITHUB_HEAD_REF\" -e \"GITHUB_BASE_REF\" -e \"GITHUB_EVENT_NAME\" -e \"GITHUB_SERVER_URL\" -e \"GITHUB_API_URL\" -e \"GITHUB_GRAPHQL_URL\" -e \"GITHUB_REF_NAME\" -e \"GITHUB_REF_PROTECTED\" -e \"GITHUB_REF_TYPE\" -e \"GITHUB_WORKFLOW_REF\" -e \"GITHUB_WORKFLOW_SHA\" -e \"GITHUB_WORKSPACE\" -e \"GITHUB_ACTION\" -e \"GITHUB_EVENT_PATH\" -e \"GITHUB_ACTION_REPOSITORY\" -e \"GITHUB_ACTION_REF\" -e \"GITHUB_PATH\" -e \"GITHUB_ENV\" -e \"GITHUB_STEP_SUMMARY\" -e \"GITHUB_STATE\" -e \"GITHUB_OUTPUT\" -e \"RUNNER_OS\" -e \"RUNNER_ARCH\" -e \"RUNNER_NAME\" -e \"RUNNER_ENVIRONMENT\" -e \"RUNNER_TOOL_CACHE\" -e \"RUNNER_TEMP\" -e \"RUNNER_WORKSPACE\" -e \"ACTIONS_RUNTIME_URL\" -e \"ACTIONS_RUNTIME_TOKEN\" -e \"ACTIONS_CACHE_URL\" -e \"ACTIONS_RESULTS_URL\" -e GITHUB_ACTIONS=true -e CI=true -v \"/var/run/docker.sock\":\"/var/run/docker.sock\" -v \"/home/runner/work/_temp/_github_home\":\"/github/home\" -v \"/home/runner/work/_temp/_github_workflow\":\"/github/workflow\" -v \"/home/runner/work/_temp/_runner_file_commands\":\"/github/file_commands\" -v \"/home/runner/work/oauth-sd-jwt-vc/oauth-sd-jwt-vc\":\"/github/workspace\" ghcr.io/martinthomson/i-d-template-action:latest  \"upload\"\r\nwarning: lib/default-branch.py: correcting the default branch locally:\r\nwarning: lib/default-branch.py:     git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main\r\nmake: '.targets.mk' is up to date.\r\nwarning: lib/default-branch.py: correcting the default branch locally:\r\nwarning: lib/default-branch.py:     git symbolic-ref refs/remotes/origin/HEAD refs/remotes/origin/main\r\ngit show \"draft-ietf-oauth-sd-jwt-vc-05:draft-ietf-oauth-sd-jwt-vc.md\" | sed -e 's/draft-ietf-oauth-sd-jwt-vc-latest/draft-ietf-oauth-sd-jwt-vc-05/g' >versioned/draft-ietf-oauth-sd-jwt-vc-05.md\r\ncat versioned/draft-ietf-oauth-sd-jwt-vc-05.md  | mmark | lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s venue python3 lib/add-note.py | lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s v2v3 xml2rfc -q --rfc-base-url https://www.rfc-editor.org/rfc/ --id-base-url https://datatracker.ietf.org/doc/html/ --cache=/github/workspace/.refcache --v2v3 /dev/stdin -o /dev/stdout >versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\r\nrm versioned/draft-ietf-oauth-sd-jwt-vc-05.md\r\nset -ex; tag=\"draft-ietf-oauth-sd-jwt-vc-05\"; \\\r\nemail=\"$(lib/get-email.sh \"$tag\" \"versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\")\"; \\\r\n[ -z \"$email\" ] && exit 1; \\\r\nreplaces() { \\\r\n  [ \"${1##*-}\" = \"00\" ] || return; \\\r\n  file=\"$(git ls-files \"${1%-[0-9][0-9]}.*\")\"; \\\r\n  for last in $(git log --follow --name-only --format=format: -- \"${file%-[0-9][0-9]}\" | sed -e '/^$/d' | grep -v draft-todo-yourname-protocol | cut -f 2 | uniq | tail +2); do \\\r\n    if [ -n \"$(git tag -l \"${last%.*}\")\" ]; then \\\r\n      echo -F; echo \"replaces=${last%.*}\"; break; \\\r\n    fi; \\\r\n  done; \\\r\n}; \\\r\nlib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-request curl -sS -D \"versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\" \\\r\n    -F \"user=$email\" -F \"xml=@versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\" $(replaces \"$tag\") \\\r\n    \"https://datatracker.ietf.org/api/submission\" && echo && \\\r\n  (head -1 \"versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\" | grep -q '^HTTP/\\S\\S* 20[01]\\b' || lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-result ! cat \"versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\" 1>&2)\r\n+ tag=draft-ietf-oauth-sd-jwt-vc-05\r\n++ lib/get-email.sh draft-ietf-oauth-sd-jwt-vc-05 versioned/draft-ietf-oauth-sd-jwt-vc-05.xml\r\n+ email=fett@danielfett.de\r\n+ '[' -z fett@danielfett.de ']'\r\n++ replaces draft-ietf-oauth-sd-jwt-vc-05\r\n++ '[' 05 = 00 ']'\r\n++ return\r\n+ lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-request curl -sS -D versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload -F user=fett@danielfett.de -F xml=@versioned/draft-ietf-oauth-sd-jwt-vc-05.xml https://datatracker.ietf.org/api/submission\r\n+ echo\r\n{\"error\": \"No person with username fett@danielfett.de\"}\r\n+ head -1 versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\r\n+ grep -q '^HTTP/\\S\\S* 20[01]\\b'\r\n+ lib/trace.sh versioned/draft-ietf-oauth-sd-jwt-vc-05.xml -s upload-result '!' cat versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload\r\nHTTP/2 400 \r\ndate: Wed, 18 Sep 2024 18:10:56 GMT\r\ncontent-type: application/json\r\ncontent-length: 55\r\ncross-origin-opener-policy: unsafe-none\r\nreferrer-policy: strict-origin-when-cross-origin\r\nstrict-transport-security: max-age=3600; includeSubDomains\r\nvary: Cookie, origin\r\nx-content-type-options: nosniff\r\nx-frame-options: SAMEORIGIN\r\ncf-cache-status: DYNAMIC\r\nserver: cloudflare\r\ncf-ray: 8c534bad5c667ac2-SJC\r\nalt-svc: h3=\":443\"; ma=86400\r\n\r\nmake[2]: *** [lib/upload.mk:27: versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload] Error 1\r\nmake[2]: *** Deleting file 'versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload'\r\nmake[1]: *** [lib/upload.mk:47: versioned/.draft-ietf-oauth-sd-jwt-vc-05.upload] Error 2\r\nmake: *** [lib/upload.mk:22: upload] Error 2\r\n0s\r\n0s\r\n0s\r\n```",
       "createdAt": "2024-09-18T19:15:58Z",
-      "updatedAt": "2024-09-18T19:26:17Z",
+      "updatedAt": "2024-09-24T19:55:41Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "3c98dddf12baf6ea59cab70b0abee9d27cb39781",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "hopefully-less-future-sadness",
       "headRefOid": "73c114ed070b6df1e5f419543ee40d55f7c62b7d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-09-24T19:55:41Z",
+      "mergedAt": "2024-09-24T19:55:41Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "473d8544ebd1e9d13a1d0ba95554585248d6bfa3"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -21238,7 +21255,34 @@
           "updatedAt": "2024-09-18T19:26:15Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6KpFGr",
+          "commit": {
+            "abbreviatedOid": "73c114e"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-24T18:11:55Z",
+          "updatedAt": "2024-09-24T18:11:55Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6KpN4Y",
+          "commit": {
+            "abbreviatedOid": "73c114e"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-09-24T18:29:33Z",
+          "updatedAt": "2024-09-24T18:29:33Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
