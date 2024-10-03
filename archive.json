@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-01T00:32:21.364977+00:00",
+  "timestamp": "2024-10-03T00:28:46.255635+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6134,7 +6134,7 @@
       "labels": [],
       "body": "As of [SD-JWT -09](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/09/) which \"[Distinguished SD-JWT from SD-JWT+KB](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-09.html#name-document-history)\" the phrase \"SD-JWT with a Key Binding JWT\" may/should be replaced with \"SD-JWT+KB\" ",
       "createdAt": "2024-07-15T21:13:05Z",
-      "updatedAt": "2024-08-14T19:32:34Z",
+      "updatedAt": "2024-10-01T18:29:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -6150,6 +6150,13 @@
           "body": "This issue was mostly a note/todo to reconcile terminology usage here with the contributions @bifurcation made to the underlying core SD-JWT document, which were iterated on for over six months before being incorporated https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/394 \r\n\r\nBut I honestly don't care enough about this one to push either way and would happily close, if the other editors are okay with it. ",
           "createdAt": "2024-08-14T19:32:33Z",
           "updatedAt": "2024-08-14T19:32:33Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "At a minimum we should use the term \"SD-JWT+KB\" somewhere so that it is clear what we're talking about.",
+          "createdAt": "2024-10-01T18:28:59Z",
+          "updatedAt": "2024-10-01T18:28:59Z"
         }
       ]
     },
@@ -6499,11 +6506,13 @@
       "state": "OPEN",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#section-6.3.1\r\n\r\nIs defining that if vct is an https:// it should check the metadata under the well known (at least the 2nd part of the text reads like this:\r\n>  i.e., by inserting /.well-known/vct after the authority part of the URL.)\r\n\r\nMany registries are, and will be accessible via URLs, hence the metadata type is expressed via an URL; Adding or maintaining a .well-known might not fit in the existing API designs. Also note that .well-known has well-known issues with multi-tenancy. Most use cases will delegate the hosting of the information to registries.\r\n\r\nAlso\r\n> URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nQuestions:\r\n- if schema is https, should the full URL be provided? (no ambiguity with .well-known, you can host schema on github, ...)\r\n- metadata retrieval category re-consideration:\r\n\r\n1) Fetch vct from a remote source:\r\n    a) URL: HTTPS schema -> full URL that points to a schema\r\n    b) URN: domain-defined URN that MUST be understood by the wallet; The URN method defines how to map the URN to URL and retrieve the data\r\n\r\n2) Fetch vct the metadata locally\r\n    a) local cache\r\n    b) Signature (signed or unsigned header); Whether or not metadata is shared in the (un)protected header is defined by the signature format, hence out of scope of this document.\r\n\r\n2b: point to consider for the OID4VP: should there be a flag: \"archival mode\" or similar, that would flag that the wallet needs to provide all the referenced content in an unprotected JWS header?",
       "createdAt": "2024-09-18T19:45:34Z",
-      "updatedAt": "2024-09-18T19:45:34Z",
+      "updatedAt": "2024-10-01T18:13:52Z",
       "closedAt": null,
       "comments": []
     }
