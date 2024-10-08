@@ -490,7 +490,7 @@ The `issuer` value returned MUST be identical to the `iss` value of the
 JWT. If these values are not identical, the data contained in the response
 MUST NOT be used.
 
-# Type Metadata {#type-metadata}
+# SD-JWT VC Type Metadata {#type-metadata}
 
 An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.
 
@@ -564,9 +564,9 @@ defined:
 * `extends`
   * OPTIONAL. A URI of another type that this type extends, as described in
   (#extending-type-metadata).
-* `display`: An object containing display information for the type, as described
+* `display`: An array of objects containing display information for the type, as described
   in (#display-metadata). This property is OPTIONAL.
-* `claims`: An object containing claim information for the type, as described in
+* `claims`: An array of objects containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
 * `schema`
   * OPTIONAL. An embedded JSON Schema document describing the structure of
