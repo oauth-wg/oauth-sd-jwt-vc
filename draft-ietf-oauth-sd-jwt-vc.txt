@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 28 March 2025                                     Authlete Inc.
+Expires: 11 April 2025                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                       24 September 2024
+                                                          8 October 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 March 2025.
+   This Internet-Draft will expire on 11 April 2025.
 
 Copyright Notice
 
@@ -86,7 +86,7 @@ Table of Contents
      5.1.  JWT VC Issuer Metadata Request
      5.2.  JWT VC Issuer Metadata Response
      5.3.  JWT VC Issuer Metadata Validation
-   6.  Type Metadata
+   6.  SD-JWT VC Type Metadata
      6.1.  Type Metadata Example
      6.2.  Type Metadata Format
      6.3.  Retrieving Type Metadata
@@ -548,9 +548,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8ms2a
-   ZX2vYHsIYmMWjoo3QEj4DF2ApQmA6YYGV3vQrRLVYe-JrLx8amRqJHIUiXS5zS1nHew-
-   aWpW9eLM2z5gA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.j-sBF
+   nA3SJi1gWgjwcyqOAYRjgVPCASfQswe04wdV899atgpZZRtqg4gJjtXD95w3JWMBE_S8
+   Ew3WEslXAg0sg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -670,17 +670,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8ms2a
-   ZX2vYHsIYmMWjoo3QEj4DF2ApQmA6YYGV3vQrRLVYe-JrLx8amRqJHIUiXS5zS1nHew-
-   aWpW9eLM2z5gA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.j-sBF
+   nA3SJi1gWgjwcyqOAYRjgVPCASfQswe04wdV899atgpZZRtqg4gJjtXD95w3JWMBE_S8
+   Ew3WEslXAg0sg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MjcyMDc3Nj
-   IsICJzZF9oYXNoIjogIlpQRmE3RXVULWx1N1d2S0dyb0ozcHhVLUlGODV5WW8xejdTQ2
-   NyQ3hoZGsifQ.emJXbVbJI-N_sk57qz3sisu8xkOvGS47CTCF6QEyiqXvEUuUED_LOMN
-   -9ph-fO6wWVA4svjdlocOp-4hPCJUnw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Mjg0MTEwOT
+   EsICJzZF9oYXNoIjogIlphWXpvdW1wdklWY2t3Q1NBdlFpbW1wSEJZMFFKZ2cxb3JDZU
+   tBRFFWRVkifQ.sZXdQy0hmzQczwsQE6HUG4n8DVgF0kTuf8lR3xEvrt11oS9Zd1-zNS5
+   g1xU0ryIYPXE4UMYNRu9stQ1tzLTWPg
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -722,8 +722,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.ZbtjQYiIccfa3JxIvdo7erQDKDaejnv1OednV-3px7f92u
-   GRwSCORspRIVC0aznheQ2HT3_XrRsix2dgjBGoGQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.7QGJw4sXMLKU9uDZBvDV1okofUNo3GOC-GA0pFS5gs77uq
+   qRLIQuMt3IqFIWS3-pThuNG4wMUjRK3HhcaBsjFQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -854,7 +854,7 @@ Table of Contents
    JWT.  If these values are not identical, the data contained in the
    response MUST NOT be used.
 
-6.  Type Metadata
+6.  SD-JWT VC Type Metadata
 
    An SD-JWT VC type, i.e., the vct value, is associated with Type
    Metadata defining, for example, information about the type or a
@@ -934,10 +934,10 @@ Table of Contents
    *  extends
       -  OPTIONAL.  A URI of another type that this type extends, as
          described in Section 6.4.
-   *  display: An object containing display information for the type, as
-      described in Section 8.  This property is OPTIONAL.
-   *  claims: An object containing claim information for the type, as
-      described in Section 9.  This property is OPTIONAL.
+   *  display: An array of objects containing display information for
+      the type, as described in Section 8.  This property is OPTIONAL.
+   *  claims: An array of objects containing claim information for the
+      type, as described in Section 9.  This property is OPTIONAL.
    *  schema
       -  OPTIONAL.  An embedded JSON Schema document describing the
          structure of the Verifiable Credential as described in
@@ -1608,9 +1608,9 @@ Table of Contents
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-03, 8 July 2024,
+              status-list-04, 2 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-03>.
+              status-list-04>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1830,8 +1830,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.ORbRjoUkB3W7DbkYeyKw1oOHwDbS-oJ5QYofVcxXhSF1J7ho4GUA7B
-   OE3GErgrX7iTqbLQRoecC0i2WqvTTBcQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.aW3RhjoJMs58rHiMT5_pmVTNkPYj7W6dSbZXWsRLQlZYO7-Bp09A-3
+   dhNHyMqvPLJWDWLeXXfxXQKybcmjiADQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2103,22 +2103,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.ORbRjoUkB3W7DbkYeyKw1oOHwDbS-oJ5QYofVcxXhSF1J7ho4GUA7B
-   OE3GErgrX7iTqbLQRoecC0i2WqvTTBcQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.aW3RhjoJMs58rHiMT5_pmVTNkPYj7W6dSbZXWsRLQlZYO7-Bp09A-3
+   dhNHyMqvPLJWDWLeXXfxXQKybcmjiADQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MjcyMDc3NjIsICJzZF9oYXNoIjogImRCYXRFaFl6Nlh1Z
-   ENkZWJHTTFwM1VZczY1YXZCck44YXY2eERHMGdvTjQifQ.gS-Nk4L8dv1CnbtzwhUEcM
-   21annQYJ6SlSHBxfLveju6ZKeH4XktyG24TgkM6Y0VXVHcEdBT7OcjofNL2W1jiQ
+   mlmaWVyIiwgImlhdCI6IDE3Mjg0MTEwOTEsICJzZF9oYXNoIjogIml2S1k2MHdXZjlxV
+   k1qMUNNRkZaYU8yUWFhLU9FMGRYSWtfWW95bEpBb1UifQ.RYKJhCfR0CvmRcOpQZpbFd
+   vkIpIQHUIZI7ZiXafKn-veOzEGbuFhFxPJ_qXEaEjEsNyK1rzpg0GKNWe-aOOttA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1727207762,
-     "sd_hash": "dBatEhYz6XudCdebGM1p3UYs65avBrN8av6xDG0goN4"
+     "iat": 1728411091,
+     "sd_hash": "ivKY60wWf9qVMj1CMFFZaO2Qaa-OE0dXIk_YoylJAoU"
    }
 
    After validation, the Verifier will have the following processed SD-
