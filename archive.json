@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-06T00:31:40.700725+00:00",
+  "timestamp": "2024-10-08T00:28:33.474604+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6513,6 +6513,78 @@
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#section-6.3.1\r\n\r\nIs defining that if vct is an https:// it should check the metadata under the well known (at least the 2nd part of the text reads like this:\r\n>  i.e., by inserting /.well-known/vct after the authority part of the URL.)\r\n\r\nMany registries are, and will be accessible via URLs, hence the metadata type is expressed via an URL; Adding or maintaining a .well-known might not fit in the existing API designs. Also note that .well-known has well-known issues with multi-tenancy. Most use cases will delegate the hosting of the information to registries.\r\n\r\nAlso\r\n> URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nQuestions:\r\n- if schema is https, should the full URL be provided? (no ambiguity with .well-known, you can host schema on github, ...)\r\n- metadata retrieval category re-consideration:\r\n\r\n1) Fetch vct from a remote source:\r\n    a) URL: HTTPS schema -> full URL that points to a schema\r\n    b) URN: domain-defined URN that MUST be understood by the wallet; The URN method defines how to map the URN to URL and retrieve the data\r\n\r\n2) Fetch vct the metadata locally\r\n    a) local cache\r\n    b) Signature (signed or unsigned header); Whether or not metadata is shared in the (un)protected header is defined by the signature format, hence out of scope of this document.\r\n\r\n2b: point to consider for the OID4VP: should there be a flag: \"archival mode\" or similar, that would flag that the wallet needs to provide all the referenced content in an unprotected JWS header?",
       "createdAt": "2024-09-18T19:45:34Z",
       "updatedAt": "2024-10-01T18:13:52Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 257,
+      "id": "I_kwDOJbVClc6ZL6C3",
+      "title": "ed: sentence clarification",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/257",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I don't understand this sentence that points to the claims that are REQUIRED: `If present, the following registered JWT claims MUST be included in the SD-JWT and MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:` the sentence also uses two normative statements in one. Could it be clarified/simplified as something like: `The following registered JWT claims MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:`\r\nThanks.\r\n",
+      "createdAt": "2024-10-07T10:38:15Z",
+      "updatedAt": "2024-10-07T10:38:16Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 258,
+      "id": "I_kwDOJbVClc6ZMJAy",
+      "title": "Why vct is not selectively disclosable, but vct#integrity is not?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/258",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Would also be good to add rationale why chosen certain claims are not selectively disclosable.",
+      "createdAt": "2024-10-07T11:04:18Z",
+      "updatedAt": "2024-10-07T11:18:13Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "body": "also what about `extends` and `extends#integrity` claims?",
+          "createdAt": "2024-10-07T11:18:12Z",
+          "updatedAt": "2024-10-07T11:18:12Z"
+        }
+      ]
+    },
+    {
+      "number": 259,
+      "id": "I_kwDOJbVClc6ZML3s",
+      "title": "Free text in description.",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/259",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "There are certain risks associated with free text, some of which are elaborated in threads like these (though not entirely) [https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253(https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253)\r\n\r\nI probably won't be able to convince the authors in removing the free text `description` property from the metadata, which is defined as `A human-readable description for the type, intended for developers reading the JSON document.` So at least would be great if security considerations for free text can be added.\r\nThanks.",
+      "createdAt": "2024-10-07T11:09:45Z",
+      "updatedAt": "2024-10-07T11:09:45Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 260,
+      "id": "I_kwDOJbVClc6ZMRAp",
+      "title": "display and claims definition in section 6.2",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/260",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "For SD-JWT VC type metadata, display and claims are defined as objects in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-05#section-6.2, only later in sections 8 and 9 to be clarified as Array of objects, can you please define these as array of objects in section 6.2 as well?\r\n\r\nAlso why the title of section 6 is not `SD-JWT VC type metadata` and is simply `type metadata`? `SD-JWT VC type metadata` would be clearer IMO.",
+      "createdAt": "2024-10-07T11:17:30Z",
+      "updatedAt": "2024-10-07T11:17:30Z",
       "closedAt": null,
       "comments": []
     }
