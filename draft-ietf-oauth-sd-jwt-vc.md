@@ -1092,6 +1092,22 @@ These measures allow the Consumers to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
 described in (#privacy-preserving-retrieval-of-type-metadata).
 
+## Risks Associated with Displaying Textual Information {#risks-displaying-textual-information}
+
+The `display` property in the Type Metadata allows providers of metadata to
+specify human-readable labels and descriptions for claims. Likewise, `name` and
+`description` can contain arbitrary textual information that may be displayed to
+developers. As such, any consuming application MUST ensure that maliciously
+crafted information cannot be used to compromise the security of the application
+or the privacy of the user. To this end, the following considerations apply:
+
+- The consuming application MUST ensure that the text is properly escaped before
+  displaying it to the user or transferring it into other contexts. For example,
+  if the data is displayed in an HTML document, the text MUST be properly
+  escaped to prevent Cross-Site Scripting (XSS) attacks.
+- The consuming application MUST ensure that the display of the user interface
+  elements cannot be distorted by overly long text or special characters.
+
 # Privacy Considerations {#privacy-considerations}
 
 The Privacy Considerations in the SD-JWT specification
