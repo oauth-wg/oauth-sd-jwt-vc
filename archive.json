@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-08T00:28:33.474604+00:00",
+  "timestamp": "2024-10-10T00:28:34.938529+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6326,10 +6326,12 @@
       "author": "leifj",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-09-20T14:46:49Z",
+      "updatedAt": "2024-10-08T18:23:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -6461,11 +6463,15 @@
       "state": "OPEN",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "awoie"
+      ],
+      "labels": [
+        "discuss"
+      ],
       "body": "There seem to be several mechanisms for issuer key validation (section 3.5).\r\n\r\nTwo mechanisms define fetching of keys (issuer metadata, DID), and one can be embedded or referenced (x509).\r\n\r\nWould it make sense to enable signature validation at all times and\r\n- require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\nSignature is always verified using this key.\r\n\r\nPublic key - identity binding can be verified\r\n- using x509 certificate that is in the jwk.x5c claim (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7) - key certificate or the full chain.\r\n\r\n`kid` could be misused to express the validation mechanism or one could define an additional header claim where identity verification mechanism is specified:\r\n- calling the /.well-known/jwt-vc-issuer\r\n- resolving a DID\r\n- using Federation ...\r\n- ...",
       "createdAt": "2024-09-16T10:31:44Z",
-      "updatedAt": "2024-09-19T13:24:11Z",
+      "updatedAt": "2024-10-08T18:22:40Z",
       "closedAt": null,
       "comments": [
         {
@@ -6509,10 +6515,12 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#section-6.3.1\r\n\r\nIs defining that if vct is an https:// it should check the metadata under the well known (at least the 2nd part of the text reads like this:\r\n>  i.e., by inserting /.well-known/vct after the authority part of the URL.)\r\n\r\nMany registries are, and will be accessible via URLs, hence the metadata type is expressed via an URL; Adding or maintaining a .well-known might not fit in the existing API designs. Also note that .well-known has well-known issues with multi-tenancy. Most use cases will delegate the hosting of the information to registries.\r\n\r\nAlso\r\n> URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nQuestions:\r\n- if schema is https, should the full URL be provided? (no ambiguity with .well-known, you can host schema on github, ...)\r\n- metadata retrieval category re-consideration:\r\n\r\n1) Fetch vct from a remote source:\r\n    a) URL: HTTPS schema -> full URL that points to a schema\r\n    b) URN: domain-defined URN that MUST be understood by the wallet; The URN method defines how to map the URN to URL and retrieve the data\r\n\r\n2) Fetch vct the metadata locally\r\n    a) local cache\r\n    b) Signature (signed or unsigned header); Whether or not metadata is shared in the (un)protected header is defined by the signature format, hence out of scope of this document.\r\n\r\n2b: point to consider for the OID4VP: should there be a flag: \"archival mode\" or similar, that would flag that the wallet needs to provide all the referenced content in an unprotected JWS header?",
       "createdAt": "2024-09-18T19:45:34Z",
-      "updatedAt": "2024-10-01T18:13:52Z",
+      "updatedAt": "2024-10-08T18:22:55Z",
       "closedAt": null,
       "comments": []
     },
@@ -6525,12 +6533,22 @@
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "NEEDS PR"
+      ],
       "body": "I don't understand this sentence that points to the claims that are REQUIRED: `If present, the following registered JWT claims MUST be included in the SD-JWT and MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:` the sentence also uses two normative statements in one. Could it be clarified/simplified as something like: `The following registered JWT claims MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:`\r\nThanks.\r\n",
       "createdAt": "2024-10-07T10:38:15Z",
-      "updatedAt": "2024-10-07T10:38:16Z",
+      "updatedAt": "2024-10-08T18:20:12Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Discussed on the editors' call. Yes, the first part of the sentence is not great. What you propose makes sense, we may want to add that the context is \"during issuance\".",
+          "createdAt": "2024-10-08T18:20:00Z",
+          "updatedAt": "2024-10-08T18:20:00Z"
+        }
+      ]
     },
     {
       "number": 258,
@@ -6541,10 +6559,12 @@
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "NEEDS PR"
+      ],
       "body": "Would also be good to add rationale why chosen certain claims are not selectively disclosable.",
       "createdAt": "2024-10-07T11:04:18Z",
-      "updatedAt": "2024-10-07T11:18:13Z",
+      "updatedAt": "2024-10-08T21:39:44Z",
       "closedAt": null,
       "comments": [
         {
@@ -6553,6 +6573,27 @@
           "body": "also what about `extends` and `extends#integrity` claims?",
           "createdAt": "2024-10-07T11:18:12Z",
           "updatedAt": "2024-10-07T11:18:12Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Right, `vct#integrity` should be added/mentioned here: https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-3.2.2.2\r\n\r\n`extends` and `extends#integrity` are not in the credential, so are not affected.",
+          "createdAt": "2024-10-08T18:15:31Z",
+          "updatedAt": "2024-10-08T18:15:31Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "this text is/was about application profiles (like SD-JWT VC) saying what claims the issuer can make selectively disclosable and maybe has text that could serve as inspiration https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-12.html#name-selectively-disclosable-val ",
+          "createdAt": "2024-10-08T19:03:07Z",
+          "updatedAt": "2024-10-08T19:03:07Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think I maybe meant for that https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/258#issuecomment-2400607967 to go on #257 but maybe works here too ",
+          "createdAt": "2024-10-08T21:39:43Z",
+          "updatedAt": "2024-10-08T21:39:43Z"
         }
       ]
     },
@@ -6565,27 +6606,39 @@
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "There are certain risks associated with free text, some of which are elaborated in threads like these (though not entirely) [https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253(https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253)\r\n\r\nI probably won't be able to convince the authors in removing the free text `description` property from the metadata, which is defined as `A human-readable description for the type, intended for developers reading the JSON document.` So at least would be great if security considerations for free text can be added.\r\nThanks.",
       "createdAt": "2024-10-07T11:09:45Z",
-      "updatedAt": "2024-10-07T11:09:45Z",
+      "updatedAt": "2024-10-08T18:02:55Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I'm not sure... While the risk is real, so are many other risks. It's 2024 and developers should have learned not to trust information. We also don't consider warning people of SQL injection attacks via JSON metadata files. But maybe we should?\r\n\r\nAnyway and nonetheless, to see what it would look like, I drafted a PR: https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/262",
+          "createdAt": "2024-10-08T18:00:44Z",
+          "updatedAt": "2024-10-08T18:00:44Z"
+        }
+      ]
     },
     {
       "number": 260,
       "id": "I_kwDOJbVClc6ZMRAp",
       "title": "display and claims definition in section 6.2",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/260",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "For SD-JWT VC type metadata, display and claims are defined as objects in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-05#section-6.2, only later in sections 8 and 9 to be clarified as Array of objects, can you please define these as array of objects in section 6.2 as well?\r\n\r\nAlso why the title of section 6 is not `SD-JWT VC type metadata` and is simply `type metadata`? `SD-JWT VC type metadata` would be clearer IMO.",
       "createdAt": "2024-10-07T11:17:30Z",
-      "updatedAt": "2024-10-07T11:17:30Z",
-      "closedAt": null,
+      "updatedAt": "2024-10-08T18:11:09Z",
+      "closedAt": "2024-10-08T18:11:09Z",
       "comments": []
     }
   ],
@@ -21361,6 +21414,116 @@
           "body": "",
           "createdAt": "2024-09-24T18:29:33Z",
           "updatedAt": "2024-09-24T18:29:33Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 261,
+      "id": "PR_kwDOJbVClc59-0uj",
+      "title": "Fix #260",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/261",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes issue #260 ",
+      "createdAt": "2024-10-08T17:49:47Z",
+      "updatedAt": "2024-10-08T18:11:08Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "473d8544ebd1e9d13a1d0ba95554585248d6bfa3",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-260",
+      "headRefOid": "b1b7266cd18d18afc5e56a64617f22ac35bb84b2",
+      "closedAt": "2024-10-08T18:11:08Z",
+      "mergedAt": "2024-10-08T18:11:08Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "e505fe84bbe63058b327c44480e9e700fb50b3fe"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6MYT9j",
+          "commit": {
+            "abbreviatedOid": "b1b7266"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-08T18:03:36Z",
+          "updatedAt": "2024-10-08T18:03:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6MYWB3",
+          "commit": {
+            "abbreviatedOid": "b1b7266"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "great PR or the greatest PR? ",
+          "createdAt": "2024-10-08T18:08:03Z",
+          "updatedAt": "2024-10-08T18:08:03Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 262,
+      "id": "PR_kwDOJbVClc59-39N",
+      "title": "Warn of the dangers of malicious text",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/262",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #259 ",
+      "createdAt": "2024-10-08T17:58:59Z",
+      "updatedAt": "2024-10-08T18:13:39Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "473d8544ebd1e9d13a1d0ba95554585248d6bfa3",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-259",
+      "headRefOid": "40e69ccec755cc1dce9ac58446c6953cbed74920",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Applies to claims as well (everything, really).\r\n\r\nJSON Schema might be malicious as well (e.g., via a regex).",
+          "createdAt": "2024-10-08T18:10:48Z",
+          "updatedAt": "2024-10-08T18:10:48Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "the rat hole is deep ...",
+          "createdAt": "2024-10-08T18:13:37Z",
+          "updatedAt": "2024-10-08T18:13:37Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6MYUbW",
+          "commit": {
+            "abbreviatedOid": "40e69cc"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-10-08T18:04:35Z",
+          "updatedAt": "2024-10-08T18:04:35Z",
           "comments": []
         }
       ]
