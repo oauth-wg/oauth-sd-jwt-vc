@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-10T00:28:34.938529+00:00",
+  "timestamp": "2024-10-13T00:31:30.712080+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5418,12 +5418,10 @@
       "author": "paulbastian",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [
-        "pending close"
-      ],
+      "labels": [],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-09-06T14:16:33Z",
+      "updatedAt": "2024-10-10T12:54:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -5481,6 +5479,20 @@
           "body": "This issue seems to be related to the discussion: https://github.com/openid/OpenID4VP/issues/232\r\n\r\nIMO, there are 2 options going forward\r\n\r\n- defining how to express policies in this specification\r\n- leave it to the \"trust framework\" by allowing custom claims to express different policies\r\n\r\nIf this specification is/plans to be decoupled from the VC issuance/presentation protocols and/or trust frameworks, option 2 should be considered.\r\n\r\nWe introduced an approach: https://hub.ebsi.eu/vc-framework/trust-model/policies, but this approach is exchange-protocol dependent (at least query language dependent), which comes with limitations and certain specification lock-in.",
           "createdAt": "2024-09-06T14:16:33Z",
           "updatedAt": "2024-09-06T14:16:33Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> This issue seems to be related to the discussion: [openid/OpenID4VP#232](https://github.com/openid/OpenID4VP/issues/232)\r\n> \r\n> IMO, there are 2 options going forward\r\n> \r\n> * defining how to express policies in this specification\r\n> * leave it to the \"trust framework\" by allowing custom claims to express different policies\r\n> \r\n> If this specification is/plans to be decoupled from the VC issuance/presentation protocols and/or trust frameworks, option 2 should be considered.\r\n> \r\n> We introduced an approach: https://hub.ebsi.eu/vc-framework/trust-model/policies, but this approach is exchange-protocol dependent (at least query language dependent), which comes with limitations and certain specification lock-in.\r\n\r\nI'm in favor of option 2. I think it is really hard for us to anticipate how to encode these policies. We would end up having something that W3C VCDM has which is an extension point for policies (they call it terms of use) without actually defining them which has not much value because it has to be defined per trust framework or ecosystem anyways.\r\n\r\nI'd be in favor of adding an example of how this can be done without providing normative statements.\r\n\r\nI understand there are protocol-specific features that require things in the SD-JWT VC but I was wondering whether it makes more sense to have a profile of SD-JWT VC for these protocols which defines a common set of claims to support these protocols. OID4VP `transaction_data` could be one of these features. Another example might be `session_transcript` (b64u-encoded CBOR blob) if SD-JWT VC is used with ISO 18013-5.\r\n\r\nAny thoughts? @c2bo @alenhorvat @paulbastian \r\n\r\n\r\n\r\n",
+          "createdAt": "2024-10-10T12:47:22Z",
+          "updatedAt": "2024-10-10T12:48:04Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "You could define a generic placeholder \"policies\" (pol?) with a \"typ\" or \"type\" member, where typ/type value is either registered in IANA or is a private value defined by the framework.\r\nPolicy can be embedded or referenced (URL + digest). Whether the policy is machine readable or not, depends on the use case.\r\n\r\nSimilar to RFC7800.\r\n\r\n(I think ETSI defines some policies for x509, so they may include the x509 itself or translate them to JSON)",
+          "createdAt": "2024-10-10T12:53:32Z",
+          "updatedAt": "2024-10-10T12:54:25Z"
         }
       ]
     },
@@ -5694,7 +5706,7 @@
       "id": "I_kwDOJbVClc6EY7J4",
       "title": "Add type metadata for basic display/rendering information",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/224",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -5706,8 +5718,8 @@
       ],
       "body": "> This is qualified with \"for example\" but the type metadata in the PR currently doesn't define this stuff. I'm still unsure about leaving portions of sd-jwt-vc-types like claims and display out of this PR. But should we at least track that in an issue?\r\n\r\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/220#discussion_r1548311395_\r\n\r\nthe \"stuff\" mentioned was other content/concepts from https://github.com/vcstuff/sd-jwt-vc-types, which PR #220 was based on \r\n            ",
       "createdAt": "2024-04-02T18:07:46Z",
-      "updatedAt": "2024-07-09T08:19:14Z",
-      "closedAt": null,
+      "updatedAt": "2024-10-10T13:00:27Z",
+      "closedAt": "2024-10-10T13:00:27Z",
       "comments": [
         {
           "author": "danielfett",
@@ -5729,6 +5741,13 @@
           "body": "> A single issue tracking the features to be added (from types), I think, is not so convenient.\r\n> \r\n> Perhaps it would be better to use some more specific labels like for instance `meta-display` and /or `meta-claims` for annotate related issues. In this way, issues reported to types repo can be transferred here and new issues can be added freely.\r\n\r\nYou can also create new issues if you believe other things are missing for your use case.",
           "createdAt": "2024-04-12T07:58:17Z",
           "updatedAt": "2024-04-12T07:58:17Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi @danielfett I believe we have addressed all items in this issue in the spec. I believe we can close this issue, right?",
+          "createdAt": "2024-10-10T12:50:45Z",
+          "updatedAt": "2024-10-10T12:50:45Z"
         }
       ]
     },
@@ -5744,7 +5763,7 @@
       "labels": [],
       "body": "The spec should define a way to support other data types. Pictures of the credential holders will be a common case, but other data types might occur as well.\r\n\r\nOpenID Connect already defines a claim:\r\n> `picture` \tstring \tURL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.\r\n\r\nIn that sense, we could just recommend that data types other than the native JSON types should be encoded, for example, as data URIs (that would be compatible to the definition of `picture` above).",
       "createdAt": "2024-04-02T18:35:55Z",
-      "updatedAt": "2024-04-06T09:39:05Z",
+      "updatedAt": "2024-10-10T12:52:10Z",
       "closedAt": null,
       "comments": [
         {
@@ -5753,6 +5772,13 @@
           "body": "Hi @danielfett \r\n\r\nI find your proposal really useful. \r\n\r\n \"Data URIs\" are those described in [RFC2397](https://datatracker.ietf.org/doc/html/rfc2397) ?\r\n\r\n",
           "createdAt": "2024-04-06T09:39:04Z",
           "updatedAt": "2024-04-06T09:39:04Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm supportive of this approach as well.",
+          "createdAt": "2024-10-10T12:52:09Z",
+          "updatedAt": "2024-10-10T12:52:09Z"
         }
       ]
     },
@@ -6471,7 +6497,7 @@
       ],
       "body": "There seem to be several mechanisms for issuer key validation (section 3.5).\r\n\r\nTwo mechanisms define fetching of keys (issuer metadata, DID), and one can be embedded or referenced (x509).\r\n\r\nWould it make sense to enable signature validation at all times and\r\n- require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\nSignature is always verified using this key.\r\n\r\nPublic key - identity binding can be verified\r\n- using x509 certificate that is in the jwk.x5c claim (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7) - key certificate or the full chain.\r\n\r\n`kid` could be misused to express the validation mechanism or one could define an additional header claim where identity verification mechanism is specified:\r\n- calling the /.well-known/jwt-vc-issuer\r\n- resolving a DID\r\n- using Federation ...\r\n- ...",
       "createdAt": "2024-09-16T10:31:44Z",
-      "updatedAt": "2024-10-08T18:22:40Z",
+      "updatedAt": "2024-10-10T18:01:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -6501,6 +6527,69 @@
           "body": "> Yes, but what's the value of knowing that a payload has been signed by \"someone\", if you don't know who that key belongs to?\r\n\r\nGoal is a bit broader - to clearly split and define the two processes, and show that x509 verification or .well-known/DIDs are all process of verifying the identity/identifier of the signer (link between a public key and an identifier).",
           "createdAt": "2024-09-19T13:24:10Z",
           "updatedAt": "2024-09-19T13:24:10Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> * require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\n>   Signature is always verified using this key.\r\n\r\nWe discussed this topic with the other editor's. Our opinion is that including the `jwk` in the header would be quite dangerous since it would encourage implementations to always use the `jwk` and skip all the other validation checks.\r\n\r\n@alenhorvat  Is there a specific use case you have in mind that would be blocked by this?",
+          "createdAt": "2024-10-10T12:33:35Z",
+          "updatedAt": "2024-10-10T12:33:35Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Challenges\r\n\r\n- RP needs to resolve a key to verify a signature - issues for offline cases\r\n- if RP needs to verify a high number of VCs issued by different issuers, results with additional effort to resolve the keys\r\n- managing and resolving historical keys/key rotation -- you can have several key rotation in the lifecycle of a credential.\r\n\r\nImplementers MUST understand how to verify the identity, independently of the signature validation. This also forces the standard to clearly define the two verification streams.",
+          "createdAt": "2024-10-10T12:43:54Z",
+          "updatedAt": "2024-10-10T12:43:54Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Related question:\r\nWhat prevents a malicious issuer to define an issuer identifier: happy-issuer.com/issuers/google.com?\r\n\r\nHow can the Verifier/RP know whether issuer is truly Google or not?",
+          "createdAt": "2024-10-10T12:45:44Z",
+          "updatedAt": "2024-10-10T12:45:44Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Challenges\r\n> \r\n> * RP needs to resolve a key to verify a signature - issues for offline cases\r\n> * if RP needs to verify a high number of VCs issued by different issuers, results with additional effort to resolve the keys\r\n> * managing and resolving historical keys/key rotation -- you can have several key rotation in the lifecycle of a credential.\r\n> \r\n> Implementers MUST understand how to verify the identity, independently of the signature validation. This also forces the standard to clearly define the two verification streams.\r\n\r\nI think one way to address this is as follows and you have alluded to the same thing in your previous post:\r\n- use an X.509 chain with a trusted root cert\r\n- include the end-entity certificate in the `x5c` header that signs the SD-JWT\r\n- end-entity certificate is issued by trusted root cert\r\n\r\nThis way, a verifier can cache the trusted root cert and use the contained end-entity cert in the `x5c` to validate the X.509 chain and verify the signature.\r\n\r\nFor simplicity I didn't mention intermediate certs but they can be included in the `x5c` header as well.\r\n\r\nThis behaviour is enforced by X.509 itself (RFC5280) which requires certificate chain validation. If implementations don't have a trust point, the `x5c` would not be trusted and therefore rejected.\r\n\r\nIt seems you want to define the same thing for `jwk`?  Why is using X.509 not an option in this case?\r\n\r\nIf you want to use DIDs and/or issuer metadata, wouldn't it be possible to support the use cases you just mentioned by simply caching DID resolution or the issuer metadata URL?\r\n\r\n",
+          "createdAt": "2024-10-10T14:31:05Z",
+          "updatedAt": "2024-10-10T14:31:48Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "IMO x5c/x5u+x5t are enough, but this document puts x509, jwk+URL, and DID on the same level.\r\nIt might work for some DID methods and it might work if JWK \"trust model\" is clearly defined; e.g., see the example above where a malicious actor lists an issuer as one of their clients. It can be translated to an x509 model, where RP must define which \"Root JWKs\" it trusts (e.g., service providers that offer VC issuance as a service and URL contains 2 identifiers, of the provider (e.g., mattr) and the actual issuer (e.g., university of wonderland))",
+          "createdAt": "2024-10-10T14:39:18Z",
+          "updatedAt": "2024-10-10T14:39:18Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Related question: What prevents a malicious issuer to define an issuer identifier: happy-issuer.com/issuers/google.com?\r\n> \r\n> How can the Verifier/RP know whether issuer is truly Google or not?\r\n\r\nNothing, but I believe this issue is solved by the trust framework and the provided trust points, isn't it? There are various mechanisms and based on my prior observations of different trust frameworks, there can be a lot of differences.\r\n\r\nIn your specific example which I think has to be corrected (since an attacker would need to use Google's domain in the issuer identifier and not happy-issuer.com, to pretend to be Google), I believe the trust point is Internet PKI and if you don't trust the Internet PKI, it probably makes no sense to rely on issuer well-known alone or at all. \r\n\r\nYou can combine this with X.509 (or even DIDs if required).",
+          "createdAt": "2024-10-10T14:55:23Z",
+          "updatedAt": "2024-10-10T14:55:23Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "> In your specific example which I think has to be corrected (since an attacker would need to use Google's domain in the issuer identifier and not happy-issuer.com, to pretend to be Google)\r\n\r\nwouldn't the \"iss\" value be: happy-issuer.com/issuers/google.com?\r\nI don't need to know google's domain to do that. I only need my domain.\r\n\r\nx509 -> originates from own framework and defines the rules; no problems here\r\nDID method (if defined well), can achieve same as x509\r\njwk -> you are defining a trust model for this in section 5 (https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#name-jwt-vc-issuer-metadata)",
+          "createdAt": "2024-10-10T15:01:02Z",
+          "updatedAt": "2024-10-10T15:01:02Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > In your specific example which I think has to be corrected (since an attacker would need to use Google's domain in the issuer identifier and not happy-issuer.com, to pretend to be Google)\r\n> \r\n> wouldn't the \"iss\" value be: happy-issuer.com/issuers/google.com? I don't need to know google's domain to do that. I only need my domain.\r\n\r\nPerhaps we are talking past each other but I thought you were concerned about impersonating Google in your example. I was saying that there is no reason for a verifier to think that the identity of happy-issuer.com/issuers/google.com is Google if it doesn't use one of Google's domains, right?",
+          "createdAt": "2024-10-10T16:36:06Z",
+          "updatedAt": "2024-10-10T16:36:06Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "What is google's identifier if they are using service hosted by the happy issuer? \r\nhappy user is managing signing keys of google and it assigned google an identifier in their multi-tenant system as happy-issuer.com/issuers/google.com\r\n\r\n(in the case of using jwk + URL in the iss; when using x509 and (some) DID methods it's clear and it's irrelevant if the service is self-managed or is managed by a 3rd party)",
+          "createdAt": "2024-10-10T17:50:23Z",
+          "updatedAt": "2024-10-10T18:01:15Z"
         }
       ]
     },
