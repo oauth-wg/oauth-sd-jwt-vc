@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-10-31T00:29:41.982138+00:00",
+  "timestamp": "2024-11-03T00:32:10.986026+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6136,7 +6136,7 @@
       "labels": [],
       "body": "Type Metadata introduced new well-known URI /.well-known/vct/ in \"6.3.1. From a URL in the vct\" , but this is not reflected in appendix-A.3 Well-Known URI Registry.\r\n\r\nAdditionally, using <type> in sentence \"Metadata can be retrieved from the URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\" seems to me a little bit confusing as type is considered to refer to whole URI. Maybe use <path> or <uri_suffix>(to include also query and fragment URI components)?",
       "createdAt": "2024-07-12T11:59:16Z",
-      "updatedAt": "2024-07-30T23:36:18Z",
+      "updatedAt": "2024-10-31T18:51:38Z",
       "closedAt": null,
       "comments": [
         {
@@ -6145,6 +6145,13 @@
           "body": "Thank you and yes, the registration request is missing and needs to be added. And that sentence could also be improved. ",
           "createdAt": "2024-07-30T23:36:17Z",
           "updatedAt": "2024-07-30T23:36:17Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Although the use of .well-known for type metadata is being reconsidered #264",
+          "createdAt": "2024-10-31T18:51:36Z",
+          "updatedAt": "2024-10-31T18:51:36Z"
         }
       ]
     },
@@ -6755,6 +6762,22 @@
           "updatedAt": "2024-10-15T17:58:52Z"
         }
       ]
+    },
+    {
+      "number": 266,
+      "id": "I_kwDOJbVClc6comQ-",
+      "title": "[IANA #1392244] Early review: draft-ietf-oauth-sd-jwt-vc-05 (IETF 121)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/266",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "> [IANA #1392244] Early review: draft-ietf-oauth-sd-jwt-vc-05 (IETF 121)\r\n\r\n> Amanda Baber via RT via ietf.org \r\n>\tto draft-ietf-oauth-sd-jwt-vc.all\r\n\r\n\r\n> Dear Authors,\r\n> \r\n> Before the IETF meeting, we check working group agendas for documents with IANA-related issues. We have one note about this document:\r\n> \r\n> https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-05\r\n> \r\n> In Section A.3.1, please add the \u201cStatus\u201d field for the well-known URI registration.\r\n> \r\n> If you have any questions, just let us know. If you'd like to talk in person, you can find us next to the RFC Editor's table from Monday through Thursday. You can also request another review at any time by contacting us at [iana@iana.org](mailto:iana@iana.org).\r\n> \r\n> For more information about IANA Considerations section requirements, please see\r\n> \r\n> https://www.iana.org/help/protocol-registration\r\n> \r\n> Best regards,\r\n> \r\n> Amanda Baber\r\n> IANA Operations Manager",
+      "createdAt": "2024-10-31T21:45:13Z",
+      "updatedAt": "2024-10-31T21:45:13Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
