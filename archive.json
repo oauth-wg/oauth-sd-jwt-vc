@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-07T00:28:53.057659+00:00",
+  "timestamp": "2024-11-10T00:31:10.488819+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -418,7 +418,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I agree with Peter and I'm in favor of sd for type",
           "createdAt": "2023-05-25T06:23:38Z",
           "updatedAt": "2023-05-25T06:23:38Z"
@@ -806,7 +806,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/33",
       "state": "CLOSED",
       "author": "peppelinux",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
         "discuss"
@@ -825,7 +825,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Yes, the scope of this instance should really be defined since it seems too much wide\r\n\r\nThis Issue wants place in the specs a clear statement, and non-normative example, about the key resolution following the approach of the trust relationships, then X509 certificate chain and OpenID Connect Federation Trust Chain\r\n\r\nthe requirement is that there are many cases where a decentralized infrastructure needs a trust delegation mechanism where the verifiable attestation of the trust relationship between the entities is represented as a \"chain\", made with linked claims, public keys and signature bindings \r\n\r\nIf the defining of the trust relationship verifiable attestations is out of scope for this specs, I suggest to not propose the sole OAuth2 connect approach but giving more non-normative example linked to external refs",
           "createdAt": "2023-05-17T08:46:33Z",
           "updatedAt": "2023-05-17T08:46:33Z"
@@ -839,7 +839,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "My concerns is related to the missing requirements related to the trust model, that expose us in defining new specification following the hypes or the feedback taken along the road with the mechanism of the empathy or other experiences characterized by social exchanges, these are important but they may have distractions and distorsion due to enviromental conditions or individual inclinations.\r\n\r\nsince I believe that this is the right place to do the right things, I'd like to start over the requirements of the trust model and key attestation mechanisms as well\r\n\r\nIn this document me and other contributors are trying to define an agnostic approach in the definition of the trust model requirements and rules, given as granted the architectural requirements of decentralization\r\n\r\n[The eID Wallet Trust Model Rules](https://docs.google.com/document/d/1Dk_8UmytCI4VhCx5VMnXmEzdXRvgJozGeq1GNHZOQik/)\r\n\r\nI'm looking to non repudiation, decentralized historical registry of expired/revoked keys, selfconsistent VC/Attestation with verifiable keys, metadata and policies\r\n\r\nthat's why I propose a PR including .well-known/openid-federation as endpoint or the way we may define to integrate jwt-issuer with the federation trust chains, since these give the full coverage of the requirements\r\n\r\nthe prerequisite is then the cryptographic verifiability, so jwt-issuer response should or must be signed\r\n\r\nthen I've noted that in the text is written that only x509 and .well-known/jwt-issuer MUST be supported, this would exclude the current and the future specification that brings an higher level of assurance on the attestations. I'd remove that \"only\" :-)\r\n\r\n\r\n",
           "createdAt": "2023-05-21T00:47:29Z",
           "updatedAt": "2023-05-21T00:47:29Z"
@@ -853,7 +853,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Yes, I've mixed up many things just for giving an harmonic view on the requirements and assumptions I have in mind\r\n\r\nConsidering how we can work together to improve high assurance profile, I've raised the issue of having in sd-jwt-vc even openid-federation and not x5c and jwt-issuer alone, as raised in several other issues (and here my excuse for the noise)\r\n\r\nDuring the previous connect call there was the agreement that once Federation Draft 29 will be available, then we'll be able to include the Federation trust_chain JWS header parameter in all the OpenID4VC specs, so I'm looking forward to have this agreement also in sd-jwt-vc \r\n\r\nAs you know, mine is not just a request but a manifestation of willingness to contribute actively to introduce the Federation way to obtain attestations of key, metadata and policies related to these\r\n\r\n ",
           "createdAt": "2023-05-22T12:08:22Z",
           "updatedAt": "2023-05-22T12:19:35Z"
@@ -874,7 +874,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "draft 29 has its changelog with the fixed issues by id number, the review process has been completed in the PR, then this latter is referenced in the Issue\r\n\r\nhttps://bitbucket.org/openid/connect/issues/1921/trust_chain-as-jwt-header-claim\r\n\r\nok guys",
           "createdAt": "2023-05-23T17:55:26Z",
           "updatedAt": "2023-05-23T17:55:26Z"
@@ -1064,7 +1064,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "OIDC Federation is related to the technical implementation of the Trust Model and then to the infrastructure of Trust\r\n\r\nan HTTP URL should, or may, be inspected for Trust Assessment with the .well-known/openid-federation endpoint and then with the Federation Entity Discovery process.\r\n\r\nThe Federation Entity Discovery process is always required when the trust assessment method is OpenID Federation and its  Trust Chain contains all the verifiable trust relationships between the parties, the metadata with policy applied and everything about a subject\r\n\r\nIf the Trust Chain is statically available, it just only be validated and checked against the revocation methods of the participants in the infrastructure. This last statement considers the availability of the Trust Chain of every issuer of JWS, as introduced in the issue below:\r\n\r\nhttps://github.com/vcstuff/draft-terbu-sd-jwt-vc/issues/33\r\n\r\nA secure Trust Model requires \"signature everywhere\" to satisfy the requirement of non-repudiability or everything issued by an issuer. For this reason the JWKS in OpenID Connect federation are embedded in the signed metadata (Entity Configuration) or made available, and signed, in the signed_jwks_uri\r\n\r\ntoghether with the federation entity discovery and the provision of static trust chain in the JWS header, I'm working on these two DID resolution methods\r\n\r\n**did:openid:example.it:oidc:rp[#$kid-value]**\r\nthis URN is translated to https://example.it/oidc/rp/.well-known/openid-federation and requires a Federation Entity Discovery to build a valid Trust Chain. This doesn't preclude any other OpenID Connect trust resolution method in the present or in the future, giving to the trust resolver the freedom to decide which openid standard to use for the resolution of the keys. Kid value is optional depending to the scope of the did indetifier, if related to a subject or to a key\r\n\r\n**did:openid-trustchain:BASE64({\"kid\": 1, \"trust_chain\": [ ... ]})**\r\nthis URN is translated to a static OpenID Connect Federation Trust Chain, that gives a snapshot of the federation configuration and of the trust relationships between the subject and the Trust Anchor, its metadatas, the metadata policies, trust mark... Everything about the Trust Model, without any federation entity discovery process\r\n\r\nSo, HTTP or DID a Trust Model with OpenID Federation should be always supported in the specs\r\n\r\n",
           "createdAt": "2023-05-13T20:17:44Z",
           "updatedAt": "2023-05-14T16:10:06Z"
@@ -1078,7 +1078,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I start over from the requirements I have regarding the long-lived and non-repudiable attestations.\r\n\r\na. An Attestation can be a VC or any kind of signed artifact issued according to a contract.\r\nb. The contract can be bilateral, between two organization or multilateral if we mix thousands of organizations and natural persons according to a defined Trust Model, since the architecture is decentralized I consider only multilateral relationships.\r\n\r\nThe Attestation must be verified in both online and offline flows, this requires that the following statements must be satisfied:\r\n\r\n1. The public key for verification must be attested as reliable by a Trusted Third Party. This implies that the public key MUST be contained in the Attestation together with the proof of its reliability. The reliability proof must be issued by a Trusted Third Party\r\n2. The verifier must verify the digital signature of the attestation, using the public key contained in it, since the public key is signed by a Trusted Third Party and made available in the signed attestation \r\n3. The state of the issuer must be contained in the attestation, since all the information about the issuer is available statically and signed by a Trusted Third Party\r\n4. The Policy regarding the issuer MUST be applied, to give evidence if the issuer behaved correctly at time of issuance\r\n5. even if the public keys may change in the future years, the state of the issuer at the time of the issuance, the applied policies, its jwks, must be always verifiable, since the attestation cannot be repudiated\r\n\r\nconsider that an issuer of an attestation can be one or more of all the following entities:\r\n\r\nI. Wallet Provider issuing a Wallet Instance Attestation\r\nII. Credential Issuer that issues a VC\r\nIII. RP that issues a presentation request\r\nIV. Wallet Instance that issue a signed presentation request or an id token\r\n\r\nAll these requirements are fully satisfied by OpenID Connect Federation Trust Chain, since the JWS trust_chain is going to be registered in the IANA JWS header parameter register.\r\n\r\nThe sole and particular exception is made for the Wallet Instance, since these are not andled by organization but by natural person. In this cases they must present the Wallet Instance Attestation where the Wallet Provider Trust Chain is contained in it. A verifier trusts the wallet instance using the instance attestation, since the trust to the Wallet Provider can be established, statically and in offline flows.\r\n\r\nThe Trust Chain contains all the components listed below:\r\n\r\n- Trust Relationship of the subject (one of the previously listed above entities) with a Trusted Third Party, considering all the entities along the path from the subject to a well-known Trust Anchor. If any available, these are called Trust Intermediates\r\n- The Metadata of the subject at time of the issuance\r\n- The Trust Marks/Compliance-attestations of the subject at time of the issuance\r\n- The Policies published by Trust Anchor and its Intermediates to be applied to the issuer Metadata\r\n- The public keys related to the issuance protocol\r\n- the public keys related to the Trust Model attesting the Trust Relationship and the non revocation of the issuer at time of the issuance\r\n\r\nIt can be validated using the sole public key of the Trust Anchor.\r\n\r\nAll this, that's a lot, is efficiently contained in the Trust Chain, that's a JSON Array of JWS. Each JWS is binded with its siblings by claims, public keys and signatures. Using JWS singed with EC, I still don't have a comparison with X509 in term of storage but it is not small at all. But the point is not the size, but the features and the capabilities we have in the Trust Chain instead of the X509 certificate chain.  \r\n\r\n**Finally the answer to your question is:**\r\n\r\n**Since the public keys are not duplicated because they are self contained in the Entity Configuration (.well-known/openid-federation) and validate through the Trust Chain, the data doesn't require to be duplicated elsewhere**\r\n\r\nAnd I want to continue discussing the requirement of external endpoints for JWKS, below.\r\n\r\nOpenID Connect Federation enables the signed_jwks_uri, then .well-known/jwks can be pointed by this claim, with the sole requirement that its response must be signed, for the highest level of security of the Trust Model\r\n\r\nThe traditional approach based on TLS doesn't give non-repudiability of the attestations, since the jwks may change in the future and since these endpoints are not available in offline flows\r\n\r\nWhile TLS alone may work fine in the traditional digital identity infrastructure, where the trust is prestablished between an RP and an IDP, differently the Identity Wallets requires other paradigms regarding the Trust Establishment, where the concept of scalability, distribution and decentralization should consider how fundamental are the long lived static attestation of trust and how the \"decentralized storage\" requires the trust attestation to avoid the architectural need of a single registry with the historical information about all the issuers\r\n\r\n\r\n\r\n",
           "createdAt": "2023-05-14T17:27:31Z",
           "updatedAt": "2023-05-14T22:34:32Z"
@@ -1092,7 +1092,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Yes, definitively a different approach\r\n\r\nThe solution is the one that satisfies all the requirements and represents the best solution\r\n\r\nwhile the alternative should map the implications that entails in relation to the requirements",
           "createdAt": "2023-05-17T08:26:44Z",
           "updatedAt": "2023-05-17T08:26:44Z"
@@ -1494,7 +1494,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I'd pose the attention to the requirement of non repudiation for long lived credentials\r\n\r\nin OIDC Federation we have defined the historical key registry with iat and exp but also revocation status \r\nhttps://openid.net/specs/openid-connect-federation-1_0.html#name-federation-historical-keys-re\r\n\r\nbut, if the response of .well-known/jwt-issuer is in plain application/json and not signed, it is impossibile have a proof that at time T-n that issuer has those key, unless a Trusted Third Party publishes all the historical keys of the participants and the response of the jwt-issuer endpoint should be signed\r\n\r\nthis give the proof that issuer X has that metadata and that jwks at time X, since there is a signed artifact that attests that and its signature is verifiable using the historical keys hosted by a trusted third party\r\n\r\nif non repudiation is a requirement also for you, I'd approach this problem asap  ",
           "createdAt": "2023-05-21T00:31:07Z",
           "updatedAt": "2023-05-21T00:31:07Z"
@@ -2107,7 +2107,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "the kid allows an easy lookup of the key, since it should not collide to any other kid value, it should be created according to rfc7638\r\nit is like a primary key in a sql schema, better having it and by default with a non colliding value",
           "createdAt": "2023-05-25T22:41:03Z",
           "updatedAt": "2023-05-25T22:41:03Z"
@@ -2149,7 +2149,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/101",
       "state": "CLOSED",
       "author": "peppelinux",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "NONE",
       "assignees": [
         "awoie"
       ],
@@ -2186,7 +2186,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "There are well known endpoints like openid-configuration or openid-federation that publish entities metadata, including jwks\r\n\r\nSince this specs Is related to VC based on sd-jwt,  this specs should not be in conflict to pre existing Oauth2/OpenID ecosystem\r\n\r\nSD-JWT-VC should define only the resources needed for the solution It defines",
           "createdAt": "2023-05-26T23:01:28Z",
           "updatedAt": "2023-05-26T23:01:28Z"
@@ -2200,7 +2200,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I agree @tlodderstedt, \r\n\r\nKey attestation alone Is not enough, this endpoint deserves a proper identity with a specialized protocol metadata\r\n\r\nAlso the verifiable attestations related to the entity may be available in it",
           "createdAt": "2023-05-28T14:13:38Z",
           "updatedAt": "2023-05-28T14:13:38Z"
@@ -2235,7 +2235,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I understand your point @Sakurann, below my thoughts\r\n\r\n1. Why defining jwt-issuer for general purpose in a spec that's specialized for VC? Requirement: definition of a specs in IETF for general purpose JWT Issuer metadata (enabling client metadata, that today is only available in openid-federation...)\r\n\r\n2. I agree that jwt-vc-issuer semantically collides with credential-issuer, and we should not do collisions\r\n\r\n3. why we can't use .well-known/openid-federation? Federation entity discovery is required for the entities that builds trust chain according to the federation specs, nothing prevent to publish all the metadata of all thw \"JWT-role\" in a single metadata, that should not be signed if request (content-type) asks it in plain text\r\n\r\nI suggest to use `.well-known/openid-federation` to consolidate a unique way to publish all the metadata types and roles of an entity.\r\n\r\ncoming back to the name change proposal. Why we use the term `issuer` since the metadata contains also general capabilities not related to the issuance?\r\n\r\nin a more general purpose way, wouldn't it be a `.well-known/oauth-entity`?\r\nthen the question: if that entity has more functionalities and roles, being at the same time a RP and a AS, how the metadata should be organized?\r\n\r\nWe've resolved this issue in openid-federation, with the below schema, where a RP can be also a OP, AS, Client, credential-issuer and so on:\r\nhttps://github.com/italia/spid-cie-oidc-docs/blob/versione-corrente/docs/common/common_examples.rst#en-11-entity-configuration-response-relying-party",
           "createdAt": "2023-06-09T10:27:12Z",
           "updatedAt": "2023-06-09T10:28:38Z"
@@ -2263,7 +2263,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "my question is\r\n\r\nhow to specify different capabilities for different metadata protocols?\r\n\r\nthis is an example in oidc federation\r\nhttps://github.com/italia/eidas-it-wallet-docs/pull/14/files#diff-f44e126e298004564899b4b86fc1f5e074b5ca6a96e9f546b7a1ed8987e61735R542\r\n\r\nhere we're saying, this is the wallet provider metadata, where multiple metadata/roles cohexists in a single .well-known\r\n\r\nhow jwt-issuer endpoint achieves this?",
           "createdAt": "2023-06-17T12:52:24Z",
           "updatedAt": "2023-06-17T12:57:09Z"
@@ -2319,7 +2319,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I agree the position of @TakahikoKawasaki, while in the italian solution we're implementing **openid-credential-issuer** as metadata within the .well-known/openid-federation endpoint, according to OpenID Federation 1.0.\r\n\r\nThis doesn't prevent to include also a jwt-issuer metadata type but there's the decision by our side to wait and the same time give evidence of our implementation to help the consolidation of the vc-jwt-issuer specs",
           "createdAt": "2023-06-28T13:26:10Z",
           "updatedAt": "2023-06-28T13:27:16Z"
@@ -2333,7 +2333,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Hey @TakahikoKawasaki, I'm sure that you meant `openid-federation`\r\n\r\nThe answer Is yes, even if we have used a snake case like `openid_credential_issuer` here\r\n\r\nhttps://italia.github.io/eidas-it-wallet-docs/en/pid-issuing.html\r\n\r\nIt's still an initial draft without an official release, several editorials and implementation compromises needs to be resolved but the most of the work Is there, feelfree to open issue for discussion here\r\n\r\nhttps://github.com/italia/eidas-it-wallet-docs",
           "createdAt": "2023-06-28T17:54:18Z",
           "updatedAt": "2023-06-28T17:54:18Z"
@@ -2599,7 +2599,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I agree, since there must be always a trusted third party in the model, like a trust anchor or its intermediate",
           "createdAt": "2023-05-26T23:04:43Z",
           "updatedAt": "2023-05-26T23:04:43Z"
@@ -2912,7 +2912,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/119",
       "state": "CLOSED",
       "author": "peppelinux",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "in https://github.com/vcstuff/draft-terbu-sd-jwt-vc/blob/main/draft-terbu-sd-jwt-vc.md#jwt-issuer-metadata-request\r\n\r\nI propose to change the current approach in favor of the solution below:\r\n````\r\nIf the `iss` value contains a path component, any terminating `/` MUST be\r\nremoved before inserting the `/.well-known/jwt-issuer` at the end of the\r\npath.\r\n\r\nThe following is a non-normative example of a HTTP request for the JWT Issuer\r\nMetadata configuration when `iss` is set to `https://example.com/user/1234`:\r\n\r\n\r\nGET /user/1234/.well-known/jwt-issuer HTTP/1.1\r\nHost: example.com\r\n````\r\nI'm aware that https://datatracker.ietf.org/doc/html/rfc8414 defines the current approach but It seems to me that splitting a url, including other path in it, is worst then simply append the .well-known\r\n\r\nthere are some cases where the webpath matches specific web routing in specific contexts, like `user/1234` might be in a multitenant solution, and givin the .well-known resource in a context coherent path I think it is better.\r\n\r\nps = OIDC Federation 1.0 uses the proposed approach.",
@@ -2929,7 +2929,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Well, specifically here\r\nhttps://openid.net/specs/openid-connect-federation-1_0.html#section-6\r\n\r\nIn Federation we have them both",
           "createdAt": "2023-06-08T20:07:49Z",
           "updatedAt": "2023-06-08T20:07:49Z"
@@ -2943,7 +2943,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "here I report Mike's comments on OAUTH2-WG\r\n\r\nIn [https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html#section-5.1](https://www.ietf.org/archive/id/draft-terbu-sd-jwt-vc-02.html#section-5.1) (JWT Issuer Metadata Request), I question whether \u201cIf the iss value contains a path component, any terminating / MUST be removed before inserting /.well-known/ and the well-known URI suffix between the host component and the path component.\u201d is always the right choice.  Yes, I know that that\u2019s what it takes to conform to RFC 5785 and I wrote similar text at https://www.rfc-editor.org/rfc/rfc8414#section-5 , but practically, the permissions on servers may not be administered in a way that allows tenants to write to this location.",
           "createdAt": "2023-06-09T10:43:20Z",
           "updatedAt": "2023-06-09T10:43:20Z"
@@ -3134,7 +3134,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "I agree that jwks Is Better since It doesnt require additional http requests\r\n\r\nThat's why in oidc federation we have enabled jwks also for oidc op\r\n\r\nAnd more, having a static and verifiable attestation of a metadata (signed!) makes the flow possible also in offline use cases, while using jwks_uri won't ",
           "createdAt": "2023-06-16T06:44:15Z",
           "updatedAt": "2023-06-16T06:44:15Z"
@@ -3504,7 +3504,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Just FYI\r\n\r\n`type` is used in the [JWT Embedded Tokens](https://www.ietf.org/archive/id/draft-yusef-oauth-nested-jwt-06.html)",
           "createdAt": "2023-07-30T22:28:53Z",
           "updatedAt": "2023-07-30T22:29:03Z"
@@ -3525,7 +3525,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "@awoie \r\n\r\nI'd prefer Digital Credential Type, then `dct` but I admit that I dream a world where the parameter names are self explanatory.\r\n\r\ndog -> it's a dog\r\ntoken -> it's a token!\r\n\r\neven if we have the `iat` -> issued_at, that's good for me, but for the world I would give to my sons I would like `issued_at`.\r\nBecause once you have read it, you don't need to read the documentation, because the good semantic is self-documentationary. But coming back to the world of the conventions, I'd say\r\n\r\nthe loved ISO 18013-5 defines `docType`, and `doctype` is not so bad.\r\nfrom Digital Credential Type (or Verifiable) I'd remove the first word, so `Credential Type` since the flow is digital ...\r\n\r\n`credential_type` or `dctype` or `vctype` or whatever but  the word `type` would be good to be there ",
           "createdAt": "2023-07-31T21:26:25Z",
           "updatedAt": "2023-07-31T21:26:25Z"
@@ -3924,7 +3924,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "WDYT about using an object like\r\n\r\n````\r\n\"binding\": {$type: {claim: ..., any other required by future proof binding type}}\r\n````\r\n\r\nexample\r\n\r\n````\r\n{\r\n  \"title\" : \"Master of Science in Physics\",\r\n  \"grade\" : \"excellent\",\r\n  \"given_name\" : \"Erika\",\r\n  \"family_name\" : \"Mustermann\",\r\n  \"some-memberstate.eu/credentials/schemas/pid/national_id\" : \"572047251836\",\r\n  \"credential_binding\" : {\r\n     \"claims\": [\"some-memberstate.eu/credentials/schemas/pid/national_id\" ]\r\n  }\r\n}\r\n````\r\n\r\nthis may open the possibility to specify other types, like`credential_binding.hkb` referencing cnf.jwk or any other key binding type\r\n\r\n",
           "createdAt": "2024-04-17T18:23:42Z",
           "updatedAt": "2024-04-17T18:23:42Z"
@@ -4375,7 +4375,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Interesting point, I have the following approach to satisfy the requirement of having the credential metadata along with a credential:\r\n\r\nusing openid federation a trust chain is needed to attests the cryptographic keys of the issuer to verify the credential. Within the trust chain the openid_credential_issuer metadata is provided.\r\n\r\nin the openid_credential_issuer metadata there are the display information for all the credential types. Then, using this approach, the credential doesn't need any metadata. Fed trust chain can be made available in a static form, within the credential jws/MSO headers\r\n\r\nLet's see other points:\r\n\r\n- I would not use `status`, because its value seems more close to the concept of issuance type. I would say `iss_type` set(`self-issued`, `authority-issued`). Also the name `status` may semantically collide with all about status lists\r\n\r\n> Maybe: What issuers are allowed to issue this credential type\r\n\r\nIt would be up to the trust model and the credential metadata or trust marks or attestations. We cannot allow an italian PID provider to issue a Polish PID, then the domestic italian credential identifier must be linked with one or more italian credential issuers. This information must be made available according to the infrastructure of trust, where the issued credentials are not involved yet. During a discovery phase the user/holder knows which are the credential issuers, which credential types they offers to users. Generally this is made available in the openid_credential_metadata and must be granted by an accreditation body. That's why I mentioned trusted lists or federation trust marks or X.509 custom extentions (for strong stomachs) or federation metadata policy.\r\n\r\nWithout openid federation I would have to find a solution and the credential metadata sounds resonable but I use federation and this requirement is already satisfied. Another point of interest is that the credential metadata should be issued by credential issuer and bound to the credential.\r\n\r\nI would change this sentence we have in the current text: `A type is associated with rules defining which claims may or must appear in the Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be selectively disclosable.` because the metadata should be issued by credential issuers and be tamper proof, otherwise a bogus implementation would use a valid credential with a fake presentation of the claims that may swaps some value and change the interpretation of the data to a verifier. Let's imagine that Giuseppe Marco would be swapped to Marco Giuseppe and pass through a supervised verifier as Marco, while the credential is still valid and verified\r\n  ",
           "createdAt": "2023-10-24T23:41:30Z",
           "updatedAt": "2023-10-24T23:44:18Z"
@@ -4924,7 +4924,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/200",
       "state": "CLOSED",
       "author": "peppelinux",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
         "HAS PR"
@@ -5285,7 +5285,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "good point, since the delegation in a SSI model must be perfomed by the end-user and not centralized in a credential issuer, the idea that came to my mind is to:\r\n\r\n- define a credential type for this specific purpose\r\n- define a data model for this specific purpose\r\n- issue a self-issued token using SIOPv2 using a personal wallet\r\n- encapsulate in this token two credential presentation (with the disclosure minimized for the purpose of the delegation):\r\n  - the one of the delegator with the aud set to the final RP and the delegated subject\r\n  - the one of the delegated with the aud set to the final RP and the delegator subject\r\n- the token that encapsulate these two presented credentials with disclosure must be signed using the private key related to the public key to the delegator credential, contained in this token (providing the proof of possession)\r\n- the delegator provides this token to the delegated\r\n\r\nthe RP that received this token from the delegated, in a VP_Token during a presentation, recognize the type and then the corresponding data model. \r\n\r\nExtracts the two VC, evaluates the trust with both their issuers, evaluates the pop of the delegator, evaluates the pop of the delegator in the presentation, then authenticates/grants the delegated.\r\n\r\nhow these tokens can be exchanges should be further defined. In my assumoption cannot exist delegation for any RP, each delegation must be configured with a specific RP or a set of RPs (aud). the chained approach is nested using attribute and cryptografic bindinds.\r\n\r\nto be continued ... :-)\r\n",
           "createdAt": "2024-02-10T14:24:17Z",
           "updatedAt": "2024-02-10T14:24:17Z"
@@ -5313,7 +5313,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "@c2bo a brand new draft should born explaining a \"shared credential\", where the holder of this shared credential presents the enveloped credential(s) is a brand new type of credential specifically born for this use case\r\n\r\nI share to you my Car key credential (shortlived), you present this to my Car and drive it untill the credential is valid (unexpired/revoked).\r\n\r\nthis - definitively - exalts concepts of sharing vs. presentation and also delegated presentation.",
           "createdAt": "2024-05-08T13:12:52Z",
           "updatedAt": "2024-05-08T13:12:52Z"
@@ -5426,7 +5426,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "interesting feature, it brings some requirements:\r\n\r\n- definition of entity categories, a grouping of entities for specific purpose or compliance profile\r\n- verifiable attestations/trust marks to proof the compliance of an entity to a specific purpose\r\n\r\nI would not call it issuer_policy otherwise it seems that the subject of the policy is the issuer, while the issuer is the issuer and the subject is the credential, then credential_policy seems more appropriate if you agree. At the same time the issuer does not represent an authority in the trust ecosystem. The policy should be defined in a trust framework by trust authorities in a large ecosystem where multiple issuers operates. Ideally, the trust authority publishes the catalogue of the issuers granted for some credential issuances (eg: using OpenID Federation we have trust_mark_issuers that maps trust mark ids with entities id).\r\n\r\nIn your proposal once the wallet has obtained the credential, evaluates the credential_policy to kow to which entity categories it can present it. \r\n\r\nThe RP should send a presentation request providing the trust mark/verifiable attestation that give the proof of its compliance to some profile/entity categories enabled in the credential_policy. Then the wallet evaluates the trust with the RP, then evaluates the Trust Marks and present the credential.\r\n\r\nthe model you propose is interesting but can be simplified and make more flexible by saying that:\r\n\r\n- the credential_policy should be provided in the credential definition published in the issuer metadata, preventing the revocation of the credential when the policy might change in the future (or be extended with additional audiences)\r\n\r\nthe requirement of the trust-markls/verifiable attestation remains for the RP.\r\n\r\na question is: is these policy enables with a sort of policy language (as the openid federation metadata policy) or are static and audience focused?",
           "createdAt": "2024-02-16T12:05:49Z",
           "updatedAt": "2024-02-16T12:05:49Z"
@@ -5909,7 +5909,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "@awoie at least for using kid with openid federation is resonable, because that kid is resolved within a federation trust chain",
           "createdAt": "2024-05-16T13:03:00Z",
           "updatedAt": "2024-05-16T13:03:00Z"
@@ -5930,14 +5930,14 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "@awoie sure, thank you for asking\r\n\r\nimagine the federation trust chain like an object, related to a subject (giuseppe, a trustable entity) linked to a trust anchor (a trusted party over all the others), wwhere in the middle we may have zero, one or more intermediaries between the subject (leaf) and trust anchor.\r\n\r\nthe leaf's metadata can be overloaded by the statements within the chain, along the trust anchor. Therefore the jwks the leafs claims to use, and any other protocol specific metadata, can be dynamically overloaded within the trust chain, by applying the metadata policies.\r\n\r\nonce the policies are applied, the resulting metadata is called final metadata and contains all the jwks related to an entity, for each protocol (since a federation entity configuration may have more than a single metadata creafted for a speicifc role, such as VCI, RP, OP and so on).\r\n\r\nusing the final metadata, the kid is needed in the form of lookup parameter within the JWKs provided within the final metadata\r\n\r\n\r\n\r\n\r\n",
           "createdAt": "2024-05-16T13:31:27Z",
           "updatedAt": "2024-05-16T13:31:27Z"
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "the resolution of the kid is interesting\r\n\r\nwe may have a discovery, using well known endpoints\r\nwe may have a static trust chain, provided like a x.509 certificate chain\r\n\r\n",
           "createdAt": "2024-05-16T13:33:17Z",
           "updatedAt": "2024-05-16T13:33:17Z"
@@ -5958,7 +5958,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "> Thank you for this elaboration! It means that in this case, you won't need SD-JWT VC Issuer Metadata well-known, right?\r\n\r\nusing federation the metadata must be signed and evaluated within the trust chain, therefore, yes, there are no direct dependencies with the SD-JWT VC Issuer Metadata well-known endpoint, even if these two can cohexist within the same entity.\r\n",
           "createdAt": "2024-05-16T14:07:18Z",
           "updatedAt": "2024-05-16T14:07:18Z"
@@ -6778,6 +6778,22 @@
       "updatedAt": "2024-10-31T21:45:13Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 267,
+      "id": "I_kwDOJbVClc6daoH8",
+      "title": "Document reasons for not using existing JSON query languages",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/267",
+      "state": "OPEN",
+      "author": "aaronpk",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Repeating my live comment from the IETF 121 meeting... It would be worth documenting the reasons for creating a new JSON query syntax instead of using JSONPath or alternatives.",
+      "createdAt": "2024-11-07T13:14:31Z",
+      "updatedAt": "2024-11-07T13:14:31Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -7161,7 +7177,7 @@
             "abbreviatedOid": "20d39b8"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-05-22T21:05:53Z",
@@ -9877,7 +9893,7 @@
             "abbreviatedOid": "9aea21d"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "CHANGES_REQUESTED",
           "body": "",
           "createdAt": "2023-05-25T16:16:34Z",
@@ -10516,7 +10532,7 @@
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/118",
       "state": "CLOSED",
       "author": "peppelinux",
-      "authorAssociation": "CONTRIBUTOR",
+      "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
         "discuss",
@@ -10573,7 +10589,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "@selfissued what about having jwt_issuer as a oidc federation metadata type?\r\n\r\nIf this well known resource Is a generic purpose metadata that every kind of entity can expose, how to check the protocol metadata It carries?\r\n\r\nIt might be and OpenID provider and a relying party and an RS or whatever, without a unique identifier It wouldnt be good for metadata but Just for Key attestation\r\n\r\nSo the difference between this and x509 would be just the data format.\r\n\r\nOr, differently, in jwt-issuer there would space for multiple metadata with unique type identifiers like the federation EC?\r\n\r\n",
           "createdAt": "2023-06-29T20:41:22Z",
           "updatedAt": "2023-06-29T20:41:22Z"
@@ -10587,14 +10603,14 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "> Why not define, `.well-known/jwks.json`... doesn't seem like jwt or issuer are needed...\r\n\r\nThat's the same though I had, if It Is Just for Key attestation let's give to it the semantic It should",
           "createdAt": "2023-06-30T07:06:40Z",
           "updatedAt": "2023-06-30T07:06:40Z"
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": " Ok dears, may I change the endpoint name to `.well-known/jwks.json` in this PR and ask again your kindly revision?",
           "createdAt": "2023-06-30T22:32:47Z",
           "updatedAt": "2023-06-30T22:32:47Z"
@@ -10608,7 +10624,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "names are very often semantical or cosmetic and driven by personal tastes or objective meanings, that's just a name.\r\n\r\nI would like to ask which are the scopes of this endpoint, if it is just for key attestation or also for metadata.\r\nI assume the second. Since it is also for metadata, I assume here, how the metadata of a formless and abstract entity could be carried in that endpoint?\r\n\r\nmy answer is, by defining several metadata types, as already done in [federation entity configuration](https://openid.net/specs/openid-connect-federation-1_0.html#name-metadata-type-identifiers) \r\n\r\nbut this seems not clear, or out of scope for now, or let them think about this later on.\r\nWell, without the big picture I find very difficult giving a name to an endpoint, since the name should represent its scopes and values",
           "createdAt": "2023-06-30T22:48:26Z",
           "updatedAt": "2023-07-01T13:13:03Z"
@@ -10622,7 +10638,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "if the purpose of this endpoint is only for serving jwks, I think `.well-known/jwk-set` is a good choice\r\n\r\n",
           "createdAt": "2023-07-10T20:15:41Z",
           "updatedAt": "2023-07-10T20:15:41Z"
@@ -10643,7 +10659,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "> You could remove the content type from the resource identifier, and use the accept header.\r\n> \r\n> GET `/.well-known/keys`\r\n> \r\n> --accept application/jwk-set+json --accept application/cose-key-set\r\n\r\nI love this, however I'd prefer two separate endpoints for two different format, since without the definition of any content-type in the request would return a default value, then: Jose or cose Key set?",
           "createdAt": "2023-07-10T22:01:20Z",
           "updatedAt": "2023-07-10T22:01:20Z"
@@ -10657,7 +10673,7 @@
         },
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "overseeded by https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/189",
           "createdAt": "2023-11-27T23:42:19Z",
           "updatedAt": "2023-11-27T23:42:19Z"
@@ -10690,7 +10706,7 @@
             "abbreviatedOid": "b0d0d2c"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-06-08T16:36:59Z",
@@ -14109,7 +14125,7 @@
             "abbreviatedOid": "fe02e0a"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "CHANGES_REQUESTED",
           "body": "",
           "createdAt": "2023-06-29T19:20:04Z",
@@ -14162,7 +14178,7 @@
             "abbreviatedOid": "480f67d"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-06-29T20:33:00Z",
@@ -17135,7 +17151,7 @@
             "abbreviatedOid": "f2883c9"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-11-27T23:36:56Z",
@@ -17253,7 +17269,7 @@
             "abbreviatedOid": "bb5e7bc"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2023-11-27T23:34:42Z",
@@ -17266,7 +17282,7 @@
             "abbreviatedOid": "bb5e7bc"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2023-11-27T23:35:14Z",
@@ -17529,7 +17545,7 @@
       "comments": [
         {
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "body": "Amen!",
           "createdAt": "2024-01-17T23:06:44Z",
           "updatedAt": "2024-01-17T23:06:44Z"
@@ -17555,7 +17571,7 @@
             "abbreviatedOid": "f497b2a"
           },
           "author": "peppelinux",
-          "authorAssociation": "CONTRIBUTOR",
+          "authorAssociation": "NONE",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2024-01-17T23:06:56Z",
