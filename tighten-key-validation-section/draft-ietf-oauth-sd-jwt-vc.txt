@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 11 April 2025                                     Authlete Inc.
+Expires: 15 May 2025                                       Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                          8 October 2024
+                                                        11 November 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 11 April 2025.
+   This Internet-Draft will expire on 15 May 2025.
 
 Copyright Notice
 
@@ -548,9 +548,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.tuHqT
-   V4tcUmo7cy61EQpJlrQlJnIK3Rst0zLtWFfQl-WR-31B-PdBmnbXfZmpyqp3hkMfTTBu
-   3jlanPxBAP4ew~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LuGdI
+   TPMxHlTrFoER4Vv52aJIis_QRnkvCShsCZgiSQHIHGiQIS1isaXFDe4srBdhcTIH0SOz
+   I2aP43YSNbMhw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -616,13 +616,6 @@ Table of Contents
           SAN entry of the end-entity certificate or that the domain
           name in the iss value matches the dNSName SAN entry of the
           end-entity certificate.
-   *  DID Document Resolution: If a recipient supports DID Document
-      Resolution and if the iss value contains a DID [W3C.DID], the
-      recipient MUST retrieve the public key from the DID Document
-      resolved from the DID in the iss value.  In this case, if the kid
-      JWT header parameter is present, the kid MUST be a relative or
-      absolute DID URL of the DID in the iss value, identifying the
-      public key.
 
    Separate specifications or ecosystem regulations MAY define rules
    complementing the rules defined above, but such rules are out of
@@ -670,17 +663,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.tuHqT
-   V4tcUmo7cy61EQpJlrQlJnIK3Rst0zLtWFfQl-WR-31B-PdBmnbXfZmpyqp3hkMfTTBu
-   3jlanPxBAP4ew~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LuGdI
+   TPMxHlTrFoER4Vv52aJIis_QRnkvCShsCZgiSQHIHGiQIS1isaXFDe4srBdhcTIH0SOz
+   I2aP43YSNbMhw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Mjg0MDk3OT
-   csICJzZF9oYXNoIjogIkN1eGdyVDhma1VJaHY3TWFaaUxLN1RScEZCLXlUbnMzay1LTH
-   JHYzZLT1UifQ.UJSgepjiSZzGMWrxqryMWtHZDR0Cu-3NhkCMwfl1yhodThRzb991mTF
-   Nj3777LjLsLcCnB_VmNx1LtXzRHvlHg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzEzNjE3MD
+   csICJzZF9oYXNoIjogIkxJcU1NbWpQZkFNclZsazhBMTl0N3lIaTZDOFgzSnFXemJObz
+   lBdGQycE0ifQ.zf5Ewaz4FHF9kzP45bIFsYMBgh2gQfQNYjI0VAydsEGOQ4khIEHcEFM
+   rEZt7yxzX08vdJ2lVkEThvp5I9bgqXA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -722,8 +715,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.vAPO022A_hGQ1RtFv1U0XoatVDgK0erDzbkTJhgmwYWZIq
-   ltpkfubZ5Uf61vYOnESTtTfp_tmn2d4izYgrVTIg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.E4ZCljbAwmOMTfkHp4J8KJB2HInNwhNtREwNsvyO4PEatP
+   k8CsJjs8fU9UjcPUltRSBaGe7K8pQZDjnusz7TAQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1601,16 +1594,16 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-12, 3
-              September 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-selective-disclosure-jwt-12>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-13, 18
+              October 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-selective-disclosure-jwt-13>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-04, 2 October 2024,
+              status-list-05, 21 October 2024,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-04>.
+              status-list-05>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1676,10 +1669,6 @@ Table of Contents
    [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
               DOI 10.17487/RFC7517, May 2015,
               <https://www.rfc-editor.org/info/rfc7517>.
-
-   [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
-              O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
-              19 July 2022, <https://www.w3.org/TR/did-core/>.
 
    [W3C.VCDM] Sporny, M., Longley, D., Chadwick, D., and O. Steele,
               "Verifiable Credentials Data Model v2.0", 10 February
@@ -1830,8 +1819,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.kp1ixHmrVMfWT_Zw1_NKhQGBkID1w9TciO4JIulIY3e7aFJ5TJnVz3
-   gmbkQtDSIa-_-tNUcLc5ftd6CnDJ4WaA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.5_nbZ5Af_sd1w6kiXUm5I5_LPpATo6ZWTSe05UmQ8XZNd80c48spW6
+   J-n27RYTkTeAeP8Sa5lWLBTjlkaILCeA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2103,22 +2092,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.kp1ixHmrVMfWT_Zw1_NKhQGBkID1w9TciO4JIulIY3e7aFJ5TJnVz3
-   gmbkQtDSIa-_-tNUcLc5ftd6CnDJ4WaA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.5_nbZ5Af_sd1w6kiXUm5I5_LPpATo6ZWTSe05UmQ8XZNd80c48spW6
+   J-n27RYTkTeAeP8Sa5lWLBTjlkaILCeA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3Mjg0MDk3OTcsICJzZF9oYXNoIjogIkEtMHd6ZE12YmlvU
-   0xPSFVERGRHOWlZLUV3Zk9Ja1BtN2t3b3lqdF9lYVkifQ.Cg-6yNmtMRC6RhS6i8g4Ol
-   5bEj_TO4EExq97Fta4_BUNse0UsVXil-wMWhxs8dS8ktzQ5naUNZ7zm1QQNr-6TA
+   mlmaWVyIiwgImlhdCI6IDE3MzEzNjE3MDcsICJzZF9oYXNoIjogInhmMDNMeHFjUTJoV
+   UlkdEZWR2phalhZSk00Z3RGZXNmS3h2eEZGeHVDYVUifQ.k4TpH0ffyUqrB7CAqvf0nu
+   gaZ4Xg5GO1Ac94ifv34WusWvTq0fqvIIQUUQD8buF7IaEk12pg5EhzEUHQqcdV6w
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1728409797,
-     "sd_hash": "A-0wzdMvbioSLOHUDDdG9iY-EwfOIkPm7kwoyjt_eaY"
+     "iat": 1731361707,
+     "sd_hash": "xf03LxqcQ2hUIdtFVGjajXYJM4gtFesfKxvxFFxuCaU"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2280,12 +2269,17 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-   Giuseppe De Marco, Lukas J Han, Michael Jones, Mike Prorock, Orie
-   Steele, Paul Bastian, Torsten Lodderstedt, Tobias Looker, and
-   Kristina Yasuda for their contributions (some of which substantial)
-   to this draft and to the initial set of implementations.
+   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
+   Mike Prorock, Orie Steele, Paul Bastian, Torsten Lodderstedt, Tobias
+   Looker, and Kristina Yasuda for their contributions (some of which
+   substantial) to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
+
+   -06
+
+   *  Tightened the exposition of the Issuer-signed JWT Verification Key
+      Validation section
 
    -05
 
