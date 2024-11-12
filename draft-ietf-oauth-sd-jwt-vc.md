@@ -1363,8 +1363,9 @@ by [@!RFC5785].
 
 * URI suffix: jwt-vc-issuer
 * Change controller: IETF
-* Specification document: [[ (#jwt-vc-issuer-metadata) of this of this specification ]]
+* Specification document: [[ (#jwt-vc-issuer-metadata) of this specification ]]
 * Related information: (none)
+* Status: permanent
 
 # Examples
 
@@ -1563,6 +1564,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-06
+
+* Add the “Status” field for the well-known URI registration per IANA early review
 
 -05
 
