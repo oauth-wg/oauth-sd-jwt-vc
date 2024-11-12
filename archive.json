@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-10T00:31:10.488819+00:00",
+  "timestamp": "2024-11-12T00:28:25.419567+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -21275,13 +21275,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-08-20T17:18:34Z",
-      "updatedAt": "2024-09-20T20:12:59Z",
+      "updatedAt": "2024-11-11T21:48:58Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "d85fe46786a3c5af4496ddfbb9468fc8b796a9ea",
+      "baseRefOid": "e505fe84bbe63058b327c44480e9e700fb50b3fe",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "tighten-key-validation-section",
-      "headRefOid": "40ec09761b0f925bfa082416070a08d2b00a774d",
+      "headRefOid": "d43b3da5537bc4559a6ba27da5c32b242366ac38",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -21367,6 +21367,26 @@
           "createdAt": "2024-09-20T20:12:59Z",
           "updatedAt": "2024-09-20T20:12:59Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Qu9hz",
+          "commit": {
+            "abbreviatedOid": "40ec097"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-11T21:48:58Z",
+          "updatedAt": "2024-11-11T21:48:58Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "It does not limit anything. ",
+              "createdAt": "2024-11-11T21:48:58Z",
+              "updatedAt": "2024-11-11T21:48:58Z"
+            }
+          ]
         }
       ]
     },
@@ -21694,6 +21714,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 268,
+      "id": "PR_kwDOJbVClc6BkVIw",
+      "title": "change media type from `vc+sd-jwt` to `dc+sd-jwt`",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/268",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt` per the Dublin Accord (last slide of https://datatracker.ietf.org/meeting/121/materials/slides-121-oauth-sessb-sd-jwt-and-sd-jwt-vc-02) ",
+      "createdAt": "2024-11-11T23:52:16Z",
+      "updatedAt": "2024-11-11T23:52:17Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "e505fe84bbe63058b327c44480e9e700fb50b3fe",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "the-dublin-accord",
+      "headRefOid": "c4ac71ab2ebe599a99d0016f1cc78fdc77baf1df",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
