@@ -1330,8 +1330,9 @@ by [@!RFC5785].
 
 * URI suffix: jwt-vc-issuer
 * Change controller: IETF
-* Specification document: [[ (#jwt-vc-issuer-metadata) of this of this specification ]]
+* Specification document: [[ (#jwt-vc-issuer-metadata) of this specification ]]
 * Related information: (none)
+* Status: permanent
 
 # Examples
 
@@ -1536,6 +1537,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt`
 * Tightened the exposition of the Issuer-signed JWT Verification Key Validation section
+* Add the “Status” field for the well-known URI registration per IANA early review
 
 -05
 
