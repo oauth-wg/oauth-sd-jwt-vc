@@ -1975,9 +1975,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.rUdBV
-8xsYaaS37CCTwBwuS26jSrN2-Nj-5CEtcS1p0RtGkPWjezv81xS0FAZSsGM6-VU9NONJ
-z89_zuaif-oYg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KfIz9
+DeM-4A4Rzmv3PnC8H_kW229jyoUDzR8-to8xn-g2Keu0HAASuCFUnKX4JmOiMOlWOp11
+bVTLcfo63KKJw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2038,8 +2038,6 @@ obtain the public key using JWT VC Issuer Metadata as defined in <a href="#jwt-v
 </li>
             </ol>
 </li>
-          <li class="compact" id="section-3.5-2.3">DID Document Resolution: If a recipient supports DID Document Resolution and if the <code>iss</code> value contains a DID <span>[<a href="#W3C.DID" class="cite xref">W3C.DID</a>]</span>, the recipient MUST retrieve the public key from the DID Document resolved from the DID in the <code>iss</code> value. In this case, if the <code>kid</code> JWT header parameter is present, the <code>kid</code> MUST be a relative or absolute DID URL of the DID in the <code>iss</code> value, identifying the public key.<a href="#section-3.5-2.3" class="pilcrow">¶</a>
-</li>
         </ul>
 <p id="section-3.5-3">Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 10.2</a> for security considerations.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
 <p id="section-3.5-4">If a recipient cannot validate that the public verification key corresponds to the <code>iss</code> value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
@@ -2090,17 +2088,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.rUdBV
-8xsYaaS37CCTwBwuS26jSrN2-Nj-5CEtcS1p0RtGkPWjezv81xS0FAZSsGM6-VU9NONJ
-z89_zuaif-oYg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KfIz9
+DeM-4A4Rzmv3PnC8H_kW229jyoUDzR8-to8xn-g2Keu0HAASuCFUnKX4JmOiMOlWOp11
+bVTLcfo63KKJw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE1MDA5MD
-ksICJzZF9oYXNoIjogIk1xTlBYZWZQcXd6V0lTNkxQZHNuaHgxZXQydDJFenpFZzdhM3
-l5b1BRUzgifQ.0xw-ChWm_SOl4x33QTlaXJf_VWgbOZ0PAo7X8C4Vp-soOf_UgnSrULG
-R6arX8IGDmPpTCFPIeOuesq2qFZg5qQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE1MDExOT
+MsICJzZF9oYXNoIjogInR0N0pOV2ptR1J4YS1FUzFIblM4ci1ITzEwc2YwNUQyNjNoY1
+I3cU9rMkEifQ.IAWEHYadJeLbC9VQNXtWKAHwGyDbNqvKumK-kjh3ce7d17tvae6VbPd
+J7aQfLYiq0kABxYERRNYXImP2f_KlNg
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2145,8 +2143,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.CQHAjMuACQpOe_GF86iF6WCJS2EDLFGiPbuvffyPIe5HI4
-OhLRAJzRSTidYdo3cAqd8qllbHIoubKvsVAJ_OLw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.h2Jq-5rTgLQZnF-ttdshmmshalyOlGuc2eQfodFvUvzfDU
+mr3MMODAUlqGHAFg84X1BPFKehkwPz9bYpbn__6A~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3298,10 +3296,6 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="W3C.DID">[W3C.DID]</dt>
-        <dd>
-<span class="refAuthor">Sporny, M.</span>, <span class="refAuthor">Longley, D.</span>, <span class="refAuthor">Sabadello, M.</span>, <span class="refAuthor">Reed, D.</span>, <span class="refAuthor">Steele, O.</span>, and <span class="refAuthor">C. Allen</span>, <span class="refTitle">"Decentralized Identifiers (DIDs) v1.0"</span>, <time datetime="2022-07-19" class="refDate">19 July 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="W3C.VCDM">[W3C.VCDM]</dt>
       <dd>
 <span class="refAuthor">Sporny, M.</span>, <span class="refAuthor">Longley, D.</span>, <span class="refAuthor">Chadwick, D.</span>, and <span class="refAuthor">O. Steele</span>, <span class="refTitle">"Verifiable Credentials Data Model v2.0"</span>, <time datetime="2024-02-10" class="refDate">10 February 2024</time>, <span>&lt;<a href="https://www.w3.org/TR/vc-data-model-2.0/">https://www.w3.org/TR/vc-data-model-2.0/</a>&gt;</span>. </dd>
@@ -3508,8 +3502,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.vg8hyvQ47X3pworFU_V0qlnGPdtGiLwoGv66Uao4O93NfZKG1NxVF0
-GROWxH2CVwtk6iwVm1yqzH5fiBPypRvg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.4P1LLhUFBEGrEago-UI_RyRg9zMUSlHBPk7p0J1o1S54pDEwjrSQtw
+PlL3_vPYw3PBpTWBIqYS6nWtnvArg_Kg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3864,14 +3858,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.vg8hyvQ47X3pworFU_V0qlnGPdtGiLwoGv66Uao4O93NfZKG1NxVF0
-GROWxH2CVwtk6iwVm1yqzH5fiBPypRvg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.4P1LLhUFBEGrEago-UI_RyRg9zMUSlHBPk7p0J1o1S54pDEwjrSQtw
+PlL3_vPYw3PBpTWBIqYS6nWtnvArg_Kg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3MzE1MDA5MDksICJzZF9oYXNoIjogInNDSUt5ek95RkFad
-nhGZkFKdFRtVm9jMHJlbnFLaWtyY0pkNC03cWtsZVUifQ.wYADbsZbFx4Ykmpk4M8W_m
-PUSknJ8STId6EBYPUIRPnRLHGrYzgDZkipmjiWJtvmrZbEUGTpsrPXWymk-8mg3A
+mlmaWVyIiwgImlhdCI6IDE3MzE1MDExOTMsICJzZF9oYXNoIjogIm1abFFnNThFRmJNb
+3djZGVYR3BqY0hCN0ZpMnFEaWJud3RUS3dJdzVWeG8ifQ.XV2sC4HjQ7ufdNgDkjX2ic
+ZONXLGxk0kl9akKnPQU8lTmNMYXsHyvmy6bPOnhb9cPtWeV8oMtXzkAjS4vVZLBQ
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3880,8 +3874,8 @@ PUSknJ8STId6EBYPUIRPnRLHGrYzgDZkipmjiWJtvmrZbEUGTpsrPXWymk-8mg3A
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1731500909,
-  "sd_hash": "sCIKyzOyFAZvxFfAJtTmVoc0renqKikrcJd4-7qkleU"
+  "iat": 1731501193,
+  "sd_hash": "mZlQg58EFbMowcdeXGpjcHB7Fi2qDibnwtTKwIw5Vxo"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
@@ -4066,7 +4060,8 @@ Andres Uribe,
 Christian Bormann,
 Giuseppe De Marco,
 Lukas J Han,
-Michael Jones,
+Leif Johansson,
+Michael B. Jones,
 Mike Prorock,
 Orie Steele,
 Paul Bastian,
@@ -4084,6 +4079,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 <p id="appendix-D-1">-06<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-D-2.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-D-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-05<a href="#appendix-D-3" class="pilcrow">¶</a></p>
