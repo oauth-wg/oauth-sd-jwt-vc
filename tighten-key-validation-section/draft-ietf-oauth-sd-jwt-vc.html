@@ -1086,7 +1086,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 15 May 2025</td>
+<td class="center">Expires 17 May 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1099,12 +1099,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-11-11" class="published">11 November 2024</time>
+<time datetime="2024-11-13" class="published">13 November 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-05-15">15 May 2025</time></dd>
+<dd class="expires"><time datetime="2025-05-17">17 May 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1158,7 +1158,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 15 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 17 May 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1398,7 +1398,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
                 <p id="section-toc.1-1.14.2.2.1"><a href="#appendix-A.2" class="auto internal xref">A.2</a>.  <a href="#name-media-types-registry" class="internal xref">Media Types Registry</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.14.2.2.2.1">
-                    <p id="section-toc.1-1.14.2.2.2.1.1"><a href="#appendix-A.2.1" class="auto internal xref">A.2.1</a>.  <a href="#name-application-vcsd-jwt" class="internal xref">application/vc+sd-jwt</a></p>
+                    <p id="section-toc.1-1.14.2.2.2.1.1"><a href="#appendix-A.2.1" class="auto internal xref">A.2.1</a>.  <a href="#name-application-dcsd-jwt" class="internal xref">application/dc+sd-jwt</a></p>
 </li>
                 </ul>
 </li>
@@ -1595,7 +1595,9 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.8" class="p
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
         </h3>
 <p id="section-3.1-1">SD-JWT VCs compliant with this specification MUST use the media type
-<code>application/vc+sd-jwt</code> as defined in <a href="#application-vc-sd-jwt" class="auto internal xref">Appendix A.2.1</a>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<code>application/dc+sd-jwt</code> as defined in <a href="#media-type" class="auto internal xref">Section 3.1</a>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<p id="section-3.1-2">The base subtype name <code>dc</code> is meant to stand for "digital credential", which is
+a term that is emerging as a conceptual synonym for "verifiable credential".<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data-format">
@@ -1616,18 +1618,19 @@ claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a hre
 <p id="section-3.2.1-1">This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-2">The <code>typ</code> header parameter of the SD-JWT MUST be present. The <code>typ</code> value MUST
-use <code>vc+sd-jwt</code>. This indicates that the payload of the SD-JWT contains plain
+use <code>dc+sd-jwt</code>. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules as defined in this specification. It further
 indicates that the SD-JWT is a SD-JWT component of a SD-JWT VC.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-3">The following is a non-normative example of a decoded SD-JWT header:<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.2.1-4">
 <pre>{
   "alg": "ES256",
-  "typ": "vc+sd-jwt"
+  "typ": "dc+sd-jwt"
 }
 
 </pre><a href="#section-3.2.1-4" class="pilcrow">¶</a>
 </div>
+<p id="section-3.2.1-5">Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> as the value of the <code>typ</code> header for a reasonable transitional period.<a href="#section-3.2.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="jwt-claims-set">
@@ -1957,7 +1960,7 @@ confirmation method of the Key Binding.<a href="#section-3.3-5" class="pilcrow">
         </ul>
 <p id="section-3.3-25">The SD-JWT and the Disclosures would then be serialized by the Issuer into the following format for issuance to the Holder:<a href="#section-3.3-25" class="pilcrow">¶</a></p>
 <div class="lang-txt sourcecode" id="section-3.3-26">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
 Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
 VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
 YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
@@ -1972,9 +1975,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LuGdI
-TPMxHlTrFoER4Vv52aJIis_QRnkvCShsCZgiSQHIHGiQIS1isaXFDe4srBdhcTIH0SOz
-I2aP43YSNbMhw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.h688z
+j9skQmMy9ZV6wv-bGKZ_QA4hhHjMYw729xnW1MhiQPU9PPyamBCwzfRsA2FRnNUE4iGI
+jwGcEMUGJvbmQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2070,7 +2073,7 @@ be ignored by the Verifier.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 In this presentation, the Holder provides only the Disclosures for the <code>address</code> and <code>is_over_65</code> claims.
 Other claims are not disclosed to the Verifier.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <div class="lang-txt sourcecode" id="section-4.2-2">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
 Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
 VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
 YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
@@ -2085,17 +2088,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LuGdI
-TPMxHlTrFoER4Vv52aJIis_QRnkvCShsCZgiSQHIHGiQIS1isaXFDe4srBdhcTIH0SOz
-I2aP43YSNbMhw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.h688z
+j9skQmMy9ZV6wv-bGKZ_QA4hhHjMYw729xnW1MhiQPU9PPyamBCwzfRsA2FRnNUE4iGI
+jwGcEMUGJvbmQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzEzNjE3MD
-csICJzZF9oYXNoIjogIkxJcU1NbWpQZkFNclZsazhBMTl0N3lIaTZDOFgzSnFXemJObz
-lBdGQycE0ifQ.zf5Ewaz4FHF9kzP45bIFsYMBgh2gQfQNYjI0VAydsEGOQ4khIEHcEFM
-rEZt7yxzX08vdJ2lVkEThvp5I9bgqXA
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE1MDA5Nj
+EsICJzZF9oYXNoIjogIndrTEhuZlQ3SEdFVXY0OU9kUi1VYXRwUU14TmU4czVWM0huVD
+RoakRWcm8ifQ.onJR_dtrkbCWsQjHmhEa-BOjYaVF1ssea2STxj5DyVjKCGY4VFlbexG
+hCCvJG9wxpIaYmvM_MjNb32pYrq6TOg
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2128,7 +2131,7 @@ rEZt7yxzX08vdJ2lVkEThvp5I9bgqXA
 <p id="section-4.2-5">The following example shows a presentation of a (similar but different) SD-JWT without a
 Key Binding JWT:<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <div class="lang-txt sourcecode" id="section-4.2-6">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
 ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
 wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
 idlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs
@@ -2140,8 +2143,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.E4ZCljbAwmOMTfkHp4J8KJB2HInNwhNtREwNsvyO4PEatP
-k8CsJjs8fU9UjcPUltRSBaGe7K8pQZDjnusz7TAQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.FhbUpCcj9Jc5CCJonu_LwUyNHMcHe4yGfGKa4TCxCJt45j
+biHVKVPf0F3BHksFcSmLWqey5MNsQpt2iyGiOeGg~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3318,7 +3321,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
           <li class="normal" id="appendix-A.1-1.3">Change Controller: IETF<a href="#appendix-A.1-1.3" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="appendix-A.1-1.4">
-            <p id="appendix-A.1-1.4.1">Specification Document(s): [[ <a href="#type-claim" class="auto internal xref">Section 3.2.2.1.1</a> of this of this specification ]]<a href="#appendix-A.1-1.4.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.1-1.4.1">Specification Document(s): [[ <a href="#type-claim" class="auto internal xref">Section 3.2.2.1.1</a> of this specification ]]<a href="#appendix-A.1-1.4.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.1-1.5">
             <p id="appendix-A.1-1.5.1">Claim Name: "vct#integrity"<a href="#appendix-A.1-1.5.1" class="pilcrow">¶</a></p>
@@ -3330,7 +3333,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
             <p id="appendix-A.1-1.7.1">Change Controller: IETF<a href="#appendix-A.1-1.7.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="appendix-A.1-1.8">
-            <p id="appendix-A.1-1.8.1">Specification Document(s): [[ <a href="#document-integrity" class="auto internal xref">Section 7</a> of this of this specification ]]<a href="#appendix-A.1-1.8.1" class="pilcrow">¶</a></p>
+            <p id="appendix-A.1-1.8.1">Specification Document(s): [[ <a href="#document-integrity" class="auto internal xref">Section 7</a> of this specification ]]<a href="#appendix-A.1-1.8.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 </section>
@@ -3340,16 +3343,16 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <h3 id="name-media-types-registry">
 <a href="#appendix-A.2" class="section-number selfRef">A.2. </a><a href="#name-media-types-registry" class="section-name selfRef">Media Types Registry</a>
         </h3>
-<div id="application-vc-sd-jwt">
+<div id="media-type-1">
 <section id="appendix-A.2.1">
-          <h4 id="name-application-vcsd-jwt">
-<a href="#appendix-A.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-application-vcsd-jwt" class="section-name selfRef">application/vc+sd-jwt</a>
+          <h4 id="name-application-dcsd-jwt">
+<a href="#appendix-A.2.1" class="section-number selfRef">A.2.1. </a><a href="#name-application-dcsd-jwt" class="section-name selfRef">application/dc+sd-jwt</a>
           </h4>
-<p id="appendix-A.2.1-1">The Internet media type for a SD-JWT VC is <code>application/vc+sd-jwt</code>.<a href="#appendix-A.2.1-1" class="pilcrow">¶</a></p>
+<p id="appendix-A.2.1-1">The Internet media type for an SD-JWT VC is <code>application/dc+sd-jwt</code>.<a href="#appendix-A.2.1-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-A.2.1-2.1">Type name: <code>application</code><a href="#appendix-A.2.1-2.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-A.2.1-2.2">Subtype name: <code>vc+sd-jwt</code><a href="#appendix-A.2.1-2.2" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-A.2.1-2.2">Subtype name: <code>dc+sd-jwt</code><a href="#appendix-A.2.1-2.2" class="pilcrow">¶</a>
 </li>
             <li class="compact" id="appendix-A.2.1-2.3">Required parameters: n/a<a href="#appendix-A.2.1-2.3" class="pilcrow">¶</a>
 </li>
@@ -3477,7 +3480,7 @@ using the Holder's public key passed in a <code>cnf</code> claim in the SD-JWT.<
 </div>
 <p id="appendix-B.1-5">The following is the issued SD-JWT:<a href="#appendix-B.1-5" class="pilcrow">¶</a></p>
 <div class="breakable lang-txt sourcecode" id="appendix-B.1-6">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
 uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiOVpicGxDN1R
 kRVc3cWFsNkJCWmxNdHFKZG1lRU9pWGV2ZEpsb1hWSmRSUSIsICJJMDBmY0ZVb0RYQ3V
 jcDV5eTJ1anFQc3NEVkdhV05pVWxpTnpfYXdEMGdjIiwgIklFQllTSkdOaFhJbHJRbzU
@@ -3499,8 +3502,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.5_nbZ5Af_sd1w6kiXUm5I5_LPpATo6ZWTSe05UmQ8XZNd80c48spW6
-J-n27RYTkTeAeP8Sa5lWLBTjlkaILCeA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.hsFxaL9ptEp0WvJ73OkoQFD29WCw3H-prpUrrkdNAmVU8_PD_0yevZ
+_-YjCrFk5UMu6g3mogJDA_Ny52eXAPDA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3833,7 +3836,7 @@ iwgdHJ1ZV0~WyJlSzVvNXBIZmd1cFBwbHRqMXFoQUp3IiwgIjY1IiwgZmFsc2Vd~
         </ul>
 <p id="appendix-B.1-52">This shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:<a href="#appendix-B.1-52" class="pilcrow">¶</a></p>
 <div class="lang-txt sourcecode" id="appendix-B.1-53">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
 uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiOVpicGxDN1R
 kRVc3cWFsNkJCWmxNdHFKZG1lRU9pWGV2ZEpsb1hWSmRSUSIsICJJMDBmY0ZVb0RYQ3V
 jcDV5eTJ1anFQc3NEVkdhV05pVWxpTnpfYXdEMGdjIiwgIklFQllTSkdOaFhJbHJRbzU
@@ -3855,14 +3858,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.5_nbZ5Af_sd1w6kiXUm5I5_LPpATo6ZWTSe05UmQ8XZNd80c48spW6
-J-n27RYTkTeAeP8Sa5lWLBTjlkaILCeA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.hsFxaL9ptEp0WvJ73OkoQFD29WCw3H-prpUrrkdNAmVU8_PD_0yevZ
+_-YjCrFk5UMu6g3mogJDA_Ny52eXAPDA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3MzEzNjE3MDcsICJzZF9oYXNoIjogInhmMDNMeHFjUTJoV
-UlkdEZWR2phalhZSk00Z3RGZXNmS3h2eEZGeHVDYVUifQ.k4TpH0ffyUqrB7CAqvf0nu
-gaZ4Xg5GO1Ac94ifv34WusWvTq0fqvIIQUUQD8buF7IaEk12pg5EhzEUHQqcdV6w
+mlmaWVyIiwgImlhdCI6IDE3MzE1MDA5NjEsICJzZF9oYXNoIjogIll2TE9MZ3lLMTFRc
+Th0bWVxWmdMWEE4bkVaWFBGNElxTDUzNVVYX0s5ejQifQ.1SM9To3zlX9g_Y6sjwVuHz
+O1o1_S3ENQQpQv4vjgtNsLa_zjHewuzG1YIeByWMaC6Oc07q-ekMR2Fe98V12ECA
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3871,8 +3874,8 @@ gaZ4Xg5GO1Ac94ifv34WusWvTq0fqvIIQUUQD8buF7IaEk12pg5EhzEUHQqcdV6w
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1731361707,
-  "sd_hash": "xf03LxqcQ2hUIdtFVGjajXYJM4gtFesfKxvxFFxuCaU"
+  "iat": 1731500961,
+  "sd_hash": "YvLOLgyK11Qq8tmeqZgLXA8nEZXPF4IqL535UX_K9z4"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
@@ -4075,7 +4078,9 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-D-1">-06<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-2.1">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-2.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-D-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-05<a href="#appendix-D-3" class="pilcrow">¶</a></p>
