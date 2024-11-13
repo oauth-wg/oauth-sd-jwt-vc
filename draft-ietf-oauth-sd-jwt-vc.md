@@ -162,7 +162,10 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 ## Media Type
 
 SD-JWT VCs compliant with this specification MUST use the media type
-`application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
+`application/dc+sd-jwt` as defined in (#media-type).
+
+The base subtype name `dc` is meant to stand for "digital credential", which is
+a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
@@ -179,7 +182,7 @@ This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.
 
 The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
-use `vc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
+use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules as defined in this specification. It further
 indicates that the SD-JWT is a SD-JWT component of a SD-JWT VC.
 
@@ -188,9 +191,11 @@ The following is a non-normative example of a decoded SD-JWT header:
 ```
 {
   "alg": "ES256",
-  "typ": "vc+sd-jwt"
+  "typ": "dc+sd-jwt"
 }
 ```
+
+Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both `vc+sd-jwt` and `dc+sd-jwt` as the value of the `typ` header for a reasonable transitional period.
 
 ### JWT Claims Set
 
@@ -338,7 +343,6 @@ obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer
 - X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST
      1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and
      2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
-- DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
@@ -1203,43 +1207,6 @@ recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
-<reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
-    <front>
-        <author initials="M." surname="Sporny" fullname="Manu Sporny">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Longley" fullname="Dave Longley">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="M." surname="Sabadello" fullname="Markus Sabadello">
-            <organization>
-                <organizationName>Danube Tech</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Reed" fullname="Drummond Reed">
-            <organization>
-                <organizationName>Evernym/Avast</organizationName>
-            </organization>
-        </author>
-        <author initials="O." surname="Steele" fullname="Orie Steele">
-            <organization>
-                <organizationName>Transmute</organizationName>
-            </organization>
-        </author>
-        <author initials="C." surname="Allen" fullname="Christopher Allen">
-            <organization>
-                <organizationName>Blockchain Commons</organizationName>
-            </organization>
-        </author>
-        <title>Decentralized Identifiers (DIDs) v1.0</title>
-        <date day="19" month="July" year="2022"/>
-    </front>
-</reference>
-
 <reference anchor="W3C.VCDM" target="https://www.w3.org/TR/vc-data-model-2.0/">
     <front>
         <author initials="M." surname="Sporny" fullname="Manu Sporny">
@@ -1321,21 +1288,21 @@ recommendations in (#robust-retrieval) apply.
 - Claim Name: "vct"
 - Claim Description: Verifiable credential type identifier
 - Change Controller: IETF
-- Specification Document(s): [[ (#type-claim) of this of this specification ]]
+- Specification Document(s): [[ (#type-claim) of this specification ]]
 
 - Claim Name: "vct#integrity"
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
-- Specification Document(s): [[ (#document-integrity) of this of this specification ]]
+- Specification Document(s): [[ (#document-integrity) of this specification ]]
 
 ## Media Types Registry
 
-### application/vc+sd-jwt {#application-vc-sd-jwt}
+### application/dc+sd-jwt {#media-type}
 
-The Internet media type for a SD-JWT VC is `application/vc+sd-jwt`.
+The Internet media type for an SD-JWT VC is `application/dc+sd-jwt`.
 
 * Type name: `application`
-* Subtype name: `vc+sd-jwt`
+* Subtype name: `dc+sd-jwt`
 * Required parameters: n/a
 * Optional parameters: n/a
 * Encoding considerations: 8-bit code points; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.
@@ -1554,7 +1521,8 @@ Andres Uribe,
 Christian Bormann,
 Giuseppe De Marco,
 Lukas J Han,
-Michael Jones,
+Leif Johansson,
+Michael B. Jones,
 Mike Prorock,
 Orie Steele,
 Paul Bastian,
@@ -1567,6 +1535,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -06
 
+* Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt`
+* Tightened the exposition of the Issuer-signed JWT Verification Key Validation section
 * Add the “Status” field for the well-known URI registration per IANA early review
 
 -05

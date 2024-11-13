@@ -23,4 +23,4 @@ holder_disclosed_claims:
 key_binding: false
 
 extra_header_parameters:
-  typ: "vc+sd-jwt"
+  typ: "dc+sd-jwt"

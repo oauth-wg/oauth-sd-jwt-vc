@@ -22,4 +22,4 @@ key_binding: true
 
 extra_header_parameters:
   kid: doc-signer-05-25-2022
-  typ: "vc+sd-jwt"
+  typ: "dc+sd-jwt"
