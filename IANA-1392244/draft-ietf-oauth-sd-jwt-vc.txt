@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 16 May 2025                                       Authlete Inc.
+Expires: 17 May 2025                                       Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        12 November 2024
+                                                        13 November 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 16 May 2025.
+   This Internet-Draft will expire on 17 May 2025.
 
 Copyright Notice
 
@@ -125,7 +125,7 @@ Table of Contents
    Appendix A.  IANA Considerations
      A.1.  JSON Web Token Claims Registration
      A.2.  Media Types Registry
-       A.2.1.  application/vc+sd-jwt
+       A.2.1.  application/dc+sd-jwt
      A.3.  Well-Known URI Registry
        A.3.1.  Registry Contents
    Appendix B.  Examples
@@ -261,7 +261,11 @@ Table of Contents
 3.1.  Media Type
 
    SD-JWT VCs compliant with this specification MUST use the media type
-   application/vc+sd-jwt as defined in Appendix A.2.1.
+   application/dc+sd-jwt as defined in Section 3.1.
+
+   The base subtype name dc is meant to stand for "digital credential",
+   which is a term that is emerging as a conceptual synonym for
+   "verifiable credential".
 
 3.2.  Data Format
 
@@ -279,7 +283,7 @@ Table of Contents
    of the SD-JWT VC.
 
    The typ header parameter of the SD-JWT MUST be present.  The typ
-   value MUST use vc+sd-jwt.  This indicates that the payload of the SD-
+   value MUST use dc+sd-jwt.  This indicates that the payload of the SD-
    JWT contains plain JSON and follows the rules as defined in this
    specification.  It further indicates that the SD-JWT is a SD-JWT
    component of a SD-JWT VC.
@@ -288,8 +292,17 @@ Table of Contents
 
    {
      "alg": "ES256",
-     "typ": "vc+sd-jwt"
+     "typ": "dc+sd-jwt"
    }
+
+   Note that this draft used vc+sd-jwt as the value of the typ header
+   from its inception in July 2023 until November 2024 when it was
+   changed to dc+sd-jwt to avoid conflict with the vc media type name
+   registered by the W3C's Verifiable Credentials Data Model draft.  In
+   order to facilitate a minimally disruptive transition, it is
+   RECOMMENDED that Verifiers and Holders accept both vc+sd-jwt and
+   dc+sd-jwt as the value of the typ header for a reasonable
+   transitional period.
 
 3.2.2.  JWT Claims Set
 
@@ -533,7 +546,7 @@ Table of Contents
    The SD-JWT and the Disclosures would then be serialized by the Issuer
    into the following format for issuance to the Holder:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
    Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
    VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
    YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
@@ -548,9 +561,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GpK-3
-   Oq5v7tUhIZ7ys2SVFMD_b-PGtHLPjWEWE6zYOushatxBjvyzFDMlmeJtE0PFldXcOx-2
-   TenmQw4I2BxPQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UuL-Y
+   FOrMCldtEjcYSJD-ViYuF-H_BJceSMrmIxBejEP4wllEMMmqdMLiFle5wHRQR_eJcMe6
+   qApFzw0b1n47g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -616,13 +629,6 @@ Table of Contents
           SAN entry of the end-entity certificate or that the domain
           name in the iss value matches the dNSName SAN entry of the
           end-entity certificate.
-   *  DID Document Resolution: If a recipient supports DID Document
-      Resolution and if the iss value contains a DID [W3C.DID], the
-      recipient MUST retrieve the public key from the DID Document
-      resolved from the DID in the iss value.  In this case, if the kid
-      JWT header parameter is present, the kid MUST be a relative or
-      absolute DID URL of the DID in the iss value, identifying the
-      public key.
 
    Separate specifications or ecosystem regulations MAY define rules
    complementing the rules defined above, but such rules are out of
@@ -655,7 +661,7 @@ Table of Contents
    address and is_over_65 claims.  Other claims are not disclosed to the
    Verifier.
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
    Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
    VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
    YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
@@ -670,17 +676,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GpK-3
-   Oq5v7tUhIZ7ys2SVFMD_b-PGtHLPjWEWE6zYOushatxBjvyzFDMlmeJtE0PFldXcOx-2
-   TenmQw4I2BxPQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UuL-Y
+   FOrMCldtEjcYSJD-ViYuF-H_BJceSMrmIxBejEP4wllEMMmqdMLiFle5wHRQR_eJcMe6
+   qApFzw0b1n47g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE0MzIxOT
-   IsICJzZF9oYXNoIjogInVydWpJeThCelQtNkwwMU5seFRlWlZkSlJPRTBWaE1UMFpQbT
-   VCbUtRdFkifQ.Z4pigBLfn2N6xokyrbbj5P8b3FZAmx4G9yA0FQHKmNGybCkYmTs9wao
-   n45rttzKoy1Fvi1ypM8xNg4iJw5dOHA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE1MDE2ND
+   AsICJzZF9oYXNoIjogInZXYzNPTDhKempnWUp4b3RpTFhmX1JTaVNuNHNHZlM1THNBU0
+   5WOTA5b1UifQ.jO9c5CReDgy_CZ7v2FBHo3QKanoFfEcXVL994_yd_4INSWrHaCxAUNY
+   m93jfMt0-pdFMBZM9UyzIlUqHuHRu-w
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -710,7 +716,7 @@ Table of Contents
    The following example shows a presentation of a (similar but
    different) SD-JWT without a Key Binding JWT:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
    ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
    wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
    idlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs
@@ -722,8 +728,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.N2NioGtg8lKFstLlqOJ6XdnWSNuLeKRC_JJCR65cUxGlJD
-   F-HacFOj_IWwSzHSgby8UGdlkvLtLv3EQ66yy24w~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.kTR5nVhRE3xOjvBFb9UtDxkQh4BLD4RQqC53Zm6mey9Qaw
+   pDZ5PewWBC3Uu9yteSXJftR2aiXJqTIiGSukTj5Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1677,10 +1683,6 @@ Table of Contents
               DOI 10.17487/RFC7517, May 2015,
               <https://www.rfc-editor.org/info/rfc7517>.
 
-   [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
-              O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
-              19 July 2022, <https://www.w3.org/TR/did-core/>.
-
    [W3C.VCDM] Sporny, M., Longley, D., Chadwick, D., and O. Steele,
               "Verifiable Credentials Data Model v2.0", 10 February
               2024, <https://www.w3.org/TR/vc-data-model-2.0/>.
@@ -1695,7 +1697,7 @@ A.1.  JSON Web Token Claims Registration
 
    *  Change Controller: IETF
 
-   *  Specification Document(s): [[ Section 3.2.2.1.1 of this of this
+   *  Specification Document(s): [[ Section 3.2.2.1.1 of this
       specification ]]
 
    *  Claim Name: "vct#integrity"
@@ -1704,17 +1706,16 @@ A.1.  JSON Web Token Claims Registration
 
    *  Change Controller: IETF
 
-   *  Specification Document(s): [[ Section 7 of this of this
-      specification ]]
+   *  Specification Document(s): [[ Section 7 of this specification ]]
 
 A.2.  Media Types Registry
 
-A.2.1.  application/vc+sd-jwt
+A.2.1.  application/dc+sd-jwt
 
-   The Internet media type for a SD-JWT VC is application/vc+sd-jwt.
+   The Internet media type for an SD-JWT VC is application/dc+sd-jwt.
 
    *  Type name: application
-   *  Subtype name: vc+sd-jwt
+   *  Subtype name: dc+sd-jwt
    *  Required parameters: n/a
    *  Optional parameters: n/a
    *  Encoding considerations: 8-bit code points; SD-JWT VC values are
@@ -1808,7 +1809,7 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    The following is the issued SD-JWT:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
    uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiOVpicGxDN1R
    kRVc3cWFsNkJCWmxNdHFKZG1lRU9pWGV2ZEpsb1hWSmRSUSIsICJJMDBmY0ZVb0RYQ3V
    jcDV5eTJ1anFQc3NEVkdhV05pVWxpTnpfYXdEMGdjIiwgIklFQllTSkdOaFhJbHJRbzU
@@ -1830,8 +1831,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19._HaJiTzypiJp7XUHO24dDcfuDKO0m-CqEveOYZBX22QaiOgraP_w9X
-   Xf7Lo6JBJMGUlYlOzr1XOxdPuyAKg8KA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.Dp3BWON87bn14bIBZg4h1jwQLG7mcxm7iLzvq5v_nTTRzKJRBOuq8y
+   YGSSzWOdAiWDqbE0pz1e3taU1-j4boug~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2081,7 +2082,7 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    discloses only nationality and the fact that the person is over 18
    years old:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogInZjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
    uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiOVpicGxDN1R
    kRVc3cWFsNkJCWmxNdHFKZG1lRU9pWGV2ZEpsb1hWSmRSUSIsICJJMDBmY0ZVb0RYQ3V
    jcDV5eTJ1anFQc3NEVkdhV05pVWxpTnpfYXdEMGdjIiwgIklFQllTSkdOaFhJbHJRbzU
@@ -2103,22 +2104,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19._HaJiTzypiJp7XUHO24dDcfuDKO0m-CqEveOYZBX22QaiOgraP_w9X
-   Xf7Lo6JBJMGUlYlOzr1XOxdPuyAKg8KA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.Dp3BWON87bn14bIBZg4h1jwQLG7mcxm7iLzvq5v_nTTRzKJRBOuq8y
+   YGSSzWOdAiWDqbE0pz1e3taU1-j4boug~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MzE0MzIxOTIsICJzZF9oYXNoIjogImRNb1c5WE1DTGtRb
-   1RxMm5WcEkyeHc5SGwtOVdCUk95NlJLUjNMNHFMZ1EifQ.-NzTX89iFM_e1RKN1-REgP
-   6c0Knh60ejsFw2RRW2OVnhbOJDcJWaj-gN44JjjaQqqPMnpsOCIS2jbFTgtNLYYA
+   mlmaWVyIiwgImlhdCI6IDE3MzE1MDE2NDAsICJzZF9oYXNoIjogIjZIMDNQREdKSlpXe
+   FVCd0FHNFdQaThSamQwa1Y0Sm9iNndfd2wzVlExWkUifQ.nR3JodcLNDb30-fRaMnY9g
+   skNTkdmecwk5mRcMVpnUc6nZGJUmruh8LEXf8v8_EQdgfWdL-Wc6mQjelHYWYU0w
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1731432192,
-     "sd_hash": "dMoW9XMCLkQoTq2nVpI2xw9Hl-9WBROy6RKR3L4qLgQ"
+     "iat": 1731501640,
+     "sd_hash": "6H03PDGJJZWxUBwAG4WPi8Rjd0kV4Job6w_wl3VQ1ZE"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2280,15 +2281,19 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-   Giuseppe De Marco, Lukas J Han, Michael Jones, Mike Prorock, Orie
-   Steele, Paul Bastian, Torsten Lodderstedt, Tobias Looker, and
-   Kristina Yasuda for their contributions (some of which substantial)
-   to this draft and to the initial set of implementations.
+   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
+   Mike Prorock, Orie Steele, Paul Bastian, Torsten Lodderstedt, Tobias
+   Looker, and Kristina Yasuda for their contributions (some of which
+   substantial) to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
 
    -06
 
+   *  Update the anticipated media type registration request from
+      application/vc+sd-jwt to application/dc+sd-jwt
+   *  Tightened the exposition of the Issuer-signed JWT Verification Key
+      Validation section
    *  Add the “Status” field for the well-known URI registration per
       IANA early review
 
