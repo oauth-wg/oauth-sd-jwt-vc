@@ -162,7 +162,10 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 ## Media Type
 
 SD-JWT VCs compliant with this specification MUST use the media type
-`application/vc+sd-jwt` as defined in (#application-vc-sd-jwt).
+`application/dc+sd-jwt` as defined in (#media-type).
+
+The base subtype name `dc` is meant to stand for "digital credential", which is
+a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
@@ -179,7 +182,7 @@ This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.
 
 The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
-use `vc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
+use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules as defined in this specification. It further
 indicates that the SD-JWT is a SD-JWT component of a SD-JWT VC.
 
@@ -188,9 +191,11 @@ The following is a non-normative example of a decoded SD-JWT header:
 ```
 {
   "alg": "ES256",
-  "typ": "vc+sd-jwt"
+  "typ": "dc+sd-jwt"
 }
 ```
+
+Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both `vc+sd-jwt` and `dc+sd-jwt` as the value of the `typ` header for a reasonable transitional period.
 
 ### JWT Claims Set
 
@@ -1283,21 +1288,21 @@ recommendations in (#robust-retrieval) apply.
 - Claim Name: "vct"
 - Claim Description: Verifiable credential type identifier
 - Change Controller: IETF
-- Specification Document(s): [[ (#type-claim) of this of this specification ]]
+- Specification Document(s): [[ (#type-claim) of this specification ]]
 
 - Claim Name: "vct#integrity"
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
-- Specification Document(s): [[ (#document-integrity) of this of this specification ]]
+- Specification Document(s): [[ (#document-integrity) of this specification ]]
 
 ## Media Types Registry
 
-### application/vc+sd-jwt {#application-vc-sd-jwt}
+### application/dc+sd-jwt {#media-type}
 
-The Internet media type for a SD-JWT VC is `application/vc+sd-jwt`.
+The Internet media type for an SD-JWT VC is `application/dc+sd-jwt`.
 
 * Type name: `application`
-* Subtype name: `vc+sd-jwt`
+* Subtype name: `dc+sd-jwt`
 * Required parameters: n/a
 * Optional parameters: n/a
 * Encoding considerations: 8-bit code points; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.
@@ -1529,6 +1534,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -06
 
+* Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt`
 * Tightened the exposition of the Issuer-signed JWT Verification Key Validation section
 
 -05
