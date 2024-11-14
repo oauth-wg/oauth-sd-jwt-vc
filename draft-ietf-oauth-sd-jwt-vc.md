@@ -1533,6 +1533,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-07
+
+
 -06
 
 * Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt`
