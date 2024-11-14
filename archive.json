@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-12T00:28:25.419567+00:00",
+  "timestamp": "2024-11-14T00:29:11.642555+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4988,7 +4988,7 @@
       "id": "I_kwDOJbVClc5-VCZ6",
       "title": "defining how DID can be used as user's indetifier",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -4997,8 +4997,8 @@
       ],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-08-06T18:48:57Z",
-      "closedAt": null,
+      "updatedAt": "2024-11-13T13:15:45Z",
+      "closedAt": "2024-11-13T13:15:45Z",
       "comments": [
         {
           "author": "paulbastian",
@@ -5216,6 +5216,13 @@
           "body": "I don't really have a strong opinion on whether \"kid\" or \"jku\" a new DID-based \"cnf\" method should be used.\r\n\r\nIn any case however, it would still make sense to have language such as what has been proposed by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/205#issuecomment-1947438330, considering existing implementations and use cases. Also, an example using a DID as a user's identifier would be useful.",
           "createdAt": "2024-08-06T18:48:55Z",
           "updatedAt": "2024-08-06T18:48:55Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "As previously discussed, a DID based confirmation method should be defined in a separate spec. I'd encourage interested parties to pursue that.  ",
+          "createdAt": "2024-11-13T13:15:45Z",
+          "updatedAt": "2024-11-13T13:15:45Z"
         }
       ]
     },
@@ -6198,15 +6205,15 @@
       "id": "I_kwDOJbVClc6QZHWN",
       "title": "Ambiguity what should happen when no `kid` parameter is present in header when DID is used as `iss` value",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/245",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "TimoGlastra",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "The spec mentions that a `kid` is optional when the `iss` value is a DID. The same seems to be true when using JWT Issuer Metadata (although there it mentions it is RECOMMENDED at least). It doesn't describe however what should happen if no KID is present.\r\n\r\nThis has caused some interop issues with implementations not including a `kid` field when a DID is used when e.g. `did:key` or `did:jwk` is used as you can infer which key is meant. However this means you have to make exceptions for specific did methods instead of following a general pattern.\r\n\r\nIs there a specific reason to make the `kid` optional if the `iss` value is a DID (and also similarly when JWT Issuer Metadata is used)? If a DID is used, it MUST be signed with a key in the did document right? And it also mentions that \"If a recipient cannot validate that the public verification key corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.\"\r\n\r\nSo I don't see a very good reason here to make the usage of `kid` optional, as it results in ambiguity. If there is a good reason to make it optional, would it be possible to also add the RECOMMENDED to using a `kid` when `iss` is a DID, that way we can at least promote other implementation to always include a `kid` when using a DID.",
       "createdAt": "2024-07-22T10:19:55Z",
-      "updatedAt": "2024-08-22T08:58:57Z",
-      "closedAt": null,
+      "updatedAt": "2024-11-13T13:12:23Z",
+      "closedAt": "2024-11-13T13:12:23Z",
       "comments": [
         {
           "author": "peacekeeper",
@@ -6235,6 +6242,13 @@
           "body": "I also believe that `kid` should be:\r\n\r\n- mandatory and perhaps most importantly\r\n- a fully-qualified DID URL (as per @decentralgabe  comment)\r\n\r\nIn addition, a check should be required to ensure that `kid` is a DID URL (sub-resource) of the DID in the `iss` claim.",
           "createdAt": "2024-08-22T08:58:55Z",
           "updatedAt": "2024-08-22T08:58:55Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The resolution described in #250 would address this.\r\n\r\nThis issue then has been overcome by events. \r\n\r\nI encourage interested parties and proponents of DID usage in this context -- which, despite any potential misunderstanding, remains permissible -- to work on specifying it in a manner and forum befitting its importance. \r\n\r\nIn #250 @kimdhamilton pointed to a recent initiative that might be relevant for those interested in contributing to DID method standardization: https://identity.foundation/publications/LOI-DIDMethodStandardization.pdf",
+          "createdAt": "2024-11-13T13:12:17Z",
+          "updatedAt": "2024-11-13T13:12:17Z"
         }
       ]
     },
@@ -6355,7 +6369,7 @@
       "id": "I_kwDOJbVClc6Q_dWH",
       "title": "Drop all references to DIDs and DID resolution",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/250",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "leifj",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -6364,8 +6378,8 @@
       ],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-10-08T18:23:20Z",
-      "closedAt": null,
+      "updatedAt": "2024-11-13T21:27:03Z",
+      "closedAt": "2024-11-13T12:36:20Z",
       "comments": [
         {
           "author": "selfissued",
@@ -6485,6 +6499,41 @@
           "body": "Those who are following this thread here should be aware of a PR that would remove support for DIDs: https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/251",
           "createdAt": "2024-09-20T14:46:48Z",
           "updatedAt": "2024-09-20T14:46:48Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "standards are about making choices and nobody stops you from creating a profile that uses DIDs ",
+          "createdAt": "2024-11-13T12:43:32Z",
+          "updatedAt": "2024-11-13T12:43:32Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "My assessment, acting as co-editor of this draft and endeavoring to represent the rough consensus of the WG, is that consensus favors removal of the references. ",
+          "createdAt": "2024-11-13T12:48:45Z",
+          "updatedAt": "2024-11-13T12:48:45Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "> rough consensus of the WG, is that consensus favors removal of the references\r\n\r\nHow does the co-editor understand \"rough consensus\", and how has he come to this assessment?",
+          "createdAt": "2024-11-13T16:31:19Z",
+          "updatedAt": "2024-11-13T16:31:29Z"
+        },
+        {
+          "author": "decentralgabe",
+          "authorAssociation": "NONE",
+          "body": "> > rough consensus of the WG, is that consensus favors removal of the references\r\n> \r\n> How does the co-editor understand \"rough consensus\", and how has he come to this assessment?\r\n\r\nClearly, when 5 people express dissent a co-editor can declare \"consensus.\"",
+          "createdAt": "2024-11-13T16:35:23Z",
+          "updatedAt": "2024-11-13T16:35:23Z"
+        },
+        {
+          "author": "andorsk",
+          "authorAssociation": "NONE",
+          "body": "For consensus building, there are a number of RFC's describing the IETF process. The conversations here seem to indicate to me there is no \"rough consensus\". \r\n\r\nIn particular, [RFC7282 Section 6](https://datatracker.ietf.org/doc/html/rfc7282#section-6) and many of the other sections in [RFC7282](https://datatracker.ietf.org/doc/html/rfc7282#section-4) focused on \"rough\" consensus building. \r\n\r\nAlso, it should be noted a PR was submitted that seems to be a result of this issue #251 but was not linked. It was also named `Tightened exposition of Issuer-signed JWT Verification Key Validation` section #251 which seems to provide a perception of distance to this issue, when clearly they are related.  This harms the visibility of discussion and context for the PR, which from my understanding, is not aligned with [IETF Mission Statement](https://www.rfc-editor.org/rfc/rfc3935#section-1) around an open/transparent process for discourse.\r\n\r\nI understand there are two camps of thought here, but there are solid reasons (technically and practically) provided by pro-DID side, and there is consensus procedure to deal with the objections raised here which need to be addressed and do not seem like they have been. \r\n\r\nAccording to [Section 3 of RFC7282](https://datatracker.ietf.org/doc/html/rfc7282#section-3), rough consensus can be achieved when all issues are addressed, but not necessarily accommodated:\r\n\r\n> What can't happen is that the chair bases their decision solely on hearing a large\r\n   number of voices simply saying, \"The objection isn't valid.\"  That\r\n   would simply be to take a vote.  A valid justification needs to me\r\n   made. \r\n\r\nThat seems to contradict the actions here: https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/250#issuecomment-2473526620\r\n\r\nIt seems to me this issue has not been appropriately addressed given the concerns raised. Stating one is \"tired\" of discussing the issue is not a valid argument, and I for one would like to see the concerns addressed by the previous commenters addressed. ",
+          "createdAt": "2024-11-13T21:03:56Z",
+          "updatedAt": "2024-11-13T21:27:03Z"
         }
       ]
     },
@@ -6768,15 +6817,15 @@
       "id": "I_kwDOJbVClc6comQ-",
       "title": "[IANA #1392244] Early review: draft-ietf-oauth-sd-jwt-vc-05 (IETF 121)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/266",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "> [IANA #1392244] Early review: draft-ietf-oauth-sd-jwt-vc-05 (IETF 121)\r\n\r\n> Amanda Baber via RT via ietf.org \r\n>\tto draft-ietf-oauth-sd-jwt-vc.all\r\n\r\n\r\n> Dear Authors,\r\n> \r\n> Before the IETF meeting, we check working group agendas for documents with IANA-related issues. We have one note about this document:\r\n> \r\n> https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-05\r\n> \r\n> In Section A.3.1, please add the \u201cStatus\u201d field for the well-known URI registration.\r\n> \r\n> If you have any questions, just let us know. If you'd like to talk in person, you can find us next to the RFC Editor's table from Monday through Thursday. You can also request another review at any time by contacting us at [iana@iana.org](mailto:iana@iana.org).\r\n> \r\n> For more information about IANA Considerations section requirements, please see\r\n> \r\n> https://www.iana.org/help/protocol-registration\r\n> \r\n> Best regards,\r\n> \r\n> Amanda Baber\r\n> IANA Operations Manager",
       "createdAt": "2024-10-31T21:45:13Z",
-      "updatedAt": "2024-10-31T21:45:13Z",
-      "closedAt": null,
+      "updatedAt": "2024-11-13T14:20:15Z",
+      "closedAt": "2024-11-13T14:20:15Z",
       "comments": []
     },
     {
@@ -6794,6 +6843,37 @@
       "updatedAt": "2024-11-07T13:14:31Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 270,
+      "id": "I_kwDOJbVClc6eUfQH",
+      "title": "Define how X509 certificate can be used as user's identifier",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/270",
+      "state": "CLOSED",
+      "author": "cre8",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Close to #205 we want to bind an sd-jwt-vc to an existing x509 certificate to reuse the trustchain and also to allow a\r\n proof-of-possession.\r\n\r\nThe approach to extract the public key from the x509, put into the existing `jwk` field and compare later the public keys seems a bit hacky...\r\n\r\nIs your suggestion the same as in #205 to define a new spec or is there an existing approach that can be used for such a scenario?",
+      "createdAt": "2024-11-13T17:01:19Z",
+      "updatedAt": "2024-11-13T20:38:55Z",
+      "closedAt": "2024-11-13T20:33:05Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If I'm understanding correctly, the existing `x5t#S256` Certificate Thumbprint Confirmation Method sounds like it'd work? \r\n\r\nhttps://www.iana.org/assignments/jwt/jwt.xhtml#confirmation-methods \r\n\r\nhttps://www.rfc-editor.org/rfc/rfc8705.html#name-jwt-certificate-thumbprint-",
+          "createdAt": "2024-11-13T17:28:59Z",
+          "updatedAt": "2024-11-13T20:38:55Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "NONE",
+          "body": "@bc-pi for now it should work, thank you!",
+          "createdAt": "2024-11-13T20:33:05Z",
+          "updatedAt": "2024-11-13T20:33:05Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -21266,26 +21346,28 @@
     {
       "number": 251,
       "id": "PR_kwDOJbVClc544qFl",
-      "title": "Tightened exposition of Issuer-signed JWT Verification Key Validation section",
+      "title": "Tightened exposition of Issuer-signed JWT Verification Key Validation section (Drop all references to DIDs and DID resolution while leaving the exensiblity point for those who want to define a profile of SD-JWT VC using DIDs)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/251",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-08-20T17:18:34Z",
-      "updatedAt": "2024-11-11T21:48:58Z",
+      "updatedAt": "2024-11-13T21:20:56Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "e505fe84bbe63058b327c44480e9e700fb50b3fe",
+      "baseRefOid": "94c571b6c746b48c16a0594df5529e69fd68c826",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "tighten-key-validation-section",
-      "headRefOid": "d43b3da5537bc4559a6ba27da5c32b242366ac38",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "5fbb1f411217758aaa5e954bc1aa6df4707b7620",
+      "closedAt": "2024-11-13T12:32:48Z",
+      "mergedAt": "2024-11-13T12:32:48Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "d85b362d7f1cbfd89105fe01aabbccc7f9ddbe85"
+      },
       "comments": [
         {
           "author": "peacekeeper",
@@ -21293,6 +21375,34 @@
           "body": "I suggest the title of this PR be changed to \"Remove support for DIDs\", in order to:\r\n- clearly communicate the author's intent here\r\n- ensure that followers of this repo do not miss the opportunity to discuss this proposed breaking change\r\n",
           "createdAt": "2024-09-20T14:51:17Z",
           "updatedAt": "2024-09-20T14:51:17Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "A breaking change has been merged without even trying to resolve the issue with parties that are impacted?",
+          "createdAt": "2024-11-13T12:36:04Z",
+          "updatedAt": "2024-11-13T12:36:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "it's not a breaking change, Alen ",
+          "createdAt": "2024-11-13T12:39:11Z",
+          "updatedAt": "2024-11-13T12:39:11Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Fantastic! \r\n\r\nBy having a reference that allowed project to consistently implement key resolution using decentralised identifiers, this removal (without even trying to reach a consensus or even accept help from several people who offered it), you removed the option from the specs.\r\n\r\nWhat's the consensus mechanism in IETF specs writing? This decision is damaging both IETF, authors of this specs, and the community that would otherwise benefit from resolving the problem. Seems like requirements of your potential clients are unimportant.",
+          "createdAt": "2024-11-13T12:53:33Z",
+          "updatedAt": "2024-11-13T12:53:33Z"
+        },
+        {
+          "author": "andorsk",
+          "authorAssociation": "NONE",
+          "body": "I am generally not very active in the IETF community, so apologies if I am misunderstanding something, but as a matter of process: There was no description provided on the PR and no issue linked as a reference for why this decision was made. \r\n\r\nThe breadcrumbs I've found have been left by the comments on the PR, not the authors, and I would like to understand both positions better.\r\n\r\nFurthermore, as someone following trails here, making a normative change on a highly used spec without contextualizing it does not feel appropriate relative to the IETF policies on [Pull Requests (4.2)](https://datatracker.ietf.org/doc/html/rfc8874#section-4.2). \r\n\r\nGiven the impact to the pro-DID community along with the adoption level of SD-JWT, it's possible this should have been classified as a [substantive change](https://datatracker.ietf.org/doc/html/rfc8874#mature-documents) and discussed using the policies generally prescribed by the IETF and discussed on the mailing list. \r\n\r\nIt would be immensely appreciated to add a description or link to the discussion that contextualizes this PR written by the authors of this PR. ",
+          "createdAt": "2024-11-13T17:56:01Z",
+          "updatedAt": "2024-11-13T17:58:12Z"
         }
       ],
       "reviews": [
@@ -21385,6 +21495,26 @@
               "body": "It does not limit anything. ",
               "createdAt": "2024-11-11T21:48:58Z",
               "updatedAt": "2024-11-11T21:48:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6QwfGJ",
+          "commit": {
+            "abbreviatedOid": "40ec097"
+          },
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-12T05:52:45Z",
+          "updatedAt": "2024-11-12T05:52:45Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Then let's remove x509 :) It does not limit anything.",
+              "createdAt": "2024-11-12T05:52:45Z",
+              "updatedAt": "2024-11-12T05:52:45Z"
             }
           ]
         }
@@ -21720,20 +21850,156 @@
       "id": "PR_kwDOJbVClc6BkVIw",
       "title": "change media type from `vc+sd-jwt` to `dc+sd-jwt`",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/268",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt` per the Dublin Accord (last slide of https://datatracker.ietf.org/meeting/121/materials/slides-121-oauth-sessb-sd-jwt-and-sd-jwt-vc-02) ",
       "createdAt": "2024-11-11T23:52:16Z",
-      "updatedAt": "2024-11-11T23:52:17Z",
+      "updatedAt": "2024-11-13T12:28:08Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "e505fe84bbe63058b327c44480e9e700fb50b3fe",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "the-dublin-accord",
       "headRefOid": "c4ac71ab2ebe599a99d0016f1cc78fdc77baf1df",
+      "closedAt": "2024-11-13T12:28:08Z",
+      "mergedAt": "2024-11-13T12:28:08Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "94c571b6c746b48c16a0594df5529e69fd68c826"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6Q35Kj",
+          "commit": {
+            "abbreviatedOid": "c4ac71a"
+          },
+          "author": "selfissued",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-12T19:57:38Z",
+          "updatedAt": "2024-11-12T19:57:38Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Q357l",
+          "commit": {
+            "abbreviatedOid": "c4ac71a"
+          },
+          "author": "tplooker",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-12T19:59:18Z",
+          "updatedAt": "2024-11-12T19:59:18Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Q39vV",
+          "commit": {
+            "abbreviatedOid": "c4ac71a"
+          },
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-12T20:06:43Z",
+          "updatedAt": "2024-11-12T20:06:43Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Q4BDS",
+          "commit": {
+            "abbreviatedOid": "c4ac71a"
+          },
+          "author": "jogu",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-12T20:14:32Z",
+          "updatedAt": "2024-11-12T20:14:32Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Q4F9z",
+          "commit": {
+            "abbreviatedOid": "c4ac71a"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-12T20:24:53Z",
+          "updatedAt": "2024-11-12T20:24:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 269,
+      "id": "PR_kwDOJbVClc6Bqflz",
+      "title": "Add \u201cStatus\u201d field to well-known URI registration per IANA early review",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/269",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Add the \u201cStatus\u201d field for the well-known URI registration per IANA early review",
+      "createdAt": "2024-11-12T17:23:20Z",
+      "updatedAt": "2024-11-13T14:20:15Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d85b362d7f1cbfd89105fe01aabbccc7f9ddbe85",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "IANA-1392244",
+      "headRefOid": "04abe4795d5a2823e5594e9cb983a61ae4a454f1",
+      "closedAt": "2024-11-13T14:20:14Z",
+      "mergedAt": "2024-11-13T14:20:14Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "e2bed880dc34bf2b77ebb44cf9d30acfacb6d212"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6RCmVG",
+          "commit": {
+            "abbreviatedOid": "04abe47"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-13T14:15:46Z",
+          "updatedAt": "2024-11-13T14:15:46Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 271,
+      "id": "PR_kwDOJbVClc6B169X",
+      "title": "Add a placeholder -07 to Document History",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/271",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2024-11-13T21:37:45Z",
+      "updatedAt": "2024-11-13T21:37:45Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "e2bed880dc34bf2b77ebb44cf9d30acfacb6d212",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "07",
+      "headRefOid": "9044831650a9ddf8cffacef87fae2e8b579fd7f3",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
