@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-14T00:29:11.642555+00:00",
+  "timestamp": "2024-11-17T00:33:10.609447+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6665,9 +6665,17 @@
       ],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#section-6.3.1\r\n\r\nIs defining that if vct is an https:// it should check the metadata under the well known (at least the 2nd part of the text reads like this:\r\n>  i.e., by inserting /.well-known/vct after the authority part of the URL.)\r\n\r\nMany registries are, and will be accessible via URLs, hence the metadata type is expressed via an URL; Adding or maintaining a .well-known might not fit in the existing API designs. Also note that .well-known has well-known issues with multi-tenancy. Most use cases will delegate the hosting of the information to registries.\r\n\r\nAlso\r\n> URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nQuestions:\r\n- if schema is https, should the full URL be provided? (no ambiguity with .well-known, you can host schema on github, ...)\r\n- metadata retrieval category re-consideration:\r\n\r\n1) Fetch vct from a remote source:\r\n    a) URL: HTTPS schema -> full URL that points to a schema\r\n    b) URN: domain-defined URN that MUST be understood by the wallet; The URN method defines how to map the URN to URL and retrieve the data\r\n\r\n2) Fetch vct the metadata locally\r\n    a) local cache\r\n    b) Signature (signed or unsigned header); Whether or not metadata is shared in the (un)protected header is defined by the signature format, hence out of scope of this document.\r\n\r\n2b: point to consider for the OID4VP: should there be a flag: \"archival mode\" or similar, that would flag that the wallet needs to provide all the referenced content in an unprotected JWS header?",
       "createdAt": "2024-09-18T19:45:34Z",
-      "updatedAt": "2024-10-08T18:22:55Z",
+      "updatedAt": "2024-11-14T14:47:22Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "#272 removes the requirement to insert .well-known (discussion in #264)",
+          "createdAt": "2024-11-14T14:47:21Z",
+          "updatedAt": "2024-11-14T14:47:21Z"
+        }
+      ]
     },
     {
       "number": 257,
@@ -6800,7 +6808,7 @@
       ],
       "body": "Dr. Fett, PhD:\r\n>Gentlemen,\r\nSome feedback I received (on top of the comments we already got in the issuers) makes me second-guess the choice to use a .well-known URL for the type metadata documents. In fact, RFC 5785 tells us that .well-known is mainly to be used for site-wide information or information about a specific host.\r\n>>   As such, the well-known URI space was created with the expectation\r\n   that it will be used to make site-wide policy information and other\r\n   metadata available directly (if sufficiently concise), or provide\r\n   references to other URIs that provide such metadata.\r\n\r\nBrian Campbell, B.A.:\r\n>That feedback seems not wrong to me. We've got probably a lot of somewhat questionable uses of .well-known but type metadata is maybe less well suited than most. And less needed. \r\n>It could just point to the json document. Or we make up some convention. Or something with uri templates. \r\n",
       "createdAt": "2024-10-15T17:53:17Z",
-      "updatedAt": "2024-10-15T18:14:40Z",
+      "updatedAt": "2024-11-15T11:27:04Z",
       "closedAt": null,
       "comments": [
         {
@@ -6809,6 +6817,27 @@
           "body": "Relevant related issues: #256, #242, #233",
           "createdAt": "2024-10-15T17:58:52Z",
           "updatedAt": "2024-10-15T17:58:52Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "I believe that lifting the restriction is not preventing the use of .well-known;\r\nIMO there are two approaches\r\n- provide the full link\r\n- signal that the metadata is under the well-known\r\n\r\nHowever, metadata owner must be aware of the responsibility to take care of the versioning. As mentioned in #256, should there be a requirement to either use hash links or protect the remote content via vct#digest?\r\n\r\nDr. Horvat, PhD",
+          "createdAt": "2024-11-14T18:11:38Z",
+          "updatedAt": "2024-11-14T18:11:38Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Maybe I'm missing something, but the change in PR #272 should mostly solve this, I think. It now requires to provide the full URL to the metadata. (If someone wants to provide it under .well-known, that is their choice, but doesn't influence the requester at all).\r\n\r\nFor versioning I filed a [new issue](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/273). Not sure about making #digest mandatory, but we should also discuss this separately.",
+          "createdAt": "2024-11-15T10:45:48Z",
+          "updatedAt": "2024-11-15T10:45:48Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "#digest mandatory, but we should also discuss this separately.\r\n\r\n-> if it's an external resource, it should be defined how it is protected",
+          "createdAt": "2024-11-15T11:27:02Z",
+          "updatedAt": "2024-11-15T11:27:02Z"
         }
       ]
     },
@@ -6874,6 +6903,38 @@
           "updatedAt": "2024-11-13T20:33:05Z"
         }
       ]
+    },
+    {
+      "number": 273,
+      "id": "I_kwDOJbVClc6epMV1",
+      "title": "Provide guidance on versioning",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/273",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "[Dr. Horvat, PhD](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/264#issuecomment-2477101068):\r\n> However, metadata owner must be aware of the responsibility to take care of the versioning.\r\n\r\nWe could add this as a consideration to the spec.",
+      "createdAt": "2024-11-15T10:44:07Z",
+      "updatedAt": "2024-11-15T10:46:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 274,
+      "id": "I_kwDOJbVClc6ey1I8",
+      "title": "Non-existent section referred for key binding JWT rules due to a typo",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/274",
+      "state": "OPEN",
+      "author": "georgepadayatti",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 4.1. Key Binding JWT, says the following:\r\n\r\n> If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding JWT MUST adhere to the rules defined in Section 5.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-13)].\r\n\r\nBut Section 5.3 does not exist in the referred spec. Instead, it should be Section 4.3",
+      "createdAt": "2024-11-16T10:04:27Z",
+      "updatedAt": "2024-11-16T10:50:39Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -21355,7 +21416,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-08-20T17:18:34Z",
-      "updatedAt": "2024-11-13T21:20:56Z",
+      "updatedAt": "2024-11-15T16:21:07Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "94c571b6c746b48c16a0594df5529e69fd68c826",
@@ -21403,6 +21464,13 @@
           "body": "I am generally not very active in the IETF community, so apologies if I am misunderstanding something, but as a matter of process: There was no description provided on the PR and no issue linked as a reference for why this decision was made. \r\n\r\nThe breadcrumbs I've found have been left by the comments on the PR, not the authors, and I would like to understand both positions better.\r\n\r\nFurthermore, as someone following trails here, making a normative change on a highly used spec without contextualizing it does not feel appropriate relative to the IETF policies on [Pull Requests (4.2)](https://datatracker.ietf.org/doc/html/rfc8874#section-4.2). \r\n\r\nGiven the impact to the pro-DID community along with the adoption level of SD-JWT, it's possible this should have been classified as a [substantive change](https://datatracker.ietf.org/doc/html/rfc8874#mature-documents) and discussed using the policies generally prescribed by the IETF and discussed on the mailing list. \r\n\r\nIt would be immensely appreciated to add a description or link to the discussion that contextualizes this PR written by the authors of this PR. ",
           "createdAt": "2024-11-13T17:56:01Z",
           "updatedAt": "2024-11-13T17:58:12Z"
+        },
+        {
+          "author": "ThierryThevenet",
+          "authorAssociation": "NONE",
+          "body": "Strange we are already several implementers using sd-jwt with DIDs!",
+          "createdAt": "2024-11-15T15:18:48Z",
+          "updatedAt": "2024-11-15T16:21:07Z"
         }
       ],
       "reviews": [
@@ -21986,20 +22054,62 @@
       "id": "PR_kwDOJbVClc6B169X",
       "title": "Add a placeholder -07 to Document History",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/271",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-11-13T21:37:45Z",
-      "updatedAt": "2024-11-13T21:37:45Z",
+      "updatedAt": "2024-11-14T17:46:46Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "e2bed880dc34bf2b77ebb44cf9d30acfacb6d212",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "07",
       "headRefOid": "9044831650a9ddf8cffacef87fae2e8b579fd7f3",
+      "closedAt": "2024-11-14T17:46:46Z",
+      "mergedAt": "2024-11-14T17:46:46Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "da2dbec746a55f7c618c95ed752c17bd74b06a26"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6RPWTx",
+          "commit": {
+            "abbreviatedOid": "9044831"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-14T17:07:17Z",
+          "updatedAt": "2024-11-14T17:07:17Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 272,
+      "id": "PR_kwDOJbVClc6B7pvy",
+      "title": "Remove .well-known for vcts",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/272",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Remove the requirement to insert a .well-known part for vct URLs\r\n\r\nFixes #264, #233, #242, #256 ",
+      "createdAt": "2024-11-14T14:45:45Z",
+      "updatedAt": "2024-11-15T12:16:38Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/remove-well-known-thingy",
+      "headRefOid": "24ce64f00cc5b7e805517b5b6c864e9d56879ba3",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
