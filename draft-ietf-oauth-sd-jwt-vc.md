@@ -531,9 +531,9 @@ with the value `https://betelgeuse.example.com/education_credential`:
 
 Type Metadata for the type `https://betelgeuse.example.com/education_credential`
 can be retrieved using various mechanisms as described in
-(#retrieving-type-metadata). For this example, the `vct` value is used as a URL as defined in
+(#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
 (#retrieval-from-vct-claim) and the following Type Metadata Document is
-retrieved:
+retrieved from it:
 
 ```json
 {
