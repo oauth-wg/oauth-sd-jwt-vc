@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-17T00:33:10.609447+00:00",
+  "timestamp": "2024-11-19T00:30:50.642535+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -4997,7 +4997,7 @@
       ],
       "body": "There are use-cases that would like to use IETF SD-JWT VC draft over W3C VCDM draft, while using DID as user's/subject's identifier. Currently, SD-JWT VC mandates `cnf` claim to be present. It would be very helpful to define how a DID can be used with a `cnf` claim. (as keeping `cnf` claim as mandatory is probably better for the interoperability)",
       "createdAt": "2024-02-05T20:57:55Z",
-      "updatedAt": "2024-11-13T13:15:45Z",
+      "updatedAt": "2024-11-18T10:51:27Z",
       "closedAt": "2024-11-13T13:15:45Z",
       "comments": [
         {
@@ -5223,6 +5223,27 @@
           "body": "As previously discussed, a DID based confirmation method should be defined in a separate spec. I'd encourage interested parties to pursue that.  ",
           "createdAt": "2024-11-13T13:15:45Z",
           "updatedAt": "2024-11-13T13:15:45Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "NONE",
+          "body": "@peacekeeper @bc-pi would it help to add to the spec that sd-jwt-vc will support all listed [JWT Confirmation Methods](https://www.iana.org/assignments/jwt/jwt.xhtml). This makes clear that this spec is not the place to define new confirmation methods.\r\n\r\nSo the way to go would be to write the spec for `DID` for confirmation method, add it to the list (procedure listed there) and then it can be used here. \r\n\r\nSince key binding has no reference to a specific confirmation method, it should have no impact.",
+          "createdAt": "2024-11-18T08:56:09Z",
+          "updatedAt": "2024-11-18T08:56:52Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "@cre8 I think that might actually be a good idea, but still, PR 251 should be reverted and the corresponding issues re-opened (like this one here), for reasons discussed on the mailing list.",
+          "createdAt": "2024-11-18T10:46:22Z",
+          "updatedAt": "2024-11-18T10:46:22Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I originally opened this issue, and I agree with closing it. I think a lot has evolved since I opened this issue and I am not supportive of sd-jwt vc spec mentioning DIDs. If people still want DIDs, cnf.did should be defined (i have been saying it for few years), which would allow DIDs to be used because sd-jwt vc defines the usage of a cnf claim.",
+          "createdAt": "2024-11-18T10:51:26Z",
+          "updatedAt": "2024-11-18T10:51:26Z"
         }
       ]
     },
@@ -6928,13 +6949,23 @@
       "state": "OPEN",
       "author": "georgepadayatti",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "bc-pi"
+      ],
       "labels": [],
       "body": "Section 4.1. Key Binding JWT, says the following:\r\n\r\n> If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding JWT MUST adhere to the rules defined in Section 5.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-13)].\r\n\r\nBut Section 5.3 does not exist in the referred spec. Instead, it should be Section 4.3",
       "createdAt": "2024-11-16T10:04:27Z",
-      "updatedAt": "2024-11-16T10:50:39Z",
+      "updatedAt": "2024-11-17T04:14:00Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks @georgepadayatti! A couple sections in SD-JWT were consolidated around draft 12 or 13 and other sections were renumbered as a result. We'll fix this reference and check for others that might need updating too.",
+          "createdAt": "2024-11-17T04:12:48Z",
+          "updatedAt": "2024-11-17T04:12:48Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -22103,7 +22134,7 @@
       "labels": [],
       "body": "Remove the requirement to insert a .well-known part for vct URLs\r\n\r\nFixes #264, #233, #242, #256 ",
       "createdAt": "2024-11-14T14:45:45Z",
-      "updatedAt": "2024-11-15T12:16:38Z",
+      "updatedAt": "2024-11-18T22:20:33Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
@@ -22115,7 +22146,128 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6Rqdyq",
+          "commit": {
+            "abbreviatedOid": "24ce64f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-18T22:05:19Z",
+          "updatedAt": "2024-11-18T22:05:19Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "English is odd, isn't it? ",
+              "createdAt": "2024-11-18T22:05:19Z",
+              "updatedAt": "2024-11-18T22:05:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6RqhyY",
+          "commit": {
+            "abbreviatedOid": "24ce64f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-18T22:16:11Z",
+          "updatedAt": "2024-11-18T22:16:11Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "that doesn't read very naturally to me. maybe this ?\r\n```suggestion\r\n(#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in\r\n(#retrieval-from-vct-claim) and the following Type Metadata Document is\r\nretrieved from it:\r\n```",
+              "createdAt": "2024-11-18T22:16:11Z",
+              "updatedAt": "2024-11-18T22:16:55Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6RqiMP",
+          "commit": {
+            "abbreviatedOid": "24ce64f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-18T22:17:27Z",
+          "updatedAt": "2024-11-18T22:17:27Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "yes ",
+              "createdAt": "2024-11-18T22:17:27Z",
+              "updatedAt": "2024-11-18T22:17:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6RqjOP",
+          "commit": {
+            "abbreviatedOid": "24ce64f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "One editorial nit I'd like to see https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/272/files#r1847348738 incorporated or something similar. \r\n\r\nI'd kinda hoped for a more unifying something here that reduced the number of options. But am okay with this.  ",
+          "createdAt": "2024-11-18T22:20:33Z",
+          "updatedAt": "2024-11-18T22:20:33Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 275,
+      "id": "PR_kwDOJbVClc6CUYNv",
+      "title": "fix section numbering in SD-JWT references to align with the latest -14 version",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/275",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #274 and a few others that had gotten out of sync ",
+      "createdAt": "2024-11-19T00:11:47Z",
+      "updatedAt": "2024-11-19T00:19:42Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "fix-sd-jwt-sec-numbers",
+      "headRefOid": "2deec6faff00d106c5364d8237715fda31e111d7",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6RrRG1",
+          "commit": {
+            "abbreviatedOid": "fa54f67"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-11-19T00:19:18Z",
+          "updatedAt": "2024-11-19T00:19:19Z",
+          "comments": [
+            {
+              "originalPosition": 52,
+              "body": "```suggestion\r\nTobias Looker, and\r\n```",
+              "createdAt": "2024-11-19T00:19:18Z",
+              "updatedAt": "2024-11-19T00:19:19Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
