@@ -561,9 +561,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eIUQj
-   q6FFqo0u6CR-cY85S00rhgmuW1r5KiaSdO6zhhrPdE5XRkYFz951mvWXbvkEo-9rqlvv
-   nDmkp5IUNPYrw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.48WeF
+   BeTudAhAoc8hRN2DVD-eN_c4zjn37pyu_xPmAuTKTDknxCzXhHHP1G5orNLxmF-TEm5B
+   uNXkrQPZc_CLg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -676,17 +676,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eIUQj
-   q6FFqo0u6CR-cY85S00rhgmuW1r5KiaSdO6zhhrPdE5XRkYFz951mvWXbvkEo-9rqlvv
-   nDmkp5IUNPYrw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.48WeF
+   BeTudAhAoc8hRN2DVD-eN_c4zjn37pyu_xPmAuTKTDknxCzXhHHP1G5orNLxmF-TEm5B
+   uNXkrQPZc_CLg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE5NzU2MD
-   YsICJzZF9oYXNoIjogIkFJV3A4S0lhcllzMWMtY2hyQWx0QVByT3lEMlJTQ2xrVWxpLX
-   REMm1wWWsifQ.rJHSZU4vwPmTiGwWq-OBsH9zJN_FaQpPihGs9gIf5H9QzSHrPYF2JIs
-   9ZruwqUZyI7fR5mRy6w1hieHiHC6ykw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzIwMDczMj
+   UsICJzZF9oYXNoIjogImRLVlhuTkRqQmFPRkltOGVpdDZNVGF6b2tjU0o4RmdrWmVnbl
+   lMWkpOd3cifQ.a9Idh_8Q1-GxSZDeR-LhmC06OUKmyaVDKCDB6vwinLsn4dvLyMhFLuy
+   RF0XjtjxDM9ZWNWzS-oPO8MfsLa037g
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -728,8 +728,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.kmIU_Tx6nJXEc9sTUu4yXXh8NF1aX5jXzE1qOGjx2x14QV
-   wF1UA3uVH-q5BQPJevn5Sn1A4us_hx7q8My6AbMQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.eUIUtHDLDwkPeleff48YRh4Q8q8a2wrJHLRN9MxOxV3I83
+   Mwf1ZBAa-4KOXssyN9bnfRrLEMF9yIUyxaIQyzbQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1831,8 +1831,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.3p7yq9yG6XKx6U0yBR2mPl59nDmdidduWzKEQMV5mIBib_YScU4VCA
-   OH-LfydN0F_1pS7v8Wn5Qxr-nTrymMOQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.JKHLbDSS_M8vVHN0gJdXGHnkANjoPnxwIqAd2YEN7OE2NlcLF6UHzD
+   1bLckfRxFXM_fHwZArvurM10XOwtK6iQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2104,22 +2104,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.3p7yq9yG6XKx6U0yBR2mPl59nDmdidduWzKEQMV5mIBib_YScU4VCA
-   OH-LfydN0F_1pS7v8Wn5Qxr-nTrymMOQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.JKHLbDSS_M8vVHN0gJdXGHnkANjoPnxwIqAd2YEN7OE2NlcLF6UHzD
+   1bLckfRxFXM_fHwZArvurM10XOwtK6iQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MzE5NzU2MDYsICJzZF9oYXNoIjogInFpd0JZTkVxaC1GZ
-   mhUQ1FUa1NjajRBaWNzMldjYzVuUU1tWXdKbEFCV28ifQ.BM--7iBK-CWzcgG4j_Hk_0
-   ghS0xBTdp8wx6lM1zzJeM-AANDidfwp1LUBtdozkSZ7jblKL5HYWKF4O3QbxU8Gw
+   mlmaWVyIiwgImlhdCI6IDE3MzIwMDczMjUsICJzZF9oYXNoIjogInVUdkM0Z2FVRHdSW
+   jdwY0FIWW1DXy1OWGlvd2EwcWdsUWpLalNDVDR4eUUifQ.ZECdW5Ypu9sMNnPxytnS90
+   Qc7PYJ8GKZyTWmrwBOnLqWlpXAcMi8Z7RgcBsv_UUtaDdaeH3qRDX9iykZTGOsqQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1731975606,
-     "sd_hash": "qiwBYNEqh-FfhTCQTkScj4Aics2Wcc5nQMmYwJlABWo"
+     "iat": 1732007325,
+     "sd_hash": "uTvC4gaUDwRZ7pcAHYmC_-NXiowa0qglQjKjSCT4xyE"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2281,10 +2281,11 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
-   Mike Prorock, Orie Steele, Paul Bastian, Torsten Lodderstedt, Tobias
-   Looker, and Kristina Yasuda for their contributions (some of which
-   substantial) to this draft and to the initial set of implementations.
+   George J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson,
+   Michael B.  Jones, Mike Prorock, Orie Steele, Paul Bastian, Torsten
+   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
+   contributions (some of which substantial) to this draft and to the
+   initial set of implementations.
 
 Appendix D.  Document History
 
