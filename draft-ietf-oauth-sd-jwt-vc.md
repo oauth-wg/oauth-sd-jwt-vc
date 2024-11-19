@@ -1527,9 +1527,9 @@ Mike Prorock,
 Orie Steele,
 Paul Bastian,
 Torsten Lodderstedt,
-Tobias Looker, and
+Tobias Looker, and  
 Kristina Yasuda
-for their contributions (some of which substantial) to this draft and to the initial set of implemnentatios.
+for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
 
