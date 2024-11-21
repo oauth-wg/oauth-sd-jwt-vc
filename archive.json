@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-19T00:30:50.642535+00:00",
+  "timestamp": "2024-11-21T00:30:28.417982+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6955,7 +6955,7 @@
       "labels": [],
       "body": "Section 4.1. Key Binding JWT, says the following:\r\n\r\n> If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding JWT MUST adhere to the rules defined in Section 5.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-13)].\r\n\r\nBut Section 5.3 does not exist in the referred spec. Instead, it should be Section 4.3",
       "createdAt": "2024-11-16T10:04:27Z",
-      "updatedAt": "2024-11-17T04:14:00Z",
+      "updatedAt": "2024-11-19T09:09:40Z",
       "closedAt": null,
       "comments": [
         {
@@ -6964,6 +6964,13 @@
           "body": "Thanks @georgepadayatti! A couple sections in SD-JWT were consolidated around draft 12 or 13 and other sections were renumbered as a result. We'll fix this reference and check for others that might need updating too.",
           "createdAt": "2024-11-17T04:12:48Z",
           "updatedAt": "2024-11-17T04:12:48Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "see #275 including https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/275/commits/5b2589a14d3ece7f1c4b56ad46c2a24455375165 ",
+          "createdAt": "2024-11-19T09:09:39Z",
+          "updatedAt": "2024-11-19T09:09:39Z"
         }
       ]
     }
@@ -22134,13 +22141,13 @@
       "labels": [],
       "body": "Remove the requirement to insert a .well-known part for vct URLs\r\n\r\nFixes #264, #233, #242, #256 ",
       "createdAt": "2024-11-14T14:45:45Z",
-      "updatedAt": "2024-11-18T22:20:33Z",
+      "updatedAt": "2024-11-19T09:05:33Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/remove-well-known-thingy",
-      "headRefOid": "24ce64f00cc5b7e805517b5b6c864e9d56879ba3",
+      "headRefOid": "f5a5be07fbe67bda8d325b03529d5797f68d5481",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -22219,6 +22226,19 @@
           "createdAt": "2024-11-18T22:20:33Z",
           "updatedAt": "2024-11-18T22:20:33Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6RuIld",
+          "commit": {
+            "abbreviatedOid": "f5a5be0"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-19T09:05:33Z",
+          "updatedAt": "2024-11-19T09:05:33Z",
+          "comments": []
         }
       ]
     },
@@ -22234,13 +22254,13 @@
       "labels": [],
       "body": "fixes #274 and a few others that had gotten out of sync ",
       "createdAt": "2024-11-19T00:11:47Z",
-      "updatedAt": "2024-11-19T00:19:42Z",
+      "updatedAt": "2024-11-19T19:33:22Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "fix-sd-jwt-sec-numbers",
-      "headRefOid": "2deec6faff00d106c5364d8237715fda31e111d7",
+      "headRefOid": "5b2589a14d3ece7f1c4b56ad46c2a24455375165",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -22266,6 +22286,19 @@
               "updatedAt": "2024-11-19T00:19:19Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6R0m40",
+          "commit": {
+            "abbreviatedOid": "5b2589a"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-19T19:33:22Z",
+          "updatedAt": "2024-11-19T19:33:22Z",
+          "comments": []
         }
       ]
     }
