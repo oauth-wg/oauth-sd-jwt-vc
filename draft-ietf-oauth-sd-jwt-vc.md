@@ -1508,8 +1508,8 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "sd": "allowed"
     }
   ],
-  "schema_url": "https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_url#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+  "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
+  "schema_uri#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
 ```
 
