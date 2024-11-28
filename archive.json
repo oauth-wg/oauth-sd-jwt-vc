@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-26T00:30:58.511933+00:00",
+  "timestamp": "2024-11-28T00:31:19.905043+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -117,6 +117,11 @@
       "name": "wg-05",
       "description": "",
       "color": "F72899"
+    },
+    {
+      "name": "future-extension",
+      "description": "",
+      "color": "61DE90"
     }
   ],
   "issues": [
@@ -6043,11 +6048,13 @@
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [],
       "body": "Current text:\r\n> In an SD-JWT VC, a URI in the `vct` claim can be used to express a type. If the type is a URL, metadata can be retrieved from the URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nSince well-known only applies to HTTPS URLs, we should limit the section to HTTPS URLs although other URLs would be still possible, e.g., `ipfs://...`.\r\n\r\nAdditionally, also the `<type>` in `https://<authority>/.well-known/vct/<type>` is probably not correct since the type refers to the `vct` value itself which would not make sense to the full `vct` value here which would also include the scheme for instance.\r\n\r\nI suggest we update the title to \"From an HTTPS URL in the `vct` claim\" and update the language to something like this:\r\n> If the `vct` value is an HTTPS URL, Type Metadata can be retrieved from the URL constructed by inserting `\"/.well-known/vct\"` after the authority part of the URL in the `vct` value. For example, a `vct` value of `\"https://example.com/foo/bar/mytype\"` would result in `\"https://example.com/.well-known/vct/foo/bar/mytype\"`.\r\n",
       "createdAt": "2024-05-17T11:00:57Z",
-      "updatedAt": "2024-05-17T11:03:38Z",
+      "updatedAt": "2024-11-26T19:21:49Z",
       "closedAt": null,
       "comments": []
     },
@@ -6113,10 +6120,12 @@
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "To mitigate attacks described in the X.509 IETF RFC [here](https://www.rfc-editor.org/rfc/rfc2634#section-5.1), we should add something like the following language:\r\n\r\nIf `x5c` is the in unprotected header or was received out-of-band, the verifier MUST check the `x5t` **protected** header.\r\n\r\nNote that COSE has this language built in, but JOSE leaves that open.\r\n",
       "createdAt": "2024-07-08T16:04:08Z",
-      "updatedAt": "2024-07-08T16:21:02Z",
+      "updatedAt": "2024-11-26T19:26:30Z",
       "closedAt": null,
       "comments": [
         {
@@ -6136,11 +6145,13 @@
       "state": "OPEN",
       "author": "jtalir",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [],
       "body": "I'm not sure why 'vct' is not (as REQUIRED) in 6.2 Type Metadata Format. Is it bug or is this some sort of implicit? It is in the  6.1. Type Metadata Example and also it is twice referenced in 6.3.5 From Type Metadata Glue Documents: \"the Consumer MUST ensure that the vct claim in the credential matches the one in the Type Metadata document\" and \"the Consumer MUST ensure that the value of the extends property in the Type Metadata document matches that of the vct in the Type Metadata document\"\r\n",
       "createdAt": "2024-07-12T11:49:07Z",
-      "updatedAt": "2024-07-30T23:42:02Z",
+      "updatedAt": "2024-11-27T16:30:45Z",
       "closedAt": null,
       "comments": [
         {
@@ -6149,6 +6160,13 @@
           "body": "This does seem like an oversight but I'll defer to @danielfett to ask if there was a reason behind the omission or if vct needs to be added to that section https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-04.html#name-type-metadata-format ",
           "createdAt": "2024-07-30T23:42:02Z",
           "updatedAt": "2024-07-30T23:42:02Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "I believe that `vct` & `vct#integrity` have to been added to the section mentioned by @bc-pi ,\r\n\r\nCurrently, examples  do include those two, and to me  are not aligned with the section. ",
+          "createdAt": "2024-11-27T16:30:44Z",
+          "updatedAt": "2024-11-27T16:30:44Z"
         }
       ]
     },
@@ -6160,11 +6178,13 @@
       "state": "OPEN",
       "author": "jtalir",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [],
       "body": "Type Metadata introduced new well-known URI /.well-known/vct/ in \"6.3.1. From a URL in the vct\" , but this is not reflected in appendix-A.3 Well-Known URI Registry.\r\n\r\nAdditionally, using <type> in sentence \"Metadata can be retrieved from the URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\" seems to me a little bit confusing as type is considered to refer to whole URI. Maybe use <path> or <uri_suffix>(to include also query and fragment URI components)?",
       "createdAt": "2024-07-12T11:59:16Z",
-      "updatedAt": "2024-10-31T18:51:38Z",
+      "updatedAt": "2024-11-26T19:21:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -6191,11 +6211,13 @@
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [],
       "body": "As of [SD-JWT -09](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/09/) which \"[Distinguished SD-JWT from SD-JWT+KB](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-09.html#name-document-history)\" the phrase \"SD-JWT with a Key Binding JWT\" may/should be replaced with \"SD-JWT+KB\" ",
       "createdAt": "2024-07-15T21:13:05Z",
-      "updatedAt": "2024-10-01T18:29:01Z",
+      "updatedAt": "2024-11-26T19:25:24Z",
       "closedAt": null,
       "comments": [
         {
@@ -6306,10 +6328,12 @@
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "blocked"
+      ],
       "body": "Per John Bradley comment during IETF 120",
       "createdAt": "2024-07-22T20:37:32Z",
-      "updatedAt": "2024-09-24T18:28:08Z",
+      "updatedAt": "2024-11-26T19:25:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -6318,6 +6342,13 @@
           "body": "Per the meeting minutes:\r\n\r\n> John B: Metadata is interesting - nothing in metadata is disclosed to\r\n> verifier?\r\n> Brian: intended for holder, but could be used by verifier - not secret\r\n> and is retrievable\r\n> John B: Might leak what claims are availabile - might be some reasons\r\n> not to disclose to the verifier\r\n> John B: Should disucss policies for wallets, etc? e.g. Some gov may only\r\n> want to permit disclosure or presentation to approved parties - if we\r\n> want interop we should consider issuer to wallet policies - could\r\n> metadata help with this?\r\n> Question - is metadata a way of annotating policy type info?\r\n> Brian: metadata could be, but debate around this and it is yet to be\r\n> determined\r\n> John B: we should figure this out\r\n> Brian: agree\r\n> John B: we should have an answer around privacy and consider it\r\n> especially in regards to metadata",
           "createdAt": "2024-09-24T18:28:07Z",
           "updatedAt": "2024-09-24T18:28:07Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This needs to be reviewed again after it became clear what the scope of the first version will be.",
+          "createdAt": "2024-11-26T19:24:39Z",
+          "updatedAt": "2024-11-26T19:24:39Z"
         }
       ]
     },
@@ -6330,10 +6361,12 @@
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "future-extension"
+      ],
       "body": "We should consider adding type metadata that can help a wallet to guide a user to a place where they can have a credential of a specific type issued.",
       "createdAt": "2024-07-23T14:51:01Z",
-      "updatedAt": "2024-07-23T17:12:29Z",
+      "updatedAt": "2024-11-26T19:23:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -6399,7 +6432,7 @@
       ],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-11-13T21:27:03Z",
+      "updatedAt": "2024-11-27T18:42:12Z",
       "closedAt": "2024-11-13T12:36:20Z",
       "comments": [
         {
@@ -6555,6 +6588,13 @@
           "body": "For consensus building, there are a number of RFC's describing the IETF process. The conversations here seem to indicate to me there is no \"rough consensus\". \r\n\r\nIn particular, [RFC7282 Section 6](https://datatracker.ietf.org/doc/html/rfc7282#section-6) and many of the other sections in [RFC7282](https://datatracker.ietf.org/doc/html/rfc7282#section-4) focused on \"rough\" consensus building. \r\n\r\nAlso, it should be noted a PR was submitted that seems to be a result of this issue #251 but was not linked. It was also named `Tightened exposition of Issuer-signed JWT Verification Key Validation` section #251 which seems to provide a perception of distance to this issue, when clearly they are related.  This harms the visibility of discussion and context for the PR, which from my understanding, is not aligned with [IETF Mission Statement](https://www.rfc-editor.org/rfc/rfc3935#section-1) around an open/transparent process for discourse.\r\n\r\nI understand there are two camps of thought here, but there are solid reasons (technically and practically) provided by pro-DID side, and there is consensus procedure to deal with the objections raised here which need to be addressed and do not seem like they have been. \r\n\r\nAccording to [Section 3 of RFC7282](https://datatracker.ietf.org/doc/html/rfc7282#section-3), rough consensus can be achieved when all issues are addressed, but not necessarily accommodated:\r\n\r\n> What can't happen is that the chair bases their decision solely on hearing a large\r\n   number of voices simply saying, \"The objection isn't valid.\"  That\r\n   would simply be to take a vote.  A valid justification needs to me\r\n   made. \r\n\r\nThat seems to contradict the actions here: https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/250#issuecomment-2473526620\r\n\r\nIt seems to me this issue has not been appropriately addressed given the concerns raised. Stating one is \"tired\" of discussing the issue is not a valid argument, and I for one would like to see the concerns addressed by the previous commenters addressed. ",
           "createdAt": "2024-11-13T21:03:56Z",
           "updatedAt": "2024-11-13T21:27:03Z"
+        },
+        {
+          "author": "ottomorac",
+          "authorAssociation": "NONE",
+          "body": "DIDs are a long standing W3C recommended standard.  Removing this from the spec is not a good idea.",
+          "createdAt": "2024-11-27T18:42:11Z",
+          "updatedAt": "2024-11-27T18:42:11Z"
         }
       ]
     },
@@ -6681,12 +6721,10 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [
-        "discuss"
-      ],
+      "labels": [],
       "body": "https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-05.html#section-6.3.1\r\n\r\nIs defining that if vct is an https:// it should check the metadata under the well known (at least the 2nd part of the text reads like this:\r\n>  i.e., by inserting /.well-known/vct after the authority part of the URL.)\r\n\r\nMany registries are, and will be accessible via URLs, hence the metadata type is expressed via an URL; Adding or maintaining a .well-known might not fit in the existing API designs. Also note that .well-known has well-known issues with multi-tenancy. Most use cases will delegate the hosting of the information to registries.\r\n\r\nAlso\r\n> URL https://<authority>/.well-known/vct/<type>, i.e., by inserting /.well-known/vct after the authority part of the URL.\r\n\r\nQuestions:\r\n- if schema is https, should the full URL be provided? (no ambiguity with .well-known, you can host schema on github, ...)\r\n- metadata retrieval category re-consideration:\r\n\r\n1) Fetch vct from a remote source:\r\n    a) URL: HTTPS schema -> full URL that points to a schema\r\n    b) URN: domain-defined URN that MUST be understood by the wallet; The URN method defines how to map the URN to URL and retrieve the data\r\n\r\n2) Fetch vct the metadata locally\r\n    a) local cache\r\n    b) Signature (signed or unsigned header); Whether or not metadata is shared in the (un)protected header is defined by the signature format, hence out of scope of this document.\r\n\r\n2b: point to consider for the OID4VP: should there be a flag: \"archival mode\" or similar, that would flag that the wallet needs to provide all the referenced content in an unprotected JWS header?",
       "createdAt": "2024-09-18T19:45:34Z",
-      "updatedAt": "2024-11-14T14:47:22Z",
+      "updatedAt": "2024-11-26T19:26:49Z",
       "closedAt": null,
       "comments": [
         {
@@ -6706,13 +6744,15 @@
       "state": "OPEN",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [
         "NEEDS PR"
       ],
       "body": "I don't understand this sentence that points to the claims that are REQUIRED: `If present, the following registered JWT claims MUST be included in the SD-JWT and MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:` the sentence also uses two normative statements in one. Could it be clarified/simplified as something like: `The following registered JWT claims MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:`\r\nThanks.\r\n",
       "createdAt": "2024-10-07T10:38:15Z",
-      "updatedAt": "2024-10-08T18:20:12Z",
+      "updatedAt": "2024-11-26T19:22:46Z",
       "closedAt": null,
       "comments": [
         {
@@ -6732,13 +6772,15 @@
       "state": "OPEN",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [
         "NEEDS PR"
       ],
       "body": "Would also be good to add rationale why chosen certain claims are not selectively disclosable.",
       "createdAt": "2024-10-07T11:04:18Z",
-      "updatedAt": "2024-10-08T21:39:44Z",
+      "updatedAt": "2024-11-26T19:22:21Z",
       "closedAt": null,
       "comments": [
         {
@@ -6779,13 +6821,15 @@
       "state": "OPEN",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [
         "HAS PR"
       ],
       "body": "There are certain risks associated with free text, some of which are elaborated in threads like these (though not entirely) [https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253(https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253)\r\n\r\nI probably won't be able to convince the authors in removing the free text `description` property from the metadata, which is defined as `A human-readable description for the type, intended for developers reading the JSON document.` So at least would be great if security considerations for free text can be added.\r\nThanks.",
       "createdAt": "2024-10-07T11:09:45Z",
-      "updatedAt": "2024-10-08T18:02:55Z",
+      "updatedAt": "2024-11-26T19:22:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -6823,13 +6867,15 @@
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [
         "discuss"
       ],
       "body": "Dr. Fett, PhD:\r\n>Gentlemen,\r\nSome feedback I received (on top of the comments we already got in the issuers) makes me second-guess the choice to use a .well-known URL for the type metadata documents. In fact, RFC 5785 tells us that .well-known is mainly to be used for site-wide information or information about a specific host.\r\n>>   As such, the well-known URI space was created with the expectation\r\n   that it will be used to make site-wide policy information and other\r\n   metadata available directly (if sufficiently concise), or provide\r\n   references to other URIs that provide such metadata.\r\n\r\nBrian Campbell, B.A.:\r\n>That feedback seems not wrong to me. We've got probably a lot of somewhat questionable uses of .well-known but type metadata is maybe less well suited than most. And less needed. \r\n>It could just point to the json document. Or we make up some convention. Or something with uri templates. \r\n",
       "createdAt": "2024-10-15T17:53:17Z",
-      "updatedAt": "2024-11-15T11:27:04Z",
+      "updatedAt": "2024-11-26T19:21:25Z",
       "closedAt": null,
       "comments": [
         {
@@ -6886,11 +6932,13 @@
       "state": "OPEN",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [],
       "body": "Repeating my live comment from the IETF 121 meeting... It would be worth documenting the reasons for creating a new JSON query syntax instead of using JSONPath or alternatives.",
       "createdAt": "2024-11-07T13:14:31Z",
-      "updatedAt": "2024-11-07T13:14:31Z",
+      "updatedAt": "2024-11-26T19:21:10Z",
       "closedAt": null,
       "comments": []
     },
@@ -6933,11 +6981,13 @@
       "state": "OPEN",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [],
       "body": "[Dr. Horvat, PhD](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/264#issuecomment-2477101068):\r\n> However, metadata owner must be aware of the responsibility to take care of the versioning.\r\n\r\nWe could add this as a consideration to the spec.",
       "createdAt": "2024-11-15T10:44:07Z",
-      "updatedAt": "2024-11-15T10:46:28Z",
+      "updatedAt": "2024-11-26T19:12:13Z",
       "closedAt": null,
       "comments": []
     },
@@ -6973,6 +7023,22 @@
           "updatedAt": "2024-11-19T09:09:39Z"
         }
       ]
+    },
+    {
+      "number": 276,
+      "id": "I_kwDOJbVClc6g4bPj",
+      "title": "Wrong attribute name in the example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/276",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This [example](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-06.html#name-example-2-type-metadata) uses the attribute names : `schema_url` & `schema_url#integrity` instead of `schema_uri` & `schema_uri#integrity`,\r\n\r\n```json\r\n  \"schema_url\": \"https://exampleuniversity.com/public/credential-schema-0.9\",\r\n  \"schema_url#integrity\": \"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh\"\r\n  ```",
+      "createdAt": "2024-11-27T16:45:39Z",
+      "updatedAt": "2024-11-27T16:45:39Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -21454,7 +21520,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-08-20T17:18:34Z",
-      "updatedAt": "2024-11-15T16:21:07Z",
+      "updatedAt": "2024-11-27T18:45:11Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "94c571b6c746b48c16a0594df5529e69fd68c826",
@@ -21509,6 +21575,13 @@
           "body": "Strange we are already several implementers using sd-jwt with DIDs!",
           "createdAt": "2024-11-15T15:18:48Z",
           "updatedAt": "2024-11-15T16:21:07Z"
+        },
+        {
+          "author": "ottomorac",
+          "authorAssociation": "NONE",
+          "body": "DIDs are a long standing W3C recommended standard. Removing this from the spec is not a good idea.",
+          "createdAt": "2024-11-27T18:45:09Z",
+          "updatedAt": "2024-11-27T18:45:09Z"
         }
       ],
       "reviews": [
@@ -22141,7 +22214,7 @@
       "labels": [],
       "body": "Remove the requirement to insert a .well-known part for vct URLs\r\n\r\nFixes #264, #233, #242, #256 ",
       "createdAt": "2024-11-14T14:45:45Z",
-      "updatedAt": "2024-11-19T09:05:33Z",
+      "updatedAt": "2024-11-27T23:13:41Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
@@ -22239,6 +22312,19 @@
           "createdAt": "2024-11-19T09:05:33Z",
           "updatedAt": "2024-11-19T09:05:33Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6S_U0Z",
+          "commit": {
+            "abbreviatedOid": "f5a5be0"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-27T23:13:41Z",
+          "updatedAt": "2024-11-27T23:13:41Z",
+          "comments": []
         }
       ]
     },
@@ -22301,6 +22387,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 277,
+      "id": "PR_kwDOJbVClc6DZZjp",
+      "title": "Correct attribute names in Example 2",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/277",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Closes #276 ",
+      "createdAt": "2024-11-27T23:28:33Z",
+      "updatedAt": "2024-11-27T23:28:34Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
+      "headRepository": "babisRoutis/draft-terbu-sd-jwt-vc",
+      "headRefName": "fix/276",
+      "headRefOid": "9ba7c2ed1cf50c51572b33136141c52affb2357a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
