@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-11-28T00:31:19.905043+00:00",
+  "timestamp": "2024-12-01T00:38:07.660515+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5686,7 +5686,7 @@
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-07-08T16:12:28Z",
+      "updatedAt": "2024-11-29T16:36:48Z",
       "closedAt": null,
       "comments": [
         {
@@ -5702,6 +5702,13 @@
           "body": "The PR has been merged, this can now be added.",
           "createdAt": "2024-06-05T08:24:44Z",
           "updatedAt": "2024-06-05T08:24:44Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "NONE",
+          "body": "Something like the following?\r\n\r\nDisplay the [Example 3.3](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-06.html#name-example)\r\n```json\r\n{\r\n    \"payload\": \"eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNONndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAiamRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ\",\r\n    \"header\": {\r\n        \"disclosures\": [\r\n            \"WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiSm9obiJd\",\r\n            \"WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkRvZSJd\",\r\n            \"WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VAZXhhbXBsZS5jb20iXQ\",\r\n            \"WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251bWJlciIsICIrMS0yMDItNTU1LTAxMDEiXQ\",\r\n            \"WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0\",\r\n            \"WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgImJpcnRoZGF0ZSIsICIxOTQwLTAxLTAxIl0\",\r\n            \"WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImlzX292ZXJfMTgiLCB0cnVlXQ\",\r\n            \"WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImlzX292ZXJfMjEiLCB0cnVlXQ\",\r\n            \"WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ\"\r\n        ]\r\n    },\r\n    \"protected\": \"eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNpZ25lci0wNS0yNS0yMDIyIn0\",\r\n    \"signature\": \"cWT4VMs1G0iqUt-ajx98dCwq0I4djdqC9vX6ELCpjYBNrhRNK6u3wds9cSwB8REuA1RRCE9BprDDyjOVDLgLvg\"\r\n}\r\n```\r\n\r\nAnd this for [Example 4.2](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-06.html#name-examples)\r\n\r\n```json\r\n{\r\n    \"payload\": \"eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNONndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAiamRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ\",\r\n    \"header\": {\r\n        \"disclosures\": [\r\n            \"WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ\",\r\n            \"WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0\"\r\n        ],\r\n        \"kb_jwt\": \"eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzE1MzA3MDQsICJzZF9oYXNoIjogImNUNkRmMXRCODNxM3EtQVFjdGYxVXFncXBhaW5BOVFSNmVmS3NQdFBFQ2cifQ.fp4Dgu3k1oU09BHnP7U2aU2v_z96JSi8T1T7f47qUW5ypQsh_39F1S4EOtnT09YNGp9nZbETjor3nCzM0J0MvQ\"\r\n    },\r\n    \"protected\": \"eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNpZ25lci0wNS0yNS0yMDIyIn0\",\r\n    \"signature\": \"cWT4VMs1G0iqUt-ajx98dCwq0I4djdqC9vX6ELCpjYBNrhRNK6u3wds9cSwB8REuA1RRCE9BprDDyjOVDLgLvg\"\r\n}\r\n```",
+          "createdAt": "2024-11-29T16:36:47Z",
+          "updatedAt": "2024-11-29T16:36:47Z"
         }
       ]
     },
@@ -21520,7 +21527,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-08-20T17:18:34Z",
-      "updatedAt": "2024-11-27T18:45:11Z",
+      "updatedAt": "2024-11-28T05:33:31Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "94c571b6c746b48c16a0594df5529e69fd68c826",
@@ -21582,6 +21589,13 @@
           "body": "DIDs are a long standing W3C recommended standard. Removing this from the spec is not a good idea.",
           "createdAt": "2024-11-27T18:45:09Z",
           "updatedAt": "2024-11-27T18:45:09Z"
+        },
+        {
+          "author": "ssanchocanela",
+          "authorAssociation": "NONE",
+          "body": "In the recently approved eIDAS 2 Implementing Acts, the W3C Verifiable Credentials Data Model v1.1 is accepted as the format for PIDs. In many implementations, including the EBSI VC Profile, DIDs are used. Let\u2019s stop fighting over the different visions of Verifiable Credentials and join forces to create interoperable and open specifications that cater to various use cases.",
+          "createdAt": "2024-11-28T05:33:29Z",
+          "updatedAt": "2024-11-28T05:33:29Z"
         }
       ],
       "reviews": [
@@ -21965,10 +21979,12 @@
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "Fixes #259 ",
       "createdAt": "2024-10-08T17:58:59Z",
-      "updatedAt": "2024-10-15T11:02:06Z",
+      "updatedAt": "2024-11-28T15:23:12Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "473d8544ebd1e9d13a1d0ba95554585248d6bfa3",
@@ -22020,6 +22036,19 @@
           "body": "",
           "createdAt": "2024-10-15T11:02:06Z",
           "updatedAt": "2024-10-15T11:02:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6TIWtt",
+          "commit": {
+            "abbreviatedOid": "40e69cc"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I agree with @bc-pi that the rat hole is very deep and we should probably refrain from scratching the surface only.",
+          "createdAt": "2024-11-28T15:22:49Z",
+          "updatedAt": "2024-11-28T15:22:49Z",
           "comments": []
         }
       ]
@@ -22214,7 +22243,7 @@
       "labels": [],
       "body": "Remove the requirement to insert a .well-known part for vct URLs\r\n\r\nFixes #264, #233, #242, #256 ",
       "createdAt": "2024-11-14T14:45:45Z",
-      "updatedAt": "2024-11-27T23:13:41Z",
+      "updatedAt": "2024-11-28T15:21:27Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
@@ -22325,6 +22354,19 @@
           "createdAt": "2024-11-27T23:13:41Z",
           "updatedAt": "2024-11-27T23:13:41Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6TIWFi",
+          "commit": {
+            "abbreviatedOid": "f5a5be0"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-28T15:21:27Z",
+          "updatedAt": "2024-11-28T15:21:27Z",
+          "comments": []
         }
       ]
     },
@@ -22340,7 +22382,7 @@
       "labels": [],
       "body": "fixes #274 and a few others that had gotten out of sync ",
       "createdAt": "2024-11-19T00:11:47Z",
-      "updatedAt": "2024-11-19T19:33:22Z",
+      "updatedAt": "2024-11-28T15:23:38Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
@@ -22385,6 +22427,19 @@
           "createdAt": "2024-11-19T19:33:22Z",
           "updatedAt": "2024-11-19T19:33:22Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6TIXFR",
+          "commit": {
+            "abbreviatedOid": "5b2589a"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-11-28T15:23:38Z",
+          "updatedAt": "2024-11-28T15:23:38Z",
+          "comments": []
         }
       ]
     },
@@ -22400,7 +22455,7 @@
       "labels": [],
       "body": "Closes #276 ",
       "createdAt": "2024-11-27T23:28:33Z",
-      "updatedAt": "2024-11-27T23:28:34Z",
+      "updatedAt": "2024-11-28T15:24:29Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
@@ -22412,7 +22467,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6TIXeo",
+          "commit": {
+            "abbreviatedOid": "9ba7c2e"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks!",
+          "createdAt": "2024-11-28T15:24:29Z",
+          "updatedAt": "2024-11-28T15:24:29Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
