@@ -169,7 +169,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of
+SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
 contain a Key Binding JWT.
 
@@ -312,8 +312,8 @@ The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in Section 8 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-If Key Binding is required (refer to the security considerations in Section 11.6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
-according to Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
+If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
+according to Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
@@ -356,7 +356,7 @@ of SD-JWT VCs.
 ## Key Binding JWT
 
 If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
-JWT MUST adhere to the rules defined in Section 5.3 of
+JWT MUST adhere to the rules defined in Section 4.3 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The Key Binding JWT MAY include additional claims which, when not understood, MUST
@@ -498,7 +498,7 @@ MUST NOT be used.
 
 An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.
 
-This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
+This section defines Type Metadata that can be associated with a type of an SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
  * Developers of Issuers and Verifiers can use the Type Metadata to understand the
    semantics of the type and the associated rules. While in some cases,
@@ -531,10 +531,9 @@ with the value `https://betelgeuse.example.com/education_credential`:
 
 Type Metadata for the type `https://betelgeuse.example.com/education_credential`
 can be retrieved using various mechanisms as described in
-(#retrieving-type-metadata). For this example, the well-known URL as defined in
-(#retrieval-from-vct-claim) is used and the following Type Metadata Document is
-retrieved from the URL
-`https://betelgeuse.example.com/.well-known/vct/education_credential`:
+(#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
+(#retrieval-from-vct-claim) and the following Type Metadata Document is
+retrieved from it:
 
 ```json
 {
@@ -588,9 +587,7 @@ An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 ### From a URL in the `vct` Claim {#retrieval-from-vct-claim}
 
 A URI in the `vct` claim can be used to express a type. If the
-type is a URL using the HTTPS scheme, Type Metadata can be retrieved from the URL
-`https://<authority>/.well-known/vct/<type>`, i.e., by inserting
-`/.well-known/vct` after the authority part of the URL.
+type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.
 
 The Type Metadata is retrieved using the HTTP GET method. The response MUST be a JSON
 object as defined in (#type-metadata-format).
@@ -601,7 +598,7 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 ### From a Registry {#retrieval-from-registry}
 
 A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT VC type,
-e.g., if the type is not a HTTPS URL or if the Consumer does not have
+e.g., if the type is not an HTTPS URL or if the Consumer does not have
 access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
 
 The registry MUST provide the Type Metadata in the same format as described in
@@ -743,7 +740,7 @@ Note that `iss` and `vct` are always required by this specification.
 ### Schema Validation {#schema-validation}
 
 If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
-(as defined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
+(as defined in Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
 
 If an `extends` property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
 validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
@@ -1105,7 +1102,7 @@ account when using SD-JWT VCs.
 
 ## Unlinkability
 
-The Privacy Considerations in Section 12.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+The Privacy Considerations in Section 10.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
 apply especially to the `cnf` claim.
 
 ## Verifiable Credential Type Identifier
@@ -1545,8 +1542,8 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "sd": "allowed"
     }
   ],
-  "schema_url": "https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_url#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+  "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
+  "schema_uri#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
 }
 ```
 
@@ -1556,6 +1553,7 @@ We would like to thank
 Alen Horvat,
 Andres Uribe,
 Christian Bormann,
+George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
 Leif Johansson,
@@ -1571,7 +1569,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -07
+
 * Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section
+* Remove the requirement to insert a .well-known part for vct URLs
+* fix section numbering in SD-JWT references to align with the latest -14 version
 
 -06
 
