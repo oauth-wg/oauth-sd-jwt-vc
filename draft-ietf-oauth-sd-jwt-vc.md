@@ -1571,7 +1571,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -07
-* Add guidance on using DIDs for issuer key discovery
+* Revert change from previous release
 
 -06
 
