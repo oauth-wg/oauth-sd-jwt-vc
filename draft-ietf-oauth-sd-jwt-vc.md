@@ -1576,6 +1576,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -06
 
 * Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt`
+* Tightened the exposition of the Issuer-signed JWT Verification Key Validation section
 * Add the “Status” field for the well-known URI registration per IANA early review
 
 -05
