@@ -1568,6 +1568,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-08
+
 -07
 
 * Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section
