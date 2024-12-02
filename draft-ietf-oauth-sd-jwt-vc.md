@@ -498,7 +498,7 @@ MUST NOT be used.
 
 An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.
 
-This section defines Type Metadata that can be associated with a type of a SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
+This section defines Type Metadata that can be associated with a type of an SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
  * Developers of Issuers and Verifiers can use the Type Metadata to understand the
    semantics of the type and the associated rules. While in some cases,
@@ -531,10 +531,9 @@ with the value `https://betelgeuse.example.com/education_credential`:
 
 Type Metadata for the type `https://betelgeuse.example.com/education_credential`
 can be retrieved using various mechanisms as described in
-(#retrieving-type-metadata). For this example, the well-known URL as defined in
-(#retrieval-from-vct-claim) is used and the following Type Metadata Document is
-retrieved from the URL
-`https://betelgeuse.example.com/.well-known/vct/education_credential`:
+(#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
+(#retrieval-from-vct-claim) and the following Type Metadata Document is
+retrieved from it:
 
 ```json
 {
@@ -588,9 +587,7 @@ An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 ### From a URL in the `vct` Claim {#retrieval-from-vct-claim}
 
 A URI in the `vct` claim can be used to express a type. If the
-type is a URL using the HTTPS scheme, Type Metadata can be retrieved from the URL
-`https://<authority>/.well-known/vct/<type>`, i.e., by inserting
-`/.well-known/vct` after the authority part of the URL.
+type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.
 
 The Type Metadata is retrieved using the HTTP GET method. The response MUST be a JSON
 object as defined in (#type-metadata-format).
@@ -601,7 +598,7 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 ### From a Registry {#retrieval-from-registry}
 
 A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT VC type,
-e.g., if the type is not a HTTPS URL or if the Consumer does not have
+e.g., if the type is not an HTTPS URL or if the Consumer does not have
 access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
 
 The registry MUST provide the Type Metadata in the same format as described in
@@ -1536,6 +1533,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -07
 
+* Remove the requirement to insert a .well-known part for vct URLs
 * fix section numbering in SD-JWT references to align with the latest -14 version
 
 -06
