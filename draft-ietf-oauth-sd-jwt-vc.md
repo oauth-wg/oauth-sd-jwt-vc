@@ -343,7 +343,7 @@ obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer
 - X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST
      1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and
      2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
-
+- DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
@@ -1207,6 +1207,43 @@ recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
+<reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
+    <front>
+        <author initials="M." surname="Sporny" fullname="Manu Sporny">
+            <organization>
+                <organizationName>Digital Bazaar</organizationName>
+            </organization>
+        </author>
+        <author initials="D." surname="Longley" fullname="Dave Longley">
+            <organization>
+                <organizationName>Digital Bazaar</organizationName>
+            </organization>
+        </author>
+        <author initials="M." surname="Sabadello" fullname="Markus Sabadello">
+            <organization>
+                <organizationName>Danube Tech</organizationName>
+            </organization>
+        </author>
+        <author initials="D." surname="Reed" fullname="Drummond Reed">
+            <organization>
+                <organizationName>Evernym/Avast</organizationName>
+            </organization>
+        </author>
+        <author initials="O." surname="Steele" fullname="Orie Steele">
+            <organization>
+                <organizationName>Transmute</organizationName>
+            </organization>
+        </author>
+        <author initials="C." surname="Allen" fullname="Christopher Allen">
+            <organization>
+                <organizationName>Blockchain Commons</organizationName>
+            </organization>
+        </author>
+        <title>Decentralized Identifiers (DIDs) v1.0</title>
+        <date day="19" month="July" year="2022"/>
+    </front>
+</reference>
+
 <reference anchor="W3C.VCDM" target="https://www.w3.org/TR/vc-data-model-2.0/">
     <front>
         <author initials="M." surname="Sporny" fullname="Manu Sporny">
@@ -1534,12 +1571,11 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -07
-
+* Add guidance on using DIDs for issuer key discovery
 
 -06
 
 * Update the anticipated media type registration request from `application/vc+sd-jwt` to `application/dc+sd-jwt`
-* Tightened the exposition of the Issuer-signed JWT Verification Key Validation section
 * Add the “Status” field for the well-known URI registration per IANA early review
 
 -05
