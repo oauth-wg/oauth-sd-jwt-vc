@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 23 May 2025                                       Authlete Inc.
+Expires: 5 June 2025                                       Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        19 November 2024
+                                                         2 December 2024
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 23 May 2025.
+   This Internet-Draft will expire on 5 June 2025.
 
 Copyright Notice
 
@@ -270,7 +270,7 @@ Table of Contents
 3.2.  Data Format
 
    SD-JWT VCs MUST be encoded using the SD-JWT format defined in
-   Section 5 of [I-D.ietf-oauth-selective-disclosure-jwt].  A
+   Section 4 of [I-D.ietf-oauth-selective-disclosure-jwt].  A
    presentation of an SD-JWT VC MAY contain a Key Binding JWT.
 
    Note that in some cases, an SD-JWT VC MAY have no selectively
@@ -561,9 +561,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4D34C
-   SJS0KhQrh0gQY4d1A5R6izB8kFk_92nh-FA2ZX2TTYaWjDIqfqUhbMXirma_3Ti2bx1C
-   Zm-55NsHEkGDw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._wEpi
+   _aLUCeye7RPfQUjCQEKD9e5x7x8tGrPH4ga37V3REqrx_FGv1qYOQaKc2xCg0M5avQvw
+   saTRYBq4_PkKg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -585,8 +585,8 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt].
 
    If Key Binding is required (refer to the security considerations in
-   Section 11.6 of [I-D.ietf-oauth-selective-disclosure-jwt]), the
-   Verifier MUST verify the Key Binding JWT according to Section 8 of
+   Section 9.5 of [I-D.ietf-oauth-selective-disclosure-jwt]), the
+   Verifier MUST verify the Key Binding JWT according to Section 7 of
    [I-D.ietf-oauth-selective-disclosure-jwt].  To verify the Key Binding
    JWT, the cnf claim of the SD-JWT MUST be used.
 
@@ -647,7 +647,7 @@ Table of Contents
 4.1.  Key Binding JWT
 
    If the presentation of the SD-JWT VC includes a Key Binding JWT, the
-   Key Binding JWT MUST adhere to the rules defined in Section 5.3 of
+   Key Binding JWT MUST adhere to the rules defined in Section 4.3 of
    [I-D.ietf-oauth-selective-disclosure-jwt].
 
    The Key Binding JWT MAY include additional claims which, when not
@@ -676,17 +676,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4D34C
-   SJS0KhQrh0gQY4d1A5R6izB8kFk_92nh-FA2ZX2TTYaWjDIqfqUhbMXirma_3Ti2bx1C
-   Zm-55NsHEkGDw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._wEpi
+   _aLUCeye7RPfQUjCQEKD9e5x7x8tGrPH4ga37V3REqrx_FGv1qYOQaKc2xCg0M5avQvw
+   saTRYBq4_PkKg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzIwMDIyMT
-   QsICJzZF9oYXNoIjogIk1GX1VSc052TlJSRm5jQ0UwWXFDdm5HRE9LVFQ1YnQwZkZ4Tk
-   VtaFh6NlkifQ.-r2MYXP5mZXR7WZIo6ex8u2IUTJMhid9cfsE53hq-vr2B0vz2TEI-K_
-   SxwEY-Ji-428SHGA3JAyUD5eNaGV-sw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzMxNTc3MT
+   gsICJzZF9oYXNoIjogInFKRkI5Y3d4MFI3UHZfdVNPbWt4ZXdpUkVtSjhPUnFmdjRiM1
+   ZCUlZPbncifQ.iNp9dhLbAvlCyiKiJgTubcNlkAB6cV3o8TWf2CCYB9Nc6dpCX8K4qZI
+   -6vQBKIiNSe9KtciuhzKyWdUEtbvvxg
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -728,8 +728,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.UgpfXXOq8gJGY6NOhmp6FxuzAoe9lAjOtD0NI0Qy88qCVs
-   jIjUsKpJnWd6UUtvAKwW0MgRjoIz555yIz_Fggbg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.ZNWTuVeNXeHxFaE3gu2WKK_TdJNy4oKbwd6_H2ejg8lCXX
+   ZhiaHOngi2DMhMq52hYcwipJRVfa8f_ZLuljofgg~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1134,7 +1134,7 @@ Table of Contents
 
    If a schema or schema_uri property is present, a Consumer MUST
    validate the JSON document resulting from the SD-JWT verification
-   algorithm (as defined in Section 8 of
+   algorithm (as defined in Section 7 of
    [I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema
    document provided by the schema or schema_uri property.
 
@@ -1528,7 +1528,7 @@ Table of Contents
 
 11.1.  Unlinkability
 
-   The Privacy Considerations in Section 12.5 of
+   The Privacy Considerations in Section 10.1 of
    [I-D.ietf-oauth-selective-disclosure-jwt] apply especially to the cnf
    claim.
 
@@ -1604,9 +1604,9 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-13, 18
-              October 2024, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-selective-disclosure-jwt-13>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-14, 15
+              November 2024, <https://datatracker.ietf.org/doc/html/
+              draft-ietf-oauth-selective-disclosure-jwt-14>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
@@ -1828,8 +1828,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.33PSGQkM2lKCL_u1n3iiRhH-UUOCeHlPrdm26YIgFFoYinE_mX9kWK
-   z9fYbrjqS__i2uHkDBhrm3f280McpQUw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.w62UOwVXP3JbVhOcV73ZmmqnCizxv1oKaph0c1T6yiZkaqfPRWeVKO
+   BY5DVTjuAE35hqNctXUYyPwxOaEzlbuA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2101,22 +2101,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.33PSGQkM2lKCL_u1n3iiRhH-UUOCeHlPrdm26YIgFFoYinE_mX9kWK
-   z9fYbrjqS__i2uHkDBhrm3f280McpQUw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.w62UOwVXP3JbVhOcV73ZmmqnCizxv1oKaph0c1T6yiZkaqfPRWeVKO
+   BY5DVTjuAE35hqNctXUYyPwxOaEzlbuA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MzIwMDIyMTQsICJzZF9oYXNoIjogIkZ3NjJ3SjR3NHpUU
-   m1fclpIX281WVBDRDQ5V1V3bEp3anhIOXgwS3gzUnMifQ.K92v3d8oOq6kjuvUKreyIv
-   DRAarS1TfYnCwCel2DaNacBEMuhFf3-BVDDYKyyJ9l50UGctWiGCQ9PCruQzT6Sw
+   mlmaWVyIiwgImlhdCI6IDE3MzMxNTc3MTgsICJzZF9oYXNoIjogInh2akljNEZYVFRtQ
+   XpsbkFqaUo1aVJQX05TT0tVY3lSWm5aR18zRFRzT1EifQ.Xn_FBqELTzSeACGE7F4bmd
+   kV4DGhXIcUZWiF-3ItHcmpxAn6wEDML7bEA9aPceqQBOLReXFh9enC7LlJLYzOXA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1732002214,
-     "sd_hash": "Fw62wJ4w4zTRm_rZH_o5YPCD49WUwlJwjxH9x0Kx3Rs"
+     "iat": 1733157718,
+     "sd_hash": "xvjIc4FXTTmAzlnAjiJ5iRP_NSOKUcyRZnZG_3DTsOQ"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2278,17 +2278,19 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
-   Mike Prorock, Orie Steele, Paul Bastian, Torsten Lodderstedt, Tobias
-   Looker, and Kristina Yasuda for their contributions (some of which
-   substantial) to this draft and to the initial set of implementations.
+   George J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson,
+   Michael B.  Jones, Mike Prorock, Orie Steele, Paul Bastian, Torsten
+   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
+   contributions (some of which substantial) to this draft and to the
+   initial set of implementations.
 
 Appendix D.  Document History
 
    -07
 
    *  Remove the requirement to insert a .well-known part for vct URLs
-      (fixes #264, #233, #242, #256)
+   *  fix section numbering in SD-JWT references to align with the
+      latest -14 version
 
    -06
 
