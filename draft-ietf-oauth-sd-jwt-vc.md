@@ -169,7 +169,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of
+SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
 contain a Key Binding JWT.
 
@@ -312,8 +312,8 @@ The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in Section 8 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-If Key Binding is required (refer to the security considerations in Section 11.6 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
-according to Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
+If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
+according to Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
@@ -356,7 +356,7 @@ of SD-JWT VCs.
 ## Key Binding JWT
 
 If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
-JWT MUST adhere to the rules defined in Section 5.3 of
+JWT MUST adhere to the rules defined in Section 4.3 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The Key Binding JWT MAY include additional claims which, when not understood, MUST
@@ -743,7 +743,7 @@ Note that `iss` and `vct` are always required by this specification.
 ### Schema Validation {#schema-validation}
 
 If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
-(as defined in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
+(as defined in Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
 
 If an `extends` property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
 validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
@@ -1105,7 +1105,7 @@ account when using SD-JWT VCs.
 
 ## Unlinkability
 
-The Privacy Considerations in Section 12.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+The Privacy Considerations in Section 10.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
 apply especially to the `cnf` claim.
 
 ## Verifiable Credential Type Identifier
@@ -1519,6 +1519,7 @@ We would like to thank
 Alen Horvat,
 Andres Uribe,
 Christian Bormann,
+George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
 Leif Johansson,
@@ -1535,6 +1536,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -07
 
+* fix section numbering in SD-JWT references to align with the latest -14 version
 
 -06
 
