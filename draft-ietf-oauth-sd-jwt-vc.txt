@@ -561,9 +561,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.aWI6u
-   SdNItkPFOCu_d9PAsEjfQ0sC0mXe4_CA9Odqn2G5PyI-FbIGa-YX3ogoVXA0HPsiawH-
-   oG7Suh96-Piaw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iXF2f
+   f5-x-CQ_JAEyrjRrfkZ8o0ecSt6XaAgR4Yngts8jItsL__ye1u5AuzlpTFltqi6_T4aK
+   dXDVcEHqq_WSg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -681,17 +681,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.aWI6u
-   SdNItkPFOCu_d9PAsEjfQ0sC0mXe4_CA9Odqn2G5PyI-FbIGa-YX3ogoVXA0HPsiawH-
-   oG7Suh96-Piaw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iXF2f
+   f5-x-CQ_JAEyrjRrfkZ8o0ecSt6XaAgR4Yngts8jItsL__ye1u5AuzlpTFltqi6_T4aK
+   dXDVcEHqq_WSg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzMxNjU5Nj
-   IsICJzZF9oYXNoIjogInBnUG1qZnZzNlgtMXVQUzRneXloX01tWlg3SHFqaXdSVEtnU0
-   dUX3VRSjQifQ.OW0AGDm9frVs9Hu4xgmarCa1S7DxxzNB4HYNWPCKf11sRi6fU7L4JBV
-   monPt-sjqyv2yN5RtgBQMXwX68dP9Nw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzMxNzExOD
+   MsICJzZF9oYXNoIjogIktuX1JBbGhrZ3U3TUFjNHpDVHFxM1BQb3lNcFR5LVFySE43aD
+   ZSTUJma28ifQ.Z9JWQjEa8lkGWNevt6C0mHcVAZFdlx8f0A_kHcNy4lLdOaTnK1DV1qS
+   8ujtZlwDkh-W8FTo20Qz6H4fgL9BC-A
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -733,8 +733,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.yqmNTs4n0-siBPQZcMm36vFR5HUKmsD8y0z3T-vIFsUt3F
-   gjL4NwAUSsR9z8eeI_buc9qNKo5T-SvSqc2hZC7g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.cy807nc7cDoDicoLPGcNDr6U6DKlmlO2xcMU7ZER3zv6Rf
+   cnzj3mksmXylRJAH0JPW7Ubu7t37D0KtjQS9OfGQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1837,8 +1837,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.hQsOaDJWKs1ImVUU9Cjsd6v5q8-o1nZHNYjS0qW24oZ1Ew5irkLDdS
-   nmYNxsylxEsMi1CPCEPeWclvXfANTmVw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.DDxgOSvl7QL26LrNrgnaJCEXgIspf_mAFbDUE4sQ1dgwL0YKryW3KL
+   WMD-xI6qaJ6qM5Y9XWTIqr_UuyHCL-kg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2110,22 +2110,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.hQsOaDJWKs1ImVUU9Cjsd6v5q8-o1nZHNYjS0qW24oZ1Ew5irkLDdS
-   nmYNxsylxEsMi1CPCEPeWclvXfANTmVw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.DDxgOSvl7QL26LrNrgnaJCEXgIspf_mAFbDUE4sQ1dgwL0YKryW3KL
+   WMD-xI6qaJ6qM5Y9XWTIqr_UuyHCL-kg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MzMxNjU5NjIsICJzZF9oYXNoIjogIlhNZG9LYzdublZhU
-   0R3cm95RnBMMEJObHZjcy1jQVhUai1SSHNJQ1NQbGcifQ.6eP-ItQQQQGg5aHVx82Tvs
-   ey7w2dQnkBDFqMw4YDZA8jUL3XxlAIbdXVZG-thJCRE4Vu2CtV3ioNBgJMH2mFKQ
+   mlmaWVyIiwgImlhdCI6IDE3MzMxNzExODMsICJzZF9oYXNoIjogIkI1Wm5vcUJUdm91Z
+   21DVXdfWjhQVzZVWHVoc1hYQTJFa0NEWlJQY3p5VEUifQ.84HClVPouks_82g5HvWfvs
+   hjfiwBBxQq98uZ5TKXtMch9dO2HHJEIcSRgU0AGjo3sOJWHEghPPMmlJAA39WMhw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1733165962,
-     "sd_hash": "XMdoKc7nnVaSDwroyFpL0BNlvcs-cAXTj-RHsICSPlg"
+     "iat": 1733171183,
+     "sd_hash": "B5ZnoqBTvougmCUw_Z8PW6UXuhsXXA2EkCDZRPczyTE"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2294,6 +2294,8 @@ Appendix C.  Acknowledgements
    initial set of implementations.
 
 Appendix D.  Document History
+
+   -08
 
    -07
 
