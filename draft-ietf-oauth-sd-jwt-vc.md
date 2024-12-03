@@ -344,6 +344,7 @@ obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer
      1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and
      2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
 - DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
+
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
@@ -1569,6 +1570,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 # Document History
 
 -08
+
+* Fix formatting issue introduced by the reintroduction of the DID paragraph in -07
 
 -07
 
