@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-03T00:32:52.677182+00:00",
+  "timestamp": "2024-12-05T00:32:01.195073+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6186,7 +6186,7 @@
       "labels": [],
       "body": "I'm not sure why 'vct' is not (as REQUIRED) in 6.2 Type Metadata Format. Is it bug or is this some sort of implicit? It is in the  6.1. Type Metadata Example and also it is twice referenced in 6.3.5 From Type Metadata Glue Documents: \"the Consumer MUST ensure that the vct claim in the credential matches the one in the Type Metadata document\" and \"the Consumer MUST ensure that the value of the extends property in the Type Metadata document matches that of the vct in the Type Metadata document\"\r\n",
       "createdAt": "2024-07-12T11:49:07Z",
-      "updatedAt": "2024-12-02T17:15:52Z",
+      "updatedAt": "2024-12-03T10:38:18Z",
       "closedAt": null,
       "comments": [
         {
@@ -6209,6 +6209,13 @@
           "body": "> I believe that `vct` & `vct#integrity` have to been added to the section mentioned by @bc-pi ,\r\n> \r\n> Currently, examples do include those two, and to me are not aligned with the section.\r\n\r\nI don't think so. Claim vct#integrity belongs into sd-jwt vc, not into type metadata. In the example section #type-metadata-example, there is first example with sd-jwt vc and only second example is with type metadata. In type metadata `vct` serves as \"backward reference\" and not as a link to be resolved.",
           "createdAt": "2024-12-02T17:15:50Z",
           "updatedAt": "2024-12-02T17:15:50Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Dear @jtalir \r\n\r\nOn second thought, I agree with this. \r\nMainly I was missing `vct` from Type metadata. \r\n ",
+          "createdAt": "2024-12-03T10:38:17Z",
+          "updatedAt": "2024-12-03T10:38:17Z"
         }
       ]
     },
@@ -7088,6 +7095,91 @@
       "updatedAt": "2024-12-02T17:54:15Z",
       "closedAt": "2024-12-02T17:54:15Z",
       "comments": []
+    },
+    {
+      "number": 281,
+      "id": "I_kwDOJbVClc6h41n0",
+      "title": "Should the verifier stop issuer key discovery if they already got one that worked for them?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/281",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "If the verifier supports multiple different ways of issuer key discovery, the spec currently suggests that they would need to perform all of these different ways to validate the public key. Perhaps this is a good thing, but perhaps this is an unnecessary thing? Especially if the verifier supports HTTPS and X.509, should they do both?",
+      "createdAt": "2024-12-03T21:41:43Z",
+      "updatedAt": "2024-12-03T22:35:23Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In my thinking, one good/working key validation/discovery is all that's needed. But, looking again, I can see how https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#section-3.5 could be read as saying to always* do both.\r\n\r\nSo I would say it's unnecessary and we need to clarify or qualify that text.\r\n\r\n\\* if as a verifier you support both ",
+          "createdAt": "2024-12-03T22:05:27Z",
+          "updatedAt": "2024-12-03T22:05:41Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Wondering, assuming really, that this came about from this https://mailarchive.ietf.org/arch/msg/oauth/oRhW0bxoDrel1mnDJR_rokHq85I/ ",
+          "createdAt": "2024-12-03T22:16:39Z",
+          "updatedAt": "2024-12-03T22:16:39Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Wondering, assuming really, that this came about from this https://mailarchive.ietf.org/arch/msg/oauth/oRhW0bxoDrel1mnDJR_rokHq85I/\r\n\r\nIndeed, it was inspired. I was supposed to send to the mailing list but then only replied individually.",
+          "createdAt": "2024-12-03T22:35:22Z",
+          "updatedAt": "2024-12-03T22:35:22Z"
+        }
+      ]
+    },
+    {
+      "number": 282,
+      "id": "I_kwDOJbVClc6h5yvx",
+      "title": "SVG? really? And metadata more broadly",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282",
+      "state": "OPEN",
+      "author": "wbl",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [
+        "pending close"
+      ],
+      "body": "I really don't get why SVG logos for individual fields is supported. Also I'm not sure about the value of this display metadata. Are people going to use it?",
+      "createdAt": "2024-12-04T00:31:21Z",
+      "updatedAt": "2024-12-04T13:27:24Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "The title of this issue is not helpful. What is the problem with SVG?\r\n\r\nAnd there are no SVG logos for individual fields, just for the whole type.\r\n\r\nDisplay metadata is already in use in a couple of wallet implementations and I just yesterday spoke to a team implementing an EUDI wallet and they plan to use the display metadata mechanism.",
+          "createdAt": "2024-12-04T08:00:10Z",
+          "updatedAt": "2024-12-04T08:00:10Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "So how do you deal with people copying logos?\r\n\r\nOn Wed, Dec 4, 2024, 12:00\u202fAM Daniel Fett ***@***.***> wrote:\r\n\r\n> The title of this issue is not helpful. What is the problem with SVG?\r\n>\r\n> And there are no SVG logos for individual fields, just for the whole type.\r\n>\r\n> Display metadata is already in use in a couple of wallet implementations\r\n> and I just yesterday spoke to a team implementing an EUDI wallet and they\r\n> plan to use the display metadata mechanism.\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282#issuecomment-2516463130>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/AAISLY74GR3K2WW5WYYWL5T2D2ZCBAVCNFSM6AAAAABS66CKC6VHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMZDKMJWGQ3DGMJTGA>\r\n> .\r\n> You are receiving this because you authored the thread.Message ID:\r\n> ***@***.***>\r\n>\r\n",
+          "createdAt": "2024-12-04T13:09:24Z",
+          "updatedAt": "2024-12-04T13:09:24Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Sorry, is this still related to SVGs?",
+          "createdAt": "2024-12-04T13:18:12Z",
+          "updatedAt": "2024-12-04T13:18:12Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "Yes. By putting in an element that's intended (and there's not a lot of\r\ntext about this) to be displayed directly to the user you raise the issue\r\nof Issuer A using a logo associated with Issuer B. Do verifiers need to not\r\ndisplay the logos to users?\r\n\r\nOn Wed, Dec 4, 2024, 5:18\u202fAM Daniel Fett ***@***.***> wrote:\r\n\r\n> Sorry, is this still related to SVGs?\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282#issuecomment-2517324734>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/AAISLY243R7IFB565LEHMKL2D36KXAVCNFSM6AAAAABS66CKC6VHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMZDKMJXGMZDINZTGQ>\r\n> .\r\n> You are receiving this because you authored the thread.Message ID:\r\n> ***@***.***>\r\n>\r\n",
+          "createdAt": "2024-12-04T13:27:22Z",
+          "updatedAt": "2024-12-04T13:27:22Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -21569,7 +21661,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2024-08-20T17:18:34Z",
-      "updatedAt": "2024-11-28T05:33:31Z",
+      "updatedAt": "2024-12-03T18:50:28Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "94c571b6c746b48c16a0594df5529e69fd68c826",
@@ -21638,6 +21730,20 @@
           "body": "In the recently approved eIDAS 2 Implementing Acts, the W3C Verifiable Credentials Data Model v1.1 is accepted as the format for PIDs. In many implementations, including the EBSI VC Profile, DIDs are used. Let\u2019s stop fighting over the different visions of Verifiable Credentials and join forces to create interoperable and open specifications that cater to various use cases.",
           "createdAt": "2024-11-28T05:33:29Z",
           "updatedAt": "2024-11-28T05:33:29Z"
+        },
+        {
+          "author": "rohanmahy",
+          "authorAssociation": "NONE",
+          "body": "SD-JWT is a general purpose mechanism. I don't believe the DID-specific text belongs in this spec. There is no other language specific to URI scheme in the rest of the document, so why should it be here.\r\n\r\nFeel free to write a profile document that defines how to use DIDs with SD-JWT, but there is nothing which requires this in the base document.\r\n\r\nLikewise, this language (and the entire section) are about validating the issue for JWTs. This could apply to non-SD JWTs as well. As there is nothing specific about this section to selective disclosure JWTs I don't see why it should be in this document.",
+          "createdAt": "2024-12-03T18:27:52Z",
+          "updatedAt": "2024-12-03T18:34:01Z"
+        },
+        {
+          "author": "ThierryThevenet",
+          "authorAssociation": "NONE",
+          "body": "It looks like the topic here is the resolution mode not the URI scheme and it is quite true that the DID resolution is very different from X509 and issuer metadata retrieval. So it is great to get it here no ?",
+          "createdAt": "2024-12-03T18:50:26Z",
+          "updatedAt": "2024-12-03T18:50:26Z"
         }
       ],
       "reviews": [
@@ -22026,7 +22132,7 @@
       ],
       "body": "Fixes #259 ",
       "createdAt": "2024-10-08T17:58:59Z",
-      "updatedAt": "2024-12-02T18:35:19Z",
+      "updatedAt": "2024-12-03T06:21:24Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "473d8544ebd1e9d13a1d0ba95554585248d6bfa3",
@@ -22058,6 +22164,13 @@
           "body": "> I agree with @bc-pi that the rat hole is very deep and we should probably refrain from scratching the surface only.\r\n\r\nOr be sufficently clear that we are just scratching the surface and not even trying to be comprehensive. ",
           "createdAt": "2024-12-02T18:35:18Z",
           "updatedAt": "2024-12-02T18:35:18Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > I agree with @bc-pi that the rat hole is very deep and we should probably refrain from scratching the surface only.\r\n> \r\n> Or be sufficently clear that we are just scratching the surface and not even trying to be comprehensive.\r\n\r\nI tried to make suggestions to this PR to make it more general. This would be another option.",
+          "createdAt": "2024-12-03T06:21:22Z",
+          "updatedAt": "2024-12-03T06:21:22Z"
         }
       ],
       "reviews": [
@@ -22099,6 +22212,26 @@
           "createdAt": "2024-11-28T15:22:49Z",
           "updatedAt": "2024-11-28T15:22:49Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6TgLIr",
+          "commit": {
+            "abbreviatedOid": "40e69cc"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2024-12-03T06:20:50Z",
+          "updatedAt": "2024-12-03T06:20:50Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\n## Risks Associated with Textual Information {#risks-textual-information}\r\n\r\nSome claims in the SD-JWT VC and properties in the Type Metadata, e.g., `display`, allows issuers and providers of metadata to\r\nspecify human-readable information. These can contain arbitrary textual information that\r\nmay be displayed to developers. As such, any consuming application MUST ensure that maliciously\r\ncrafted information cannot be used to compromise the security of the application\r\nor the privacy of the user. To this end, the following considerations apply:\r\n\r\n- The consuming application MUST ensure that the text is properly escaped before\r\n  displaying it to the user or transferring it into other contexts. For example,\r\n  if the data is displayed in an HTML document, the text MUST be properly\r\n  escaped to prevent Cross-Site Scripting (XSS) attacks.\r\n- The consuming application MUST ensure that the display of the user interface\r\n  elements cannot be distorted by overly long text or special characters.\r\n```",
+              "createdAt": "2024-12-03T06:20:50Z",
+              "updatedAt": "2024-12-03T06:20:50Z"
+            }
+          ]
         }
       ]
     },
@@ -22508,7 +22641,7 @@
       "labels": [],
       "body": "Closes #276 ",
       "createdAt": "2024-11-27T23:28:33Z",
-      "updatedAt": "2024-12-02T17:54:14Z",
+      "updatedAt": "2024-12-03T10:18:07Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da2dbec746a55f7c618c95ed752c17bd74b06a26",
@@ -22727,24 +22860,26 @@
       "id": "PR_kwDOJbVClc6D0LV6",
       "title": "Fix formatting issue introduced by the reintroduction of the DID paragraph in -07",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/280",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2024-12-02T22:56:39Z",
-      "updatedAt": "2024-12-02T22:56:39Z",
+      "updatedAt": "2024-12-03T12:46:17Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "efc9a7c067ef3ab606198450617d1828e126bf7b",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "did-that-really-break",
       "headRefOid": "8917f1e180fa37c995dc507bea3c7fc5b2f191b1",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-12-03T12:46:17Z",
+      "mergedAt": "2024-12-03T12:46:17Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "4c86e64e3e3bf95c803b56009ab961f44a26b7a4"
+      },
       "comments": [],
       "reviews": []
     }
