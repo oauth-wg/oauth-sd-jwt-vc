@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-05T00:32:01.195073+00:00",
+  "timestamp": "2024-12-08T00:34:58.100683+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6382,7 +6382,7 @@
       ],
       "body": "Per John Bradley comment during IETF 120",
       "createdAt": "2024-07-22T20:37:32Z",
-      "updatedAt": "2024-11-26T19:25:03Z",
+      "updatedAt": "2024-12-05T23:09:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -6398,6 +6398,13 @@
           "body": "This needs to be reviewed again after it became clear what the scope of the first version will be.",
           "createdAt": "2024-11-26T19:24:39Z",
           "updatedAt": "2024-11-26T19:24:39Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "IMO\r\n- metadata should be shared with the verifier as some elements, as schema/contexts/... are required for verification purposes\r\n- display information will typically reveal the credential type and with it structure/schemas/...\r\nSo it's more of a question: what and how should/can be disclosed when SD is used. It mainly comes from the business requirements.\r\n\r\nIn use cases, when structure should not be revealed when selectively disclosing claims, both data model and display information must be designed accordingly. Cases when structure should be revealed/hidden should be treated independently.\r\n\r\nDisclosure/presentation policy info should be in the credential (example: work credential might contain disclosure policies depending on the position -- same VC metadata is used for all work credentials, but different positions may have -> different disclosure policies).",
+          "createdAt": "2024-12-05T23:09:04Z",
+          "updatedAt": "2024-12-05T23:09:04Z"
         }
       ]
     },
@@ -6994,9 +7001,17 @@
       "labels": [],
       "body": "Repeating my live comment from the IETF 121 meeting... It would be worth documenting the reasons for creating a new JSON query syntax instead of using JSONPath or alternatives.",
       "createdAt": "2024-11-07T13:14:31Z",
-      "updatedAt": "2024-11-26T19:21:10Z",
+      "updatedAt": "2024-12-05T23:17:33Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Haven't followed the reasoning to introduce `Claim Path` yet to my understanding:\r\n- JSON Poinrter\r\n  - Too narrow to express requirements as verifier (What to present), given that it misses a wild-card for arrays.\r\n  - Could be used by wallet to calculate disclosures to include in a presentation\r\n- JSON Path\r\n  - Too broad for both the verifier and the wallet\r\n  - Ultimately leads to interoperability issues.\r\n  \r\n**Claim Path**\r\nThat's the sweet spot. I think it as a DSL pointer.\r\n- Easy to implement\r\n- Allows verifier to use wildcards for arrays\r\n- Allows wallet to calculate disclosures (Practically omitting wildcard is one-to-one mapping with JSONPointer, except the root)     \r\n",
+          "createdAt": "2024-12-05T23:17:32Z",
+          "updatedAt": "2024-12-05T23:17:32Z"
+        }
+      ]
     },
     {
       "number": 270,
@@ -7108,7 +7123,7 @@
       "labels": [],
       "body": "If the verifier supports multiple different ways of issuer key discovery, the spec currently suggests that they would need to perform all of these different ways to validate the public key. Perhaps this is a good thing, but perhaps this is an unnecessary thing? Especially if the verifier supports HTTPS and X.509, should they do both?",
       "createdAt": "2024-12-03T21:41:43Z",
-      "updatedAt": "2024-12-03T22:35:23Z",
+      "updatedAt": "2024-12-05T23:01:54Z",
       "closedAt": null,
       "comments": [
         {
@@ -7131,6 +7146,20 @@
           "body": "> Wondering, assuming really, that this came about from this https://mailarchive.ietf.org/arch/msg/oauth/oRhW0bxoDrel1mnDJR_rokHq85I/\r\n\r\nIndeed, it was inspired. I was supposed to send to the mailing list but then only replied individually.",
           "createdAt": "2024-12-03T22:35:22Z",
           "updatedAt": "2024-12-03T22:35:22Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Signature validation key discovery and resolution mechanism is in most specifications defined by the signature profile and  in the VC it must be unambiguous which mechanism should be used. If the mechanism is not unique (e.g., there are 3 ways to resolve the keys) and the issuer is supporting only one, two other mechanisms could be misused by an attacker",
+          "createdAt": "2024-12-05T22:59:49Z",
+          "updatedAt": "2024-12-05T22:59:49Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @awoie , @bc-pi \r\n\r\nI was wondering the same. Have implemented this as follows:\r\n\r\n| Supported Method (Wallet/RP) | `iss` | Method Used                                  | \r\n|------------------------------|-------|----------------------------------------------|\r\n| issuer metadata              | HTTPS | issuer metadata, using `kid` if presented    |\r\n| `x5c`                        | HTTPS | `x5c` (SAN DNS or SAN URI), if `x5c` present |\r\n| x5c & issuer metadata        | HTTPS | `x5c` if there is `x5c`, metadata otherwise  |\r\n| `did` (outside of sd-jwt-vc scope) | DID| `did`, using optionally `kid` (DID URL) if present|\r\n\r\n\r\nIn all cases, at most one method is used, with no fallback on error.\r\n\r\nGiven that if `x5c`method is eligible, then issuer metadata is eligible,  I think that the former (`x5c`) must take precedence, if verifier/wallet support both.\r\n",
+          "createdAt": "2024-12-05T23:01:53Z",
+          "updatedAt": "2024-12-05T23:01:53Z"
         }
       ]
     },
@@ -7180,6 +7209,150 @@
           "updatedAt": "2024-12-04T13:27:22Z"
         }
       ]
+    },
+    {
+      "number": 283,
+      "id": "I_kwDOJbVClc6iaZVJ",
+      "title": "The wording \"Verifiable Credentials\" should be changed into \"Digital Credentials\"",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/283",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.1 states:\r\n\r\n>    SD-JWT VCs compliant with this specification MUST use the media type application/dc+sd-jwt as defined in Section 3.1.\r\n> \r\n>    The base subtype name dc is meant to stand for \"digital credential\", which is a term that is emerging as a conceptual synonym for\r\n>    \"verifiable credential\".\r\n\r\nThis change is significant and welcomed. \"Verifiable Credential\" is a term used in VCDM 2.0. It has a W3C connotation.\r\n\r\nIn VCDM 2.0 a Verifiable Credential is defined as:\r\n\r\n> A tamper-evident credential whose authorship can be cryptographically verified. Verifiable credentials can be used to build verifiable presentations, which can also be cryptographically verifiable. \r\n\r\nwhile a Verifiable Presentation is defined as:\r\n\r\n> A tamper-evident presentation of information encoded in such a way that authorship of the data can be trusted after a process of cryptographic verification. Certain types of verifiable presentations might contain data that is synthesized from, but does not contain, the original verifiable credentials (for example, zero-knowledge proofs).\r\n\r\nThese definitions are not crystal clear.\r\n\r\nThe acronym DC should be used everywhere including in the title of this draft. \r\n\r\nThe wording \"SD-JWT-based Verifiable Credentials (SD-JWT VC)\" should be changed into: \r\n\r\n> \"SD-JWT-based Digital Credentials (SD-JWT DC)\".\r\n\r\nThe name of the draft should be changed into:\r\n\r\n> draft-ietf-oauth-sd-jwt-dc\r\n",
+      "createdAt": "2024-12-07T21:54:13Z",
+      "updatedAt": "2024-12-07T21:54:13Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 284,
+      "id": "I_kwDOJbVClc6iaZqU",
+      "title": "A statement about \"Verifiable Credentials\" should be changed",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/284",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 1.1 states:\r\n\r\n> Verifiable Credentials are cryptographically secured statements about a Subject, typically the Holder.\r\n\r\nThis sentence is confusing as it does not distinguish between the Holder which is an application and a Subject which is usually an individual who has the control of the Holder.\r\n\r\nIt should be changed into:\r\n\r\n> Digital Credentials are cryptographically secured statements about a Subject issued by a Digital Credential Issuer.\r\n> \r\n> A Holder is an application placed under the control of a Subject that receives a Digital Credential from a Digital Credential Issuer and when selectively disclosure is supported add Selected Disclosures and optionally a Key Binding Token.\r\n> \r\n> A Key Binding Token allows the Verifier to know that the private key corresponding to a public key which is present in the Digital Credential has been used to create it. When selective disclosure is used, both the Digital Credential and the Selected Disclosures, if any, are integrity protected under that private key.\r\n> ",
+      "createdAt": "2024-12-07T21:59:16Z",
+      "updatedAt": "2024-12-07T21:59:16Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 285,
+      "id": "I_kwDOJbVClc6iaZ-o",
+      "title": "Figure 1  Issuer-Holder-Verifier Model should be modified",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/285",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "```\r\n\r\n            +------------+\r\n            |            |\r\n            |   Issuer   |\r\n            |            |\r\n            +------------+\r\n                  |\r\n         Issues Digital Credentials\r\n         and All Disclosures when \r\n    selectively disclosure is supported\r\n                  |\r\n                  v\r\n            +------------+\r\n            |            |\r\n            |   Holder   |<---- Subject\r\n            |            |\r\n            +------------+\r\n                  |\r\n  Presents Digital Credential + Selected Disclosures\r\n     when selectively disclosure is supported\r\n       + optional Key Binding Token\r\n                  |\r\n                  v\r\n            +-------------+\r\n            |             |+                              +------------+\r\n            |  Verifiers  ||+ ----- optional use -------> |   Status   |\r\n            |             |||  of Token Status Lists      |  Provider  |\r\n            +-------------+||  to retrieve the status     |            |\r\n             +-------------+|  of the Digital Credential  +------------+\r\n              +-------------+\r\n```\r\n\r\n\r\n\r\n\r\nNote that the wording:\r\n\r\n> optionally retrieve status of Verifiable Credential \r\n\r\nhas been replaced by:\r\n\r\n> optional use of Token Status Lists to retrieve the status of the Digital Credential\r\n\r\nThis change is important as the current wording may let think that a Status provider is necessarily needed to know the status of a Digital Credential, whereas it is not the case.\r\n\r\n",
+      "createdAt": "2024-12-07T22:03:28Z",
+      "updatedAt": "2024-12-07T22:03:28Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 286,
+      "id": "I_kwDOJbVClc6iaahG",
+      "title": "Suspension and revocation of Digital Credentials",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/286",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The end of section 1.1 states:\r\n\r\n>    To support revocation of Verifiable Credentials, revocation information can optionally be retrieved from a Status Provider.  The\r\n>    role of a Status Provider can be fulfilled by either a fourth party or by the Issuer.\r\n> \r\n\r\nBoth suspension and revocation of Digital Credentials should be mentioned. It should also be observed that the suspension or the revocation of Digital Credentials does not need necessarily involve a Status Provider.\r\n\r\nSince Digital Credentials are hosted by a Holder which is an application, that application can contact the Issuer of the Digital Credential and be instructed by the Issuer to suspend or to stop (i.e. revoke) the use of a Digital Credential. \r\n\r\nIt is proposed to change the end of this section into:\r\n\r\n>    If the suspension or the revocation of a Digital Credential is  supported, an information SHALL be included into the Digital \r\n>    Credential.\r\n> \r\n>    If Token Status Lists are used, then a specific claim (i.e., status) shall be included into the Digital Credential to indicate that this \r\n>   mechanism  is supported.\r\n> \r\n>    If a \"Digital Credential Policy\", analogous to a \"Certificate Policy\" for X.509 certificate, is included into the Digital Credential, then \r\n>    in some cases, the characteristics of the Holder can be known by the Verifier.  In this way, the Verifier can be able to know that the \r\n>    Holder will contact the Issuer of the Digital Credential from time  to time and can be instructed by the Issuer to suspend or to stop \r\n>    (i.e. revoke) the use of a Digital Credential, when necessary. \r\n> \r\n>    If the Holder is unable to contact an Issuer during a defined period of time, e.g. 24 hours, the Holder will suspend all the Digital \r\n>    Credentials  issued by that issuer. When a Digital Credential  has been suspended, the process can be reversed. However, when a \r\n>   Digital Credential  has been invalidated (e.g., revoked),  the process  cannot be reversed. \r\n",
+      "createdAt": "2024-12-07T22:11:04Z",
+      "updatedAt": "2024-12-07T22:11:04Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 287,
+      "id": "I_kwDOJbVClc6iabKk",
+      "title": "The following sentence would need to be clarified and reworded",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/287",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "On page 5, section 1.2 , the text states:\r\n\r\n> However, SD-JWT itself does not define the claims that must be used within the payload or their semantics.\r\n\r\n\r\nPlease, reword it.\r\n",
+      "createdAt": "2024-12-07T22:20:18Z",
+      "updatedAt": "2024-12-07T22:20:18Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 288,
+      "id": "I_kwDOJbVClc6iabRn",
+      "title": "The definition of \"Verifiable Credential (VC)\"should be replaced by a definition of \"Digital Credential (DC)\"",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/288",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The current definition is :\r\n\r\n> Verifiable Credential (VC):  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).\r\n\r\nThe following change is proposed:\r\n\r\n> Digital Credential (DC): cryptographically secured statements about a Subject issued by a Digital Credential Issuer.\r\n",
+      "createdAt": "2024-12-07T22:21:52Z",
+      "updatedAt": "2024-12-07T22:21:52Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 289,
+      "id": "I_kwDOJbVClc6iabqI",
+      "title": "The SD-JWT DC does not CONTAIN the Key Binding JWT",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/289",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.2 states:\r\n\r\n> SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of [I-D.ietf-oauth-selective-disclosure-jwt].  A presentation of an SD-JWT VC MAY contain a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT VC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not contain any Disclosures.\r\n\r\nThe SD-JWT DC does not CONTAIN the Key Binding JWT. See the revised Figure 1. See #285.\r\nHowever, a SD-JWT VC CAN be ASSOCIATED with a Key Binding JWT\r\n\r\nThe following changes are proposed:\r\n\r\n> A presentation of an SD-JWT DC CAN be associated with a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT DC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not be associated with any Disclosures.\r\n> \r\n",
+      "createdAt": "2024-12-07T22:27:24Z",
+      "updatedAt": "2024-12-07T22:27:24Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 290,
+      "id": "I_kwDOJbVClc6iab3O",
+      "title": "Add a new claim called \"dcpol\" for \"Digital Credential Policy\"",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/290",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In section 3.2.2.2.  Registered JWT Claims.\r\nAfter :\r\n\r\n> \r\n>    *  status\r\n>       -  OPTIONAL.\r\n\r\nAdd the following claim:\r\n\r\n>    *  dcpol\r\n>       -  OPTIONAL.  The Digital Credential Policy under which the Digital Credential has been issued by the Issuer.\r\n",
+      "createdAt": "2024-12-07T22:30:15Z",
+      "updatedAt": "2024-12-07T22:30:15Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 291,
+      "id": "I_kwDOJbVClc6iac1E",
+      "title": "Support of the suspension or of the revovation of  a Digital Credential without using the status claim",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/291",
+      "state": "OPEN",
+      "author": "Denisthemalice",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In section 3.4 , the text states:\r\n\r\n>    If status is present in the verified payload of the SD-JWT, the\r\n>    status SHOULD be checked.  It depends on the Verifier policy to\r\n>    reject or accept a presentation of a SD-JWT VC based on the status of\r\n>    the Verifiable Credential.\r\n\r\nAnother sentence should be added:\r\n\r\n> If dcpol is present in the verified payload of the SD-JWT, the Digital Credential Policy under which the Digital Credential has been issued by the Issuer SHOULD be considered by the Verifier.  When the Verifier is able to derive from it the characteristics of the Holder, the Verifier can know that the presentation of the Digital Credential to the Verifier by the Holder has not been suspended nor invalided by the Digital Credential Issuer. It depends on the Verifier policy to reject or accept a presentation of a SD-JWT DC when this claim is present.\r\n",
+      "createdAt": "2024-12-07T22:43:55Z",
+      "updatedAt": "2024-12-07T22:43:55Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
