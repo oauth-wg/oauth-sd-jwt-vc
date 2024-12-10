@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-08T00:34:58.100683+00:00",
+  "timestamp": "2024-12-10T00:32:42.510242+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6142,9 +6142,17 @@
       "labels": [],
       "body": "If the leaf JSON Schema document includes the full schema, it might be easier to just validate against the leaf and not against all schemas in the chain? ",
       "createdAt": "2024-07-01T15:46:14Z",
-      "updatedAt": "2024-07-01T15:46:24Z",
+      "updatedAt": "2024-12-09T21:18:31Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Schema validator always validates the full schema. \r\nBut note that SD-JWT renders the JSON schema validation useless as it breaks the (original) structure.",
+          "createdAt": "2024-12-09T21:18:30Z",
+          "updatedAt": "2024-12-09T21:18:30Z"
+        }
+      ]
     },
     {
       "number": 240,
@@ -7166,18 +7174,16 @@
     {
       "number": 282,
       "id": "I_kwDOJbVClc6h5yvx",
-      "title": "SVG? really? And metadata more broadly",
+      "title": "Can we trust metadata? Why? (was: SVG? really? And metadata more broadly)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282",
       "state": "OPEN",
       "author": "wbl",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [
-        "pending close"
-      ],
+      "labels": [],
       "body": "I really don't get why SVG logos for individual fields is supported. Also I'm not sure about the value of this display metadata. Are people going to use it?",
       "createdAt": "2024-12-04T00:31:21Z",
-      "updatedAt": "2024-12-04T13:27:24Z",
+      "updatedAt": "2024-12-09T22:10:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -7207,6 +7213,69 @@
           "body": "Yes. By putting in an element that's intended (and there's not a lot of\r\ntext about this) to be displayed directly to the user you raise the issue\r\nof Issuer A using a logo associated with Issuer B. Do verifiers need to not\r\ndisplay the logos to users?\r\n\r\nOn Wed, Dec 4, 2024, 5:18\u202fAM Daniel Fett ***@***.***> wrote:\r\n\r\n> Sorry, is this still related to SVGs?\r\n>\r\n> \u2014\r\n> Reply to this email directly, view it on GitHub\r\n> <https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282#issuecomment-2517324734>,\r\n> or unsubscribe\r\n> <https://github.com/notifications/unsubscribe-auth/AAISLY243R7IFB565LEHMKL2D36KXAVCNFSM6AAAAABS66CKC6VHI2DSMVQWIX3LMV43OSLTON2WKQ3PNVWWK3TUHMZDKMJXGMZDINZTGQ>\r\n> .\r\n> You are receiving this because you authored the thread.Message ID:\r\n> ***@***.***>\r\n>\r\n",
           "createdAt": "2024-12-04T13:27:22Z",
           "updatedAt": "2024-12-04T13:27:22Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I think the real question here is - why should anyone trust metadata in general? How can a wallet know that the content is fine to display to the user? This is what must be addressed in the specification. I'll change the title accordingly.\r\n\r\nIf there are any issues specific to the <i>format</i> of the logo, please file a separate issue.",
+          "createdAt": "2024-12-09T17:22:03Z",
+          "updatedAt": "2024-12-09T17:22:03Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Metadata is information asserted by the issuer (hence, should be integrity protected, which I believe it is). Issuer must be trusted for the information (credential or the metadata) to be trusted.",
+          "createdAt": "2024-12-09T21:20:56Z",
+          "updatedAt": "2024-12-09T21:20:56Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "I can trust Alice Co to produce its corporate ids. I can't trust them to create Bob co's corporate ids. Trust is not an absolute, and the text indicating anything about this is not in the security considerations sections and would need to be.",
+          "createdAt": "2024-12-09T21:26:44Z",
+          "updatedAt": "2024-12-09T21:26:44Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "This is why usually accreditations are introduced (they limit the scope of attestations - e.g., you can only attest information about own employees). Authors will know whether that's in scope or not.",
+          "createdAt": "2024-12-09T21:30:10Z",
+          "updatedAt": "2024-12-09T21:30:10Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "Once again, that's not in the Security Considerations section. If we wanted it in there we should say \"verifiers MUST NOT trust issuers that cannot be trusted to assert anything they please\".  We should be explicit this is for a very closed system. That's not compatible with a DID world.\r\n\r\nSecondly, the accredation is by definition reactive: it looks at policies that existed in the past and are in place. That's not as good as preventing the issue. \r\n\r\nWe've been through these issues with X509 and browser UI and certificates. We learned a lot. And logos are I think very powerful ways to misdirect users. People will learn to look for them, and then get fooled.",
+          "createdAt": "2024-12-09T21:37:28Z",
+          "updatedAt": "2024-12-09T21:37:28Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "If I understand correctly, there are two topics to cover\r\n- identity of the issuer (is the issuer identity self-asserted or is attested by a 3rd party; if so, under which identity framework)\r\n- what claims the issuer can make about the user\r\n?",
+          "createdAt": "2024-12-09T21:48:44Z",
+          "updatedAt": "2024-12-09T21:48:44Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "That's a different issue, which also should be raised or discussed somewhere. Metadata isn't claims per se. But if you e.g. have a logo that gets displayed, that can be interpreted by a user as a claim. ",
+          "createdAt": "2024-12-09T21:55:00Z",
+          "updatedAt": "2024-12-09T21:55:00Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Today (at least in eIDAS) signer/issuer information is always expressed in an x509 certificate issued by a trusted authority (issuer/signer information is never self-asserted); Logo could be one of the 'issuer' claims, which brings us to the question: which metadata claims can be made by the issuer.\r\n\r\nIn governed ecosystems, probably only few, if any, as regulation defines what claims an issuer can make about the user.",
+          "createdAt": "2024-12-09T22:08:37Z",
+          "updatedAt": "2024-12-09T22:08:37Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "And once again, that is not in the four corners of the text here. I think this is something that also needs to go on the list.",
+          "createdAt": "2024-12-09T22:10:57Z",
+          "updatedAt": "2024-12-09T22:10:57Z"
         }
       ]
     },
