@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-10T00:32:42.510242+00:00",
+  "timestamp": "2024-12-12T00:31:51.586436+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7131,7 +7131,7 @@
       "labels": [],
       "body": "If the verifier supports multiple different ways of issuer key discovery, the spec currently suggests that they would need to perform all of these different ways to validate the public key. Perhaps this is a good thing, but perhaps this is an unnecessary thing? Especially if the verifier supports HTTPS and X.509, should they do both?",
       "createdAt": "2024-12-03T21:41:43Z",
-      "updatedAt": "2024-12-05T23:01:54Z",
+      "updatedAt": "2024-12-10T22:24:24Z",
       "closedAt": null,
       "comments": [
         {
@@ -7168,6 +7168,20 @@
           "body": "Hi @awoie , @bc-pi \r\n\r\nI was wondering the same. Have implemented this as follows:\r\n\r\n| Supported Method (Wallet/RP) | `iss` | Method Used                                  | \r\n|------------------------------|-------|----------------------------------------------|\r\n| issuer metadata              | HTTPS | issuer metadata, using `kid` if presented    |\r\n| `x5c`                        | HTTPS | `x5c` (SAN DNS or SAN URI), if `x5c` present |\r\n| x5c & issuer metadata        | HTTPS | `x5c` if there is `x5c`, metadata otherwise  |\r\n| `did` (outside of sd-jwt-vc scope) | DID| `did`, using optionally `kid` (DID URL) if present|\r\n\r\n\r\nIn all cases, at most one method is used, with no fallback on error.\r\n\r\nGiven that if `x5c`method is eligible, then issuer metadata is eligible,  I think that the former (`x5c`) must take precedence, if verifier/wallet support both.\r\n",
           "createdAt": "2024-12-05T23:01:53Z",
           "updatedAt": "2024-12-05T23:01:53Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Given that if x5cmethod is eligible, then issuer metadata is eligible, I think that the former (x5c) must take precedence, if verifier/wallet support both.\r\n\r\nI think that's very reasonable @babisRoutis but the text in the draft needs some work and I'm sure could reasonably be interpreted differently. And there was some support/suggestion in yesterday's interim around having some explicit signal. Which probably/might have some relation to the concerns here https://mailarchive.ietf.org/arch/msg/oauth/ho6D8dc_7GQgJxwycS7khTM9_qw/. Some more thinking and/or work is needed in this area. ",
+          "createdAt": "2024-12-10T21:51:57Z",
+          "updatedAt": "2024-12-10T21:55:05Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > Given that if x5cmethod is eligible, then issuer metadata is eligible, I think that the former (x5c) must take precedence, if verifier/wallet support both.\r\n> \r\n> I think that's very reasonable @babisRoutis but the text in the draft needs some work and I'm sure could reasonably be interpreted differently. And there was some support/suggestion in yesterday's interim around having some explicit signal. Which probably/might have some relation to the concerns here https://mailarchive.ietf.org/arch/msg/oauth/ho6D8dc_7GQgJxwycS7khTM9_qw/. Some more thinking and/or work is needed in this area.\r\n\r\n@bc-pi Thanks for sharing this. \r\nHope that this will not end up with `issuer_id_scheme` :smile: \r\n",
+          "createdAt": "2024-12-10T22:24:22Z",
+          "updatedAt": "2024-12-10T22:24:22Z"
         }
       ]
     },
@@ -7403,9 +7417,17 @@
       "labels": [],
       "body": "In section 3.2.2.2.  Registered JWT Claims.\r\nAfter :\r\n\r\n> \r\n>    *  status\r\n>       -  OPTIONAL.\r\n\r\nAdd the following claim:\r\n\r\n>    *  dcpol\r\n>       -  OPTIONAL.  The Digital Credential Policy under which the Digital Credential has been issued by the Issuer.\r\n",
       "createdAt": "2024-12-07T22:30:15Z",
-      "updatedAt": "2024-12-07T22:30:15Z",
+      "updatedAt": "2024-12-11T18:37:20Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "What's a Digital Credential Policy? This would need a lot more text to explain the semantics.",
+          "createdAt": "2024-12-11T18:37:19Z",
+          "updatedAt": "2024-12-11T18:37:19Z"
+        }
+      ]
     },
     {
       "number": 291,
