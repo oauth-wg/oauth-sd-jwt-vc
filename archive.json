@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-12T00:31:51.586436+00:00",
+  "timestamp": "2024-12-15T00:35:15.175281+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6430,7 +6430,7 @@
       ],
       "body": "We should consider adding type metadata that can help a wallet to guide a user to a place where they can have a credential of a specific type issued.",
       "createdAt": "2024-07-23T14:51:01Z",
-      "updatedAt": "2024-11-26T19:23:23Z",
+      "updatedAt": "2024-12-13T06:07:43Z",
       "closedAt": null,
       "comments": [
         {
@@ -6439,6 +6439,13 @@
           "body": "Would this type metadata be different if the same `vct` was used by multiple different issuers? It might be hard to make this work across issuers since the type metadata is static, right?",
           "createdAt": "2024-07-23T17:12:28Z",
           "updatedAt": "2024-07-23T17:12:28Z"
+        },
+        {
+          "author": "wbl",
+          "authorAssociation": "NONE",
+          "body": "Maybe I'm dense, but I don't get why that goes in this document",
+          "createdAt": "2024-12-13T06:07:42Z",
+          "updatedAt": "2024-12-13T06:07:42Z"
         }
       ]
     },
@@ -23144,6 +23151,32 @@
       "mergeCommit": {
         "oid": "4c86e64e3e3bf95c803b56009ab961f44a26b7a4"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 292,
+      "id": "PR_kwDOJbVClc6FBe_S",
+      "title": "fix: adjusting terminology to latest SD-JWT spec",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/292",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR adjusts terminology to latest SD-JWT spec\r\n\r\nMay fix #243\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-243/draft-ietf-oauth-sd-jwt-vc.html",
+      "createdAt": "2024-12-12T13:55:06Z",
+      "updatedAt": "2024-12-12T13:55:07Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "4c86e64e3e3bf95c803b56009ab961f44a26b7a4",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-243",
+      "headRefOid": "a5e25bd16d84ebc2971eabd9756ef17a00906866",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
