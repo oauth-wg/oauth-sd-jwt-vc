@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-15T00:35:15.175281+00:00",
+  "timestamp": "2024-12-17T00:31:55.849959+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7408,9 +7408,17 @@
       "labels": [],
       "body": "Section 3.2 states:\r\n\r\n> SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of [I-D.ietf-oauth-selective-disclosure-jwt].  A presentation of an SD-JWT VC MAY contain a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT VC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not contain any Disclosures.\r\n\r\nThe SD-JWT DC does not CONTAIN the Key Binding JWT. See the revised Figure 1. See #285.\r\nHowever, a SD-JWT VC CAN be ASSOCIATED with a Key Binding JWT\r\n\r\nThe following changes are proposed:\r\n\r\n> A presentation of an SD-JWT DC CAN be associated with a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT DC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not be associated with any Disclosures.\r\n> \r\n",
       "createdAt": "2024-12-07T22:27:24Z",
-      "updatedAt": "2024-12-07T22:27:24Z",
+      "updatedAt": "2024-12-16T17:27:23Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Although, I agree with the proposed idea (I also think that SD-JWT doesn't contain a KB-JWT, rather a KB-JWT may be associated to an SD-JWT presentation), yet I feel that this proposal should target SD-JWT and not SD-JWT-VC.\r\n\r\n\r\n\r\n",
+          "createdAt": "2024-12-16T17:27:20Z",
+          "updatedAt": "2024-12-16T17:27:20Z"
+        }
+      ]
     },
     {
       "number": 290,
