@@ -539,7 +539,11 @@ figcaption, caption {
   }
   pre, svg {
     display: inline-block;
-    overflow-x: auto;
+    /* In the horizontal direction, sometimes people make over-sized figures.
+       Scrollbars for those is therefore necessary: auto adds them as necessary..
+       In the vertical direction, the line-height can combine with the font
+       asender/descender height to produce scrollbars: hidden avoids that. */
+    overflow: auto hidden;
   }
   pre {
     max-width: 100%;
@@ -1049,7 +1053,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 6 June 2025</td>
+<td class="center">Expires 20 June 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1062,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2024-12-03" class="published">3 December 2024</time>
+<time datetime="2024-12-17" class="published">17 December 2024</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-06-06">6 June 2025</time></dd>
+<dd class="expires"><time datetime="2025-06-20">20 June 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1121,7 +1125,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 20 June 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1496,7 +1500,8 @@ document are to be interpreted as described in RFC 2119 <span>[<a href="#RFC2119
         <h3 id="name-terms-and-definitions">
 <a href="#section-1.4" class="section-number selfRef">1.4. </a><a href="#name-terms-and-definitions" class="section-name selfRef">Terms and Definitions</a>
         </h3>
-<p id="section-1.4-1">This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding", and "Key Binding JWT" defined by
+<p id="section-1.4-1">This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", "Selectively Disclosable JWT (SD-JWT)", "Key Binding",
+"Key Binding JWT (KB-JWT)", "Selectively Disclosable JWT with Key Binding (SD-JWT+KB)" defined by
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-1.4-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlCompact dlParallel" id="section-1.4-2">
           <dt id="section-1.4-2.1">Consumer:</dt>
@@ -1570,7 +1575,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
         </h3>
 <p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. A presentation of an SD-JWT VC MAY
-contain a Key Binding JWT.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+contain a KB-JWT.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <div id="jose-header">
@@ -1676,7 +1681,7 @@ information.<a href="#section-3.2.2.2-3.3.2.1" class="pilcrow">¶</a>
               <li class="compact" id="section-3.2.2.2-3.4">
                 <p id="section-3.2.2.2-3.4.1"><code>cnf</code><a href="#section-3.2.2.2-3.4.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.4.2.1">OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.4.2.1">OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
@@ -1938,9 +1943,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.9-8A-
-_cTVJwz3HXKCRo-qzsD-UPJf-SwRUpgx_TXoj8eBC9GPjFJtGSJj5-HdFae_9cC9LiJ6
-qn815KTAFZOaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.26QZ-
+pvQi7VlZR36_Yi4XNNZZ4jccks7I7Q4gqORoJ0SCf6hV6jVGdzFDkP9pFw3zlYi9Nuhj
+GEQNuR7kA2Kug~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1965,9 +1970,9 @@ lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 <p id="section-3.4-1">The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in Section 8 of
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
-<p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>), the Verifier MUST verify the Key Binding JWT
+<p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>), the Verifier MUST verify the KB-JWT
 according to Section 7 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. To verify
-the Key Binding JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
+the KB-JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 <p id="section-3.4-3">Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
 for the Issuer-signed JWT as defined in <a href="#issuer-signed-jwt-verification-key-validation" class="auto internal xref">Section 3.5</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 <p id="section-3.4-4">If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a>.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
@@ -2022,10 +2027,10 @@ of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
         <h3 id="name-key-binding-jwt">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-key-binding-jwt" class="section-name selfRef">Key Binding JWT</a>
         </h3>
-<p id="section-4.1-1">If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
-JWT MUST adhere to the rules defined in Section 4.3 of
+<p id="section-4.1-1">If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
+MUST adhere to the rules defined in Section 4.3 of
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">The Key Binding JWT MAY include additional claims which, when not understood, MUST
+<p id="section-4.1-2">The KB-JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2034,7 +2039,7 @@ be ignored by the Verifier.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
         <h3 id="name-examples">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
         </h3>
-<p id="section-4.2-1">The following is a non-normative example of a presentation of the SD-JWT shown in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> including a Key Binding JWT.
+<p id="section-4.2-1">The following is a non-normative example of a presentation of the SD-JWT shown in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> including a KB-JWT.
 In this presentation, the Holder provides only the Disclosures for the <code>address</code> and <code>is_over_65</code> claims.
 Other claims are not disclosed to the Verifier.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 <div class="lang-txt sourcecode" id="section-4.2-2">
@@ -2053,17 +2058,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.9-8A-
-_cTVJwz3HXKCRo-qzsD-UPJf-SwRUpgx_TXoj8eBC9GPjFJtGSJj5-HdFae_9cC9LiJ6
-qn815KTAFZOaQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.26QZ-
+pvQi7VlZR36_Yi4XNNZZ4jccks7I7Q4gqORoJ0SCf6hV6jVGdzFDkP9pFw3zlYi9Nuhj
+GEQNuR7kA2Kug~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzMyMzAwMD
-AsICJzZF9oYXNoIjogImFqQ2V5ZmF5T2hSLXJ5ZVVpMHlVUm1zYk1PZGtESTE2QzNta3
-RNcXlVRDgifQ.ZPFN4CalzyxYjQdepaWdSYlRsgN3LhSlUr_TOXrht-tRETrQrM2wr9D
-0TOVpoy_uCop-J2A9DEHAgynUXj2I4A
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzQ0NjkyOT
+EsICJzZF9oYXNoIjogIk5SMjZrclRqYWNJMWtBSy1wNHktdHFIYVJIekJmd0VpaXo2OG
+4wa0FvazQifQ.bKt4aCuuHL8DYBt_cPQs6zCgqMn9XIN398svUhPLrz5DDpLrpPRxWm8
+3qWE5AFWlgKMn_CFl6d5az1KvIVfUBQ
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2094,7 +2099,7 @@ RNcXlVRDgifQ.ZPFN4CalzyxYjQdepaWdSYlRsgN3LhSlUr_TOXrht-tRETrQrM2wr9D
 </pre><a href="#section-4.2-4" class="pilcrow">¶</a>
 </div>
 <p id="section-4.2-5">The following example shows a presentation of a (similar but different) SD-JWT without a
-Key Binding JWT:<a href="#section-4.2-5" class="pilcrow">¶</a></p>
+KB-JWT:<a href="#section-4.2-5" class="pilcrow">¶</a></p>
 <div class="lang-txt sourcecode" id="section-4.2-6">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
 ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
@@ -2108,8 +2113,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.PKbaL6_nTEU95QpSf1SMY4tzhtWTp_ME6kG14RkFz1i4Nc
-ZBRc6L_VKHmOiYJLDU2zj0E4FL3FsI0KWp7S4Hjg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.1Z2fIrWosBHLSV51fgykvE1YSXR97jLDVQ1zPC8BLMJP3L
+3CkAHChtZCu0NehpMALGY-TRQzfOr-7CZ2Wap4Fw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3193,7 +3198,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
         <dd>
-<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-05</span>, <time datetime="2024-10-21" class="refDate">21 October 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-05">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-05</a>&gt;</span>. </dd>
+<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-06</span>, <time datetime="2024-12-03" class="refDate">3 December 2024</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-06">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-06</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -3470,8 +3475,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.uG-Kg-dS1m9ntjAGbcvaQmY-BVi7hcAgHAlCVXgSDSCWPVQTN3nbcf
-cvzeKnhJhpywpAw5iE0oE-jo3aC9glXQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.UMhFDZPe1iReLjTBFOCrkFRH2mBjvbD57Jiss7lzdX9goJXq4M58S-
+xg4ETBF9MRbz_u-RsZHJC3-alo0eIjXA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3826,14 +3831,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.uG-Kg-dS1m9ntjAGbcvaQmY-BVi7hcAgHAlCVXgSDSCWPVQTN3nbcf
-cvzeKnhJhpywpAw5iE0oE-jo3aC9glXQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.UMhFDZPe1iReLjTBFOCrkFRH2mBjvbD57Jiss7lzdX9goJXq4M58S-
+xg4ETBF9MRbz_u-RsZHJC3-alo0eIjXA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3MzMyMzAwMDAsICJzZF9oYXNoIjogIkpRNmNPaTNUYnBiM
-FJUazd1UjZ0NXVGZGU3Nk9ZVHFNUURudkFXOVBxcUkifQ.Zjpz2-TSzmXcL0njqnK5SY
-HeXhK5Q9wVNKL6gdavbTLuEk0nb4dgPmfXlTXOKDhmejc7j2Mbo7XlieVpUYXXQw
+mlmaWVyIiwgImlhdCI6IDE3MzQ0NjkyOTEsICJzZF9oYXNoIjogImNpbHZ1dXJGc1RQc
+lRWTmluMGllbEptX2NzMGxxSWJDbVdXQ0N0TnNkM2cifQ.Alr4oJZx04ZMRYs1KIw61e
+6scdpYAygVJ01qgr2pBbsyR_bLThsC5u7faDFiNUfK_C7VBP2yiQ39GZiEAZlHcg
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3842,8 +3847,8 @@ HeXhK5Q9wVNKL6gdavbTLuEk0nb4dgPmfXlTXOKDhmejc7j2Mbo7XlieVpUYXXQw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1733230000,
-  "sd_hash": "JQ6cOi3Tbpb0RTk7uR6t5uFde76OYTqMQDnvAW9PqqI"
+  "iat": 1734469291,
+  "sd_hash": "cilvuurFsTPrTVNin0ielJm_cs0lqIbCmWWCCtNsd3g"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
@@ -4045,119 +4050,124 @@ for their contributions (some of which substantial) to this draft and to the ini
       <h2 id="name-document-history">
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="appendix-D-1">-08<a href="#appendix-D-1" class="pilcrow">¶</a></p>
+<p id="appendix-D-1">-09<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-2.1">Fix formatting issue introduced by the reintroduction of the DID paragraph in -07<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-2.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-3">-07<a href="#appendix-D-3" class="pilcrow">¶</a></p>
+<p id="appendix-D-3">-08<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-4.1">Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-4.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-4.2">Remove the requirement to insert a .well-known part for vct URLs<a href="#appendix-D-4.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-4.3">fix section numbering in SD-JWT references to align with the latest -14 version<a href="#appendix-D-4.3" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-4.1">Fix formatting issue introduced by the reintroduction of the DID paragraph in -07<a href="#appendix-D-4.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-5">-06<a href="#appendix-D-5" class="pilcrow">¶</a></p>
+<p id="appendix-D-5">-07<a href="#appendix-D-5" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-6.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-D-6.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-6.1">Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-6.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-6.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-6.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-6.2">Remove the requirement to insert a .well-known part for vct URLs<a href="#appendix-D-6.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-6.3">Add the “Status” field for the well-known URI registration per IANA early review<a href="#appendix-D-6.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-6.3">fix section numbering in SD-JWT references to align with the latest -14 version<a href="#appendix-D-6.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-7">-05<a href="#appendix-D-7" class="pilcrow">¶</a></p>
+<p id="appendix-D-7">-06<a href="#appendix-D-7" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-8.1">Include display and claim type metadata<a href="#appendix-D-8.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-8.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-D-8.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-8.2">Added example for type metadata<a href="#appendix-D-8.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-8.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-8.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-8.3">Clarify, add context, or otherwise improved the examples<a href="#appendix-D-8.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-8.3">Add the “Status” field for the well-known URI registration per IANA early review<a href="#appendix-D-8.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-9">-04<a href="#appendix-D-9" class="pilcrow">¶</a></p>
+<p id="appendix-D-9">-05<a href="#appendix-D-9" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-10.1">update reference to IETF Status List<a href="#appendix-D-10.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-10.1">Include display and claim type metadata<a href="#appendix-D-10.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-10.2">Include Type Metadata<a href="#appendix-D-10.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-10.2">Added example for type metadata<a href="#appendix-D-10.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-10.3">Include schema Type Metadata<a href="#appendix-D-10.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-10.4">Editorial changes<a href="#appendix-D-10.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-10.5">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-D-10.5" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-10.6">Rework key resolution/validation for x5c<a href="#appendix-D-10.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-10.3">Clarify, add context, or otherwise improved the examples<a href="#appendix-D-10.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-11">-03<a href="#appendix-D-11" class="pilcrow">¶</a></p>
+<p id="appendix-D-11">-04<a href="#appendix-D-11" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-12.1">Include disclosure of age_equal_or_over/18 in the PID example<a href="#appendix-D-12.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-12.1">update reference to IETF Status List<a href="#appendix-D-12.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-12.2">Include Type Metadata<a href="#appendix-D-12.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-12.3">Include schema Type Metadata<a href="#appendix-D-12.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-12.4">Editorial changes<a href="#appendix-D-12.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-12.5">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-D-12.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-12.6">Rework key resolution/validation for x5c<a href="#appendix-D-12.6" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-13">-02<a href="#appendix-D-13" class="pilcrow">¶</a></p>
+<p id="appendix-D-13">-03<a href="#appendix-D-13" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-14.1">Made specific rules for public verification key validation conditional<a href="#appendix-D-14.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.2">Finetuned rules for obtaining public verification key<a href="#appendix-D-14.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.3">Editorial changes<a href="#appendix-D-14.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.4">added Brian Campbell as co-author<a href="#appendix-D-14.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.5">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-D-14.5" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.6">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-D-14.6" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.7">Fix inconstancy in the .well-known path construction<a href="#appendix-D-14.7" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.8">Added registration request to IANA for the well-known URI<a href="#appendix-D-14.8" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-D-14.9" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.10">Clarify the optionality of the <code>cnf</code> claim<a href="#appendix-D-14.10" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.11">Added relationships to other documents<a href="#appendix-D-14.11" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-14.12">Added PID example<a href="#appendix-D-14.12" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-14.1">Include disclosure of age_equal_or_over/18 in the PID example<a href="#appendix-D-14.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-15">-01<a href="#appendix-D-15" class="pilcrow">¶</a></p>
+<p id="appendix-D-15">-02<a href="#appendix-D-15" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-16.1">Introduce rules for type identifiers (Collision-Resistant Name)<a href="#appendix-D-16.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-16.1">Made specific rules for public verification key validation conditional<a href="#appendix-D-16.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-16.2">Rename <code>type</code> to <code>vct</code><a href="#appendix-D-16.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-16.2">Finetuned rules for obtaining public verification key<a href="#appendix-D-16.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-16.3">Removed duplicated and inconsistent requirements on KB-JWT<a href="#appendix-D-16.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-16.3">Editorial changes<a href="#appendix-D-16.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-16.4">Editorial changes<a href="#appendix-D-16.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-16.4">added Brian Campbell as co-author<a href="#appendix-D-16.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-16.5">Added issuer public verification key discovery section.<a href="#appendix-D-16.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-16.5">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-D-16.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.6">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-D-16.6" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.7">Fix inconstancy in the .well-known path construction<a href="#appendix-D-16.7" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.8">Added registration request to IANA for the well-known URI<a href="#appendix-D-16.8" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-D-16.9" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.10">Clarify the optionality of the <code>cnf</code> claim<a href="#appendix-D-16.10" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.11">Added relationships to other documents<a href="#appendix-D-16.11" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-16.12">Added PID example<a href="#appendix-D-16.12" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-17">-00<a href="#appendix-D-17" class="pilcrow">¶</a></p>
+<p id="appendix-D-17">-01<a href="#appendix-D-17" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-18.1">Upload as draft-ietf-oauth-sd-jwt-vc-00<a href="#appendix-D-18.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-18.1">Introduce rules for type identifiers (Collision-Resistant Name)<a href="#appendix-D-18.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-18.2">Aligned terminology and descriptions with latest version of SD-JWT<a href="#appendix-D-18.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-18.2">Rename <code>type</code> to <code>vct</code><a href="#appendix-D-18.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.3">Removed duplicated and inconsistent requirements on KB-JWT<a href="#appendix-D-18.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.4">Editorial changes<a href="#appendix-D-18.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.5">Added issuer public verification key discovery section.<a href="#appendix-D-18.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-19">[[ pre Working Group Adoption: ]]<a href="#appendix-D-19" class="pilcrow">¶</a></p>
-<p id="appendix-D-20">-00<a href="#appendix-D-20" class="pilcrow">¶</a></p>
+<p id="appendix-D-19">-00<a href="#appendix-D-19" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-21.1">Initial Version<a href="#appendix-D-21.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-20.1">Upload as draft-ietf-oauth-sd-jwt-vc-00<a href="#appendix-D-20.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-21.2">Removed W3C VCDM transformation algorithm<a href="#appendix-D-21.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-20.2">Aligned terminology and descriptions with latest version of SD-JWT<a href="#appendix-D-20.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-21.3">Various editorial changes based on feedback<a href="#appendix-D-21.3" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-D-21">[[ pre Working Group Adoption: ]]<a href="#appendix-D-21" class="pilcrow">¶</a></p>
+<p id="appendix-D-22">-00<a href="#appendix-D-22" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-D-23.1">Initial Version<a href="#appendix-D-23.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-21.4">Adjusted terminology based on feedback<a href="#appendix-D-21.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-23.2">Removed W3C VCDM transformation algorithm<a href="#appendix-D-23.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-21.5">Added non-selectively disclosable JWT VC<a href="#appendix-D-21.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-23.3">Various editorial changes based on feedback<a href="#appendix-D-23.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-21.6">Added a note that this is not W3C VCDM<a href="#appendix-D-21.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-23.4">Adjusted terminology based on feedback<a href="#appendix-D-23.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-23.5">Added non-selectively disclosable JWT VC<a href="#appendix-D-23.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-23.6">Added a note that this is not W3C VCDM<a href="#appendix-D-23.6" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
