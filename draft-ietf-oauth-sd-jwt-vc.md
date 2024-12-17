@@ -127,7 +127,8 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 ## Terms and Definitions
 
-This specification uses the terms "Holder", "Issuer", "Verifier", "Key Binding", and "Key Binding JWT" defined by
+This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", "Selectively Disclosable JWT (SD-JWT)", "Key Binding",
+"Key Binding JWT (KB-JWT)", "Selectively Disclosable JWT with Key Binding (SD-JWT+KB)" defined by
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 Consumer:
@@ -171,7 +172,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
-contain a Key Binding JWT.
+contain a KB-JWT.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -248,7 +249,7 @@ accepted before validating. See [@!RFC7519] for more information.
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`
-    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the Key Binding JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.
+    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.
 * `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
@@ -312,9 +313,9 @@ The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in Section 8 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the Key Binding JWT
+If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the KB-JWT
 according to Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
-the Key Binding JWT, the `cnf` claim of the SD-JWT MUST be used.
+the KB-JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
 for the Issuer-signed JWT as defined in (#issuer-signed-jwt-verification-key-validation).
@@ -356,16 +357,16 @@ of SD-JWT VCs.
 
 ## Key Binding JWT
 
-If the presentation of the SD-JWT VC includes a Key Binding JWT, the Key Binding
-JWT MUST adhere to the rules defined in Section 4.3 of
+If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
+MUST adhere to the rules defined in Section 4.3 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
-The Key Binding JWT MAY include additional claims which, when not understood, MUST
+The KB-JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.
 
 ## Examples {#presentation-examples}
 
-The following is a non-normative example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a Key Binding JWT.
+The following is a non-normative example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
 In this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.
 Other claims are not disclosed to the Verifier.
 
@@ -376,7 +377,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
 <{{examples/01/verified_contents.json}}
 
 The following example shows a presentation of a (similar but different) SD-JWT without a
-Key Binding JWT:
+KB-JWT:
 
 <{{examples/02/sd_jwt_presentation.txt}}
 
@@ -1568,6 +1569,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-09
+
+* Use SD-JWT KB in place of SD-JWT with Key Binding JWT
 
 -08
 
