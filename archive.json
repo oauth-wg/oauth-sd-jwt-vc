@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2024-12-17T00:31:55.849959+00:00",
+  "timestamp": "2024-12-19T00:31:09.601749+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6265,7 +6265,7 @@
       "id": "I_kwDOJbVClc6PoGFM",
       "title": "use SD-JWT+KB in place of SD-JWT with a Key Binding JWT",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/243",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -6274,8 +6274,8 @@
       "labels": [],
       "body": "As of [SD-JWT -09](https://datatracker.ietf.org/doc/draft-ietf-oauth-selective-disclosure-jwt/09/) which \"[Distinguished SD-JWT from SD-JWT+KB](https://www.ietf.org/archive/id/draft-ietf-oauth-selective-disclosure-jwt-09.html#name-document-history)\" the phrase \"SD-JWT with a Key Binding JWT\" may/should be replaced with \"SD-JWT+KB\" ",
       "createdAt": "2024-07-15T21:13:05Z",
-      "updatedAt": "2024-11-26T19:25:24Z",
-      "closedAt": null,
+      "updatedAt": "2024-12-17T21:01:03Z",
+      "closedAt": "2024-12-17T21:01:03Z",
       "comments": [
         {
           "author": "selfissued",
@@ -23167,26 +23167,55 @@
       "id": "PR_kwDOJbVClc6FBe_S",
       "title": "fix: adjusting terminology to latest SD-JWT spec",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/292",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR adjusts terminology to latest SD-JWT spec\r\n\r\nMay fix #243\r\n\r\nSee preview here:\r\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-243/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2024-12-12T13:55:06Z",
-      "updatedAt": "2024-12-12T13:55:07Z",
+      "updatedAt": "2024-12-17T21:01:03Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "4c86e64e3e3bf95c803b56009ab961f44a26b7a4",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-243",
       "headRefOid": "a5e25bd16d84ebc2971eabd9756ef17a00906866",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2024-12-17T21:01:02Z",
+      "mergedAt": "2024-12-17T21:01:02Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6Vluil",
+          "commit": {
+            "abbreviatedOid": "a5e25bd"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-17T18:10:17Z",
+          "updatedAt": "2024-12-17T18:10:17Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6VmYMr",
+          "commit": {
+            "abbreviatedOid": "a5e25bd"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2024-12-17T19:15:02Z",
+          "updatedAt": "2024-12-17T19:15:02Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
