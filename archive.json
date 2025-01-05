@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-02T00:29:21.745935+00:00",
+  "timestamp": "2025-01-05T00:32:36.304324+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7457,6 +7457,22 @@
       "body": "In section 3.4 , the text states:\r\n\r\n>    If status is present in the verified payload of the SD-JWT, the\r\n>    status SHOULD be checked.  It depends on the Verifier policy to\r\n>    reject or accept a presentation of a SD-JWT VC based on the status of\r\n>    the Verifiable Credential.\r\n\r\nAnother sentence should be added:\r\n\r\n> If dcpol is present in the verified payload of the SD-JWT, the Digital Credential Policy under which the Digital Credential has been issued by the Issuer SHOULD be considered by the Verifier.  When the Verifier is able to derive from it the characteristics of the Holder, the Verifier can know that the presentation of the Digital Credential to the Verifier by the Holder has not been suspended nor invalided by the Digital Credential Issuer. It depends on the Verifier policy to reject or accept a presentation of a SD-JWT DC when this claim is present.\r\n",
       "createdAt": "2024-12-07T22:43:55Z",
       "updatedAt": "2024-12-07T22:43:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 293,
+      "id": "I_kwDOJbVClc6k2lGi",
+      "title": "Risk of issuer monitoring with jwt-vc-issuer metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/293",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In case the the credential includes a link to the hosted metadata, the relying party will fetch it like:\r\n```\r\nGET /.well-known/jwt-vc-issuer HTTP/1.1\r\nHost: example.com\r\n```\r\n\r\nA malicious issuer could add unique subdomains to add a tracker, e.g. the jti value or another internal identifier `<jti>.exmaple.com/.well-known/jwt-vc-issuer`. This can not be detected by the relying party since the url of the `jwks_uri` must not match with the same host as the vct value (or the issuer uses an x509 that must also not be bound to a domain, or maybe it's a wildcard one).\r\n\r\nSuggestion:\r\nAdd a privacy consideration note that this can be used for presentation tracking. An alternative suggestion would be to allow the Wallet to include the vct issuer metadata into the e.g. presentation response when using OID4VP. In this case the issuer may only know that the wallet is presenting a credential, when the VCT it was not cached before (in case an integrity value was provided, the wallet can be sure it never has an outdated version of the vct values).",
+      "createdAt": "2025-01-02T10:20:00Z",
+      "updatedAt": "2025-01-02T10:20:00Z",
       "closedAt": null,
       "comments": []
     }
