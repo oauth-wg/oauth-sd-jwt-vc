@@ -346,7 +346,7 @@ obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer
      2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
 - DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
 
-Separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. For example, an ecosystem MAY choose to define a profile that uses DIDs [@W3C.DID] for issuer key resolution by specifying encoding, resolution, and validation rules. See (#ecosystem-verification-rules) for security considerations applicable to these complementary or extended rules.
+Separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. For example, an ecosystem MAY choose to define a profile that specifies additional encoding, resolution, and validation rules. See (#ecosystem-verification-rules) for security considerations applicable to these complementary or extended rules.
 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
 
