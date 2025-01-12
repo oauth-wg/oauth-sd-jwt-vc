@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-09T00:29:40.000350+00:00",
+  "timestamp": "2025-01-12T00:33:05.864700+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -23229,6 +23229,46 @@
           "body": "",
           "createdAt": "2024-12-17T19:15:02Z",
           "updatedAt": "2024-12-17T19:15:02Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 294,
+      "id": "PR_kwDOJbVClc6HVIwO",
+      "title": "Make extension point for issuer key resolution more explicit",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/294",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR makes the extension point for issuer key resolution more explicit.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/extension-point/draft-ietf-oauth-sd-jwt-vc.html",
+      "createdAt": "2025-01-10T13:08:01Z",
+      "updatedAt": "2025-01-11T13:19:43Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/extension-point",
+      "headRefOid": "143dd009a8597a777cd5dd182a5d14e28f0c8918",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6Xr0JX",
+          "commit": {
+            "abbreviatedOid": "143dd00"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "at a minimum this PR should move the mention of DIDs in to an example of a prospective profile utilizing the now more explicit extension point",
+          "createdAt": "2025-01-11T13:19:43Z",
+          "updatedAt": "2025-01-11T13:19:43Z",
           "comments": []
         }
       ]
