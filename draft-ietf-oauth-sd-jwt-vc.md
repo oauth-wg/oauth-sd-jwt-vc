@@ -229,18 +229,16 @@ a type:
 ```
 For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
 
-#### Registered JWT Claims {#claims}
+#### JWT Claims {#claims}
 
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
 
-If present, the following registered JWT claims MUST be included in the SD-JWT
-and MUST NOT be included in the Disclosures, i.e. cannot be selectively
-disclosed:
+The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:
 
 * `iss`
     * REQUIRED. The Issuer of the Verifiable Credential. The value of `iss`
-MUST be a URI. See [@!RFC7519] for more information.
+MUST be a URI. See [@!RFC7519] for more information. MUST NOT be selectively disclosed.
 * `nbf`
     * OPTIONAL. The time before which the Verifiable Credential MUST NOT be
 accepted before validating. See [@!RFC7519] for more information.
@@ -258,8 +256,7 @@ information.
 Credential. See [@!I-D.ietf-oauth-status-list]
  for more information.
 
-The following registered JWT claims MAY be contained in the SD-JWT or in the
-Disclosures and MAY be selectively disclosed:
+The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
 
 * `sub`
     * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
