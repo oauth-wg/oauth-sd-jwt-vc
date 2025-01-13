@@ -238,7 +238,7 @@ The following registered JWT claims are used within the SD-JWT component of the 
 
 * `iss`
     * REQUIRED. The Issuer of the Verifiable Credential. The value of `iss`
-MUST be a URI. See [@!RFC7519] for more information. MUST NOT be selectively disclosed.
+MUST be a URI. See [@!RFC7519] for more information.
 * `nbf`
     * OPTIONAL. The time before which the Verifiable Credential MUST NOT be
 accepted before validating. See [@!RFC7519] for more information.
