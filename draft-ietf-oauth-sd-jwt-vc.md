@@ -1003,7 +1003,7 @@ able to identify the claim which is being addressed.
 
 Note: This specification does intentionally not use JSON Pointer [@RFC6901] for
 selecting claims, as JSON Pointer requires string parsing and does not support
-wildcard selection of array elements. It does not use JSON Path [@JSONPATH] as
+wildcard selection of array elements. It does not use JSON Path [@?I-D.draft-goessner-dispatch-jsonpath] as
 that introduces a considerable complexity and brings in a lot of features that
 are not needed for the use case of selecting claims in a credential. There are
 also security concerns with some implementations.
@@ -1322,6 +1322,7 @@ recommendations in (#robust-retrieval) apply.
     </author>
   </front>
 </reference>
+
 {backmatter}
 
 # IANA Considerations
