@@ -1567,6 +1567,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-10
+
+* Editorial changes
+
 -09
 
 * Use SD-JWT KB in place of SD-JWT with Key Binding JWT
