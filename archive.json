@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-12T00:33:05.864700+00:00",
+  "timestamp": "2025-01-14T00:28:22.673748+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -49,7 +49,7 @@
       "color": "6DBCE0"
     },
     {
-      "name": "NEEDS PR",
+      "name": "Ready-for-PR",
       "description": "Needs PR (typically after resolved discussion)",
       "color": "B71DC5"
     },
@@ -378,7 +378,7 @@
         "awoie"
       ],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "individual-??"
       ],
       "body": "Currently, `type` is not one of the selectively disclosable claims. This might be ok but it might have some privacy implications if a VC has multiple types. Let's assume the following:\r\n\r\nA VC with the types: driver's-license, age-over-18.\r\n\r\nIf the holder discloses only the age, then based on the current specification, the verifier would also know that the age was disclosed from a DL which is probably unnecessary context info since all the verifier needs is to trust the issuer of the VC. Note, the issuer itself might also leak some contextual info as well, so the issue might not need to be mitigated or it might not be entirely possible anyways.\r\n\r\nShould we make `type` selectively disclosable per array entry? Is this even supported by SD-JWT?\r\n\r\n",
@@ -1311,7 +1311,7 @@
       ],
       "labels": [
         "individual-01",
-        "NEEDS PR"
+        "Ready-for-PR"
       ],
       "body": "",
       "createdAt": "2023-05-16T08:49:21Z",
@@ -1965,7 +1965,7 @@
       "assignees": [],
       "labels": [
         "individual-01",
-        "NEEDS PR"
+        "Ready-for-PR"
       ],
       "body": "I found several minor issues here:\r\n\r\nThe spec has the following headlines:\r\n\r\n>  4.2.1. Header Parameters\r\n    4.2.2 Claims\r\n\r\nComparing this to RFC7519 JWT these should be:\r\n4.2.1 JOSE Header\r\n4.2.2 JWT Claims Set\r\n\r\nAlso, in 4.2.2.1 type claim `StringOrURI` is never explained. This should be added to the Terminology. Its also missing a link to the Annex A.1.",
       "createdAt": "2023-05-25T16:07:36Z",
@@ -1991,7 +1991,7 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "individual-03"
       ],
       "body": "The spec says:\r\n\r\n> cnf\r\nREQUIRED when Cryptographic Holder Binding is to be supported. Contains the confirmation method as defined in [[RFC7800](https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#RFC7800)]. It SHOULD contain a JWK as defined in Section 3.2 of [[RFC7800](https://vcstuff.github.io/draft-terbu-sd-jwt-vc/draft-terbu-sd-jwt-vc.html#RFC7800)] and in this case, the kid (Key ID) member MUST be present in the JWK. For Cryptographic Holder Binding, the Holder Binding JWT in the Combined Format for Presentation MUST be signed by the key identified in this claim.\r\n\r\nI don't see why `kid` is a MUST.\r\nMoreover, the example in 4.3 does not include the `kid`, so either the text or the exampel is wrong.",
@@ -2103,7 +2103,7 @@
       ],
       "labels": [
         "individual-01",
-        "NEEDS PR"
+        "Ready-for-PR"
       ],
       "body": "Section 5 describes how to use `iss` and well-known directory to fetch the issuer key and verify the VC.\r\nIn my opinion it makes sense to name the `kid` parameter as a SHOULD or MAY in section 4.2.1 and make a link to Section 5.",
       "createdAt": "2023-05-25T16:54:00Z",
@@ -2594,7 +2594,7 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "individual-03"
       ],
       "body": "There are lots of things that could be described as a three-party model (including classic OAuth where this work is aspiring for adoption). The use of \"Three-Party-Model\" in this document strikes me as somewhat presumptuous and potentially misleading or confusing. Could we instead use \"Issuer-Holder-Verifier Model\"? \r\n\r\n\r\n",
@@ -3171,7 +3171,7 @@
       "assignees": [],
       "labels": [
         "individual-01",
-        "NEEDS PR"
+        "Ready-for-PR"
       ],
       "body": "JWT issuer metadata, as defined in this document, is raising privacy concerns since verifiers will need to contact issuers directly which basically maps to the existing authentication model. Question is, why not just using the existing OIDC/SAML infrastructure instead?",
       "createdAt": "2023-06-13T19:32:02Z",
@@ -3213,7 +3213,7 @@
         "awoie"
       ],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "wg-02"
       ],
       "body": "Data model in this document resembles to the ID Token data model as defined in OIDC (with the addition of cnf).\r\n\r\nOn the other hand, the data model is trying to follow the W3C VC data model.\r\nWhat is the benefit of this data model over the W3C VC data model (except that the claim names are different and iss can be a URI, and not an object and that JSON-LD is not supported by the data model, which basically excludes some significant use cases such as Europass that are leveraging JSON-LD for internationalization, for example)?",
@@ -3685,7 +3685,7 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "individual-03"
       ],
       "body": "The examples in Section 6.2 don't contain any Disclosures which is required for the combined format for presentations.",
@@ -5539,7 +5539,7 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR"
+        "Ready-for-PR"
       ],
       "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
       "createdAt": "2024-02-27T23:44:20Z",
@@ -5652,7 +5652,7 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "metadata",
         "PRIO",
         "wg-05"
@@ -5688,7 +5688,7 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "NEEDS PR",
+        "Ready-for-PR",
         "wg-05"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
@@ -6825,12 +6825,10 @@
       "assignees": [
         "awoie"
       ],
-      "labels": [
-        "NEEDS PR"
-      ],
+      "labels": [],
       "body": "I don't understand this sentence that points to the claims that are REQUIRED: `If present, the following registered JWT claims MUST be included in the SD-JWT and MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:` the sentence also uses two normative statements in one. Could it be clarified/simplified as something like: `The following registered JWT claims MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:`\r\nThanks.\r\n",
       "createdAt": "2024-10-07T10:38:15Z",
-      "updatedAt": "2024-11-26T19:22:46Z",
+      "updatedAt": "2025-01-13T17:10:18Z",
       "closedAt": null,
       "comments": [
         {
@@ -6854,7 +6852,7 @@
         "danielfett"
       ],
       "labels": [
-        "NEEDS PR"
+        "Ready-for-PR"
       ],
       "body": "Would also be good to add rationale why chosen certain claims are not selectively disclosable.",
       "createdAt": "2024-10-07T11:04:18Z",
@@ -6902,12 +6900,10 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [
-        "HAS PR"
-      ],
+      "labels": [],
       "body": "There are certain risks associated with free text, some of which are elaborated in threads like these (though not entirely) [https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253(https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253)\r\n\r\nI probably won't be able to convince the authors in removing the free text `description` property from the metadata, which is defined as `A human-readable description for the type, intended for developers reading the JSON document.` So at least would be great if security considerations for free text can be added.\r\nThanks.",
       "createdAt": "2024-10-07T11:09:45Z",
-      "updatedAt": "2024-11-26T19:22:09Z",
+      "updatedAt": "2025-01-13T17:10:05Z",
       "closedAt": null,
       "comments": [
         {
@@ -23245,18 +23241,33 @@
       "labels": [],
       "body": "This PR makes the extension point for issuer key resolution more explicit.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/extension-point/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-01-10T13:08:01Z",
-      "updatedAt": "2025-01-11T13:19:43Z",
+      "updatedAt": "2025-01-13T15:21:51Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/extension-point",
-      "headRefOid": "143dd009a8597a777cd5dd182a5d14e28f0c8918",
+      "headRefOid": "5b96ff5a257cc7179e8370239598d5ad24e0f8cf",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "> move the mention of DIDs\r\n\r\nIt was clear in previous discussions that many WG members preferred X.509 Certificates and DID Resolution to not be removed.\r\n\r\nAny additional key resolution mechanisms in the future can use the extension point, or - even better - can define a DID method.",
+          "createdAt": "2025-01-13T10:06:04Z",
+          "updatedAt": "2025-01-13T10:06:04Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> at a minimum this PR should move the mention of DIDs in to an example of a prospective profile utilizing the now more explicit extension point\r\n\r\nAs I recall, the consensus from the last interim call was to highlight how the specification can be extended to support other mechanisms, such as DIDs, by defining a profile. Therefore, this change seems reasonable.",
+          "createdAt": "2025-01-13T15:21:50Z",
+          "updatedAt": "2025-01-13T15:21:50Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6Xr0JX",
@@ -23270,8 +23281,93 @@
           "createdAt": "2025-01-11T13:19:43Z",
           "updatedAt": "2025-01-11T13:19:43Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6XwCFA",
+          "commit": {
+            "abbreviatedOid": "143dd00"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-13T08:09:54Z",
+          "updatedAt": "2025-01-13T08:09:54Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nTo enable additional methods for Issuer verification key resolution, separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. For example, an ecosystem MAY choose to define a profile that specifies additional encoding, resolution, and validation rules. See (#ecosystem-verification-rules) for security considerations applicable to these complementary or extended rules.\r\n```",
+              "createdAt": "2025-01-13T08:09:54Z",
+              "updatedAt": "2025-01-13T08:09:54Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Xw-S4",
+          "commit": {
+            "abbreviatedOid": "143dd00"
+          },
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "state": "CHANGES_REQUESTED",
+          "body": "This PR should advise that defining a new DID method and therefore re-using existing standards and infrastructure would be preferable to inventing completely new issuer key resolution mechanisms.\r\n\r\nIt's harmful for interoperability to invent a new extension mechanism for resolving issuer keys, when there is already an existing one (DID methods).",
+          "createdAt": "2025-01-13T10:08:39Z",
+          "updatedAt": "2025-01-13T10:08:39Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 295,
+      "id": "PR_kwDOJbVClc6Hhvwx",
+      "title": "Fix #267, explain why we are not using JSON Path or JSON Pointer",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/295",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fix #267 ",
+      "createdAt": "2025-01-13T12:55:36Z",
+      "updatedAt": "2025-01-13T13:12:47Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-267",
+      "headRefOid": "fcaffaaa22dea858c5f0e309cf1396f16ae178d0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 296,
+      "id": "PR_kwDOJbVClc6HkXkc",
+      "title": "ed: improved clarity on registered claims paragraph",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/296",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR improves clarity of the registered claims paragraph.\r\n\r\nMay fix #257 \r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-257/draft-ietf-oauth-sd-jwt-vc.html",
+      "createdAt": "2025-01-13T17:03:43Z",
+      "updatedAt": "2025-01-13T17:05:03Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-257",
+      "headRefOid": "3c5da523931e35c5291f43ff3daefac6438505e0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
