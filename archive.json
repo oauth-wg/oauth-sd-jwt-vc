@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-14T00:28:22.673748+00:00",
+  "timestamp": "2025-01-16T00:28:48.869860+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -23241,7 +23241,7 @@
       "labels": [],
       "body": "This PR makes the extension point for issuer key resolution more explicit.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/extension-point/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-01-10T13:08:01Z",
-      "updatedAt": "2025-01-13T15:21:51Z",
+      "updatedAt": "2025-01-15T18:53:34Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
@@ -23266,6 +23266,27 @@
           "body": "> at a minimum this PR should move the mention of DIDs in to an example of a prospective profile utilizing the now more explicit extension point\r\n\r\nAs I recall, the consensus from the last interim call was to highlight how the specification can be extended to support other mechanisms, such as DIDs, by defining a profile. Therefore, this change seems reasonable.",
           "createdAt": "2025-01-13T15:21:50Z",
           "updatedAt": "2025-01-13T15:21:50Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I think it was quite clear in the interim that the outcome should be an extendable spec with profiles for DID living somewhere else (e.g., in the european context in ETSI). If I recall correctly, we even discussed that such a specification could focus on certain DID methods and specify anything that is required to make them work in an interoperable way.\r\n\r\nThis is also what I understood from side conversations following the interim.",
+          "createdAt": "2025-01-14T07:46:31Z",
+          "updatedAt": "2025-01-14T07:46:31Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I think it was quite clear in the interim that the outcome should be an extendable spec with profiles for DID living somewhere else (e.g., in the european context in ETSI). If I recall correctly, we even discussed that such a specification could focus on certain DID methods and specify anything that is required to make them work in an interoperable way.\r\n> \r\n> This is also what I understood from side conversations following the interim.\r\n\r\nI was under the impression that \"european\" should be capitalized but otherwise concur with @danielfett's assessment. ",
+          "createdAt": "2025-01-14T13:16:25Z",
+          "updatedAt": "2025-01-14T13:16:25Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "> consensus from the last interim call\r\n\r\nAre there meeting notes or a recording of this?",
+          "createdAt": "2025-01-15T18:53:33Z",
+          "updatedAt": "2025-01-15T18:53:33Z"
         }
       ],
       "reviews": [
@@ -23329,19 +23350,73 @@
       "labels": [],
       "body": "Fix #267 ",
       "createdAt": "2025-01-13T12:55:36Z",
-      "updatedAt": "2025-01-13T13:12:47Z",
+      "updatedAt": "2025-01-14T13:45:50Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-267",
-      "headRefOid": "fcaffaaa22dea858c5f0e309cf1396f16ae178d0",
+      "headRefOid": "3f56fd246621106e3b73895909c6c0cbda2c0e4c",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6X-eDL",
+          "commit": {
+            "abbreviatedOid": "fcaffaa"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-14T13:42:18Z",
+          "updatedAt": "2025-01-14T13:42:18Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "more natural phrasing to a native English speaker \r\n```suggestion\r\nNote: This specification intentionally does not use JSON Pointer [@RFC6901] for\r\n```",
+              "createdAt": "2025-01-14T13:42:18Z",
+              "updatedAt": "2025-01-14T13:42:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6X-fFB",
+          "commit": {
+            "abbreviatedOid": "3f56fd2"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-14T13:43:49Z",
+          "updatedAt": "2025-01-14T13:43:49Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6X-gvN",
+          "commit": {
+            "abbreviatedOid": "3f56fd2"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-14T13:45:50Z",
+          "updatedAt": "2025-01-14T13:45:50Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "let's be explicit about the \"?\"ness \r\n```suggestion\r\nNote: This specification intentionally does not use JSON Pointer [@?RFC6901] for\r\n```",
+              "createdAt": "2025-01-14T13:45:50Z",
+              "updatedAt": "2025-01-14T13:45:50Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 296,
@@ -23355,7 +23430,7 @@
       "labels": [],
       "body": "This PR improves clarity of the registered claims paragraph.\r\n\r\nMay fix #257 \r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-257/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-01-13T17:03:43Z",
-      "updatedAt": "2025-01-13T17:05:03Z",
+      "updatedAt": "2025-01-14T13:43:55Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
@@ -23367,7 +23442,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6X-fLo",
+          "commit": {
+            "abbreviatedOid": "3c5da52"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-01-14T13:43:55Z",
+          "updatedAt": "2025-01-14T13:43:55Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
