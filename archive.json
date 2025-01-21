@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-01-19T00:31:37.080968+00:00",
+  "timestamp": "2025-01-21T00:28:31.936301+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7469,6 +7469,22 @@
       "body": "In case the the credential includes a link to the hosted metadata, the relying party will fetch it like:\r\n```\r\nGET /.well-known/jwt-vc-issuer HTTP/1.1\r\nHost: example.com\r\n```\r\n\r\nA malicious issuer could add unique subdomains to add a tracker, e.g. the jti value or another internal identifier `<jti>.exmaple.com/.well-known/jwt-vc-issuer`. This can not be detected by the relying party since the url of the `jwks_uri` must not match with the same host as the vct value (or the issuer uses an x509 that must also not be bound to a domain, or maybe it's a wildcard one).\r\n\r\nSuggestion:\r\nAdd a privacy consideration note that this can be used for presentation tracking. An alternative suggestion would be to allow the Wallet to include the vct issuer metadata into the e.g. presentation response when using OID4VP. In this case the issuer may only know that the wallet is presenting a credential, when the VCT it was not cached before (in case an integrity value was provided, the wallet can be sure it never has an outdated version of the vct values).",
       "createdAt": "2025-01-02T10:20:00Z",
       "updatedAt": "2025-01-02T10:20:00Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 297,
+      "id": "I_kwDOJbVClc6m2wpp",
+      "title": "Say something about presentations if KB-JWT is not used",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/297",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 4 only says something about if the presentation contains a KB-JWT:\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4\n\nA reader that is not familiar with SD-JWT will probably appreciate guidance on presentations not containing KB-JWT.",
+      "createdAt": "2025-01-20T14:10:36Z",
+      "updatedAt": "2025-01-20T14:10:36Z",
       "closedAt": null,
       "comments": []
     }
@@ -23350,7 +23366,7 @@
       "labels": [],
       "body": "Fix #267 ",
       "createdAt": "2025-01-13T12:55:36Z",
-      "updatedAt": "2025-01-14T13:45:50Z",
+      "updatedAt": "2025-01-19T19:29:46Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "799acde9f2e1b0621a6fd097eed4c21595bb6ae4",
@@ -23413,6 +23429,26 @@
               "body": "let's be explicit about the \"?\"ness \r\n```suggestion\r\nNote: This specification intentionally does not use JSON Pointer [@?RFC6901] for\r\n```",
               "createdAt": "2025-01-14T13:45:50Z",
               "updatedAt": "2025-01-14T13:45:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6Ypuee",
+          "commit": {
+            "abbreviatedOid": "3f56fd2"
+          },
+          "author": "timcappalli",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-01-19T19:29:45Z",
+          "updatedAt": "2025-01-19T19:29:46Z",
+          "comments": [
+            {
+              "originalPosition": 9,
+              "body": "editorial nit\r\n\r\n```suggestion\r\nthat introduces a considerable complexity and brings in many features which\r\nare not needed for the use case of selecting claims in a credential. There are\r\nalso security concerns with some implementations.\r\n```",
+              "createdAt": "2025-01-19T19:29:46Z",
+              "updatedAt": "2025-01-19T19:29:46Z"
             }
           ]
         }
