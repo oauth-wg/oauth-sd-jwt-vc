@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-02-23T00:32:36.030054+00:00",
+  "timestamp": "2025-02-25T00:34:46.589015+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6503,7 +6503,7 @@
       ],
       "body": "Section 3.5 references DIDs and DID resolution but does so in a very underspecified way. The document already supports extensibility so there is no reason why specific ecosystem processing rules need to be in this document at all. The DID community should write a profile doc that describes DID related processing rules in detail. ",
       "createdAt": "2024-07-26T16:16:43Z",
-      "updatedAt": "2024-12-02T19:23:10Z",
+      "updatedAt": "2025-02-23T20:54:47Z",
       "closedAt": "2024-11-13T12:36:20Z",
       "comments": [
         {
@@ -6673,6 +6673,13 @@
           "body": "Those who are following this thread here should be aware of a PR that would add back the DID language https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/278",
           "createdAt": "2024-12-02T19:23:09Z",
           "updatedAt": "2024-12-02T19:23:09Z"
+        },
+        {
+          "author": "za8457",
+          "authorAssociation": "NONE",
+          "body": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/250",
+          "createdAt": "2025-02-23T20:54:46Z",
+          "updatedAt": "2025-02-23T20:54:46Z"
         }
       ]
     },
