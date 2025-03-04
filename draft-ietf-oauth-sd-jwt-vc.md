@@ -1081,7 +1081,7 @@ credential.
 In (#retrieving-type-metadata), various methods for distributing and retrieving
 metadata are described. Methods relying on a network connection may fail due to
 network issues or unavailability of a network connection due to offline usage of
-credentials, temporary server outages, or denial of service attacks on the
+credentials, temporary server outages, or denial-of-service attacks on the
 metadata server.
 
 Consumers SHOULD therefore implement a local cache as described in
