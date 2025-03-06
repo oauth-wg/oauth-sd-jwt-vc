@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-04T00:30:37.387222+00:00",
+  "timestamp": "2025-03-06T00:30:49.400525+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -23600,6 +23600,32 @@
           ]
         }
       ]
+    },
+    {
+      "number": 298,
+      "id": "PR_kwDOJbVClc6NTfIY",
+      "title": "denial-of-service is a compound adjective and should be hyphenated when used to modify attacks",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/298",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\"denial-of-service\" is a compound adjective and should be hyphenated when used to modify \"attacks.\"\r\n\r\nalso I wanted a simple new PR to see if it breaks the build too ",
+      "createdAt": "2025-03-04T12:36:37Z",
+      "updatedAt": "2025-03-04T13:00:47Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "hypen-denial-of-service",
+      "headRefOid": "fc9ac65325c39c3d8829da31a1e645ef6d6fcd81",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
