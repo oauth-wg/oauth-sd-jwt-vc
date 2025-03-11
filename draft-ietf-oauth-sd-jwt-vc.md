@@ -1598,7 +1598,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Use SD-JWT KB in place of SD-JWT with Key Binding JWT
 * Editorial changes
 * Document reasons for not using JSON Pointer or JSON Path (Issue #267)
-* Add extension mechanism for issuer key resolution and provide example based on DIDs
+* Make extension point for issuer key resolution more explicit
 
 -08
 
