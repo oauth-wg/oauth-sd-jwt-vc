@@ -12,14 +12,14 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.26.0" name="generator">
+<meta content="xml2rfc 3.28.0" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.26.0
-    Python 3.12.8
+  xml2rfc 3.28.0
+    Python 3.12.9
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
@@ -440,7 +440,7 @@ dl {
     margin-bottom: 0;
   }
 }
-dl > dt {
+dl:not(.dlNewline) > dt {
   float: left;
   margin-right: 2ch;
   min-width: 8ch;
@@ -1049,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">February 2025</td>
+<td class="right">March 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 14 August 2025</td>
+<td class="center">Expires 12 September 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-02-10" class="published">10 February 2025</time>
+<time datetime="2025-03-11" class="published">11 March 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-08-14">14 August 2025</time></dd>
+<dd class="expires"><time datetime="2025-09-12">12 September 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 14 August 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 12 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1319,6 +1319,9 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.4">
                 <p id="section-toc.1-1.10.2.4.1"><a href="#section-10.4" class="auto internal xref">10.4</a>.  <a href="#name-robust-retrieval-of-type-me" class="internal xref">Robust Retrieval of Type Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.5">
+                <p id="section-toc.1-1.10.2.5.1"><a href="#section-10.5" class="auto internal xref">10.5</a>.  <a href="#name-risks-associated-with-textu" class="internal xref">Risks Associated with Textual Information</a></p>
 </li>
             </ul>
 </li>
@@ -1649,9 +1652,7 @@ a type:<a href="#section-3.2.2.1.1-3" class="pilcrow">¶</a></p>
             </h5>
 <p id="section-3.2.2.2-1">SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-3.2.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.2.2-2">If present, the following registered JWT claims MUST be included in the SD-JWT
-and MUST NOT be included in the Disclosures, i.e. cannot be selectively
-disclosed:<a href="#section-3.2.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.2-2">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:<a href="#section-3.2.2.2-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-3.1">
                 <p id="section-3.2.2.2-3.1.1"><code>iss</code><a href="#section-3.2.2.2-3.1.1" class="pilcrow">¶</a></p>
@@ -1703,8 +1704,7 @@ for more information.<a href="#section-3.2.2.2-3.6.2.1" class="pilcrow">¶</a>
                 </ul>
 </li>
             </ul>
-<p id="section-3.2.2.2-4">The following registered JWT claims MAY be contained in the SD-JWT or in the
-Disclosures and MAY be selectively disclosed:<a href="#section-3.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.2-4">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:<a href="#section-3.2.2.2-4" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-5.1">
                 <p id="section-3.2.2.2-5.1.1"><code>sub</code><a href="#section-3.2.2.2-5.1.1" class="pilcrow">¶</a></p>
@@ -1943,9 +1943,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n2DHs
-wCncnjl6VgmzMlrbm-qr09UtYo5fg8x6Mak3xGHhQbT9g9YiILFRXxK2F_Wssb6Yr1Nm
-IcjYyW6GTTp-A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QN1uf
+i8ok7Nojn-0RxTeEQSqbn1g4IPL6eFOR-vAgfolHKLnYVqU1uCtYyHEly-CVK0-M5hBg
+A11UKCdOE83Ww~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2058,17 +2058,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n2DHs
-wCncnjl6VgmzMlrbm-qr09UtYo5fg8x6Mak3xGHhQbT9g9YiILFRXxK2F_Wssb6Yr1Nm
-IcjYyW6GTTp-A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QN1uf
+i8ok7Nojn-0RxTeEQSqbn1g4IPL6eFOR-vAgfolHKLnYVqU1uCtYyHEly-CVK0-M5hBg
+A11UKCdOE83Ww~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzkyMTU2OD
-EsICJzZF9oYXNoIjogInNxS3V5aEVOTVJYYV9YTE1DZjB6NWYxREZabnVKbzBiZERvNk
-xKY21SM28ifQ.82J21cOg1sH78jTkzxwtirZ_U8M5xaG2fAWwKYyXkchD87QMC1bwmw2
-ViYBfznbHhMKSEF-oe1PRK1xAdaVt0A
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDE3MjQ2Nj
+gsICJzZF9oYXNoIjogIjdQendKV2ViVTJjVkFKcXNOeUstbDhZNlU5aVlrMU1Jd2c5b1
+lEWXltVVEifQ.AESCKPseSjGSGbm5zhVicoWaOMi5YPkHjVZsKSK8HiqK7XvYSLHzFmc
+vt9saKA-S3hd2LkeZp9qozDwjqOuazw
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2113,8 +2113,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.DzYZGrBo4P313UQgyggyyoPRYpc9y_eBu9ukWJmXRxsSRo
-Zr1vY6fAcMyj4mLYdR6P_JVb08LuFSV-Sb49vJng~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.H1ot4cSp-5GNGrP1KfXfJ5YC2Oq4FnSUmqv_1DS_UEaLCz
+kz_Zhv1UuSQbyfIQ8tAvDpC9HOayo1vtYmsHxoGQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2968,6 +2968,12 @@ claim metadata applies.<a href="#section-9.1-8" class="pilcrow">¶</a></p>
 selectively disclosable claims were disclosed to a Verifier. That means that a
 consuming application which does not have access to all disclosures may not be
 able to identify the claim which is being addressed.<a href="#section-9.1-9" class="pilcrow">¶</a></p>
+<p id="section-9.1-10">Note: This specification intentionally does not use JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> for
+selecting claims, as JSON Pointer requires string parsing and does not support
+wildcard selection of array elements. It does not use JSON Path <span>[<a href="#RFC9535" class="cite xref">RFC9535</a>]</span> as
+that introduces a considerable complexity and brings in many features which
+are not needed for the use case of selecting claims in a credential. There are
+also security concerns with some implementations.<a href="#section-9.1-10" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claim-display-metadata">
@@ -3084,7 +3090,7 @@ credential.<a href="#section-10.3-2" class="pilcrow">¶</a></p>
 <p id="section-10.4-1">In <a href="#retrieving-type-metadata" class="auto internal xref">Section 6.3</a>, various methods for distributing and retrieving
 metadata are described. Methods relying on a network connection may fail due to
 network issues or unavailability of a network connection due to offline usage of
-credentials, temporary server outages, or denial of service attacks on the
+credentials, temporary server outages, or denial-of-service attacks on the
 metadata server.<a href="#section-10.4-1" class="pilcrow">¶</a></p>
 <p id="section-10.4-2">Consumers SHOULD therefore implement a local cache as described in
 <a href="#retrieval-from-local-cache" class="auto internal xref">Section 6.3.4</a> if possible. Such a cache MAY be populated with metadata before
@@ -3094,6 +3100,28 @@ metadata directly with the credential and avoid the need for network requests.<a
 <p id="section-10.4-4">These measures allow the Consumers to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
 described in <a href="#privacy-preserving-retrieval-of-type-metadata" class="auto internal xref">Section 12.1</a>.<a href="#section-10.4-4" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="risks-textual-information">
+<section id="section-10.5">
+        <h3 id="name-risks-associated-with-textu">
+<a href="#section-10.5" class="section-number selfRef">10.5. </a><a href="#name-risks-associated-with-textu" class="section-name selfRef">Risks Associated with Textual Information</a>
+        </h3>
+<p id="section-10.5-1">Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., <code>display</code>, allows issuers and providers of metadata to
+specify human-readable information. These can contain arbitrary textual information that
+may be displayed to developers. As such, any consuming application MUST ensure that maliciously
+crafted information cannot be used to compromise the security of the application
+or the privacy of the user. To this end, the following considerations apply:<a href="#section-10.5-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-10.5-2.1">The consuming application MUST ensure that the text is properly escaped before
+displaying it to the user or transferring it into other contexts. For example,
+if the data is displayed in an HTML document, the text MUST be properly
+escaped to prevent Cross-Site Scripting (XSS) attacks.<a href="#section-10.5-2.1" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-10.5-2.2">The consuming application MUST ensure that the display of the user interface
+elements cannot be distorted by overly long text or special characters.<a href="#section-10.5-2.2" class="pilcrow">¶</a>
+</li>
+        </ul>
 </section>
 </div>
 </section>
@@ -3194,11 +3222,11 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dl class="references">
 <dt id="I-D.ietf-oauth-selective-disclosure-jwt">[I-D.ietf-oauth-selective-disclosure-jwt]</dt>
         <dd>
-<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-15</span>, <time datetime="2025-01-16" class="refDate">16 January 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-15">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-15</a>&gt;</span>. </dd>
+<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-17</span>, <time datetime="2025-03-01" class="refDate">1 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/api/v1/doc/document/draft-ietf-oauth-selective-disclosure-jwt/">https://datatracker.ietf.org/api/v1/doc/document/draft-ietf-oauth-selective-disclosure-jwt/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
         <dd>
-<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-07</span>, <time datetime="2025-02-02" class="refDate">2 February 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-07">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-07</a>&gt;</span>. </dd>
+<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-09</span>, <time datetime="2025-03-03" class="refDate">3 March 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/api/v1/doc/document/draft-ietf-oauth-status-list/">https://datatracker.ietf.org/api/v1/doc/document/draft-ietf-oauth-status-list/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -3259,9 +3287,17 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">OWASP</span>, <span class="refTitle">"Server Side Request Forgery Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC6901">[RFC6901]</dt>
+        <dd>
+<span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6901">https://www.rfc-editor.org/info/rfc6901</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7517">[RFC7517]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC9535">[RFC9535]</dt>
+        <dd>
+<span class="refAuthor">Gössner, S., Ed.</span>, <span class="refAuthor">Normington, G., Ed.</span>, and <span class="refAuthor">C. Bormann, Ed.</span>, <span class="refTitle">"JSONPath: Query Expressions for JSON"</span>, <span class="seriesInfo">RFC 9535</span>, <span class="seriesInfo">DOI 10.17487/RFC9535</span>, <time datetime="2024-02" class="refDate">February 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9535">https://www.rfc-editor.org/info/rfc9535</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="W3C.DID">[W3C.DID]</dt>
         <dd>
@@ -3475,8 +3511,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.0oGrYnv-k62OU5DoOTHqbKfkOlOVdQlvfPfHaA6eliqUZGtFG45eP3
-5jpvxzkYo0ykZF47zUVTSsNNFFb6r_qw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.ZIKj2QaN4RG-pDLpIYZvSoqLNIxKcknFZmRwDf_4emgrylgmF9dUqZ
+71Beph1mQVDorbuSmZP0GhurZj35raQg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3831,14 +3867,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.0oGrYnv-k62OU5DoOTHqbKfkOlOVdQlvfPfHaA6eliqUZGtFG45eP3
-5jpvxzkYo0ykZF47zUVTSsNNFFb6r_qw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.ZIKj2QaN4RG-pDLpIYZvSoqLNIxKcknFZmRwDf_4emgrylgmF9dUqZ
+71Beph1mQVDorbuSmZP0GhurZj35raQg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3MzkyMTU2ODEsICJzZF9oYXNoIjogIldXdFVXeDE3enZXX
-zNhNEtOY2Y0bUF0M3RXamswZE1salZHVlIyaGlFSXcifQ.jfTfMrG0UdYRn5BqpR51ep
-FYzlPi5KBGfB8Zz9e1lUheGdA_8MUZX2gIHmgy2QD9hQ13jlLY5tJ53RABPrRXFg
+mlmaWVyIiwgImlhdCI6IDE3NDE3MjQ2NjgsICJzZF9oYXNoIjogInpQanlubmVIeENBW
+jQ3bUlrNVFqY1M1ODVoM2paVU5xdnAtQkVtZmI4TEEifQ.4BSpC3a_zsBKaWjhFqSjTg
+oOSNLAXEp69W3DHiuTaa9rwiEOj-Z8-rcunG6qSmMvEZQYc7Lgu0SVejVV8yIz-Q
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3847,8 +3883,8 @@ FYzlPi5KBGfB8Zz9e1lUheGdA_8MUZX2gIHmgy2QD9hQ13jlLY5tJ53RABPrRXFg
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1739215681,
-  "sd_hash": "WWtUWx17zvW_3a4KNcf4mAt3tWjk0dMljVGVR2hiEIw"
+  "iat": 1741724668,
+  "sd_hash": "zPjynneHxCAZ47mIk5QjcS585h3jZUNqvp-BEmfb8LA"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
@@ -4053,6 +4089,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 <p id="appendix-D-1">-09<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-D-2.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.2">Editorial changes<a href="#appendix-D-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.3">Document reasons for not using JSON Pointer or JSON Path (Issue #267)<a href="#appendix-D-2.3" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-08<a href="#appendix-D-3" class="pilcrow">¶</a></p>

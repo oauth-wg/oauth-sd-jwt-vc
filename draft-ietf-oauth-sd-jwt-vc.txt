@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 14 August 2025                                    Authlete Inc.
+Expires: 12 September 2025                                 Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        10 February 2025
+                                                           11 March 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 August 2025.
+   This Internet-Draft will expire on 12 September 2025.
 
 Copyright Notice
 
@@ -113,6 +113,7 @@ Table of Contents
      10.2.  Ecosystem-specific Public Key Verification Methods
      10.3.  Circular "extends" Dependencies of Types
      10.4.  Robust Retrieval of Type Metadata
+     10.5.  Risks Associated with Textual Information
    11. Privacy Considerations
      11.1.  Unlinkability
      11.2.  Verifiable Credential Type Identifier
@@ -351,9 +352,9 @@ Table of Contents
    SD-JWT VCs MAY use any claim registered in the "JSON Web Token
    Claims" registry as defined in [RFC7519].
 
-   If present, the following registered JWT claims MUST be included in
-   the SD-JWT and MUST NOT be included in the Disclosures, i.e. cannot
-   be selectively disclosed:
+   The following registered JWT claims are used within the SD-JWT
+   component of the SD-JWT VC and MUST NOT be included in the
+   Disclosures, i.e., cannot be selectively disclosed:
 
    *  iss
       -  REQUIRED.  The Issuer of the Verifiable Credential.  The value
@@ -383,8 +384,9 @@ Table of Contents
          Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
          more information.
 
-   The following registered JWT claims MAY be contained in the SD-JWT or
-   in the Disclosures and MAY be selectively disclosed:
+   The following registered JWT claims are used within the SD-JWT
+   component of the SD-JWT VC and MAY be included in Disclosures, i.e.,
+   can be selectively disclosed:
 
    *  sub
       -  OPTIONAL.  The identifier of the Subject of the Verifiable
@@ -562,9 +564,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n2DHs
-   wCncnjl6VgmzMlrbm-qr09UtYo5fg8x6Mak3xGHhQbT9g9YiILFRXxK2F_Wssb6Yr1Nm
-   IcjYyW6GTTp-A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QN1uf
+   i8ok7Nojn-0RxTeEQSqbn1g4IPL6eFOR-vAgfolHKLnYVqU1uCtYyHEly-CVK0-M5hBg
+   A11UKCdOE83Ww~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -683,17 +685,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n2DHs
-   wCncnjl6VgmzMlrbm-qr09UtYo5fg8x6Mak3xGHhQbT9g9YiILFRXxK2F_Wssb6Yr1Nm
-   IcjYyW6GTTp-A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QN1uf
+   i8ok7Nojn-0RxTeEQSqbn1g4IPL6eFOR-vAgfolHKLnYVqU1uCtYyHEly-CVK0-M5hBg
+   A11UKCdOE83Ww~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3MzkyMTU2OD
-   EsICJzZF9oYXNoIjogInNxS3V5aEVOTVJYYV9YTE1DZjB6NWYxREZabnVKbzBiZERvNk
-   xKY21SM28ifQ.82J21cOg1sH78jTkzxwtirZ_U8M5xaG2fAWwKYyXkchD87QMC1bwmw2
-   ViYBfznbHhMKSEF-oe1PRK1xAdaVt0A
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDE3MjQ2Nj
+   gsICJzZF9oYXNoIjogIjdQendKV2ViVTJjVkFKcXNOeUstbDhZNlU5aVlrMU1Jd2c5b1
+   lEWXltVVEifQ.AESCKPseSjGSGbm5zhVicoWaOMi5YPkHjVZsKSK8HiqK7XvYSLHzFmc
+   vt9saKA-S3hd2LkeZp9qozDwjqOuazw
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -735,8 +737,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.DzYZGrBo4P313UQgyggyyoPRYpc9y_eBu9ukWJmXRxsSRo
-   Zr1vY6fAcMyj4mLYdR6P_JVb08LuFSV-Sb49vJng~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.H1ot4cSp-5GNGrP1KfXfJ5YC2Oq4FnSUmqv_1DS_UEaLCz
+   kz_Zhv1UuSQbyfIQ8tAvDpC9HOayo1vtYmsHxoGQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1425,6 +1427,14 @@ Table of Contents
    disclosures may not be able to identify the claim which is being
    addressed.
 
+   Note: This specification intentionally does not use JSON Pointer
+   [RFC6901] for selecting claims, as JSON Pointer requires string
+   parsing and does not support wildcard selection of array elements.
+   It does not use JSON Path [RFC9535] as that introduces a considerable
+   complexity and brings in many features which are not needed for the
+   use case of selecting claims in a credential.  There are also
+   security concerns with some implementations.
+
 9.2.  Claim Display Metadata
 
    The display property is an array containing display information for
@@ -1512,7 +1522,7 @@ Table of Contents
    metadata are described.  Methods relying on a network connection may
    fail due to network issues or unavailability of a network connection
    due to offline usage of credentials, temporary server outages, or
-   denial of service attacks on the metadata server.
+   denial-of-service attacks on the metadata server.
 
    Consumers SHOULD therefore implement a local cache as described in
    Section 6.3.4 if possible.  Such a cache MAY be populated with
@@ -1525,6 +1535,26 @@ Table of Contents
    These measures allow the Consumers to continue to function even if
    the metadata server is temporarily unavailable and avoid privacy
    issues as described in Section 12.1.
+
+10.5.  Risks Associated with Textual Information
+
+   Some claims in the SD-JWT VC and properties in the Type Metadata,
+   e.g., display, allows issuers and providers of metadata to specify
+   human-readable information.  These can contain arbitrary textual
+   information that may be displayed to developers.  As such, any
+   consuming application MUST ensure that maliciously crafted
+   information cannot be used to compromise the security of the
+   application or the privacy of the user.  To this end, the following
+   considerations apply:
+
+   *  The consuming application MUST ensure that the text is properly
+      escaped before displaying it to the user or transferring it into
+      other contexts.  For example, if the data is displayed in an HTML
+      document, the text MUST be properly escaped to prevent Cross-Site
+      Scripting (XSS) attacks.
+   *  The consuming application MUST ensure that the display of the user
+      interface elements cannot be distorted by overly long text or
+      special characters.
 
 11.  Privacy Considerations
 
@@ -1611,16 +1641,17 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-15, 16
-              January 2025, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-oauth-selective-disclosure-jwt-15>.
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-17, 1
+              March 2025,
+              <https://datatracker.ietf.org/api/v1/doc/document/draft-
+              ietf-oauth-selective-disclosure-jwt/>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-07, 2 February 2025,
-              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-07>.
+              status-list-09, 3 March 2025,
+              <https://datatracker.ietf.org/api/v1/doc/document/draft-
+              ietf-oauth-status-list/>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1683,9 +1714,19 @@ Table of Contents
               Sheet", <https://cheatsheetseries.owasp.org/cheatsheets/
               Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/>.
 
+   [RFC6901]  Bryan, P., Ed., Zyp, K., and M. Nottingham, Ed.,
+              "JavaScript Object Notation (JSON) Pointer", RFC 6901,
+              DOI 10.17487/RFC6901, April 2013,
+              <https://www.rfc-editor.org/info/rfc6901>.
+
    [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
               DOI 10.17487/RFC7517, May 2015,
               <https://www.rfc-editor.org/info/rfc7517>.
+
+   [RFC9535]  Gössner, S., Ed., Normington, G., Ed., and C. Bormann,
+              Ed., "JSONPath: Query Expressions for JSON", RFC 9535,
+              DOI 10.17487/RFC9535, February 2024,
+              <https://www.rfc-editor.org/info/rfc9535>.
 
    [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
               O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
@@ -1839,8 +1880,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.0oGrYnv-k62OU5DoOTHqbKfkOlOVdQlvfPfHaA6eliqUZGtFG45eP3
-   5jpvxzkYo0ykZF47zUVTSsNNFFb6r_qw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.ZIKj2QaN4RG-pDLpIYZvSoqLNIxKcknFZmRwDf_4emgrylgmF9dUqZ
+   71Beph1mQVDorbuSmZP0GhurZj35raQg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2112,22 +2153,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.0oGrYnv-k62OU5DoOTHqbKfkOlOVdQlvfPfHaA6eliqUZGtFG45eP3
-   5jpvxzkYo0ykZF47zUVTSsNNFFb6r_qw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.ZIKj2QaN4RG-pDLpIYZvSoqLNIxKcknFZmRwDf_4emgrylgmF9dUqZ
+   71Beph1mQVDorbuSmZP0GhurZj35raQg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3MzkyMTU2ODEsICJzZF9oYXNoIjogIldXdFVXeDE3enZXX
-   zNhNEtOY2Y0bUF0M3RXamswZE1salZHVlIyaGlFSXcifQ.jfTfMrG0UdYRn5BqpR51ep
-   FYzlPi5KBGfB8Zz9e1lUheGdA_8MUZX2gIHmgy2QD9hQ13jlLY5tJ53RABPrRXFg
+   mlmaWVyIiwgImlhdCI6IDE3NDE3MjQ2NjgsICJzZF9oYXNoIjogInpQanlubmVIeENBW
+   jQ3bUlrNVFqY1M1ODVoM2paVU5xdnAtQkVtZmI4TEEifQ.4BSpC3a_zsBKaWjhFqSjTg
+   oOSNLAXEp69W3DHiuTaa9rwiEOj-Z8-rcunG6qSmMvEZQYc7Lgu0SVejVV8yIz-Q
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1739215681,
-     "sd_hash": "WWtUWx17zvW_3a4KNcf4mAt3tWjk0dMljVGVR2hiEIw"
+     "iat": 1741724668,
+     "sd_hash": "zPjynneHxCAZ47mIk5QjcS585h3jZUNqvp-BEmfb8LA"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2300,6 +2341,9 @@ Appendix D.  Document History
    -09
 
    *  Use SD-JWT KB in place of SD-JWT with Key Binding JWT
+   *  Editorial changes
+   *  Document reasons for not using JSON Pointer or JSON Path (Issue
+      #267)
 
    -08
 
