@@ -1000,7 +1000,7 @@ able to identify the claim which is being addressed.
 
 Note: This specification intentionally does not use JSON Pointer [@?RFC6901] for
 selecting claims, as JSON Pointer requires string parsing and does not support
-wildcard selection of array elements. It does not use JSON Path [@?I-D.goessner-dispatch-jsonpath-00] as
+wildcard selection of array elements. It does not use JSON Path [@?RFC9535] as
 that introduces a considerable complexity and brings in many features which
 are not needed for the use case of selecting claims in a credential. There are
 also security concerns with some implementations.
@@ -1113,6 +1113,7 @@ or the privacy of the user. To this end, the following considerations apply:
   escaped to prevent Cross-Site Scripting (XSS) attacks.
 - The consuming application MUST ensure that the display of the user interface
   elements cannot be distorted by overly long text or special characters.
+
 # Privacy Considerations {#privacy-considerations}
 
 The Privacy Considerations in the SD-JWT specification
