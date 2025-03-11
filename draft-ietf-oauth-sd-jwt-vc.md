@@ -1001,6 +1001,13 @@ selectively disclosable claims were disclosed to a Verifier. That means that a
 consuming application which does not have access to all disclosures may not be
 able to identify the claim which is being addressed.
 
+Note: This specification intentionally does not use JSON Pointer [@?RFC6901] for
+selecting claims, as JSON Pointer requires string parsing and does not support
+wildcard selection of array elements. It does not use JSON Path [@?I-D.goessner-dispatch-jsonpath-00] as
+that introduces a considerable complexity and brings in many features which
+are not needed for the use case of selecting claims in a credential. There are
+also security concerns with some implementations.
+
 ## Claim Display Metadata {#claim-display-metadata}
 
 The `display` property is an array containing display information for the
@@ -1329,6 +1336,7 @@ recommendations in (#robust-retrieval) apply.
     </author>
   </front>
 </reference>
+
 {backmatter}
 
 # IANA Considerations
@@ -1587,6 +1595,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -09
 
 * Use SD-JWT KB in place of SD-JWT with Key Binding JWT
+* Document reasons for not using JSON Pointer or JSON Path (Issue #267)
 
 -08
 
