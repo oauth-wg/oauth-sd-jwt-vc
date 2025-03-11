@@ -341,11 +341,14 @@ obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer
 - X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST
      1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and
      2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
-- DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
+
+If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
 
 Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
-If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
+To enable additional methods for Issuer verification key resolution, separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. See (#ecosystem-verification-rules) for security considerations applicable to these complementary or extended rules.
+
+For example, if an ecosystem wants to support DID Document Resolution, it would specify that the `iss` value contains a DID [@?W3C.DID], the recipient can retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` can be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key. The ecosystem might additionally want to specify which DID methods that can be used in this case to ensure interoperability and what verification material in DID Documents can be used, e.g., JWKs.
 
 # Presenting Verifiable Credentials
 
