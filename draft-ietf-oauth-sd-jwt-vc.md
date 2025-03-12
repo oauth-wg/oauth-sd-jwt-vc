@@ -344,7 +344,6 @@ obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer
 
 If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
 
-Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
 
 To enable additional methods for Issuer verification key resolution, separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. See (#ecosystem-verification-rules) for security considerations applicable to these complementary or extended rules.
 
