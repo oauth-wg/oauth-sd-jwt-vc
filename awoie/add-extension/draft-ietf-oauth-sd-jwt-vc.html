@@ -1053,7 +1053,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 12 September 2025</td>
+<td class="center">Expires 13 September 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-03-11" class="published">11 March 2025</time>
+<time datetime="2025-03-12" class="published">12 March 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-09-12">12 September 2025</time></dd>
+<dd class="expires"><time datetime="2025-09-13">13 September 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 12 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 13 September 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1943,9 +1943,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.G4ojP
-P_rBfkasYqr79TSp_Ao6HUm87Evxdbjl59tmMN3eTLyZ71aHTVd78-m6ZtCf8pw4GNxA
-Dq1EYSExke49A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eY6YK
+-VTMVtq5_jThSMHZv3Lc0140x3sG7ou0Bw_CyQJhaYmr-TNq3KcoakOoklS4JZC7Cua4
+DoyI5g2ejjbTQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2008,9 +2008,8 @@ obtain the public key using JWT VC Issuer Metadata as defined in <a href="#jwt-v
 </li>
         </ul>
 <p id="section-3.5-3">If a recipient cannot validate that the public verification key corresponds to the <code>iss</code> value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
-<p id="section-3.5-4">Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 10.2</a> for security considerations.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
-<p id="section-3.5-5">To enable additional methods for Issuer verification key resolution, separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 10.2</a> for security considerations applicable to these complementary or extended rules.<a href="#section-3.5-5" class="pilcrow">¶</a></p>
-<p id="section-3.5-6">For example, if an ecosystem wants to support DID Document Resolution, it would specify that the <code>iss</code> value contains a DID <span>[<a href="#W3C.DID" class="cite xref">W3C.DID</a>]</span>, the recipient can retrieve the public key from the DID Document resolved from the DID in the <code>iss</code> value. In this case, if the <code>kid</code> JWT header parameter is present, the <code>kid</code> can be a relative or absolute DID URL of the DID in the <code>iss</code> value, identifying the public key. The ecosystem might additionally want to specify which DID methods that can be used in this case to ensure interoperability and what verification material in DID Documents can be used, e.g., JWKs.<a href="#section-3.5-6" class="pilcrow">¶</a></p>
+<p id="section-3.5-4">To enable additional methods for Issuer verification key resolution, separate specifications or ecosystem regulations MAY define rules complementing or extending the rules defined above; however, such rules are beyond the scope of this specification. See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 10.2</a> for security considerations applicable to these complementary or extended rules.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+<p id="section-3.5-5">For example, if an ecosystem wants to support DID Document Resolution, it would specify that the <code>iss</code> value contains a DID <span>[<a href="#W3C.DID" class="cite xref">W3C.DID</a>]</span>, the recipient can retrieve the public key from the DID Document resolved from the DID in the <code>iss</code> value. In this case, if the <code>kid</code> JWT header parameter is present, the <code>kid</code> can be a relative or absolute DID URL of the DID in the <code>iss</code> value, identifying the public key. The ecosystem might additionally want to specify which DID methods that can be used in this case to ensure interoperability and what verification material in DID Documents can be used, e.g., JWKs.<a href="#section-3.5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2058,17 +2057,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.G4ojP
-P_rBfkasYqr79TSp_Ao6HUm87Evxdbjl59tmMN3eTLyZ71aHTVd78-m6ZtCf8pw4GNxA
-Dq1EYSExke49A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eY6YK
+-VTMVtq5_jThSMHZv3Lc0140x3sG7ou0Bw_CyQJhaYmr-TNq3KcoakOoklS4JZC7Cua4
+DoyI5g2ejjbTQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDE3MjUzNj
-MsICJzZF9oYXNoIjogInhCdFhFdzhqTU9yQ2NscGFaWDVfd1FUbjNWVFNRaG13RDJ3Nk
-VDSWNkZlEifQ.IFbxJWSDAHSCpSPgSXsSCpRXMDpqPNMbFEMouCMhoZPasVr7YPccKrT
-dqaItvmxJ0LI-HgDnNPZDEM1Ff57z2Q
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDE3ODU3NT
+IsICJzZF9oYXNoIjogIkx3Vm9yZUt1V3FUNEZVcnN0eDhzeXNJN25JOEYyOEhROExVNU
+14TUlJcEEifQ.YpATB7ztFQ61eGOOXQO1TQ8VGotsUGyiJMWgB4ItZIRRqOHPemwu1O9
+oXLZEjCMwazXJhGqOLbJVvbSG7Y6lmg
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2113,8 +2112,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.gavy8bnqqtuSOvTI8yqv4swmfLr8U5Fn8v76P6Tn0RWcNp
-dfIVq0rAxlmzPUjk0UljWUTOTmDYH1qFHYdceZMA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.-Q5j9Axj_ZuWzHsqWTfCGYtmGWCsaq6XltZR0nrE1y0Jzc
+9NiLxAcp4S0CJ50h2mTVpdqlt5-HBiRIvd_oWgfw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3511,8 +3510,8 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.PdtQQQ74TpxNtn5eOIpkIaD-pnf9OgrbZMYlhFm8OUgIM-5rTUQ56W
-8wUMAFR3TyjVpS_M2rj_BFf7Rfk6xUBw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+5RjJIWlEifX19.Bna5ZLWSnLpO3KyjFkPVvWRdcI0X0iZ-fhH0WDuc3hi4Kv5c4ZEY5G
+CiI6XqchnVyH3w8SrAzeYUm2v_9Br5cA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
 gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
 ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
 lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -3867,14 +3866,14 @@ oeTJyMDE4dnJzSmpvLVZqZDZnNnl0N0Fhb25Lb25uaXVKOXplbDNqbyIsICJxcDdaX0t
 6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
 tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
 lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-5RjJIWlEifX19.PdtQQQ74TpxNtn5eOIpkIaD-pnf9OgrbZMYlhFm8OUgIM-5rTUQ56W
-8wUMAFR3TyjVpS_M2rj_BFf7Rfk6xUBw~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+5RjJIWlEifX19.Bna5ZLWSnLpO3KyjFkPVvWRdcI0X0iZ-fhH0WDuc3hi4Kv5c4ZEY5G
+CiI6XqchnVyH3w8SrAzeYUm2v_9Br5cA~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
 gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
 wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
 25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-mlmaWVyIiwgImlhdCI6IDE3NDE3MjUzNjMsICJzZF9oYXNoIjogInk0WU5Qb0Fpa29qd
-DdZWktkaFZER3dyNlpaSVIxOUx4MDhmYXVrV21IYkUifQ.uKSqQPumWpxUHs9kjYLLh4
-hHGQSuF_DypxBpBxAXYLmH6E4tNMpU3fXowFLvjY8Ze7eQixgjuetXwUhhI4KfJw
+mlmaWVyIiwgImlhdCI6IDE3NDE3ODU3NTIsICJzZF9oYXNoIjogIkhIR1AxMGpjNmNrY
+WR6S0dQZUNWRjh2ZmU3cHJqMDlqLXhfN3otdkRTVWsifQ.J2_4PbgKxfTgrM0snONJI7
+5kMCWs7qMPATCPAbpaVC7m84EpmW6Hnf0SEFjfvPJKQvS37rk0Bqcz_hF7bEEqiQ
 
 </pre><a href="#appendix-B.1-53" class="pilcrow">¶</a>
 </div>
@@ -3883,8 +3882,8 @@ hHGQSuF_DypxBpBxAXYLmH6E4tNMpU3fXowFLvjY8Ze7eQixgjuetXwUhhI4KfJw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1741725363,
-  "sd_hash": "y4YNPoAikojt7YZKdhVDGwr6ZZIR19Lx08faukWmHbE"
+  "iat": 1741785752,
+  "sd_hash": "HHGP10jc6ckadzKGPeCVF8vfe7prj09j-x_7z-vDSUk"
 }
 
 </pre><a href="#appendix-B.1-55" class="pilcrow">¶</a>
