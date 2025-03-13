@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-11T00:31:05.079205+00:00",
+  "timestamp": "2025-03-13T00:31:30.225339+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6826,7 +6826,7 @@
       "id": "I_kwDOJbVClc6ZL6C3",
       "title": "ed: sentence clarification",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/257",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -6835,8 +6835,8 @@
       "labels": [],
       "body": "I don't understand this sentence that points to the claims that are REQUIRED: `If present, the following registered JWT claims MUST be included in the SD-JWT and MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:` the sentence also uses two normative statements in one. Could it be clarified/simplified as something like: `The following registered JWT claims MUST NOT be included in the Disclosures, i.e. cannot be selectively disclosed:`\r\nThanks.\r\n",
       "createdAt": "2024-10-07T10:38:15Z",
-      "updatedAt": "2025-01-13T17:10:18Z",
-      "closedAt": null,
+      "updatedAt": "2025-03-11T19:13:04Z",
+      "closedAt": "2025-03-11T19:13:04Z",
       "comments": [
         {
           "author": "danielfett",
@@ -6901,7 +6901,7 @@
       "id": "I_kwDOJbVClc6ZML3s",
       "title": "Free text in description.",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/259",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -6910,8 +6910,8 @@
       "labels": [],
       "body": "There are certain risks associated with free text, some of which are elaborated in threads like these (though not entirely) [https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253(https://github.com/openid/OpenID4VP/pull/220#discussion_r1696310253)\r\n\r\nI probably won't be able to convince the authors in removing the free text `description` property from the metadata, which is defined as `A human-readable description for the type, intended for developers reading the JSON document.` So at least would be great if security considerations for free text can be added.\r\nThanks.",
       "createdAt": "2024-10-07T11:09:45Z",
-      "updatedAt": "2025-01-13T17:10:05Z",
-      "closedAt": null,
+      "updatedAt": "2025-03-11T18:31:54Z",
+      "closedAt": "2025-03-11T18:31:54Z",
       "comments": [
         {
           "author": "danielfett",
@@ -7010,7 +7010,7 @@
       "id": "I_kwDOJbVClc6daoH8",
       "title": "Document reasons for not using existing JSON query languages",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/267",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "aaronpk",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -7019,8 +7019,8 @@
       "labels": [],
       "body": "Repeating my live comment from the IETF 121 meeting... It would be worth documenting the reasons for creating a new JSON query syntax instead of using JSONPath or alternatives.",
       "createdAt": "2024-11-07T13:14:31Z",
-      "updatedAt": "2024-12-05T23:17:33Z",
-      "closedAt": null,
+      "updatedAt": "2025-03-11T18:32:48Z",
+      "closedAt": "2025-03-11T18:32:48Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -22437,7 +22437,7 @@
       "id": "PR_kwDOJbVClc59-39N",
       "title": "Warn of the dangers of malicious text",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/262",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -22446,17 +22446,19 @@
       ],
       "body": "Fixes #259 ",
       "createdAt": "2024-10-08T17:58:59Z",
-      "updatedAt": "2025-02-18T20:17:08Z",
+      "updatedAt": "2025-03-11T18:31:54Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-259",
       "headRefOid": "62db7c533dccda5376a51adc9d79189bab1c2af7",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-03-11T18:31:53Z",
+      "mergedAt": "2025-03-11T18:31:53Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "7aa0705344ce0dbb7dbfe70b223815c62fba2ae0"
+      },
       "comments": [
         {
           "author": "danielfett",
@@ -22546,6 +22548,32 @@
               "updatedAt": "2024-12-03T06:20:50Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ffEVi",
+          "commit": {
+            "abbreviatedOid": "62db7c5"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-11T18:29:55Z",
+          "updatedAt": "2025-03-11T18:29:55Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ffEmG",
+          "commit": {
+            "abbreviatedOid": "62db7c5"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-11T18:30:11Z",
+          "updatedAt": "2025-03-11T18:30:11Z",
+          "comments": []
         }
       ]
     },
@@ -23264,7 +23292,7 @@
       "labels": [],
       "body": "This PR makes the extension point for issuer key resolution more explicit.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/extension-point/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-01-10T13:08:01Z",
-      "updatedAt": "2025-03-03T20:43:51Z",
+      "updatedAt": "2025-03-11T19:51:25Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
@@ -23317,6 +23345,13 @@
           "body": "Yes, see \"interim-2024-oauth-07\" here: https://datatracker.ietf.org/wg/oauth/meetings/\r\n\r\nThe minutes are not very comprehensive, but there's a recording as well.\r\n",
           "createdAt": "2025-02-18T19:24:46Z",
           "updatedAt": "2025-02-18T19:24:46Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Superseded by https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/299",
+          "createdAt": "2025-03-11T19:51:03Z",
+          "updatedAt": "2025-03-11T19:51:25Z"
         }
       ],
       "reviews": [
@@ -23413,24 +23448,26 @@
       "id": "PR_kwDOJbVClc6Hhvwx",
       "title": "Fix #267, explain why we are not using JSON Path or JSON Pointer",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/295",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Fix #267 ",
       "createdAt": "2025-01-13T12:55:36Z",
-      "updatedAt": "2025-02-18T20:19:03Z",
+      "updatedAt": "2025-03-11T18:32:47Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-267",
-      "headRefOid": "4f6bd8a9aad0369ff54ba95374b1b4da9d4595c3",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "a4a1562f0101bf30dbfc9cf0c46077d96feb0c47",
+      "closedAt": "2025-03-11T18:32:47Z",
+      "mergedAt": "2025-03-11T18:32:47Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "fd25ece509544ae4a6718454fe49680cf6e844f7"
+      },
       "comments": [],
       "reviews": [
         {
@@ -23492,7 +23529,7 @@
             "abbreviatedOid": "3f56fd2"
           },
           "author": "timcappalli",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2025-01-19T19:29:45Z",
@@ -23526,24 +23563,26 @@
       "id": "PR_kwDOJbVClc6HkXkc",
       "title": "ed: improved clarity on registered claims paragraph",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/296",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR improves clarity of the registered claims paragraph.\r\n\r\nMay fix #257 \r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-257/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-01-13T17:03:43Z",
-      "updatedAt": "2025-03-03T20:42:19Z",
+      "updatedAt": "2025-03-11T19:13:03Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
+      "baseRefOid": "0540e1de4057ddcabfbf930ef87493be3f07b63a",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-257",
-      "headRefOid": "52d00ab5d0d5b51f633a584afb4d2cb927e652a6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "83bce0c9c5176491b29178822c019c3f3aa1eb17",
+      "closedAt": "2025-03-11T19:13:03Z",
+      "mergedAt": "2025-03-11T19:13:03Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "e679be4d377892ce9100f4b469e81cdaffc3d58f"
+      },
       "comments": [],
       "reviews": [
         {
@@ -23598,6 +23637,46 @@
               "updatedAt": "2025-03-03T20:42:19Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ffH7g",
+          "commit": {
+            "abbreviatedOid": "5048d09"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-11T18:33:45Z",
+          "updatedAt": "2025-03-11T18:33:45Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "What does this change? except for the empty line?",
+              "createdAt": "2025-03-11T18:33:45Z",
+              "updatedAt": "2025-03-11T18:33:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ffLDC",
+          "commit": {
+            "abbreviatedOid": "5048d09"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-11T18:38:05Z",
+          "updatedAt": "2025-03-11T18:38:05Z",
+          "comments": [
+            {
+              "originalPosition": 28,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-03-11T18:38:05Z",
+              "updatedAt": "2025-03-11T18:38:05Z"
+            }
+          ]
         }
       ]
     },
@@ -23606,26 +23685,198 @@
       "id": "PR_kwDOJbVClc6NTfIY",
       "title": "denial-of-service is a compound adjective and should be hyphenated when used to modify attacks",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/298",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "\"denial-of-service\" is a compound adjective and should be hyphenated when used to modify \"attacks.\"\r\n\r\nalso I wanted a simple new PR to see if it breaks the build too ",
       "createdAt": "2025-03-04T12:36:37Z",
-      "updatedAt": "2025-03-04T13:00:47Z",
+      "updatedAt": "2025-03-11T18:32:59Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "hypen-denial-of-service",
       "headRefOid": "fc9ac65325c39c3d8829da31a1e645ef6d6fcd81",
+      "closedAt": "2025-03-11T18:32:59Z",
+      "mergedAt": "2025-03-11T18:32:59Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "0540e1de4057ddcabfbf930ef87493be3f07b63a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6fexFN",
+          "commit": {
+            "abbreviatedOid": "fc9ac65"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-11T18:08:50Z",
+          "updatedAt": "2025-03-11T18:08:50Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6fex9Z",
+          "commit": {
+            "abbreviatedOid": "fc9ac65"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-11T18:09:57Z",
+          "updatedAt": "2025-03-11T18:09:57Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 299,
+      "id": "PR_kwDOJbVClc6OOgtW",
+      "title": "feat: describe extension mechanism based on DIDs",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/299",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This PR describes the extension point for ecosystem-specific issuer key resolution based on DIDs.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/add-extension/draft-ietf-oauth-sd-jwt-vc.html",
+      "createdAt": "2025-03-11T19:50:17Z",
+      "updatedAt": "2025-03-12T17:53:48Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/add-extension",
+      "headRefOid": "9708fb732e0ede85a3070ba969f342d30d6fe12d",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Supersedes #294 ",
+          "createdAt": "2025-03-11T19:51:40Z",
+          "updatedAt": "2025-03-11T19:51:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6fgfeO",
+          "commit": {
+            "abbreviatedOid": "a140ab9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-11T20:52:01Z",
+          "updatedAt": "2025-03-11T20:52:01Z",
+          "comments": [
+            {
+              "originalPosition": 8,
+              "body": "I think this should be removed? Basically the same two sentences appear in the new paragraph below. \r\n```suggestion\r\n```",
+              "createdAt": "2025-03-11T20:52:01Z",
+              "updatedAt": "2025-03-11T20:52:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6fgmt2",
+          "commit": {
+            "abbreviatedOid": "a140ab9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-03-11T21:07:50Z",
+          "updatedAt": "2025-03-11T21:07:50Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "language nits \r\n```suggestion\r\nFor example, if an ecosystem wants to support DID Document Resolution, it would specify that the `iss` value contains a DID [@?W3C.DID] and the recipient would retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` can be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key. The ecosystem might additionally want to specify which DID methods can be used to ensure interoperability and what verification material in DID Documents can be used, e.g., JWKs.\r\n```",
+              "createdAt": "2025-03-11T21:07:50Z",
+              "updatedAt": "2025-03-11T21:07:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6fqVHU",
+          "commit": {
+            "abbreviatedOid": "9708fb7"
+          },
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "state": "CHANGES_REQUESTED",
+          "body": "I don't really understand the weird politics and business interests behind trying SO hard again and again to remove an OPTIONAL feature. Why is this so important to some? What kind of interests lead editors to try to sneak in changes, to avoid discussion, and to ignore consensus? What does this change accomplish?\r\n\r\nThe fact is that a lot of people have already implemented this and have expressed support for DIDs in this specification (e.g. see https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/250).\r\n\r\nI don't see the point of delegating this to \"separate specifications or ecosystem regulations\", this will only overcomplicate things and reduce interoperability.\r\n\r\nI know that the \"hopes and dreams of the DID community\" are \"tiresome\" to some people. So why not just leave things as they are now and move on to something else.",
+          "createdAt": "2025-03-12T14:13:23Z",
+          "updatedAt": "2025-03-12T14:13:23Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6ftFvL",
+          "commit": {
+            "abbreviatedOid": "9708fb7"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-12T17:53:48Z",
+          "updatedAt": "2025-03-12T17:53:48Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 300,
+      "id": "PR_kwDOJbVClc6OOrfg",
+      "title": "Fix document build pipeline",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/300",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-03-11T20:05:11Z",
+      "updatedAt": "2025-03-11T20:24:08Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "e679be4d377892ce9100f4b469e81cdaffc3d58f",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "fix-opening-and-ending-tag-mismatch-likely-from-262",
+      "headRefOid": "bdba4e35c07be79ee5d417234a312e4f168be615",
+      "closedAt": "2025-03-11T20:24:07Z",
+      "mergedAt": "2025-03-11T20:24:07Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6fgNh-",
+          "commit": {
+            "abbreviatedOid": "bdba4e3"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-11T20:15:16Z",
+          "updatedAt": "2025-03-11T20:15:16Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
