@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-13T00:31:30.225339+00:00",
+  "timestamp": "2025-03-16T00:34:10.058298+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -23747,7 +23747,7 @@
       "labels": [],
       "body": "This PR describes the extension point for ecosystem-specific issuer key resolution based on DIDs.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/add-extension/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-03-11T19:50:17Z",
-      "updatedAt": "2025-03-12T17:53:48Z",
+      "updatedAt": "2025-03-14T20:36:01Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
