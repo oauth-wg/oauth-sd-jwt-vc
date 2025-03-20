@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-18T00:31:07.219773+00:00",
+  "timestamp": "2025-03-20T00:30:51.042558+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7492,6 +7492,38 @@
       "body": "Section 4 only says something about if the presentation contains a KB-JWT:\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4\n\nA reader that is not familiar with SD-JWT will probably appreciate guidance on presentations not containing KB-JWT.",
       "createdAt": "2025-01-20T14:10:36Z",
       "updatedAt": "2025-01-20T14:10:36Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 301,
+      "id": "I_kwDOJbVClc6ue3-u",
+      "title": "Claim vocabulary for PID?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/301",
+      "state": "OPEN",
+      "author": "dwaite",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I noticed several unregistered claims in the example, including values like `age_equal_or_over`. My understanding is that these are related to a particular EIDAS PID credential type. \n\nI wasn't able to find a source document though - are these claims documented anyplace yet?",
+      "createdAt": "2025-03-18T06:30:01Z",
+      "updatedAt": "2025-03-18T06:30:01Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 302,
+      "id": "I_kwDOJbVClc6unM81",
+      "title": "Add security consideration: Extending a type doesn't imply authorization to issue the type",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/302",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Example:\n- there's a european PID type \"urn:ec.eu.x.y.z\" and a national type \"urn:de.bla\" that extends \"urn:ec.eu.x.y.z\"\n- a rogue issuer issues a credential \"urn:attacker\" that extends either \"urn:ec.eu.x.y.z\" or \"urn:ec.eu.x.y.z\"\n- it is now important that verifiers/wallets don't accept these credentials. the fact that someone issued a credential extending a known type does not imply that they are allowed to do so (or that they are a valid issuer at all)\n\nThis should be captured in a security consideration, ideally also in processing rules.",
+      "createdAt": "2025-03-18T18:37:39Z",
+      "updatedAt": "2025-03-18T18:37:39Z",
       "closedAt": null,
       "comments": []
     }
