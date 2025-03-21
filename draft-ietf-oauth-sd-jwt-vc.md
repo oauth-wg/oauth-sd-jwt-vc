@@ -1572,6 +1572,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
 # Acknowledgements {#Acknowledgements}
 
 We would like to thank
+Aaron Parecki,
 Alen Horvat,
 Andres Uribe,
 Christian Bormann,
