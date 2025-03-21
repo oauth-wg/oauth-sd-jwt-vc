@@ -203,11 +203,9 @@ Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its 
 This section defines the claims that can be included in the payload of
 SD-JWT VCs.
 
-#### New JWT Claims
+#### Verifiable Credential Type - `vct` Claim {#type-claim}
 
-##### Verifiable Credential Type - `vct` Claim {#type-claim}
-
-This specification defines the JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
+This specification defines the new JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
 case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
 for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
@@ -267,10 +265,10 @@ exist between `sub` and `cnf` claims.
     * OPTIONAL. The time of issuance of the Verifiable Credential. See
       [@!RFC7519] for more information.
 
-#### Public JWT claims
+#### Public and Private JWT claims
 
-Additional public claims MAY be used in SD-JWT VCs depending on the
-application.
+Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
+[@!RFC7519] MAY be used.
 
 #### SD-JWT VC without Selectively Disclosable Claims
 
@@ -1595,6 +1593,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Use SD-JWT KB in place of SD-JWT with Key Binding JWT
 * Editorial changes
 * Document reasons for not using JSON Pointer or JSON Path (Issue #267)
+* Clarify that private claim names MAY be used
 
 -08
 
