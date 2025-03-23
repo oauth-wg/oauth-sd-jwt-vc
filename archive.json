@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-20T00:30:51.042558+00:00",
+  "timestamp": "2025-03-23T00:34:18.286599+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7141,7 +7141,7 @@
       "labels": [],
       "body": "If the verifier supports multiple different ways of issuer key discovery, the spec currently suggests that they would need to perform all of these different ways to validate the public key. Perhaps this is a good thing, but perhaps this is an unnecessary thing? Especially if the verifier supports HTTPS and X.509, should they do both?",
       "createdAt": "2024-12-03T21:41:43Z",
-      "updatedAt": "2024-12-10T22:24:24Z",
+      "updatedAt": "2025-03-21T16:26:40Z",
       "closedAt": null,
       "comments": [
         {
@@ -7192,6 +7192,41 @@
           "body": "> > Given that if x5cmethod is eligible, then issuer metadata is eligible, I think that the former (x5c) must take precedence, if verifier/wallet support both.\r\n> \r\n> I think that's very reasonable @babisRoutis but the text in the draft needs some work and I'm sure could reasonably be interpreted differently. And there was some support/suggestion in yesterday's interim around having some explicit signal. Which probably/might have some relation to the concerns here https://mailarchive.ietf.org/arch/msg/oauth/ho6D8dc_7GQgJxwycS7khTM9_qw/. Some more thinking and/or work is needed in this area.\r\n\r\n@bc-pi Thanks for sharing this. \r\nHope that this will not end up with `issuer_id_scheme` :smile: \r\n",
           "createdAt": "2024-12-10T22:24:22Z",
           "updatedAt": "2024-12-10T22:24:22Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Ecosystems will likely define acceptable resolution methods and it makes no sense to have more than one, or if multiple are accepted, it makes at least no sense to use more than one. Therefore, this specification should not mandate any particular method. While I believe it does not, this should be explicitly clarified. Instead, the verifier (or ecosystem) should have the discretion to choose a method (based on ecosystem rules maybe), as long as the necessary information to obtain the public key is present in the credential.\n\nTo further clarify, we could specify that both `x5c` and `iss` are optional, allowing an issuer to provide only the `x5c` header for key resolution. In the case of `x5c`, I assume the issuer is read from the X.509 certificate anyway, meaning the `iss` value should be ignored. This would further allow us to remove the awkward restriction on SAN entries having to match the `iss` value which a lot of people don't check anyways (based on my experience in interop events).",
+          "createdAt": "2025-03-21T10:33:23Z",
+          "updatedAt": "2025-03-21T10:40:04Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Dear @awoie \n\nWhat you propose, IMO, effectively will remove one of the strongest advantages of using sd-jwt-vc format. That is,  the ability to \"discover\" the issuer's pub key using one of the predefined options and streamline the validation of SD-JWT-VC.\n\nI believe that ultimately this will reduce interoperability.\n\nPS1: Interoperability events against rapidly changing drafts sounds like an oxymoron \ud83d\ude04 ",
+          "createdAt": "2025-03-21T11:30:01Z",
+          "updatedAt": "2025-03-21T11:30:01Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Dear [@awoie](https://github.com/awoie)\n> \n> What you propose, IMO, effectively will remove one of the strongest advantages of using sd-jwt-vc format. That is, the ability to \"discover\" the issuer's pub key using one of the predefined options and streamline the validation of SD-JWT-VC.\n> \n> I believe that ultimately this will reduce interoperability.\n> \n> PS1: Interoperability events against rapidly changing drafts sounds like an oxymoron \ud83d\ude04\n\nIMO, this would increase interoperability by having less options but I can see that is a bigger topic.\n\nHowever, to solve this particular issue, I still believe the following:\n\nThe Verifier is not required to use more than one key resolution option even if the Verifier can. It is at the discretion of the Verifier which option is acceptable and used.",
+          "createdAt": "2025-03-21T12:35:21Z",
+          "updatedAt": "2025-03-21T12:35:21Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "From experience, the signature profile should clearly define one key resolution approach (I consider embedded and referenced keys in same format and same verification logic as one method) .",
+          "createdAt": "2025-03-21T12:38:52Z",
+          "updatedAt": "2025-03-21T12:38:52Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> From experience, the signature profile should clearly define one key resolution approach (I consider embedded and referenced keys in same format and same verification logic as one method) .\n\nIt would be also my preference if there is no ambiguity on the key resolution approach.",
+          "createdAt": "2025-03-21T12:43:21Z",
+          "updatedAt": "2025-03-21T12:43:21Z"
         }
       ]
     },
@@ -7507,9 +7542,17 @@
       "labels": [],
       "body": "I noticed several unregistered claims in the example, including values like `age_equal_or_over`. My understanding is that these are related to a particular EIDAS PID credential type. \n\nI wasn't able to find a source document though - are these claims documented anyplace yet?",
       "createdAt": "2025-03-18T06:30:01Z",
-      "updatedAt": "2025-03-18T06:30:01Z",
+      "updatedAt": "2025-03-21T09:17:49Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Yes and no, as there is no official list of SD-JWT VC claims for a PID yet. There's [my pull request on the ARF](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/pull/160/files) that uses some similar claims, but it is not sure if that is exactly what will end up in the final ARF. However, there's now [this discussion paper](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/discussion-topics/v-pid-rulebook.md#61-high-level-requirements-to-be-added) which paves the way for integrating either my PR or similar text into the ARF.\n\nHowever, I noticed the that the current spec text is not unambiguous on whether private claim names can be used. I'll fix that.",
+          "createdAt": "2025-03-21T09:17:48Z",
+          "updatedAt": "2025-03-21T09:17:48Z"
+        }
+      ]
     },
     {
       "number": 302,
@@ -23487,7 +23530,7 @@
       "labels": [],
       "body": "Fix #267 ",
       "createdAt": "2025-01-13T12:55:36Z",
-      "updatedAt": "2025-03-11T18:32:47Z",
+      "updatedAt": "2025-03-20T07:07:29Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
@@ -23500,7 +23543,15 @@
       "mergeCommit": {
         "oid": "fd25ece509544ae4a6718454fe49680cf6e844f7"
       },
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This came about from a suggestion by @aaronpk so perhaps he should appear in the acknowledgements? I just noticed he isn't while working on content for IETF 122. ",
+          "createdAt": "2025-03-20T07:07:27Z",
+          "updatedAt": "2025-03-20T07:07:27Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6X-eDL",
@@ -23922,6 +23973,72 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 303,
+      "id": "PR_kwDOJbVClc6PlQ1A",
+      "title": "ack Aaron Parecki",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/303",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/295#issuecomment-2739407808 @aaronpk ",
+      "createdAt": "2025-03-21T08:53:20Z",
+      "updatedAt": "2025-03-21T09:43:36Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "ack-aaron",
+      "headRefOid": "4f22ab9c37bfbc6da4c59a5a366aed6bcc0f2206",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6hP7yW",
+          "commit": {
+            "abbreviatedOid": "4f22ab9"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-03-21T09:43:36Z",
+          "updatedAt": "2025-03-21T09:43:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 304,
+      "id": "PR_kwDOJbVClc6Plpm0",
+      "title": "Clarify that private JWT claims MAY be used",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/304",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "See my comment in #301 for the reasons for this PR.\r\n\r\nAlso removes the subsection \"New JWT Claims\" as it is not really helpful. ",
+      "createdAt": "2025-03-21T09:40:20Z",
+      "updatedAt": "2025-03-21T09:41:40Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-301-private-claims",
+      "headRefOid": "1e1d48e324cce62c9e5c35dac1b3f438881caa83",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
