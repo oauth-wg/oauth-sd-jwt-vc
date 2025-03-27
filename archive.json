@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-03-25T00:31:52.496934+00:00",
+  "timestamp": "2025-03-27T00:31:39.784959+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7567,6 +7567,22 @@
       "body": "Example:\n- there's a european PID type \"urn:ec.eu.x.y.z\" and a national type \"urn:de.bla\" that extends \"urn:ec.eu.x.y.z\"\n- a rogue issuer issues a credential \"urn:attacker\" that extends either \"urn:ec.eu.x.y.z\" or \"urn:ec.eu.x.y.z\"\n- it is now important that verifiers/wallets don't accept these credentials. the fact that someone issued a credential extending a known type does not imply that they are allowed to do so (or that they are a valid issuer at all)\n\nThis should be captured in a security consideration, ideally also in processing rules.",
       "createdAt": "2025-03-18T18:37:39Z",
       "updatedAt": "2025-03-18T18:37:39Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 305,
+      "id": "I_kwDOJbVClc6vyaxc",
+      "title": "Support PNG background besides just color or SVG",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/305",
+      "state": "OPEN",
+      "author": "grausof",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "For the \"simple\" rendering method in addition to supporting the `background_color` it could be a good idea to also support a `background_image` for those credentials that already have a **well-defined background** obviously going to specify the different dimensions and resolutions to support as for example is done for iOS and Android Wallets (see https://developer.apple.com/design/human-interface-guidelines/wallet). \n\nThe use of SVG is very complex and also requires a very high computational load for the rendering of complex objects or with many shades just think of the background of a national identity card.",
+      "createdAt": "2025-03-26T11:18:33Z",
+      "updatedAt": "2025-03-26T11:18:33Z",
       "closedAt": null,
       "comments": []
     }
