@@ -1,4 +1,5 @@
 user_claims:
+  iss: https://pid-issuer.bund.de.example
   vct: urn:eudi:pid:de:1
 #  vct#integrity: sha256-jo8433ot48utul8ura33
   !sd given_name: Erika
