@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-01T00:36:48.017496+00:00",
+  "timestamp": "2025-04-06T00:34:42.853044+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7141,7 +7141,7 @@
       "labels": [],
       "body": "If the verifier supports multiple different ways of issuer key discovery, the spec currently suggests that they would need to perform all of these different ways to validate the public key. Perhaps this is a good thing, but perhaps this is an unnecessary thing? Especially if the verifier supports HTTPS and X.509, should they do both?",
       "createdAt": "2024-12-03T21:41:43Z",
-      "updatedAt": "2025-03-21T16:26:40Z",
+      "updatedAt": "2025-04-05T08:15:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -7227,6 +7227,13 @@
           "body": "> From experience, the signature profile should clearly define one key resolution approach (I consider embedded and referenced keys in same format and same verification logic as one method) .\n\nIt would be also my preference if there is no ambiguity on the key resolution approach.",
           "createdAt": "2025-03-21T12:43:21Z",
           "updatedAt": "2025-03-21T12:43:21Z"
+        },
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "> It would be also my preference if there is no ambiguity on the key resolution approach.\n\nThis is why DIDs include the key resolution approach (aka \"method\") as part of the identifier itself, to avoid the kind of ambiguity discussed here, while still allowing extensibility.",
+          "createdAt": "2025-04-05T08:15:52Z",
+          "updatedAt": "2025-04-05T08:15:52Z"
         }
       ]
     },
@@ -24042,7 +24049,7 @@
       "labels": [],
       "body": "See my comment in #301 for the reasons for this PR.\r\n\r\nAlso removes the subsection \"New JWT Claims\" as it is not really helpful. ",
       "createdAt": "2025-03-21T09:40:20Z",
-      "updatedAt": "2025-03-21T09:41:40Z",
+      "updatedAt": "2025-04-04T23:42:18Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
@@ -24054,6 +24061,54 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6jkmt7",
+          "commit": {
+            "abbreviatedOid": "1e1d48e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-04-04T23:42:18Z",
+          "updatedAt": "2025-04-04T23:42:18Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 306,
+      "id": "PR_kwDOJbVClc6RXn1S",
+      "title": "Update PID example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/306",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-04-04T08:25:13Z",
+      "updatedAt": "2025-04-04T15:40:12Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/update-pid-example",
+      "headRefOid": "e8645d8d3592ebf0f8a4f30ac8ec684d105f209e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Was there a reason that changes to the markdown similar to https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/564/files#diff-40bc3800dd9a7d4411799637caf0b01f82a01242d57264a2e4beb408c3835704 were omitted from this one? ",
+          "createdAt": "2025-04-04T15:40:11Z",
+          "updatedAt": "2025-04-04T15:40:11Z"
+        }
+      ],
       "reviews": []
     }
   ]
