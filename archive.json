@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-06T00:34:42.853044+00:00",
+  "timestamp": "2025-04-20T00:35:52.671441+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7590,6 +7590,22 @@
       "body": "For the \"simple\" rendering method in addition to supporting the `background_color` it could be a good idea to also support a `background_image` for those credentials that already have a **well-defined background** obviously going to specify the different dimensions and resolutions to support as for example is done for iOS and Android Wallets (see https://developer.apple.com/design/human-interface-guidelines/wallet). \n\nThe use of SVG is very complex and also requires a very high computational load for the rendering of complex objects or with many shades just think of the background of a national identity card.",
       "createdAt": "2025-03-26T11:18:33Z",
       "updatedAt": "2025-03-26T11:18:33Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 307,
+      "id": "I_kwDOJbVClc6zAuW_",
+      "title": "cnf, x5c, or other public key certificates",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/307",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Dear,\n\ncongratulations for the amazing work on the specification.\n\n`cnf` is a nice mechanism to bind a public key to a credential.\nThere are cases, where additional information about the public key may be provided (in x509 or other format); where and how such public key certificate/credential should be provided/signalled?\nWithin the JWK.x5c claim?\n\nThank you.",
+      "createdAt": "2025-04-17T19:46:07Z",
+      "updatedAt": "2025-04-17T19:46:07Z",
       "closedAt": null,
       "comments": []
     }
