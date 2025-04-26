@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 12 September 2025                                 Authlete Inc.
+Expires: 28 October 2025                                   Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                           11 March 2025
+                                                           26 April 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 12 September 2025.
+   This Internet-Draft will expire on 28 October 2025.
 
 Copyright Notice
 
@@ -564,9 +564,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QN1uf
-   i8ok7Nojn-0RxTeEQSqbn1g4IPL6eFOR-vAgfolHKLnYVqU1uCtYyHEly-CVK0-M5hBg
-   A11UKCdOE83Ww~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.x1LbL
+   jIiTCvgNAQrRfNtLJTsygzjuBAQZHHVFB37R30PmfOWTHC84hc3vhO3nrf7A-arjjxXn
+   DxZyKBgh2OV0Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -685,17 +685,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QN1uf
-   i8ok7Nojn-0RxTeEQSqbn1g4IPL6eFOR-vAgfolHKLnYVqU1uCtYyHEly-CVK0-M5hBg
-   A11UKCdOE83Ww~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.x1LbL
+   jIiTCvgNAQrRfNtLJTsygzjuBAQZHHVFB37R30PmfOWTHC84hc3vhO3nrf7A-arjjxXn
+   DxZyKBgh2OV0Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDE3MjQ2Nj
-   gsICJzZF9oYXNoIjogIjdQendKV2ViVTJjVkFKcXNOeUstbDhZNlU5aVlrMU1Jd2c5b1
-   lEWXltVVEifQ.AESCKPseSjGSGbm5zhVicoWaOMi5YPkHjVZsKSK8HiqK7XvYSLHzFmc
-   vt9saKA-S3hd2LkeZp9qozDwjqOuazw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDU2NzA0ND
+   IsICJzZF9oYXNoIjogIi1OM1VzeFhMS1VKZURzck42ZVZncUk0OUFRNlhDeXpwUnZ1OT
+   dUMkNFYTgifQ.7HAXLTDFdnIOZ6bbFLOjAkCxIkiD5xQXBZdl4JdJhHLUKvDZ-AvCBr7
+   z09Zo-HtR72w1nP6GUykt8zRgoNER5A
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -737,8 +737,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.H1ot4cSp-5GNGrP1KfXfJ5YC2Oq4FnSUmqv_1DS_UEaLCz
-   kz_Zhv1UuSQbyfIQ8tAvDpC9HOayo1vtYmsHxoGQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.ZRoGzI1JsU0jxnrslh742fWdb3F1uZlV2h9Gz-q0BIcHZB
+   dLc69hzXpovow_ozUaAXXu4HOfUa34C-htISefuA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1642,16 +1642,15 @@ Table of Contents
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
               Draft, draft-ietf-oauth-selective-disclosure-jwt-17, 1
-              March 2025,
-              <https://datatracker.ietf.org/api/v1/doc/document/draft-
-              ietf-oauth-selective-disclosure-jwt/>.
+              March 2025, <https://datatracker.ietf.org/doc/html/draft-
+              ietf-oauth-selective-disclosure-jwt-17>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-09, 3 March 2025,
-              <https://datatracker.ietf.org/api/v1/doc/document/draft-
-              ietf-oauth-status-list/>.
+              status-list-10, 25 March 2025,
+              <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
+              status-list-10>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1880,8 +1879,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.ZIKj2QaN4RG-pDLpIYZvSoqLNIxKcknFZmRwDf_4emgrylgmF9dUqZ
-   71Beph1mQVDorbuSmZP0GhurZj35raQg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
+   5RjJIWlEifX19.sDM1-VqsH2NjCTKcZ7vNuEnBNkFlBnECZjMmvLo6y_dBPag1dl2w4w
+   RxF8nud8923rpX7Jw-6KWVe0eEBSyMlQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3Iiw
    gImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwg
    ImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm9TNXRtd
    lZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUHBOUGVOZ
@@ -2153,22 +2152,22 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    6ICJzaGEtMjU2IiwgImNuZiI6IHsiandrIjogeyJrdHkiOiAiRUMiLCAiY3J2IjogIlA
    tMjU2IiwgIngiOiAiVENBRVIxOVp2dTNPSEY0ajRXNHZmU1ZvSElQMUlMaWxEbHM3dkN
    lR2VtYyIsICJ5IjogIlp4amlXV2JaTVFHSFZXS1ZRNGhiU0lpcnNWZnVlY0NFNnQ0alQ
-   5RjJIWlEifX19.ZIKj2QaN4RG-pDLpIYZvSoqLNIxKcknFZmRwDf_4emgrylgmF9dUqZ
-   71Beph1mQVDorbuSmZP0GhurZj35raQg~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
+   5RjJIWlEifX19.sDM1-VqsH2NjCTKcZ7vNuEnBNkFlBnECZjMmvLo6y_dBPag1dl2w4w
+   RxF8nud8923rpX7Jw-6KWVe0eEBSyMlQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiw
    gIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIi
    wgIjE4IiwgdHJ1ZV0~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub
    25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3Zlc
-   mlmaWVyIiwgImlhdCI6IDE3NDE3MjQ2NjgsICJzZF9oYXNoIjogInpQanlubmVIeENBW
-   jQ3bUlrNVFqY1M1ODVoM2paVU5xdnAtQkVtZmI4TEEifQ.4BSpC3a_zsBKaWjhFqSjTg
-   oOSNLAXEp69W3DHiuTaa9rwiEOj-Z8-rcunG6qSmMvEZQYc7Lgu0SVejVV8yIz-Q
+   mlmaWVyIiwgImlhdCI6IDE3NDU2NzA0NDIsICJzZF9oYXNoIjogImw4SFdVMDhYUUFFa
+   VVjcW5ydUFwcVNDYVZJMFBwcnRYRjdCWFo3S0tjaVkifQ.B3hb9liyxhs4kgZQgJqWZa
+   54B5D3rtAqtRn9FyEp5HXgHHERcJlt0gsjYiQjL1vdH4LngXORzBNUbUTkWmYMrQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1741724668,
-     "sd_hash": "zPjynneHxCAZ47mIk5QjcS585h3jZUNqvp-BEmfb8LA"
+     "iat": 1745670442,
+     "sd_hash": "l8HWU08XQAEiUcqnruApqSCaVI0PprtXF7BXZ7KKciY"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2329,12 +2328,12 @@ B.2.  Example 2: Type Metadata
 
 Appendix C.  Acknowledgements
 
-   We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-   George J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson,
-   Michael B.  Jones, Mike Prorock, Orie Steele, Paul Bastian, Torsten
-   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
-   contributions (some of which substantial) to this draft and to the
-   initial set of implementations.
+   We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
+   Christian Bormann, George J Padayatti, Giuseppe De Marco, Lukas J
+   Han, Leif Johansson, Michael B.  Jones, Mike Prorock, Orie Steele,
+   Paul Bastian, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda
+   for their contributions (some of which substantial) to this draft and
+   to the initial set of implementations.
 
 Appendix D.  Document History
 
