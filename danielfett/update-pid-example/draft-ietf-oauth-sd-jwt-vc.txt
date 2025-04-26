@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 6 October 2025                                    Authlete Inc.
+Expires: 28 October 2025                                   Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                            4 April 2025
+                                                           26 April 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 6 October 2025.
+   This Internet-Draft will expire on 28 October 2025.
 
 Copyright Notice
 
@@ -312,11 +312,9 @@ Table of Contents
    This section defines the claims that can be included in the payload
    of SD-JWT VCs.
 
-3.2.2.1.  New JWT Claims
+3.2.2.1.  Verifiable Credential Type - vct Claim
 
-3.2.2.1.1.  Verifiable Credential Type - vct Claim
-
-   This specification defines the JWT claim vct (for verifiable
+   This specification defines the new JWT claim vct (for verifiable
    credential type).  The vct value MUST be a case-sensitive StringOrURI
    (see [RFC7519]) value serving as an identifier for the type of the
    SD-JWT VC.  The vct value MUST be a Collision-Resistant Name as
@@ -378,7 +376,7 @@ Table of Contents
    *  vct
       -  REQUIRED.  The type of the Verifiable Credential, e.g.,
          https://credentials.example.com/identity_credential, as defined
-         in Section 3.2.2.1.1.
+         in Section 3.2.2.1.
    *  status
       -  OPTIONAL.  The information on how to read the status of the
          Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
@@ -397,10 +395,10 @@ Table of Contents
       -  OPTIONAL.  The time of issuance of the Verifiable Credential.
          See [RFC7519] for more information.
 
-3.2.2.3.  Public JWT claims
+3.2.2.3.  Public and Private JWT claims
 
-   Additional public claims MAY be used in SD-JWT VCs depending on the
-   application.
+   Additionally, any public and private claims as defined in Sections
+   4.2 and 4.3 of [RFC7519] MAY be used.
 
 3.2.2.4.  SD-JWT VC without Selectively Disclosable Claims
 
@@ -564,9 +562,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MegM2
-   vLbszb06TJIl1OMw1K_OJ6HfBWwkRXqkDojdzo3m5rQ3D-41jMcX7ClA8SjyH8hkVN5b
-   Xs1TVyKljQs4A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6tPbB
+   LI94DB35-bqddYR7VMTUBj3RCp29fK0k3uC0uVUTB9HaE4By-8yzRphaxSjAe28GRy-Q
+   _TbsSx40QBDag~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -685,17 +683,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MegM2
-   vLbszb06TJIl1OMw1K_OJ6HfBWwkRXqkDojdzo3m5rQ3D-41jMcX7ClA8SjyH8hkVN5b
-   Xs1TVyKljQs4A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6tPbB
+   LI94DB35-bqddYR7VMTUBj3RCp29fK0k3uC0uVUTB9HaE4By-8yzRphaxSjAe28GRy-Q
+   _TbsSx40QBDag~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDM3NjkyMz
-   gsICJzZF9oYXNoIjogIm1tRFVrbndzM2h6NHBYblJYRjBDeG85Zmk2c2w5clhRSldsQj
-   VkcFp2UGsifQ.jHkSSN9fIS14_N-UymnvghlQiMcXn5DJXNCuS7okD9d9pTINmb0I603
-   DP1EOJ6sZwMKQIY8N3xrJG9fDe3SVxw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDU2NzA4ND
+   MsICJzZF9oYXNoIjogIlNkY0tibGtOdHFGQ202VzI0UVB3TGlqRWVyRVphN2FBLVJKUT
+   NnMHI5cHcifQ.Av5RFXGFKuFoQU8nSaRsddixIA0l8pF7oNSV8PHJF8-7PmuS0lEvQY_
+   A0GaQFYLifnNs78IawWrwSg6_ghW3NQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -737,8 +735,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.mq7KwOrn440oTmluwhyThXGvKzE3oSS2DB9r9huX7D-Vpl
-   0YnDB8FJB3SAakqYxnNEl5Dg5jPtOpgmXts037zQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.hHBj6SJB8Aa8noecizKRJGCqgBERvNOCXJb9vWLc7xGAfl
+   FZn5jW__01v8v9dDJxO2eZ3F5IaYxAYvE1bvIctQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1745,7 +1743,7 @@ A.1.  JSON Web Token Claims Registration
 
    *  Change Controller: IETF
 
-   *  Specification Document(s): [[ Section 3.2.2.1.1 of this
+   *  Specification Document(s): [[ Section 3.2.2.1 of this
       specification ]]
 
    *  Claim Name: "vct#integrity"
@@ -1882,8 +1880,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.WZ0n1X6b8VBh6XBdvDWVb8333rtezU-zYFg2ZmjAegg2Vw2
-   nTpj3TjihF24N8k9Yndh_UZHVAnvjny8k39BydA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.lVZu4yBCJWK0snqXijYUT5r4hQFsDHdmBoai9YFwCaTAVHT
+   yz39KlCPtf2gLhO5M48EMgv3FJesZbmp5NNvv0w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2218,8 +2216,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.WZ0n1X6b8VBh6XBdvDWVb8333rtezU-zYFg2ZmjAegg2Vw2
-   nTpj3TjihF24N8k9Yndh_UZHVAnvjny8k39BydA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.lVZu4yBCJWK0snqXijYUT5r4hQFsDHdmBoai9YFwCaTAVHT
+   yz39KlCPtf2gLhO5M48EMgv3FJesZbmp5NNvv0w~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2230,17 +2228,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NDM3NjkyMzgsICJzZF9oYXNoIjogIlNkYzhPSlhsemIxZi1kRTlBdGlla3E
-   2ck56VzY2aHkzZGNESDFKMVhPNlUifQ.goP7j_yozsxwWpgLUb62ujQhqTWzXcXgyZjg
-   lH-u3FvntxU4B0GiEVFGmvW97ilaxPwuKeLfGYHFYkdnV0z5Uw
+   hdCI6IDE3NDU2NzA4NDMsICJzZF9oYXNoIjogInJWNG00Z3ZqeUdtRVRHWXJZZlhLOGo
+   tanEzU1FmOWVvQmY4Y29rVW14MkkifQ.pRtPraTMAms5DkRwEc63WAvBV_2sdofmHf0_
+   pFCMb4yArt6Ew1ZvHSK0q_ztFsY5m6F96hnKWzDdxDlFLwFLNQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1743769238,
-     "sd_hash": "Sdc8OJXlzb1f-dE9Atiekq6rNzW66hy3dcDH1J1XO6U"
+     "iat": 1745670843,
+     "sd_hash": "rV4m4gvjyGmETGYrYfXK8j-jq3SQf9eoBf8cokUmx2I"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2401,12 +2399,12 @@ B.2.  Example 2: Type Metadata
 
 Appendix C.  Acknowledgements
 
-   We would like to thank Alen Horvat, Andres Uribe, Christian Bormann,
-   George J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson,
-   Michael B.  Jones, Mike Prorock, Orie Steele, Paul Bastian, Torsten
-   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
-   contributions (some of which substantial) to this draft and to the
-   initial set of implementations.
+   We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
+   Christian Bormann, George J Padayatti, Giuseppe De Marco, Lukas J
+   Han, Leif Johansson, Michael B.  Jones, Mike Prorock, Orie Steele,
+   Paul Bastian, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda
+   for their contributions (some of which substantial) to this draft and
+   to the initial set of implementations.
 
 Appendix D.  Document History
 
@@ -2416,6 +2414,7 @@ Appendix D.  Document History
    *  Editorial changes
    *  Document reasons for not using JSON Pointer or JSON Path (Issue
       #267)
+   *  Clarify that private claim names MAY be used
 
    -08
 
