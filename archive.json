@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-20T00:35:52.671441+00:00",
+  "timestamp": "2025-04-27T00:35:46.836877+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7606,6 +7606,22 @@
       "body": "Dear,\n\ncongratulations for the amazing work on the specification.\n\n`cnf` is a nice mechanism to bind a public key to a credential.\nThere are cases, where additional information about the public key may be provided (in x509 or other format); where and how such public key certificate/credential should be provided/signalled?\nWithin the JWK.x5c claim?\n\nThank you.",
       "createdAt": "2025-04-17T19:46:07Z",
       "updatedAt": "2025-04-17T19:46:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 308,
+      "id": "I_kwDOJbVClc6z-04Y",
+      "title": "Document integrity examples use wrong Base64url encoding",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/308",
+      "state": "OPEN",
+      "author": "Iskander508",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The examples of `<uri_claim>#integrity` claims throughout the spec use Base64url encoding (with `-` and `_` chars):\n```\n\"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\"\n...\n\"extends#integrity\":\"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5\",\n...\n\"schema_uri#integrity\":\"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh\"\n```\n\nbut the [referenced spec \"Subresource integrity\"](https://www.w3.org/TR/sri/#base64-encoding) uses the classic Base64 encoding with padding (with `+` and `/` chars):\n```\nsha384-+/M6kredJcxdsqkczBUjMLvqyHb1K/JThDXWsBVxMEeZHEaMKEOEct339VItX1zB\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\nsha512-Q2bFTOhEALkN8hOms2FKTDLy7eugP2zFZ1T8LCvX42Fp3WoNr3bjZSAHeOsHrbV1Fu9/A0EzCinRE7Af1ofPrw==\n```\n\nThis mismatch could result in incompatible implementations.",
+      "createdAt": "2025-04-25T10:00:47Z",
+      "updatedAt": "2025-04-25T10:26:50Z",
       "closedAt": null,
       "comments": []
     }
@@ -23399,21 +23415,21 @@
       "id": "PR_kwDOJbVClc6HVIwO",
       "title": "Make extension point for issuer key resolution more explicit",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/294",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR makes the extension point for issuer key resolution more explicit.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/extension-point/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-01-10T13:08:01Z",
-      "updatedAt": "2025-03-11T19:51:25Z",
+      "updatedAt": "2025-04-26T12:28:18Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "81992e98cb4ade4026cc8ca721328aec6b1dddf5",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/extension-point",
       "headRefOid": "7939afca7a1f8934e043d9e74473bf8a085e46f5",
-      "closedAt": null,
+      "closedAt": "2025-04-26T12:28:17Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -23466,6 +23482,20 @@
           "body": "Superseded by https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/299",
           "createdAt": "2025-03-11T19:51:03Z",
           "updatedAt": "2025-03-11T19:51:25Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Superseded by #299\r\n\r\n^ that",
+          "createdAt": "2025-04-26T12:27:55Z",
+          "updatedAt": "2025-04-26T12:27:55Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > Superseded by #299\r\n> \r\n> ^ that\r\n\r\n^ for real this time ",
+          "createdAt": "2025-04-26T12:28:17Z",
+          "updatedAt": "2025-04-26T12:28:17Z"
         }
       ],
       "reviews": [
@@ -23869,13 +23899,13 @@
       "labels": [],
       "body": "This PR describes the extension point for ecosystem-specific issuer key resolution based on DIDs.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/add-extension/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-03-11T19:50:17Z",
-      "updatedAt": "2025-03-17T09:32:57Z",
+      "updatedAt": "2025-04-26T12:34:50Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
+      "baseRefOid": "513c0a1032153dd66131b5e518712da6d3d66694",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/add-extension",
-      "headRefOid": "9708fb732e0ede85a3070ba969f342d30d6fe12d",
+      "headRefOid": "1c3bedec1702c4d665c0b024fb2fdde48d737490",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -24018,25 +24048,35 @@
       "id": "PR_kwDOJbVClc6PlQ1A",
       "title": "ack Aaron Parecki",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/303",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/295#issuecomment-2739407808 @aaronpk ",
       "createdAt": "2025-03-21T08:53:20Z",
-      "updatedAt": "2025-03-21T09:43:36Z",
+      "updatedAt": "2025-04-26T12:26:57Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "ack-aaron",
       "headRefOid": "4f22ab9c37bfbc6da4c59a5a366aed6bcc0f2206",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2025-04-26T12:26:56Z",
+      "mergedAt": "2025-04-26T12:26:56Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "43cf9e62b232c70b53bc1f415b14f02746bd082d"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Open for over a month. One approval. No objections. Did I really just type that? Yes, yes I did. ",
+          "createdAt": "2025-04-26T12:26:15Z",
+          "updatedAt": "2025-04-26T12:26:15Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6hP7yW",
@@ -24058,25 +24098,35 @@
       "id": "PR_kwDOJbVClc6Plpm0",
       "title": "Clarify that private JWT claims MAY be used",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/304",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "See my comment in #301 for the reasons for this PR.\r\n\r\nAlso removes the subsection \"New JWT Claims\" as it is not really helpful. ",
       "createdAt": "2025-03-21T09:40:20Z",
-      "updatedAt": "2025-04-04T23:42:18Z",
+      "updatedAt": "2025-04-26T12:32:18Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/fix-301-private-claims",
       "headRefOid": "1e1d48e324cce62c9e5c35dac1b3f438881caa83",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2025-04-26T12:32:18Z",
+      "mergedAt": "2025-04-26T12:32:18Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "513c0a1032153dd66131b5e518712da6d3d66694"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Open for much longer than it should have been. Really should have more than one approval. But no objections. I don't know if it actually fixes #301 or not but this probably should have been merged weeks ago. ",
+          "createdAt": "2025-04-26T12:32:13Z",
+          "updatedAt": "2025-04-26T12:32:13Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6jkmt7",
@@ -24105,13 +24155,13 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-04-04T08:25:13Z",
-      "updatedAt": "2025-04-04T15:40:12Z",
+      "updatedAt": "2025-04-26T12:33:35Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "c841e52176f76ff836a52616686aa0b7c0f3f2aa",
+      "baseRefOid": "513c0a1032153dd66131b5e518712da6d3d66694",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/update-pid-example",
-      "headRefOid": "e8645d8d3592ebf0f8a4f30ac8ec684d105f209e",
+      "headRefOid": "b315befd195f8d3649acbbce1235e3c3dce27e0c",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -24123,6 +24173,13 @@
           "body": "Was there a reason that changes to the markdown similar to https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/564/files#diff-40bc3800dd9a7d4411799637caf0b01f82a01242d57264a2e4beb408c3835704 were omitted from this one? ",
           "createdAt": "2025-04-04T15:40:11Z",
           "updatedAt": "2025-04-04T15:40:11Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Was there a reason that changes to the markdown similar to https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/564/files#diff-40bc3800dd9a7d4411799637caf0b01f82a01242d57264a2e4beb408c3835704 were omitted from this one?\r\n\r\nThat was a real question and I don't think an unreasonable one. ",
+          "createdAt": "2025-04-26T12:33:30Z",
+          "updatedAt": "2025-04-26T12:33:30Z"
         }
       ],
       "reviews": []
