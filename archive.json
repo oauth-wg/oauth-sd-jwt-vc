@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-04-29T00:33:12.359650+00:00",
+  "timestamp": "2025-05-01T00:37:27.798195+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7598,15 +7598,15 @@
       "id": "I_kwDOJbVClc6zAuW_",
       "title": "cnf, x5c, or other public key certificates",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/307",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Dear,\n\ncongratulations for the amazing work on the specification.\n\n`cnf` is a nice mechanism to bind a public key to a credential.\nThere are cases, where additional information about the public key may be provided (in x509 or other format); where and how such public key certificate/credential should be provided/signalled?\nWithin the JWK.x5c claim?\n\nThank you.",
       "createdAt": "2025-04-17T19:46:07Z",
-      "updatedAt": "2025-04-28T19:39:04Z",
-      "closedAt": null,
+      "updatedAt": "2025-04-30T23:07:39Z",
+      "closedAt": "2025-04-30T23:07:38Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7642,6 +7642,34 @@
           "body": "I realize it might seems pedantic, but there is no \"x5c jwk claim\" or \"JWK.x5c claim\".  I can sort of guess as to what's intended. But I don't know. And I don't really want to guess. That, but not only that, makes it difficult to engage in a productive discussion. ",
           "createdAt": "2025-04-28T19:39:04Z",
           "updatedAt": "2025-04-28T19:39:04Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "I would like to apologise for the confusion. Would \"JWK x5c parameter\" would be a more precise term?\n\nI re-read the specification:\nhttps://datatracker.ietf.org/doc/html/rfc7517#section-4.7\n\nAnd there's an example in the Appendix B:\n\nExample Use of \"x5c\" (X.509 Certificate Chain) Parameter\n\n   The following is an example of a JWK with a RSA signing key\n   represented both as an RSA public key and as an X.509 certificate\n   using the \"x5c\" parameter (with line breaks within values for display\n   purposes only):\n\n     {\"kty\":\"RSA\",\n      \"use\":\"sig\",\n      \"kid\":\"1b94c\",\n      \"n\":\"vrjOfz9Ccdgx5nQudyhdoR17V-IubWMeOZCwX_jj0hgAsz2J_pqYW08\n      PLbK_PdiVGKPrqzmDIsLI7sA25VEnHU1uCLNwBuUiCO11_-7dYbsr4iJmG0Q\n      u2j8DsVyT1azpJC_NG84Ty5KKthuCaPod7iI7w0LK9orSMhBEwwZDCxTWq4a\n      YWAchc8t-emd9qOvWtVMDC2BXksRngh6X5bUYLy6AyHKvj-nUy1wgzjYQDwH\n      MTplCoLtU-o-8SNnZ1tmRoGE9uJkBLdh5gFENabWnU5m1ZqZPdwS-qo-meMv\n      VfJb6jJVWRpl2SUtCnYG2C32qvbWbjZ_jBPD5eunqsIo1vQ\",\n      \"e\":\"AQAB\",\n      \"x5c\":\n       [\"MIIDQjCCAiqgAwIBAgIGATz/FuLiMA0GCSqGSIb3DQEBBQUAMGIxCzAJB\n       gNVBAYTAlVTMQswCQYDVQQIEwJDTzEPMA0GA1UEBxMGRGVudmVyMRwwGgYD\n       VQQKExNQaW5nIElkZW50aXR5IENvcnAuMRcwFQYDVQQDEw5CcmlhbiBDYW1\n       wYmVsbDAeFw0xMzAyMjEyMzI5MTVaFw0xODA4MTQyMjI5MTVaMGIxCzAJBg\n       NVBAYTAlVTMQswCQYDVQQIEwJDTzEPMA0GA1UEBxMGRGVudmVyMRwwGgYDV\n       QQKExNQaW5nIElkZW50aXR5IENvcnAuMRcwFQYDVQQDEw5CcmlhbiBDYW1w\n       YmVsbDCCASIwDQYJKoZIhvcNAQEBBQADggEPADCCAQoCggEBAL64zn8/QnH\n       YMeZ0LncoXaEde1fiLm1jHjmQsF/449IYALM9if6amFtPDy2yvz3YlRij66\n       s5gyLCyO7ANuVRJx1NbgizcAblIgjtdf/u3WG7K+IiZhtELto/A7Fck9Ws6\n       SQvzRvOE8uSirYbgmj6He4iO8NCyvaK0jIQRMMGQwsU1quGmFgHIXPLfnpn\n       fajr1rVTAwtgV5LEZ4Iel+W1GC8ugMhyr4/p1MtcIM42EA8BzE6ZQqC7VPq\n       PvEjZ2dbZkaBhPbiZAS3YeYBRDWm1p1OZtWamT3cEvqqPpnjL1XyW+oyVVk\n       aZdklLQp2Btgt9qr21m42f4wTw+Xrp6rCKNb0CAwEAATANBgkqhkiG9w0BA\n       QUFAAOCAQEAh8zGlfSlcI0o3rYDPBB07aXNswb4ECNIKG0CETTUxmXl9KUL\n       +9gGlqCz5iWLOgWsnrcKcY0vXPG9J1r9AqBNTqNgHq2G03X09266X5CpOe1\n       zFo+Owb1zxtp3PehFdfQJ610CDLEaS9V9Rqp17hCyybEpOGVwe8fnk+fbEL\n       2Bo3UPGrpsHzUoaGpDftmWssZkhpBJKVMJyf/RuP2SmmaIzmnw9JiSlYhzo\n       4tpzd5rFXhjRbg4zW9C+2qok+2+qDM1iJ684gPHMIY8aLWrdgQTxkumGmTq\n       gawR+N5MDtdPTEQ0XfIBc2cJEUyMTY5MPvACWpkA6SdS4xSvdXK3IVfOWA==\"]\n     }\n",
+          "createdAt": "2025-04-29T11:33:55Z",
+          "updatedAt": "2025-04-29T11:42:07Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There is a `x5c` Parameter on JWK (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7 that you linked to previously) and there is a `jwk` confirmation method (https://datatracker.ietf.org/doc/html/rfc7800#section-3.2) that \"MAY contain other JWK members\" so one could certainly put an `x5c` member on the `jwk` member on the `cnf` claim. I don't think that meaningful or useful behavior is defined or should be expected for such, however. \n\nThere is a registered (https://www.iana.org/assignments/jwt/jwt.xhtml#confirmation-methods) `x5t#S256` X.509 Certificate SHA-256 Thumbprint confirmation method (https://www.rfc-editor.org/rfc/rfc8705.html#section-3.1) that facilitates binding to (a hash of) a certificate.  Maybe that comes closer to suiting your needs? \n\nNone of this is specific to SD-JWT or SD-JWT VC though.   ",
+          "createdAt": "2025-04-30T20:04:10Z",
+          "updatedAt": "2025-04-30T20:14:20Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "This answers my question. We went with the x5t#S256 (yesterday).\n\nThank you!",
+          "createdAt": "2025-04-30T20:12:04Z",
+          "updatedAt": "2025-04-30T20:12:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Great! ",
+          "createdAt": "2025-04-30T23:07:38Z",
+          "updatedAt": "2025-04-30T23:07:38Z"
         }
       ]
     },
