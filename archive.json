@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-01T00:37:27.798195+00:00",
+  "timestamp": "2025-05-22T00:33:56.221136+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7702,6 +7702,38 @@
       "body": "The PID example in SD-JWT and SD-JWT VC was updated to the latest PID format. In SD-JWT VC, the intro sentence to that example should be updated to have the same information as the one from SD-JWT.",
       "createdAt": "2025-04-28T11:45:32Z",
       "updatedAt": "2025-04-28T11:45:32Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 310,
+      "id": "I_kwDOJbVClc63ZzTg",
+      "title": "Should `mandatory` be added to claim metadata?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/310",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
+      "createdAt": "2025-05-20T13:14:59Z",
+      "updatedAt": "2025-05-20T13:14:59Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 311,
+      "id": "I_kwDOJbVClc63addP",
+      "title": "Clarification on extend",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/311",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The specification allows a type medata to extend a (parent) metadata, and so on recursively.\n\nSo a wallet or a verifier, needs first to resolve the `extend` relationships ( a list of type metadata objects) and then validate the SD-JWT-VC against this list of metadata.\n\nSpecifications provides some clear instructions about the `schema` validation. The sd-jwt-vc should be valid against all schemas of the above list.\n\nWhat I miss is the following: what are the rules for `claims` and `display` properties.\n\nTo put it otherwise, assuming two type metadata   A and B (parent) there is need to be a way to \"merge\" them into\n\n* a single list of claim metadata \n* a single list of display \n* a list of schema\n\nPlease advice \n",
+      "createdAt": "2025-05-20T14:07:26Z",
+      "updatedAt": "2025-05-20T14:07:26Z",
       "closedAt": null,
       "comments": []
     }
