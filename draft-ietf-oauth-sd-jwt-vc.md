@@ -1398,9 +1398,10 @@ Line breaks have been added for readability.
 
 ## Example 1: Person Identification Data (PID) Credential
 
-This example shows how the artifacts defined in this specification could
-be used to represent the concept of a Person Identification Data (PID)
-[@EUDIW.ARF] using the data of a German citizen.
+This example shows how the artifacts defined in this specification could be used
+to represent the concept of a Person Identification Data (PID) as defined in the
+"PID Rulebook" in [@EUDIW.ARF]. This example uses fictional data of a German
+citizen.
 
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
@@ -1595,6 +1596,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Editorial changes
 * Document reasons for not using JSON Pointer or JSON Path (Issue #267)
 * Clarify that private claim names MAY be used
+* Update PID Example
 
 -08
 
