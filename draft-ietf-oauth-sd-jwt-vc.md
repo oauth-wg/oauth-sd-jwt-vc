@@ -305,11 +305,11 @@ Examples of what presentations of SD-JWT VCs might look like are provided in (#p
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
 The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
-SD-JWT VC as described in Section 8 of
+SD-JWT VC as described in Section 7 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the KB-JWT
-according to Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
+according to Section 7.3 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the KB-JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
@@ -736,8 +736,8 @@ Note that `iss` and `vct` are always required by this specification.
 
 ### Schema Validation {#schema-validation}
 
-If a `schema` or `schema_uri` property is present, a Consumer MUST validate the JSON document resulting from the SD-JWT verification algorithm
-(as defined in Section 7 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
+If a `schema` or `schema_uri` property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm
+(as defined in Section 7.3 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
 
 If an `extends` property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
 validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
@@ -1597,6 +1597,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Document reasons for not using JSON Pointer or JSON Path (Issue #267)
 * Clarify that private claim names MAY be used
 * Update PID Example
+* Fix section numbering in a few SD-JWT references
 
 -08
 
