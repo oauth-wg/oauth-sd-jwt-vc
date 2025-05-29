@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-22T00:33:56.221136+00:00",
+  "timestamp": "2025-05-29T00:34:15.672143+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7694,16 +7694,24 @@
       "id": "I_kwDOJbVClc60SNU2",
       "title": "Update intro text to PID example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/309",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "The PID example in SD-JWT and SD-JWT VC was updated to the latest PID format. In SD-JWT VC, the intro sentence to that example should be updated to have the same information as the one from SD-JWT.",
       "createdAt": "2025-04-28T11:45:32Z",
-      "updatedAt": "2025-04-28T11:45:32Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2025-05-27T18:06:03Z",
+      "closedAt": "2025-05-27T18:06:03Z",
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Fixed in #306 ",
+          "createdAt": "2025-05-27T18:05:51Z",
+          "updatedAt": "2025-05-27T18:05:51Z"
+        }
+      ]
     },
     {
       "number": 310,
@@ -24260,24 +24268,26 @@
       "id": "PR_kwDOJbVClc6RXn1S",
       "title": "Update PID example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/306",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-04-04T08:25:13Z",
-      "updatedAt": "2025-04-28T12:04:38Z",
+      "updatedAt": "2025-05-27T18:05:24Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "513c0a1032153dd66131b5e518712da6d3d66694",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/update-pid-example",
-      "headRefOid": "b315befd195f8d3649acbbce1235e3c3dce27e0c",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "76e3d0d278da6083c6e14d0538752fa47f64d389",
+      "closedAt": "2025-05-27T18:05:24Z",
+      "mergedAt": "2025-05-27T18:05:24Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "fa0895e7466ff5727b4360a6be88c80a48bc100a"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -24299,6 +24309,20 @@
           "body": "> > Was there a reason that changes to the markdown similar to https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/564/files#diff-40bc3800dd9a7d4411799637caf0b01f82a01242d57264a2e4beb408c3835704 were omitted from this one?\r\n> \r\n> That was a real question and I don't think an unreasonable one.\r\n\r\n#309 has been created to track this important question going forward. \r\n ",
           "createdAt": "2025-04-28T12:03:48Z",
           "updatedAt": "2025-04-28T12:03:48Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I have no idea why the build fails after the latest commit....",
+          "createdAt": "2025-05-27T15:00:14Z",
+          "updatedAt": "2025-05-27T15:00:14Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I have no idea why the build fails after the latest commit....\r\n\r\nThe fragile temporality of github magic. ",
+          "createdAt": "2025-05-27T15:33:39Z",
+          "updatedAt": "2025-05-27T15:33:39Z"
         }
       ],
       "reviews": [
@@ -24314,8 +24338,104 @@
           "createdAt": "2025-04-28T12:04:24Z",
           "updatedAt": "2025-04-28T12:04:24Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6rLPFK",
+          "commit": {
+            "abbreviatedOid": "76e3d0d"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-05-27T16:53:53Z",
+          "updatedAt": "2025-05-27T16:53:53Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 312,
+      "id": "PR_kwDOJbVClc6X1oTF",
+      "title": "Fix section numbering in a few SD-JWT references",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/312",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-27T19:26:04Z",
+      "updatedAt": "2025-05-27T20:07:31Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "fa0895e7466ff5727b4360a6be88c80a48bc100a",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "sd-jwt-sec-numbers",
+      "headRefOid": "423f0d2e5cb213f8259feef8e8a70ac4e88b83e0",
+      "closedAt": "2025-05-27T20:07:30Z",
+      "mergedAt": "2025-05-27T20:07:30Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "5332ed948f0f42a06767ead43e5e039fd0dd24b6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6rNTBi",
+          "commit": {
+            "abbreviatedOid": "423f0d2"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Thanks! Looks complete and correct to me.",
+          "createdAt": "2025-05-27T19:43:38Z",
+          "updatedAt": "2025-05-27T19:43:38Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6rNhmz",
+          "commit": {
+            "abbreviatedOid": "423f0d2"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Thanks",
+          "createdAt": "2025-05-27T20:06:29Z",
+          "updatedAt": "2025-05-27T20:06:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 313,
+      "id": "PR_kwDOJbVClc6X_bkH",
+      "title": "dash 10",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/313",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-05-28T16:02:03Z",
+      "updatedAt": "2025-05-28T17:45:22Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "5332ed948f0f42a06767ead43e5e039fd0dd24b6",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "dash-ten",
+      "headRefOid": "f51039512ccd6e57d8d6e8dbb870111fe1cec832",
+      "closedAt": "2025-05-28T17:45:22Z",
+      "mergedAt": "2025-05-28T17:45:22Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8f42b4e131d7af4e0c0a7dcdc3fb87bce8afb2a5"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
