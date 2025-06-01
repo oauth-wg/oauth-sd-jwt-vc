@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-05-29T00:34:15.672143+00:00",
+  "timestamp": "2025-06-01T00:42:59.141949+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7549,7 +7549,7 @@
       "labels": [],
       "body": "I noticed several unregistered claims in the example, including values like `age_equal_or_over`. My understanding is that these are related to a particular EIDAS PID credential type. \n\nI wasn't able to find a source document though - are these claims documented anyplace yet?",
       "createdAt": "2025-03-18T06:30:01Z",
-      "updatedAt": "2025-03-21T09:17:49Z",
+      "updatedAt": "2025-05-30T05:49:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -7558,6 +7558,13 @@
           "body": "Yes and no, as there is no official list of SD-JWT VC claims for a PID yet. There's [my pull request on the ARF](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/pull/160/files) that uses some similar claims, but it is not sure if that is exactly what will end up in the final ARF. However, there's now [this discussion paper](https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/blob/main/docs/discussion-topics/v-pid-rulebook.md#61-high-level-requirements-to-be-added) which paves the way for integrating either my PR or similar text into the ARF.\n\nHowever, I noticed the that the current spec text is not unambiguous on whether private claim names can be used. I'll fix that.",
           "createdAt": "2025-03-21T09:17:48Z",
           "updatedAt": "2025-03-21T09:17:48Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Dear @dwaite \nPlease take a look [here](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/latest/annexes/annex-3/annex-3.01-pid-rulebook/)",
+          "createdAt": "2025-05-30T05:49:58Z",
+          "updatedAt": "2025-05-30T05:49:58Z"
         }
       ]
     },
@@ -7742,6 +7749,22 @@
       "body": "The specification allows a type medata to extend a (parent) metadata, and so on recursively.\n\nSo a wallet or a verifier, needs first to resolve the `extend` relationships ( a list of type metadata objects) and then validate the SD-JWT-VC against this list of metadata.\n\nSpecifications provides some clear instructions about the `schema` validation. The sd-jwt-vc should be valid against all schemas of the above list.\n\nWhat I miss is the following: what are the rules for `claims` and `display` properties.\n\nTo put it otherwise, assuming two type metadata   A and B (parent) there is need to be a way to \"merge\" them into\n\n* a single list of claim metadata \n* a single list of display \n* a list of schema\n\nPlease advice \n",
       "createdAt": "2025-05-20T14:07:26Z",
       "updatedAt": "2025-05-20T14:07:26Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 314,
+      "id": "I_kwDOJbVClc643WP_",
+      "title": "Declaration of arrays to the type metadata.",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/314",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I believe that it is not clear how to define an array to the type metadata.\n\n- Section 9, doesn't provide any clue\n- Section 9.1 describes claim path, in general and provides a way to select a JSON element using a a path (and a JSON to process).\n- Appendix B contains a example of how to define an array (degrees). Yet it is rather a basic, just an array of any JSON element.\n\nOn the other hand, SD-JWT, the base specification, allows the representation of very complex arrays.\nThus, I think it is critical to\n- Define explicitly how arrays are being representing to the type metadata.\n- Document the cases that cannot be described with type metadata \n- Provide some more detail examples.\n\nI will try to provide some indicative cases\n\n**Array with elements that have no disclosure properties.**\n\nAppendix B, provides the following example\n\n```json\n{  \"path\" : [\"degrees\", null] , \"sd\": \"allowed\" }\n```\n\nThe problem with such a definition is that it is not clear (at least for me) where the `sd` attribute applies.\nThe above can have two possible interpretations:\n- The entry represents the array itself. Thus, the `sd` defines the disclosure behavior of the array\n- The entry represents the elements of the array. In this case, the disclosure property of the array (not its elements) is undefined.\n\n**Array with elements that have disclosure properties.**\n\nTo describe the disclosure property of both the array and its elements, I believe two entries are needed:\n\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null] , \"sd\": \"always\" }\n```\nThe first describes the array itself, the second all entries. The \"sd\" can be different of course\n\nBy the way, this is the case of `nationalities` array as defined in ARF 1.8, requires \n\n> When issuing a PID compliant with [SD-JWT VC], a PID Provider SHALL make all claims (i.e., all top-level properties, all nested properties, and all array entries) selectively disclosable individually, except those claims defined as non-selectively disclosable in [SD-JWT VC].\n\n\n\n\n**Array of objects that have attributes with disclosable properties.**\n\nAssuming, that `degrees` is an array of  degree object which has attributes `type` and `university`, each one having their own `sd`\nI believe that we want the following entries to the type metadata\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"allowed\" }\n{  \"path\" : [\"degrees\", null ] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"type\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"university\"] , \"sd\": \"always\" }\n```\n\nThe first describes the disclosure property of the array (`degrees`)\nThe 2nd the disclosure property of `degree`\nThe 3d and 4th the disclosure property of `degree` attributes\n\n",
+      "createdAt": "2025-05-29T21:20:16Z",
+      "updatedAt": "2025-05-30T08:10:57Z",
       "closedAt": null,
       "comments": []
     }
