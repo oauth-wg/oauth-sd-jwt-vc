@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-01T00:42:59.141949+00:00",
+  "timestamp": "2025-06-05T00:34:45.590993+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7542,15 +7542,15 @@
       "id": "I_kwDOJbVClc6ue3-u",
       "title": "Claim vocabulary for PID?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/301",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "dwaite",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "I noticed several unregistered claims in the example, including values like `age_equal_or_over`. My understanding is that these are related to a particular EIDAS PID credential type. \n\nI wasn't able to find a source document though - are these claims documented anyplace yet?",
       "createdAt": "2025-03-18T06:30:01Z",
-      "updatedAt": "2025-05-30T05:49:59Z",
-      "closedAt": null,
+      "updatedAt": "2025-06-03T18:28:42Z",
+      "closedAt": "2025-06-03T18:28:41Z",
       "comments": [
         {
           "author": "danielfett",
@@ -7565,6 +7565,13 @@
           "body": "Dear @dwaite \nPlease take a look [here](https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/latest/annexes/annex-3/annex-3.01-pid-rulebook/)",
           "createdAt": "2025-05-30T05:49:58Z",
           "updatedAt": "2025-05-30T05:49:58Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "@babisRoutis has linked to the (now \"official\") source for the claims. There is no intention to register the claims here (or elsewhere, as far as I can tell).",
+          "createdAt": "2025-06-03T18:28:41Z",
+          "updatedAt": "2025-06-03T18:28:41Z"
         }
       ]
     },
@@ -7577,12 +7584,22 @@
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "Example:\n- there's a european PID type \"urn:ec.eu.x.y.z\" and a national type \"urn:de.bla\" that extends \"urn:ec.eu.x.y.z\"\n- a rogue issuer issues a credential \"urn:attacker\" that extends either \"urn:ec.eu.x.y.z\" or \"urn:ec.eu.x.y.z\"\n- it is now important that verifiers/wallets don't accept these credentials. the fact that someone issued a credential extending a known type does not imply that they are allowed to do so (or that they are a valid issuer at all)\n\nThis should be captured in a security consideration, ideally also in processing rules.",
       "createdAt": "2025-03-18T18:37:39Z",
-      "updatedAt": "2025-03-18T18:37:39Z",
+      "updatedAt": "2025-06-03T18:26:55Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "This sounds reasonable.",
+          "createdAt": "2025-06-03T18:26:49Z",
+          "updatedAt": "2025-06-03T18:26:49Z"
+        }
+      ]
     },
     {
       "number": 305,
@@ -7593,12 +7610,22 @@
       "author": "grausof",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "enhancement"
+      ],
       "body": "For the \"simple\" rendering method in addition to supporting the `background_color` it could be a good idea to also support a `background_image` for those credentials that already have a **well-defined background** obviously going to specify the different dimensions and resolutions to support as for example is done for iOS and Android Wallets (see https://developer.apple.com/design/human-interface-guidelines/wallet). \n\nThe use of SVG is very complex and also requires a very high computational load for the rendering of complex objects or with many shades just think of the background of a national identity card.",
       "createdAt": "2025-03-26T11:18:33Z",
-      "updatedAt": "2025-03-26T11:18:33Z",
+      "updatedAt": "2025-06-03T18:27:38Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "That seems like a reasonable thing to do. Feel free to create a PR if you want.",
+          "createdAt": "2025-06-03T18:27:36Z",
+          "updatedAt": "2025-06-03T18:27:36Z"
+        }
+      ]
     },
     {
       "number": 307,
@@ -7689,12 +7716,23 @@
       "author": "Iskander508",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "good first issue",
+        "Ready-for-PR"
+      ],
       "body": "The examples of `<uri_claim>#integrity` claims throughout the spec use Base64url encoding (with `-` and `_` chars):\n```\n\"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\"\n...\n\"extends#integrity\":\"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5\",\n...\n\"schema_uri#integrity\":\"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh\"\n```\n\nbut the [referenced spec \"Subresource integrity\"](https://www.w3.org/TR/sri/#base64-encoding) uses the classic Base64 encoding with padding (with `+` and `/` chars):\n```\nsha384-+/M6kredJcxdsqkczBUjMLvqyHb1K/JThDXWsBVxMEeZHEaMKEOEct339VItX1zB\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\nsha512-Q2bFTOhEALkN8hOms2FKTDLy7eugP2zFZ1T8LCvX42Fp3WoNr3bjZSAHeOsHrbV1Fu9/A0EzCinRE7Af1ofPrw==\n```\n\nThis mismatch could result in incompatible implementations.",
       "createdAt": "2025-04-25T10:00:47Z",
-      "updatedAt": "2025-04-25T10:26:50Z",
+      "updatedAt": "2025-06-03T18:26:11Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "That is correct and should be fixed.",
+          "createdAt": "2025-06-03T18:25:54Z",
+          "updatedAt": "2025-06-03T18:25:54Z"
+        }
+      ]
     },
     {
       "number": 309,
@@ -7729,12 +7767,30 @@
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "enhancement",
+        "discuss"
+      ],
       "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
       "createdAt": "2025-05-20T13:14:59Z",
-      "updatedAt": "2025-05-20T13:14:59Z",
+      "updatedAt": "2025-06-04T09:08:32Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "If I understand you correctly, you suggest to add the \"mandatory\" information to ensure that in those cases where the schema indicates that an attribute is optional, a DCQL query author can understand whether the attribute is optional to issue or just optional to disclose. Is that correct?\n\n- One solution would be add, in fact, the mandatory attribute.\n- Another solution would be to distinguish the schema for the issued credential from the one for the received credential (see Issue #237 suggesting this).\n- The third solution would be to rely on the existing VCI metadata.\n\nI think adding \"mandatory\" would not hurt (even though the name is not great).",
+          "createdAt": "2025-06-03T18:25:00Z",
+          "updatedAt": "2025-06-03T18:25:00Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> If I understand you correctly, you suggest to add the \"mandatory\" information to ensure that in those cases where the schema indicates that an attribute is optional, a DCQL query author can understand whether the attribute is optional to issue or just optional to disclose. Is that correct?\n\nYes. This was my main point.\n\n> \n>     * One solution would be add, in fact, the mandatory attribute.\n> \n>     * Another solution would be to distinguish the schema for the issued credential from the one for the received credential (see Issue [Distinguish between issuance and presentation schemas #237](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237) suggesting this).\n> \n>     * The third solution would be to rely on the existing VCI metadata.\n> \n> \n> I think adding \"mandatory\" would not hurt (even though the name is not great).\n\n\nThe third option (to use VCI metadata) is the only option available today to the implementers, yet it feels like a compromise.\nSD-JWT-VC is a format independent of VCI protocol.\n\nThe 2nd option also gives me the impression that we leave for JSON Schema validation what we cannot (or we do not want, for practical reasons) to express in the type metadata `claims`. So actually schema is short of last line of defense to our validation.\n\nPersonally I believe that the best approach is to add the `mandatory` or something with a  better name.\n\n\nPS:  Specification already \"implicitly\" uses the mandatory concept, when it requires that `vct` and `iss` claims are required and must  be never selectively disclosed.\n\nPS2: Mandatory is not about a claim being present or not. Mainly it expresses a constraint on disclosures",
+          "createdAt": "2025-06-04T07:20:03Z",
+          "updatedAt": "2025-06-04T09:08:31Z"
+        }
+      ]
     },
     {
       "number": 311,
@@ -7745,12 +7801,29 @@
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "The specification allows a type medata to extend a (parent) metadata, and so on recursively.\n\nSo a wallet or a verifier, needs first to resolve the `extend` relationships ( a list of type metadata objects) and then validate the SD-JWT-VC against this list of metadata.\n\nSpecifications provides some clear instructions about the `schema` validation. The sd-jwt-vc should be valid against all schemas of the above list.\n\nWhat I miss is the following: what are the rules for `claims` and `display` properties.\n\nTo put it otherwise, assuming two type metadata   A and B (parent) there is need to be a way to \"merge\" them into\n\n* a single list of claim metadata \n* a single list of display \n* a list of schema\n\nPlease advice \n",
       "createdAt": "2025-05-20T14:07:26Z",
-      "updatedAt": "2025-05-20T14:07:26Z",
+      "updatedAt": "2025-06-04T07:04:24Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "This is correct, a way to merge the claims and display properties is required.\n\nMy assumption would be that for both of them, whatever properties are defined in the parent can be overridden by the extending type. Would that match your intuition?",
+          "createdAt": "2025-06-03T18:13:28Z",
+          "updatedAt": "2025-06-03T18:13:28Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @danielfett \n\nTotally agree. \nYet I think that  especially for `claims` a description for the extension options would be a nice addition.\n\nTypical cases for a credential type to \"extent\" its parent:\n- To add more claims\n- To refine the `allowed` value of the `sd` attribute of an existing claim ( `allowed` to be explicitly replaced by either `always` or `never`)",
+          "createdAt": "2025-06-04T07:03:38Z",
+          "updatedAt": "2025-06-04T07:04:23Z"
+        }
+      ]
     },
     {
       "number": 314,
@@ -7760,11 +7833,46 @@
       "state": "OPEN",
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "danielfett"
+      ],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "I believe that it is not clear how to define an array to the type metadata.\n\n- Section 9, doesn't provide any clue\n- Section 9.1 describes claim path, in general and provides a way to select a JSON element using a a path (and a JSON to process).\n- Appendix B contains a example of how to define an array (degrees). Yet it is rather a basic, just an array of any JSON element.\n\nOn the other hand, SD-JWT, the base specification, allows the representation of very complex arrays.\nThus, I think it is critical to\n- Define explicitly how arrays are being representing to the type metadata.\n- Document the cases that cannot be described with type metadata \n- Provide some more detail examples.\n\nI will try to provide some indicative cases\n\n**Array with elements that have no disclosure properties.**\n\nAppendix B, provides the following example\n\n```json\n{  \"path\" : [\"degrees\", null] , \"sd\": \"allowed\" }\n```\n\nThe problem with such a definition is that it is not clear (at least for me) where the `sd` attribute applies.\nThe above can have two possible interpretations:\n- The entry represents the array itself. Thus, the `sd` defines the disclosure behavior of the array\n- The entry represents the elements of the array. In this case, the disclosure property of the array (not its elements) is undefined.\n\n**Array with elements that have disclosure properties.**\n\nTo describe the disclosure property of both the array and its elements, I believe two entries are needed:\n\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null] , \"sd\": \"always\" }\n```\nThe first describes the array itself, the second all entries. The \"sd\" can be different of course\n\nBy the way, this is the case of `nationalities` array as defined in ARF 1.8, requires \n\n> When issuing a PID compliant with [SD-JWT VC], a PID Provider SHALL make all claims (i.e., all top-level properties, all nested properties, and all array entries) selectively disclosable individually, except those claims defined as non-selectively disclosable in [SD-JWT VC].\n\n\n\n\n**Array of objects that have attributes with disclosable properties.**\n\nAssuming, that `degrees` is an array of  degree object which has attributes `type` and `university`, each one having their own `sd`\nI believe that we want the following entries to the type metadata\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"allowed\" }\n{  \"path\" : [\"degrees\", null ] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"type\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"university\"] , \"sd\": \"always\" }\n```\n\nThe first describes the disclosure property of the array (`degrees`)\nThe 2nd the disclosure property of `degree`\nThe 3d and 4th the disclosure property of `degree` attributes\n\n",
       "createdAt": "2025-05-29T21:20:16Z",
-      "updatedAt": "2025-05-30T08:10:57Z",
+      "updatedAt": "2025-06-04T06:10:41Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I think your second and third examples are correct and your interpretation of the meaning conforms to how the processing of `path` is currently defined. I think we should add examples to make this very clear.",
+          "createdAt": "2025-06-03T18:09:09Z",
+          "updatedAt": "2025-06-03T18:09:09Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Dear @danielfett \n\nThanks for your reply. It would be great to have similar examples included.\n\n\n\nI have identified several additional cases for arrays that although can be represented in SD-JWT, their disclosure properties cannot be described by type metadata, In SD-JWT-VC. The reason is the type metadata uses a \"flat\" declaration of attributes, whereas SD-JWT is first and foremost a hierarchical structure.\n\nFor instance, arrays that are not homogeneous (neither to the `sd` property nor to their content). Some element may be always selectively disclosable, others never selectively disclosable. Some elements are simple Json elements (object, arrays, string etc), others are disclosable containers. \n\nSD-JWT-VC  doesn't try to cover such corner cases (to my understanding) and this is perfectly balanced dose of pragmatism. \n\nHave observed many \"credential modelers\", especially those with an mdoc background, to have a really hard time to grasp what can be expressed by SD-JWT-VC (and SD-JWT).\n",
+          "createdAt": "2025-06-04T06:10:40Z",
+          "updatedAt": "2025-06-04T06:10:40Z"
+        }
+      ]
+    },
+    {
+      "number": 315,
+      "id": "I_kwDOJbVClc65tJcd",
+      "title": "Recommend against  using the x5u parameter in JWK",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/315",
+      "state": "OPEN",
+      "author": "nikosft",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
+      "createdAt": "2025-06-03T22:36:07Z",
+      "updatedAt": "2025-06-03T22:36:07Z",
       "closedAt": null,
       "comments": []
     }
