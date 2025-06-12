@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-05T00:34:45.590993+00:00",
+  "timestamp": "2025-06-12T00:34:35.067059+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6430,7 +6430,7 @@
       ],
       "body": "We should consider adding type metadata that can help a wallet to guide a user to a place where they can have a credential of a specific type issued.",
       "createdAt": "2024-07-23T14:51:01Z",
-      "updatedAt": "2024-12-13T06:07:43Z",
+      "updatedAt": "2025-06-10T18:27:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -6446,6 +6446,13 @@
           "body": "Maybe I'm dense, but I don't get why that goes in this document",
           "createdAt": "2024-12-13T06:07:42Z",
           "updatedAt": "2024-12-13T06:07:42Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I don't get why that goes in this document\n\nI tend to agree that this kind of \"where a credential can be obtained\" thing doesn't really belong in this document",
+          "createdAt": "2025-06-10T18:27:51Z",
+          "updatedAt": "2025-06-10T18:27:51Z"
         }
       ]
     },
@@ -7517,9 +7524,17 @@
       "labels": [],
       "body": "In case the the credential includes a link to the hosted metadata, the relying party will fetch it like:\r\n```\r\nGET /.well-known/jwt-vc-issuer HTTP/1.1\r\nHost: example.com\r\n```\r\n\r\nA malicious issuer could add unique subdomains to add a tracker, e.g. the jti value or another internal identifier `<jti>.exmaple.com/.well-known/jwt-vc-issuer`. This can not be detected by the relying party since the url of the `jwks_uri` must not match with the same host as the vct value (or the issuer uses an x509 that must also not be bound to a domain, or maybe it's a wildcard one).\r\n\r\nSuggestion:\r\nAdd a privacy consideration note that this can be used for presentation tracking. An alternative suggestion would be to allow the Wallet to include the vct issuer metadata into the e.g. presentation response when using OID4VP. In this case the issuer may only know that the wallet is presenting a credential, when the VCT it was not cached before (in case an integrity value was provided, the wallet can be sure it never has an outdated version of the vct values).",
       "createdAt": "2025-01-02T10:20:00Z",
-      "updatedAt": "2025-01-02T10:20:00Z",
+      "updatedAt": "2025-06-10T18:24:08Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> could add unique subdomains to add a tracker, e.g. the jti value or another internal identifier `<jti>.exmaple.com/.well-known/jwt-vc-issuer`.\n\nis exmaple.com a site for Canadian expats?\n\n",
+          "createdAt": "2025-06-10T18:24:07Z",
+          "updatedAt": "2025-06-10T18:24:07Z"
+        }
+      ]
     },
     {
       "number": 297,
@@ -24150,7 +24165,7 @@
       "labels": [],
       "body": "This PR describes the extension point for ecosystem-specific issuer key resolution based on DIDs.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/add-extension/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-03-11T19:50:17Z",
-      "updatedAt": "2025-04-26T12:34:50Z",
+      "updatedAt": "2025-06-10T18:34:25Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "513c0a1032153dd66131b5e518712da6d3d66694",
@@ -24248,6 +24263,19 @@
           "body": "",
           "createdAt": "2025-03-17T09:32:57Z",
           "updatedAt": "2025-03-17T09:32:57Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6tuqP1",
+          "commit": {
+            "abbreviatedOid": "1c3bede"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "superseded by PR #316 ",
+          "createdAt": "2025-06-10T18:34:25Z",
+          "updatedAt": "2025-06-10T18:34:25Z",
           "comments": []
         }
       ]
@@ -24567,6 +24595,66 @@
       },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 316,
+      "id": "PR_kwDOJbVClc6Z6BCf",
+      "title": "SD-JWT VC Issuer Signature Profiles/Mechanisms",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/316",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is inspired by numerous discussions over the past many months, including (but not limited to) those with @alenhorvat and @awoie about better modularization of signature profiles in SD-JWT VC. \r\n\r\nHighlights of this change:\r\n\r\n- Renames 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and reworks some text accordingly. \r\n- Provides a web-based metadata resolution mechanism and an inline x509 mechanism. \r\n- A DID-based mechanism is not explicitly provided but still possible via profile/extension. \r\n- Is more explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy.\r\n- Is more clear that one permitted Issuer Signature Mechanism is sufficient. \r\n\r\n\r\nEffectively supersedes PR #299 \r\n\r\nTouches on and/or fixes Issues https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/253 and https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/281",
+      "createdAt": "2025-06-10T17:55:26Z",
+      "updatedAt": "2025-06-10T21:11:33Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8f42b4e131d7af4e0c0a7dcdc3fb87bce8afb2a5",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "modular-signature-somethings",
+      "headRefOid": "afff5f03df089d19793ece830819a8939cdc7fae",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6tudU0",
+          "commit": {
+            "abbreviatedOid": "f1dbaf9"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "Great PR, I like how the extension is now clearly defined while allowing room for signature profiles in ETSI.",
+          "createdAt": "2025-06-10T18:13:36Z",
+          "updatedAt": "2025-06-10T18:13:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6twBCz",
+          "commit": {
+            "abbreviatedOid": "f1dbaf9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-06-10T21:10:48Z",
+          "updatedAt": "2025-06-10T21:10:48Z",
+          "comments": [
+            {
+              "originalPosition": 167,
+              "body": "```suggestion\r\n* Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.\r\n```",
+              "createdAt": "2025-06-10T21:10:48Z",
+              "updatedAt": "2025-06-10T21:10:48Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
