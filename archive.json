@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-12T00:34:35.067059+00:00",
+  "timestamp": "2025-06-15T00:39:09.787388+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7888,6 +7888,22 @@
       "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
       "createdAt": "2025-06-03T22:36:07Z",
       "updatedAt": "2025-06-03T22:36:07Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 317,
+      "id": "I_kwDOJbVClc67FLU9",
+      "title": "Inconsistent description of display property of claim metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/317",
+      "state": "OPEN",
+      "author": "charsleysa",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Under section 9, the `display` property of claim metadata is described as an object:\n\n> display: An object containing display information for the claim, as described in [Section 9.2](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-09.html#claim-display-metadata). This property is OPTIONAL.\n\nHowever under section 9.2, it is described as an array of objects:\n> The display property is an array containing display information for the claim. The array MUST contain an object for each language that is supported by the type. The consuming application MUST use the language tag it considers most appropriate for the user.",
+      "createdAt": "2025-06-12T03:26:38Z",
+      "updatedAt": "2025-06-12T03:26:38Z",
       "closedAt": null,
       "comments": []
     }
