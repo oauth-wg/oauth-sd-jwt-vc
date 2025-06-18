@@ -19,17 +19,17 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
   xml2rfc 3.28.1
-    Python 3.12.10
+    Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
-    lxml 5.3.0
+    lxml 5.3.1
     platformdirs 4.3.8
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.3
-    setuptools 70.3.0
+    requests 2.32.4
+    setuptools 80.9.0
     wcwidth 0.2.13
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
@@ -1049,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">May 2025</td>
+<td class="right">June 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 29 November 2025</td>
+<td class="center">Expires 20 December 2025</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-05-28" class="published">28 May 2025</time>
+<time datetime="2025-06-18" class="published">18 June 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2025-11-29">29 November 2025</time></dd>
+<dd class="expires"><time datetime="2025-12-20">20 December 2025</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 29 November 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 20 December 2025.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1198,7 +1198,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
                 <p id="section-toc.1-1.3.2.4.1"><a href="#section-3.4" class="auto internal xref">3.4</a>.  <a href="#name-verification-and-processing" class="internal xref">Verification and Processing</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.5">
-                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-issuer-signed-jwt-verificat" class="internal xref">Issuer-signed JWT Verification Key Validation</a></p>
+                <p id="section-toc.1-1.3.2.5.1"><a href="#section-3.5" class="auto internal xref">3.5</a>.  <a href="#name-issuer-signature-mechanisms" class="internal xref">Issuer Signature Mechanisms</a></p>
 </li>
             </ul>
 </li>
@@ -1650,8 +1650,8 @@ registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]<
 <li class="compact" id="section-3.2.2.2-3.1">
                 <p id="section-3.2.2.2-3.1.1"><code>iss</code><a href="#section-3.2.2.2-3.1.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.1.2.1">REQUIRED. The Issuer of the Verifiable Credential. The value of <code>iss</code>
-MUST be a URI. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.1.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-3.2.2.2-3.1.2.1">OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Credential
+when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an <code>x5c</code> header).<a href="#section-3.2.2.2-3.1.2.1" class="pilcrow">¶</a>
 </li>
                 </ul>
 </li>
@@ -1936,9 +1936,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Vvoj3
-IzJsVM7GHNvqjJ7AQN2DW1eBDBtS94itfFzlR3UQ_dFnYIb-9tFh7qfMMnx3T0BDtme8
-wfRgCN7TNN4ag~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KDG6s
+houChQBKm96RfWCDtVYbvY2E8McaAxvxjHBLmZhqDAINpR3sSz1xxRZiuv8EyGe5VN5V
+1CFUIjAQ6nH7g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1961,49 +1961,49 @@ lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 <a href="#section-3.4" class="section-number selfRef">3.4. </a><a href="#name-verification-and-processing" class="section-name selfRef">Verification and Processing</a>
         </h3>
 <p id="section-3.4-1">The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
-SD-JWT VC as described in Section 7 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
+SD-JWT VC as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22#section-7" class="relref">Section 7</a> of [<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.
+The check in point 2.3 of Section 7.1 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>,
+which validates the Issuer and ensures that the signing key belongs to the Issuer,
+MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
+employing an Issuer Signature Mechanism (defined in <a href="#ism" class="auto internal xref">Section 3.5</a>) that is permitted for the Issuer according to policy.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
 <p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>), the Verifier MUST verify the KB-JWT
 according to Section 7.3 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. To verify
 the KB-JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
-<p id="section-3.4-3">Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
-for the Issuer-signed JWT as defined in <a href="#issuer-signed-jwt-verification-key-validation" class="auto internal xref">Section 3.5</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.4-4">If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a>.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
-<p id="section-3.4-5">If there are no selectively disclosable claims, there is no need to process the
-<code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
-<p id="section-3.4-6">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
+<p id="section-3.4-3">If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+<p id="section-3.4-4">If there are no selectively disclosable claims, there is no need to process the
+<code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+<p id="section-3.4-5">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
 be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
-<p id="section-3.4-7">Any claims used that are not understood MUST be ignored.<a href="#section-3.4-7" class="pilcrow">¶</a></p>
-<p id="section-3.4-8">Additional validation rules MAY apply, but their use is out of the scope of this
-specification.<a href="#section-3.4-8" class="pilcrow">¶</a></p>
+of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
+<p id="section-3.4-6">Any claims used that are not understood MUST be ignored.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
+<p id="section-3.4-7">Additional validation rules MAY apply, but their use is out of the scope of this
+specification.<a href="#section-3.4-7" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="issuer-signed-jwt-verification-key-validation">
+<div id="ism">
 <section id="section-3.5">
-        <h3 id="name-issuer-signed-jwt-verificat">
-<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-issuer-signed-jwt-verificat" class="section-name selfRef">Issuer-signed JWT Verification Key Validation</a>
+        <h3 id="name-issuer-signature-mechanisms">
+<a href="#section-3.5" class="section-number selfRef">3.5. </a><a href="#name-issuer-signature-mechanisms" class="section-name selfRef">Issuer Signature Mechanisms</a>
         </h3>
-<p id="section-3.5-1">A recipient of an SD-JWT VC MUST apply the following rules to validate that the public
-verification key for the Issuer-signed JWT corresponds to the <code>iss</code> value:<a href="#section-3.5-1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.5-2.1">JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the <code>iss</code> value contains an HTTPS URI, the recipient MUST
-obtain the public key using JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 5</a>.<a href="#section-3.5-2.1" class="pilcrow">¶</a>
+<p id="section-3.5-1">An Issuer Signature Mechanism defines how a Verifier determines the appropriate key and associated procedure for
+verifying the signature of an Issuer-signed JWT.
+This allows for flexibility in supporting different trust anchoring systems and key resolution methods
+without changing the core processing model.<a href="#section-3.5-1" class="pilcrow">¶</a></p>
+<p id="section-3.5-2">A recipient MUST determine and validate the public verification key for the Issuer-signed JWT using
+a supported Issuer Signature Mechanism that is permitted for the given Issuer according to policy.
+This specification defines the following two Issuer Signature Mechanisms:<a href="#section-3.5-2" class="pilcrow">¶</a></p>
+<ul class="normal">
+<li class="normal" id="section-3.5-3.1">
+            <p id="section-3.5-3.1.1">JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the <code>iss</code> claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 5</a>.<a href="#section-3.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
-          <li class="compact" id="section-3.5-2.2">
-            <p id="section-3.5-2.2.1">X.509 Certificates: If the recipient supports X.509 Certificates and the <code>iss</code> value contains an HTTPS URI, the recipient MUST<a href="#section-3.5-2.2.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="compact type-1" id="section-3.5-2.2.2">
-<li id="section-3.5-2.2.2.1">obtain the public key from the end-entity certificate of the certificates from the <code>x5c</code> header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and<a href="#section-3.5-2.2.2.1" class="pilcrow">¶</a>
-</li>
-              <li id="section-3.5-2.2.2.2">ensure that the <code>iss</code> value matches a <code>uniformResourceIdentifier</code> SAN entry of the end-entity certificate or that the domain name in the <code>iss</code> value matches the <code>dNSName</code> SAN entry of the end-entity certificate.<a href="#section-3.5-2.2.2.2" class="pilcrow">¶</a>
-</li>
-            </ol>
-</li>
-          <li class="compact" id="section-3.5-2.3">DID Document Resolution: If a recipient supports DID Document Resolution and if the <code>iss</code> value contains a DID <span>[<a href="#W3C.DID" class="cite xref">W3C.DID</a>]</span>, the recipient MUST retrieve the public key from the DID Document resolved from the DID in the <code>iss</code> value. In this case, if the <code>kid</code> JWT header parameter is present, the <code>kid</code> MUST be a relative or absolute DID URL of the DID in the <code>iss</code> value, identifying the public key.<a href="#section-3.5-2.3" class="pilcrow">¶</a>
+          <li class="normal" id="section-3.5-3.2">
+            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the <code>x5c</code> header parameter, the recipient uses the public key from the end-entity certificate of the certificates from the <code>x5c</code> header parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-3.5-3">Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 10.2</a> for security considerations.<a href="#section-3.5-3" class="pilcrow">¶</a></p>
-<p id="section-3.5-4">If a recipient cannot validate that the public verification key corresponds to the <code>iss</code> value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+<p id="section-3.5-4">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
+may define additional Issuer Signature Mechanisms; however, the specifics of such mechanisms are out of scope for this specification.
+See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 10.2</a> for related security considerations.<a href="#section-3.5-4" class="pilcrow">¶</a></p>
+<p id="section-3.5-5">If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.<a href="#section-3.5-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2051,17 +2051,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Vvoj3
-IzJsVM7GHNvqjJ7AQN2DW1eBDBtS94itfFzlR3UQ_dFnYIb-9tFh7qfMMnx3T0BDtme8
-wfRgCN7TNN4ag~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KDG6s
+houChQBKm96RfWCDtVYbvY2E8McaAxvxjHBLmZhqDAINpR3sSz1xxRZiuv8EyGe5VN5V
+1CFUIjAQ6nH7g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDg0NTQzND
-YsICJzZF9oYXNoIjogImk0V05pU0lzeHNfY3hBelBSZ21NeFBfUlR5Q3dpUkRQcnplX0
-tsNW1CU28ifQ.589hjB6yZrpuRQyj455loBXO0l9F_hia3NvcNMo8KDou5tfasqBi23E
--Lb8zpzdVQcL6k8fCFuqo3g8jW-G15w
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTAyMTI5OD
+gsICJzZF9oYXNoIjogInR5NHF4S3BNUUZTOGhBTzkxMm1nemtReVpPaXE2b2JUUGcxcE
+hNSTRILXMifQ.8oAtlLPWS3njvMVumFZ-XkV5n6NUH-YrLzDJIWujR6tL2VZh0FQ780Z
+RWMW6CPbhlyhNfbrWrL1P_nYf89aMrg
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2106,8 +2106,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.jXlAV_Y56pTB6XoXZwmsUgXRp1lCfOokxpAkT9RyKBaWC2
-g3cDM12jwTNeUARgNTqCpsu7oWei97pEO3bk8IfA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.xAnmBwJ3jbRnL-YERBogSpWqYsWFfKlY-W9hlTZrwPngS5
+rc2kqjuea4Z2XIoEYu6QlcMxAt9UUt4flqjhHZgQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2233,14 +2233,15 @@ including <code>jwks</code>:<a href="#section-5.2-7" class="pilcrow">¶</a></p>
       "keys":[
          {
             "kid":"doc-signer-05-25-2022",
-            "e":"AQAB",
-            "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
-   HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
-   lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
-   RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
-   2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
-   qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
-            "kty":"RSA"
+            "kty": "EC", "crv": "P-256",
+            "x": "b28d4MwZMjw8-00CG4xfnn9SLMVMM19SlqZpVb_uNtQ",
+            "y": "Xv5zWwuoaTgdS6hV43yI6gBwTnjukmFQQnJ_kCxzqk8"
+         },
+         {
+            "kid":"doc-signer-06-05-2025",
+            "kty": "EC", "crv": "P-256",
+            "x":"DfjUx4WHBds61vGbqUQhsy3FGX13fAS13QWh2EHIkX8",
+            "y":"NfqJt9Kp0EA93xq9ysO80DRZ_hCGlISz-pYLgv4RFvg"
          }
       ]
    }
@@ -2253,7 +2254,7 @@ configuration including <code>jwks_uri</code>:<a href="#section-5.2-9" class="pi
 <div class="alignLeft art-text artwork" id="section-5.2-10">
 <pre>{
    "issuer":"https://example.com",
-   "jwks_uri":"https://jwt-vc-issuer.example.org/my_public_keys.jwks"
+   "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
 }
 
 </pre><a href="#section-5.2-10" class="pilcrow">¶</a>
@@ -3053,10 +3054,9 @@ valid JWT VC Issuer Metadata configuration document before processing it.<a href
         <h3 id="name-ecosystem-specific-public-k">
 <a href="#section-10.2" class="section-number selfRef">10.2. </a><a href="#name-ecosystem-specific-public-k" class="section-name selfRef">Ecosystem-specific Public Key Verification Methods</a>
         </h3>
-<p id="section-10.2-1">When defining ecosystem-specific rules for the verification of the public key,
-as outlined in <a href="#issuer-signed-jwt-verification-key-validation" class="auto internal xref">Section 3.5</a>, it is critical
-that those rules maintain the integrity of the relationship between the <code>iss</code> value
-within the Issuer-signed JWT and the public keys of the Issuer.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
+<p id="section-10.2-1">When defining ecosystem-specific rules for resolution and verification of the public key,
+as outlined in <a href="#ism" class="auto internal xref">Section 3.5</a>, it is critical that those rules maintain the integrity of the
+relationship between the <code>iss</code> value of the SD-JWT, if present, and the public keys of the Issuer.<a href="#section-10.2-1" class="pilcrow">¶</a></p>
 <p id="section-10.2-2">It MUST be ensured that for any given <code>iss</code> value, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
 the Verifier use a verification process not intended by the Issuer, allowing the
@@ -3215,7 +3215,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dl class="references">
 <dt id="I-D.ietf-oauth-selective-disclosure-jwt">[I-D.ietf-oauth-selective-disclosure-jwt]</dt>
         <dd>
-<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-20</span>, <time datetime="2025-05-27" class="refDate">27 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-20">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-20</a>&gt;</span>. </dd>
+<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JWTs (SD-JWT)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-selective-disclosure-jwt-22</span>, <time datetime="2025-05-29" class="refDate">29 May 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
         <dd>
@@ -3291,10 +3291,6 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dt id="RFC9535">[RFC9535]</dt>
         <dd>
 <span class="refAuthor">Gössner, S., Ed.</span>, <span class="refAuthor">Normington, G., Ed.</span>, and <span class="refAuthor">C. Bormann, Ed.</span>, <span class="refTitle">"JSONPath: Query Expressions for JSON"</span>, <span class="seriesInfo">RFC 9535</span>, <span class="seriesInfo">DOI 10.17487/RFC9535</span>, <time datetime="2024-02" class="refDate">February 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9535">https://www.rfc-editor.org/info/rfc9535</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="W3C.DID">[W3C.DID]</dt>
-        <dd>
-<span class="refAuthor">Sporny, M.</span>, <span class="refAuthor">Longley, D.</span>, <span class="refAuthor">Sabadello, M.</span>, <span class="refAuthor">Reed, D.</span>, <span class="refAuthor">Steele, O.</span>, and <span class="refAuthor">C. Allen</span>, <span class="refTitle">"Decentralized Identifiers (DIDs) v1.0"</span>, <time datetime="2022-07-19" class="refDate">19 July 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/did-core/">https://www.w3.org/TR/did-core/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="W3C.VCDM">[W3C.VCDM]</dt>
       <dd>
@@ -3508,8 +3504,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.9SgB2LIOKJ-qU3WKiIAZ_LLprpGr8HOY2qblQAEasTByjc-
-ljcBC2wHgQhpGfxOsWeaM2IMyhEss06FKvVb8ig~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.JfAVT73qPhyWqOGo7afWnTEJPxugiFjpIkRUqyi-l2L9GeK
+tKutFAriszuIhf__7NXZT55lPKfsziEI7BrZ20Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3950,8 +3946,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.9SgB2LIOKJ-qU3WKiIAZ_LLprpGr8HOY2qblQAEasTByjc-
-ljcBC2wHgQhpGfxOsWeaM2IMyhEss06FKvVb8ig~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.JfAVT73qPhyWqOGo7afWnTEJPxugiFjpIkRUqyi-l2L9GeK
+tKutFAriszuIhf__7NXZT55lPKfsziEI7BrZ20Q~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3962,9 +3958,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NDg0NTQzNDYsICJzZF9oYXNoIjogInN4ZzhUWDJrY3E5d2pDQmFhcHRhcG9
-WSGc5LV9tZkd2ckJCT3hIejZERW8ifQ.QYT11HW_nOKiT6QiaZ28Hmy8x4kzMnDGYcd3
-nGrhqcp8H003rDoeMaSoq34kXKdESOyXyjVkRwgK6czrm3P9Jw
+hdCI6IDE3NTAyMTI5ODgsICJzZF9oYXNoIjogIndmTUVoVmxiUUdxZGI4T0pFdDMtc2t
+GNE1Pd0ttbE5DS0p5N096aEgtLWMifQ.6O24nz6-CYaCiNFNMKRyi09fWDTYuEU828Pa
+LYaYZ66lF9LZMagMXkQ5X01RpfpTu3NREealH2dHV8lZx7rYMQ
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3973,8 +3969,8 @@ nGrhqcp8H003rDoeMaSoq34kXKdESOyXyjVkRwgK6czrm3P9Jw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1748454346,
-  "sd_hash": "sxg8TX2kcq9wjCBaaptapoVHg9-_mfGvrBBOxHz6DEo"
+  "iat": 1750212988,
+  "sd_hash": "wfMEhVlbQGqdb8OJEt3-skF4MOwKmlNCKJy7OzhH--c"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -4178,7 +4174,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
 <p id="appendix-D-1">-10<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">*<a href="#appendix-D-2" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-D-2.1">Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+</li>
+      </ul>
 <p id="appendix-D-3">-09<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-D-4.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-D-4.1" class="pilcrow">¶</a>
