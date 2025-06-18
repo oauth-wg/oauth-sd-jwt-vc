@@ -235,8 +235,8 @@ registry as defined in [@!RFC7519].
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:
 
 * `iss`
-    * REQUIRED. The Issuer of the Verifiable Credential. The value of `iss`
-MUST be a URI. See [@!RFC7519] for more information.
+    * OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Credential
+    when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
 * `nbf`
     * OPTIONAL. The time before which the Verifiable Credential MUST NOT be
 accepted before validating. See [@!RFC7519] for more information.
@@ -305,15 +305,15 @@ Examples of what presentations of SD-JWT VCs might look like are provided in (#p
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
 The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
-SD-JWT VC as described in Section 7 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
+SD-JWT VC as described in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 7].
+The check in point 2.3 of Section 7.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt],
+which validates the Issuer and ensures that the signing key belongs to the Issuer,
+MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
+employing an Issuer Signature Mechanism (defined in (#ism)) that is permitted for the Issuer according to policy.
 
 If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the KB-JWT
 according to Section 7.3 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the KB-JWT, the `cnf` claim of the SD-JWT MUST be used.
-
-Furthermore, the recipient of the SD-JWT VC MUST validate the public verification key
-for the Issuer-signed JWT as defined in (#issuer-signed-jwt-verification-key-validation).
 
 If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in (#schema-type-metadata).
 
@@ -329,21 +329,26 @@ Any claims used that are not understood MUST be ignored.
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
 
-## Issuer-signed JWT Verification Key Validation {#issuer-signed-jwt-verification-key-validation}
+## Issuer Signature Mechanisms {#ism}
 
-A recipient of an SD-JWT VC MUST apply the following rules to validate that the public
-verification key for the Issuer-signed JWT corresponds to the `iss` value:
+An Issuer Signature Mechanism defines how a Verifier determines the appropriate key and associated procedure for
+verifying the signature of an Issuer-signed JWT.
+This allows for flexibility in supporting different trust anchoring systems and key resolution methods
+without changing the core processing model.
 
-- JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer Metadata and if the `iss` value contains an HTTPS URI, the recipient MUST
-obtain the public key using JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
-- X.509 Certificates: If the recipient supports X.509 Certificates and the `iss` value contains an HTTPS URI, the recipient MUST
-     1. obtain the public key from the end-entity certificate of the certificates from the `x5c` header parameter of the Issuer-signed JWT and validate the X.509 certificate chain accordingly, and
-     2. ensure that the `iss` value matches a `uniformResourceIdentifier` SAN entry of the end-entity certificate or that the domain name in the `iss` value matches the `dNSName` SAN entry of the end-entity certificate.
-- DID Document Resolution: If a recipient supports DID Document Resolution and if the `iss` value contains a DID [@W3C.DID], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the `iss` value. In this case, if the `kid` JWT header parameter is present, the `kid` MUST be a relative or absolute DID URL of the DID in the `iss` value, identifying the public key.
+A recipient MUST determine and validate the public verification key for the Issuer-signed JWT using
+a supported Issuer Signature Mechanism that is permitted for the given Issuer according to policy.
+This specification defines the following two Issuer Signature Mechanisms:
 
-Separate specifications or ecosystem regulations MAY define rules complementing the rules defined above, but such rules are out of scope of this specification. See (#ecosystem-verification-rules) for security considerations.
+- JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-If a recipient cannot validate that the public verification key corresponds to the `iss` value of the Issuer-signed JWT, the SD-JWT VC MUST be rejected.
+- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the `x5c` header parameter, the recipient uses the public key from the end-entity certificate of the certificates from the `x5c` header parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
+
+To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
+may define additional Issuer Signature Mechanisms; however, the specifics of such mechanisms are out of scope for this specification.
+See (#ecosystem-verification-rules) for related security considerations.
+
+If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
 
 # Presenting Verifiable Credentials
 
@@ -459,14 +464,15 @@ including `jwks`:
       "keys":[
          {
             "kid":"doc-signer-05-25-2022",
-            "e":"AQAB",
-            "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
-   HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
-   lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
-   RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
-   2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
-   qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
-            "kty":"RSA"
+            "kty": "EC", "crv": "P-256",
+            "x": "b28d4MwZMjw8-00CG4xfnn9SLMVMM19SlqZpVb_uNtQ",
+            "y": "Xv5zWwuoaTgdS6hV43yI6gBwTnjukmFQQnJ_kCxzqk8"
+         },
+         {
+            "kid":"doc-signer-06-05-2025",
+            "kty": "EC", "crv": "P-256",
+            "x":"DfjUx4WHBds61vGbqUQhsy3FGX13fAS13QWh2EHIkX8",
+            "y":"NfqJt9Kp0EA93xq9ysO80DRZ_hCGlISz-pYLgv4RFvg"
          }
       ]
    }
@@ -479,7 +485,7 @@ configuration including `jwks_uri`:
 ```
 {
    "issuer":"https://example.com",
-   "jwks_uri":"https://jwt-vc-issuer.example.org/my_public_keys.jwks"
+   "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
 }
 ```
 
@@ -1059,10 +1065,9 @@ Additional considerations can be found in [@OWASP_SSRF].
 
 ## Ecosystem-specific Public Key Verification Methods {#ecosystem-verification-rules}
 
-When defining ecosystem-specific rules for the verification of the public key,
-as outlined in (#issuer-signed-jwt-verification-key-validation), it is critical
-that those rules maintain the integrity of the relationship between the `iss` value
-within the Issuer-signed JWT and the public keys of the Issuer.
+When defining ecosystem-specific rules for resolution and verification of the public key,
+as outlined in (#ism), it is critical that those rules maintain the integrity of the
+relationship between the `iss` value of the SD-JWT, if present, and the public keys of the Issuer.
 
 It MUST be ensured that for any given `iss` value, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
@@ -1220,43 +1225,6 @@ recommendations in (#robust-retrieval) apply.
         </author>
         <title>Subresource Integrity</title>
         <date day="23" month="June" year="2016"/>
-    </front>
-</reference>
-
-<reference anchor="W3C.DID" target="https://www.w3.org/TR/did-core/">
-    <front>
-        <author initials="M." surname="Sporny" fullname="Manu Sporny">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Longley" fullname="Dave Longley">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="M." surname="Sabadello" fullname="Markus Sabadello">
-            <organization>
-                <organizationName>Danube Tech</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Reed" fullname="Drummond Reed">
-            <organization>
-                <organizationName>Evernym/Avast</organizationName>
-            </organization>
-        </author>
-        <author initials="O." surname="Steele" fullname="Orie Steele">
-            <organization>
-                <organizationName>Transmute</organizationName>
-            </organization>
-        </author>
-        <author initials="C." surname="Allen" fullname="Christopher Allen">
-            <organization>
-                <organizationName>Blockchain Commons</organizationName>
-            </organization>
-        </author>
-        <title>Decentralized Identifiers (DIDs) v1.0</title>
-        <date day="19" month="July" year="2022"/>
     </front>
 </reference>
 
@@ -1592,7 +1560,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -10
 
-*
+* Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.
 
 -09
 
