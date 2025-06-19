@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-15T00:39:09.787388+00:00",
+  "timestamp": "2025-06-19T00:35:15.717977+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6695,7 +6695,7 @@
       "id": "I_kwDOJbVClc6Wr3og",
       "title": "Issuer-signed JWT Verification Key Validation - Separation of signature and identity verification/validation?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/253",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [
@@ -6706,8 +6706,8 @@
       ],
       "body": "There seem to be several mechanisms for issuer key validation (section 3.5).\r\n\r\nTwo mechanisms define fetching of keys (issuer metadata, DID), and one can be embedded or referenced (x509).\r\n\r\nWould it make sense to enable signature validation at all times and\r\n- require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\nSignature is always verified using this key.\r\n\r\nPublic key - identity binding can be verified\r\n- using x509 certificate that is in the jwk.x5c claim (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7) - key certificate or the full chain.\r\n\r\n`kid` could be misused to express the validation mechanism or one could define an additional header claim where identity verification mechanism is specified:\r\n- calling the /.well-known/jwt-vc-issuer\r\n- resolving a DID\r\n- using Federation ...\r\n- ...",
       "createdAt": "2024-09-16T10:31:44Z",
-      "updatedAt": "2024-10-10T18:01:15Z",
-      "closedAt": null,
+      "updatedAt": "2025-06-18T22:55:51Z",
+      "closedAt": "2025-06-18T02:16:09Z",
       "comments": [
         {
           "author": "peacekeeper",
@@ -6799,6 +6799,34 @@
           "body": "What is google's identifier if they are using service hosted by the happy issuer? \r\nhappy user is managing signing keys of google and it assigned google an identifier in their multi-tenant system as happy-issuer.com/issuers/google.com\r\n\r\n(in the case of using jwk + URL in the iss; when using x509 and (some) DID methods it's clear and it's irrelevant if the service is self-managed or is managed by a 3rd party)",
           "createdAt": "2024-10-10T17:50:23Z",
           "updatedAt": "2024-10-10T18:01:15Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "@bc-pi how does the PR answer the last question above?\n\nThank you!",
+          "createdAt": "2025-06-18T17:42:37Z",
+          "updatedAt": "2025-06-18T17:42:37Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [@bc-pi](https://github.com/bc-pi) how does the PR answer the last question above?\n\nCould you help clarify the specific question? I have struggled a bit to follow the conversation in this issue. \n",
+          "createdAt": "2025-06-18T18:13:51Z",
+          "updatedAt": "2025-06-18T18:13:51Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "> > [@bc-pi](https://github.com/bc-pi) how does the PR answer the last question above?\n> \n> Could you help clarify the specific question? I have struggled a bit to follow the conversation in this issue.\n\nJust the last one:\n\nWhat is google's identifier if they are using service hosted by the happy issuer?\nhappy user is managing signing keys of google and it assigned google an identifier in their multi-tenant system as happy-issuer.com/issuers/google.com\n\n(in the case of using jwk + URL in the iss; when using x509 and (some) DID methods it's clear and it's irrelevant if the service is self-managed or is managed by a 3rd party)\n\nThank you.",
+          "createdAt": "2025-06-18T18:16:37Z",
+          "updatedAt": "2025-06-18T18:17:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I'm admittedly still struggling to follow but I think that in that hypothetical case, the identifier in the `iss` claim would be `https://happy-issuer.com/issuers/google.com`\n\nA verifier would need to have policy or configuration, somewhat akin to a CA list, that it trusts happy-issuer.com as a multi-tenant host of credential issuers and `https://happy-issuer.com/issuers/google.com` to issue whatever the credential in question. If that policy is in place, then metadata and ultimately keys can be found at `https://happy-issuer.com/.well-known/jwt-vc-issuer/issuers/google.com`. ",
+          "createdAt": "2025-06-18T22:55:36Z",
+          "updatedAt": "2025-06-18T22:55:51Z"
         }
       ]
     },
@@ -7141,15 +7169,15 @@
       "id": "I_kwDOJbVClc6h41n0",
       "title": "Should the verifier stop issuer key discovery if they already got one that worked for them?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/281",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "If the verifier supports multiple different ways of issuer key discovery, the spec currently suggests that they would need to perform all of these different ways to validate the public key. Perhaps this is a good thing, but perhaps this is an unnecessary thing? Especially if the verifier supports HTTPS and X.509, should they do both?",
       "createdAt": "2024-12-03T21:41:43Z",
-      "updatedAt": "2025-04-05T08:15:53Z",
-      "closedAt": null,
+      "updatedAt": "2025-06-18T02:16:09Z",
+      "closedAt": "2025-06-18T02:16:09Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -24174,21 +24202,21 @@
       "id": "PR_kwDOJbVClc6OOgtW",
       "title": "feat: describe extension mechanism based on DIDs",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/299",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This PR describes the extension point for ecosystem-specific issuer key resolution based on DIDs.\r\n\r\nPreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/add-extension/draft-ietf-oauth-sd-jwt-vc.html",
       "createdAt": "2025-03-11T19:50:17Z",
-      "updatedAt": "2025-06-10T18:34:25Z",
+      "updatedAt": "2025-06-18T02:17:26Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "513c0a1032153dd66131b5e518712da6d3d66694",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/add-extension",
       "headRefOid": "1c3bedec1702c4d665c0b024fb2fdde48d737490",
-      "closedAt": null,
+      "closedAt": "2025-06-18T02:17:26Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -24617,25 +24645,35 @@
       "id": "PR_kwDOJbVClc6Z6BCf",
       "title": "SD-JWT VC Issuer Signature Profiles/Mechanisms",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/316",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This is inspired by numerous discussions over the past many months, including (but not limited to) those with @alenhorvat and @awoie about better modularization of signature profiles in SD-JWT VC. \r\n\r\nHighlights of this change:\r\n\r\n- Renames 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and reworks some text accordingly. \r\n- Provides a web-based metadata resolution mechanism and an inline x509 mechanism. \r\n- A DID-based mechanism is not explicitly provided but still possible via profile/extension. \r\n- Is more explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy.\r\n- Is more clear that one permitted Issuer Signature Mechanism is sufficient. \r\n\r\n\r\nEffectively supersedes PR #299 \r\n\r\nTouches on and/or fixes Issues https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/253 and https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/281",
       "createdAt": "2025-06-10T17:55:26Z",
-      "updatedAt": "2025-06-10T21:11:33Z",
+      "updatedAt": "2025-06-18T15:54:17Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8f42b4e131d7af4e0c0a7dcdc3fb87bce8afb2a5",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "modular-signature-somethings",
       "headRefOid": "afff5f03df089d19793ece830819a8939cdc7fae",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2025-06-18T02:16:08Z",
+      "mergedAt": "2025-06-18T02:16:08Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "0ec7c8e63186dcdcb1c221aa896df092119cfff9"
+      },
+      "comments": [
+        {
+          "author": "peacekeeper",
+          "authorAssociation": "NONE",
+          "body": "This should be reverted, given that it's been super clear that there was no WG consensus to remove support for DIDs.\r\n\r\nWe have been through this exercise before where the editors dropped DID support and then had to revert that change.",
+          "createdAt": "2025-06-18T15:54:17Z",
+          "updatedAt": "2025-06-18T15:54:17Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6tudU0",
@@ -24669,6 +24707,19 @@
               "updatedAt": "2025-06-10T21:10:48Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6u9HIF",
+          "commit": {
+            "abbreviatedOid": "afff5f0"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-06-17T11:25:06Z",
+          "updatedAt": "2025-06-17T11:25:06Z",
+          "comments": []
         }
       ]
     }
