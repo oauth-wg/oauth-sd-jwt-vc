@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-19T00:35:15.717977+00:00",
+  "timestamp": "2025-06-22T00:38:54.670579+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6706,7 +6706,7 @@
       ],
       "body": "There seem to be several mechanisms for issuer key validation (section 3.5).\r\n\r\nTwo mechanisms define fetching of keys (issuer metadata, DID), and one can be embedded or referenced (x509).\r\n\r\nWould it make sense to enable signature validation at all times and\r\n- require a `jwk` header with the issuer's signing key (https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.3)\r\nSignature is always verified using this key.\r\n\r\nPublic key - identity binding can be verified\r\n- using x509 certificate that is in the jwk.x5c claim (https://datatracker.ietf.org/doc/html/rfc7517#section-4.7) - key certificate or the full chain.\r\n\r\n`kid` could be misused to express the validation mechanism or one could define an additional header claim where identity verification mechanism is specified:\r\n- calling the /.well-known/jwt-vc-issuer\r\n- resolving a DID\r\n- using Federation ...\r\n- ...",
       "createdAt": "2024-09-16T10:31:44Z",
-      "updatedAt": "2025-06-18T22:55:51Z",
+      "updatedAt": "2025-06-20T13:19:40Z",
       "closedAt": "2025-06-18T02:16:09Z",
       "comments": [
         {
@@ -6827,6 +6827,41 @@
           "body": "I'm admittedly still struggling to follow but I think that in that hypothetical case, the identifier in the `iss` claim would be `https://happy-issuer.com/issuers/google.com`\n\nA verifier would need to have policy or configuration, somewhat akin to a CA list, that it trusts happy-issuer.com as a multi-tenant host of credential issuers and `https://happy-issuer.com/issuers/google.com` to issue whatever the credential in question. If that policy is in place, then metadata and ultimately keys can be found at `https://happy-issuer.com/.well-known/jwt-vc-issuer/issuers/google.com`. ",
           "createdAt": "2025-06-18T22:55:36Z",
           "updatedAt": "2025-06-18T22:55:51Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Thank you, however the question is different: it's not about the signing key location, it's about how to express google.com as an issuer identifier independently from the signing key location. E.g., google.com moves from happy-issuer to funky-issuer.com;\nIssuer's identifier is still google.com, even though the signing keys is now found at a different location, e.g., https://funky-issuer.com/issuers/google.com\n\nFrom the verifier perspective, the credential issuer it's the same entity (google.com), regardless of the signing key location.",
+          "createdAt": "2025-06-19T06:12:59Z",
+          "updatedAt": "2025-06-19T06:12:59Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I guess I don't understand then. Apologies. https://funky-issuer.com/issuers/google.com and https://happy-issuer.com/issuers/google.com are different issuers. There's nothing at this layer that would provide anything like that. Intentionally. ",
+          "createdAt": "2025-06-19T22:40:31Z",
+          "updatedAt": "2025-06-19T22:40:31Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "A simpler example: In both cases, it's the same organisation issuing the credential (google.com), they are only using different service providers. E.g., with x509, it doesn't matter whom you receive your certificate from (you have a certificate issuer != certificate subject, where cert subject is the one signing the credential). Using x509, your issuer identifier will be always the same, regardless of the issuing service provider.\n\nWith iss == URL (as defined now) the identifier is of the service provider, not the actual issuer (or at least they are coupled, and there's no prescription on how to distinguish between the service provider and the issuer).",
+          "createdAt": "2025-06-20T06:30:55Z",
+          "updatedAt": "2025-06-20T06:30:55Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I suppose the prescription on how to distinguish between the service provider and the issuer would be to use x509 or for service providers to offer some reasonable DNS integration features so that e.g., `number-one-best-credentials.win` would be the issuer and the URL regardless of where it's hosted - AWS, GCP, happy cloud, super issuers dot com, budget digital verifiable credentials, shopify, etc.. \n",
+          "createdAt": "2025-06-20T12:36:26Z",
+          "updatedAt": "2025-06-20T12:39:38Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Yes. So question is, should the specification (for interoperability purposes) prescribe on how to express the issuer vs service provider identifier (when applicable)?\n\nThank you!",
+          "createdAt": "2025-06-20T13:19:40Z",
+          "updatedAt": "2025-06-20T13:19:40Z"
         }
       ]
     },
