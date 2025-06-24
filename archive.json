@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-22T00:38:54.670579+00:00",
+  "timestamp": "2025-06-24T00:35:00.950353+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7800,7 +7800,7 @@
       ],
       "body": "The examples of `<uri_claim>#integrity` claims throughout the spec use Base64url encoding (with `-` and `_` chars):\n```\n\"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\"\n...\n\"extends#integrity\":\"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5\",\n...\n\"schema_uri#integrity\":\"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh\"\n```\n\nbut the [referenced spec \"Subresource integrity\"](https://www.w3.org/TR/sri/#base64-encoding) uses the classic Base64 encoding with padding (with `+` and `/` chars):\n```\nsha384-+/M6kredJcxdsqkczBUjMLvqyHb1K/JThDXWsBVxMEeZHEaMKEOEct339VItX1zB\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\nsha512-Q2bFTOhEALkN8hOms2FKTDLy7eugP2zFZ1T8LCvX42Fp3WoNr3bjZSAHeOsHrbV1Fu9/A0EzCinRE7Af1ofPrw==\n```\n\nThis mismatch could result in incompatible implementations.",
       "createdAt": "2025-04-25T10:00:47Z",
-      "updatedAt": "2025-06-03T18:26:11Z",
+      "updatedAt": "2025-06-23T21:05:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -7809,6 +7809,20 @@
           "body": "That is correct and should be fixed.",
           "createdAt": "2025-06-03T18:25:54Z",
           "updatedAt": "2025-06-03T18:25:54Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "On looking closer, it seems some of the values are not the correct length either. I'm going to assume that's just due to mistake and will fix that as well. ",
+          "createdAt": "2025-06-23T20:38:30Z",
+          "updatedAt": "2025-06-23T20:38:30Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "PR #318 aspires to fix this and acknowledge @Iskander508 ",
+          "createdAt": "2025-06-23T21:05:23Z",
+          "updatedAt": "2025-06-23T21:05:23Z"
         }
       ]
     },
@@ -7950,9 +7964,17 @@
       "labels": [],
       "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
       "createdAt": "2025-06-03T22:36:07Z",
-      "updatedAt": "2025-06-03T22:36:07Z",
+      "updatedAt": "2025-06-23T21:30:48Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Do you mean for the JWK in the cnf claim of the SD-JWT? Or JWKs in or referenced by metadata? Or both?",
+          "createdAt": "2025-06-23T21:30:48Z",
+          "updatedAt": "2025-06-23T21:30:48Z"
+        }
+      ]
     },
     {
       "number": 317,
@@ -24757,6 +24779,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 318,
+      "id": "PR_kwDOJbVClc6bu_5w",
+      "title": "Fix `[...]#integrity` claim values in examples ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/318",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Subresource Integrity uses regular base64 encoding and some were the wrong length",
+      "createdAt": "2025-06-23T21:03:32Z",
+      "updatedAt": "2025-06-23T21:03:32Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "0ec7c8e63186dcdcb1c221aa896df092119cfff9",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "pound-integrity",
+      "headRefOid": "016861b3a4471602f0166ca79de5c90cced2f69f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
