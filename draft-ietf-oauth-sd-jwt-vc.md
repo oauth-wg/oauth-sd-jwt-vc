@@ -527,7 +527,7 @@ with the value `https://betelgeuse.example.com/education_credential`:
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0",
+  "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
   ...
 }
 ```
@@ -544,9 +544,9 @@ retrieved from it:
   "name":"Betelgeuse Education Credential - Preliminary Version",
   "description":"This is our development version of the education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-  "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+  "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
 }
 ```
 
@@ -554,7 +554,7 @@ This example is shortened for presentation, a full Type Metadata example can be 
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0`.
+`WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=`.
 
 ## Type Metadata Format {#type-metadata-format}
 
@@ -1410,7 +1410,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
   "name": "Betelgeuse Education Credential - Preliminary Version",
   "description": "This is our development version of the education credential. Don't panic.",
   "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
-  "extends#integrity": "sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+  "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
       "lang": "en-US",
@@ -1420,7 +1420,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
         "simple": {
           "logo": {
             "uri": "https://betelgeuse.example.com/public/education-logo.png",
-            "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+            "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Betelgeuse Ministry of Education logo"
           },
           "background_color": "#12107c",
@@ -1429,7 +1429,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
         "svg_templates": [
           {
             "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-            "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+            "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
             "properties": {
               "orientation": "landscape",
               "color_scheme": "light",
@@ -1446,7 +1446,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
         "simple": {
           "logo": {
             "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-            "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+            "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
           },
           "background_color": "#12107c",
@@ -1455,7 +1455,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
         "svg_templates": [
           {
             "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-            "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+            "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
             "properties": {
               "orientation": "landscape",
               "color_scheme": "light",
@@ -1532,7 +1532,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
     }
   ],
   "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+  "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
 }
 ```
 
@@ -1551,6 +1551,7 @@ Michael B. Jones,
 Mike Prorock,
 Orie Steele,
 Paul Bastian,
+Pavel Zarecky,
 Torsten Lodderstedt,
 Tobias Looker, and
 Kristina Yasuda
@@ -1561,6 +1562,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -10
 
 * Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.
+* Fix `[...]#integrity` claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)
 
 -09
 
