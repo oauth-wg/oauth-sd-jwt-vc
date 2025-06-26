@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-24T00:35:00.950353+00:00",
+  "timestamp": "2025-06-26T00:34:52.048289+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7790,7 +7790,7 @@
       "id": "I_kwDOJbVClc6z-04Y",
       "title": "Document integrity examples use wrong Base64url encoding",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/308",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Iskander508",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7800,8 +7800,8 @@
       ],
       "body": "The examples of `<uri_claim>#integrity` claims throughout the spec use Base64url encoding (with `-` and `_` chars):\n```\n\"vct#integrity\": \"sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0\"\n...\n\"extends#integrity\":\"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5\",\n...\n\"schema_uri#integrity\":\"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh\"\n```\n\nbut the [referenced spec \"Subresource integrity\"](https://www.w3.org/TR/sri/#base64-encoding) uses the classic Base64 encoding with padding (with `+` and `/` chars):\n```\nsha384-+/M6kredJcxdsqkczBUjMLvqyHb1K/JThDXWsBVxMEeZHEaMKEOEct339VItX1zB\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\n...\nsha384-H8BRh8j48O9oYatfu5AZzq6A9RINhZO5H16dQZngK7T62em8MUt1FLm52t+eX6xO\nsha512-Q2bFTOhEALkN8hOms2FKTDLy7eugP2zFZ1T8LCvX42Fp3WoNr3bjZSAHeOsHrbV1Fu9/A0EzCinRE7Af1ofPrw==\n```\n\nThis mismatch could result in incompatible implementations.",
       "createdAt": "2025-04-25T10:00:47Z",
-      "updatedAt": "2025-06-23T21:05:23Z",
-      "closedAt": null,
+      "updatedAt": "2025-06-24T19:11:09Z",
+      "closedAt": "2025-06-24T19:11:09Z",
       "comments": [
         {
           "author": "awoie",
@@ -7964,7 +7964,7 @@
       "labels": [],
       "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
       "createdAt": "2025-06-03T22:36:07Z",
-      "updatedAt": "2025-06-23T21:30:48Z",
+      "updatedAt": "2025-06-24T22:16:37Z",
       "closedAt": null,
       "comments": [
         {
@@ -7973,6 +7973,13 @@
           "body": "Do you mean for the JWK in the cnf claim of the SD-JWT? Or JWKs in or referenced by metadata? Or both?",
           "createdAt": "2025-06-23T21:30:48Z",
           "updatedAt": "2025-06-23T21:30:48Z"
+        },
+        {
+          "author": "nikosft",
+          "authorAssociation": "NONE",
+          "body": "I am referring to the JWK in the cnf claim. An issuer may store the public key of a holder in a certificate,  save it in a  location it controls, and set the x5u parameter of the JWK in the cnf claim accordingly. Note that x5u can co-exist with other members of the JWK, hence it may not be noticed by the holder. If the verifier follows strictly RFC 7517 it shall retrieve the certificate and verify it matches the rest of the members of the JWK.  ",
+          "createdAt": "2025-06-24T22:16:37Z",
+          "updatedAt": "2025-06-24T22:16:37Z"
         }
       ]
     },
@@ -7991,6 +7998,30 @@
       "updatedAt": "2025-06-12T03:26:38Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 319,
+      "id": "I_kwDOJbVClc69S2Qt",
+      "title": "Mapping for 'termsOfUse' from VCDM",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/319",
+      "state": "OPEN",
+      "author": "tweeddalex",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi all, we've been working on an implementation of issuing SD-JWT VCs with `did:cheqd` using Paradym. \n\nOne part of the VC Data Model that we want to include within the issued SD-JWT VC is the `termsOfUse` field, for referencing 'accreditations' issued to the issuer (stored on our trust registry). However, this is currently not a section that is mapped across in the spec. Would it be worth creating more OPTIONAL JWT claims to map missing sections of the VC Data Model (`evidence`, `termsOfUse`, etc?) - or have these been purposefully omitted to keep the spec as lightweight and simple as possible? \n\nIn particular `termsOfUse` has been increasingly used for pointing to trust registry entries in multiple implementations (see OIDF issue here: https://github.com/openid/federation-wallet/issues/48; EBSI issuer trust model here: https://hub.ebsi.eu/vc-framework/trust-model/issuer-trust-model-v4 and cheqd trust registry model here: https://docs.cheqd.io/product/studio/trust-registries/dtc/referencing-in-credential)\n\nThanks!\n",
+      "createdAt": "2025-06-25T14:15:47Z",
+      "updatedAt": "2025-06-25T19:56:25Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think it'd be more accurate to say such things have been purposefully omitted because VCDM equivalence or mappings are a definite non-goal of this work. ",
+          "createdAt": "2025-06-25T16:40:00Z",
+          "updatedAt": "2025-06-25T19:56:25Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -24785,26 +24816,42 @@
       "id": "PR_kwDOJbVClc6bu_5w",
       "title": "Fix `[...]#integrity` claim values in examples ",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/318",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Subresource Integrity uses regular base64 encoding and some were the wrong length",
       "createdAt": "2025-06-23T21:03:32Z",
-      "updatedAt": "2025-06-23T21:03:32Z",
+      "updatedAt": "2025-06-24T19:11:09Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "0ec7c8e63186dcdcb1c221aa896df092119cfff9",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "pound-integrity",
       "headRefOid": "016861b3a4471602f0166ca79de5c90cced2f69f",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-06-24T19:11:08Z",
+      "mergedAt": "2025-06-24T19:11:08Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "fed5f40832492f567d3a1019a1eaf5907670ad47"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6wH159",
+          "commit": {
+            "abbreviatedOid": "016861b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-06-24T18:09:33Z",
+          "updatedAt": "2025-06-24T18:09:33Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
