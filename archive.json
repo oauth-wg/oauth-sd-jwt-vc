@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-26T00:34:52.048289+00:00",
+  "timestamp": "2025-06-29T00:39:54.204520+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8011,7 +8011,7 @@
       "labels": [],
       "body": "Hi all, we've been working on an implementation of issuing SD-JWT VCs with `did:cheqd` using Paradym. \n\nOne part of the VC Data Model that we want to include within the issued SD-JWT VC is the `termsOfUse` field, for referencing 'accreditations' issued to the issuer (stored on our trust registry). However, this is currently not a section that is mapped across in the spec. Would it be worth creating more OPTIONAL JWT claims to map missing sections of the VC Data Model (`evidence`, `termsOfUse`, etc?) - or have these been purposefully omitted to keep the spec as lightweight and simple as possible? \n\nIn particular `termsOfUse` has been increasingly used for pointing to trust registry entries in multiple implementations (see OIDF issue here: https://github.com/openid/federation-wallet/issues/48; EBSI issuer trust model here: https://hub.ebsi.eu/vc-framework/trust-model/issuer-trust-model-v4 and cheqd trust registry model here: https://docs.cheqd.io/product/studio/trust-registries/dtc/referencing-in-credential)\n\nThanks!\n",
       "createdAt": "2025-06-25T14:15:47Z",
-      "updatedAt": "2025-06-25T19:56:25Z",
+      "updatedAt": "2025-06-27T09:18:35Z",
       "closedAt": null,
       "comments": [
         {
@@ -8020,8 +8020,38 @@
           "body": "I think it'd be more accurate to say such things have been purposefully omitted because VCDM equivalence or mappings are a definite non-goal of this work. ",
           "createdAt": "2025-06-25T16:40:00Z",
           "updatedAt": "2025-06-25T19:56:25Z"
+        },
+        {
+          "author": "bumblefudge",
+          "authorAssociation": "NONE",
+          "body": "where would be the appropriate venue for proposing a specific mapping or optional extension that enabled such continuity/interop across protocols? is there an OIDF WG that could propose such a profile/extension document?",
+          "createdAt": "2025-06-26T15:03:02Z",
+          "updatedAt": "2025-06-26T15:03:02Z"
+        },
+        {
+          "author": "tweeddalex",
+          "authorAssociation": "NONE",
+          "body": "Yeah on Juan's point, maybe the best place would be to just nest these sections as claims within the Unsecured Payload. Perhaps in one of the examples showing the `schema` and listed fields, we could include, `evidence`, `termsOfUse`, etc within the schema - so it provides at least a common pathway for people to include these sections.",
+          "createdAt": "2025-06-27T09:18:35Z",
+          "updatedAt": "2025-06-27T09:18:35Z"
         }
       ]
+    },
+    {
+      "number": 320,
+      "id": "I_kwDOJbVClc69siam",
+      "title": "Glue document to the protected header?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/320",
+      "state": "OPEN",
+      "author": "babisRoutis",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Specification in section [6.3.5. From Type Metadata Glue Documents](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-09.html#name-from-type-metadata-glue-doc) suggests that \n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS\n\nTo my understanding this means that \"glue documents\" or the ability to embed type metadata is only applicable, when using JWS JSON serialization.\nThat is creating an asymmetry to the compact serialization.\n\nGiven that [HAIP](https://openid.github.io/oid4vc-haip/openid4vc-high-assurance-interoperability-profile-wg-draft.html#name-sd-jwt-vcs) mandates the use of compact serialization, embed type metadata cannot be used.\n\nI would like to kindly ask \n\n- Why `vctm` is only  available to the JWS JSON serialization\n- To consider allowing `vctm` to appear to the protected header, effectively allowing glue documents to the compact form.\n\n",
+      "createdAt": "2025-06-27T11:58:29Z",
+      "updatedAt": "2025-06-27T11:58:29Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
