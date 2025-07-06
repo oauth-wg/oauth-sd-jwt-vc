@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-06-29T00:39:54.204520+00:00",
+  "timestamp": "2025-07-06T00:39:23.042510+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6126,9 +6126,17 @@
       ],
       "body": "Since a holder is interested in receiving a valid credential, and a verifier a valid presentation of a credential, perhaps the cardinality of both schemas might be slightly different. \r\n\r\nShould we consider introducing a dedicated schema for presentation to reflect changes in cardinality?",
       "createdAt": "2024-07-01T14:49:31Z",
-      "updatedAt": "2024-07-09T08:19:46Z",
+      "updatedAt": "2025-07-04T15:10:12Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Currently, type metadata provide a single JSON Schema (or a list, taking into account extend associations).\nTo my understanding, this means that this JSON Schema has to be applicable to both the holder and to the verifier side.\n\nAs a consequence, this single JSON Schema must take into account the absence of not disclosed attributes. That is, this schema is for the verifier but it can also be used by the holder (to partially validate the issued credential).\n\nYet the above is my understanding, or my interpretation. Others may have different interpretations, mainly that JSON Schema is primarily to be used from the holder and that this single schema should not take into account the absence of disclosable attributes simply because for an issued SD-JWT we have all disclosures.\n\nThus in case of keeping a single JSON Schema (current status), spec should clarify whether cardinality of attributes is related to the sd property or not.\n\n\nFor what is worth, I believe that it would be challenging to keep consistent two separate JSON Schemas.\n",
+          "createdAt": "2025-07-04T15:10:12Z",
+          "updatedAt": "2025-07-04T15:10:12Z"
+        }
+      ]
     },
     {
       "number": 238,
@@ -8052,6 +8060,30 @@
       "updatedAt": "2025-06-27T11:58:29Z",
       "closedAt": null,
       "comments": []
+    },
+    {
+      "number": 321,
+      "id": "I_kwDOJbVClc6-uzuc",
+      "title": "Be more opinionated about validity claims?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/321",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "In the context of [this issue](https://github.com/openid/oid4vc-haip/pull/165/files#r1969911921), it was discussed whether the [section in HAIP defining additional requirements on the validity claims in SD-JWT VC](https://github.com/openid/oid4vc-haip/pull/165/files#diff-762ef65fd82909517226ac1bb7e8855792bb57021abc1637c15b8557154dbbf1R207-R225) should exist at all.\n\nThis issue is an invitation to discuss if some/all of the requirements currently in HAIP should be moved to SD-JWT VC.\n\nAdditionally, the requirements should be adapted to the new signature profile mechanism in SD-JWT VC.",
+      "createdAt": "2025-07-03T16:25:18Z",
+      "updatedAt": "2025-07-03T20:54:39Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "charsleysa",
+          "authorAssociation": "NONE",
+          "body": "I think HAIP is for very specific use cases while SD-JWT VC themselves are open to any use case.\n\nFor example, why would a VC representing a university degree need an expiry? The degree is a point in time document, it doesn't expire, it simply states that an achievement was received by a person at a point in time and that record is forever valid unless revoked. ",
+          "createdAt": "2025-07-03T20:54:39Z",
+          "updatedAt": "2025-07-03T20:54:39Z"
+        }
+      ]
     }
   ],
   "pulls": [
