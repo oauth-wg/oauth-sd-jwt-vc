@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 28 November 2025                                  Authlete Inc.
+Expires: 8 January 2026                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                             27 May 2025
+                                                             7 July 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 November 2025.
+   This Internet-Draft will expire on 8 January 2026.
 
 Copyright Notice
 
@@ -78,7 +78,7 @@ Table of Contents
        3.2.2.  JWT Claims Set
      3.3.  Example
      3.4.  Verification and Processing
-     3.5.  Issuer-signed JWT Verification Key Validation
+     3.5.  Issuer Signature Mechanisms
    4.  Presenting Verifiable Credentials
      4.1.  Key Binding JWT
      4.2.  Examples
@@ -355,8 +355,10 @@ Table of Contents
    Disclosures, i.e., cannot be selectively disclosed:
 
    *  iss
-      -  REQUIRED.  The Issuer of the Verifiable Credential.  The value
-         of iss MUST be a URI.  See [RFC7519] for more information.
+      -  OPTIONAL.  As defined in Section 4.1.1 of [RFC7519] this claim
+         explicitly indicates the Issuer of the Verifiable Credential
+         when it is not conveyed by other means (e.g., the subject of
+         the end-entity certificate of an x5c header).
    *  nbf
       -  OPTIONAL.  The time before which the Verifiable Credential MUST
          NOT be accepted before validating.  See [RFC7519] for more
@@ -562,9 +564,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HhFEa
-   rtqb_yKW7OgiYEnqj51VU4pwhk4PuCfhSjWCn2_n0KehJ8WXnPr_L7ZrMd4g9etIshZR
-   4qEozsnzK6MbA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QVTu-
+   7pezqfAjwF6hb1kH5KBmVpjYLHPzQ1YIiGEV7gXlsyXGHmxQWP-IlmXCpYy6vZQsMiWo
+   I1drSSlemc11A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -583,16 +585,19 @@ Table of Contents
 
    The recipient (Holder or Verifier) of an SD-JWT VC MUST process and
    verify an SD-JWT VC as described in Section 7 of
-   [I-D.ietf-oauth-selective-disclosure-jwt].
+   [I-D.ietf-oauth-selective-disclosure-jwt].  The check in point 2.3 of
+   Section 7.1 of [I-D.ietf-oauth-selective-disclosure-jwt], which
+   validates the Issuer and ensures that the signing key belongs to the
+   Issuer, MUST be satisfied by determining and validating the public
+   verification key used to verify the Issuer-signed JWT, employing an
+   Issuer Signature Mechanism (defined in Section 3.5) that is permitted
+   for the Issuer according to policy.
 
    If Key Binding is required (refer to the security considerations in
    Section 9.5 of [I-D.ietf-oauth-selective-disclosure-jwt]), the
    Verifier MUST verify the KB-JWT according to Section 7.3 of
    [I-D.ietf-oauth-selective-disclosure-jwt].  To verify the KB-JWT, the
    cnf claim of the SD-JWT MUST be used.
-
-   Furthermore, the recipient of the SD-JWT VC MUST validate the public
-   verification key for the Issuer-signed JWT as defined in Section 3.5.
 
    If a schema is provided in the Type Metadata, a recipient MUST
    validate the schema as defined in Section 6.5.
@@ -610,42 +615,44 @@ Table of Contents
    Additional validation rules MAY apply, but their use is out of the
    scope of this specification.
 
-3.5.  Issuer-signed JWT Verification Key Validation
+3.5.  Issuer Signature Mechanisms
 
-   A recipient of an SD-JWT VC MUST apply the following rules to
-   validate that the public verification key for the Issuer-signed JWT
-   corresponds to the iss value:
+   An Issuer Signature Mechanism defines how a Verifier determines the
+   appropriate key and associated procedure for verifying the signature
+   of an Issuer-signed JWT.  This allows for flexibility in supporting
+   different trust anchoring systems and key resolution methods without
+   changing the core processing model.
 
-   *  JWT VC Issuer Metadata: If a recipient supports JWT VC Issuer
-      Metadata and if the iss value contains an HTTPS URI, the recipient
-      MUST obtain the public key using JWT VC Issuer Metadata as defined
-      in Section 5.
-   *  X.509 Certificates: If the recipient supports X.509 Certificates
-      and the iss value contains an HTTPS URI, the recipient MUST
-      1.  obtain the public key from the end-entity certificate of the
-          certificates from the x5c header parameter of the Issuer-
-          signed JWT and validate the X.509 certificate chain
-          accordingly, and
-      2.  ensure that the iss value matches a uniformResourceIdentifier
-          SAN entry of the end-entity certificate or that the domain
-          name in the iss value matches the dNSName SAN entry of the
-          end-entity certificate.
-   *  DID Document Resolution: If a recipient supports DID Document
-      Resolution and if the iss value contains a DID [W3C.DID], the
-      recipient MUST retrieve the public key from the DID Document
-      resolved from the DID in the iss value.  In this case, if the kid
-      JWT header parameter is present, the kid MUST be a relative or
-      absolute DID URL of the DID in the iss value, identifying the
-      public key.
+   A recipient MUST determine and validate the public verification key
+   for the Issuer-signed JWT using a supported Issuer Signature
+   Mechanism that is permitted for the given Issuer according to policy.
+   This specification defines the following two Issuer Signature
+   Mechanisms:
 
-   Separate specifications or ecosystem regulations MAY define rules
-   complementing the rules defined above, but such rules are out of
-   scope of this specification.  See Section 10.2 for security
-   considerations.
+   *  JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's
+      public key using web-based resolution.  When the value of the iss
+      claim of the Issuer-signed JWT is an HTTPS URI, the recipient
+      obtains the public key using the keys from JWT VC Issuer Metadata
+      as defined in Section 5.
+
+   *  X.509 Certificates: A mechanism to retrieve the Issuer's public
+      key using the X.509 certificate chain in the SD-JWT header.  When
+      the header of the Issuer-signed JWT contains the x5c header
+      parameter, the recipient uses the public key from the end-entity
+      certificate of the certificates from the x5c header parameter and
+      validates the X.509 certificate chain accordingly.  In this case,
+      the Issuer of the Verifiable Credential is the subject of the end-
+      entity certificate.
+
+   To enable different trust anchoring systems or key resolution
+   methods, separate specifications or ecosystem regulations may define
+   additional Issuer Signature Mechanisms; however, the specifics of
+   such mechanisms are out of scope for this specification.  See
+   Section 10.2 for related security considerations.
 
    If a recipient cannot validate that the public verification key
-   corresponds to the iss value of the Issuer-signed JWT, the SD-JWT VC
-   MUST be rejected.
+   corresponds the Issuer of the Issuer-signed JWT using a permitted
+   Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
 
 4.  Presenting Verifiable Credentials
 
@@ -683,17 +690,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HhFEa
-   rtqb_yKW7OgiYEnqj51VU4pwhk4PuCfhSjWCn2_n0KehJ8WXnPr_L7ZrMd4g9etIshZR
-   4qEozsnzK6MbA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.QVTu-
+   7pezqfAjwF6hb1kH5KBmVpjYLHPzQ1YIiGEV7gXlsyXGHmxQWP-IlmXCpYy6vZQsMiWo
+   I1drSSlemc11A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NDgzNzM4OD
-   EsICJzZF9oYXNoIjogImpRem9XZ0pvVS1QeVlOMGhoclFsckl4ODZWcGJlNUdZSEl2Z3
-   FsUDAxNGsifQ.54PuzD_bG3iFGhgtlQwXhRwM2LA7tKBSWs3HkQCm90u--EDd0cU2HpK
-   3nRMM6wBVlOxUKFrSifoRZsOGHhV8Aw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTE5MDg2Nz
+   YsICJzZF9oYXNoIjogIlplMGp5YTBxb1h6V1F4a2dLRjlka2ZqUVlEZUs3Qmp1azJVRE
+   hpa1p0eVEifQ.fqFUk3q0bSxkzJMZ38lwKR5toO7gKxSQr3OlM9dgGTG1SJcct0xE_1a
+   daV1MMpdoH0_DhfRlksOMj8o9eaoLNA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -735,8 +742,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.7BlqRMUheWZexHmaFAvxWpTAYFRQ7Fg3gSc3f82N-ksF0W
-   QQ89TY9gihTBiiuQKZ5ujimaZotUWxohbMaMdhIQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.iUrOEjKqao0gZhM1_v0VTftli2RkoGYdqRjCLCmjjpnS1C
+   7wJndarfvOyTueDvEQ1g-Vg7bP8HTYRo8KnnOwvw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -837,14 +844,15 @@ Table of Contents
          "keys":[
             {
                "kid":"doc-signer-05-25-2022",
-               "e":"AQAB",
-               "n":"nj3YJwsLUFl9BmpAbkOswCNVx17Eh9wMO-_AReZwBqfaWFcfG
-      HrZXsIV2VMCNVNU8Tpb4obUaSXcRcQ-VMsfQPJm9IzgtRdAY8NN8Xb7PEcYyk
-      lBjvTtuPbpzIaqyiUepzUXNDFuAOOkrIol3WmflPUUgMKULBN0EUd1fpOD70p
-      RM0rlp_gg_WNUKoW1V-3keYUJoXH9NztEDm_D2MQXj9eGOJJ8yPgGL8PAZMLe
-      2R7jb9TxOCPDED7tY_TU4nFPlxptw59A42mldEmViXsKQt60s1SLboazxFKve
-      qXC_jpLUt22OC6GUG63p-REw-ZOr3r845z50wMuzifQrMI9bQ",
-               "kty":"RSA"
+               "kty": "EC", "crv": "P-256",
+               "x": "b28d4MwZMjw8-00CG4xfnn9SLMVMM19SlqZpVb_uNtQ",
+               "y": "Xv5zWwuoaTgdS6hV43yI6gBwTnjukmFQQnJ_kCxzqk8"
+            },
+            {
+               "kid":"doc-signer-06-05-2025",
+               "kty": "EC", "crv": "P-256",
+               "x":"DfjUx4WHBds61vGbqUQhsy3FGX13fAS13QWh2EHIkX8",
+               "y":"NfqJt9Kp0EA93xq9ysO80DRZ_hCGlISz-pYLgv4RFvg"
             }
          ]
       }
@@ -855,7 +863,7 @@ Table of Contents
 
    {
       "issuer":"https://example.com",
-      "jwks_uri":"https://jwt-vc-issuer.example.org/my_public_keys.jwks"
+      "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
    }
 
    Additional JWT VC Issuer Metadata configuration parameters MAY also
@@ -905,7 +913,7 @@ Table of Contents
 
    {
      "vct": "https://betelgeuse.example.com/education_credential",
-     "vct#integrity": "sha256-WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0",
+     "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
      ...
    }
 
@@ -920,9 +928,9 @@ Table of Contents
      "name":"Betelgeuse Education Credential - Preliminary Version",
      "description":"This is our development version of the education credential. Don't panic.",
      "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-     "extends#integrity":"sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+     "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
      "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-     "schema_uri#integrity":"sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+     "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
    }
 
    This example is shortened for presentation, a full Type Metadata
@@ -930,7 +938,7 @@ Table of Contents
 
    Note: The hash of the Type Metadata document shown in the second
    example must be equal to the one in the vct#integrity claim in the
-   SD-JWT VC payload, WRL5ca_xGgX3c1VLmXfh-9cLlJNXN-TsMk-PmKjZ5t0.
+   SD-JWT VC payload, WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=.
 
 6.2.  Type Metadata Format
 
@@ -1493,10 +1501,11 @@ Table of Contents
 
 10.2.  Ecosystem-specific Public Key Verification Methods
 
-   When defining ecosystem-specific rules for the verification of the
-   public key, as outlined in Section 3.5, it is critical that those
-   rules maintain the integrity of the relationship between the iss
-   value within the Issuer-signed JWT and the public keys of the Issuer.
+   When defining ecosystem-specific rules for resolution and
+   verification of the public key, as outlined in Section 3.5, it is
+   critical that those rules maintain the integrity of the relationship
+   between the iss value of the SD-JWT, if present, and the public keys
+   of the Issuer.
 
    It MUST be ensured that for any given iss value, an attacker cannot
    influence the type of verification process used.  Otherwise, an
@@ -1639,16 +1648,16 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt]
               Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JWTs (SD-JWT)", Work in Progress, Internet-
-              Draft, draft-ietf-oauth-selective-disclosure-jwt-20, 27
+              Draft, draft-ietf-oauth-selective-disclosure-jwt-22, 29
               May 2025, <https://datatracker.ietf.org/doc/html/draft-
-              ietf-oauth-selective-disclosure-jwt-20>.
+              ietf-oauth-selective-disclosure-jwt-22>.
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
-              List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-11, 23 May 2025,
+              List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
+              oauth-status-list-12, 23 May 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-11>.
+              status-list-12>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1724,10 +1733,6 @@ Table of Contents
               Ed., "JSONPath: Query Expressions for JSON", RFC 9535,
               DOI 10.17487/RFC9535, February 2024,
               <https://www.rfc-editor.org/info/rfc9535>.
-
-   [W3C.DID]  Sporny, M., Longley, D., Sabadello, M., Reed, D., Steele,
-              O., and C. Allen, "Decentralized Identifiers (DIDs) v1.0",
-              19 July 2022, <https://www.w3.org/TR/did-core/>.
 
    [W3C.VCDM] Sporny, M., Longley, D., Chadwick, D., and O. Steele,
               "Verifiable Credentials Data Model v2.0", 10 February
@@ -1881,8 +1886,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.0Qi3xPjiUh1gs9bccqw3YX0eC6-4aC-G5qWLSf9RUCsyaWE
-   9D6ApZYv3W32finsNmiT8XvTdBiXbDdZjW10ipg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.YfxlP0nenSGtOGodZqcFyXc551OjRrAI7qo-DFmzBJ3f3vd
+   UsQnk_G47RGUAmK-1P5wdgvOEWolU_KNSbPJKMw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2217,8 +2222,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.0Qi3xPjiUh1gs9bccqw3YX0eC6-4aC-G5qWLSf9RUCsyaWE
-   9D6ApZYv3W32finsNmiT8XvTdBiXbDdZjW10ipg~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.YfxlP0nenSGtOGodZqcFyXc551OjRrAI7qo-DFmzBJ3f3vd
+   UsQnk_G47RGUAmK-1P5wdgvOEWolU_KNSbPJKMw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2229,17 +2234,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NDgzNzM4ODEsICJzZF9oYXNoIjogIjdpc2xtcVdiWXdFNVhZN3dkM3ZxTjN
-   GX0docDZqX08tMUxhVVpENUU1b0UifQ.nqC9EJxDYHb_LOw3DpYvTp-TMcUdqkBXVgJB
-   c8Tb2-3k6ZU0EDAkYKgEN3AY-ACdIytgWVAShlAasmj1aTClmw
+   hdCI6IDE3NTE5MDg2NzYsICJzZF9oYXNoIjogIlR3d1B0UEllcmlsbnBLUktMSEFQTkR
+   fa1A4OEJDcDVSZTNycDdJeUsyRzQifQ.f-_usUBXHAs1PSCZjn57rgkengSpPxNZwbVi
+   LI0A3RP-DZ3Is32gnR4ZlzqPkQ0rsSr8wL7gdwG_iQLcvLP7uw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1748373881,
-     "sd_hash": "7islmqWbYwE5XY7wd3vqN3F_Ghp6j_O-1LaUZD5E5oE"
+     "iat": 1751908676,
+     "sd_hash": "TwwPtPIerilnpKRKLHAPND_kP88BCp5Re3rp7IyK2G4"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2273,7 +2278,7 @@ B.2.  Example 2: Type Metadata
      "name": "Betelgeuse Education Credential - Preliminary Version",
      "description": "This is our development version of the education credential. Don't panic.",
      "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
-     "extends#integrity": "sha256-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-WRL5",
+     "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
      "display": [
        {
          "lang": "en-US",
@@ -2283,7 +2288,7 @@ B.2.  Example 2: Type Metadata
            "simple": {
              "logo": {
                "uri": "https://betelgeuse.example.com/public/education-logo.png",
-               "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+               "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Betelgeuse Ministry of Education logo"
              },
              "background_color": "#12107c",
@@ -2292,7 +2297,7 @@ B.2.  Example 2: Type Metadata
            "svg_templates": [
              {
                "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-               "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+               "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
                "properties": {
                  "orientation": "landscape",
                  "color_scheme": "light",
@@ -2309,7 +2314,7 @@ B.2.  Example 2: Type Metadata
            "simple": {
              "logo": {
                "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-               "uri#integrity": "sha256-LmXfh-9cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1V",
+               "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
              },
              "background_color": "#12107c",
@@ -2318,7 +2323,7 @@ B.2.  Example 2: Type Metadata
            "svg_templates": [
              {
                "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-               "uri#integrity": "sha256-8cLlJNXN-TsMk-PmKjZ5t0WRL5ca_xGgX3c1VLmXfh-9c",
+               "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
                "properties": {
                  "orientation": "landscape",
                  "color_scheme": "light",
@@ -2395,7 +2400,7 @@ B.2.  Example 2: Type Metadata
        }
      ],
      "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-     "schema_uri#integrity": "sha256-o984vn819a48ui1llkwPmKjZ5t0WRL5ca_xGgX3c1VLmXfh"
+     "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
    }
 
 Appendix C.  Acknowledgements
@@ -2403,11 +2408,24 @@ Appendix C.  Acknowledgements
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
    Christian Bormann, George J Padayatti, Giuseppe De Marco, Lukas J
    Han, Leif Johansson, Michael B.  Jones, Mike Prorock, Orie Steele,
-   Paul Bastian, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda
-   for their contributions (some of which substantial) to this draft and
-   to the initial set of implementations.
+   Paul Bastian, Pavel Zarecky, Torsten Lodderstedt, Tobias Looker, and
+   Kristina Yasuda for their contributions (some of which substantial)
+   to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
+
+   -10
+
+   *  Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer
+      Signature Mechanisms' and rework some text accordingly.  Provide a
+      web-based metadata resolution mechanism and an inline x509
+      mechanism.  A DID-based mechanism is not explicitly provided
+      herein but still possible via profile/extension.  Be explicit that
+      the employed Issuer Signature Mechanism has to be one that is
+      permitted for the Issuer according to policy.  Be more clear that
+      one permitted Issuer Signature Mechanism is sufficient.
+   *  Fix [...]#integrity claim values in examples (Subresource
+      Integrity uses regular base64 encoding and some were wrong length)
 
    -09
 
