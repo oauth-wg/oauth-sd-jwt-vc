@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-06T00:39:23.042510+00:00",
+  "timestamp": "2025-07-08T00:35:17.049597+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7873,7 +7873,7 @@
       ],
       "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
       "createdAt": "2025-05-20T13:14:59Z",
-      "updatedAt": "2025-06-04T09:08:32Z",
+      "updatedAt": "2025-07-07T15:43:32Z",
       "closedAt": null,
       "comments": [
         {
@@ -7889,6 +7889,13 @@
           "body": "> If I understand you correctly, you suggest to add the \"mandatory\" information to ensure that in those cases where the schema indicates that an attribute is optional, a DCQL query author can understand whether the attribute is optional to issue or just optional to disclose. Is that correct?\n\nYes. This was my main point.\n\n> \n>     * One solution would be add, in fact, the mandatory attribute.\n> \n>     * Another solution would be to distinguish the schema for the issued credential from the one for the received credential (see Issue [Distinguish between issuance and presentation schemas #237](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237) suggesting this).\n> \n>     * The third solution would be to rely on the existing VCI metadata.\n> \n> \n> I think adding \"mandatory\" would not hurt (even though the name is not great).\n\n\nThe third option (to use VCI metadata) is the only option available today to the implementers, yet it feels like a compromise.\nSD-JWT-VC is a format independent of VCI protocol.\n\nThe 2nd option also gives me the impression that we leave for JSON Schema validation what we cannot (or we do not want, for practical reasons) to express in the type metadata `claims`. So actually schema is short of last line of defense to our validation.\n\nPersonally I believe that the best approach is to add the `mandatory` or something with a  better name.\n\n\nPS:  Specification already \"implicitly\" uses the mandatory concept, when it requires that `vct` and `iss` claims are required and must  be never selectively disclosed.\n\nPS2: Mandatory is not about a claim being present or not. Mainly it expresses a constraint on disclosures",
           "createdAt": "2025-06-04T07:20:03Z",
           "updatedAt": "2025-06-04T09:08:31Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I would be fine with adding `mandatory`.",
+          "createdAt": "2025-07-07T15:43:32Z",
+          "updatedAt": "2025-07-07T15:43:32Z"
         }
       ]
     },
@@ -7902,11 +7909,12 @@
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [
-        "discuss"
+        "enhancement",
+        "Ready-for-PR"
       ],
       "body": "The specification allows a type medata to extend a (parent) metadata, and so on recursively.\n\nSo a wallet or a verifier, needs first to resolve the `extend` relationships ( a list of type metadata objects) and then validate the SD-JWT-VC against this list of metadata.\n\nSpecifications provides some clear instructions about the `schema` validation. The sd-jwt-vc should be valid against all schemas of the above list.\n\nWhat I miss is the following: what are the rules for `claims` and `display` properties.\n\nTo put it otherwise, assuming two type metadata   A and B (parent) there is need to be a way to \"merge\" them into\n\n* a single list of claim metadata \n* a single list of display \n* a list of schema\n\nPlease advice \n",
       "createdAt": "2025-05-20T14:07:26Z",
-      "updatedAt": "2025-06-04T07:04:24Z",
+      "updatedAt": "2025-07-07T16:19:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -7969,10 +7977,12 @@
       "author": "nikosft",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
       "createdAt": "2025-06-03T22:36:07Z",
-      "updatedAt": "2025-06-24T22:16:37Z",
+      "updatedAt": "2025-07-07T16:24:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -7988,6 +7998,13 @@
           "body": "I am referring to the JWK in the cnf claim. An issuer may store the public key of a holder in a certificate,  save it in a  location it controls, and set the x5u parameter of the JWK in the cnf claim accordingly. Note that x5u can co-exist with other members of the JWK, hence it may not be noticed by the holder. If the verifier follows strictly RFC 7517 it shall retrieve the certificate and verify it matches the rest of the members of the JWK.  ",
           "createdAt": "2025-06-24T22:16:37Z",
           "updatedAt": "2025-06-24T22:16:37Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Discussed with @bc-pi and @awoie: We should add text advising against supporting cnf methods that involve retrieving a key from a (potentially issuer-controlled) remote source.",
+          "createdAt": "2025-07-07T16:23:41Z",
+          "updatedAt": "2025-07-07T16:24:09Z"
         }
       ]
     },
@@ -8000,10 +8017,13 @@
       "author": "charsleysa",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "good first issue",
+        "Ready-for-PR"
+      ],
       "body": "Under section 9, the `display` property of claim metadata is described as an object:\n\n> display: An object containing display information for the claim, as described in [Section 9.2](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-09.html#claim-display-metadata). This property is OPTIONAL.\n\nHowever under section 9.2, it is described as an array of objects:\n> The display property is an array containing display information for the claim. The array MUST contain an object for each language that is supported by the type. The consuming application MUST use the language tag it considers most appropriate for the user.",
       "createdAt": "2025-06-12T03:26:38Z",
-      "updatedAt": "2025-06-12T03:26:38Z",
+      "updatedAt": "2025-07-07T16:17:40Z",
       "closedAt": null,
       "comments": []
     },
@@ -8016,10 +8036,12 @@
       "author": "tweeddalex",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "Hi all, we've been working on an implementation of issuing SD-JWT VCs with `did:cheqd` using Paradym. \n\nOne part of the VC Data Model that we want to include within the issued SD-JWT VC is the `termsOfUse` field, for referencing 'accreditations' issued to the issuer (stored on our trust registry). However, this is currently not a section that is mapped across in the spec. Would it be worth creating more OPTIONAL JWT claims to map missing sections of the VC Data Model (`evidence`, `termsOfUse`, etc?) - or have these been purposefully omitted to keep the spec as lightweight and simple as possible? \n\nIn particular `termsOfUse` has been increasingly used for pointing to trust registry entries in multiple implementations (see OIDF issue here: https://github.com/openid/federation-wallet/issues/48; EBSI issuer trust model here: https://hub.ebsi.eu/vc-framework/trust-model/issuer-trust-model-v4 and cheqd trust registry model here: https://docs.cheqd.io/product/studio/trust-registries/dtc/referencing-in-credential)\n\nThanks!\n",
       "createdAt": "2025-06-25T14:15:47Z",
-      "updatedAt": "2025-06-27T09:18:35Z",
+      "updatedAt": "2025-07-07T16:28:34Z",
       "closedAt": null,
       "comments": [
         {
@@ -8042,6 +8064,20 @@
           "body": "Yeah on Juan's point, maybe the best place would be to just nest these sections as claims within the Unsecured Payload. Perhaps in one of the examples showing the `schema` and listed fields, we could include, `evidence`, `termsOfUse`, etc within the schema - so it provides at least a common pathway for people to include these sections.",
           "createdAt": "2025-06-27T09:18:35Z",
           "updatedAt": "2025-06-27T09:18:35Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Discussed with @bc-pi and @awoie: Adding `evidence` and `termsOfUse` information to an `ld` structure as defined in [SD-JWT VC LD](https://openid.github.io/OpenID4VP/openid-4-verifiable-presentations-wg-draft.html#name-sd-jwt-vcld) seems to be the an appropriate way to convey the information. At this time, we don't plan to define claims for that in SD-JWT VC.",
+          "createdAt": "2025-07-07T16:07:25Z",
+          "updatedAt": "2025-07-07T16:07:25Z"
+        },
+        {
+          "author": "tweeddalex",
+          "authorAssociation": "NONE",
+          "body": "Thanks @danielfett - understood that the goal of this spec isn't to map the VCDM fields into SD-JWT VC, but maybe a separate question/note would be:\n\n- One area where I see SD-JWT VC lacking is that there's no field that you can utilise to find a trust registry or accreditation of the issuer\n- This is fine if you're signing the SD-JWT VC using an X.509 certificate, because you can traverse to the Root CA using the PKI chain\n- However, if the issuer is an HTTPS URI and the public key is linked with that HTTPS URI, there's no simple mechanism to find whether that is really a trusted issuer - you just know that the VC is cryptographically secured. \n- Thinking about this issue, it would be awesome if there was an optional field baked into the spec that allowed implementations to include a URI to a trust registry or accreditation, where the verifier could check the legitimacy of the issuer (whether that's an entity statement for OIDF, a XML trusted list, or a DID URL that dereferences to some resource)\n- Happy if this is out of scope, but it might be a question worth raising with the rest of the team",
+          "createdAt": "2025-07-07T16:27:49Z",
+          "updatedAt": "2025-07-07T16:28:34Z"
         }
       ]
     },
@@ -8070,10 +8106,12 @@
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "In the context of [this issue](https://github.com/openid/oid4vc-haip/pull/165/files#r1969911921), it was discussed whether the [section in HAIP defining additional requirements on the validity claims in SD-JWT VC](https://github.com/openid/oid4vc-haip/pull/165/files#diff-762ef65fd82909517226ac1bb7e8855792bb57021abc1637c15b8557154dbbf1R207-R225) should exist at all.\n\nThis issue is an invitation to discuss if some/all of the requirements currently in HAIP should be moved to SD-JWT VC.\n\nAdditionally, the requirements should be adapted to the new signature profile mechanism in SD-JWT VC.",
       "createdAt": "2025-07-03T16:25:18Z",
-      "updatedAt": "2025-07-03T20:54:39Z",
+      "updatedAt": "2025-07-07T15:59:11Z",
       "closedAt": null,
       "comments": [
         {
@@ -8082,6 +8120,13 @@
           "body": "I think HAIP is for very specific use cases while SD-JWT VC themselves are open to any use case.\n\nFor example, why would a VC representing a university degree need an expiry? The degree is a point in time document, it doesn't expire, it simply states that an achievement was received by a person at a point in time and that record is forever valid unless revoked. ",
           "createdAt": "2025-07-03T20:54:39Z",
           "updatedAt": "2025-07-03T20:54:39Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Discussed with @bc-pi and @awoie that there is nothing we should change in SD-JWT VC.",
+          "createdAt": "2025-07-07T15:59:02Z",
+          "updatedAt": "2025-07-07T15:59:11Z"
         }
       ]
     }
@@ -24914,6 +24959,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 322,
+      "id": "PR_kwDOJbVClc6dzUca",
+      "title": "-11",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/322",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "These go to eleven. ",
+      "createdAt": "2025-07-07T17:38:29Z",
+      "updatedAt": "2025-07-07T17:38:30Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "fed5f40832492f567d3a1019a1eaf5907670ad47",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "this-one-goes-to-eleven",
+      "headRefOid": "fc46b0900f027da8a0d5a6e8f9d985628d0a1098",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
