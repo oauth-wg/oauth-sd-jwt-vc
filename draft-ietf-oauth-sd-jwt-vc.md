@@ -1553,7 +1553,7 @@ Mike Prorock,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
-Stefan Charsley, 
+Stefan Charsley,
 Torsten Lodderstedt,
 Tobias Looker, and
 Kristina Yasuda
