@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 26 December 2025                                  Authlete Inc.
+Expires: 10 January 2026                                   Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                            24 June 2025
+                                                             9 July 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 December 2025.
+   This Internet-Draft will expire on 10 January 2026.
 
 Copyright Notice
 
@@ -564,9 +564,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EK7AS
-   6WuMomv3rhKDpqzQxiYOXxi9HUkTD2USU_k-Rj6BjVQunyaLDxTmMzoVDKSQoCJAQNW8
-   -tgPVbSv4FzwQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.VnUiI
+   dnWX99iaEYjupAtI7T47SQInsv1u067Dl7rF0yTQxz7_SKHmxprB7oN72DBc6Dnfu_vS
+   4iGckO813RQ2w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -690,17 +690,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EK7AS
-   6WuMomv3rhKDpqzQxiYOXxi9HUkTD2USU_k-Rj6BjVQunyaLDxTmMzoVDKSQoCJAQNW8
-   -tgPVbSv4FzwQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.VnUiI
+   dnWX99iaEYjupAtI7T47SQInsv1u067Dl7rF0yTQxz7_SKHmxprB7oN72DBc6Dnfu_vS
+   4iGckO813RQ2w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTA3OTIyOD
-   ksICJzZF9oYXNoIjogImduSUJBOVVCRGtTR2NWN3JkUE9DN1YxbTRKeVNGRXh0SnJmU1
-   91X1AtMW8ifQ.7g7YSC2jI7yPUvw5i7GZduOgwyv6atrYIgy4grRs5QY5TMh7ZVDegpe
-   nFPKBxq69g5Z5Po-TiFv3CpT7aMAnYQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTIwODAwNT
+   AsICJzZF9oYXNoIjogImc5TkNabTR1cTROdDhpeUxrZjZGbjh0aDhxSG1UaTFWcUE4dH
+   VvUEYxbTQifQ.U2KPp3kCYThiUumJzlCCWELv_elnAJUNXXloijPAs_Hde1Wmgt2O0eH
+   NqNjogv2er2yGqeIM9wLVDYU4jznyIQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -742,8 +742,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.4e3sAqoIJvzF-UnSgVG0GIZPrhBF2lxJB9M4Tg0zI0hFwn
-   3IaNXr8o85h_9nbPmX-x2lsJU_Zjmh5CGoLKBR4A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.J4myB3nM_PFUfizlgT4vUyw4-g-0eHmIWYHD2C4kz6YSeQ
+   p-Hr-WI7KCTvjMpxOHQb8TCbdabsIzZEhap6te2g~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1654,10 +1654,10 @@ Table of Contents
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
-              List", Work in Progress, Internet-Draft, draft-ietf-oauth-
-              status-list-11, 23 May 2025,
+              List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
+              oauth-status-list-12, 7 July 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-11>.
+              status-list-12>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1886,8 +1886,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.jxz72DXgZmygRPyPIhFSiLT-CvClxzuOGsTPpx3hdj6nHTK
-   mw4oeCEoz4PDMd3YUHPBNndql__X2nXwsMClQUw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.jpLYGsMOg-PGjVutsXx00KI5TPNSkEeCS9m6mMQZV5EmtEk
+   01L3t5oBV7_zH75Cg7G64-6tKWD7czztruver1Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2222,8 +2222,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.jxz72DXgZmygRPyPIhFSiLT-CvClxzuOGsTPpx3hdj6nHTK
-   mw4oeCEoz4PDMd3YUHPBNndql__X2nXwsMClQUw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.jpLYGsMOg-PGjVutsXx00KI5TPNSkEeCS9m6mMQZV5EmtEk
+   01L3t5oBV7_zH75Cg7G64-6tKWD7czztruver1Q~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2234,17 +2234,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTA3OTIyODksICJzZF9oYXNoIjogIlItd19sMVE3djBxcnQ0MmxPTWJRRWl
-   CbGZTY3QxQmdTQzI4WndzRFVkQWsifQ.5vyiscz72JxGjNUZIIL5_MtyjA6ouOWvaa7n
-   73_5ddR-cBPHahtr3SrCQNsSnkTszIZjhEhabfWoOK_UWHm3HA
+   hdCI6IDE3NTIwODAwNTAsICJzZF9oYXNoIjogImxlZTNDUDVMUUJnU1V5d1phd05LQzZ
+   yVmxveUFmQUJaekdlR2lHaTU4bzgifQ.eXhx1Vbw5xOwTXzi8HAFrINy9sCebJWbxFfz
+   0WTNPBdmBtYRiDVbNKSEXjs524O0e9FKoi-n-lyHr2TGJbmdJg
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1750792289,
-     "sd_hash": "R-w_l1Q7v0qrt42lOMbQEiBlfSct1BgSC28ZwsDUdAk"
+     "iat": 1752080050,
+     "sd_hash": "lee3CP5LQBgSUywZawNKC6rVloyAfABZzGeGiGi58o8"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2413,6 +2413,8 @@ Appendix C.  Acknowledgements
    to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
+
+   -11
 
    -10
 
