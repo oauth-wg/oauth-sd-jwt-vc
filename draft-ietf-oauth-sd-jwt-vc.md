@@ -1542,6 +1542,7 @@ We would like to thank
 Aaron Parecki,
 Alen Horvat,
 Andres Uribe,
+Babis Routis,
 Christian Bormann,
 George J Padayatti,
 Giuseppe De Marco,
@@ -1552,6 +1553,7 @@ Mike Prorock,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+Stefan Charsley, 
 Torsten Lodderstedt,
 Tobias Looker, and
 Kristina Yasuda
