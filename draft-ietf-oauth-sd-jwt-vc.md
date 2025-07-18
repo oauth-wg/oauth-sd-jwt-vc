@@ -921,7 +921,7 @@ Each object contains the following properties:
 
 - `path`: An array indicating the claim or claims that are being addressed, as
   described below. This property is REQUIRED.
-- `display`: An object containing display information for the claim, as
+- `display`: An array containing display information for the claim or claims that are being addressed, as
   described in (#claim-display-metadata). This property is OPTIONAL.
 - `sd`: A string indicating whether the claim is selectively disclosable, as
   described in (#claim-selective-disclosure-metadata). This property is OPTIONAL.
@@ -1542,6 +1542,7 @@ We would like to thank
 Aaron Parecki,
 Alen Horvat,
 Andres Uribe,
+Babis Routis,
 Christian Bormann,
 George J Padayatti,
 Giuseppe De Marco,
@@ -1552,6 +1553,7 @@ Mike Prorock,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+Stefan Charsley,
 Torsten Lodderstedt,
 Tobias Looker, and
 Kristina Yasuda
@@ -1561,6 +1563,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
+* Fixed an inconsistency to the description of `display` attribute of claim metadata.
 
 -10
 
