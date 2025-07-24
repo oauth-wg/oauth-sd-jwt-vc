@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-22T00:37:15.226560+00:00",
+  "timestamp": "2025-07-24T00:37:23.812029+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8203,7 +8203,7 @@
       "labels": [],
       "body": "The disappearance of the DID in section 3.5 is causing questions and a lot of disappointment among projects. Considering that the SD-JWT VC standard is backward-looking, towards x509 certificates from the 1980s, while the demand today is clearly towards decentralized ecosystems. Just for your information.\nThe information in section 10.2 generally suggesting that in fact the other methods (DIDs?) would be less reliable than those cited is perplexing (this is a personal opinion).",
       "createdAt": "2025-07-21T08:15:03Z",
-      "updatedAt": "2025-07-21T10:19:01Z",
+      "updatedAt": "2025-07-22T21:20:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -8212,8 +8212,31 @@
           "body": "Just like before, editors removed this in a deceptive PR, against WG consensus. Chairs should step in (again) to fix this.\n\nIn my opinion, this kind of behavior raises questions about motivations of the editors and about governance of the WG.",
           "createdAt": "2025-07-21T10:19:01Z",
           "updatedAt": "2025-07-21T10:19:01Z"
+        },
+        {
+          "author": "steffenschwalm",
+          "authorAssociation": "NONE",
+          "body": "@danielfett @awoie May you please explain the reasons for change? Why can\u00b4t we keep the section as agreed autumn 2024 and last month 2025\n\nfully agree to @peacekeeper @ThierryThevenet to keep the text\n\n\"DID Document Resolution: If a recipient supports DID Document Resolution and if the iss value contains a DID [[W3C.DID](https://www.w3.org/TR/did-core/)], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the iss value. In this case, if the kid JWT header parameter is present, the kid MUST be a relative or absolute DID URL of the DID in the iss value, identifying the public key.\"",
+          "createdAt": "2025-07-22T11:39:59Z",
+          "updatedAt": "2025-07-22T21:20:07Z"
         }
       ]
+    },
+    {
+      "number": 327,
+      "id": "I_kwDOJbVClc7B2Yit",
+      "title": "Invalid text \"Note that iss and vct are always required by this specification.\"",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/327",
+      "state": "OPEN",
+      "author": "TimoGlastra",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Since #316 was merged, `iss` is now optional. \n\nMentioned in [6.5.1. ](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-10.html#section-6.5.1)[Schema Definition](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-10.html#name-schema-definition)",
+      "createdAt": "2025-07-22T11:16:52Z",
+      "updatedAt": "2025-07-22T11:16:52Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
