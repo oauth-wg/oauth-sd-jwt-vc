@@ -1152,7 +1152,7 @@ to phone home to the Issuer.
 
 For example, a malicious Issuer could generate a unique value for the Issuer identifier
 per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT VC Issuer Metadata.
-The Verifier would create a HTTPS GET request to the Holder-specific well-known URI
+The Verifier would create an HTTP GET request to the Holder-specific well-known URI
 when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
 and how often the SD-JWT VC was used.
 
