@@ -1177,14 +1177,14 @@ format encoded as CBOR and secured using COSE.
 
 In (#retrieving-type-metadata), various methods for distributing and retrieving
 Type Metadata are described. For methods which rely on a network connection to a
-URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
+URL (e.g., provided by an Issuer), the Issuer and other third parties may be able
 to track the usage of a credential by observing requests to the Type Metadata URL.
 
 Consumers SHOULD prefer methods for retrieving Type Metadata that do not
 leak information about the usage of a credential to third parties. The
 recommendations in (#robust-retrieval) apply.
 
-<reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
+<reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
       <title>Well-Known URIs</title>
       <author>
