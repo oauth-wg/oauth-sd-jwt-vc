@@ -417,7 +417,7 @@ If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-The following is a non-normative example of a HTTP request for the JWT VC Issuer
+The following is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
