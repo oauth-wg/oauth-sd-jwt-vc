@@ -417,7 +417,7 @@ If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-The following is a non-normative example of a HTTP request for the JWT VC Issuer
+The following is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
@@ -1104,7 +1104,7 @@ described in (#privacy-preserving-retrieval-of-type-metadata).
 
 Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., `display`, allows issuers and providers of metadata to
 specify human-readable information. These can contain arbitrary textual information that
-may be displayed to developers. As such, any consuming application MUST ensure that maliciously
+may be displayed to end users and developers. As such, any consuming application MUST ensure that maliciously
 crafted information cannot be used to compromise the security of the application
 or the privacy of the user. To this end, the following considerations apply:
 
@@ -1150,13 +1150,13 @@ to phone home to the Issuer.
 
 For example, a malicious Issuer could generate a unique value for the Issuer identifier
 per Holder, e.g., `https://example.com/issuer/holder-1234` and host the JWT VC Issuer Metadata.
-The Verifier would create a HTTPS GET request to the Holder-specific well-known URI
+The Verifier would create an HTTP GET request to the Holder-specific well-known URI
 when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
 and how often the SD-JWT VC was used.
 
 Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
-and should monitor suspicious behaviour such as frequently rotating Issuer identifiers.
-If such behaviour was detected, Verifiers are advised to reject SD-JWT VCs issued by such
+and should monitor suspicious behaviour such as frequent rotation of those identifiers.
+If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
 
 Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
@@ -1175,14 +1175,14 @@ format encoded as CBOR and secured using COSE.
 
 In (#retrieving-type-metadata), various methods for distributing and retrieving
 Type Metadata are described. For methods which rely on a network connection to a
-URL (e.g., provided by an Issuer), third parties (like the Issuer) may be able
+URL (e.g., provided by an Issuer), the Issuer and other third parties may be able
 to track the usage of a credential by observing requests to the Type Metadata URL.
 
 Consumers SHOULD prefer methods for retrieving Type Metadata that do not
 leak information about the usage of a credential to third parties. The
 recommendations in (#robust-retrieval) apply.
 
-<reference anchor="IANA.well-known" target="http://www.iana.org/assignments/well-known-uris">
+<reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
       <title>Well-Known URIs</title>
       <author>
@@ -1540,6 +1540,7 @@ We would like to thank
 Aaron Parecki,
 Alen Horvat,
 Andres Uribe,
+Andrii Deinega,
 Babis Routis,
 Christian Bormann,
 George J Padayatti,
