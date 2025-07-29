@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-24T00:37:23.812029+00:00",
+  "timestamp": "2025-07-29T00:40:46.744190+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8230,13 +8230,77 @@
       "state": "OPEN",
       "author": "TimoGlastra",
       "authorAssociation": "NONE",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "bc-pi"
+      ],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "Since #316 was merged, `iss` is now optional. \n\nMentioned in [6.5.1. ](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-10.html#section-6.5.1)[Schema Definition](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-10.html#name-schema-definition)",
       "createdAt": "2025-07-22T11:16:52Z",
-      "updatedAt": "2025-07-22T11:16:52Z",
+      "updatedAt": "2025-07-28T18:37:20Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks for catching that @TimoGlastra. That sentence should be fixed or maybe just removed. ",
+          "createdAt": "2025-07-28T18:37:09Z",
+          "updatedAt": "2025-07-28T18:37:09Z"
+        }
+      ]
+    },
+    {
+      "number": 329,
+      "id": "I_kwDOJbVClc7C05ZO",
+      "title": "processing of claims and the crit header parameter",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/329",
+      "state": "CLOSED",
+      "author": "adeinega",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section \"verification and processing\" says that\n\n> Any claims used that are not understood MUST be ignored.\n\nI dare say this shouldn't contradict to https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11.",
+      "createdAt": "2025-07-28T08:04:57Z",
+      "updatedAt": "2025-07-28T19:24:44Z",
+      "closedAt": "2025-07-28T18:26:56Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Headers and claims are different things so I don't see that there's any contradiction. ",
+          "createdAt": "2025-07-28T14:47:29Z",
+          "updatedAt": "2025-07-28T14:47:29Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "NONE",
+          "body": "For some stupid reason, I thought one can specify one of the claims in a JWT in the crit header parameter (in addition to opaque extensions and algorithms) making it required for a receiver to understand how to process them.\n\nMy bad.\n\nUnless you want to introduce say something like `crit_claim` to indicate that a receiver must understand how to process certain claims to in a SD-JWT VC, please close this issue.",
+          "createdAt": "2025-07-28T17:10:26Z",
+          "updatedAt": "2025-07-28T17:10:26Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Unless you want to introduce say something like `crit_claim` to indicate that a receiver must understand how to process certain claims to in a SD-JWT VC, please close this issue.\n\nThe idea has come up a couple of times but I've been very reluctant to do something like that without a real compelling case. And I think application of `vct` can cover much of what might be needed. ",
+          "createdAt": "2025-07-28T18:26:41Z",
+          "updatedAt": "2025-07-28T18:26:41Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "NONE",
+          "body": "One question for you if I may, @bc-pi... what's your take on an unencoded detached payload for SD-JWT VCs? I refer to [JSON Web Signature (JWS) Unencoded Payload Option (RFC 7797)](https://datatracker.ietf.org/doc/html/rfc7797) with its `\"b64\":false,\"crit\":[\"b64\"]` in the header.\n\nI didn't find anything specific on it, nothing allowing or forbidding it, but of course, it's hard to imagine how that can be used in specific contexts (the VP Token).",
+          "createdAt": "2025-07-28T19:15:46Z",
+          "updatedAt": "2025-07-28T19:15:46Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I honestly hadn't thought about it so I don't really have a take. I guess I don't really see, offhand anyway, a good reason to use it in this context but I'd lean towards not prohibiting it or really saying anything specific about it. ",
+          "createdAt": "2025-07-28T19:24:43Z",
+          "updatedAt": "2025-07-28T19:24:43Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -25163,6 +25227,94 @@
               "updatedAt": "2025-07-09T16:57:23Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 328,
+      "id": "PR_kwDOJbVClc6g446_",
+      "title": "mnr editorial changes",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/328",
+      "state": "OPEN",
+      "author": "adeinega",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-28T05:54:04Z",
+      "updatedAt": "2025-07-28T19:28:35Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8a3ebfb517fd56e1dd87a4b076a6c77cfa5a5310",
+      "headRepository": "adeinega/oauth-sd-jwt-vc",
+      "headRefName": "patch-1",
+      "headRefOid": "eb18c700c8456622a5259b523347c9c901df2c41",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "thanks @adeinega, you should add yourself to the [acknowledgements](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#acknowledgements-acknowledgements) (alphabetic by first name) ",
+          "createdAt": "2025-07-28T18:51:55Z",
+          "updatedAt": "2025-07-28T18:51:55Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc62cc-H",
+          "commit": {
+            "abbreviatedOid": "8f445b2"
+          },
+          "author": "adeinega",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-28T07:35:34Z",
+          "updatedAt": "2025-07-28T07:35:34Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "I believe the same goes for Holders.",
+              "createdAt": "2025-07-28T07:35:34Z",
+              "updatedAt": "2025-07-28T07:35:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc62o9FO",
+          "commit": {
+            "abbreviatedOid": "b6af7d8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-07-28T18:47:47Z",
+          "updatedAt": "2025-07-28T18:47:48Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "i suppose so but the ability to do so and the implications of it are kinda different ",
+              "createdAt": "2025-07-28T18:47:47Z",
+              "updatedAt": "2025-07-28T18:47:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc62pBm3",
+          "commit": {
+            "abbreviatedOid": "b6af7d8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-28T18:52:13Z",
+          "updatedAt": "2025-07-28T18:52:13Z",
+          "comments": []
         }
       ]
     }
