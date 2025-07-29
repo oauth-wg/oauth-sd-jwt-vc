@@ -738,8 +738,6 @@ The following is a non-normative example of a JSON Schema document for the examp
 }
 ```
 
-Note that `iss` and `vct` are always required by this specification.
-
 ### Schema Validation {#schema-validation}
 
 If a `schema` or `schema_uri` property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm
@@ -1554,6 +1552,7 @@ Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
 Stefan Charsley,
+Timo Glastra,
 Torsten Lodderstedt,
 Tobias Looker, and
 Kristina Yasuda
@@ -1564,6 +1563,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -11
 
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
+* Editorial updates and fixes.
 
 -10
 
