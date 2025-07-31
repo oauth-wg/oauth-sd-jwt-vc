@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-29T00:40:46.744190+00:00",
+  "timestamp": "2025-07-31T00:37:21.915967+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8116,7 +8116,7 @@
       "id": "I_kwDOJbVClc6-uzuc",
       "title": "Be more opinionated about validity claims?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/321",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -8125,8 +8125,8 @@
       ],
       "body": "In the context of [this issue](https://github.com/openid/oid4vc-haip/pull/165/files#r1969911921), it was discussed whether the [section in HAIP defining additional requirements on the validity claims in SD-JWT VC](https://github.com/openid/oid4vc-haip/pull/165/files#diff-762ef65fd82909517226ac1bb7e8855792bb57021abc1637c15b8557154dbbf1R207-R225) should exist at all.\n\nThis issue is an invitation to discuss if some/all of the requirements currently in HAIP should be moved to SD-JWT VC.\n\nAdditionally, the requirements should be adapted to the new signature profile mechanism in SD-JWT VC.",
       "createdAt": "2025-07-03T16:25:18Z",
-      "updatedAt": "2025-07-07T15:59:11Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-29T18:40:50Z",
+      "closedAt": "2025-07-29T18:40:50Z",
       "comments": [
         {
           "author": "charsleysa",
@@ -8141,6 +8141,13 @@
           "body": "Discussed with @bc-pi and @awoie that there is nothing we should change in SD-JWT VC.",
           "createdAt": "2025-07-07T15:59:02Z",
           "updatedAt": "2025-07-07T15:59:11Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "closing after 3 weeks of pending close ",
+          "createdAt": "2025-07-29T18:40:50Z",
+          "updatedAt": "2025-07-29T18:40:50Z"
         }
       ]
     },
@@ -8227,19 +8234,17 @@
       "id": "I_kwDOJbVClc7B2Yit",
       "title": "Invalid text \"Note that iss and vct are always required by this specification.\"",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/327",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "TimoGlastra",
       "authorAssociation": "NONE",
       "assignees": [
         "bc-pi"
       ],
-      "labels": [
-        "Ready-for-PR"
-      ],
+      "labels": [],
       "body": "Since #316 was merged, `iss` is now optional. \n\nMentioned in [6.5.1. ](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-10.html#section-6.5.1)[Schema Definition](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-10.html#name-schema-definition)",
       "createdAt": "2025-07-22T11:16:52Z",
-      "updatedAt": "2025-07-28T18:37:20Z",
-      "closedAt": null,
+      "updatedAt": "2025-07-29T18:32:35Z",
+      "closedAt": "2025-07-29T18:32:35Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -25235,24 +25240,26 @@
       "id": "PR_kwDOJbVClc6g446_",
       "title": "mnr editorial changes",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/328",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "adeinega",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-07-28T05:54:04Z",
-      "updatedAt": "2025-07-28T19:28:35Z",
+      "updatedAt": "2025-07-29T19:50:20Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8a3ebfb517fd56e1dd87a4b076a6c77cfa5a5310",
       "headRepository": "adeinega/oauth-sd-jwt-vc",
       "headRefName": "patch-1",
       "headRefOid": "eb18c700c8456622a5259b523347c9c901df2c41",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-07-29T18:36:08Z",
+      "mergedAt": "2025-07-29T18:36:08Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "f13bc95305781e1fbd1041944e36899dd01c9fd2"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -25269,7 +25276,7 @@
             "abbreviatedOid": "8f445b2"
           },
           "author": "adeinega",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "state": "COMMENTED",
           "body": "",
           "createdAt": "2025-07-28T07:35:34Z",
@@ -25314,6 +25321,74 @@
           "body": "",
           "createdAt": "2025-07-28T18:52:13Z",
           "updatedAt": "2025-07-28T18:52:13Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc626JGN",
+          "commit": {
+            "abbreviatedOid": "eb18c70"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-29T18:21:34Z",
+          "updatedAt": "2025-07-29T18:21:34Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 330,
+      "id": "PR_kwDOJbVClc6hOUyR",
+      "title": "iss is not always required so let's not say it is (to fix #327)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/330",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-07-29T17:56:34Z",
+      "updatedAt": "2025-07-29T18:32:34Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8a3ebfb517fd56e1dd87a4b076a6c77cfa5a5310",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "saying-less-makes-it-harder-to-be-wrong",
+      "headRefOid": "ab72228fc1cb4c212c9e424459c194b89d5d2c7e",
+      "closedAt": "2025-07-29T18:32:34Z",
+      "mergedAt": "2025-07-29T18:32:34Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "dd0601c1c41bd7e55a31c52bb1c914e27aa4d471"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc626H8M",
+          "commit": {
+            "abbreviatedOid": "ab72228"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "makes sense",
+          "createdAt": "2025-07-29T18:19:47Z",
+          "updatedAt": "2025-07-29T18:19:47Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc626Ijh",
+          "commit": {
+            "abbreviatedOid": "ab72228"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-07-29T18:20:41Z",
+          "updatedAt": "2025-07-29T18:20:41Z",
           "comments": []
         }
       ]
