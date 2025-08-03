@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-07-31T00:37:21.915967+00:00",
+  "timestamp": "2025-08-03T00:42:08.947895+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8306,6 +8306,38 @@
           "updatedAt": "2025-07-28T19:24:43Z"
         }
       ]
+    },
+    {
+      "number": 331,
+      "id": "I_kwDOJbVClc7Ddq7O",
+      "title": "Type Metadata documents in the unprotected header of the JWS",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/331",
+      "state": "OPEN",
+      "author": "adeinega",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section \"6.3.5. From Type Metadata Glue Documents\" states that\n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS.\n\nThe problem I see here is that a malicious actor can modify \"embedded\" JSON Schema, or Schemas, by adding, for instance, the \"default\" keyword with some value to one or more claims aiming to trick the implementation of a verifier in one or another way (in cases when a holder doesn't provide the Disclosures for those claims).\n\nThe JSON Schema validators aren't intended to perform any data manipulations, such as setting defaults, but considering how many implementations of them are out there and how they work, I suggest moving the Type Metadata documents out from the unprotected header of the JWS.",
+      "createdAt": "2025-07-31T06:54:02Z",
+      "updatedAt": "2025-07-31T06:54:02Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 332,
+      "id": "I_kwDOJbVClc7Dd1wE",
+      "title": "JSON Schema and required claims",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/332",
+      "state": "OPEN",
+      "author": "adeinega",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 6.5.2. Schema Validation says\n\n> If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n\nIf a claim is marked as required in a JSON Schema document but is not disclosed to the verifier, the verifier must reject the VC (or DC).\n\nThe solution seems simple, never mark such claims as \"required\"... but is that always the desirable approach?\n\nIt feels like these nuances should be mentioned and articulated.",
+      "createdAt": "2025-07-31T07:12:03Z",
+      "updatedAt": "2025-07-31T07:12:03Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
