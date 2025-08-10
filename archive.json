@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-07T00:38:31.883808+00:00",
+  "timestamp": "2025-08-10T00:40:54.914286+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8319,7 +8319,7 @@
       "labels": [],
       "body": "Section \"6.3.5. From Type Metadata Glue Documents\" states that\n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS.\n\nThe problem I see here is that a malicious actor can modify \"embedded\" JSON Schema, or Schemas, by adding, for instance, the \"default\" keyword with some value to one or more claims aiming to trick the implementation of a verifier in one or another way (in cases when a holder doesn't provide the Disclosures for those claims).\n\nThe JSON Schema validators aren't intended to perform any data manipulations, such as setting defaults, but considering how many implementations of them are out there and how they work, I suggest moving the Type Metadata documents out from the unprotected header of the JWS.",
       "createdAt": "2025-07-31T06:54:02Z",
-      "updatedAt": "2025-08-05T21:33:33Z",
+      "updatedAt": "2025-08-07T23:20:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -8349,6 +8349,20 @@
           "body": "Not sure if they\u2019re needed\u2026 yet another aspect here, there were attacks against JSON parsers and there were dedicated attacks against JSON Schema validators, and we know there will be always new (creative) attacks, so if it's possible to avoid passing potentially \"modified\" data to them, we better do it.",
           "createdAt": "2025-08-05T21:33:33Z",
           "updatedAt": "2025-08-05T21:33:33Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [@awoie](https://github.com/awoie), the answer is going to be \"no, it wouldn't address my concern\". A malicious actor could whatever he wants in the unprotected header including generating a new SHA-256 (or other) hash for the integrity protection in `_vct#integrity_`\n\nNote that `vct#integrity` is in the SD-JWT Payload though, not the unprotected header, so that isn't accurate. \n\n\n",
+          "createdAt": "2025-08-07T23:18:41Z",
+          "updatedAt": "2025-08-07T23:18:41Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Do we have a concrete need for these for these Type Metadata Glue Documents?\n\nthis was largely a question for @danielfett who was AFAIK the original author of the Type Metadata Glue Document parts of the document. ",
+          "createdAt": "2025-08-07T23:20:01Z",
+          "updatedAt": "2025-08-07T23:20:01Z"
         }
       ]
     },
@@ -8364,7 +8378,7 @@
       "labels": [],
       "body": "Section 6.5.2. Schema Validation says\n\n> If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n\nIf a claim is marked as required in a JSON Schema document but is not disclosed to the verifier, the verifier must reject the VC (or DC).\n\nThe solution seems simple, never mark such claims as \"required\"... but is that always the desirable approach?\n\nIt feels like these nuances should be mentioned and articulated.",
       "createdAt": "2025-07-31T07:12:03Z",
-      "updatedAt": "2025-08-05T18:54:24Z",
+      "updatedAt": "2025-08-07T18:17:40Z",
       "closedAt": null,
       "comments": [
         {
@@ -8380,6 +8394,20 @@
           "body": "@awoie, frankly speaking, I find it a bit surprising that a single JSON Schema document is defined for both types of consumers, I refer to Holders and Verifiers, considering that, by the nature of SD-JWT, Verifiers won\u2019t always see all the claims.\n\nHere is a bit more concrete example: the last_name claim could be marked as required in a citizenship VC, which makes sense for Holders, but not all Verifiers are going to \"see\" it.",
           "createdAt": "2025-08-05T18:54:24Z",
           "updatedAt": "2025-08-05T18:54:24Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [@awoie](https://github.com/awoie), frankly speaking, I find it a bit surprising that a single JSON Schema document is defined for both types of consumers, I refer to Holders and Verifiers, considering that, by the nature of SD-JWT, Verifiers won\u2019t always see all the claims.\n> \n> Here is a bit more concrete example: the last_name claim could be marked as required in a citizenship VC, which makes sense for Holders, but not all Verifiers are going to \"see\" it.\n\nI believe your issue then relates to #237 , correct?",
+          "createdAt": "2025-08-07T17:19:28Z",
+          "updatedAt": "2025-08-07T17:19:28Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "It relates, right. I didn't know you already have https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237, there is clearly a lot of overlap, but they aren't only about the same.",
+          "createdAt": "2025-08-07T18:17:40Z",
+          "updatedAt": "2025-08-07T18:17:40Z"
         }
       ]
     }
