@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-10T00:40:54.914286+00:00",
+  "timestamp": "2025-08-21T00:32:33.095395+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5534,7 +5534,7 @@
       "id": "I_kwDOJbVClc6AnYEv",
       "title": "the wallet finding the user claims in the credential",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/215",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -5543,8 +5543,8 @@
       ],
       "body": "when the user-related claims attested claims are top-level, how does the wallet knows which claims are about the user vs metadata claims vs status related claims? One could say, first validate and remove all metadata claims, than validate and remove all status related claims, and what is left is the claims about the users, but that is not always realistic. for example, issuer put aud, and wallet is not expecting it, how does it know aud is not a claim about the user? or there are multiple mechanisms to express status, when the wallet supports only one of those, how does the wallet know that claim is not a user claim. it would be a bad UX if the wallet accidentally displays those claims to the user.\r\nthe suggestion would be to have a top-level `claims` claim where the issuer puts the claims it is attesting about the user/subject, so that the wallets/verifiers can know clearly, which are the claims about the user.\r\ncc @dangodb",
       "createdAt": "2024-02-27T23:44:20Z",
-      "updatedAt": "2024-12-02T17:54:01Z",
-      "closedAt": null,
+      "updatedAt": "2025-08-19T18:33:05Z",
+      "closedAt": "2025-08-19T18:33:05Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -5594,6 +5594,20 @@
           "body": "> We should add a sentence explaining how that works to the metadata spec as soon as the display metadata was added, see https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/236\r\n\r\nShould we add something now that #236 has been incorporated? Or just close this?  ",
           "createdAt": "2024-12-02T17:54:00Z",
           "updatedAt": "2024-12-02T17:54:00Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It's not clear to me that any changes or additions are needed here. But others might disagree. Would said others propose something? Or can we close this? It has had the `Ready-for-PR` label on it for over a year.\n",
+          "createdAt": "2025-08-19T16:02:05Z",
+          "updatedAt": "2025-08-19T16:02:05Z"
+        },
+        {
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "body": "this is outdated",
+          "createdAt": "2025-08-19T18:33:05Z",
+          "updatedAt": "2025-08-19T18:33:05Z"
         }
       ]
     },
@@ -7711,11 +7725,12 @@
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
-        "enhancement"
+        "enhancement",
+        "Ready-for-PR"
       ],
       "body": "For the \"simple\" rendering method in addition to supporting the `background_color` it could be a good idea to also support a `background_image` for those credentials that already have a **well-defined background** obviously going to specify the different dimensions and resolutions to support as for example is done for iOS and Android Wallets (see https://developer.apple.com/design/human-interface-guidelines/wallet). \n\nThe use of SVG is very complex and also requires a very high computational load for the rendering of complex objects or with many shades just think of the background of a national identity card.",
       "createdAt": "2025-03-26T11:18:33Z",
-      "updatedAt": "2025-06-03T18:27:38Z",
+      "updatedAt": "2025-08-20T06:50:27Z",
       "closedAt": null,
       "comments": [
         {
@@ -7724,6 +7739,13 @@
           "body": "That seems like a reasonable thing to do. Feel free to create a PR if you want.",
           "createdAt": "2025-06-03T18:27:36Z",
           "updatedAt": "2025-06-03T18:27:36Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "NONE",
+          "body": "I can work on this. By adding variants of the background image (one option for dark ui, one for light), I would also update the logo property since some of the features are also relevant for it",
+          "createdAt": "2025-08-20T06:50:27Z",
+          "updatedAt": "2025-08-20T06:50:27Z"
         }
       ]
     },
@@ -7883,11 +7905,12 @@
       "assignees": [],
       "labels": [
         "enhancement",
-        "discuss"
+        "discuss",
+        "Ready-for-PR"
       ],
       "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
       "createdAt": "2025-05-20T13:14:59Z",
-      "updatedAt": "2025-07-07T15:43:32Z",
+      "updatedAt": "2025-08-19T18:19:06Z",
       "closedAt": null,
       "comments": [
         {
@@ -8410,6 +8433,26 @@
           "updatedAt": "2025-08-07T18:17:40Z"
         }
       ]
+    },
+    {
+      "number": 333,
+      "id": "I_kwDOJbVClc7GzZ63",
+      "title": "mandate JWT when ietf status list is used (there is also cwt)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/333",
+      "state": "OPEN",
+      "author": "Sakurann",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "Sakurann"
+      ],
+      "labels": [
+        "Ready-for-PR"
+      ],
+      "body": "Update this sentence to say that when ietf-status-list is used jwt and not cwt must be used\n> See [[I-D.ietf-oauth-status-list](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-05)] for more information.",
+      "createdAt": "2025-08-19T18:54:31Z",
+      "updatedAt": "2025-08-19T18:54:37Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
