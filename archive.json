@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-21T00:32:33.095395+00:00",
+  "timestamp": "2025-08-26T00:33:42.517669+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8130,9 +8130,17 @@
       "labels": [],
       "body": "Specification in section [6.3.5. From Type Metadata Glue Documents](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-09.html#name-from-type-metadata-glue-doc) suggests that \n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS\n\nTo my understanding this means that \"glue documents\" or the ability to embed type metadata is only applicable, when using JWS JSON serialization.\nThat is creating an asymmetry to the compact serialization.\n\nGiven that [HAIP](https://openid.github.io/oid4vc-haip/openid4vc-high-assurance-interoperability-profile-wg-draft.html#name-sd-jwt-vcs) mandates the use of compact serialization, embed type metadata cannot be used.\n\nI would like to kindly ask \n\n- Why `vctm` is only  available to the JWS JSON serialization\n- To consider allowing `vctm` to appear to the protected header, effectively allowing glue documents to the compact form.\n\n",
       "createdAt": "2025-06-27T11:58:29Z",
-      "updatedAt": "2025-06-27T11:58:29Z",
+      "updatedAt": "2025-08-25T17:57:56Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Alternatively consider removing the construct all together #334\n ",
+          "createdAt": "2025-08-25T17:57:56Z",
+          "updatedAt": "2025-08-25T17:57:56Z"
+        }
+      ]
     },
     {
       "number": 321,
@@ -8342,7 +8350,7 @@
       "labels": [],
       "body": "Section \"6.3.5. From Type Metadata Glue Documents\" states that\n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS.\n\nThe problem I see here is that a malicious actor can modify \"embedded\" JSON Schema, or Schemas, by adding, for instance, the \"default\" keyword with some value to one or more claims aiming to trick the implementation of a verifier in one or another way (in cases when a holder doesn't provide the Disclosures for those claims).\n\nThe JSON Schema validators aren't intended to perform any data manipulations, such as setting defaults, but considering how many implementations of them are out there and how they work, I suggest moving the Type Metadata documents out from the unprotected header of the JWS.",
       "createdAt": "2025-07-31T06:54:02Z",
-      "updatedAt": "2025-08-07T23:20:01Z",
+      "updatedAt": "2025-08-25T17:59:12Z",
       "closedAt": null,
       "comments": [
         {
@@ -8386,6 +8394,20 @@
           "body": "> Do we have a concrete need for these for these Type Metadata Glue Documents?\n\nthis was largely a question for @danielfett who was AFAIK the original author of the Type Metadata Glue Document parts of the document. ",
           "createdAt": "2025-08-07T23:20:01Z",
           "updatedAt": "2025-08-07T23:20:01Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I suggest moving the Type Metadata documents out from the unprotected header of the JWS.\n\nDear @adeinega \n\nDo you propose moving the glue documents to the protected header? If so, perhaps this is related to #320 \n\n",
+          "createdAt": "2025-08-25T10:30:02Z",
+          "updatedAt": "2025-08-25T10:30:02Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I propose removing the glue document discourse from the draft #334 ",
+          "createdAt": "2025-08-25T17:59:12Z",
+          "updatedAt": "2025-08-25T17:59:12Z"
         }
       ]
     },
@@ -8451,6 +8473,22 @@
       "body": "Update this sentence to say that when ietf-status-list is used jwt and not cwt must be used\n> See [[I-D.ietf-oauth-status-list](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-05)] for more information.",
       "createdAt": "2025-08-19T18:54:31Z",
       "updatedAt": "2025-08-19T18:54:37Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 334,
+      "id": "I_kwDOJbVClc7H1j-S",
+      "title": "Remove Type Metadata Glue Documents",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/334",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Type Metadata Glue Documents result in some asymmetry in serialization support #320 and questions about security #331. \n\nAs I am not aware of a compelling rational for the inclusion of Type Metadata Glue Documents in the [prospective] specification, I propose removal. \n \n ",
+      "createdAt": "2025-08-25T17:56:12Z",
+      "updatedAt": "2025-08-25T17:56:12Z",
       "closedAt": null,
       "comments": []
     }
