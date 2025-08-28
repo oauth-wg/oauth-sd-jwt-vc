@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 30 January 2026                                   Authlete Inc.
+Expires: 1 March 2026                                      Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                            29 July 2025
+                                                          28 August 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 30 January 2026.
+   This Internet-Draft will expire on 1 March 2026.
 
 Copyright Notice
 
@@ -382,7 +382,9 @@ Table of Contents
    *  status
       -  OPTIONAL.  The information on how to read the status of the
          Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
-         more information.
+         more information.  When the status claim is present and using
+         the status_list mechanism, the associated Status List Token
+         MUST be in JWT format.
 
    The following registered JWT claims are used within the SD-JWT
    component of the SD-JWT VC and MAY be included in Disclosures, i.e.,
@@ -564,9 +566,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._sFAu
-   abv3haN4DKjcqvcWI2gzPCR6_Z7qOxzdxROx46ks6JR7O5cDhIuWxU1vw0f3Dj0JJax3
-   ui120DXO2i8Lw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kx-qn
+   ySaILsNfxGsUiJd9p49ROYaB59VKmUJzeQSRguJtrcr2hPo3LYfYu73aF-ExVivKL7N4
+   rvwmMi6rLg7iA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -690,17 +692,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._sFAu
-   abv3haN4DKjcqvcWI2gzPCR6_Z7qOxzdxROx46ks6JR7O5cDhIuWxU1vw0f3Dj0JJax3
-   ui120DXO2i8Lw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kx-qn
+   ySaILsNfxGsUiJd9p49ROYaB59VKmUJzeQSRguJtrcr2hPo3LYfYu73aF-ExVivKL7N4
+   rvwmMi6rLg7iA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTM4MTE3OD
-   MsICJzZF9oYXNoIjogInR0YndPZ1FjajJwMjJoZUVibTVPbzd3N2JyWm5zN0ZOV0pzRm
-   9rWHVMVHcifQ.oZjkhJZ12fXLwj7pfAqJqfNiCYUPLdNAyCrujlQwXAX33JjOiAYhGno
-   7IH5RukENIM153RkxB-ph7BO7NxekQg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTY0MTk4OT
+   csICJzZF9oYXNoIjogImNObHlXcnJxVW9OVUhvWmdaVUFUbG5hcnpocHAwMnpQMUszSG
+   1Lc0RudGcifQ.Qu243yirJ6fYhm9agkYSAmOKJ4f9GIvXtarIbZ39FV1SYru38pz4YJ5
+   7vZ4sS8aV60McFaM3X-ZT64rn5CBJYw
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -742,8 +744,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.bC0DJbMpMZUfBCAhLvpD3Jz3PeHuXXTDpgoXBRKmvitQhQ
-   wK48atU-19bGSFwyAeoKNnDPCzUfftgnfeajjhzA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.lUzKkXOO9OvI3OMKaYZqNpEc5bEaJGamivl7d61h_m7OSk
+   2jIeYLvaPc19jyUoJR6QaIjCKabjn5VuHsWBUmiw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -797,7 +799,7 @@ Table of Contents
    removed before inserting /.well-known/ and the well-known URI suffix
    between the host component and the path component.
 
-   The following is a non-normative example of a HTTP request for the
+   The following is a non-normative example of an HTTP request for the
    JWT VC Issuer Metadata configuration when iss is set to
    https://example.com/tenant/1234:
 
@@ -1547,8 +1549,8 @@ Table of Contents
    Some claims in the SD-JWT VC and properties in the Type Metadata,
    e.g., display, allows issuers and providers of metadata to specify
    human-readable information.  These can contain arbitrary textual
-   information that may be displayed to developers.  As such, any
-   consuming application MUST ensure that maliciously crafted
+   information that may be displayed to end users and developers.  As
+   such, any consuming application MUST ensure that maliciously crafted
    information cannot be used to compromise the security of the
    application or the privacy of the user.  To this end, the following
    considerations apply:
@@ -1603,15 +1605,15 @@ Table of Contents
    For example, a malicious Issuer could generate a unique value for the
    Issuer identifier per Holder, e.g., https://example.com/issuer/
    holder-1234 and host the JWT VC Issuer Metadata.  The Verifier would
-   create a HTTPS GET request to the Holder-specific well-known URI when
+   create an HTTP GET request to the Holder-specific well-known URI when
    the SD-JWT VC is verified.  This would allow the malicious Issuer to
    keep track where and how often the SD-JWT VC was used.
 
    Verifiers are advised to establish trust in an SD-JWT VC by pinning
    specific Issuer identifiers and should monitor suspicious behaviour
-   such as frequently rotating Issuer identifiers.  If such behaviour
-   was detected, Verifiers are advised to reject SD-JWT VCs issued by
-   such Issuers.
+   such as frequent rotation of those identifiers.  If such behaviour is
+   detected, Verifiers are advised to reject SD-JWT VCs issued by those
+   Issuers.
 
    Holders are advised to reject SD-JWT VCs if they contain easily
    correlatable information in the Issuer identifier.
@@ -1632,8 +1634,8 @@ Table of Contents
 
    In Section 6.3, various methods for distributing and retrieving Type
    Metadata are described.  For methods which rely on a network
-   connection to a URL (e.g., provided by an Issuer), third parties
-   (like the Issuer) may be able to track the usage of a credential by
+   connection to a URL (e.g., provided by an Issuer), the Issuer and
+   other third parties may be able to track the usage of a credential by
    observing requests to the Type Metadata URL.
 
    Consumers SHOULD prefer methods for retrieving Type Metadata that do
@@ -1704,7 +1706,7 @@ Table of Contents
 
    [IANA.well-known]
               IANA, "Well-Known URIs",
-              <http://www.iana.org/assignments/well-known-uris>.
+              <https://www.iana.org/assignments/well-known-uris>.
 
    [ISO.18013-5]
               ISO/IEC, "ISO/IEC 18013-5:2021", 1 September 2024,
@@ -1885,8 +1887,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0._7UHOp2GvzXRGQEK0wW66VqHV-REn47UHpFzEGNjjwCoFzH
-   8x8cbSzxk8NtBU1EW99KGULaMDIG09tEONqmJow~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.RWcYBjFwJyfZXhaY5vmsF8JLb7BlE3c2zoBcKxk1X9E7-S_
+   YqejYetMOLnDCsjUxnVBn9RzK8OYn55KhHXJptA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2221,8 +2223,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0._7UHOp2GvzXRGQEK0wW66VqHV-REn47UHpFzEGNjjwCoFzH
-   8x8cbSzxk8NtBU1EW99KGULaMDIG09tEONqmJow~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.RWcYBjFwJyfZXhaY5vmsF8JLb7BlE3c2zoBcKxk1X9E7-S_
+   YqejYetMOLnDCsjUxnVBn9RzK8OYn55KhHXJptA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2233,17 +2235,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTM4MTE3ODMsICJzZF9oYXNoIjogIndPeUg4a0hwdnF1U3N6MkNCNDEzZWx
-   FLTlET2hERVZieHktTWdJLTJaUncifQ.6rrk_MPmNrhvyNz-SAtLJaNWzYb798VsK8uc
-   5jhk2vxPqoV1kVJUsQHRa3uJ_-yp_vDlBndUJbjdytJIxC2FBQ
+   hdCI6IDE3NTY0MTk4OTcsICJzZF9oYXNoIjogInNpdG5Xek9zck9TajZhLUJWZnNNUkc
+   2THozZkR0dVp1bjhTRW80dVV4TTAifQ.2vFvjGn_qjwgqiFk2vhYB2JWKDvoJ-pHxqkN
+   RcdapRCUDXzxRDFpdCcXbkuiiMafelMvM08jxfRt-Yra3N8Kig
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1753811783,
-     "sd_hash": "wOyH8kHpvquSsz2CB413elE-9DOhDEVbxy-MgI-2ZRw"
+     "iat": 1756419897,
+     "sd_hash": "sitnWzOsrOSj6a-BVfsMRG6Lz3fDtuZun8SEo4uUxM0"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2405,12 +2407,12 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
-   Babis Routis, Christian Bormann, George J Padayatti, Giuseppe De
-   Marco, Lukas J Han, Leif Johansson, Michael B.  Jones, Mike Prorock,
-   Orie Steele, Paul Bastian, Pavel Zarecky, Stefan Charsley, Timo
-   Glastra, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda for
-   their contributions (some of which substantial) to this draft and to
-   the initial set of implementations.
+   Andrii Deinega, Babis Routis, Christian Bormann, George J Padayatti,
+   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
+   Mike Prorock, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan
+   Charsley, Timo Glastra, Torsten Lodderstedt, Tobias Looker, and
+   Kristina Yasuda for their contributions (some of which substantial)
+   to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
 
@@ -2419,6 +2421,9 @@ Appendix D.  Document History
    *  Fixed an inconsistency to the description of display attribute of
       claim metadata.
    *  Editorial updates and fixes.
+   *  State that when the status claim is present and using the
+      status_list mechanism, the associated Status List Token has to be
+      a JWT.
 
    -10
 
