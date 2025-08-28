@@ -1738,6 +1738,7 @@ Lukas J Han,
 Leif Johansson,
 Michael B. Jones,
 Mike Prorock,
+Mirko Mollik,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
@@ -1752,6 +1753,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
+* Add background image support to simple rendering method, update logo support to align with new background image approach.
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * Editorial updates and fixes.
 
