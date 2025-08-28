@@ -252,7 +252,7 @@ information.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@!I-D.ietf-oauth-status-list]
- for more information.
+ for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
 
@@ -1565,6 +1565,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * Editorial updates and fixes.
+* State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
+
 
 -10
 
