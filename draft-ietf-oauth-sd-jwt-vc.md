@@ -823,19 +823,208 @@ support SVG rendering. The object contains the following properties:
   the type, as described in (#logo-metadata). This property is OPTIONAL.
 - `background_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] for the background of the credential.
   This property is OPTIONAL.
+- `background_image`: An object containing information about the background image to be displayed for the type. This property is OPTIONAL.
 - `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
   is OPTIONAL.
 
 #### Logo Metadata {#logo-metadata}
 
-The `logo` property is an object containing information about the logo to be
-displayed for the type. The object contains the following properties:
+The `logo` property is an object describing a brand logo to be displayed for the
+type. Wallets MUST treat the logo as decorative/branding and MUST NOT derive
+semantics from it.
 
-- `uri`: A URI pointing to the logo image. This property is REQUIRED.
-- `uri#integrity`: An "integrity metadata" string as described in
-  (#document-integrity). This property is OPTIONAL.
-- `alt_text`: A string containing alternative text for the logo image. This
-  property is OPTIONAL.
+The object contains the following properties:
+
+- `variants`: An array of objects, each describing a renderable logo asset.
+  See (#logo-variant). This property is REQUIRED if `logo` is present.
+- `preferred_max_height`: An integer giving the preferred maximum rendered
+  height of the logo, in logical pixels at scale `1`. Wallets MAY adapt to
+  layout constraints. OPTIONAL.
+- `background_requirement`: A string indicating how the logo is designed to be
+  used with backgrounds. Allowed values: `transparent` (default), `solid`,
+  `either`. Wallets MAY use this hint to decide whether to place the logo over
+  an image or a solid color. OPTIONAL.
+- `monochrome_supported`: A boolean indicating whether a single-color rendition
+  is acceptable for accessibility or contrast. OPTIONAL.
+- `alt_text`: A string containing alternative text for the logo image.
+  OPTIONAL.
+
+##### Logo Variant {#logo-variant}
+
+Each entry in `variants` is an object with the following properties:
+
+- `uri`: A HTTPS URI to the image asset. REQUIRED.
+- `uri#integrity`: Integrity metadata as described in (#document-integrity).
+  Wallets SHOULD verify when present. OPTIONAL.
+- `format`: Media type (e.g., `image/svg+xml`, `image/png`, `image/webp`,
+  `image/jpeg`). OPTIONAL; wallets MAY infer from the resource.
+- `appearance`: Intended theme. Allowed values: `light`, `dark`, or `any`
+  (default `any`). Wallets SHOULD prefer a variant that matches the current
+  system/theme appearance. OPTIONAL.
+- `scale`: Integer pixel density multiplier (`1`, `2`, `3`), where any provided
+  `size` is at scale `1`. Default `1`. OPTIONAL.
+- `size`: `{ "width": <int>, "height": <int> }` in logical pixels at scale `1`.
+  OPTIONAL but RECOMMENDED for raster formats.
+- `max_age`: Cache lifetime hint in seconds. OPTIONAL.
+- `alt_text`: Alternative text for the asset. OPTIONAL.
+
+##### Wallet Behavior (Normative) {#logo-wallet-behavior}
+
+When rendering a credential that includes a `logo`:
+
+1. **Selection**
+   a. Filter `variants` by `appearance` (prefer exact, then `any`).
+   b. Prefer vector (`image/svg+xml`) if supported; otherwise choose the raster
+      variant with the highest `scale` ≤ device scale (else the lowest higher
+      scale).
+   c. Use `size` and `preferred_max_height` to avoid extreme up/down-scaling.
+
+2. **Fetching & Integrity**
+   a. Fetch over HTTPS.
+   b. If `uri#integrity` is present, verify; on failure, discard the asset.
+   c. Cache per HTTP headers and/or `max_age`.
+
+3. **Background Placement**
+   a. If `background_requirement` is `solid`, wallets SHOULD place the logo over
+      a solid background (`background_color`) rather than over a background
+      image.
+   b. If contrast is insufficient (WCAG AA), wallets MAY switch to a different
+      variant (e.g., `appearance=dark`) or reduce the logo’s prominence; if
+      still insufficient, wallets MAY omit the logo.
+
+4. **Privacy**
+   a. Wallets SHOULD avoid adding identifiers to `uri` requests and SHOULD cache
+      assets to minimize correlation.
+
+##### Authoring Guidance (Non-Normative) {#logo-guidance}
+
+- Provide an `image/svg+xml` variant plus raster fallbacks at `scale` `2` and
+  `3` where feasible.
+- Use transparent backgrounds for raster logos unless your brand requires a
+  specific solid backdrop.
+- Keep file sizes small (each raster variant ≤ 200 KB; total ≤ 800 KB).
+- Avoid embedding text that duplicates UI labels; keep the mark clear at small
+  sizes.
+
+##### Example {#logo-example}
+
+The following shows a non-normative, reduced example of a logo object:
+
+```json
+{
+  "logo": {
+    "preferred_max_height": 24,
+    "background_requirement": "transparent",
+    "variants": [
+      {
+        "appearance": "any",
+        "format": "image/svg+xml",
+        "uri": "https://cdn.example.org/brand/logo.svg",
+        "uri#integrity": "sha256-BASE64URL(...)"
+      },
+      {
+        "appearance": "dark",
+        "scale": 3,
+        "format": "image/png",
+        "size": { "width": 360, "height": 72 },
+        "uri": "https://cdn.example.org/brand/logo-dark@3x.png",
+        "uri#integrity": "sha256-BASE64URL(...)",
+        "max_age": 2592000
+      }
+    ],
+    "alt_text": "Example University"
+  }
+}
+```
+
+#### Background Image {#background-image}
+
+The `background_image` property is an object describing a decorative background image for the credential surface. Wallets use it to improve visual presentation and MUST NOT derive semantics from it.
+
+The object contains the following properties:
+
+- `variants`: An array of objects, each describing a renderable asset variant. If omitted, the background image is not used. See (#background-image-variant). This property is REQUIRED if `background_image` is present.
+- `safe_area`: An object defining insets where wallet UI SHOULD avoid placing overlaid text or controls. The object contains integer properties `top`, `right`, `bottom`, `left` that denote logical pixels at a scale factor of 1. This property is OPTIONAL.
+- `content_contrast`: A string that guides text color selection over the image. Allowed values are `light-on-dark`, `dark-on-light`, or `auto`. Wallets MAY ignore this value if they compute sufficient contrast. This property is OPTIONAL.
+
+##### Background Image Variant {#background-image-variant}
+
+Each variant object has:
+
+- `uri`: A HTTPS URI to the image asset. REQUIRED.
+- `uri#integrity`: Integrity metadata as described in (#document-integrity). Wallets SHOULD verify when present. OPTIONAL.
+- `format`: Media type (e.g., `image/png`, `image/jpeg`, `image/webp`, `image/svg+xml`). OPTIONAL.
+- `appearance`: `light` | `dark` | `any` (default `any`). OPTIONAL.
+- `scale`: Integer `1` | `2` | `3` (device pixel ratio multiplier). Default `1`. OPTIONAL.
+- `size`: `{ "width": <int>, "height": <int> }` in logical pixels at scale `1`. OPTIONAL but RECOMMENDED for raster.
+- `max_age`: Cache lifetime hint in seconds. OPTIONAL.
+- `alt_text`: Alternative text; wallets MAY ignore as background is decorative. OPTIONAL.
+
+##### Wallet Behavior (Normative) {#background-image-wallet-behavior}
+
+Given a selected `display` object (by `lang` per {#display-metadata}):
+
+1. **Selection**
+   a. Determine current `appearance` and device scale.
+   b. Filter `variants` by `appearance` (prefer exact, then `any`).
+   c. Prefer vector formats when supported; otherwise choose raster with highest `scale` ≤ device scale (else the lowest higher scale).
+   d. Use `size` to avoid extreme scaling.
+
+2. **Fetching & Integrity**
+   a. Fetch over HTTPS.
+   b. If `uri#integrity` present, verify; on failure, discard.
+   c. Cache via HTTP headers and/or `max_age`.
+
+3. **Privacy**
+   a. Avoid identifiers in requests; cache to reduce correlation.
+   b. Prefetch at issuance or use an anonymizing relay (MAY).
+
+4. **Accessibility**
+   a. Ensure WCAG AA contrast; if not achievable, do not render the image.
+   b. Respect `safe_area` for critical text/controls.
+
+If no suitable/valid variant is available, wallets MUST NOT render a background image and SHOULD use `background_color` if present.
+
+##### Example {#background-image-example}
+
+The following shows a non-normative, reduced example of a background image object:
+
+```json
+{
+  "rendering": {
+    "simple": {
+      "logo": {
+        "uri": "https://cdn.example.org/brand/logo@2x.png",
+        "uri#integrity": "sha256-BASE64URL(...)",
+        "alt_text": "Example University"
+      },
+      "text_color": "#FFFFFF",
+      "background_color": "#0B3D91",
+      "background_image": {
+        "safe_area": { "top": 24, "right": 24, "bottom": 24, "left": 24 },
+        "content_contrast": "light-on-dark",
+        "variants": [
+          {
+            "appearance": "dark",
+            "scale": 3,
+            "format": "image/png",
+            "size": { "width": 1125, "height": 432 },
+            "uri": "https://cdn.example.org/vc/bg-dark@3x.png",
+            "uri#integrity": "sha256-BASE64URL(...)",
+            "max_age": 2592000
+          },
+          {
+            "appearance": "any",
+            "format": "image/svg+xml",
+            "uri": "https://cdn.example.org/vc/bg.svg",
+            "uri#integrity": "sha256-BASE64URL(...)"
+          }
+        ]
+      }
+    }
+  }
+}
+```
 
 ### Rendering Method "svg_template" {#rendering-method-svg}
 
