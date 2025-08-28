@@ -249,6 +249,8 @@ information.
 * `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
+* `vct#integrity`
+    * OPTIONAL hash of the Type Metadata document to guarantee integrity as defined in Section (#document-integrity). MUST NOT be set if the `vct` claim is not set.
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@!I-D.ietf-oauth-status-list]
@@ -596,7 +598,7 @@ The Type Metadata is retrieved using the HTTP GET method. The response MUST be a
 object as defined in (#type-metadata-format).
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
-`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
+`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity). The claim MUST NOT be present if the `vct` claim is not set.
 
 ### From a Registry {#retrieval-from-registry}
 
