@@ -1115,6 +1115,21 @@ or the privacy of the user. To this end, the following considerations apply:
 - The consuming application MUST ensure that the display of the user interface
   elements cannot be distorted by overly long text or special characters.
 
+## Credential Type Extension and Issuer Authorization {#type-extension-issuer-authorization}
+
+When processing credentials, it is important to recognize that the ability to extend or reference
+an existing credential type (e.g., a well-known identifier such as `urn:ec.eu.x.y.z`) does not
+confer any implicit authorization to issue credentials of that type or its extensions. In particular:
+
+- **Issuer Authorization**: Verifiers and wallets MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type `urn:de.bla` extending a European PID type) does not validate the issuer's authority.
+- **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
+- **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
+
+**Recommendation:**
+Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
+
+
+
 # Privacy Considerations {#privacy-considerations}
 
 The Privacy Considerations in the SD-JWT specification
