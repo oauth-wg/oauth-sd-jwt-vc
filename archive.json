@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-26T00:33:42.517669+00:00",
+  "timestamp": "2025-08-28T00:32:25.741781+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8350,7 +8350,7 @@
       "labels": [],
       "body": "Section \"6.3.5. From Type Metadata Glue Documents\" states that\n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS.\n\nThe problem I see here is that a malicious actor can modify \"embedded\" JSON Schema, or Schemas, by adding, for instance, the \"default\" keyword with some value to one or more claims aiming to trick the implementation of a verifier in one or another way (in cases when a holder doesn't provide the Disclosures for those claims).\n\nThe JSON Schema validators aren't intended to perform any data manipulations, such as setting defaults, but considering how many implementations of them are out there and how they work, I suggest moving the Type Metadata documents out from the unprotected header of the JWS.",
       "createdAt": "2025-07-31T06:54:02Z",
-      "updatedAt": "2025-08-25T17:59:12Z",
+      "updatedAt": "2025-08-26T19:03:07Z",
       "closedAt": null,
       "comments": [
         {
@@ -8408,6 +8408,13 @@
           "body": "I propose removing the glue document discourse from the draft #334 ",
           "createdAt": "2025-08-25T17:59:12Z",
           "updatedAt": "2025-08-25T17:59:12Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@babisRoutis, that\u2019s correct. I hadn\u2019t seen your https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/320 before submitting this one. I did that for a different reason too.\n\nI've failed to find any section describing these nuances\n\n> vct#integrity is in the SD-JWT Payload though, not the unprotected header, so that isn't accurate.\n\nof course, it very very possible I simply overlooked them. If that's true, I find it to be a bit weird as _vct#integrity_ protects the vct claim in in the SD-JWT Payload. However, there is nothing left to discuss if / when the glue documents go away in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/334.",
+          "createdAt": "2025-08-26T19:03:07Z",
+          "updatedAt": "2025-08-26T19:03:07Z"
         }
       ]
     },
@@ -8488,9 +8495,38 @@
       "labels": [],
       "body": "Type Metadata Glue Documents result in some asymmetry in serialization support #320 and questions about security #331. \n\nAs I am not aware of a compelling rational for the inclusion of Type Metadata Glue Documents in the [prospective] specification, I propose removal. \n \n ",
       "createdAt": "2025-08-25T17:56:12Z",
-      "updatedAt": "2025-08-25T17:56:12Z",
+      "updatedAt": "2025-08-26T18:45:52Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "To my understanding, glue documents are perhaps most useful to the wallet, given that, in any case,  a verifier should be aware beforehand of the definition of a credential in order to assemble a query. In addition, I have the impression that wallet may present the sd-jwt-vc without the glue document, which means that a verifier cannot count on glue document.\n\nHence, removal of glue documents affects mostly the wallet, especially in the case where wallet interacts with an issuer that doesn't use an HTTPS URI for `vct` and the wallet doesn't know out-of-band (using ecosystem-specific convention)  the type definition.\n\nFor what is worth, in the context of EUDIW, PID in sd-jwt-vc format uses a `vct` that is a URN.  \nGlue documents were handy to interoperability events, but I have seen many implementers embedding definition to the protected header (in order to use compact serialization).\n\nIn summary, I agree with @bc-pi proposal, unless there are other uses of glue documents that I miss.\n\n",
+          "createdAt": "2025-08-26T09:48:22Z",
+          "updatedAt": "2025-08-26T09:48:22Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> To my understanding, glue documents are perhaps most useful to the wallet, given that, in any case, a verifier should be aware beforehand of the definition of a credential in order to assemble a query. In addition, I have the impression that wallet may present the sd-jwt-vc without the glue document, which means that a verifier cannot count on glue document.\n> \n> Hence, removal of glue documents affects mostly the wallet, especially in the case where wallet interacts with an issuer that doesn't use an HTTPS URI for `vct` and the wallet doesn't know out-of-band (using ecosystem-specific convention) the type definition.\n> \n> For what is worth, in the context of EUDIW, PID in sd-jwt-vc format uses a `vct` that is a URN. Glue documents were handy to interoperability events, but I have seen many implementers embedding definition to the protected header (in order to use compact serialization).\n> \n> In summary, I agree with [@bc-pi](https://github.com/bc-pi) proposal, unless there are other uses of glue documents that I miss.\n\n@babisRoutis One of the reasons for the glue documents was AdES signatures (except base profile). Not sure if this is still a good reason?",
+          "createdAt": "2025-08-26T11:41:22Z",
+          "updatedAt": "2025-08-26T11:41:22Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > To my understanding, glue documents are perhaps most useful to the wallet, given that, in any case, a verifier should be aware beforehand of the definition of a credential in order to assemble a query. In addition, I have the impression that wallet may present the sd-jwt-vc without the glue document, which means that a verifier cannot count on glue document.\n> > Hence, removal of glue documents affects mostly the wallet, especially in the case where wallet interacts with an issuer that doesn't use an HTTPS URI for `vct` and the wallet doesn't know out-of-band (using ecosystem-specific convention) the type definition.\n> > For what is worth, in the context of EUDIW, PID in sd-jwt-vc format uses a `vct` that is a URN. Glue documents were handy to interoperability events, but I have seen many implementers embedding definition to the protected header (in order to use compact serialization).\n> > In summary, I agree with [@bc-pi](https://github.com/bc-pi) proposal, unless there are other uses of glue documents that I miss.\n> \n> [@babisRoutis](https://github.com/babisRoutis) One of the reasons for the glue documents was AdES signatures (except base profile). Not sure if this is still a good reason?\n\nI actually withdraw my comment and I'm fine with removing it since I don't see a clear use case for this. Not even in the AdES world.",
+          "createdAt": "2025-08-26T18:28:33Z",
+          "updatedAt": "2025-08-26T18:28:33Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "For what it\u2019s worth... I support this proposal.",
+          "createdAt": "2025-08-26T18:45:52Z",
+          "updatedAt": "2025-08-26T18:45:52Z"
+        }
+      ]
     }
   ],
   "pulls": [
