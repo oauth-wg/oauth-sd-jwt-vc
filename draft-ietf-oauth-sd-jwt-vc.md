@@ -620,29 +620,6 @@ protection is present in the Type Metadata as defined in (#document-integrity), 
 indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
 header of the HTTP response to determine how long the metadata can be cached.
 
-### From Type Metadata Glue Documents {#glue-documents}
-
-Credentials MAY encode Type Metadata directly, providing it as "glue
-information" to the Consumer.
-
-For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be
-included in the unprotected header of the JWS. In this case, the key `vctm` MUST
-be used in the unprotected header and its value MUST be an array of
-base64url-encoded Type Metadata documents as defined in this specification.
-Multiple documents MAY be included for providing a whole chain of types to the
-Consumer (see (#extending-type-metadata)).
-
-A Consumer of a credential MAY use the documents in the `vctm`
-array instead of retrieving the respective Type Metadata elsewhere as follows:
-
- * When resolving a `vct` in a credential, the Consumer MUST ensure
-   that the `vct` claim in the credential matches the one in the Type Metadata
-   document, and it MUST verify the integrity of the Type Metadata document as
-   defined in (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided in `vct#integrity`.
- * When resolving an `extends` property in a Type Metadata document, the Consumer MUST ensure that the value of the `extends` property in the
-   Type Metadata document matches that of the `vct` in the Type Metadata document, and it MUST verify the integrity of the Type Metadata document as defined in
-   (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided.
-
 ## Extending Type Metadata {#extending-type-metadata}
 
 An SD-JWT VC type can extend another type. The extended type is identified by the URI in
@@ -1092,9 +1069,6 @@ metadata server.
 Consumers SHOULD therefore implement a local cache as described in
 (#retrieval-from-local-cache) if possible. Such a cache MAY be populated with metadata before
 the credential is used.
-
-Issuers MAY provide glue documents as described in (#glue-documents) to provide
-metadata directly with the credential and avoid the need for network requests.
 
 These measures allow the Consumers to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
@@ -1564,6 +1538,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -11
 
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
+* Drop explicit treatment of the glue type metadata document concept
 * Editorial updates and fixes.
 * State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
 
