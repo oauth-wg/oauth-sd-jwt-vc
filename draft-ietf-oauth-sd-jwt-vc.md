@@ -1578,6 +1578,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
+* Added a section on Credential Type Extension and Issuer Authorization.
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * Editorial updates and fixes.
 
