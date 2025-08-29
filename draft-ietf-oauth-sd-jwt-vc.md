@@ -1159,6 +1159,8 @@ and should monitor suspicious behaviour such as frequent rotation of those ident
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
 
+Another related concern arises from the use of the `x5u` parameter in JWKs, as specified in section 4.6 [@!RFC7517]. Suppose a malicious Issuer uses different JWKs with distinct `x5u` values per (group of) user(s), particularly in the `cnf` claim. The public key of a Holder may be stored in a certificate at a location controlled by the Issuer, and the `x5u` parameter of the JWK in the `cnf` claim set accordingly. Since `x5u` can co-exist with other JWK members, this may not be noticed by the Holder. If the Verifier strictly follows RFC 7517, it will retrieve the certificate and verify it matches the rest of the JWK members. This mechanism can make the attack described in Section 11.3 more efficient, as resolving the certificate via `x5u` may allow the Issuer to track credential usage or correlate Holders.
+
 Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.
 
@@ -1563,6 +1565,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
+* Add privacy concerns regarding the use of `x5u` parameter in JWKs
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * Editorial updates and fixes.
 
