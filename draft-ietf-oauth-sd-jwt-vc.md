@@ -1045,11 +1045,11 @@ Suppose we have a base type metadata document:
   "claims": [
     {
       "path": ["name"],
-      "display": [{"label": "Full Name"}]
+      "display": [{"label": "Full Name", "lang": "en"}]
     },
     {
       "path": ["address", "city"],
-      "display": [{"label": "City"}]
+      "display": [{"label": "City", "lang": "en"}]
     }
   ]
 }
@@ -1064,11 +1064,11 @@ And a child type metadata document that extends the base type:
   "claims": [
     {
       "path": ["address", "city"],
-      "display": [{"label": "Town"}]
+      "display": [{"label": "Town", "lang": "en"}]
     },
     {
       "path": ["nationalities"],
-      "display": [{"label": "Nationalities"}]
+      "display": [{"label": "Nationalities", "lang": "en"}]
     }
   ]
 }
@@ -1085,11 +1085,11 @@ In this example, the child type inherits the `name` claim metadata from the base
     },
     {
       "path": ["address", "city"],
-      "display": [{"label": "Town"}]
+      "display": [{"label": "Town", "lang": "en"}]
     },
     {
       "path": ["nationalities"],
-      "display": [{"label": "Nationalities"}]
+      "display": [{"label": "Nationalities", "lang": "en"}]
     }
   ]
 }
