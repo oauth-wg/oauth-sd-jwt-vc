@@ -598,7 +598,7 @@ The Type Metadata is retrieved using the HTTP GET method. The response MUST be a
 object as defined in (#type-metadata-format).
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
-`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity). The claim MUST NOT be present if the `vct` claim is not set.
+`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
 
 ### From a Registry {#retrieval-from-registry}
 
