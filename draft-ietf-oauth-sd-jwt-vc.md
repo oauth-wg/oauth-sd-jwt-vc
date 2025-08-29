@@ -1035,7 +1035,7 @@ If omitted, the default value is `allowed`.
 
 ## Extending Claim Metadata {#claim-metadata-extends}
 
-The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will overwrite the corresponding object from the extended type.
+The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will refine the corresponding object from the extended type.
 
 Suppose we have a base type metadata document:
 
@@ -1074,7 +1074,7 @@ And a child type metadata document that extends the base type:
 }
 ```
 
-In this example, the child type inherits the `name` claim metadata from the base type, but overwrites the `address.city` claim metadata with its own definition. It also adds a new claim metadata for `nationalities`. The final effective claim metadata for the child type is:
+In this example, the child type inherits the `name` claim metadata from the base type, but refines the `address.city` claim metadata with its own definition. It also adds a new claim metadata for `nationalities`. The final effective claim metadata for the child type is:
 
 ```json
 {
