@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-28T00:32:25.741781+00:00",
+  "timestamp": "2025-08-31T00:36:03.341419+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5673,7 +5673,7 @@
       ],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2024-07-08T16:12:28Z",
+      "updatedAt": "2025-08-28T09:48:29Z",
       "closedAt": null,
       "comments": [
         {
@@ -5689,6 +5689,13 @@
           "body": "The (largely unwritten?) threat model behind all this credential and token stuff assumes trust in the issuer.  I recognize this is potentially perceived different because the provider of type metadata is likely/sometimes not the same entity as the issuer. But the issuer still needs to be trusted and if not, aren't there bigger concerns than the integrity of Type Metadata?",
           "createdAt": "2024-05-14T17:06:37Z",
           "updatedAt": "2024-05-14T17:06:37Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "In the EUDI Wallet eco system the trust of authorization is not self claimed by the issuer which is done with linking to self controlled metadata. But done by rulebooks that define governance.\n\nSo the `vct#integrity` gives authenticity in the data the issuer wants to ship together with the sd-jwt vc, but gives no authenticity for the usage of a credential inside an eco system (e.g. education sector)",
+          "createdAt": "2025-08-28T09:48:28Z",
+          "updatedAt": "2025-08-28T09:48:28Z"
         }
       ]
     },
@@ -6969,7 +6976,7 @@
       ],
       "body": "Would also be good to add rationale why chosen certain claims are not selectively disclosable.",
       "createdAt": "2024-10-07T11:04:18Z",
-      "updatedAt": "2024-11-26T19:22:21Z",
+      "updatedAt": "2025-08-28T06:38:59Z",
       "closedAt": null,
       "comments": [
         {
@@ -6999,6 +7006,13 @@
           "body": "I think I maybe meant for that https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/258#issuecomment-2400607967 to go on #257 but maybe works here too ",
           "createdAt": "2024-10-08T21:39:43Z",
           "updatedAt": "2024-10-08T21:39:43Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "working on this",
+          "createdAt": "2025-08-28T06:38:59Z",
+          "updatedAt": "2025-08-28T06:38:59Z"
         }
       ]
     },
@@ -7699,11 +7713,11 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "Example:\n- there's a european PID type \"urn:ec.eu.x.y.z\" and a national type \"urn:de.bla\" that extends \"urn:ec.eu.x.y.z\"\n- a rogue issuer issues a credential \"urn:attacker\" that extends either \"urn:ec.eu.x.y.z\" or \"urn:ec.eu.x.y.z\"\n- it is now important that verifiers/wallets don't accept these credentials. the fact that someone issued a credential extending a known type does not imply that they are allowed to do so (or that they are a valid issuer at all)\n\nThis should be captured in a security consideration, ideally also in processing rules.",
       "createdAt": "2025-03-18T18:37:39Z",
-      "updatedAt": "2025-06-03T18:26:55Z",
+      "updatedAt": "2025-08-29T11:50:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -7910,7 +7924,7 @@
       ],
       "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
       "createdAt": "2025-05-20T13:14:59Z",
-      "updatedAt": "2025-08-19T18:19:06Z",
+      "updatedAt": "2025-08-28T10:52:48Z",
       "closedAt": null,
       "comments": [
         {
@@ -7933,6 +7947,34 @@
           "body": "I would be fine with adding `mandatory`.",
           "createdAt": "2025-07-07T15:43:32Z",
           "updatedAt": "2025-07-07T15:43:32Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I am not sure if mandatory is a good way since we also have the json schema with the required attribute, resulting in a potential risk of inconsistency:\n\n- when a field has the attribute mandatory = false, but is in the required list of the json schema, it will fail.\n\nSo the required \"feature\" of the vct will tell the relying party which attributes are there. For the EUDI eco system we assume that there will be rulebooks, describing the schema of a credential. Therefore verifiers would consume it to get the information of schema and disclosable attributes and not by scanning the issuer vci metadata.\n\nI also saw some deployments for OID4VCI where the issuer metadata is a unique URL for each issuance process, so the verifier will never have a chance to discover it.",
+          "createdAt": "2025-08-28T07:45:35Z",
+          "updatedAt": "2025-08-28T07:45:35Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> I am not sure if mandatory is a good way since we also have the json schema with the required attribute, resulting in a potential risk of inconsistency:\n> \n>     * when a field has the attribute mandatory = false, but is in the required list of the json schema, it will fail.\n\nHi @cre8 \nTo my understanding, `mandatory` is related to `required` but they aren't the same.\n\n`mandatory` expresses the fact that an attribute may (or may not) be included to the issued credential, regardless of the way that is made selectively disclosable (always or never).\n\nOn the other hand, `required` expresses - currently where there is a single JSON Schema - whether an attribute may (or may not) appear to the re-created JSON of a presented SD-JWT-VC.\n\n\n\n|                     | `required` (true)                                                                 | `required` (false)                                                                            |\n|---------------------|-----------------------------------------------------------------------------------|-----------------------------------------------------------------------------------------------|\n| `mandatory` (true)  | Attribute is always issued, holder cannot excluded from a presentation (never SD) | Attribute is always issued. Holder can selectively disclose it (always SD)                    | \n| `mandatory` (false) | N/A                                                                               | Attribute is issued conditionally. If present, holder can selectively disclose it (always SD) |\n",
+          "createdAt": "2025-08-28T10:15:33Z",
+          "updatedAt": "2025-08-28T10:16:39Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @babisRoutis \n\nI interpreted it in a way that the wallet will also use the schema to validate if a correct credential got issued:\n\n> If a schema or schema_uri property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm (as defined in Section 7.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#I-D.ietf-oauth-selective-disclosure-jwt)]) against the JSON Schema document provided by the schema or schema_uri property.\n\n> If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n\nIn 1.4 the consumer role is covering issuer, verifier and wallet.\n\nOr have I missed something in the spec?\n",
+          "createdAt": "2025-08-28T10:39:10Z",
+          "updatedAt": "2025-08-28T10:39:10Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Hi [@babisRoutis](https://github.com/babisRoutis)\n> \n> I interpreted it in a way that the wallet will also use the schema to validate if a correct credential got issued:\n> \n> > If a schema or schema_uri property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm (as defined in Section 7.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#I-D.ietf-oauth-selective-disclosure-jwt)]) against the JSON Schema document provided by the schema or schema_uri property.\n> \n> > If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n> \n> In 1.4 the consumer role is covering issuer, verifier and wallet.\n> \n> Or have I missed something in the spec?\n\nYou haven't missed anything \ud83d\ude04 \n\nGiven that currently, there is a single schema that is to be used by both by the wallet (during issuance) and the verifier, you cannot mark an always issued attribute as required, unless it is ~always~ never selectively disclosable. Which means, that the wallet cannot validate that it has been issued the mandatory attributes.\n\nHence, I raised this issue.\n\nPS: If you want, please also check https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237#issuecomment-3036637978",
+          "createdAt": "2025-08-28T10:47:24Z",
+          "updatedAt": "2025-08-28T10:52:48Z"
         }
       ]
     },
@@ -8015,11 +8057,11 @@
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
       "createdAt": "2025-06-03T22:36:07Z",
-      "updatedAt": "2025-07-07T16:24:09Z",
+      "updatedAt": "2025-08-29T12:06:03Z",
       "closedAt": null,
       "comments": [
         {
@@ -8042,6 +8084,20 @@
           "body": "Discussed with @bc-pi and @awoie: We should add text advising against supporting cnf methods that involve retrieving a key from a (potentially issuer-controlled) remote source.",
           "createdAt": "2025-07-07T16:23:41Z",
           "updatedAt": "2025-07-07T16:24:09Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Is this privacy consideration better fitted for the sd-jwt spec and not for the sd-jwt vc one?\n\ncnf is relevant when using kb-jwt, that is defined in sd-jwt. Therefore I would suggest to add it there and not in this spec because it is not sd-jwt vc specific like e.g. vct",
+          "createdAt": "2025-08-28T07:16:26Z",
+          "updatedAt": "2025-08-28T07:16:26Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@cre8, the core sd-jwt spec is in the RFC editor queue so not realistically amenable to changes at this point. So sd-jwt vc kinda has to be the place for this kind of thing given the current maturity of the drafts.  ",
+          "createdAt": "2025-08-28T23:06:52Z",
+          "updatedAt": "2025-08-28T23:06:52Z"
         }
       ]
     },
@@ -8123,15 +8179,15 @@
       "id": "I_kwDOJbVClc69siam",
       "title": "Glue document to the protected header?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/320",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Specification in section [6.3.5. From Type Metadata Glue Documents](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-09.html#name-from-type-metadata-glue-doc) suggests that \n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS\n\nTo my understanding this means that \"glue documents\" or the ability to embed type metadata is only applicable, when using JWS JSON serialization.\nThat is creating an asymmetry to the compact serialization.\n\nGiven that [HAIP](https://openid.github.io/oid4vc-haip/openid4vc-high-assurance-interoperability-profile-wg-draft.html#name-sd-jwt-vcs) mandates the use of compact serialization, embed type metadata cannot be used.\n\nI would like to kindly ask \n\n- Why `vctm` is only  available to the JWS JSON serialization\n- To consider allowing `vctm` to appear to the protected header, effectively allowing glue documents to the compact form.\n\n",
       "createdAt": "2025-06-27T11:58:29Z",
-      "updatedAt": "2025-08-25T17:57:56Z",
-      "closedAt": null,
+      "updatedAt": "2025-08-28T22:47:33Z",
+      "closedAt": "2025-08-28T22:47:33Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -8139,6 +8195,13 @@
           "body": "Alternatively consider removing the construct all together #334\n ",
           "createdAt": "2025-08-25T17:57:56Z",
           "updatedAt": "2025-08-25T17:57:56Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "looking like it's going to be removed 16562caebbef0b92a6273c7f0bcb40ac5ce7f633",
+          "createdAt": "2025-08-28T22:47:33Z",
+          "updatedAt": "2025-08-28T22:47:33Z"
         }
       ]
     },
@@ -8350,7 +8413,7 @@
       "labels": [],
       "body": "Section \"6.3.5. From Type Metadata Glue Documents\" states that\n\n> For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be included in the unprotected header of the JWS.\n\nThe problem I see here is that a malicious actor can modify \"embedded\" JSON Schema, or Schemas, by adding, for instance, the \"default\" keyword with some value to one or more claims aiming to trick the implementation of a verifier in one or another way (in cases when a holder doesn't provide the Disclosures for those claims).\n\nThe JSON Schema validators aren't intended to perform any data manipulations, such as setting defaults, but considering how many implementations of them are out there and how they work, I suggest moving the Type Metadata documents out from the unprotected header of the JWS.",
       "createdAt": "2025-07-31T06:54:02Z",
-      "updatedAt": "2025-08-26T19:03:07Z",
+      "updatedAt": "2025-08-28T23:00:16Z",
       "closedAt": null,
       "comments": [
         {
@@ -8415,6 +8478,13 @@
           "body": "@babisRoutis, that\u2019s correct. I hadn\u2019t seen your https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/320 before submitting this one. I did that for a different reason too.\n\nI've failed to find any section describing these nuances\n\n> vct#integrity is in the SD-JWT Payload though, not the unprotected header, so that isn't accurate.\n\nof course, it very very possible I simply overlooked them. If that's true, I find it to be a bit weird as _vct#integrity_ protects the vct claim in in the SD-JWT Payload. However, there is nothing left to discuss if / when the glue documents go away in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/334.",
           "createdAt": "2025-08-26T19:03:07Z",
           "updatedAt": "2025-08-26T19:03:07Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": ">  I find it to be a bit weird as _vct#integrity_ protects the vct claim in in the SD-JWT Payload. However, there is nothing left to discuss if / when the glue documents go away in [#334](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/334).\n\nthey are (very likely) going away with my premature `bypassed rule violations for refs/heads/main: ... remote: - Changes must be made through a pull request.` in 16562caebbef0b92a6273c7f0bcb40ac5ce7f633 \n\nBut maybe there's still something to discuss or clarify. I read https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#name-document-integrity as saying `vct#integrity`, if used, has to accompany the `vct` claim which is in the SD-JWT Payload. The misuse of the term claim there to refer to members in metadata aside, do you think that needs clarification? Or are you questioning the utility of `vct#integrity` claim itself? Or both? Or something different? \n\n",
+          "createdAt": "2025-08-28T23:00:16Z",
+          "updatedAt": "2025-08-28T23:00:16Z"
         }
       ]
     },
@@ -8472,16 +8542,25 @@
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
-        "Sakurann"
+        "Sakurann",
+        "bc-pi"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "Update this sentence to say that when ietf-status-list is used jwt and not cwt must be used\n> See [[I-D.ietf-oauth-status-list](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-05)] for more information.",
       "createdAt": "2025-08-19T18:54:31Z",
-      "updatedAt": "2025-08-19T18:54:37Z",
+      "updatedAt": "2025-08-28T22:26:53Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "#339 proposes a new sentence with this requirement  ",
+          "createdAt": "2025-08-28T22:26:53Z",
+          "updatedAt": "2025-08-28T22:26:53Z"
+        }
+      ]
     },
     {
       "number": 334,
@@ -8491,11 +8570,13 @@
       "state": "OPEN",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "bc-pi"
+      ],
       "labels": [],
       "body": "Type Metadata Glue Documents result in some asymmetry in serialization support #320 and questions about security #331. \n\nAs I am not aware of a compelling rational for the inclusion of Type Metadata Glue Documents in the [prospective] specification, I propose removal. \n \n ",
       "createdAt": "2025-08-25T17:56:12Z",
-      "updatedAt": "2025-08-26T18:45:52Z",
+      "updatedAt": "2025-08-29T10:57:35Z",
       "closedAt": null,
       "comments": [
         {
@@ -8525,6 +8606,27 @@
           "body": "For what it\u2019s worth... I support this proposal.",
           "createdAt": "2025-08-26T18:45:52Z",
           "updatedAt": "2025-08-26T18:45:52Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I missed a `-c` somewhere in my git \"workflow\" and accidentally went right to main with 16562caebbef0b92a6273c7f0bcb40ac5ce7f633 which does what this issue says. Apologies. Will leave this issue open for a bit as a half-hearted fallback opportunity to review.  ",
+          "createdAt": "2025-08-28T22:46:21Z",
+          "updatedAt": "2025-08-28T23:02:39Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Dear @bc-pi \n\nSo can we assume that the change will make it to the spec or should we expect this to be reverted?\nCan you please clarify?\n\n",
+          "createdAt": "2025-08-29T07:31:24Z",
+          "updatedAt": "2025-08-29T07:31:24Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Yeah, assume that the change will make it to the spec unless there's some big and legitimate outcry to undo it. ",
+          "createdAt": "2025-08-29T10:57:35Z",
+          "updatedAt": "2025-08-29T10:57:35Z"
         }
       ]
     }
@@ -25610,6 +25712,671 @@
           "body": "",
           "createdAt": "2025-07-29T18:20:41Z",
           "updatedAt": "2025-07-29T18:20:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 335,
+      "id": "PR_kwDOJbVClc6lvPzR",
+      "title": "fix: update logo and background structure",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/335",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #305\n\n- adds information for background image\n- using the reference to apple guidelines, allowing a more granual approach (different images for multiple dimensions, etc)\n- also aligning existing logo approach so both cases are using the same approach\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
+      "createdAt": "2025-08-28T06:35:04Z",
+      "updatedAt": "2025-08-28T06:37:32Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
+      "headRepository": "cre8/oauth-sd-jwt-vc",
+      "headRefName": "fix/305",
+      "headRefOid": "e7833d145613cc89a75b18c616e2b4ede7592273",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 336,
+      "id": "PR_kwDOJbVClc6lvc9x",
+      "title": "Set vct:integrity to the list of attribute to not selectively disclosed",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/336",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #258\n\nWhen reading the sentence of the chapter:\n\n> The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:\n\nI had two thoughts:\n- these claims can not be disclosed -> hidden\n- these claims are always disclosed -> visible\n\nI suggest to clarify this here by something like saying\n\n> cannot be selectifly disclosed and are always visible\n\nOr is this clear becaue there is no option to hide an attribute (just visible to the holder, but that can never be disclosed like an embedded secret)\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
+      "createdAt": "2025-08-28T06:58:33Z",
+      "updatedAt": "2025-08-30T22:56:47Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
+      "headRepository": "cre8/oauth-sd-jwt-vc",
+      "headRefName": "fix/258",
+      "headRefOid": "cdf7462ea5992c9d8ce1e51179d5206e0c42470a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @cre8 \r\n\r\n> The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:\r\n\r\nIMHO, the text is pretty clear. \r\nThose attributes are never being selectively disclosable, which means that holder cannot choose to \"hide\" them, even if he wants to. So using your terminology, those attributes are always \"visible\"\r\n\r\nJudging from the title of the PR, I was expecting to find an additional entry (to those never selectively disclosable attributes) about `vct#integrity`\r\n",
+          "createdAt": "2025-08-29T08:18:29Z",
+          "updatedAt": "2025-08-29T08:18:29Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @babisRoutis \r\n\r\nthanks for the information.\r\n\r\n> Judging from the title of the PR, I was expecting to find an additional entry (to those never selectively disclosable attributes) about vct#integrity\r\n\r\nI added it in the 3.2.2.2 Registered JWT Claims where it mentions \r\n\r\n> The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:\r\n\r\nI found no other chapter where these values are listed again as non selectively disclosable\r\n",
+          "createdAt": "2025-08-29T08:49:08Z",
+          "updatedAt": "2025-08-29T08:49:08Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Hi @babisRoutis\r\n> \r\n> thanks for the information.\r\n> \r\n> > Judging from the title of the PR, I was expecting to find an additional entry (to those never selectively disclosable attributes) about vct#integrity\r\n> \r\n> I added it in the 3.2.2.2 Registered JWT Claims where it mentions\r\n> \r\n> > The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:\r\n> \r\n> I found no other chapter where these values are listed again as non selectively disclosable\r\n\r\nHi @cre8 \r\nSomehow overlooked the first change. Apologies for my invalid comment.\r\nIt is fine.",
+          "createdAt": "2025-08-29T09:13:13Z",
+          "updatedAt": "2025-08-29T09:13:13Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> vct is REQUIRED so having requirements about when it's not set doesn't make sense (to me anyway)\r\n\r\nI updated it. But the integrity check should still apply even when the vct payload is not fetched via a URL, but e.g. via a database, correct?",
+          "createdAt": "2025-08-29T13:24:56Z",
+          "updatedAt": "2025-08-29T13:24:56Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > vct is REQUIRED so having requirements about when it's not set doesn't make sense (to me anyway)\r\n> \r\n> I updated it. But the integrity check should still apply even when the vct payload is not fetched via a URL, but e.g. via a database, correct?\r\n\r\nI think so yes. But maybe I don't understand. My point was only that it's unnecessary to specify requirements for a situation that's already prohibited. ",
+          "createdAt": "2025-08-29T22:12:52Z",
+          "updatedAt": "2025-08-29T22:12:52Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc682ozg",
+          "commit": {
+            "abbreviatedOid": "fb2d722"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "vct is REQUIRED so having requirements about when it's not set doesn't make sense (to me anyway) ",
+          "createdAt": "2025-08-29T11:45:09Z",
+          "updatedAt": "2025-08-29T11:48:13Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "`vct` is REQUIRED in this context per line 250 above so `if the \"vct\" claim is not set` is never the case. \r\n```suggestion\r\n    * OPTIONAL hash of the Type Metadata document to guarantee integrity as defined in Section (#document-integrity).\r\n```",
+              "createdAt": "2025-08-29T11:45:09Z",
+              "updatedAt": "2025-08-29T11:55:41Z"
+            },
+            {
+              "originalPosition": 14,
+              "body": "but `vct` claim is required ... ?\r\n```suggestion\r\n`vct#integrity` MUST be an \"integrity metadata\" string as defined in Section (#document-integrity).\r\n```",
+              "createdAt": "2025-08-29T11:46:09Z",
+              "updatedAt": "2025-08-29T11:48:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc683u1j",
+          "commit": {
+            "abbreviatedOid": "fb2d722"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T13:23:26Z",
+          "updatedAt": "2025-08-29T13:23:26Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "It's also required when it's not a URL, but a URI that got fetched via e.g. a database, correct?",
+              "createdAt": "2025-08-29T13:23:26Z",
+              "updatedAt": "2025-08-29T13:23:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc688P6G",
+          "commit": {
+            "abbreviatedOid": "7f70cc8"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T19:42:07Z",
+          "updatedAt": "2025-08-29T19:42:07Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n    * OPTIONAL. The hash of the Type Metadata document to guarantee integrity as defined in Section (#document-integrity).\r\n```\r\n\r\nI apologize for being so picky.\r\n\r\nI also noticed that the spec uses _Type Metadata document_ and _Type Metadata Document_ at the same time.",
+              "createdAt": "2025-08-29T19:42:07Z",
+              "updatedAt": "2025-08-29T19:42:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc68-WCl",
+          "commit": {
+            "abbreviatedOid": "7f70cc8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T22:15:29Z",
+          "updatedAt": "2025-08-29T22:15:30Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Building on @adeinega's suggesting and using a different word than guarantee, which is strong word, stronger than I think is what we want to say here. \r\n```suggestion\r\n    * OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in Section (#document-integrity).\r\n```",
+              "createdAt": "2025-08-29T22:15:29Z",
+              "updatedAt": "2025-08-29T22:15:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc69AeGe",
+          "commit": {
+            "abbreviatedOid": "7f70cc8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-30T12:00:08Z",
+          "updatedAt": "2025-08-30T12:00:08Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "> I also noticed that the spec uses _Type Metadata document_ and _Type Metadata Document_ at the same time.\r\n\r\nLooks like there's one use of \"Document\" - maybe do a PR to make that big D a little one? ",
+              "createdAt": "2025-08-30T12:00:08Z",
+              "updatedAt": "2025-08-30T12:00:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc69A7fQ",
+          "commit": {
+            "abbreviatedOid": "fb2d722"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-30T17:44:18Z",
+          "updatedAt": "2025-08-30T17:44:18Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "PR https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/341 is open",
+              "createdAt": "2025-08-30T17:44:18Z",
+              "updatedAt": "2025-08-30T17:44:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc69BadB",
+          "commit": {
+            "abbreviatedOid": "7f70cc8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-30T22:43:45Z",
+          "updatedAt": "2025-08-30T22:43:46Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "I'd kinda meant that as a suggestion for @adeinega but thank you @cre8! ",
+              "createdAt": "2025-08-30T22:43:45Z",
+              "updatedAt": "2025-08-30T22:43:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc69Ba2W",
+          "commit": {
+            "abbreviatedOid": "cdf7462"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-30T22:56:47Z",
+          "updatedAt": "2025-08-30T22:56:47Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 337,
+      "id": "PR_kwDOJbVClc6lxAX5",
+      "title": "fix: add extend for claim metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/337",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #311\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
+      "createdAt": "2025-08-28T09:21:45Z",
+      "updatedAt": "2025-08-29T22:31:22Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
+      "headRepository": "cre8/oauth-sd-jwt-vc",
+      "headRefName": "fix/311",
+      "headRefOid": "46284d42eea7068f2b5835f00350b53c8534a14b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc682koQ",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T11:37:55Z",
+          "updatedAt": "2025-08-29T11:37:55Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "The property `lang` is required for each `display` element of the a claim. Can you please add it?",
+              "createdAt": "2025-08-29T11:37:55Z",
+              "updatedAt": "2025-08-29T11:37:56Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc682o-R",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T11:45:27Z",
+          "updatedAt": "2025-08-29T11:45:28Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "With regards to \"overwriting\" \r\n\r\nI have the impression that an issuer that \"extends\" a base definition, should not just be able to freely redefine a claim, at least the `sd` property.\r\n\r\nTo my understanding an issuer should (or even must) refine a base claim having as `sd` property equal to `allowed` in order to allow holder and verifier to know his choice to make the claim either `always` or `never` selectively disclosable.\r\n\r\nOn the other hand, I think that it doesn't make sense to change an `sd` from `always` to `never` or vice versa.\r\n\r\nSo please consider to replace \"overwrite\" with \"refine\" and mention the above rule for `sd` if it makes sense",
+              "createdAt": "2025-08-29T11:45:28Z",
+              "updatedAt": "2025-08-29T11:47:42Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc683tQ2",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T13:21:16Z",
+          "updatedAt": "2025-08-29T13:21:17Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "done",
+              "createdAt": "2025-08-29T13:21:17Z",
+              "updatedAt": "2025-08-29T13:21:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc683uDH",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T13:22:22Z",
+          "updatedAt": "2025-08-29T13:22:22Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "done",
+              "createdAt": "2025-08-29T13:22:22Z",
+              "updatedAt": "2025-08-29T13:22:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6839Sz",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T13:41:58Z",
+          "updatedAt": "2025-08-29T13:41:59Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "A `lang` is needed to the `name` claim of the \"merged\" definition.",
+              "createdAt": "2025-08-29T13:41:58Z",
+              "updatedAt": "2025-08-29T13:41:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc684FHO",
+          "commit": {
+            "abbreviatedOid": "46284d4"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T13:52:02Z",
+          "updatedAt": "2025-08-29T13:52:03Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "I was hoping of a more strict restriction about a claim refinement.\r\n\r\nThe child definition can \r\n- change the display (actually overwriting the base definition) and \r\n- refine `sd` only if it is equal to `allowed` \r\n\r\nPS: I would appreciate a comment from other reviewers, if the restriction on `sd` makes sense. ",
+              "createdAt": "2025-08-29T13:52:03Z",
+              "updatedAt": "2025-08-29T13:52:03Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc68-eh0",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T22:28:41Z",
+          "updatedAt": "2025-08-29T22:28:41Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "IMO I don't know what \"refine\" means or should mean in this context and I don't think it's worth trying to figure out or define. I'd think a complete overwrite in the case of a same `path` is the sensible approach. If that's perceived as too flexible or concerning, which I don't see, then ignoring same `path` or rejecting metadata documents with them would be better than defining some kind of merge rules. ",
+              "createdAt": "2025-08-29T22:28:41Z",
+              "updatedAt": "2025-08-29T22:28:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc68-f3M",
+          "commit": {
+            "abbreviatedOid": "46284d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T22:30:21Z",
+          "updatedAt": "2025-08-29T22:30:21Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/337#discussion_r2311468685 my intuition is to put back overwriting ",
+              "createdAt": "2025-08-29T22:30:21Z",
+              "updatedAt": "2025-08-29T22:30:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc68-gqi",
+          "commit": {
+            "abbreviatedOid": "46284d4"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "\"refine\" really doesn't work for me ",
+          "createdAt": "2025-08-29T22:31:22Z",
+          "updatedAt": "2025-08-29T22:31:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 338,
+      "id": "PR_kwDOJbVClc6lxROo",
+      "title": "fix: add security consideration for issuer authorization.",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/338",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #302\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
+      "createdAt": "2025-08-28T09:44:11Z",
+      "updatedAt": "2025-08-29T11:52:00Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
+      "headRepository": "cre8/oauth-sd-jwt-vc",
+      "headRefName": "fix/302",
+      "headRefOid": "37de109823fd68a85f533f79fca067780ba601d0",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc682swX",
+          "commit": {
+            "abbreviatedOid": "37de109"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-29T11:52:00Z",
+          "updatedAt": "2025-08-29T11:52:00Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 339,
+      "id": "PR_kwDOJbVClc6l40ZR",
+      "title": "Status List Token has to be a JWT",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/339",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT",
+      "createdAt": "2025-08-28T22:25:19Z",
+      "updatedAt": "2025-08-30T17:45:29Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "16562caebbef0b92a6273c7f0bcb40ac5ce7f633",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "333-jwt",
+      "headRefOid": "34de71d25603c8f7cee38b633dfadf5ed5ad7bda",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc68y45W",
+          "commit": {
+            "abbreviatedOid": "34de71d"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-29T05:53:13Z",
+          "updatedAt": "2025-08-29T05:53:13Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc682G6X",
+          "commit": {
+            "abbreviatedOid": "34de71d"
+          },
+          "author": "jogu",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-29T10:50:05Z",
+          "updatedAt": "2025-08-29T10:50:05Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc69A7nD",
+          "commit": {
+            "abbreviatedOid": "34de71d"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-30T17:45:29Z",
+          "updatedAt": "2025-08-30T17:45:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 340,
+      "id": "PR_kwDOJbVClc6l848C",
+      "title": "fix: add privacy concerns for cnf handling",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/340",
+      "state": "OPEN",
+      "author": "cre8",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "closes #315\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
+      "createdAt": "2025-08-29T09:08:20Z",
+      "updatedAt": "2025-08-29T22:01:17Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "16562caebbef0b92a6273c7f0bcb40ac5ce7f633",
+      "headRepository": "cre8/oauth-sd-jwt-vc",
+      "headRefName": "fix/315",
+      "headRefOid": "01db10ac6d108015f3a5047388abbc29ad03772f",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/315#issuecomment-3235196835 we'd agreed to \"add text advising against supporting cnf methods that involve retrieving a key from a (potentially issuer-controlled) remote source.\" which is somewhat more than cnf.jwk.x5u as there's a cnf.jku https://datatracker.ietf.org/doc/html/rfc7800#section-3.5 and some put a URL in the cnf.kid https://datatracker.ietf.org/doc/html/rfc7800#section-3.4 and there's a possibility that other cnf methods are added. ",
+          "createdAt": "2025-08-29T12:15:54Z",
+          "updatedAt": "2025-08-29T12:15:54Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> in [#315 (comment)](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/315#issuecomment-3235196835) we'd agreed to \"add text advising against supporting cnf methods that involve retrieving a key from a (potentially issuer-controlled) remote source.\" which is somewhat more than cnf.jwk.x5u as there's a cnf.jku https://datatracker.ietf.org/doc/html/rfc7800#section-3.5 and some put a URL in the cnf.kid https://datatracker.ietf.org/doc/html/rfc7800#section-3.4 and there's a possibility that other cnf methods are added.\r\n\r\nso should it be more generic or do we even want to have an \"allowlist\" so developers know what is safe to use?",
+          "createdAt": "2025-08-29T13:26:37Z",
+          "updatedAt": "2025-08-29T13:26:37Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > in [#315 (comment)](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/315#issuecomment-3235196835) we'd agreed to \"add text advising against supporting cnf methods that involve retrieving a key from a (potentially issuer-controlled) remote source.\" which is somewhat more than cnf.jwk.x5u as there's a cnf.jku https://datatracker.ietf.org/doc/html/rfc7800#section-3.5 and some put a URL in the cnf.kid https://datatracker.ietf.org/doc/html/rfc7800#section-3.4 and there's a possibility that other cnf methods are added.\r\n> \r\n> so should it be more generic or do we even want to have an \"allowlist\" so developers know what is safe to use?\r\n\r\nJust a bit more generic or even just an additional bit about there being other potential remote retrieval things. And a suggestion/requirement not to use them - basically saying don't issue things with that kind of cnf and don't follow such references as verifier or even holder. ",
+          "createdAt": "2025-08-29T14:21:34Z",
+          "updatedAt": "2025-08-29T22:01:17Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc683AIl",
+          "commit": {
+            "abbreviatedOid": "01db10a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-08-29T12:19:41Z",
+          "updatedAt": "2025-08-29T12:19:41Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "I am of the opinion that a strict reading of RFC 7517 does not imply this behavior so think a different word would be better here.\r\n```suggestion\r\nAnother related concern arises from the use of the `x5u` parameter in JWKs, as specified in section 4.6 [@!RFC7517]. Suppose a malicious Issuer uses different JWKs with distinct `x5u` values per (group of) user(s), particularly in the `cnf` claim. The public key of a Holder may be stored in a certificate at a location controlled by the Issuer, and the `x5u` parameter of the JWK in the `cnf` claim set accordingly. Since `x5u` can co-exist with other JWK members, this may not be noticed by the Holder. If the Verifier uncritically follows RFC 7517, it will retrieve the certificate and verify it matches the rest of the JWK members. This mechanism can make the attack described in Section 11.3 more efficient, as resolving the certificate via `x5u` may allow the Issuer to track credential usage or correlate Holders.\r\n```",
+              "createdAt": "2025-08-29T12:19:41Z",
+              "updatedAt": "2025-08-29T12:19:41Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 341,
+      "id": "PR_kwDOJbVClc6mHbSJ",
+      "title": "fix: changing Document to document",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/341",
+      "state": "MERGED",
+      "author": "cre8",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Based on https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/336/files/fb2d722de03c4752e259e3cd6a629d1f172eb810#r2311916658\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
+      "createdAt": "2025-08-30T17:43:47Z",
+      "updatedAt": "2025-08-30T22:44:12Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "16562caebbef0b92a6273c7f0bcb40ac5ce7f633",
+      "headRepository": "cre8/oauth-sd-jwt-vc",
+      "headRefName": "small-d",
+      "headRefOid": "e437b84e9ac641ac7355c01eb11f597bcabf2296",
+      "closedAt": "2025-08-30T22:44:12Z",
+      "mergedAt": "2025-08-30T22:44:12Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "e1bdaa419307a303f96d9229e21ac8e7a6a9fc65"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc69BaYp",
+          "commit": {
+            "abbreviatedOid": "e437b84"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-08-30T22:42:12Z",
+          "updatedAt": "2025-08-30T22:42:12Z",
           "comments": []
         }
       ]
