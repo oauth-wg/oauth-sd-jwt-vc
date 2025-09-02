@@ -250,7 +250,7 @@ information.
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `vct#integrity`
-    * OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in Section (#document-integrity).
+    * OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@!I-D.ietf-oauth-status-list]
