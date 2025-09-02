@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-08-31T00:36:03.341419+00:00",
+  "timestamp": "2025-09-02T00:33:03.784371+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -25754,7 +25754,7 @@
       "labels": [],
       "body": "fixes #258\n\nWhen reading the sentence of the chapter:\n\n> The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:\n\nI had two thoughts:\n- these claims can not be disclosed -> hidden\n- these claims are always disclosed -> visible\n\nI suggest to clarify this here by something like saying\n\n> cannot be selectifly disclosed and are always visible\n\nOr is this clear becaue there is no option to hide an attribute (just visible to the holder, but that can never be disclosed like an embedded secret)\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:58:33Z",
-      "updatedAt": "2025-08-30T22:56:47Z",
+      "updatedAt": "2025-09-01T15:32:14Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
@@ -25961,6 +25961,39 @@
           "createdAt": "2025-08-30T22:56:47Z",
           "updatedAt": "2025-08-30T22:56:47Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc69GKKi",
+          "commit": {
+            "abbreviatedOid": "cdf7462"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-01T07:51:37Z",
+          "updatedAt": "2025-09-01T07:51:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc69MFPu",
+          "commit": {
+            "abbreviatedOid": "7f70cc8"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-01T15:32:14Z",
+          "updatedAt": "2025-09-01T15:32:14Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "One another minor (editorial) suggestion you might want to take care off, there is some inconsistency in how references to internal sections are provided.\r\n\r\n> * `vct`\r\n>     * REQUIRED. The type of the Verifiable Credential, e.g.,\r\n> `https://credentials.example.com/identity_credential`, as defined in (#type-claim).\r\n> * `vct#integrity`\r\n>     * OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in Section (#document-integrity).\r\n\r\nThere are two ways, \"as defined in\" and \"as defined in Section\", the spec uses other ways to do the same to in other places.",
+              "createdAt": "2025-09-01T15:32:14Z",
+              "updatedAt": "2025-09-01T15:32:14Z"
+            }
+          ]
         }
       ]
     },
