@@ -1540,6 +1540,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -11
 
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
+* add `vct#integrity` to the list of claims that cannot be selectively disclosed
 * Drop explicit treatment of the glue type metadata document concept
 * Editorial updates and fixes.
 * State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
