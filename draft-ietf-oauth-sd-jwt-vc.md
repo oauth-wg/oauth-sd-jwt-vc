@@ -249,10 +249,12 @@ information.
 * `vct`
     * REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
+* `vct#integrity`
+    * OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
 * `status`
     * OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@!I-D.ietf-oauth-status-list]
- for more information.
+ for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
 
@@ -535,7 +537,7 @@ with the value `https://betelgeuse.example.com/education_credential`:
 Type Metadata for the type `https://betelgeuse.example.com/education_credential`
 can be retrieved using various mechanisms as described in
 (#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
-(#retrieval-from-vct-claim) and the following Type Metadata Document is
+(#retrieval-from-vct-claim) and the following Type Metadata document is
 retrieved from it:
 
 ```json
@@ -619,29 +621,6 @@ A Consumer MAY cache Type Metadata for a SD-JWT VC type. If a hash for integrity
 protection is present in the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
 indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
 header of the HTTP response to determine how long the metadata can be cached.
-
-### From Type Metadata Glue Documents {#glue-documents}
-
-Credentials MAY encode Type Metadata directly, providing it as "glue
-information" to the Consumer.
-
-For JSON-serialized JWS-based credentials, such Type Metadata documents MAY be
-included in the unprotected header of the JWS. In this case, the key `vctm` MUST
-be used in the unprotected header and its value MUST be an array of
-base64url-encoded Type Metadata documents as defined in this specification.
-Multiple documents MAY be included for providing a whole chain of types to the
-Consumer (see (#extending-type-metadata)).
-
-A Consumer of a credential MAY use the documents in the `vctm`
-array instead of retrieving the respective Type Metadata elsewhere as follows:
-
- * When resolving a `vct` in a credential, the Consumer MUST ensure
-   that the `vct` claim in the credential matches the one in the Type Metadata
-   document, and it MUST verify the integrity of the Type Metadata document as
-   defined in (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided in `vct#integrity`.
- * When resolving an `extends` property in a Type Metadata document, the Consumer MUST ensure that the value of the `extends` property in the
-   Type Metadata document matches that of the `vct` in the Type Metadata document, and it MUST verify the integrity of the Type Metadata document as defined in
-   (#document-integrity). The Consumer MUST NOT use the Type Metadata if no hash for integrity protection was provided.
 
 ## Extending Type Metadata {#extending-type-metadata}
 
@@ -1093,9 +1072,6 @@ Consumers SHOULD therefore implement a local cache as described in
 (#retrieval-from-local-cache) if possible. Such a cache MAY be populated with metadata before
 the credential is used.
 
-Issuers MAY provide glue documents as described in (#glue-documents) to provide
-metadata directly with the credential and avoid the need for network requests.
-
 These measures allow the Consumers to continue to function even if
 the metadata server is temporarily unavailable and avoid privacy issues as
 described in (#privacy-preserving-retrieval-of-type-metadata).
@@ -1114,6 +1090,21 @@ or the privacy of the user. To this end, the following considerations apply:
   escaped to prevent Cross-Site Scripting (XSS) attacks.
 - The consuming application MUST ensure that the display of the user interface
   elements cannot be distorted by overly long text or special characters.
+
+## Credential Type Extension and Issuer Authorization {#type-extension-issuer-authorization}
+
+When processing credentials, it is important to recognize that the ability to extend or reference
+an existing credential type (e.g., a well-known identifier such as `urn:ec.eu.x.y.z`) does not
+confer any implicit authorization to issue credentials of that type or its extensions. In particular:
+
+- **Issuer Authorization**: Verifiers and wallets MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type `urn:de.bla` extending a European PID type) does not validate the issuer's authority.
+- **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
+- **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
+
+**Recommendation:**
+Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
+
+
 
 # Privacy Considerations {#privacy-considerations}
 
@@ -1566,8 +1557,13 @@ for their contributions (some of which substantial) to this draft and to the ini
 -11
 
 * Add privacy concerns regarding the use of `x5u` parameter in JWKs
+* Added a section on Credential Type Extension and Issuer Authorization.
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
+* add `vct#integrity` to the list of claims that cannot be selectively disclosed
+* Drop explicit treatment of the glue type metadata document concept
 * Editorial updates and fixes.
+* State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
+
 
 -10
 
