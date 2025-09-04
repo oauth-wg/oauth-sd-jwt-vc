@@ -1625,7 +1625,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
-* Add extend support for claim metadata
+* Clarify extend support for claim metadata
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * Editorial updates and fixes.
 
