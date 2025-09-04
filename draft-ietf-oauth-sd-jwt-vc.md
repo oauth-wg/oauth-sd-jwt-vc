@@ -1081,7 +1081,7 @@ In this example, the child type inherits the `name` claim metadata from the base
   "claims": [
     {
       "path": ["name"],
-      "display": [{"label": "Full Name"}]
+      "display": [{"label": "Full Name", "lang": "en"}]
     },
     {
       "path": ["address", "city"],
