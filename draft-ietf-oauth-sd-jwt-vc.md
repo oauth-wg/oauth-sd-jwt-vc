@@ -84,7 +84,7 @@ Figure: Issuer-Holder-Verifier Model with optional Status Provider
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended holder of the Verifiable Credential, for example, by proving possession of a
+are the intended Holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
@@ -1150,7 +1150,7 @@ and SHOULD monitor suspicious behaviour such as frequent rotation of those ident
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
 
-Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and verifiers and holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
+Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
 
 Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.
