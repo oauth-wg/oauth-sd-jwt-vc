@@ -1146,11 +1146,11 @@ when the SD-JWT VC is verified. This would allow the malicious Issuer to keep tr
 and how often the SD-JWT VC was used.
 
 Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
-and should monitor suspicious behaviour such as frequent rotation of those identifiers.
+and SHOULD monitor suspicious behaviour such as frequent rotation of those identifiers.
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
 
-Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and verifiers and holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material should be supported.
+Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and verifiers and holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
 
 Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.
