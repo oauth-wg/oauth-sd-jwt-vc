@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-04T00:31:24.963284+00:00",
+  "timestamp": "2025-09-07T00:35:40.711280+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8150,7 +8150,7 @@
       ],
       "body": "Hi all, we've been working on an implementation of issuing SD-JWT VCs with `did:cheqd` using Paradym. \n\nOne part of the VC Data Model that we want to include within the issued SD-JWT VC is the `termsOfUse` field, for referencing 'accreditations' issued to the issuer (stored on our trust registry). However, this is currently not a section that is mapped across in the spec. Would it be worth creating more OPTIONAL JWT claims to map missing sections of the VC Data Model (`evidence`, `termsOfUse`, etc?) - or have these been purposefully omitted to keep the spec as lightweight and simple as possible? \n\nIn particular `termsOfUse` has been increasingly used for pointing to trust registry entries in multiple implementations (see OIDF issue here: https://github.com/openid/federation-wallet/issues/48; EBSI issuer trust model here: https://hub.ebsi.eu/vc-framework/trust-model/issuer-trust-model-v4 and cheqd trust registry model here: https://docs.cheqd.io/product/studio/trust-registries/dtc/referencing-in-credential)\n\nThanks!\n",
       "createdAt": "2025-06-25T14:15:47Z",
-      "updatedAt": "2025-07-07T16:28:34Z",
+      "updatedAt": "2025-09-04T16:11:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -8187,6 +8187,13 @@
           "body": "Thanks @danielfett - understood that the goal of this spec isn't to map the VCDM fields into SD-JWT VC, but maybe a separate question/note would be:\n\n- One area where I see SD-JWT VC lacking is that there's no field that you can utilise to find a trust registry or accreditation of the issuer\n- This is fine if you're signing the SD-JWT VC using an X.509 certificate, because you can traverse to the Root CA using the PKI chain\n- However, if the issuer is an HTTPS URI and the public key is linked with that HTTPS URI, there's no simple mechanism to find whether that is really a trusted issuer - you just know that the VC is cryptographically secured. \n- Thinking about this issue, it would be awesome if there was an optional field baked into the spec that allowed implementations to include a URI to a trust registry or accreditation, where the verifier could check the legitimacy of the issuer (whether that's an entity statement for OIDF, a XML trusted list, or a DID URL that dereferences to some resource)\n- Happy if this is out of scope, but it might be a question worth raising with the rest of the team",
           "createdAt": "2025-07-07T16:27:49Z",
           "updatedAt": "2025-07-07T16:28:34Z"
+        },
+        {
+          "author": "samuelmr",
+          "authorAssociation": "NONE",
+          "body": "Just a note that in https://github.com/openid/federation-wallet/pull/50, I suggest using a new `EntityConfiguration` parameter for the issuer to point to the issuer's OpenID Entity Configuration.",
+          "createdAt": "2025-09-04T16:11:47Z",
+          "updatedAt": "2025-09-04T16:11:47Z"
         }
       ]
     },
@@ -8672,7 +8679,7 @@
       "labels": [],
       "body": "I was pretty skeptical of about the utility of it when it was first added/proposed and I can't say my perspective has moved.  \n\nbut there are related issues like #332 #310 #238 and (thanks for the reminder @adeinega) #237 ",
       "createdAt": "2025-09-02T18:00:42Z",
-      "updatedAt": "2025-09-03T23:05:56Z",
+      "updatedAt": "2025-09-04T06:34:09Z",
       "closedAt": null,
       "comments": [
         {
@@ -8692,9 +8699,16 @@
         {
           "author": "adeinega",
           "authorAssociation": "CONTRIBUTOR",
-          "body": "While I generally have nothing against the use of JSON Schema in the spec (for the most part), I find it to be a rather strong requirement to have\n\n> If a schema or schema_uri property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm (as defined in Section 7.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22)]) against the JSON Schema document provided by the schema or schema_uri property.\n\nWhy is it `MUST`? I, personally, don't have a good answer. The first, and maybe stupid question that comes to my mind... what if a verifier isn't able to download the JSON Schema document from property schema_uri because it's offline, or it's in some form of air gapped env?\n\nI hope and honestly, I always expect an issuer to perform all the checks to validate credentials before it actually issues them (of course, including a step that checks a credential against the JSON Schema, among many other checks), and the issuer is free to use wherever JSON Schema makes most sense for it to do that. Note, this schema or schemas don't need to be available for consumers, there is no risk to leak info about claims, and their shape if I may.\n\nThen moving on to minor items, I think there are plenty of ways, too many easy ways, to screw things up with the JSON Schema to fail a validation of an SD-JWT VC. As an example, one messed up a tiny bit with [additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties) or [requiredProperties](https://json-schema.org/understanding-json-schema/reference/object#required) for the JSON Schema available to consumers, and that results, in an inability to complete their validation. In other hand, if you don't specify all this information (in other words, the schema is open as it gets), what value does it bring to a consumer?\n\nThen, there are other things, JSON Schemas allow embedding of other JSON Schemas, https://json-schema.org/understanding-json-schema/structuring, how are you going to allow doing that securely, and it a privacy preserving way? Or, there should be a long list of what's allowed to do and what isn't. I doubt it's achievable in the scope of this spec.\n\nThen, one more thing I wanted to share, that was the very first (baby) step I took towards the JSON Schema documents in the context of this spec.. it's about the vct claim and potential discrepancies around it, as for one issuer it's going to be an opaque string and for another one it's a URI and they both need to reflect that in the JSON Schema. Are we actually OK to have some confusion here and there? ...and let me remind you that the vct claim is defined as _StringOrURI_.\n\nWhatever I shared isn't a deep analysis of this topic, it's more like my thoughts after I barely scratched the surface on that.\n\nLastly, I've been using the JSON Schemas in different contexts, and so far, have been pretty happy with them.",
+          "body": "While I generally have nothing against the use of JSON Schema in the spec (for the most part), I find it to be a rather strong requirement to have\n\n> If a schema or schema_uri property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm (as defined in Section 7.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22)]) against the JSON Schema document provided by the schema or schema_uri property.\n\nWhy is it `MUST`? I, personally, don't have a good answer. The first, and maybe stupid question that comes to my mind... what if a verifier isn't able to download the JSON Schema document from property schema_uri because it's offline, or it's in some form of air gapped env?\n\nI hope and honestly, I always expect an issuer to perform all the checks to validate credentials before it actually issues them (of course, including a step that checks a credential against the JSON Schema, among many other checks), and the issuer is free to use wherever JSON Schema makes most sense for it to do that. Note, this schema or schemas don't need to be available for consumers, there is no risk to leak info about claims, and their shape if I may.\n\nThen moving on to minor items, I think there are plenty of ways, too many easy ways, to screw things up with the JSON Schema to fail a validation of an SD-JWT VC. As an example, one messed up a tiny bit with [additionalProperties](https://json-schema.org/understanding-json-schema/reference/object#additionalproperties) or [requiredProperties](https://json-schema.org/understanding-json-schema/reference/object#required) for the JSON Schema available to consumers, and that results, in an inability to complete their validation. In other hand, if you don't specify all this information (in other words, the schema is open as it gets), what value does it bring to a consumer?\n\nThen, there are other things, JSON Schemas allow embedding of other JSON Schemas, https://json-schema.org/understanding-json-schema/structuring, how are you going to allow doing that securely, and it a privacy preserving way? Or, there should be a long list of what's allowed to do and what isn't. I doubt it's achievable in the scope of this spec.\n\nThen, one more thing I wanted to share, that was the very first (baby) step I took towards the JSON Schema documents in the context of this spec... it's about the vct claim and potential discrepancies around it, as for one issuer it's going to be an opaque string and for another one it's a URI and they both need to reflect that in the JSON Schema. Are we actually OK to have some confusion here and there? ...and let me remind you that the vct claim is defined as _StringOrURI_.\n\nWhatever I shared isn't a deep analysis of this topic, it's more like my thoughts after I barely scratched the surface on that.\n\nI've been using the JSON Schemas in different contexts for a long while, and so far, have been pretty happy with them.",
           "createdAt": "2025-09-03T21:42:37Z",
-          "updatedAt": "2025-09-03T23:05:56Z"
+          "updatedAt": "2025-09-04T04:20:31Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Why is it MUST? I, personally, don't have a good answer. The first, and maybe stupid question that comes to my mind... what if a verifier isn't able to download the JSON Schema document from property schema_uri because it's offline, or it's in some form of air gapped env?\n\nIn the EUDI eco system we will have attestation rulebooks that are defining the schema like: https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/latest/annexes/annex-3/annex-3.01-pid-rulebook/#:~:text=4.1%20Encoding%20of%20PID%20attributes%20and%20metadata\n\nSo having a JSON schema either in the rulebook or in the vct metadata is really helpful to validate if the provided credential has the required attributes.\n\nIt also helps issuer software to e.g. just load the vct metadata and based on this and the claims of the API request a credential can be created dynamically.\n\nAs discussed in another issue, I would suggest to reference two json schemas (one can be used by the issuer and holder to verify the issued credential, one for the verifier to check for the presentation. Of course both are optional and may be used for validation when provided.",
+          "createdAt": "2025-09-04T06:34:09Z",
+          "updatedAt": "2025-09-04T06:34:09Z"
         }
       ]
     }
@@ -25822,7 +25836,7 @@
       "labels": [],
       "body": "fixes #258\n\nWhen reading the sentence of the chapter:\n\n> The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:\n\nI had two thoughts:\n- these claims can not be disclosed -> hidden\n- these claims are always disclosed -> visible\n\nI suggest to clarify this here by something like saying\n\n> cannot be selectifly disclosed and are always visible\n\nOr is this clear becaue there is no option to hide an attribute (just visible to the holder, but that can never be disclosed like an embedded secret)\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:58:33Z",
-      "updatedAt": "2025-09-02T18:40:43Z",
+      "updatedAt": "2025-09-04T05:58:02Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "7338dcf9416d07dd5c1ae64fcc4d21da7ffe2fbb",
@@ -26119,18 +26133,33 @@
       "labels": [],
       "body": "fixes #311\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T09:21:45Z",
-      "updatedAt": "2025-09-02T18:15:47Z",
+      "updatedAt": "2025-09-04T13:53:47Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
+      "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/311",
-      "headRefOid": "46284d42eea7068f2b5835f00350b53c8534a14b",
+      "headRefOid": "e6198a58f3cfc10c8f72b62e79f564e010232e56",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> \"refine\" really doesn't work for me\r\n\r\nI agree. The extend approach solves the problem of definition duplication. But it should give the freedom to override an attribute completely. The only limitation is that you cannot delete a claim in case it was defined in a VCT \"parent\", correct? When my credential has the attributes `A,B,C` and I only want `B,C`, extending does not help me and I need define the whole metadata.",
+          "createdAt": "2025-09-04T05:57:03Z",
+          "updatedAt": "2025-09-04T05:57:03Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> > \"refine\" really doesn't work for me\r\n> \r\n> I agree. The extend approach solves the problem of definition duplication. But it should give the freedom to override an attribute completely. The only limitation is that you cannot delete a claim in case it was defined in a VCT \"parent\", correct? When my credential has the attributes `A,B,C` and I only want `B,C`, extending does not help me and I need define the whole metadata.\r\n\r\nI believe that's correct. New attributes can be added to the  base attributes. Base attributes cannot be removed.\r\n\r\nPersonally, I still believe that there should be a rule for overriding a single base claim with regards to `sd` property, not allowing to change the value of `sd` unless it is equal to `allowed`. \r\n\r\nReason for this is that `sd` inherently affects the DCQL.\r\n\r\nFor instance, assume a verifier that wants to query a wallet, in the basis of a well-known (base definition),  for a set of attributes. This verifier doesn't have to include to the DCQL  the attributes having `sd` equal to `never`.\r\n\r\nIf an issuer overrides such a claim and sets the `sd` equal to `always` then it will brake the verifier's expectation.\r\n\r\nMy point is that the use of a base definitions (especially in an ecosystem with multiple issuers/verifiers) is a contract with the verifiers that probably shouldn't be broken. \r\n",
+          "createdAt": "2025-09-04T11:40:40Z",
+          "updatedAt": "2025-09-04T13:53:47Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc682koQ",
@@ -26324,6 +26353,26 @@
               "updatedAt": "2025-09-02T18:15:47Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc69wY5r",
+          "commit": {
+            "abbreviatedOid": "2f2b73b"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-04T06:08:07Z",
+          "updatedAt": "2025-09-04T06:08:07Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "fixed",
+              "createdAt": "2025-09-04T06:08:07Z",
+              "updatedAt": "2025-09-04T06:08:07Z"
+            }
+          ]
         }
       ]
     },
@@ -26339,7 +26388,7 @@
       "labels": [],
       "body": "fixes #302\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T09:44:11Z",
-      "updatedAt": "2025-09-02T19:10:36Z",
+      "updatedAt": "2025-09-04T05:57:24Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
@@ -26449,13 +26498,13 @@
       "labels": [],
       "body": "closes #315\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-29T09:08:20Z",
-      "updatedAt": "2025-08-29T22:01:17Z",
+      "updatedAt": "2025-09-06T18:00:22Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "16562caebbef0b92a6273c7f0bcb40ac5ce7f633",
+      "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/315",
-      "headRefOid": "01db10ac6d108015f3a5047388abbc29ad03772f",
+      "headRefOid": "509af8433b6fd5e8e5bdabc258e03ff7bd81a2ff",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -26501,6 +26550,79 @@
               "body": "I am of the opinion that a strict reading of RFC 7517 does not imply this behavior so think a different word would be better here.\r\n```suggestion\r\nAnother related concern arises from the use of the `x5u` parameter in JWKs, as specified in section 4.6 [@!RFC7517]. Suppose a malicious Issuer uses different JWKs with distinct `x5u` values per (group of) user(s), particularly in the `cnf` claim. The public key of a Holder may be stored in a certificate at a location controlled by the Issuer, and the `x5u` parameter of the JWK in the `cnf` claim set accordingly. Since `x5u` can co-exist with other JWK members, this may not be noticed by the Holder. If the Verifier uncritically follows RFC 7517, it will retrieve the certificate and verify it matches the rest of the JWK members. This mechanism can make the attack described in Section 11.3 more efficient, as resolving the certificate via `x5u` may allow the Issuer to track credential usage or correlate Holders.\r\n```",
               "createdAt": "2025-08-29T12:19:41Z",
               "updatedAt": "2025-08-29T12:19:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-VtJm",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thank you @cre8 ",
+          "createdAt": "2025-09-06T17:11:06Z",
+          "updatedAt": "2025-09-06T17:11:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-WLsD",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-06T17:54:23Z",
+          "updatedAt": "2025-09-06T17:54:23Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "I suggest using `SHOULD`, not `should` in \"key material should be supported.\"\r\n\r\nJust like https://datatracker.ietf.org/doc/html/rfc8725#section-3.10 does it.",
+              "createdAt": "2025-09-06T17:54:23Z",
+              "updatedAt": "2025-09-06T17:54:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-WPL5",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-06T17:58:01Z",
+          "updatedAt": "2025-09-06T17:58:01Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "In addition to that, rephrase or omit \"Issuers are advised not to issue SD-JWT VCs with such cnf methods\".",
+              "createdAt": "2025-09-06T17:58:01Z",
+              "updatedAt": "2025-09-06T17:58:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-WRga",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-06T18:00:21Z",
+          "updatedAt": "2025-09-06T18:00:22Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "The spec uses Holder and Verifiers (starting letters in an upper case) too.",
+              "createdAt": "2025-09-06T18:00:22Z",
+              "updatedAt": "2025-09-06T18:00:22Z"
             }
           ]
         }
