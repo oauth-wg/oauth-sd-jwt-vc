@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-07T00:35:40.711280+00:00",
+  "timestamp": "2025-09-09T00:32:27.272830+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -26498,13 +26498,13 @@
       "labels": [],
       "body": "closes #315\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-29T09:08:20Z",
-      "updatedAt": "2025-09-06T18:00:22Z",
+      "updatedAt": "2025-09-08T04:58:18Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/315",
-      "headRefOid": "509af8433b6fd5e8e5bdabc258e03ff7bd81a2ff",
+      "headRefOid": "734f41cdcdd67c5838b9f6276c2390589410d184",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -26623,6 +26623,66 @@
               "body": "The spec uses Holder and Verifiers (starting letters in an upper case) too.",
               "createdAt": "2025-09-06T18:00:22Z",
               "updatedAt": "2025-09-06T18:00:22Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-Zn0s",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-07T10:52:45Z",
+          "updatedAt": "2025-09-07T10:52:45Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "@adeinega updates your first and third point. But what about the advise? I think it's good to give advises in the privacy consideration method. Because when we really want to block it, it has to be part of the handling chapters, not the privacy consideration chapter.",
+              "createdAt": "2025-09-07T10:52:45Z",
+              "updatedAt": "2025-09-07T10:52:45Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-aGI5",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-07T16:17:34Z",
+          "updatedAt": "2025-09-07T16:17:35Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "@cre8, my (personal) preference would be to explicitly block `x5u`, `jku`, and other feature methods for retrieving key material from a remote source in the cnf claim. The right place for that probably isn't going to be the privacy considerations section like you said.\r\n\r\nWhy is that?\r\n\r\nThis is a safeguard from anyone trying to use these methods for rotating key material, and of course, that eliminates a ton of privacy concerns.\r\n\r\nOtherwise, there\u2019s enough room left for misuse, abuse and debates.",
+              "createdAt": "2025-09-07T16:17:35Z",
+              "updatedAt": "2025-09-07T16:17:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6-b0XE",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-08T04:58:18Z",
+          "updatedAt": "2025-09-08T04:58:18Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Sounds valid to me, but as mentioned above it would be better in the sd-jwt kb-jwt chapter that we can not change. So we either forbid it in the privacy concern chapter or adding a new kb-jwt chapter that is \"hardening\" the approach.\r\n@bc-pi what's your opinion?",
+              "createdAt": "2025-09-08T04:58:18Z",
+              "updatedAt": "2025-09-08T04:58:18Z"
             }
           ]
         }
