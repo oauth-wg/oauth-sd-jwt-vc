@@ -1146,7 +1146,7 @@ when the SD-JWT VC is verified. This would allow the malicious Issuer to keep tr
 and how often the SD-JWT VC was used.
 
 Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
-and SHOULD monitor suspicious behaviour such as frequent rotation of those identifiers.
+and should monitor suspicious behavior such as frequent rotation of those identifiers.
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
 
