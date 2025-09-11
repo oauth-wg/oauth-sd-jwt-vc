@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-09T00:32:27.272830+00:00",
+  "timestamp": "2025-09-11T00:32:11.544390+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6435,7 +6435,7 @@
       ],
       "body": "Per John Bradley comment during IETF 120",
       "createdAt": "2024-07-22T20:37:32Z",
-      "updatedAt": "2025-09-02T19:23:35Z",
+      "updatedAt": "2025-09-09T21:28:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -6465,6 +6465,27 @@
           "body": "Over a year later, if @ve7jtb has some actionable suggestion for this, let's consider it. Otherwise, will close this in some reasonable time frame. ",
           "createdAt": "2025-09-02T19:23:35Z",
           "updatedAt": "2025-09-02T19:23:35Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "It depends on the result of #342 :\nif the vct includes a schema that is used to validation during presentation, vct has to be disclosed.\n\nIn the EUDI ecosystem the policy for disclosure (to whom can the credential be shared), have to passed in the oid4vci issuer metadata.",
+          "createdAt": "2025-09-09T21:15:22Z",
+          "updatedAt": "2025-09-09T21:15:22Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Sorry @cre8 but I don't understand. ",
+          "createdAt": "2025-09-09T21:17:59Z",
+          "updatedAt": "2025-09-09T21:17:59Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "In the issue or some other we talked about if the schema should be either used by the holder to verify the schema of the issued credential or by the verifier to verify the presentation. In the last case, the schema has to be disclosed to the verifier. \n\nWhen using OID4VP with DCQL, the credential is requested anyway by the vct value. Therefore the URI should be known to the verifier in advance with all it's values. And since metadata value is not unique for each person, we are not sharing any personal critical data.",
+          "createdAt": "2025-09-09T21:28:19Z",
+          "updatedAt": "2025-09-09T21:28:19Z"
         }
       ]
     },
@@ -8679,7 +8700,7 @@
       "labels": [],
       "body": "I was pretty skeptical of about the utility of it when it was first added/proposed and I can't say my perspective has moved.  \n\nbut there are related issues like #332 #310 #238 and (thanks for the reminder @adeinega) #237 ",
       "createdAt": "2025-09-02T18:00:42Z",
-      "updatedAt": "2025-09-04T06:34:09Z",
+      "updatedAt": "2025-09-09T22:04:34Z",
       "closedAt": null,
       "comments": [
         {
@@ -8709,6 +8730,51 @@
           "body": "> Why is it MUST? I, personally, don't have a good answer. The first, and maybe stupid question that comes to my mind... what if a verifier isn't able to download the JSON Schema document from property schema_uri because it's offline, or it's in some form of air gapped env?\n\nIn the EUDI eco system we will have attestation rulebooks that are defining the schema like: https://eu-digital-identity-wallet.github.io/eudi-doc-architecture-and-reference-framework/latest/annexes/annex-3/annex-3.01-pid-rulebook/#:~:text=4.1%20Encoding%20of%20PID%20attributes%20and%20metadata\n\nSo having a JSON schema either in the rulebook or in the vct metadata is really helpful to validate if the provided credential has the required attributes.\n\nIt also helps issuer software to e.g. just load the vct metadata and based on this and the claims of the API request a credential can be created dynamically.\n\nAs discussed in another issue, I would suggest to reference two json schemas (one can be used by the issuer and holder to verify the issued credential, one for the verifier to check for the presentation. Of course both are optional and may be used for validation when provided.",
           "createdAt": "2025-09-04T06:34:09Z",
           "updatedAt": "2025-09-04T06:34:09Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> ...and let me remind you that the vct claim is defined as StringOrURI\n\nThanks for this reminder, honestly, I'd sort of forgotten. I was just suggesting elsewhere in this WG that the StringOrURI data type isn't great and probably shouldn't be used going forward https://github.com/oauth-wg/oauth-transaction-tokens/issues/195. I've created [#343](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/343) to hopefully change that. I realize that probably wasn't the main point of your comment there. But something to consider nonetheless.",
+          "createdAt": "2025-09-09T22:04:34Z",
+          "updatedAt": "2025-09-09T22:04:34Z"
+        }
+      ]
+    },
+    {
+      "number": 343,
+      "id": "I_kwDOJbVClc7KqYMn",
+      "title": "StringOrURI should probably not be used",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/343",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#section-3.2.2.1-1\n\nI'm not sure the StringOrURI data type has proven to be real useful. Let's just say vct is a string. Or a URI, if that's needed. But the conditional must be a URI if it has a colon thing isn't something to propagate IMHO.\n\nI had similar feedback on its use in the transaction tokens draft https://github.com/oauth-wg/oauth-transaction-tokens/issues/195 so just trying to be consistent with myself. ",
+      "createdAt": "2025-09-09T22:01:50Z",
+      "updatedAt": "2025-09-09T23:01:40Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I don\u2019t see any value in defining anything as _StringOrURI_ as an invalid or malformed URI will always be a valid string.",
+          "createdAt": "2025-09-09T22:11:26Z",
+          "updatedAt": "2025-09-09T22:12:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I don't see value in it either. But the definition from https://datatracker.ietf.org/doc/html/rfc7519#section-2 I think says something different and arguably less useful in practice. \n\n> StringOrURI\n>       A JSON string value, with the additional requirement that while\n>       arbitrary string values MAY be used, any value containing a \":\"\n>       character MUST be a URI [[RFC3986](https://datatracker.ietf.org/doc/html/rfc3986)].  StringOrURI values are\n>       compared as case-sensitive strings with no transformations or\n>       canonicalizations applied.",
+          "createdAt": "2025-09-09T22:29:34Z",
+          "updatedAt": "2025-09-09T22:29:45Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Every day you learn something new.\n\nJust as a random fact to share, Kubernetes very actively uses a \":\" character in many claims marked as \"StringOrURI\" in JWTs it issues (due to its name pattern conventions). So, strongly speaking, it does not fully adhere to the specification. Or... some parts of the spec are simply ignored.",
+          "createdAt": "2025-09-09T23:01:40Z",
+          "updatedAt": "2025-09-09T23:01:40Z"
         }
       ]
     }
@@ -25810,13 +25876,13 @@
       "labels": [],
       "body": "fixes #305\n\n- adds information for background image\n- using the reference to apple guidelines, allowing a more granual approach (different images for multiple dimensions, etc)\n- also aligning existing logo approach so both cases are using the same approach\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:35:04Z",
-      "updatedAt": "2025-08-28T06:37:32Z",
+      "updatedAt": "2025-09-09T17:59:41Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "f13bc95305781e1fbd1041944e36899dd01c9fd2",
+      "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/305",
-      "headRefOid": "e7833d145613cc89a75b18c616e2b4ede7592273",
+      "headRefOid": "c9568e2341965b0b82ab5fa748b2ca44061ae0aa",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
