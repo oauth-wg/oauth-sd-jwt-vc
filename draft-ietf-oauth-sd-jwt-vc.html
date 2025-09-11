@@ -12,23 +12,23 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.30.0" name="generator">
+<meta content="xml2rfc 3.30.1" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.0
+  xml2rfc 3.30.1
     Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.1
-    platformdirs 4.3.8
+    platformdirs 4.4.0
     pycountry 24.6.1
     PyYAML 6.0.2
-    requests 2.32.4
+    requests 2.32.5
     setuptools 80.9.0
     wcwidth 0.2.13
 -->
@@ -1053,7 +1053,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 6 March 2026</td>
+<td class="center">Expires 15 March 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-02" class="published">2 September 2025</time>
+<time datetime="2025-09-11" class="published">11 September 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-06">6 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-03-15">15 March 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 6 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 15 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1454,7 +1454,7 @@ Credentials are cryptographically secured statements about a Subject, typically 
           </figcaption></figure>
 <p id="section-1.1-3">Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended holder of the Verifiable Credential, for example, by proving possession of a
+are the intended Holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 <p id="section-1.1-4">To support revocation of Verifiable Credentials, revocation information can
@@ -1943,9 +1943,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BQFgg
-KPea-JlCs0F3LCOjFP-TekamX4hOXzKZr0-ogqx26wabEqvOklCZleXUpaHjeNVxmawC
-TtElWfUYJB7qw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p6NzH
+BbcsBm737-8Mn9WvOgyTf4JdpoyEj-9G1Tpdh0WyQRk2Jnq3mSAN8GsPJy4ER2JImtdv
+0epYspCskla3Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2058,17 +2058,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.BQFgg
-KPea-JlCs0F3LCOjFP-TekamX4hOXzKZr0-ogqx26wabEqvOklCZleXUpaHjeNVxmawC
-TtElWfUYJB7qw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p6NzH
+BbcsBm737-8Mn9WvOgyTf4JdpoyEj-9G1Tpdh0WyQRk2Jnq3mSAN8GsPJy4ER2JImtdv
+0epYspCskla3Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTY4NDAyNT
-QsICJzZF9oYXNoIjogIm5oZ09WMjhKWVQzSzhFVHBlOGpZRkptSzljX2VYbW1wNXM4Y0
-hmNUdQSmsifQ.G-eKfZh_MZeaKo8aNamPV-EH7M5lFNGoxeT77jDx9hUG2fzU43J8nyI
-myTAjUagtPznSl4Fcqcb44gckUIamkQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTc2MTc5NT
+MsICJzZF9oYXNoIjogIkRCb09PdHBXOWRzbEt4cGh1SHc0enBjcnB2QXVmb0U2bWFvd0
+k1WDJtNncifQ.pFSXwmxQxb0LmFT6AjjL8iEH1yhga12R2oo-eSfMPJOK21EwqwJ9qep
+nSKO5ZJVwJsnE9AWztyXVos78F0SxkA
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2113,8 +2113,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.wdmAF3gT6f7QkHGDBHQ8O-drogxFld0sDSqAVsnR9RgpDO
-oHfoZDTCtV3G5XHyiwR7_QSC0kIyRe6hHpA4GDrA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.B7yr0-3w4PQfe-i193f4nyemNBZY8JJq588A6lDgx7h3gu
+StuIlJ1JRitl-FoYk3JDQtmKaNKlXMOhx6nWv8zA~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3167,11 +3167,12 @@ The Verifier would create an HTTP GET request to the Holder-specific well-known 
 when the SD-JWT VC is verified. This would allow the malicious Issuer to keep track where
 and how often the SD-JWT VC was used.<a href="#section-11.3-2" class="pilcrow">¶</a></p>
 <p id="section-11.3-3">Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
-and should monitor suspicious behaviour such as frequent rotation of those identifiers.
+and should monitor suspicious behavior such as frequent rotation of those identifiers.
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.<a href="#section-11.3-3" class="pilcrow">¶</a></p>
-<p id="section-11.3-4">Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
-in the Issuer identifier.<a href="#section-11.3-4" class="pilcrow">¶</a></p>
+<p id="section-11.3-4">Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.<a href="#section-11.3-4" class="pilcrow">¶</a></p>
+<p id="section-11.3-5">Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
+in the Issuer identifier.<a href="#section-11.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3503,8 +3504,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.xJ6RyBelX-bPzMO_5ecoBVhatQJbzb8aypquo_0SH0-HN8t
-Uoc0OaqjWfjIpu6fYSEyM5tH8HJ-m5vO45_V-AQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.B0sNERU2SSnDTuGbpn8xBPGyg6eeAq7AUSqI15tS3Ps-O55
+akFgBgGo9-XdoUwVd0NeuHp7zS92PuvZXwp5yoQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3945,8 +3946,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.xJ6RyBelX-bPzMO_5ecoBVhatQJbzb8aypquo_0SH0-HN8t
-Uoc0OaqjWfjIpu6fYSEyM5tH8HJ-m5vO45_V-AQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.B0sNERU2SSnDTuGbpn8xBPGyg6eeAq7AUSqI15tS3Ps-O55
+akFgBgGo9-XdoUwVd0NeuHp7zS92PuvZXwp5yoQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3957,9 +3958,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NTY4NDAyNTQsICJzZF9oYXNoIjogIjJ3Y2RKZE9LSTJMdmprODlIV0FRRzd
-XWFNaNlZ4eDdWTy1zV0lTZkc3eG8ifQ.hGMtjsBrysuTp1P9_u6B7bmJTIxznSvaodgx
-9txYx6FSXDgiZAwnNe_UCpoy7X5i2_Nz9Nsa_kuvZg01bujBSg
+hdCI6IDE3NTc2MTc5NTMsICJzZF9oYXNoIjogImhFNlF0SlFBNlk3Vm9QX2FIclprZnl
+JVDZQbnBTRnpIeXRKaWVXRVlQX3MifQ.KmctnU3FgWRV9CUU74va9OqHQJ1RWQppnNV0
+szjdHW8VzmiXbgLf6y6cybzuFbma0tYYrKWhj2QXSHVUmUh1sw
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3968,8 +3969,8 @@ XWFNaNlZ4eDdWTy1zV0lTZkc3eG8ifQ.hGMtjsBrysuTp1P9_u6B7bmJTIxznSvaodgx
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1756840254,
-  "sd_hash": "2wcdJdOKI2Lvjk89HWAQG7WXSZ6Vxx7VO-sWISfG7xo"
+  "iat": 1757617953,
+  "sd_hash": "hE6QtJQA6Y7VoP_aHrZkfyIT6PnpSFzHytJieWEYP_s"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -4179,17 +4180,19 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-D-1">-11<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-2.1">Added a section on Credential Type Extension and Issuer Authorization.<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-2.1">Add privacy concerns regarding the use of <code>x5u</code> parameter in JWKs and similar remote retrieval mechanisms<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.2">Fixed an inconsistency to the description of <code>display</code> attribute of claim metadata.<a href="#appendix-D-2.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.2">Added a section on Credential Type Extension and Issuer Authorization.<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.3">add <code>vct#integrity</code> to the list of claims that cannot be selectively disclosed<a href="#appendix-D-2.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.3">Fixed an inconsistency to the description of <code>display</code> attribute of claim metadata.<a href="#appendix-D-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.4">Drop explicit treatment of the glue type metadata document concept<a href="#appendix-D-2.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.4">add <code>vct#integrity</code> to the list of claims that cannot be selectively disclosed<a href="#appendix-D-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.5">Editorial updates and fixes.<a href="#appendix-D-2.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.5">Drop explicit treatment of the glue type metadata document concept<a href="#appendix-D-2.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.6">State that when the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token has to be a JWT.<a href="#appendix-D-2.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.6">Editorial updates and fixes.<a href="#appendix-D-2.6" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.7">State that when the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token has to be a JWT.<a href="#appendix-D-2.7" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-10<a href="#appendix-D-3" class="pilcrow">¶</a></p>
