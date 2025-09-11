@@ -206,7 +206,7 @@ SD-JWT VCs.
 #### Verifiable Credential Type - `vct` Claim {#type-claim}
 
 This specification defines the new JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
-case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
+case-sensitive string value serving as an identifier
 for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
 
@@ -1627,6 +1627,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Drop explicit treatment of the glue type metadata document concept
 * Editorial updates and fixes.
 * State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
+* `vct` datatype is now just a string
 
 
 -10
