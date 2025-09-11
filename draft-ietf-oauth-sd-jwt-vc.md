@@ -1012,6 +1012,68 @@ disclosable. The following values are defined:
 
 If omitted, the default value is `allowed`.
 
+## Extending Claim Metadata {#claim-metadata-extends}
+
+The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will override the corresponding object from the extended type.
+
+Suppose we have a base type metadata document:
+
+```json
+{
+  "vct": "https://example.com/base-type-metadata",
+  "claims": [
+    {
+      "path": ["name"],
+      "display": [{"label": "Full Name", "lang": "en"}]
+    },
+    {
+      "path": ["address", "city"],
+      "display": [{"label": "City", "lang": "en"}]
+    }
+  ]
+}
+```
+
+And a child type metadata document that extends the base type:
+
+```json
+{
+  "vct": "https://example.com/custom-type-metadata",
+  "extends": "https://example.com/base-type-metadata",
+  "claims": [
+    {
+      "path": ["address", "city"],
+      "display": [{"label": "Town", "lang": "en"}]
+    },
+    {
+      "path": ["nationalities"],
+      "display": [{"label": "Nationalities", "lang": "en"}]
+    }
+  ]
+}
+```
+
+In this example, the child type inherits the `name` claim metadata from the base type, but overrides the `address.city` claim metadata with its own definition. It also adds a new claim metadata for `nationalities`. The final effective claim metadata for the child type is:
+
+```json
+{
+  "claims": [
+    {
+      "path": ["name"],
+      "display": [{"label": "Full Name", "lang": "en"}]
+    },
+    {
+      "path": ["address", "city"],
+      "display": [{"label": "Town", "lang": "en"}]
+    },
+    {
+      "path": ["nationalities"],
+      "display": [{"label": "Nationalities", "lang": "en"}]
+    }
+  ]
+}
+```
+
 # Security Considerations {#security-considerations}
 
 The Security Considerations in the SD-JWT specification
@@ -1542,6 +1604,7 @@ Lukas J Han,
 Leif Johansson,
 Michael B. Jones,
 Mike Prorock,
+Mirko Mollik,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
@@ -1556,6 +1619,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
+* Clarify extend support for claim metadata
 * Add privacy concerns regarding the use of `x5u` parameter in JWKs and similar remote retrieval mechanisms
 * Added a section on Credential Type Extension and Issuer Authorization.
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
