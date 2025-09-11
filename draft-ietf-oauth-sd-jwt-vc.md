@@ -1556,7 +1556,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -11
 
-* Add privacy concerns regarding the use of `x5u` parameter in JWKs
+* Add privacy concerns regarding the use of `x5u` parameter in JWKs and similar remote retrieval mechanisms
 * Added a section on Credential Type Extension and Issuer Authorization.
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * add `vct#integrity` to the list of claims that cannot be selectively disclosed
