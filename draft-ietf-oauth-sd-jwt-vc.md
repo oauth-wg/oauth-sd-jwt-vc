@@ -544,7 +544,7 @@ retrieved from it:
   "name":"Betelgeuse Education Credential - Preliminary Version",
   "description":"This is our development version of the education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
+  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
 
