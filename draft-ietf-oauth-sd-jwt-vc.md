@@ -317,8 +317,6 @@ If Key Binding is required (refer to the security considerations in Section 9.5 
 according to Section 7.3 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
 the KB-JWT, the `cnf` claim of the SD-JWT MUST be used.
 
-If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in (#schema-type-metadata).
-
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
@@ -501,7 +499,7 @@ MUST NOT be used.
 
 # SD-JWT VC Type Metadata {#type-metadata}
 
-An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see (#schema-definition)) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.
+An SD-JWT VC type, i.e., the `vct` value, is associated with Type Metadata defining, for example, information about the type and how credentials are displayed.
 
 This section defines Type Metadata that can be associated with a type of an SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:
 
@@ -547,8 +545,6 @@ retrieved from it:
   "description":"This is our development version of the education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
   "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
-  "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
 }
 ```
 
@@ -576,14 +572,6 @@ defined:
   in (#display-metadata). This property is OPTIONAL.
 * `claims`: An array of objects containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
-* `schema`
-  * OPTIONAL. An embedded JSON Schema document describing the structure of
-  the Verifiable Credential as described in (#schema-definition). `schema` MUST NOT be used
-  if `schema_uri` is present.
-* `schema_uri`
-  * OPTIONAL. A URL pointing to a JSON Schema document describing the structure
-  of the Verifiable Credential as described in (#schema-definition). `schema_uri` MUST NOT
-  be used if `schema` is present.
 
 An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
@@ -633,126 +621,6 @@ The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 (#circular-extends) apply in order to avoid problems with circular dependencies.
 
-## Schema Type Metadata {#schema-type-metadata}
-
-### Schema Definition {#schema-definition}
-
-Schemas for Verifiable Credentials are contained in the `schema` or retrieved via the `schema_uri` Type Metadata parameters (as defined in (#type-metadata-format)).
-A schema MUST be represented by a JSON Schema document according to draft version 2020-12 [@JSON.SCHEMA.2020-12] or above.
-
-The schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.
-
-The following is a non-normative example of a JSON Schema document for the example in (#vc-sd-jwt-example) requiring the presence of the `cnf` claim in an SD-JWT VC presentation:
-
-```
-{
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "type":"object",
-  "properties":{
-    "vct":{
-      "type":"string"
-    },
-    "iss":{
-      "type":"string"
-    },
-    "nbf":{
-      "type":"number"
-    },
-    "exp":{
-      "type":"number"
-    },
-    "cnf":{
-      "type":"object"
-    },
-    "status":{
-      "type":"object"
-    },
-    "given_name":{
-      "type":"string"
-    },
-    "family_name":{
-      "type":"string"
-    },
-    "email":{
-      "type":"string"
-    },
-    "phone_number":{
-      "type":"string"
-    },
-    "address":{
-      "type":"object",
-      "properties":{
-        "street_address":{
-          "type":"string"
-        },
-        "locality":{
-          "type":"string"
-        },
-        "region":{
-          "type":"string"
-        },
-        "country":{
-          "type":"string"
-        }
-      }
-    },
-    "birthdate":{
-      "type":"string"
-    },
-    "is_over_18":{
-      "type":"boolean"
-    },
-    "is_over_21":{
-      "type":"boolean"
-    },
-    "is_over_65":{
-      "type":"boolean"
-    }
-  },
-  "required":[
-    "iss",
-    "vct",
-    "cnf"
-  ]
-}
-```
-
-### Schema Validation {#schema-validation}
-
-If a `schema` or `schema_uri` property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm
-(as defined in Section 7.3 of [@!I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema document provided by the `schema` or `schema_uri` property.
-
-If an `extends` property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
-validating all subsequent extended types recursively until a type is encountered that does not contain an `extends` property in its Type Metadata.
-Each schema in this chain MUST be evaluated for a specific Verifiable Credential.
-
-If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.
-
-The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in (#schema-definition):
-
-```
-{
-  "vct":"https://credentials.example.com/identity_credential",
-  "iss":"https://example.com/issuer",
-  "iat":1683000000,
-  "exp":1883000000,
-  "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
-  "address":{
-    "country":"DE"
-  },
-  "cnf":{
-    "jwk":{
-      "kty":"EC",
-      "crv":"P-256",
-      "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-      "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-    }
-  }
-}
-```
-
-Note, the example above does not contain any `_sd_alg`, `_sd`, or `...` claims.
-
 # Document Integrity {#document-integrity}
 
 Both the `vct` claim in the SD-JWT VC and the various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
@@ -760,7 +628,6 @@ Both the `vct` claim in the SD-JWT VC and the various URIs in the Type Metadata 
  * `vct` as defined in (#claims),
  * `extends` as defined in (#extending-type-metadata)
  * `uri` as used in two places in (#rendering-metadata)
- * `schema_uri` as defined in (#schema-type-metadata)
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
 [@!W3C.SRI]. A Consumer of the respective documents MUST verify the
@@ -883,7 +750,7 @@ example in (#ExampleTypeMetadata):
 ```
 
 When rendering the SVG template, the consuming application MUST ensure that
-malicious schema providers or issuers cannot inject executable code into the SVG
+malicious metadata providers or issuers cannot inject executable code into the SVG
 template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.
@@ -1325,13 +1192,6 @@ recommendations in (#robust-retrieval) apply.
   </front>
 </reference>
 
-<reference anchor="JSON.SCHEMA.2020-12" target="https://json-schema.org/draft/2020-12/release-notes">
-  <front>
-    <author fullname="OpenJS Foundation"></author>
-    <title>JSON Schema (2020-12)</title>
-  </front>
-</reference>
-
 <reference anchor="W3C.CSS-COLOR" target="https://www.w3.org/TR/css-color-3">
   <front>
     <title>CSS Color Module Level 3</title>
@@ -1583,9 +1443,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       ],
       "sd": "allowed"
     }
-  ],
-  "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+  ]
 }
 ```
 
@@ -1628,6 +1486,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Editorial updates and fixes.
 * State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
 * `vct` datatype is now just a string
+* Remove JSON schema from Type Metadata
 
 
 -10
