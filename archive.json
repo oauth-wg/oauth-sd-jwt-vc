@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-11T00:32:11.544390+00:00",
+  "timestamp": "2025-09-14T00:34:33.200393+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8020,7 +8020,7 @@
       "id": "I_kwDOJbVClc63addP",
       "title": "Clarification on extend",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/311",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -8030,8 +8030,8 @@
       ],
       "body": "The specification allows a type medata to extend a (parent) metadata, and so on recursively.\n\nSo a wallet or a verifier, needs first to resolve the `extend` relationships ( a list of type metadata objects) and then validate the SD-JWT-VC against this list of metadata.\n\nSpecifications provides some clear instructions about the `schema` validation. The sd-jwt-vc should be valid against all schemas of the above list.\n\nWhat I miss is the following: what are the rules for `claims` and `display` properties.\n\nTo put it otherwise, assuming two type metadata   A and B (parent) there is need to be a way to \"merge\" them into\n\n* a single list of claim metadata \n* a single list of display \n* a list of schema\n\nPlease advice \n",
       "createdAt": "2025-05-20T14:07:26Z",
-      "updatedAt": "2025-07-07T16:19:09Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-11T19:22:56Z",
+      "closedAt": "2025-09-11T19:22:56Z",
       "comments": [
         {
           "author": "danielfett",
@@ -8089,7 +8089,7 @@
       "id": "I_kwDOJbVClc65tJcd",
       "title": "Recommend against  using the x5u parameter in JWK",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/315",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "nikosft",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -8098,8 +8098,8 @@
       ],
       "body": "As per [RFC 7517 section 4.6](https://datatracker.ietf.org/doc/html/rfc7517#section-4.6) a JWK may contain the x5u parameter. Suppose a malicious issuer uses different JWK/x5u per (group of) user(s). Resolving this certificate will make the attack described in section 11.3 more efficient. ",
       "createdAt": "2025-06-03T22:36:07Z",
-      "updatedAt": "2025-08-29T12:06:03Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-11T19:12:13Z",
+      "closedAt": "2025-09-11T19:12:13Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -8700,7 +8700,7 @@
       "labels": [],
       "body": "I was pretty skeptical of about the utility of it when it was first added/proposed and I can't say my perspective has moved.  \n\nbut there are related issues like #332 #310 #238 and (thanks for the reminder @adeinega) #237 ",
       "createdAt": "2025-09-02T18:00:42Z",
-      "updatedAt": "2025-09-09T22:04:34Z",
+      "updatedAt": "2025-09-12T05:39:17Z",
       "closedAt": null,
       "comments": [
         {
@@ -8737,6 +8737,20 @@
           "body": "> ...and let me remind you that the vct claim is defined as StringOrURI\n\nThanks for this reminder, honestly, I'd sort of forgotten. I was just suggesting elsewhere in this WG that the StringOrURI data type isn't great and probably shouldn't be used going forward https://github.com/oauth-wg/oauth-transaction-tokens/issues/195. I've created [#343](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/343) to hopefully change that. I realize that probably wasn't the main point of your comment there. But something to consider nonetheless.",
           "createdAt": "2025-09-09T22:04:34Z",
           "updatedAt": "2025-09-09T22:04:34Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "In addition to the display metadata, there are necessarily going to be rule-books or documentation or specs that describe the \"schema\" of a type in text. And there's also the JWT claims registry which points to specification that defines the respective claim including its datatype/syntax and semantic meaning. And, frankly, there's going to need to be policy in place at most verifiers for most credential types, that's not conveyable from schema. I realize there are some useful things about JSON schema but there's also a lot of overlap with things that are already in place and added complexity to a draft that aspires to be an RFC soon. \n\n> would suggest to reference two json schemas (via @cre8 in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342#issuecomment-3252133494)\n\nI very much don't think that adding yet another place to reference another schema is right direction. It just compounds on the opportunities for mistakes that @adeinega notes in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342#issuecomment-3250911422. ",
+          "createdAt": "2025-09-11T22:28:06Z",
+          "updatedAt": "2025-09-11T22:28:52Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bc-pi after some discussion outside I agree that adding redundant schemas is not helping.\n\nDuring issuance the rulebook may be used (which is also covering authorization). During presentation the claims attribute may be used and the rulebook.\n\nSince there is no additional value, I now also recommend to remove it. It is very unlikely that rulebooks will reference the JSON Schema from a vct URL",
+          "createdAt": "2025-09-12T05:39:17Z",
+          "updatedAt": "2025-09-12T05:39:17Z"
         }
       ]
     },
@@ -8745,15 +8759,15 @@
       "id": "I_kwDOJbVClc7KqYMn",
       "title": "StringOrURI should probably not be used",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/343",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#section-3.2.2.1-1\n\nI'm not sure the StringOrURI data type has proven to be real useful. Let's just say vct is a string. Or a URI, if that's needed. But the conditional must be a URI if it has a colon thing isn't something to propagate IMHO.\n\nI had similar feedback on its use in the transaction tokens draft https://github.com/oauth-wg/oauth-transaction-tokens/issues/195 so just trying to be consistent with myself. ",
       "createdAt": "2025-09-09T22:01:50Z",
-      "updatedAt": "2025-09-09T23:01:40Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-11T19:34:18Z",
+      "closedAt": "2025-09-11T19:34:18Z",
       "comments": [
         {
           "author": "adeinega",
@@ -8775,6 +8789,13 @@
           "body": "Every day you learn something new.\n\nJust as a random fact to share, Kubernetes very actively uses a \":\" character in many claims marked as \"StringOrURI\" in JWTs it issues (due to its name pattern conventions). So, strongly speaking, it does not fully adhere to the specification. Or... some parts of the spec are simply ignored.",
           "createdAt": "2025-09-09T23:01:40Z",
           "updatedAt": "2025-09-09T23:01:40Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[#344](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/344) ",
+          "createdAt": "2025-09-11T19:34:16Z",
+          "updatedAt": "2025-09-11T19:34:16Z"
         }
       ]
     }
@@ -26192,24 +26213,26 @@
       "id": "PR_kwDOJbVClc6lxAX5",
       "title": "fix: add extend for claim metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/337",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cre8",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "fixes #311\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T09:21:45Z",
-      "updatedAt": "2025-09-04T13:53:47Z",
+      "updatedAt": "2025-09-11T22:14:01Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
+      "baseRefOid": "8d131ff2df64edfe1b64a00b7d9ad54848bf7a17",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/311",
-      "headRefOid": "e6198a58f3cfc10c8f72b62e79f564e010232e56",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "3ff9331241a51cf0c2d02027932a096c85b4b4b0",
+      "closedAt": "2025-09-11T19:22:55Z",
+      "mergedAt": "2025-09-11T19:22:55Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "1aeb7bb7ba691df12691936c17717b16ad0ea04e"
+      },
       "comments": [
         {
           "author": "cre8",
@@ -26224,6 +26247,27 @@
           "body": "> > \"refine\" really doesn't work for me\r\n> \r\n> I agree. The extend approach solves the problem of definition duplication. But it should give the freedom to override an attribute completely. The only limitation is that you cannot delete a claim in case it was defined in a VCT \"parent\", correct? When my credential has the attributes `A,B,C` and I only want `B,C`, extending does not help me and I need define the whole metadata.\r\n\r\nI believe that's correct. New attributes can be added to the  base attributes. Base attributes cannot be removed.\r\n\r\nPersonally, I still believe that there should be a rule for overriding a single base claim with regards to `sd` property, not allowing to change the value of `sd` unless it is equal to `allowed`. \r\n\r\nReason for this is that `sd` inherently affects the DCQL.\r\n\r\nFor instance, assume a verifier that wants to query a wallet, in the basis of a well-known (base definition),  for a set of attributes. This verifier doesn't have to include to the DCQL  the attributes having `sd` equal to `never`.\r\n\r\nIf an issuer overrides such a claim and sets the `sd` equal to `always` then it will brake the verifier's expectation.\r\n\r\nMy point is that the use of a base definitions (especially in an ecosystem with multiple issuers/verifiers) is a contract with the verifiers that probably shouldn't be broken. \r\n",
           "createdAt": "2025-09-04T11:40:40Z",
           "updatedAt": "2025-09-04T13:53:47Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > > \"refine\" really doesn't work for me\r\n> > \r\n> > \r\n> > I agree. The extend approach solves the problem of definition duplication. But it should give the freedom to override an attribute completely. The only limitation is that you cannot delete a claim in case it was defined in a VCT \"parent\", correct? When my credential has the attributes `A,B,C` and I only want `B,C`, extending does not help me and I need define the whole metadata.\r\n> \r\n> I believe that's correct. New attributes can be added to the base attributes. Base attributes cannot be removed.\r\n> \r\n> Personally, I still believe that there should be a rule for overriding a single base claim with regards to `sd` property, not allowing to change the value of `sd` unless it is equal to `allowed`.\r\n> \r\n> Reason for this is that `sd` inherently affects the DCQL.\r\n> \r\n> For instance, assume a verifier that wants to query a wallet, in the basis of a well-known (base definition), for a set of attributes. This verifier doesn't have to include to the DCQL the attributes having `sd` equal to `never`.\r\n> \r\n> If an issuer overrides such a claim and sets the `sd` equal to `always` then it will brake the verifier's expectation.\r\n> \r\n> My point is that the use of a base definitions (especially in an ecosystem with multiple issuers/verifiers) is a contract with the verifiers that probably shouldn't be broken.\r\n\r\n@babisRoutis, I am not myself convinced but if you feel strongly about it, please create an issue to continue the discussion elsewhere and allow this to be incorporated.",
+          "createdAt": "2025-09-11T19:19:42Z",
+          "updatedAt": "2025-09-11T19:19:42Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> @babisRoutis, I am not myself convinced but if you feel strongly about it, please create an issue to continue the discussion elsewhere and allow this to be incorporated.\r\n\r\nHi @bc-pi\r\n\r\nI thought that I could comment on this PR  given that actually  had opened the  #311 (which this PR tackles)  \r\n\r\nThere is #323 which is related to the use of `allow` by the issuers, if anybody wants to drop a comment there.\r\n\r\nIn any case, thank you for sharing your thoughts on this.\r\n\r\n\r\n",
+          "createdAt": "2025-09-11T21:09:32Z",
+          "updatedAt": "2025-09-11T21:09:32Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > @babisRoutis, I am not myself convinced but if you feel strongly about it, please create an issue to continue the discussion elsewhere and allow this to be incorporated.\r\n> \r\n> Hi @bc-pi\r\n> \r\n> I thought that I could comment on this PR given that actually had opened the #311 (which this PR tackles)\r\n> \r\n> There is #323 which is related to the use of `allow` by the issuers, if anybody wants to drop a comment there.\r\n> \r\n> In any case, thank you for sharing your thoughts on this.\r\n\r\nI'm sorry @babisRoutis, I wasn't suggesting you couldn't comment on the PR. I was trying to make some progress in the context of the PR and a desire to publish a new draft revision soon but also acknowledge that you still had outstanding concerns. \r\n",
+          "createdAt": "2025-09-11T22:14:01Z",
+          "updatedAt": "2025-09-11T22:14:01Z"
         }
       ],
       "reviews": [
@@ -26439,6 +26483,59 @@
               "updatedAt": "2025-09-04T06:08:07Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_hyE6",
+          "commit": {
+            "abbreviatedOid": "9eae862"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-11T19:15:29Z",
+          "updatedAt": "2025-09-11T19:15:29Z",
+          "comments": [
+            {
+              "originalPosition": 73,
+              "body": "fyi and fwiw @cre8 ",
+              "createdAt": "2025-09-11T19:15:29Z",
+              "updatedAt": "2025-09-11T19:15:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_h1EW",
+          "commit": {
+            "abbreviatedOid": "9eae862"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-11T19:20:03Z",
+          "updatedAt": "2025-09-11T19:20:03Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_h1mE",
+          "commit": {
+            "abbreviatedOid": "9eae862"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-11T19:20:55Z",
+          "updatedAt": "2025-09-11T19:20:55Z",
+          "comments": [
+            {
+              "originalPosition": 73,
+              "body": "```suggestion\r\nMirko Mollik,\r\n```",
+              "createdAt": "2025-09-11T19:20:55Z",
+              "updatedAt": "2025-09-11T19:20:55Z"
+            }
+          ]
         }
       ]
     },
@@ -26557,24 +26654,26 @@
       "id": "PR_kwDOJbVClc6l848C",
       "title": "fix: add privacy concerns for cnf handling",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/340",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "cre8",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "closes #315\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-29T09:08:20Z",
-      "updatedAt": "2025-09-08T04:58:18Z",
+      "updatedAt": "2025-09-11T19:12:12Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/315",
-      "headRefOid": "734f41cdcdd67c5838b9f6276c2390589410d184",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "f73a8cc2d3f9b7539eca6fb1eec4ef5d6a8be385",
+      "closedAt": "2025-09-11T19:12:12Z",
+      "mergedAt": "2025-09-11T19:12:12Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8d131ff2df64edfe1b64a00b7d9ad54848bf7a17"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -26751,6 +26850,66 @@
               "updatedAt": "2025-09-08T04:58:18Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_hrZs",
+          "commit": {
+            "abbreviatedOid": "509af84"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-11T19:06:37Z",
+          "updatedAt": "2025-09-11T19:06:37Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "I would also be quite happy to explicitly prohibit `xxu` style things current and future. But I think that might be a bit too far for the scope of this and https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/315. There are, for example, folks that really really seem to want to be able to do some kind of DID thing in cnf. There might be some unhappiness, if that were outright prohibited. Yet I'd like to get something into the draft and @cre8's words seem to hit the right balance for the present moment. @adeinega, if you feel strongly about being stricter, please create a new issue so we can discuss separately.  ",
+              "createdAt": "2025-09-11T19:06:37Z",
+              "updatedAt": "2025-09-11T19:11:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_hsqQ",
+          "commit": {
+            "abbreviatedOid": "734f41c"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-11T19:08:12Z",
+          "updatedAt": "2025-09-11T19:08:13Z",
+          "comments": [
+            {
+              "originalPosition": 27,
+              "body": "```suggestion\r\n* Add privacy concerns regarding the use of `x5u` parameter in JWKs and similar remote retrieval mechanisms\r\n```",
+              "createdAt": "2025-09-11T19:08:12Z",
+              "updatedAt": "2025-09-11T19:08:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_htLE",
+          "commit": {
+            "abbreviatedOid": "71dbb15"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-11T19:08:54Z",
+          "updatedAt": "2025-09-11T19:08:55Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\nand should monitor suspicious behavior such as frequent rotation of those identifiers.\r\n```",
+              "createdAt": "2025-09-11T19:08:54Z",
+              "updatedAt": "2025-09-11T19:09:32Z"
+            }
+          ]
         }
       ]
     },
@@ -26792,6 +26951,94 @@
           "body": "",
           "createdAt": "2025-08-30T22:42:12Z",
           "updatedAt": "2025-08-30T22:42:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 344,
+      "id": "PR_kwDOJbVClc6oGsLv",
+      "title": "`vct` datatype is now just a string",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/344",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "to fix issue #343",
+      "createdAt": "2025-09-11T19:32:24Z",
+      "updatedAt": "2025-09-11T19:33:45Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "1aeb7bb7ba691df12691936c17717b16ad0ea04e",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "343colon",
+      "headRefOid": "49be5fc9470b5abac2f86262479a8fe095dbc5d7",
+      "closedAt": "2025-09-11T19:33:45Z",
+      "mergedAt": "2025-09-11T19:33:45Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8d0390e5b54bf2f4aae4f660ce61bfe94b352035"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 345,
+      "id": "PR_kwDOJbVClc6oUgub",
+      "title": "Remove JSON schema from Type Metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #342 and hopefully others like #332 #310 #238 and #237 too",
+      "createdAt": "2025-09-12T20:25:59Z",
+      "updatedAt": "2025-09-12T20:36:54Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8d0390e5b54bf2f4aae4f660ce61bfe94b352035",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "Remove-JSON-schema-from-Type-Metadata",
+      "headRefOid": "9dcb6deacda30085cfc8eaa2989bedce10af1d84",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc6_2cdE",
+          "commit": {
+            "abbreviatedOid": "9aaf827"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-12T20:26:17Z",
+          "updatedAt": "2025-09-12T20:26:17Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "```suggestion\r\n  \"extends#integrity\":\"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=\"\r\n```",
+              "createdAt": "2025-09-12T20:26:17Z",
+              "updatedAt": "2025-09-12T20:26:17Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc6_2iu-",
+          "commit": {
+            "abbreviatedOid": "9dcb6de"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-12T20:36:54Z",
+          "updatedAt": "2025-09-12T20:36:54Z",
           "comments": []
         }
       ]
