@@ -1477,6 +1477,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -12
 
+* Remove JSON schema from Type Metadata
 
 -11
 
@@ -1489,8 +1490,6 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Editorial updates and fixes.
 * State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
 * `vct` datatype is now just a string
-* Remove JSON schema from Type Metadata
-
 
 -10
 
