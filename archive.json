@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-14T00:34:33.200393+00:00",
+  "timestamp": "2025-09-16T00:31:21.199186+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8700,7 +8700,7 @@
       "labels": [],
       "body": "I was pretty skeptical of about the utility of it when it was first added/proposed and I can't say my perspective has moved.  \n\nbut there are related issues like #332 #310 #238 and (thanks for the reminder @adeinega) #237 ",
       "createdAt": "2025-09-02T18:00:42Z",
-      "updatedAt": "2025-09-12T05:39:17Z",
+      "updatedAt": "2025-09-15T20:17:53Z",
       "closedAt": null,
       "comments": [
         {
@@ -8741,9 +8741,9 @@
         {
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
-          "body": "In addition to the display metadata, there are necessarily going to be rule-books or documentation or specs that describe the \"schema\" of a type in text. And there's also the JWT claims registry which points to specification that defines the respective claim including its datatype/syntax and semantic meaning. And, frankly, there's going to need to be policy in place at most verifiers for most credential types, that's not conveyable from schema. I realize there are some useful things about JSON schema but there's also a lot of overlap with things that are already in place and added complexity to a draft that aspires to be an RFC soon. \n\n> would suggest to reference two json schemas (via @cre8 in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342#issuecomment-3252133494)\n\nI very much don't think that adding yet another place to reference another schema is right direction. It just compounds on the opportunities for mistakes that @adeinega notes in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342#issuecomment-3250911422. ",
+          "body": "In addition to the display metadata, there are necessarily going to be rule-books or documentation or specs that describe the \"schema\" of a type in text. And there's also the JWT claims registry which points to the specification that defines the respective claim including its datatype/syntax and semantic meaning. And, frankly, there's going to need to be policy in place at most verifiers for most credential types, that's not conveyable from schema. I realize there are some useful things about JSON schema but there's also a lot of overlap with things that are already in place and added complexity to a draft that aspires to be an RFC soon. \n\n> would suggest to reference two json schemas (via @cre8 in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342#issuecomment-3252133494)\n\nI very much don't think that adding yet another place to reference another schema is right direction. It just compounds on the opportunities for mistakes that @adeinega notes in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342#issuecomment-3250911422. ",
           "createdAt": "2025-09-11T22:28:06Z",
-          "updatedAt": "2025-09-11T22:28:52Z"
+          "updatedAt": "2025-09-15T20:17:53Z"
         },
         {
           "author": "cre8",
@@ -8796,6 +8796,54 @@
           "body": "[#344](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/344) ",
           "createdAt": "2025-09-11T19:34:16Z",
           "updatedAt": "2025-09-11T19:34:16Z"
+        }
+      ]
+    },
+    {
+      "number": 346,
+      "id": "I_kwDOJbVClc7LsbFl",
+      "title": "Support of the default Issuer Signature Mechanism. Required or not?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/346",
+      "state": "OPEN",
+      "author": "yaromin",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The spec allows for extensibility by enabling ecosystems to specify additional Issuer Signature Mechanisms. Shouldn't ecosystems and their participants also be able to elect NOT to support mechanisms defined in section 3.5? \n\nGiven that this extensibility is created to, among others, address DIDs, I imagine that such pure did-as-iss-based ecosystems may elect not to support the two key mechanisms defined in this specification and still these ecosystems and its participants will be compliant with SD-JWT VC.",
+      "createdAt": "2025-09-15T10:54:41Z",
+      "updatedAt": "2025-09-15T16:30:27Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I read and tried to write [3.5. ](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#section-3.5)[Issuer Signature Mechanisms](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#name-issuer-signature-mechanisms) to say that one mechanism (from those defined herein or an ecosystem/profile defined one) had to be used/supported in signing and validation. Which, while I don't think it's great from an interoperability perspective, would say that a pure DID-as-iss-based ecosystems that didn't  support the two key mechanisms defined in the draft would be SD-JWT VC compliant. If that makes sense? And do you read that sec 3.5 differently or does that help put it in context? ",
+          "createdAt": "2025-09-15T16:30:27Z",
+          "updatedAt": "2025-09-15T16:30:27Z"
+        }
+      ]
+    },
+    {
+      "number": 347,
+      "id": "I_kwDOJbVClc7LsoAn",
+      "title": "HTTPS GET and HTTP GET normalisation",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/347",
+      "state": "OPEN",
+      "author": "yaromin",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Minor editorial: We have one instance of \"HTTPS GET\"in 11.3 and a couple of \"HTTP GET\" occurrences with further clarification of the HTTPS scheme in the latter. It would be worth normalising this. \n\nI'd change in 11.3:\n_The Verifier would create a HTTPS GET request to the Holder-specific well-known URI when the SD-JWT VC is verified._\nto something along these lines:\n_**HTTP GET** request to the Holder-specific well-known URI **(using HTTPS scheme)**, when the SD-JWT VC is verified_\n\n",
+      "createdAt": "2025-09-15T11:09:32Z",
+      "updatedAt": "2025-09-15T15:59:30Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thanks @yaromin, I believe this was recently addressed in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/328/files which will show up in the next revision (-11 coming soon)  ",
+          "createdAt": "2025-09-15T15:59:11Z",
+          "updatedAt": "2025-09-15T15:59:30Z"
         }
       ]
     }
@@ -26993,9 +27041,9 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "for #342 and hopefully others like #332 #310 #238 and #237 too",
+      "body": "for #342 and hopefully others like #332 #310 (only somewhat related) #238 and #237 too",
       "createdAt": "2025-09-12T20:25:59Z",
-      "updatedAt": "2025-09-12T20:36:54Z",
+      "updatedAt": "2025-09-15T20:17:06Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8d0390e5b54bf2f4aae4f660ce61bfe94b352035",
@@ -27006,7 +27054,22 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Dear @bc-pi \r\n\r\nI noticed that you have associated the present PR with #310. \r\n\r\nThe later was about adding `mandatory` qualifier to a claim with the meaning of an always issued attribute regardless of its `sd` value.\r\n\r\nCan you please clarify how the absence of  `mandatory` to the PR  should be interpreted?\r\n- Outside the scope of the PR? \r\n- Missed the addition? \r\n- No real value to adding `mandatory`?\r\n\r\nPerhaps, it would be more clear to de-associate this PR from #310, given that `mandatory` is not strictly related to the use of JSON Schema.\r\n\r\n\r\n",
+          "createdAt": "2025-09-15T08:04:56Z",
+          "updatedAt": "2025-09-15T08:04:56Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Dear @bc-pi\r\n> \r\n> I noticed that you have associated the present PR with #310.\r\n> \r\n> The later was about adding `mandatory` qualifier to a claim with the meaning of an always issued attribute regardless of its `sd` value.\r\n> \r\n> Can you please clarify how the absence of `mandatory` to the PR should be interpreted?\r\n> \r\n>    * Outside the scope of the PR?\r\n> \r\n>    * Missed the addition?\r\n> \r\n>    * No real value to adding `mandatory`?\r\n> \r\n> \r\n> Perhaps, it would be more clear to de-associate this PR from #310, given that `mandatory` is not strictly related to the use of JSON Schema.\r\n\r\nI did mention #310 in the description because I perceive some overlap on the general topic but didn't associate that one with the \"Successfully merging this pull request may close these issues\" list. So it will (or should) remain open even if/when this is merged. \"Outside the scope of the PR\" is how the absence of `mandatory` here should be interpreted, I think. ",
+          "createdAt": "2025-09-15T20:02:15Z",
+          "updatedAt": "2025-09-15T20:17:06Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc6_2cdE",
