@@ -84,7 +84,7 @@ Figure: Issuer-Holder-Verifier Model with optional Status Provider
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended holder of the Verifiable Credential, for example, by proving possession of a
+are the intended Holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
@@ -206,7 +206,7 @@ SD-JWT VCs.
 #### Verifiable Credential Type - `vct` Claim {#type-claim}
 
 This specification defines the new JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
-case-sensitive `StringOrURI` (see [@!RFC7519]) value serving as an identifier
+case-sensitive string value serving as an identifier
 for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
 
@@ -442,10 +442,10 @@ parameters:
 value in the JWT.
 * `jwks_uri`
     * OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
-[@RFC7517] document which contains the Issuer's public keys. The value of
+[@!RFC7517] document which contains the Issuer's public keys. The value of
 this field MUST point to a valid JWK Set document.
 * `jwks`
-    * OPTIONAL. Issuer's JSON Web Key Set [@RFC7517] document value, which
+    * OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
 contains the Issuer's public keys. The value of this field MUST be a JSON
 object containing a valid JWK Set.
 
@@ -1201,6 +1201,68 @@ disclosable. The following values are defined:
 
 If omitted, the default value is `allowed`.
 
+## Extending Claim Metadata {#claim-metadata-extends}
+
+The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will override the corresponding object from the extended type.
+
+Suppose we have a base type metadata document:
+
+```json
+{
+  "vct": "https://example.com/base-type-metadata",
+  "claims": [
+    {
+      "path": ["name"],
+      "display": [{"label": "Full Name", "lang": "en"}]
+    },
+    {
+      "path": ["address", "city"],
+      "display": [{"label": "City", "lang": "en"}]
+    }
+  ]
+}
+```
+
+And a child type metadata document that extends the base type:
+
+```json
+{
+  "vct": "https://example.com/custom-type-metadata",
+  "extends": "https://example.com/base-type-metadata",
+  "claims": [
+    {
+      "path": ["address", "city"],
+      "display": [{"label": "Town", "lang": "en"}]
+    },
+    {
+      "path": ["nationalities"],
+      "display": [{"label": "Nationalities", "lang": "en"}]
+    }
+  ]
+}
+```
+
+In this example, the child type inherits the `name` claim metadata from the base type, but overrides the `address.city` claim metadata with its own definition. It also adds a new claim metadata for `nationalities`. The final effective claim metadata for the child type is:
+
+```json
+{
+  "claims": [
+    {
+      "path": ["name"],
+      "display": [{"label": "Full Name", "lang": "en"}]
+    },
+    {
+      "path": ["address", "city"],
+      "display": [{"label": "Town", "lang": "en"}]
+    },
+    {
+      "path": ["nationalities"],
+      "display": [{"label": "Nationalities", "lang": "en"}]
+    }
+  ]
+}
+```
+
 # Security Considerations {#security-considerations}
 
 The Security Considerations in the SD-JWT specification
@@ -1335,9 +1397,11 @@ when the SD-JWT VC is verified. This would allow the malicious Issuer to keep tr
 and how often the SD-JWT VC was used.
 
 Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
-and should monitor suspicious behaviour such as frequent rotation of those identifiers.
+and should monitor suspicious behavior such as frequent rotation of those identifiers.
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
+
+Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([@!RFC7517, section 4.6]), the jku parameter ([@!RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([@!RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
 
 Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.
@@ -1742,15 +1806,22 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-12
+
+* Fix cnf claim and JWK references and move them to normative
+* Add background image support to simple rendering method, update logo support to align with new background image approach.
+
 -11
 
-* Add background image support to simple rendering method, update logo support to align with new background image approach.
+* Clarify extend support for claim metadata
+* Add privacy concerns regarding the use of `x5u` parameter in JWKs and similar remote retrieval mechanisms
 * Added a section on Credential Type Extension and Issuer Authorization.
 * Fixed an inconsistency to the description of `display` attribute of claim metadata.
 * add `vct#integrity` to the list of claims that cannot be selectively disclosed
 * Drop explicit treatment of the glue type metadata document concept
 * Editorial updates and fixes.
 * State that when the `status` claim is present and using the `status_list` mechanism, the associated Status List Token has to be a JWT.
+* `vct` datatype is now just a string
 
 
 -10
