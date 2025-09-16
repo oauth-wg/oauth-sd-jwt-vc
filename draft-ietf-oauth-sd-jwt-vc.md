@@ -1617,6 +1617,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-12
+
+
 -11
 
 * Clarify extend support for claim metadata
