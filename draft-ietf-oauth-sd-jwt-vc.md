@@ -440,10 +440,10 @@ parameters:
 value in the JWT.
 * `jwks_uri`
     * OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
-[@RFC7517] document which contains the Issuer's public keys. The value of
+[@!RFC7517] document which contains the Issuer's public keys. The value of
 this field MUST point to a valid JWK Set document.
 * `jwks`
-    * OPTIONAL. Issuer's JSON Web Key Set [@RFC7517] document value, which
+    * OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
 contains the Issuer's public keys. The value of this field MUST be a JSON
 object containing a valid JWK Set.
 
@@ -1082,7 +1082,7 @@ and should monitor suspicious behavior such as frequent rotation of those identi
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.
 
-Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
+Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([@!RFC7517, section 4.6]), the jku parameter ([@!RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([@!RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
 
 Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.
@@ -1482,6 +1482,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Remove JSON schema from Type Metadata
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
+* Fix cnf claim and JWK references and move them to normative
 
 -11
 
