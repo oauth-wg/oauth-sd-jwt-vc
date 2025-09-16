@@ -567,9 +567,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gvfCK
-   5LCeI67lV4XlPe37F5MoxDunUo3pE8lcJW7NAF9L3ptlBQlA0rASYpPY1goqZoOWM4dU
-   0i7XL8koNcWDg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dwNwQ
+   ZzTtX6IhGkq24GPEECS0FVguRTKT0HqRG49PsAm9v6H_jktpimkd1jThprrqRTnYBati
+   Ci16UxQ-GqO1g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -690,17 +690,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gvfCK
-   5LCeI67lV4XlPe37F5MoxDunUo3pE8lcJW7NAF9L3ptlBQlA0rASYpPY1goqZoOWM4dU
-   0i7XL8koNcWDg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dwNwQ
+   ZzTtX6IhGkq24GPEECS0FVguRTKT0HqRG49PsAm9v6H_jktpimkd1jThprrqRTnYBati
+   Ci16UxQ-GqO1g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTgwMjQzNT
-   gsICJzZF9oYXNoIjogIlBjTEpZdE9ZaGZuNTJLcmZtZklvYjRmTERJS1lNUTJ3bTRFUW
-   lJd1k2V2cifQ.EDsgXDat8jytV3daEwEMjtw90sXmIAtju-EzZR-9mYF6OMhzCsKfC0S
-   Czftui4_BzJQsL2N9AGSLluTf357PAQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTgwMjQ2Nz
+   csICJzZF9oYXNoIjogImZCREdFaDlXTExxeTMtU0FOOERWMEMzeWo3b2xWeWs2S0s0U0
+   poX2pXdnMifQ.HnVhu7CiByEaPjrWqxg_yVSPHVwcrbkrUiuM3p9P2NNbZBzjFYnQYbU
+   13eqhAHTSwjDjvJNErRUJsD6x_OyF-g
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -742,8 +742,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.sHQlhVT6874FVZdeIr4tk7a4xrMcs_9PGPrW3H_D8syjxI
-   KYTN8RjpSg_sLlvazMPJOxus8eEx-9MZ9wiuuNlQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.EAfqWjQuuiKbrJDCVBepbergVZPo-4b2feMU2Wh0DXrOaU
+   LlpCHmTQv0QN9PZB4AVoOkmXJuyaNZKxVGd-l-Pw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1807,8 +1807,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.1m-c_iooTK-0xGi_k50IaHGWro61NGzqA2a7x70wl_lc6sV
-   xLGJudI20XFxUyO3vkSM3d3Y-4nM4HWdnN-F5aQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.l9bOInFlLf1kg0CZ2B9klVBMafmA44JN4jC7r-52KuaxkEQ
+   hzaSauvMkSj9eLJ-1hW-PVVcfLJ_6-IDJHRpUTg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2143,8 +2143,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.1m-c_iooTK-0xGi_k50IaHGWro61NGzqA2a7x70wl_lc6sV
-   xLGJudI20XFxUyO3vkSM3d3Y-4nM4HWdnN-F5aQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.l9bOInFlLf1kg0CZ2B9klVBMafmA44JN4jC7r-52KuaxkEQ
+   hzaSauvMkSj9eLJ-1hW-PVVcfLJ_6-IDJHRpUTg~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2155,17 +2155,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTgwMjQzNTgsICJzZF9oYXNoIjogInlZbXVEc01QMmdDWnRpbU92Y2lGcjh
-   zdzctcFV3VWpFQ2ppZTBvQ1l2OXcifQ.L0weAhdOLV2tVQF0oX7xIMFflT5-j3E07Y_a
-   oJH52q4TbURdWSLMDm5AlscKwbSyNJozqyiwnOn_y9BAqyUDXQ
+   hdCI6IDE3NTgwMjQ2NzcsICJzZF9oYXNoIjogIkkzcWZ6R0lMS0ZsTXRuZGRRMkV3VXh
+   fYjE3SzFmQjRjVW9oUGpHcUlObGcifQ.ovzNTTmYymX58Wh_zwH5yUOnXoHI3DY-oTF-
+   cesmMQ1Wewhhb3aqcclNUguvWfdr6wTS6gFzc4VkekI8lVSjtA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1758024358,
-     "sd_hash": "yYmuDsMP2gCZtimOvciFr8sw7-pUwUjECjie0oCYv9w"
+     "iat": 1758024677,
+     "sd_hash": "I3qfzGILKFlMtnddQ2EwUx_b17K1fB4cUohPjGqINlg"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2336,6 +2336,8 @@ Appendix D.  Document History
 
    -12
 
+   *  Remove JSON schema from Type Metadata
+
    -11
 
    *  Clarify extend support for claim metadata
@@ -2353,7 +2355,6 @@ Appendix D.  Document History
       status_list mechanism, the associated Status List Token has to be
       a JWT.
    *  vct datatype is now just a string
-   *  Remove JSON schema from Type Metadata
 
    -10
 
