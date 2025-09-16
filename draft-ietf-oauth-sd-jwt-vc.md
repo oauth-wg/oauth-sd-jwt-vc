@@ -573,6 +573,9 @@ defined:
 * `claims`: An array of objects containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
 
+A Type Metadata document MAY contain additional top level or subordinate properties.
+Consumers MUST ignore properties that are not understood.
+
 An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
 ## Retrieving Type Metadata {#retrieving-type-metadata}
@@ -1478,6 +1481,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -12
 
 * Remove JSON schema from Type Metadata
+* Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
 
 -11
 
