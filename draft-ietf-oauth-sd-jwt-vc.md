@@ -326,8 +326,6 @@ If `status` is present in the verified payload of the SD-JWT, the status SHOULD
 be checked. It depends on the Verifier policy to reject or accept a presentation
 of a SD-JWT VC based on the status of the Verifiable Credential.
 
-Any claims used that are not understood MUST be ignored.
-
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
 
@@ -1808,6 +1806,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -12
 
+* Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 * Add background image support to simple rendering method, update logo support to align with new background image approach.
 
