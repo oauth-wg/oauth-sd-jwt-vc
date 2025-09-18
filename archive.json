@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-16T00:31:21.199186+00:00",
+  "timestamp": "2025-09-18T00:31:07.740120+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -122,6 +122,16 @@
       "name": "future-extension",
       "description": "",
       "color": "61DE90"
+    },
+    {
+      "name": "schema",
+      "description": "",
+      "color": "fa4543"
+    },
+    {
+      "name": "policy",
+      "description": "",
+      "color": "7d9616"
     }
   ],
   "issues": [
@@ -3847,7 +3857,7 @@
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2024-08-14T12:46:44Z",
+      "updatedAt": "2025-09-16T14:39:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -3961,6 +3971,13 @@
           "body": "I talked to Mark Haine today and during the call we identified two ways to stretch the ekyc-IDA spec a bit:\r\n\r\n\u2460 Introduce a new element `claims_ptrs` to point to the relevant claims:\r\n```json\r\n{\r\n  \"iss\": \"https://server.example.com\",\r\n  \"exp\": 1544645174,\r\n  \"given_name\": \"Max\",\r\n  \"family_name\": \"Mustermann\",\r\n  \"verified_claims\": {\r\n    \"verification\": {\r\n      \"trust_framework\": \"example\"\r\n    },\r\n    \"claims_ptrs\": [\r\n      [\"given_name\"],\r\n      [\"family_name\"]\r\n    ]\r\n  }\r\n}\r\n```\r\n\r\n\u2461 Define a new special \"claim\" (like `_ptrs`) to point to the verified claims:\r\n```json\r\n{\r\n  \"iss\": \"https://server.example.com\",\r\n  \"exp\": 1544645174,\r\n  \"given_name\": \"Max\",\r\n  \"family_name\": \"Mustermann\",\r\n  \"verified_claims\": {\r\n    \"verification\": {\r\n      \"trust_framework\": \"example\"\r\n    },\r\n    \"claims\": {\r\n        \"_ptrs\": [\r\n          [\"given_name\"],\r\n          [\"family_name\"]\r\n      ]\r\n    }\r\n  }\r\n}\r\n```\r\n",
           "createdAt": "2024-08-14T12:46:43Z",
           "updatedAt": "2024-08-14T12:46:43Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@Sakurann is this still needed or did you find another solution for this?",
+          "createdAt": "2025-09-16T14:39:00Z",
+          "updatedAt": "2025-09-16T14:39:00Z"
         }
       ]
     },
@@ -5447,15 +5464,20 @@
       "id": "I_kwDOJbVClc5_diFv",
       "title": "Embedded Issuer Policies",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "paulbastian",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss",
+        "pending close",
+        "future-extension",
+        "policy"
+      ],
       "body": "For high-security usecases or use cases with sensitive data, some Issuers may want to require that VCs are only released to authorized Verifiers. One of the options to establish such a mechanism is to embed such a policy in the credential itself.\r\n\r\nDo you believe this is something that should be solved by SD-JWT VC or does this belong into a profile / trust framework?\r\n\r\nFor example, an SD-JWT VC may contain a `issuer_policy` claim, that references a X509 PKI CA indicating to wallets that only Relying Parties authenticated with a certificate form this CA are allowed to receive a presentation of this VC.",
       "createdAt": "2024-02-16T11:52:19Z",
-      "updatedAt": "2024-10-10T12:54:25Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-16T18:30:38Z",
+      "closedAt": "2025-09-16T18:30:37Z",
       "comments": [
         {
           "author": "peppelinux",
@@ -5526,6 +5548,34 @@
           "body": "You could define a generic placeholder \"policies\" (pol?) with a \"typ\" or \"type\" member, where typ/type value is either registered in IANA or is a private value defined by the framework.\r\nPolicy can be embedded or referenced (URL + digest). Whether the policy is machine readable or not, depends on the use case.\r\n\r\nSimilar to RFC7800.\r\n\r\n(I think ETSI defines some policies for x509, so they may include the x509 itself or translate them to JSON)",
           "createdAt": "2024-10-10T12:53:32Z",
           "updatedAt": "2024-10-10T12:54:25Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@paulbastian Is this issue superseded by recent developments? I understand EUDI now has a different proposal for encoding authorization policies, correct? Do we still need to define this in SD-JWT VC, and if so, is there a proposal we can review?",
+          "createdAt": "2025-09-16T14:41:08Z",
+          "updatedAt": "2025-09-16T14:41:08Z"
+        },
+        {
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "body": "I think we need some mechanism to embed such policies, but I tend to agree that this seems to be something that needs to be defined in the scope of the trust ecosystem. @cre8 is that in line with the direction ETSI is going?",
+          "createdAt": "2025-09-16T16:11:42Z",
+          "updatedAt": "2025-09-16T16:11:42Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Yes, the implementing acts are mentioning three approaches, in the German Blueprint we defined a fourth one that will also be standardised, see: \n\nhttps://bmi.usercontent.opencode.de/eudi-wallet/eidas-2.0-architekturkonzept/content/appendix/06-disclosure-policies/#use-case-scenarios\n\nThe policy is referenced in the vci issuer metadata (required by the arf) and has to be fetched and saved by the wallet during the issuance process.\n\nSo the disclosure policy is independent from the credential format and requires no special changes or additions to SD jwt vc\n\n@awoie there is already an implementation for an issuer, see: https://openwallet-foundation-labs.github.io/eudiplo/main/getting-started/issuance/advanced-features/#embedded-disclosure-policy\n\nBut I have no wallet available to test the full flow",
+          "createdAt": "2025-09-16T16:28:00Z",
+          "updatedAt": "2025-09-16T16:31:01Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing, since for 1.0 this is out of scope. For 1.1 we could consider this as future extension.",
+          "createdAt": "2025-09-16T18:30:38Z",
+          "updatedAt": "2025-09-16T18:30:38Z"
         }
       ]
     },
@@ -5666,14 +5716,12 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [
-        "Ready-for-PR",
-        "metadata",
-        "PRIO",
-        "wg-05"
+        "pending close",
+        "metadata"
       ],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2025-08-28T09:48:29Z",
+      "updatedAt": "2025-09-16T14:44:01Z",
       "closedAt": null,
       "comments": [
         {
@@ -5696,6 +5744,13 @@
           "body": "In the EUDI Wallet eco system the trust of authorization is not self claimed by the issuer which is done with linking to self controlled metadata. But done by rulebooks that define governance.\n\nSo the `vct#integrity` gives authenticity in the data the issuer wants to ship together with the sd-jwt vc, but gives no authenticity for the usage of a credential inside an eco system (e.g. education sector)",
           "createdAt": "2025-08-28T09:48:28Z",
           "updatedAt": "2025-08-28T09:48:28Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett since we dropped glue documents from the spec in -11, can we close this issue? I suggest pending close.",
+          "createdAt": "2025-09-16T14:43:48Z",
+          "updatedAt": "2025-09-16T14:43:48Z"
         }
       ]
     },
@@ -5709,12 +5764,11 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "Ready-for-PR",
-        "wg-05"
+        "Ready-for-PR"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2024-12-02T20:43:22Z",
+      "updatedAt": "2025-09-16T15:57:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -5758,6 +5812,20 @@
           "body": "The example generation tooling is [openwallet-foundation-labs/sd-jwt-python](https://github.com/openwallet-foundation-labs/sd-jwt-python) and the same as core SD-JWT. It is described better there https://github.com/oauth-wg/oauth-selective-disclosure-jwt?tab=readme-ov-file#building-the-examples--draft ",
           "createdAt": "2024-12-02T20:43:21Z",
           "updatedAt": "2024-12-02T20:43:21Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@bc-pi does the tooling support JWS JSON serialization yet?",
+          "createdAt": "2025-09-16T14:46:27Z",
+          "updatedAt": "2025-09-16T14:46:27Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [@bc-pi](https://github.com/bc-pi) does the tooling support JWS JSON serialization yet?\n\nYes, @danielfett added that a long time ago. I don't necessarily think an example of that is needed. But the tooling is in place. ",
+          "createdAt": "2025-09-16T15:57:00Z",
+          "updatedAt": "2025-09-16T15:57:00Z"
         }
       ]
     },
@@ -5774,12 +5842,11 @@
         "discuss",
         "pending close",
         "metadata",
-        "PRIO",
-        "wg-05"
+        "PRIO"
       ],
       "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
       "createdAt": "2024-04-02T09:51:21Z",
-      "updatedAt": "2025-09-02T18:57:53Z",
+      "updatedAt": "2025-09-16T14:46:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -5864,10 +5931,12 @@
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "The spec should define a way to support other data types. Pictures of the credential holders will be a common case, but other data types might occur as well.\r\n\r\nOpenID Connect already defines a claim:\r\n> `picture` \tstring \tURL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.\r\n\r\nIn that sense, we could just recommend that data types other than the native JSON types should be encoded, for example, as data URIs (that would be compatible to the definition of `picture` above).",
       "createdAt": "2024-04-02T18:35:55Z",
-      "updatedAt": "2024-10-10T12:52:10Z",
+      "updatedAt": "2025-09-16T14:59:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -5883,6 +5952,13 @@
           "body": "I'm supportive of this approach as well.",
           "createdAt": "2024-10-10T12:52:09Z",
           "updatedAt": "2024-10-10T12:52:09Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "If we do this, we need security considerations since there could go a lot wrong when not sanitized properly before used in web pages or mobile apps:\n- XSS if the data URI has `data:text/html`, or `data:text/javascript`, an attacker could embed an executable script.\n- Phishing / UI Redressing, e.g., if `data:text/html;base64` payload renders a fake login page or misleading UI inside an `<iframe>` or popup.\n- Resource exhaustion / DoS, e.g., very large data URIs (MBs of base64) can crash parsers, browsers, or mobile apps.\n- Bypassing content security policies, e.g., if Content Security Policy does not block `data:` and content could be injected.\n- File handling quirks, e.g., if the data URI encodes an unexpected file type (SVG, PDF, etc.), it could contain embedded scripts or trigger exploits in certain renderers.",
+          "createdAt": "2025-09-16T14:58:55Z",
+          "updatedAt": "2025-09-16T14:59:09Z"
         }
       ]
     },
@@ -6158,11 +6234,12 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "discuss"
+        "discuss",
+        "schema"
       ],
       "body": "Since a holder is interested in receiving a valid credential, and a verifier a valid presentation of a credential, perhaps the cardinality of both schemas might be slightly different. \r\n\r\nShould we consider introducing a dedicated schema for presentation to reflect changes in cardinality?",
       "createdAt": "2024-07-01T14:49:31Z",
-      "updatedAt": "2025-07-04T15:10:12Z",
+      "updatedAt": "2025-09-16T18:12:19Z",
       "closedAt": null,
       "comments": [
         {
@@ -6183,10 +6260,12 @@
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "schema"
+      ],
       "body": "If the leaf JSON Schema document includes the full schema, it might be easier to just validate against the leaf and not against all schemas in the chain? ",
       "createdAt": "2024-07-01T15:46:14Z",
-      "updatedAt": "2024-12-09T21:18:31Z",
+      "updatedAt": "2025-09-16T18:12:13Z",
       "closedAt": null,
       "comments": [
         {
@@ -6235,10 +6314,12 @@
       "assignees": [
         "danielfett"
       ],
-      "labels": [],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "I'm not sure why 'vct' is not (as REQUIRED) in 6.2 Type Metadata Format. Is it bug or is this some sort of implicit? It is in the  6.1. Type Metadata Example and also it is twice referenced in 6.3.5 From Type Metadata Glue Documents: \"the Consumer MUST ensure that the vct claim in the credential matches the one in the Type Metadata document\" and \"the Consumer MUST ensure that the value of the extends property in the Type Metadata document matches that of the vct in the Type Metadata document\"\r\n",
       "createdAt": "2024-07-12T11:49:07Z",
-      "updatedAt": "2024-12-03T10:38:18Z",
+      "updatedAt": "2025-09-16T15:10:12Z",
       "closedAt": null,
       "comments": [
         {
@@ -6499,11 +6580,11 @@
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [
-        "future-extension"
+        "pending close"
       ],
       "body": "We should consider adding type metadata that can help a wallet to guide a user to a place where they can have a credential of a specific type issued.",
       "createdAt": "2024-07-23T14:51:01Z",
-      "updatedAt": "2025-06-10T18:27:51Z",
+      "updatedAt": "2025-09-16T15:14:12Z",
       "closedAt": null,
       "comments": [
         {
@@ -6526,6 +6607,13 @@
           "body": "> I don't get why that goes in this document\n\nI tend to agree that this kind of \"where a credential can be obtained\" thing doesn't really belong in this document",
           "createdAt": "2025-06-10T18:27:51Z",
           "updatedAt": "2025-06-10T18:27:51Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I agree as well that this it out of scope of this document. I suggest to mark this as pending close unless @danielfett makes a strong case why this belongs in this specification.",
+          "createdAt": "2025-09-16T15:14:02Z",
+          "updatedAt": "2025-09-16T15:14:02Z"
         }
       ]
     },
@@ -7233,9 +7321,17 @@
       "labels": [],
       "body": "[Dr. Horvat, PhD](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/264#issuecomment-2477101068):\r\n> However, metadata owner must be aware of the responsibility to take care of the versioning.\r\n\r\nWe could add this as a consideration to the spec.",
       "createdAt": "2024-11-15T10:44:07Z",
-      "updatedAt": "2024-11-26T19:12:13Z",
+      "updatedAt": "2025-09-16T15:17:00Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett couldn't the version be encoded in the `vct` value itself? However, I think it wouldn't be the worst to provide some guidance on versioning. Do you have a proposal @alenhorvat @danielfett ?",
+          "createdAt": "2025-09-16T15:17:00Z",
+          "updatedAt": "2025-09-16T15:17:00Z"
+        }
+      ]
     },
     {
       "number": 274,
@@ -7397,16 +7493,18 @@
     {
       "number": 282,
       "id": "I_kwDOJbVClc6h5yvx",
-      "title": "Can we trust metadata? Why? (was: SVG? really? And metadata more broadly)",
+      "title": "Add security considerations on when/what metadata is/can be trusted",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282",
       "state": "OPEN",
       "author": "wbl",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "I really don't get why SVG logos for individual fields is supported. Also I'm not sure about the value of this display metadata. Are people going to use it?",
       "createdAt": "2024-12-04T00:31:21Z",
-      "updatedAt": "2024-12-09T22:10:59Z",
+      "updatedAt": "2025-09-16T15:21:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -7499,6 +7597,13 @@
           "body": "And once again, that is not in the four corners of the text here. I think this is something that also needs to go on the list.",
           "createdAt": "2024-12-09T22:10:57Z",
           "updatedAt": "2024-12-09T22:10:57Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Good discussion and some of the suggestions should be reflected in the security considerations section. I mark this as ready for PR.",
+          "createdAt": "2025-09-16T15:21:15Z",
+          "updatedAt": "2025-09-16T15:21:15Z"
         }
       ]
     },
@@ -7559,12 +7664,24 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close",
+        "future-extension",
+        "policy"
+      ],
       "body": "The end of section 1.1 states:\r\n\r\n>    To support revocation of Verifiable Credentials, revocation information can optionally be retrieved from a Status Provider.  The\r\n>    role of a Status Provider can be fulfilled by either a fourth party or by the Issuer.\r\n> \r\n\r\nBoth suspension and revocation of Digital Credentials should be mentioned. It should also be observed that the suspension or the revocation of Digital Credentials does not need necessarily involve a Status Provider.\r\n\r\nSince Digital Credentials are hosted by a Holder which is an application, that application can contact the Issuer of the Digital Credential and be instructed by the Issuer to suspend or to stop (i.e. revoke) the use of a Digital Credential. \r\n\r\nIt is proposed to change the end of this section into:\r\n\r\n>    If the suspension or the revocation of a Digital Credential is  supported, an information SHALL be included into the Digital \r\n>    Credential.\r\n> \r\n>    If Token Status Lists are used, then a specific claim (i.e., status) shall be included into the Digital Credential to indicate that this \r\n>   mechanism  is supported.\r\n> \r\n>    If a \"Digital Credential Policy\", analogous to a \"Certificate Policy\" for X.509 certificate, is included into the Digital Credential, then \r\n>    in some cases, the characteristics of the Holder can be known by the Verifier.  In this way, the Verifier can be able to know that the \r\n>    Holder will contact the Issuer of the Digital Credential from time  to time and can be instructed by the Issuer to suspend or to stop \r\n>    (i.e. revoke) the use of a Digital Credential, when necessary. \r\n> \r\n>    If the Holder is unable to contact an Issuer during a defined period of time, e.g. 24 hours, the Holder will suspend all the Digital \r\n>    Credentials  issued by that issuer. When a Digital Credential  has been suspended, the process can be reversed. However, when a \r\n>   Digital Credential  has been invalidated (e.g., revoked),  the process  cannot be reversed. \r\n",
       "createdAt": "2024-12-07T22:11:04Z",
-      "updatedAt": "2024-12-07T22:11:04Z",
+      "updatedAt": "2025-09-16T22:43:12Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Similar to https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212 and https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/319 and #325 there doesn't seem to be a clearly preferred (or workable) way to express policy (even if you call it \"Digital Credential Policy\") in the credential itself or even if such policy is necessary or appropriate in the credential. A future or ecosystem specific profile or extension or even type can define (or not) what makes sense in the given context. But, in the interest of moving forward, it's out of scope for (this version of) this specification. ",
+          "createdAt": "2025-09-16T22:43:01Z",
+          "updatedAt": "2025-09-16T22:43:01Z"
+        }
+      ]
     },
     {
       "number": 287,
@@ -7627,15 +7744,15 @@
       "id": "I_kwDOJbVClc6iab3O",
       "title": "Add a new claim called \"dcpol\" for \"Digital Credential Policy\"",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/290",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "In section 3.2.2.2.  Registered JWT Claims.\r\nAfter :\r\n\r\n> \r\n>    *  status\r\n>       -  OPTIONAL.\r\n\r\nAdd the following claim:\r\n\r\n>    *  dcpol\r\n>       -  OPTIONAL.  The Digital Credential Policy under which the Digital Credential has been issued by the Issuer.\r\n",
       "createdAt": "2024-12-07T22:30:15Z",
-      "updatedAt": "2024-12-11T18:37:20Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-16T15:28:31Z",
+      "closedAt": "2025-09-16T15:28:31Z",
       "comments": [
         {
           "author": "wbl",
@@ -7643,6 +7760,13 @@
           "body": "What's a Digital Credential Policy? This would need a lot more text to explain the semantics.",
           "createdAt": "2024-12-11T18:37:19Z",
           "updatedAt": "2024-12-11T18:37:19Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing this issue since https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/325 is a duplicate and contains more info.",
+          "createdAt": "2025-09-16T15:28:31Z",
+          "updatedAt": "2025-09-16T15:28:31Z"
         }
       ]
     },
@@ -7655,12 +7779,23 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close",
+        "policy"
+      ],
       "body": "In section 3.4 , the text states:\r\n\r\n>    If status is present in the verified payload of the SD-JWT, the\r\n>    status SHOULD be checked.  It depends on the Verifier policy to\r\n>    reject or accept a presentation of a SD-JWT VC based on the status of\r\n>    the Verifiable Credential.\r\n\r\nAnother sentence should be added:\r\n\r\n> If dcpol is present in the verified payload of the SD-JWT, the Digital Credential Policy under which the Digital Credential has been issued by the Issuer SHOULD be considered by the Verifier.  When the Verifier is able to derive from it the characteristics of the Holder, the Verifier can know that the presentation of the Digital Credential to the Verifier by the Holder has not been suspended nor invalided by the Digital Credential Issuer. It depends on the Verifier policy to reject or accept a presentation of a SD-JWT DC when this claim is present.\r\n",
       "createdAt": "2024-12-07T22:43:55Z",
-      "updatedAt": "2024-12-07T22:43:55Z",
+      "updatedAt": "2025-09-16T22:45:46Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "dcpol isn't defined anywhere nor is this draft likely to define it ",
+          "createdAt": "2025-09-16T22:45:46Z",
+          "updatedAt": "2025-09-16T22:45:46Z"
+        }
+      ]
     },
     {
       "number": 293,
@@ -7774,14 +7909,16 @@
       "state": "OPEN",
       "author": "grausof",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "cre8"
+      ],
       "labels": [
         "enhancement",
         "Ready-for-PR"
       ],
       "body": "For the \"simple\" rendering method in addition to supporting the `background_color` it could be a good idea to also support a `background_image` for those credentials that already have a **well-defined background** obviously going to specify the different dimensions and resolutions to support as for example is done for iOS and Android Wallets (see https://developer.apple.com/design/human-interface-guidelines/wallet). \n\nThe use of SVG is very complex and also requires a very high computational load for the rendering of complex objects or with many shades just think of the background of a national identity card.",
       "createdAt": "2025-03-26T11:18:33Z",
-      "updatedAt": "2025-08-20T06:50:27Z",
+      "updatedAt": "2025-09-16T15:41:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -7793,10 +7930,24 @@
         },
         {
           "author": "cre8",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "I can work on this. By adding variants of the background image (one option for dark ui, one for light), I would also update the logo property since some of the features are also relevant for it",
           "createdAt": "2025-08-20T06:50:27Z",
           "updatedAt": "2025-08-20T06:50:27Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I can work on this. By adding variants of the background image (one option for dark ui, one for light), I would also update the logo property since some of the features are also relevant for it\n\n@cre8 are you still intending to do a PR?",
+          "createdAt": "2025-09-16T15:31:28Z",
+          "updatedAt": "2025-09-16T15:31:28Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > I can work on this. By adding variants of the background image (one option for dark ui, one for light), I would also update the logo property since some of the features are also relevant for it\n> \n> [@cre8](https://github.com/cre8) are you still intending to do a PR?\n\n\"[cre8](https://github.com/cre8)\nlinked a pull request that will close this issue [3 weeks ago](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/305#event-3135205203)\n\n[fix: update logo and background structure #335](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/335)\"\n",
+          "createdAt": "2025-09-16T15:41:57Z",
+          "updatedAt": "2025-09-16T15:41:57Z"
         }
       ]
     },
@@ -7957,11 +8108,12 @@
       "labels": [
         "enhancement",
         "discuss",
-        "Ready-for-PR"
+        "Ready-for-PR",
+        "schema"
       ],
       "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
       "createdAt": "2025-05-20T13:14:59Z",
-      "updatedAt": "2025-08-28T10:52:48Z",
+      "updatedAt": "2025-09-17T12:09:20Z",
       "closedAt": null,
       "comments": [
         {
@@ -8012,6 +8164,20 @@
           "body": "> Hi [@babisRoutis](https://github.com/babisRoutis)\n> \n> I interpreted it in a way that the wallet will also use the schema to validate if a correct credential got issued:\n> \n> > If a schema or schema_uri property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm (as defined in Section 7.3 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#I-D.ietf-oauth-selective-disclosure-jwt)]) against the JSON Schema document provided by the schema or schema_uri property.\n> \n> > If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n> \n> In 1.4 the consumer role is covering issuer, verifier and wallet.\n> \n> Or have I missed something in the spec?\n\nYou haven't missed anything \ud83d\ude04 \n\nGiven that currently, there is a single schema that is to be used by both by the wallet (during issuance) and the verifier, you cannot mark an always issued attribute as required, unless it is ~always~ never selectively disclosable. Which means, that the wallet cannot validate that it has been issued the mandatory attributes.\n\nHence, I raised this issue.\n\nPS: If you want, please also check https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237#issuecomment-3036637978",
           "createdAt": "2025-08-28T10:47:24Z",
           "updatedAt": "2025-08-28T10:52:48Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "There were some comments with regards to the use of a JSON Schema specific to issuance, in order to mark as required the attributes that must always be present to an issued credential.\n\nNow that there is #345  that removes JSON Schema, I was wondering if there is still room to add `mandatory`.  \n\nThe reasoning to add mandatory is explained to the description of the issue, but in a nutshell:  the `mandatory` from VCI metadata and `sd` from Type Metadata can affect the DCQL for an SD-JWT-VC.  It would be nice, to rely just to Typemetadata .",
+          "createdAt": "2025-09-16T10:16:02Z",
+          "updatedAt": "2025-09-16T10:16:02Z"
+        },
+        {
+          "author": "nvoutsin",
+          "authorAssociation": "NONE",
+          "body": "The SD-JWT-VC Type Metadata would be a great addition to the domain/business rulebooks and could help issuers, wallets, and, to some extent, even verifiers align on what they should expect to see in the payload\n\nIn that sense, if the plan is to [remove JSON Schema](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345) from the type metadata, it would be useful to close the gap both with the `required` field from the json schema and with the `mandatory` field in the OID4VCI metadata. Since type metadata is now the recommend approach for sd-jwts, wouldn\u2019t it be better to provide the relevant information in a self-contained way?\n\nClosely related to the addition of the mandatory field in type metadata: another crucial functionality offered by json schema was the ability to perform basic sanity checks on the provided values. In practice, we\u2019ve seen many cases where regex checks could protect  issuers and wallets from handling garbage data, and even help authoritative sources stay aligned with basic semantics.",
+          "createdAt": "2025-09-17T12:09:20Z",
+          "updatedAt": "2025-09-17T12:09:20Z"
         }
       ]
     },
@@ -8162,17 +8328,19 @@
       "id": "I_kwDOJbVClc69S2Qt",
       "title": "Mapping for 'termsOfUse' from VCDM",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/319",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tweeddalex",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
-        "pending close"
+        "pending close",
+        "future-extension",
+        "policy"
       ],
       "body": "Hi all, we've been working on an implementation of issuing SD-JWT VCs with `did:cheqd` using Paradym. \n\nOne part of the VC Data Model that we want to include within the issued SD-JWT VC is the `termsOfUse` field, for referencing 'accreditations' issued to the issuer (stored on our trust registry). However, this is currently not a section that is mapped across in the spec. Would it be worth creating more OPTIONAL JWT claims to map missing sections of the VC Data Model (`evidence`, `termsOfUse`, etc?) - or have these been purposefully omitted to keep the spec as lightweight and simple as possible? \n\nIn particular `termsOfUse` has been increasingly used for pointing to trust registry entries in multiple implementations (see OIDF issue here: https://github.com/openid/federation-wallet/issues/48; EBSI issuer trust model here: https://hub.ebsi.eu/vc-framework/trust-model/issuer-trust-model-v4 and cheqd trust registry model here: https://docs.cheqd.io/product/studio/trust-registries/dtc/referencing-in-credential)\n\nThanks!\n",
       "createdAt": "2025-06-25T14:15:47Z",
-      "updatedAt": "2025-09-04T16:11:47Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-16T20:56:54Z",
+      "closedAt": "2025-09-16T20:56:54Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -8215,6 +8383,13 @@
           "body": "Just a note that in https://github.com/openid/federation-wallet/pull/50, I suggest using a new `EntityConfiguration` parameter for the issuer to point to the issuer's OpenID Entity Configuration.",
           "createdAt": "2025-09-04T16:11:47Z",
           "updatedAt": "2025-09-04T16:11:47Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Similar to #212 there doesn't seem to be a clearly preferred way to express issuance policy, presentation policy, or other policy in the credential itself or even if such policy is necessary or appropriate in the credential. A future or ecosystem specific profile or extension or even type can define (or not) what makes sense in the given context. But, in the interest of moving forward, it's out of scope for (this version of) this specification. ",
+          "createdAt": "2025-09-16T20:56:37Z",
+          "updatedAt": "2025-09-16T20:56:37Z"
         }
       ]
     },
@@ -8314,10 +8489,14 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close",
+        "future-extension",
+        "policy"
+      ],
       "body": "On Dec 7, 2024, I raised the following issue \":\n\n> Add a new claim called \"dcpol\" for \"Digital Credential Policy\" #290\n\nwbl responded:\n\n> What's a Digital Credential Policy? This would need a lot more text to explain the semantics.\n\nBelow is a \"lot more text to explain the semantics\". In between, I changed the name of the claim into: \"credential_issuance_policy\".\nAn analogy between X.509 Certificates and Verifiable Credentials can be made. X.509 Certificates are defined in RFC 5280.\n\nSection 2 from RFC 5280 states:\n\n> A certificate user should review the certificate policy generated by the certification authority (CA) before relying on the authentication or non-repudiation services associated with the public key in a particular certificate.\n> \n> Applying this analogy, the current draft should state something like:\n> \n> A verifier user should review the credential_issuance_policy claim placed by the issuer into a Verifiable Credential before relying on authentication or selective disclosure services associated with the public key in a particular Verifiable Credential.\n\nUnfortunately, at the moment, no claim has been defined for a \"Credential issuance policy (CIP)\".\n\nSection [4.2.1.4](https://datatracker.ietf.org/doc/html/rfc5280#section-4.2.1.4) from RFC 5280 states:\n\n> 4.2.1.4. Certificate Policies\n> \n> The certificate policies extension contains a sequence of one or more policy information terms, each of which consists of an object identifier (OID) and optional qualifiers. Optional qualifiers, which MAY be present, are not expected to change the definition of the policy. A certificate policy OID MUST NOT appear more than once in a certificate policies extension.\n> \n>  In an end entity certificate, these policy information terms indicate the policy under which the certificate has been issued and the purposes for which the certificate may be used.\n\nApplying this analogy, the current draft would state something like:\n\n> The credential_issuance_policy claim contains a sequence of one or more credential issuance policy identifiers, each of which consists of a URI and optional policy qualifiers. Optional policy qualifiers, which MAY be present, are not expected to change the definition of the policy. A credential issuance policy identifier URI MUST NOT appear more than once in a credential_issuance_policy claim.\n> \n> The credential_issuance_policy claim indicates the policies under which the verifiable credential has been issued and the purposes for which it may be used.\n> \n> Verifiers with specific policy requirements are expected to have a list of those policies that they will accept and to compare the policy URI in the verifiable credential to that list.\n> \n> This specification defines one policy qualifier type: the Issuance Practice Statement (issuance_practice_statement).\n> \n>  The issuance_practice_statement qualifier contains a pointer to an Issuance Practice Statement (IPS) either published by the issuer or defined by another organization. The pointer is in the form of a URI. Processing requirements for this qualifier by Relying Parties are a local matter.\n\nAnother analogy can also be done with ETSI EN 319 412-5 V2.4.1 (2023-09).\n\n Section 4.2.2 is stating:\n\n> 4.2.2 QCStatement claiming that the private key related to the certified public key resides in a QSCD\n> \n> This Qcstatement declares that the private key related to the certified public key resides in a Qualified Signature/Seal Creation Device (QSCD) according to the Regulation (EU) No 910/2014 [i.8] or a secure signature creation device as defined in the Directive 1999/93/EC [i.3].\n> \n> Syntax:\n> esi4-qcStatement-4 QC-STATEMENT ::= { IDENTIFIED BY id-etsi-qcs-QcSSCD }\n> id-etsi-qcs-QcSSCD OBJECT IDENTIFIER ::= { id-etsi-qcs 4 }\n\nApplying this analogy, the current draft would state something like:\n\n> The following issuance_practice_statement URI declares that the keys pairs generated by a holder and used for requesting the issuance of verifiable credential and then after for presenting them to relying parties reside in a device that restricts the use of the private keys to a specific application placed under the control of the owner of this device. The application that can present verifiable credentials must also be the application that requested and obtained them.\n> \n>  Syntax: ...\n\nUsing the ARF vocabulary (Discussion topic C - Wallet Unit Attestation (WUA) and Key Attestation Version 0.4, updated 14 March 2025), the URI contained in an issuance_practice_statement corresponds to the \"properties of the WSCA\".\n\nRelying Parties can rely on issuance_practice_statements contained in a verifiable credential and thus do not need to use any protocol with WSCA to know the \"properties of the WSCA\".\n\nIn this way, a protocol between the WSCA and Relying Parties using Wallet Unit Attestations is replaced by the issuance_practice_statement placed into the verifiable credential. One-time use Wallet Unit Attestations (WUA) are still necessary between WSCAs and issuers, but are not necessary between WSCAs and Relying Parties.\n\nNote: This topic has been raised at the end of the presentation from Daniel and Olivier on July 2, 2025 (SD-JWT and SD-JWT VC deep dive)\nat the \"Global Digital Collaboration Conference 2025\" in Geneva.\n",
       "createdAt": "2025-07-13T08:13:48Z",
-      "updatedAt": "2025-07-20T08:42:37Z",
+      "updatedAt": "2025-09-16T20:57:48Z",
       "closedAt": null,
       "comments": [
         {
@@ -8333,6 +8512,13 @@
           "body": "@tweeddalex.\n\nYour comment is asking for the addition a claim that contains a URI to a trust registry or accreditation. \n\nElectronic signatures have been successfully deployed within the EU without such an extension, but by using certificate policies that allow to know that a EU policy (in fact, a policy defined by ETSI) is being used by the CA. In such a case, a TSL (Trust Server List) can be used to verify that the CA has indeed been accredited. \n\nHence, it looks that your concern can be solved using the new claim called \"credential_issuance_policy\".",
           "createdAt": "2025-07-20T08:42:37Z",
           "updatedAt": "2025-07-20T08:42:37Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Similar to https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212 and #319 there doesn't seem to be a clearly preferred way to express issuance policy, presentation policy, or other policy in the credential itself or even if such policy is necessary or appropriate in the credential. A future or ecosystem specific profile or extension or even type can define (or not) what makes sense in the given context. But, in the interest of moving forward, it's out of scope for (this version of) this specification.",
+          "createdAt": "2025-09-16T20:57:48Z",
+          "updatedAt": "2025-09-16T20:57:48Z"
         }
       ]
     },
@@ -8548,10 +8734,12 @@
       "author": "adeinega",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "schema"
+      ],
       "body": "Section 6.5.2. Schema Validation says\n\n> If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n\nIf a claim is marked as required in a JSON Schema document but is not disclosed to the verifier, the verifier must reject the VC (or DC).\n\nThe solution seems simple, never mark such claims as \"required\"... but is that always the desirable approach?\n\nIt feels like these nuances should be mentioned and articulated.",
       "createdAt": "2025-07-31T07:12:03Z",
-      "updatedAt": "2025-08-07T18:17:40Z",
+      "updatedAt": "2025-09-16T18:11:50Z",
       "closedAt": null,
       "comments": [
         {
@@ -8697,10 +8885,12 @@
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "schema"
+      ],
       "body": "I was pretty skeptical of about the utility of it when it was first added/proposed and I can't say my perspective has moved.  \n\nbut there are related issues like #332 #310 #238 and (thanks for the reminder @adeinega) #237 ",
       "createdAt": "2025-09-02T18:00:42Z",
-      "updatedAt": "2025-09-15T20:17:53Z",
+      "updatedAt": "2025-09-16T19:27:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -8751,6 +8941,13 @@
           "body": "@bc-pi after some discussion outside I agree that adding redundant schemas is not helping.\n\nDuring issuance the rulebook may be used (which is also covering authorization). During presentation the claims attribute may be used and the rulebook.\n\nSince there is no additional value, I now also recommend to remove it. It is very unlikely that rulebooks will reference the JSON Schema from a vct URL",
           "createdAt": "2025-09-12T05:39:17Z",
           "updatedAt": "2025-09-12T05:39:17Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Discussed this and the very related #345 with some folks, including the other editors, and generally agreed with the direction but wanted to account for #350 at the same time. ",
+          "createdAt": "2025-09-16T19:27:31Z",
+          "updatedAt": "2025-09-16T19:27:31Z"
         }
       ]
     },
@@ -8808,10 +9005,12 @@
       "author": "yaromin",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss"
+      ],
       "body": "The spec allows for extensibility by enabling ecosystems to specify additional Issuer Signature Mechanisms. Shouldn't ecosystems and their participants also be able to elect NOT to support mechanisms defined in section 3.5? \n\nGiven that this extensibility is created to, among others, address DIDs, I imagine that such pure did-as-iss-based ecosystems may elect not to support the two key mechanisms defined in this specification and still these ecosystems and its participants will be compliant with SD-JWT VC.",
       "createdAt": "2025-09-15T10:54:41Z",
-      "updatedAt": "2025-09-15T16:30:27Z",
+      "updatedAt": "2025-09-16T20:59:37Z",
       "closedAt": null,
       "comments": [
         {
@@ -8828,15 +9027,17 @@
       "id": "I_kwDOJbVClc7LsoAn",
       "title": "HTTPS GET and HTTP GET normalisation",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/347",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaromin",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "Minor editorial: We have one instance of \"HTTPS GET\"in 11.3 and a couple of \"HTTP GET\" occurrences with further clarification of the HTTPS scheme in the latter. It would be worth normalising this. \n\nI'd change in 11.3:\n_The Verifier would create a HTTPS GET request to the Holder-specific well-known URI when the SD-JWT VC is verified._\nto something along these lines:\n_**HTTP GET** request to the Holder-specific well-known URI **(using HTTPS scheme)**, when the SD-JWT VC is verified_\n\n",
       "createdAt": "2025-09-15T11:09:32Z",
-      "updatedAt": "2025-09-15T15:59:30Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-17T17:52:53Z",
+      "closedAt": "2025-09-17T17:52:53Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -8844,8 +9045,59 @@
           "body": "Thanks @yaromin, I believe this was recently addressed in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/328/files which will show up in the next revision (-11 coming soon)  ",
           "createdAt": "2025-09-15T15:59:11Z",
           "updatedAt": "2025-09-15T15:59:30Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "that has been fixed in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-11#section-11.3 but unfortunately the new references in that section need to be fixed (see #349)",
+          "createdAt": "2025-09-16T12:16:02Z",
+          "updatedAt": "2025-09-16T20:43:38Z"
         }
       ]
+    },
+    {
+      "number": 349,
+      "id": "I_kwDOJbVClc7L-C1E",
+      "title": "wrong ref syntax",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/349",
+      "state": "CLOSED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-11#section-11.3-4 \n\n> This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). \n\npassive aggressive tag of @cre8 although admittedly I missed it too in my review of #340 \n\n",
+      "createdAt": "2025-09-16T12:17:47Z",
+      "updatedAt": "2025-09-16T20:40:03Z",
+      "closedAt": "2025-09-16T20:38:40Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "ugh, forgot to make a branch... sorry\n\n```\nremote: Bypassed rule violations for refs/heads/main:\nremote: \nremote: - Changes must be made through a pull request.\nremote:\nTo github.com:oauth-wg/oauth-sd-jwt-vc.git\n   afbea26..8e4c95d  main -> main\n```",
+          "createdAt": "2025-09-16T20:40:03Z",
+          "updatedAt": "2025-09-16T20:40:03Z"
+        }
+      ]
+    },
+    {
+      "number": 350,
+      "id": "I_kwDOJbVClc7MCxd-",
+      "title": "add extension point for type metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/350",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "bc-pi"
+      ],
+      "labels": [
+        "schema"
+      ],
+      "body": "Although not strictly prohibited, we should make it clear that type metadata can contain additional properties and if not known/understood must be ignored. This would allow us to define extensions in the future.",
+      "createdAt": "2025-09-16T18:15:08Z",
+      "updatedAt": "2025-09-16T18:21:25Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -25945,13 +26197,13 @@
       "labels": [],
       "body": "fixes #305\n\n- adds information for background image\n- using the reference to apple guidelines, allowing a more granual approach (different images for multiple dimensions, etc)\n- also aligning existing logo approach so both cases are using the same approach\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:35:04Z",
-      "updatedAt": "2025-09-09T17:59:41Z",
+      "updatedAt": "2025-09-17T11:30:47Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "65584a8337c604b98919639ac5bf7195e7d79c73",
+      "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/305",
-      "headRefOid": "c9568e2341965b0b82ab5fa748b2ca44061ae0aa",
+      "headRefOid": "db5bc75361dc61e46d3ef916aded5575bb50921d",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -27043,13 +27295,13 @@
       "labels": [],
       "body": "for #342 and hopefully others like #332 #310 (only somewhat related) #238 and #237 too",
       "createdAt": "2025-09-12T20:25:59Z",
-      "updatedAt": "2025-09-15T20:17:06Z",
+      "updatedAt": "2025-09-17T11:30:31Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "8d0390e5b54bf2f4aae4f660ce61bfe94b352035",
+      "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "Remove-JSON-schema-from-Type-Metadata",
-      "headRefOid": "9dcb6deacda30085cfc8eaa2989bedce10af1d84",
+      "headRefOid": "642a11cb3f2ccf4bf899f07548822221c5a4d6e6",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -27068,6 +27320,27 @@
           "body": "> Dear @bc-pi\r\n> \r\n> I noticed that you have associated the present PR with #310.\r\n> \r\n> The later was about adding `mandatory` qualifier to a claim with the meaning of an always issued attribute regardless of its `sd` value.\r\n> \r\n> Can you please clarify how the absence of `mandatory` to the PR should be interpreted?\r\n> \r\n>    * Outside the scope of the PR?\r\n> \r\n>    * Missed the addition?\r\n> \r\n>    * No real value to adding `mandatory`?\r\n> \r\n> \r\n> Perhaps, it would be more clear to de-associate this PR from #310, given that `mandatory` is not strictly related to the use of JSON Schema.\r\n\r\nI did mention #310 in the description because I perceive some overlap on the general topic but didn't associate that one with the \"Successfully merging this pull request may close these issues\" list. So it will (or should) remain open even if/when this is merged. \"Outside the scope of the PR\" is how the absence of `mandatory` here should be interpreted, I think. ",
           "createdAt": "2025-09-15T20:02:15Z",
           "updatedAt": "2025-09-15T20:17:06Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @bc-pi \r\n\r\nTo the [datatracker](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/)  there is a link to draft 11. Does this mean that the removal of JSON Schema should target draft 12 or is there going to be an update to draft 11 when this PR gets merged?\r\n\r\nMainly I am asking for the changes to the document history introduced by present PR.",
+          "createdAt": "2025-09-16T07:01:16Z",
+          "updatedAt": "2025-09-16T07:01:16Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Hi @bc-pi\r\n> \r\n> To the [datatracker](https://datatracker.ietf.org/doc/draft-ietf-oauth-sd-jwt-vc/11/) there is a link to draft 11. Does this mean that the removal of JSON Schema should target draft 12 or is there going to be an update to draft 11 when this PR gets merged?\r\n> \r\n> Mainly I am asking for the changes to the document history introduced by present PR.\r\n\r\nYes, the document history entry should be moved to -12. I was hopeful about seeing this simplification/improvement go into -11 but folks weren't fully on board yet with it and there was some pressure to get -11 out with its other changes in the meantime. ",
+          "createdAt": "2025-09-16T12:09:15Z",
+          "updatedAt": "2025-09-16T12:09:15Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Some discussion with @awoie and @danielfett sussed out a desire to have #350 addressed as part of this. Words towards that end were added with [7658995](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345/commits/765899525482c00ddabc3afce4d615df43d30ac1) ",
+          "createdAt": "2025-09-16T20:09:20Z",
+          "updatedAt": "2025-09-16T20:09:20Z"
         }
       ],
       "reviews": [
@@ -27094,14 +27367,190 @@
         {
           "id": "PRR_kwDOJbVClc6_2iu-",
           "commit": {
-            "abbreviatedOid": "9dcb6de"
+            "abbreviatedOid": "cb5a2b3"
           },
           "author": "adeinega",
           "authorAssociation": "CONTRIBUTOR",
           "state": "APPROVED",
           "body": "",
           "createdAt": "2025-09-12T20:36:54Z",
-          "updatedAt": "2025-09-12T20:36:54Z",
+          "updatedAt": "2025-09-16T12:05:40Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7AYG8Y",
+          "commit": {
+            "abbreviatedOid": "cb5a2b3"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Removal of JSON Schema does solve the problem of having to deal with two schemas or having a single schema mostly for presentation. At the  same time, though, it increases the reliance to text specifications (like credential rule-books), which are not processable neither from wallets nor from verifier.\r\n\r\nAnyway, the PR looks good and on the positive side removes the complexity of defining and processing JSON Schema.\r\n\r\n",
+          "createdAt": "2025-09-16T06:06:28Z",
+          "updatedAt": "2025-09-16T12:05:40Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7AcEGp",
+          "commit": {
+            "abbreviatedOid": "9dcb6de"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2025-09-16T09:08:04Z",
+          "updatedAt": "2025-09-16T09:08:23Z",
+          "comments": [
+            {
+              "originalPosition": 217,
+              "body": "Probably this entry should go for 12, given that d11 was [released](https://github.com/oauth-wg/oauth-sd-jwt-vc/releases/tag/draft-ietf-oauth-sd-jwt-vc-11)",
+              "createdAt": "2025-09-16T09:08:05Z",
+              "updatedAt": "2025-09-16T09:08:23Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7AgNDU",
+          "commit": {
+            "abbreviatedOid": "9dcb6de"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-16T12:12:25Z",
+          "updatedAt": "2025-09-16T12:12:25Z",
+          "comments": [
+            {
+              "originalPosition": 217,
+              "body": "a5b48b3727642defd2a70dda829253f4922fec78 does that ",
+              "createdAt": "2025-09-16T12:12:25Z",
+              "updatedAt": "2025-09-16T12:12:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7AguMq",
+          "commit": {
+            "abbreviatedOid": "a5b48b3"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-16T12:40:12Z",
+          "updatedAt": "2025-09-16T12:40:12Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Aojcm",
+          "commit": {
+            "abbreviatedOid": "cb7f34e"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-16T22:11:03Z",
+          "updatedAt": "2025-09-16T22:11:04Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "You might still want to have an equivalent of extensions that must to be understood just like [the crit header parameter does in JWS](https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11).",
+              "createdAt": "2025-09-16T22:11:04Z",
+              "updatedAt": "2025-09-16T22:11:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7ApXIY",
+          "commit": {
+            "abbreviatedOid": "cb7f34e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-17T00:17:21Z",
+          "updatedAt": "2025-09-17T00:17:21Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "My intuition is that something like that isn't needed for metadata. I'm not aware of a similar construct in any of the metadata content in the OAuth/OIDC realm nor that occasion that it'd have been useful has come to light. ",
+              "createdAt": "2025-09-17T00:17:21Z",
+              "updatedAt": "2025-09-17T00:17:21Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 348,
+      "id": "PR_kwDOJbVClc6o2T-l",
+      "title": "now 12 https://mailarchive.ietf.org/arch/msg/oauth/-blEIowkxM-IG1oTxp1UyS406_w/",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/348",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "now 12 https://mailarchive.ietf.org/arch/msg/oauth/-blEIowkxM-IG1oTxp1UyS406_w/",
+      "createdAt": "2025-09-16T12:04:36Z",
+      "updatedAt": "2025-09-16T12:05:10Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8d0390e5b54bf2f4aae4f660ce61bfe94b352035",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "next-12",
+      "headRefOid": "ebcf794ac0151b8e83991c9723f2e6c18d8f04be",
+      "closedAt": "2025-09-16T12:05:10Z",
+      "mergedAt": "2025-09-16T12:05:10Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "afbea267f0d079ae6ad70c1aeb8d245bc7cd8c26"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 351,
+      "id": "PR_kwDOJbVClc6o6xLt",
+      "title": "Discussed on editors call: Remove requirement to ignore unknown claims",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/351",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-16T18:23:57Z",
+      "updatedAt": "2025-09-17T00:17:49Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8e4c95d61a057bf8e469415da42d68415024c21a",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/ignore-ignore",
+      "headRefOid": "10ace19f7227caf55861dfa5dcb11047f34c8ed2",
+      "closedAt": "2025-09-17T00:17:49Z",
+      "mergedAt": "2025-09-17T00:17:49Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7AmGCE",
+          "commit": {
+            "abbreviatedOid": "c84dd1d"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-16T18:31:25Z",
+          "updatedAt": "2025-09-16T18:31:25Z",
           "comments": []
         }
       ]
