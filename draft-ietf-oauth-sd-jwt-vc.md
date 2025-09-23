@@ -769,13 +769,13 @@ integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
 # Display Metadata {#display-metadata}
 
 The `display` property is an array containing display information for the type.
-The array MUST contain an object for each language that is supported by the
+The array MUST contain an object for each locale that is supported by the
 type. The consuming application MUST use the language tag it considers most
 appropriate for the user.
 
 The objects in the array have the following properties:
 
-- `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
+- `locale`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `name`: A human-readable name for the type, intended for end users. This
   property is REQUIRED.
 - `description`: A human-readable description for the type, intended for end
@@ -987,13 +987,13 @@ also security concerns with some implementations.
 ## Claim Display Metadata {#claim-display-metadata}
 
 The `display` property is an array containing display information for the
-claim. The array MUST contain an object for each language that is supported by
+claim. The array MUST contain an object for each locale that is supported by
 the type. The consuming application MUST use the language tag it considers most
 appropriate for the user.
 
 The objects in the array have the following properties:
 
-- `lang`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
+- `locale`: A language tag as defined in Section 2 of [@!RFC5646]. This property is REQUIRED.
 - `label`: A human-readable label for the claim, intended for end users. This
   property is REQUIRED.
 - `description`: A human-readable description for the claim, intended for end
@@ -1022,11 +1022,11 @@ Suppose we have a base type metadata document:
   "claims": [
     {
       "path": ["name"],
-      "display": [{"label": "Full Name", "lang": "en"}]
+      "display": [{"label": "Full Name", "locale": "en"}]
     },
     {
       "path": ["address", "city"],
-      "display": [{"label": "City", "lang": "en"}]
+      "display": [{"label": "City", "locale": "en"}]
     }
   ]
 }
@@ -1041,11 +1041,11 @@ And a child type metadata document that extends the base type:
   "claims": [
     {
       "path": ["address", "city"],
-      "display": [{"label": "Town", "lang": "en"}]
+      "display": [{"label": "Town", "locale": "en"}]
     },
     {
       "path": ["nationalities"],
-      "display": [{"label": "Nationalities", "lang": "en"}]
+      "display": [{"label": "Nationalities", "locale": "en"}]
     }
   ]
 }
@@ -1058,15 +1058,15 @@ In this example, the child type inherits the `name` claim metadata from the base
   "claims": [
     {
       "path": ["name"],
-      "display": [{"label": "Full Name", "lang": "en"}]
+      "display": [{"label": "Full Name", "locale": "en"}]
     },
     {
       "path": ["address", "city"],
-      "display": [{"label": "Town", "lang": "en"}]
+      "display": [{"label": "Town", "locale": "en"}]
     },
     {
       "path": ["nationalities"],
-      "display": [{"label": "Nationalities", "lang": "en"}]
+      "display": [{"label": "Nationalities", "locale": "en"}]
     }
   ]
 }
@@ -1464,7 +1464,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
   "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
-      "lang": "en-US",
+      "locale": "en-US",
       "name": "Betelgeuse Education Credential",
       "description": "An education credential for all carbon-based life forms on Betelgeusians",
       "rendering": {
@@ -1491,7 +1491,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       }
     },
     {
-      "lang": "de-DE",
+      "locale": "de-DE",
       "name": "Betelgeuse-Bildungsnachweis",
       "rendering": {
         "simple": {
@@ -1522,12 +1522,12 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "path": ["name"],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Vor- und Nachname",
           "description": "Der Name des Studenten"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Name",
           "description": "The name of the student"
         }
@@ -1538,12 +1538,12 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "path": ["address"],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Adresse",
           "description": "Adresse zum Zeitpunkt des Abschlusses"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Address",
           "description": "Address at the time of graduation"
         }
@@ -1554,11 +1554,11 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "path": ["address", "street_address"],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Straße"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Street Address"
         }
       ],
@@ -1569,12 +1569,12 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "path": ["degrees", null],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Abschluss",
           "description": "Der Abschluss des Studenten"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Degree",
           "description": "Degree earned by the student"
         }
@@ -1617,6 +1617,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -12
 
+* Change `lang` to `locale`. While `lang` is more accurate, `locale` is what has traditionally been used in OpenID Connect and later specs.
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 
