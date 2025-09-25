@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-18T00:31:07.740120+00:00",
+  "timestamp": "2025-09-25T00:32:33.250934+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5711,7 +5711,7 @@
       "id": "I_kwDOJbVClc6DnEfy",
       "title": "Security considerations on integrity of Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/221",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -5721,8 +5721,8 @@
       ],
       "body": "Here are considerations we could put into the security considerations section - or think about a mechanism solving the problem:\r\n\r\n## Authenticity of Provided Type Metadata\r\n\r\nIf the Type Metadata is retrieved from an HTTPS URL, it can be assumed that the retrieved information is authentic from the party in control of the URL. However, if the Type Metadata is provided via glue documents by the issuer, no such guarantees are provided and the issuer may accidentally or deliberately deliver outdated/wrong/manipulated Type Metadata. Note that `vct#integrity` claim protects the integrity of the type information, but does not guarantee that the information is authentic. The Issuer may deliver a `vct#integrity` claim that matches the metadata in the glue documents. ",
       "createdAt": "2024-03-26T12:04:25Z",
-      "updatedAt": "2025-09-16T14:44:01Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-23T18:31:01Z",
+      "closedAt": "2025-09-23T18:30:47Z",
       "comments": [
         {
           "author": "c2bo",
@@ -5751,6 +5751,13 @@
           "body": "@danielfett since we dropped glue documents from the spec in -11, can we close this issue? I suggest pending close.",
           "createdAt": "2025-09-16T14:43:48Z",
           "updatedAt": "2025-09-16T14:43:48Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Confirmed on the editor's call, closing this issue since glue documents were removed.",
+          "createdAt": "2025-09-23T18:31:01Z",
+          "updatedAt": "2025-09-23T18:31:01Z"
         }
       ]
     },
@@ -5837,16 +5844,18 @@
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "danielfett"
+      ],
       "labels": [
         "discuss",
-        "pending close",
+        "Ready-for-PR",
         "metadata",
         "PRIO"
       ],
       "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
       "createdAt": "2024-04-02T09:51:21Z",
-      "updatedAt": "2025-09-16T14:46:51Z",
+      "updatedAt": "2025-09-23T18:34:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -5869,6 +5878,13 @@
           "body": "`lang` vs. `locale` difference still exits (new [-17 of VCI](https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0-17.html#section-11.2.4-2.10.2.2) and soon to be final and this one still  at -10) but there seems to be no appetite or interest in reconciliation.  And the actual need behind the issue has been resolved for a long time.  ",
           "createdAt": "2025-09-02T18:57:31Z",
           "updatedAt": "2025-09-02T18:57:31Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett volunteered to do a PR.",
+          "createdAt": "2025-09-23T18:34:23Z",
+          "updatedAt": "2025-09-23T18:34:23Z"
         }
       ]
     },
@@ -6229,7 +6245,7 @@
       "id": "I_kwDOJbVClc6OGc-H",
       "title": "Distinguish between issuance and presentation schemas",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/237",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -6239,8 +6255,8 @@
       ],
       "body": "Since a holder is interested in receiving a valid credential, and a verifier a valid presentation of a credential, perhaps the cardinality of both schemas might be slightly different. \r\n\r\nShould we consider introducing a dedicated schema for presentation to reflect changes in cardinality?",
       "createdAt": "2024-07-01T14:49:31Z",
-      "updatedAt": "2025-09-16T18:12:19Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-23T19:23:41Z",
+      "closedAt": "2025-09-23T19:23:41Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -6256,7 +6272,7 @@
       "id": "I_kwDOJbVClc6OG6d9",
       "title": "Is it required to validate the whole chain of schemas?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/238",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -6265,8 +6281,8 @@
       ],
       "body": "If the leaf JSON Schema document includes the full schema, it might be easier to just validate against the leaf and not against all schemas in the chain? ",
       "createdAt": "2024-07-01T15:46:14Z",
-      "updatedAt": "2025-09-16T18:12:13Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-23T19:23:41Z",
+      "closedAt": "2025-09-23T19:23:41Z",
       "comments": [
         {
           "author": "alenhorvat",
@@ -7651,9 +7667,17 @@
       "labels": [],
       "body": "```\r\n\r\n            +------------+\r\n            |            |\r\n            |   Issuer   |\r\n            |            |\r\n            +------------+\r\n                  |\r\n         Issues Digital Credentials\r\n         and All Disclosures when \r\n    selectively disclosure is supported\r\n                  |\r\n                  v\r\n            +------------+\r\n            |            |\r\n            |   Holder   |<---- Subject\r\n            |            |\r\n            +------------+\r\n                  |\r\n  Presents Digital Credential + Selected Disclosures\r\n     when selectively disclosure is supported\r\n       + optional Key Binding Token\r\n                  |\r\n                  v\r\n            +-------------+\r\n            |             |+                              +------------+\r\n            |  Verifiers  ||+ ----- optional use -------> |   Status   |\r\n            |             |||  of Token Status Lists      |  Provider  |\r\n            +-------------+||  to retrieve the status     |            |\r\n             +-------------+|  of the Digital Credential  +------------+\r\n              +-------------+\r\n```\r\n\r\n\r\n\r\n\r\nNote that the wording:\r\n\r\n> optionally retrieve status of Verifiable Credential \r\n\r\nhas been replaced by:\r\n\r\n> optional use of Token Status Lists to retrieve the status of the Digital Credential\r\n\r\nThis change is important as the current wording may let think that a Status provider is necessarily needed to know the status of a Digital Credential, whereas it is not the case.\r\n\r\n",
       "createdAt": "2024-12-07T22:03:28Z",
-      "updatedAt": "2024-12-07T22:03:28Z",
+      "updatedAt": "2025-09-23T15:38:57Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Status and Status Provide probably don't need this level of coverage in this draft. The inclusion of the `` claim with reference to [I-D.ietf-oauth-status-list](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#I-D.ietf-oauth-status-list) is arguably sufficient. ",
+          "createdAt": "2025-09-23T15:38:57Z",
+          "updatedAt": "2025-09-23T15:38:57Z"
+        }
+      ]
     },
     {
       "number": 286,
@@ -7692,12 +7716,22 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "On page 5, section 1.2 , the text states:\r\n\r\n> However, SD-JWT itself does not define the claims that must be used within the payload or their semantics.\r\n\r\n\r\nPlease, reword it.\r\n",
       "createdAt": "2024-12-07T22:20:18Z",
-      "updatedAt": "2024-12-07T22:20:18Z",
+      "updatedAt": "2025-09-23T15:33:06Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "\n> On page 5, section 1.2 , the text states:\n> \n> > However, SD-JWT itself does not define the claims that must be used within the payload or their semantics.\n> \n> Please, reword it.\n\nReword it to what? And why? ",
+          "createdAt": "2025-09-23T15:33:06Z",
+          "updatedAt": "2025-09-23T15:33:06Z"
+        }
+      ]
     },
     {
       "number": 288,
@@ -8730,7 +8764,7 @@
       "id": "I_kwDOJbVClc7Dd1wE",
       "title": "JSON Schema and required claims",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/332",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "adeinega",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
@@ -8739,8 +8773,8 @@
       ],
       "body": "Section 6.5.2. Schema Validation says\n\n> If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.\n\nIf a claim is marked as required in a JSON Schema document but is not disclosed to the verifier, the verifier must reject the VC (or DC).\n\nThe solution seems simple, never mark such claims as \"required\"... but is that always the desirable approach?\n\nIt feels like these nuances should be mentioned and articulated.",
       "createdAt": "2025-07-31T07:12:03Z",
-      "updatedAt": "2025-09-16T18:11:50Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-23T19:23:42Z",
+      "closedAt": "2025-09-23T19:23:42Z",
       "comments": [
         {
           "author": "awoie",
@@ -8881,7 +8915,7 @@
       "id": "I_kwDOJbVClc7JSQx2",
       "title": "Remove JSON schema from Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -8890,8 +8924,8 @@
       ],
       "body": "I was pretty skeptical of about the utility of it when it was first added/proposed and I can't say my perspective has moved.  \n\nbut there are related issues like #332 #310 #238 and (thanks for the reminder @adeinega) #237 ",
       "createdAt": "2025-09-02T18:00:42Z",
-      "updatedAt": "2025-09-16T19:27:31Z",
-      "closedAt": null,
+      "updatedAt": "2025-09-23T19:23:42Z",
+      "closedAt": "2025-09-23T19:23:42Z",
       "comments": [
         {
           "author": "adeinega",
@@ -9084,7 +9118,7 @@
       "id": "I_kwDOJbVClc7MCxd-",
       "title": "add extension point for type metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/350",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -9095,7 +9129,54 @@
       ],
       "body": "Although not strictly prohibited, we should make it clear that type metadata can contain additional properties and if not known/understood must be ignored. This would allow us to define extensions in the future.",
       "createdAt": "2025-09-16T18:15:08Z",
-      "updatedAt": "2025-09-16T18:21:25Z",
+      "updatedAt": "2025-09-23T19:23:42Z",
+      "closedAt": "2025-09-23T19:23:42Z",
+      "comments": []
+    },
+    {
+      "number": 352,
+      "id": "I_kwDOJbVClc7NSLwO",
+      "title": "background_image is used in many OIDC4VCI configurations, would it be possible to add it as an option aside logo in the rendering method simple",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/352",
+      "state": "OPEN",
+      "author": "ThierryThevenet",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-09-23T07:42:43Z",
+      "updatedAt": "2025-09-23T13:13:16Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "have you seen (currently open) PR #335? it adds a `background_image` property to the Rendering Method \"simple\" ",
+          "createdAt": "2025-09-23T12:21:23Z",
+          "updatedAt": "2025-09-23T12:21:23Z"
+        },
+        {
+          "author": "ThierryThevenet",
+          "authorAssociation": "NONE",
+          "body": "Sorry, I did  not. Good. Thank you.",
+          "createdAt": "2025-09-23T13:13:15Z",
+          "updatedAt": "2025-09-23T13:13:15Z"
+        }
+      ]
+    },
+    {
+      "number": 354,
+      "id": "I_kwDOJbVClc7Na-23",
+      "title": "metadata lists extensions that consumers must know to properly validate SD JWTs",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/354",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "<img width=\"810\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b9b11c8e-9a0f-4d19-80aa-02de73b17924\" />\n\n> @bc-pi, I think I failed to explain that well. I concur with your intuition.\n> \n> The idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\n\nAh, I see. Thanks for clarifying. I think that is outside the scope of this PR. And IMHO not necessary and arguably not a proper place. \n\n> If you're looking for widespread adoption, \n\nThat's the goal, yes. \n\n> it might be great to provide such mechanism.\n\nI disagree. But will create an issue for further discussion so this conversation can be resolved and get this incorporated.\n\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345#discussion_r2373239594_\n            ",
+      "createdAt": "2025-09-23T19:19:33Z",
+      "updatedAt": "2025-09-23T19:20:52Z",
       "closedAt": null,
       "comments": []
     }
@@ -27288,24 +27369,26 @@
       "id": "PR_kwDOJbVClc6oUgub",
       "title": "Remove JSON schema from Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #342 and hopefully others like #332 #310 (only somewhat related) #238 and #237 too",
       "createdAt": "2025-09-12T20:25:59Z",
-      "updatedAt": "2025-09-17T11:30:31Z",
+      "updatedAt": "2025-09-23T19:23:40Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "Remove-JSON-schema-from-Type-Metadata",
       "headRefOid": "642a11cb3f2ccf4bf899f07548822221c5a4d6e6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-09-23T19:23:40Z",
+      "mergedAt": "2025-09-23T19:23:40Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "587520ce2ceac3575b71f96538cb7305e2dfef44"
+      },
       "comments": [
         {
           "author": "babisRoutis",
@@ -27482,6 +27565,92 @@
               "updatedAt": "2025-09-17T00:17:21Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7CQhBa",
+          "commit": {
+            "abbreviatedOid": "642a11c"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-23T18:08:25Z",
+          "updatedAt": "2025-09-23T18:08:25Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7CQiPh",
+          "commit": {
+            "abbreviatedOid": "642a11c"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-23T18:09:57Z",
+          "updatedAt": "2025-09-23T18:09:57Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7CQqyU",
+          "commit": {
+            "abbreviatedOid": "cb7f34e"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-23T18:22:20Z",
+          "updatedAt": "2025-09-23T18:22:20Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "@bc-pi, I think I failed to explain that well. I concur with your intuition.\r\n\r\nThe idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\r\n\r\nIf you're looking for widespread adoption, it might be great to provide such mechanism.",
+              "createdAt": "2025-09-23T18:22:20Z",
+              "updatedAt": "2025-09-23T18:22:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7CRQsq",
+          "commit": {
+            "abbreviatedOid": "cb7f34e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-23T19:18:38Z",
+          "updatedAt": "2025-09-23T19:18:38Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "> @bc-pi, I think I failed to explain that well. I concur with your intuition.\r\n> \r\n> The idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\r\n\r\nAh, I see. Thanks for clarifying. I think that is outside the scope of this PR. And IMHO not necessary and arguably not a proper place. \r\n\r\n> If you're looking for widespread adoption, \r\n\r\nThat's the goal, yes. \r\n\r\n> it might be great to provide such mechanism.\r\n\r\nI disagree. But will create an issue for further discussion so this conversation can be resolved and get this incorporated. \r\n",
+              "createdAt": "2025-09-23T19:18:38Z",
+              "updatedAt": "2025-09-23T19:18:38Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7CRSvG",
+          "commit": {
+            "abbreviatedOid": "cb7f34e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-23T19:21:43Z",
+          "updatedAt": "2025-09-23T19:21:43Z",
+          "comments": [
+            {
+              "originalPosition": 42,
+              "body": "> ... will create an issue for further discussion ...\r\n\r\n#354 is that \r\n",
+              "createdAt": "2025-09-23T19:21:43Z",
+              "updatedAt": "2025-09-23T19:21:43Z"
+            }
+          ]
         }
       ]
     },
@@ -27551,6 +27720,66 @@
           "body": "",
           "createdAt": "2025-09-16T18:31:25Z",
           "updatedAt": "2025-09-16T18:31:25Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 353,
+      "id": "PR_kwDOJbVClc6qIE5k",
+      "title": "Rename lang to locale (because tradition)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/353",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #223 ",
+      "createdAt": "2025-09-23T18:44:22Z",
+      "updatedAt": "2025-09-23T19:48:32Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/dead-or-alive",
+      "headRefOid": "785b141b0e91c2facf51fde2865f275c7e98f13a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7CRXGk",
+          "commit": {
+            "abbreviatedOid": "785b141"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-23T19:27:40Z",
+          "updatedAt": "2025-09-23T19:27:41Z",
+          "comments": [
+            {
+              "originalPosition": 160,
+              "body": "scope which specs are part of the tradition \r\n\r\n```suggestion\r\n* Change `lang` to `locale`. While `lang` is more accurate, `locale` is what has traditionally been used in OpenID Connect and later related specs.\r\n```",
+              "createdAt": "2025-09-23T19:27:41Z",
+              "updatedAt": "2025-09-23T19:36:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7CRkVC",
+          "commit": {
+            "abbreviatedOid": "785b141"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "I'm equally happy to celebrate this tradition as I am to not celebrate it. But do think the history bullet should scope which specs are part of the tradition as per https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/353#discussion_r2373259268 ",
+          "createdAt": "2025-09-23T19:48:10Z",
+          "updatedAt": "2025-09-23T19:48:32Z",
           "comments": []
         }
       ]
