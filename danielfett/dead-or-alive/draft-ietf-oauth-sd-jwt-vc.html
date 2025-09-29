@@ -1256,17 +1256,6 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-extending-type-metadata" class="internal xref">Extending Type Metadata</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
-                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-schema-type-metadata" class="internal xref">Schema Type Metadata</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.1">
-                    <p id="section-toc.1-1.6.2.5.2.1.1"><a href="#section-6.5.1" class="auto internal xref">6.5.1</a>.  <a href="#name-schema-definition" class="internal xref">Schema Definition</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.2">
-                    <p id="section-toc.1-1.6.2.5.2.2.1"><a href="#section-6.5.2" class="auto internal xref">6.5.2</a>.  <a href="#name-schema-validation" class="internal xref">Schema Validation</a></p>
-</li>
-                </ul>
-</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
@@ -1946,9 +1935,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oYkG_
-wDcJj-7scDG9mn8s0WVLnJwsslSyrmKYm8jt-cNDiq_LmRs0TH0xM_fdhABrXAkolA8C
-3s8S1wOTGuzvQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.y5Myh
+unJU0KZxHTh3YURJ82t-3j3ELjzr6cjQjCgkH3L_pMJTgc6_OrNXvg4dQ9h3fV3tbfwn
+Ikp795lt8fICw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1979,14 +1968,13 @@ employing an Issuer Signature Mechanism (defined in <a href="#ism" class="auto i
 <p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>), the Verifier MUST verify the KB-JWT
 according to Section 7.3 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. To verify
 the KB-JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
-<p id="section-3.4-3">If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.4-4">If there are no selectively disclosable claims, there is no need to process the
-<code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
-<p id="section-3.4-5">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
+<p id="section-3.4-3">If there are no selectively disclosable claims, there is no need to process the
+<code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+<p id="section-3.4-4">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
 be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
-<p id="section-3.4-6">Additional validation rules MAY apply, but their use is out of the scope of this
-specification.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
+of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+<p id="section-3.4-5">Additional validation rules MAY apply, but their use is out of the scope of this
+specification.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ism">
@@ -2060,17 +2048,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oYkG_
-wDcJj-7scDG9mn8s0WVLnJwsslSyrmKYm8jt-cNDiq_LmRs0TH0xM_fdhABrXAkolA8C
-3s8S1wOTGuzvQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.y5Myh
+unJU0KZxHTh3YURJ82t-3j3ELjzr6cjQjCgkH3L_pMJTgc6_OrNXvg4dQ9h3fV3tbfwn
+Ikp795lt8fICw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTkxMjcxNz
-EsICJzZF9oYXNoIjogImlfNHo4WFlzZXcwR3RlUWlpaEN5M1hGVjZNakFnbDdkWG95Yz
-FQN05oUWsifQ.3OsCaFWy30X5Y7AL4mu5F2lMwj5ZFl0IZEcKai9B27Jw5jwK5SS59jZ
--BuXTPTFezI_jffWygtgR1g9y2iNRFQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTkxNDQ0Nj
+IsICJzZF9oYXNoIjogIndydUtiRk5NSjJuUGI2RFVhNXg3Y0tjNnp4a0pPajRYMmRMbU
+5vQ216V1EifQ.P5mMoHzx9I_cpMinoyHYRZ0dNo639PbGHMraILO5bThAVq8ecZCpVtT
+D7qespn5ssE36toAgDtx4kfpXAPHwVQ
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2115,8 +2103,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.gwalMCTpVkHP3V4BVN1NZw1yBBqItd4TVhrmlv--0e5NqZ
-Iiz7GEF5JOpgL-Pw9vgd08Pcoby1wSpbS7z7nx1g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.lMoQ4ylmaESJy-x1sqXu3bGGQPQalrlrRg9OFFYHQdxzmV
+5X1rD6WhaY7YYp4dwUAwrkMoHTZ7IdWdmRRlPZIg~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2288,7 +2276,7 @@ MUST NOT be used.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
       <h2 id="name-sd-jwt-vc-type-metadata">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-sd-jwt-vc-type-metadata" class="section-name selfRef">SD-JWT VC Type Metadata</a>
       </h2>
-<p id="section-6-1">An SD-JWT VC type, i.e., the <code>vct</code> value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">An SD-JWT VC type, i.e., the <code>vct</code> value, is associated with Type Metadata defining, for example, information about the type and how credentials are displayed.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">This section defines Type Metadata that can be associated with a type of an SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-6-3.1">Developers of Issuers and Verifiers can use the Type Metadata to understand the
@@ -2335,9 +2323,7 @@ retrieved from it:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
   "name":"Betelgeuse Education Credential - Preliminary Version",
   "description":"This is our development version of the education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
-  "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 
 </pre><a href="#section-6.1-5" class="pilcrow">¶</a>
@@ -2388,26 +2374,10 @@ in <a href="#display-metadata" class="auto internal xref">Section 8</a>. This pr
             <code>claims</code>: An array of objects containing claim information for the type, as described in
 <a href="#claim-metadata" class="auto internal xref">Section 9</a>. This property is OPTIONAL.<a href="#section-6.2-2.5" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-6.2-2.6">
-            <p id="section-6.2-2.6.1"><code>schema</code><a href="#section-6.2-2.6.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.6.2.1">OPTIONAL. An embedded JSON Schema document describing the structure of
-the Verifiable Credential as described in <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>. <code>schema</code> MUST NOT be used
-if <code>schema_uri</code> is present.<a href="#section-6.2-2.6.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-          <li class="compact" id="section-6.2-2.7">
-            <p id="section-6.2-2.7.1"><code>schema_uri</code><a href="#section-6.2-2.7.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.7.2.1">OPTIONAL. A URL pointing to a JSON Schema document describing the structure
-of the Verifiable Credential as described in <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>. <code>schema_uri</code> MUST NOT
-be used if <code>schema</code> is present.<a href="#section-6.2-2.7.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
         </ul>
-<p id="section-6.2-3">An example of a Type Metadata document is shown in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-3">A Type Metadata document MAY contain additional top level or subordinate properties.
+Consumers MUST ignore properties that are not understood.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-4">An example of a Type Metadata document is shown in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="retrieving-type-metadata">
@@ -2477,135 +2447,6 @@ chain or hierarchy of types. The security considerations described in
 <a href="#circular-extends" class="auto internal xref">Section 10.3</a> apply in order to avoid problems with circular dependencies.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="schema-type-metadata">
-<section id="section-6.5">
-        <h3 id="name-schema-type-metadata">
-<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-schema-type-metadata" class="section-name selfRef">Schema Type Metadata</a>
-        </h3>
-<div id="schema-definition">
-<section id="section-6.5.1">
-          <h4 id="name-schema-definition">
-<a href="#section-6.5.1" class="section-number selfRef">6.5.1. </a><a href="#name-schema-definition" class="section-name selfRef">Schema Definition</a>
-          </h4>
-<p id="section-6.5.1-1">Schemas for Verifiable Credentials are contained in the <code>schema</code> or retrieved via the <code>schema_uri</code> Type Metadata parameters (as defined in <a href="#type-metadata-format" class="auto internal xref">Section 6.2</a>).
-A schema MUST be represented by a JSON Schema document according to draft version 2020-12 <span>[<a href="#JSON.SCHEMA.2020-12" class="cite xref">JSON.SCHEMA.2020-12</a>]</span> or above.<a href="#section-6.5.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.5.1-2">The schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.<a href="#section-6.5.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.5.1-3">The following is a non-normative example of a JSON Schema document for the example in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> requiring the presence of the <code>cnf</code> claim in an SD-JWT VC presentation:<a href="#section-6.5.1-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.5.1-4">
-<pre>{
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "type":"object",
-  "properties":{
-    "vct":{
-      "type":"string"
-    },
-    "iss":{
-      "type":"string"
-    },
-    "nbf":{
-      "type":"number"
-    },
-    "exp":{
-      "type":"number"
-    },
-    "cnf":{
-      "type":"object"
-    },
-    "status":{
-      "type":"object"
-    },
-    "given_name":{
-      "type":"string"
-    },
-    "family_name":{
-      "type":"string"
-    },
-    "email":{
-      "type":"string"
-    },
-    "phone_number":{
-      "type":"string"
-    },
-    "address":{
-      "type":"object",
-      "properties":{
-        "street_address":{
-          "type":"string"
-        },
-        "locality":{
-          "type":"string"
-        },
-        "region":{
-          "type":"string"
-        },
-        "country":{
-          "type":"string"
-        }
-      }
-    },
-    "birthdate":{
-      "type":"string"
-    },
-    "is_over_18":{
-      "type":"boolean"
-    },
-    "is_over_21":{
-      "type":"boolean"
-    },
-    "is_over_65":{
-      "type":"boolean"
-    }
-  },
-  "required":[
-    "iss",
-    "vct",
-    "cnf"
-  ]
-}
-
-</pre><a href="#section-6.5.1-4" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
-<div id="schema-validation">
-<section id="section-6.5.2">
-          <h4 id="name-schema-validation">
-<a href="#section-6.5.2" class="section-number selfRef">6.5.2. </a><a href="#name-schema-validation" class="section-name selfRef">Schema Validation</a>
-          </h4>
-<p id="section-6.5.2-1">If a <code>schema</code> or <code>schema_uri</code> property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm
-(as defined in Section 7.3 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>) against the JSON Schema document provided by the <code>schema</code> or <code>schema_uri</code> property.<a href="#section-6.5.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.5.2-2">If an <code>extends</code> property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
-validating all subsequent extended types recursively until a type is encountered that does not contain an <code>extends</code> property in its Type Metadata.
-Each schema in this chain MUST be evaluated for a specific Verifiable Credential.<a href="#section-6.5.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.5.2-3">If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.<a href="#section-6.5.2-3" class="pilcrow">¶</a></p>
-<p id="section-6.5.2-4">The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>:<a href="#section-6.5.2-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.5.2-5">
-<pre>{
-  "vct":"https://credentials.example.com/identity_credential",
-  "iss":"https://example.com/issuer",
-  "iat":1683000000,
-  "exp":1883000000,
-  "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
-  "address":{
-    "country":"DE"
-  },
-  "cnf":{
-    "jwk":{
-      "kty":"EC",
-      "crv":"P-256",
-      "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-      "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-    }
-  }
-}
-
-</pre><a href="#section-6.5.2-5" class="pilcrow">¶</a>
-</div>
-<p id="section-6.5.2-6">Note, the example above does not contain any <code>_sd_alg</code>, <code>_sd</code>, or <code>...</code> claims.<a href="#section-6.5.2-6" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
 </section>
 </div>
 <div id="document-integrity">
@@ -2623,9 +2464,6 @@ Each schema in this chain MUST be evaluated for a specific Verifiable Credential
 </li>
         <li class="compact" id="section-7-2.3">
           <code>uri</code> as used in two places in <a href="#rendering-metadata" class="auto internal xref">Section 8.1</a><a href="#section-7-2.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-7-2.4">
-          <code>schema_uri</code> as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a><a href="#section-7-2.4" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="section-7-3">The value MUST be an "integrity metadata" string as defined in Section 3 of
@@ -2812,7 +2650,7 @@ example in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.
 </pre><a href="#section-8.1.2.2-7" class="pilcrow">¶</a>
 </div>
 <p id="section-8.1.2.2-8">When rendering the SVG template, the consuming application MUST ensure that
-malicious schema providers or issuers cannot inject executable code into the SVG
+malicious metadata providers or issuers cannot inject executable code into the SVG
 template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.<a href="#section-8.1.2.2-8" class="pilcrow">¶</a></p>
@@ -3344,10 +3182,6 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">ISO/IEC</span>, <span class="refTitle">"ISO/IEC 18013-5:2021"</span>, <time datetime="2024-09-01" class="refDate">1 September 2024</time>, <span>&lt;<a href="https://www.iso.org/standard/69084.html">https://www.iso.org/standard/69084.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="JSON.SCHEMA.2020-12">[JSON.SCHEMA.2020-12]</dt>
-        <dd>
-<span class="refAuthor">Foundation, O.</span>, <span class="refTitle">"JSON Schema (2020-12)"</span>, <span>&lt;<a href="https://json-schema.org/draft/2020-12/release-notes">https://json-schema.org/draft/2020-12/release-notes</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="OWASP_SSRF">[OWASP_SSRF]</dt>
         <dd>
 <span class="refAuthor">OWASP</span>, <span class="refTitle">"Server Side Request Forgery Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/</a>&gt;</span>. </dd>
@@ -3572,8 +3406,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0._kWrnc0To1JAMmbH4ZwoRQBNzbRArvBpXS45UxuPl0zzW3k
-BghZcRYjk0q16V42lvvVhL33tpVDnIIdvnMfs0Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.FieZctBUkppUcM1fjwlUiMO3Moudq_-KhOMWHUPrToPC-xP
+SchvEYTVOIa44CTLjfvOCJtmI2LWI-DfMbQHNJQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -4014,8 +3848,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0._kWrnc0To1JAMmbH4ZwoRQBNzbRArvBpXS45UxuPl0zzW3k
-BghZcRYjk0q16V42lvvVhL33tpVDnIIdvnMfs0Q~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.FieZctBUkppUcM1fjwlUiMO3Moudq_-KhOMWHUPrToPC-xP
+SchvEYTVOIa44CTLjfvOCJtmI2LWI-DfMbQHNJQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -4026,9 +3860,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NTkxMjcxNzEsICJzZF9oYXNoIjogIl82RFNTWmtaZWRERDRNX3lac2l3SGZ
-UeHpGUWVkeWxPSVhNMlVHbUo3cFUifQ.e0srNsqrE6Qh_ZCvqJ65gxu1ffxzyiKCaxuK
-AxZtCuaZiA2egCiy3vFvWDeycnr_uh5uAWaHeWkhXf55UrmK8g
+hdCI6IDE3NTkxNDQ0NjIsICJzZF9oYXNoIjogIlk4TXlPNWFuSWYtR1g2OC13V3dpY0N
+DZy1fbVZtNFhVM3g3WG9Fa1Q0dXMifQ.amZT5iKvxHHQKEx_SXIPxhULBvpK3BdX8d1q
+xQMBaRZ0NomlVLi8GnrZnOznYdfyFcQoJlOhX0w_eQjrlnuvBw
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -4037,8 +3871,8 @@ AxZtCuaZiA2egCiy3vFvWDeycnr_uh5uAWaHeWkhXf55UrmK8g
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1759127171,
-  "sd_hash": "_6DSSZkZedDD4M_yZsiwHfTxzFQedylOIXM2UGmJ7pU"
+  "iat": 1759144462,
+  "sd_hash": "Y8MyO5anIf-GX68-wWwicCCg-_mVm4XU3x7XoEkT4us"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -4201,9 +4035,7 @@ AxZtCuaZiA2egCiy3vFvWDeycnr_uh5uAWaHeWkhXf55UrmK8g
       ],
       "sd": "allowed"
     }
-  ],
-  "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+  ]
 }
 
 </pre><a href="#appendix-B.2-1" class="pilcrow">¶</a>
@@ -4251,9 +4083,13 @@ for their contributions (some of which substantial) to this draft and to the ini
 <ul class="compact">
 <li class="compact" id="appendix-D-2.1">Change <code>lang</code> to <code>locale</code>. While <code>lang</code> is more accurate, <code>locale</code> is what has traditionally been used in OpenID Connect and later related specs.<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.2">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.2">Remove JSON schema from Type Metadata<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.3">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.3">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-D-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.4">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.5">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.5" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>

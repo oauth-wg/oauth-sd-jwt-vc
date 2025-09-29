@@ -95,9 +95,6 @@ Table of Contents
        6.3.3.  Using a Defined Retrieval Method
        6.3.4.  From a Local Cache
      6.4.  Extending Type Metadata
-     6.5.  Schema Type Metadata
-       6.5.1.  Schema Definition
-       6.5.2.  Schema Validation
    7.  Document Integrity
    8.  Display Metadata
      8.1.  Rendering Metadata
@@ -570,9 +567,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oYkG_
-   wDcJj-7scDG9mn8s0WVLnJwsslSyrmKYm8jt-cNDiq_LmRs0TH0xM_fdhABrXAkolA8C
-   3s8S1wOTGuzvQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.y5Myh
+   unJU0KZxHTh3YURJ82t-3j3ELjzr6cjQjCgkH3L_pMJTgc6_OrNXvg4dQ9h3fV3tbfwn
+   Ikp795lt8fICw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -604,9 +601,6 @@ Table of Contents
    Verifier MUST verify the KB-JWT according to Section 7.3 of
    [I-D.ietf-oauth-selective-disclosure-jwt].  To verify the KB-JWT, the
    cnf claim of the SD-JWT MUST be used.
-
-   If a schema is provided in the Type Metadata, a recipient MUST
-   validate the schema as defined in Section 6.5.
 
    If there are no selectively disclosable claims, there is no need to
    process the _sd claim nor any Disclosures.
@@ -694,17 +688,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oYkG_
-   wDcJj-7scDG9mn8s0WVLnJwsslSyrmKYm8jt-cNDiq_LmRs0TH0xM_fdhABrXAkolA8C
-   3s8S1wOTGuzvQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.y5Myh
+   unJU0KZxHTh3YURJ82t-3j3ELjzr6cjQjCgkH3L_pMJTgc6_OrNXvg4dQ9h3fV3tbfwn
+   Ikp795lt8fICw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTkxMjcxNz
-   EsICJzZF9oYXNoIjogImlfNHo4WFlzZXcwR3RlUWlpaEN5M1hGVjZNakFnbDdkWG95Yz
-   FQN05oUWsifQ.3OsCaFWy30X5Y7AL4mu5F2lMwj5ZFl0IZEcKai9B27Jw5jwK5SS59jZ
-   -BuXTPTFezI_jffWygtgR1g9y2iNRFQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTkxNDQ0Nj
+   IsICJzZF9oYXNoIjogIndydUtiRk5NSjJuUGI2RFVhNXg3Y0tjNnp4a0pPajRYMmRMbU
+   5vQ216V1EifQ.P5mMoHzx9I_cpMinoyHYRZ0dNo639PbGHMraILO5bThAVq8ecZCpVtT
+   D7qespn5ssE36toAgDtx4kfpXAPHwVQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -746,8 +740,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.gwalMCTpVkHP3V4BVN1NZw1yBBqItd4TVhrmlv--0e5NqZ
-   Iiz7GEF5JOpgL-Pw9vgd08Pcoby1wSpbS7z7nx1g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.lMoQ4ylmaESJy-x1sqXu3bGGQPQalrlrRg9OFFYHQdxzmV
+   5X1rD6WhaY7YYp4dwUAwrkMoHTZ7IdWdmRRlPZIg~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -882,9 +876,8 @@ Table of Contents
 6.  SD-JWT VC Type Metadata
 
    An SD-JWT VC type, i.e., the vct value, is associated with Type
-   Metadata defining, for example, information about the type or a
-   schema defining (see Section 6.5.1) which claims MAY or MUST appear
-   in the SD-JWT VC, and how credentials are displayed.
+   Metadata defining, for example, information about the type and how
+   credentials are displayed.
 
    This section defines Type Metadata that can be associated with a type
    of an SD-JWT VC, as well as a method for retrieving the Type Metadata
@@ -932,9 +925,7 @@ Table of Contents
      "name":"Betelgeuse Education Credential - Preliminary Version",
      "description":"This is our development version of the education credential. Don't panic.",
      "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-     "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
-     "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-     "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+     "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
    }
 
    This example is shortened for presentation, a full Type Metadata
@@ -962,16 +953,10 @@ Table of Contents
       the type, as described in Section 8.  This property is OPTIONAL.
    *  claims: An array of objects containing claim information for the
       type, as described in Section 9.  This property is OPTIONAL.
-   *  schema
-      -  OPTIONAL.  An embedded JSON Schema document describing the
-         structure of the Verifiable Credential as described in
-         Section 6.5.1. schema MUST NOT be used if schema_uri is
-         present.
-   *  schema_uri
-      -  OPTIONAL.  A URL pointing to a JSON Schema document describing
-         the structure of the Verifiable Credential as described in
-         Section 6.5.1. schema_uri MUST NOT be used if schema is
-         present.
+
+   A Type Metadata document MAY contain additional top level or
+   subordinate properties.  Consumers MUST ignore properties that are
+   not understood.
 
    An example of a Type Metadata document is shown in Appendix B.2.
 
@@ -1028,139 +1013,6 @@ Table of Contents
    described in Section 10.3 apply in order to avoid problems with
    circular dependencies.
 
-6.5.  Schema Type Metadata
-
-6.5.1.  Schema Definition
-
-   Schemas for Verifiable Credentials are contained in the schema or
-   retrieved via the schema_uri Type Metadata parameters (as defined in
-   Section 6.2).  A schema MUST be represented by a JSON Schema document
-   according to draft version 2020-12 [JSON.SCHEMA.2020-12] or above.
-
-   The schema of a Verifiable Credential MUST include all properties
-   that are required by this specification and MUST NOT override their
-   cardinality, JSON data type, or semantic intent.
-
-   The following is a non-normative example of a JSON Schema document
-   for the example in Section 3.3 requiring the presence of the cnf
-   claim in an SD-JWT VC presentation:
-
-   {
-     "$schema":"https://json-schema.org/draft/2020-12/schema",
-     "type":"object",
-     "properties":{
-       "vct":{
-         "type":"string"
-       },
-       "iss":{
-         "type":"string"
-       },
-       "nbf":{
-         "type":"number"
-       },
-       "exp":{
-         "type":"number"
-       },
-       "cnf":{
-         "type":"object"
-       },
-       "status":{
-         "type":"object"
-       },
-       "given_name":{
-         "type":"string"
-       },
-       "family_name":{
-         "type":"string"
-       },
-       "email":{
-         "type":"string"
-       },
-       "phone_number":{
-         "type":"string"
-       },
-       "address":{
-         "type":"object",
-         "properties":{
-           "street_address":{
-             "type":"string"
-           },
-           "locality":{
-             "type":"string"
-           },
-           "region":{
-             "type":"string"
-           },
-           "country":{
-             "type":"string"
-           }
-         }
-       },
-       "birthdate":{
-         "type":"string"
-       },
-       "is_over_18":{
-         "type":"boolean"
-       },
-       "is_over_21":{
-         "type":"boolean"
-       },
-       "is_over_65":{
-         "type":"boolean"
-       }
-     },
-     "required":[
-       "iss",
-       "vct",
-       "cnf"
-     ]
-   }
-
-6.5.2.  Schema Validation
-
-   If a schema or schema_uri property is present, a Consumer MUST
-   validate the Processed SD-JWT Payload JSON document resulting from
-   the SD-JWT verification algorithm (as defined in Section 7.3 of
-   [I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema
-   document provided by the schema or schema_uri property.
-
-   If an extends property is present, the schema of the extended type
-   MUST also be validated in the same manner.  This process includes
-   validating all subsequent extended types recursively until a type is
-   encountered that does not contain an extends property in its Type
-   Metadata.  Each schema in this chain MUST be evaluated for a specific
-   Verifiable Credential.
-
-   If the schema validation fails for any of the types in the chain, the
-   Consumer MUST reject the Verifiable Credential.
-
-   The following is a non-normative example of a result JSON document
-   after executing the SD-JWT verification algorithm that is validated
-   against the JSON Schema document in the example provided in
-   Section 6.5.1:
-
-   {
-     "vct":"https://credentials.example.com/identity_credential",
-     "iss":"https://example.com/issuer",
-     "iat":1683000000,
-     "exp":1883000000,
-     "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
-     "address":{
-       "country":"DE"
-     },
-     "cnf":{
-       "jwk":{
-         "kty":"EC",
-         "crv":"P-256",
-         "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-         "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-       }
-     }
-   }
-
-   Note, the example above does not contain any _sd_alg, _sd, or ...
-   claims.
-
 7.  Document Integrity
 
    Both the vct claim in the SD-JWT VC and the various URIs in the Type
@@ -1170,7 +1022,6 @@ Table of Contents
    *  vct as defined in Section 3.2.2.2,
    *  extends as defined in Section 6.4
    *  uri as used in two places in Section 8.1
-   *  schema_uri as defined in Section 6.5
 
    The value MUST be an "integrity metadata" string as defined in
    Section 3 of [W3C.SRI].  A Consumer of the respective documents MUST
@@ -1300,7 +1151,7 @@ Table of Contents
    </svg>
 
    When rendering the SVG template, the consuming application MUST
-   ensure that malicious schema providers or issuers cannot inject
+   ensure that malicious metadata providers or issuers cannot inject
    executable code into the SVG template and thereby compromise the
    security of the consuming application.  The consuming application
    MUST NOT execute any code in the SVG template.  If code execution
@@ -1791,10 +1642,6 @@ Table of Contents
               ISO/IEC, "ISO/IEC 18013-5:2021", 1 September 2024,
               <https://www.iso.org/standard/69084.html>.
 
-   [JSON.SCHEMA.2020-12]
-              Foundation, O., "JSON Schema (2020-12)",
-              <https://json-schema.org/draft/2020-12/release-notes>.
-
    [OWASP_SSRF]
               OWASP, "Server Side Request Forgery Prevention Cheat
               Sheet", <https://cheatsheetseries.owasp.org/cheatsheets/
@@ -1962,8 +1809,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0._kWrnc0To1JAMmbH4ZwoRQBNzbRArvBpXS45UxuPl0zzW3k
-   BghZcRYjk0q16V42lvvVhL33tpVDnIIdvnMfs0Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.FieZctBUkppUcM1fjwlUiMO3Moudq_-KhOMWHUPrToPC-xP
+   SchvEYTVOIa44CTLjfvOCJtmI2LWI-DfMbQHNJQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2298,8 +2145,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0._kWrnc0To1JAMmbH4ZwoRQBNzbRArvBpXS45UxuPl0zzW3k
-   BghZcRYjk0q16V42lvvVhL33tpVDnIIdvnMfs0Q~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.FieZctBUkppUcM1fjwlUiMO3Moudq_-KhOMWHUPrToPC-xP
+   SchvEYTVOIa44CTLjfvOCJtmI2LWI-DfMbQHNJQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2310,17 +2157,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTkxMjcxNzEsICJzZF9oYXNoIjogIl82RFNTWmtaZWRERDRNX3lac2l3SGZ
-   UeHpGUWVkeWxPSVhNMlVHbUo3cFUifQ.e0srNsqrE6Qh_ZCvqJ65gxu1ffxzyiKCaxuK
-   AxZtCuaZiA2egCiy3vFvWDeycnr_uh5uAWaHeWkhXf55UrmK8g
+   hdCI6IDE3NTkxNDQ0NjIsICJzZF9oYXNoIjogIlk4TXlPNWFuSWYtR1g2OC13V3dpY0N
+   DZy1fbVZtNFhVM3g3WG9Fa1Q0dXMifQ.amZT5iKvxHHQKEx_SXIPxhULBvpK3BdX8d1q
+   xQMBaRZ0NomlVLi8GnrZnOznYdfyFcQoJlOhX0w_eQjrlnuvBw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1759127171,
-     "sd_hash": "_6DSSZkZedDD4M_yZsiwHfTxzFQedylOIXM2UGmJ7pU"
+     "iat": 1759144462,
+     "sd_hash": "Y8MyO5anIf-GX68-wWwicCCg-_mVm4XU3x7XoEkT4us"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2474,9 +2321,7 @@ B.2.  Example 2: Type Metadata
          ],
          "sd": "allowed"
        }
-     ],
-     "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-     "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+     ]
    }
 
 Appendix C.  Acknowledgements
@@ -2496,6 +2341,9 @@ Appendix D.  Document History
    *  Change lang to locale.  While lang is more accurate, locale is
       what has traditionally been used in OpenID Connect and later
       related specs.
+   *  Remove JSON schema from Type Metadata
+   *  Explicitly mention that Type Metadata can have additional stuff
+      that has to be ignored if not understood
    *  Remove the requirement to ignore unknown claims, as some
       applications may not want to follow this rule
    *  Fix cnf claim and JWK references and move them to normative
