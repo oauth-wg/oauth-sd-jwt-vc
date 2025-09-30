@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-25T00:32:33.250934+00:00",
+  "timestamp": "2025-09-30T00:32:43.639344+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5839,7 +5839,7 @@
     {
       "number": 223,
       "id": "I_kwDOJbVClc6EU2up",
-      "title": "I18N for Metadata",
+      "title": "lang vs. locale in type display metadata [was: I18N for Metadata]",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/223",
       "state": "OPEN",
       "author": "awoie",
@@ -5855,7 +5855,7 @@
       ],
       "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
       "createdAt": "2024-04-02T09:51:21Z",
-      "updatedAt": "2025-09-23T18:34:23Z",
+      "updatedAt": "2025-09-29T20:04:15Z",
       "closedAt": null,
       "comments": [
         {
@@ -5885,6 +5885,13 @@
           "body": "@danielfett volunteered to do a PR.",
           "createdAt": "2025-09-23T18:34:23Z",
           "updatedAt": "2025-09-23T18:34:23Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Dr. @danielfett did a PR [#353](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/353)",
+          "createdAt": "2025-09-29T20:02:55Z",
+          "updatedAt": "2025-09-29T20:02:55Z"
         }
       ]
     },
@@ -8265,7 +8272,7 @@
       ],
       "body": "I believe that it is not clear how to define an array to the type metadata.\n\n- Section 9, doesn't provide any clue\n- Section 9.1 describes claim path, in general and provides a way to select a JSON element using a a path (and a JSON to process).\n- Appendix B contains a example of how to define an array (degrees). Yet it is rather a basic, just an array of any JSON element.\n\nOn the other hand, SD-JWT, the base specification, allows the representation of very complex arrays.\nThus, I think it is critical to\n- Define explicitly how arrays are being representing to the type metadata.\n- Document the cases that cannot be described with type metadata \n- Provide some more detail examples.\n\nI will try to provide some indicative cases\n\n**Array with elements that have no disclosure properties.**\n\nAppendix B, provides the following example\n\n```json\n{  \"path\" : [\"degrees\", null] , \"sd\": \"allowed\" }\n```\n\nThe problem with such a definition is that it is not clear (at least for me) where the `sd` attribute applies.\nThe above can have two possible interpretations:\n- The entry represents the array itself. Thus, the `sd` defines the disclosure behavior of the array\n- The entry represents the elements of the array. In this case, the disclosure property of the array (not its elements) is undefined.\n\n**Array with elements that have disclosure properties.**\n\nTo describe the disclosure property of both the array and its elements, I believe two entries are needed:\n\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null] , \"sd\": \"always\" }\n```\nThe first describes the array itself, the second all entries. The \"sd\" can be different of course\n\nBy the way, this is the case of `nationalities` array as defined in ARF 1.8, requires \n\n> When issuing a PID compliant with [SD-JWT VC], a PID Provider SHALL make all claims (i.e., all top-level properties, all nested properties, and all array entries) selectively disclosable individually, except those claims defined as non-selectively disclosable in [SD-JWT VC].\n\n\n\n\n**Array of objects that have attributes with disclosable properties.**\n\nAssuming, that `degrees` is an array of  degree object which has attributes `type` and `university`, each one having their own `sd`\nI believe that we want the following entries to the type metadata\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"allowed\" }\n{  \"path\" : [\"degrees\", null ] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"type\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"university\"] , \"sd\": \"always\" }\n```\n\nThe first describes the disclosure property of the array (`degrees`)\nThe 2nd the disclosure property of `degree`\nThe 3d and 4th the disclosure property of `degree` attributes\n\n",
       "createdAt": "2025-05-29T21:20:16Z",
-      "updatedAt": "2025-06-04T06:10:41Z",
+      "updatedAt": "2025-09-29T21:30:14Z",
       "closedAt": null,
       "comments": [
         {
@@ -8281,6 +8288,13 @@
           "body": "Dear @danielfett \n\nThanks for your reply. It would be great to have similar examples included.\n\n\n\nI have identified several additional cases for arrays that although can be represented in SD-JWT, their disclosure properties cannot be described by type metadata, In SD-JWT-VC. The reason is the type metadata uses a \"flat\" declaration of attributes, whereas SD-JWT is first and foremost a hierarchical structure.\n\nFor instance, arrays that are not homogeneous (neither to the `sd` property nor to their content). Some element may be always selectively disclosable, others never selectively disclosable. Some elements are simple Json elements (object, arrays, string etc), others are disclosable containers. \n\nSD-JWT-VC  doesn't try to cover such corner cases (to my understanding) and this is perfectly balanced dose of pragmatism. \n\nHave observed many \"credential modelers\", especially those with an mdoc background, to have a really hard time to grasp what can be expressed by SD-JWT-VC (and SD-JWT).\n",
           "createdAt": "2025-06-04T06:10:40Z",
           "updatedAt": "2025-06-04T06:10:40Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@danielfett marked this with Ready-for-PR on Jun 3 but as I read through it to try and consider writing a PR, it's not clear to me what such a PR would look like. ",
+          "createdAt": "2025-09-29T21:30:14Z",
+          "updatedAt": "2025-09-29T21:30:14Z"
         }
       ]
     },
@@ -8510,9 +8524,24 @@
       "labels": [],
       "body": "Currently `sd` property has one of the following values\n\n- **always**: The Issuer MUST make the claim selectively disclosable. \n- **allowed**: The Issuer MAY make the claim selectively disclosable. \n- **never**: The Issuer MUST NOT make the claim selectively disclosable\n\nAnd in addition, **allowed** is the default if `sd` is not provided explicitly\n\n\nDoes it make sense for an issuer to use the value **allowed** (explicitly or implicitly)? \n\nTo my understanding **allowed** can certainly be used to a parent metadata. \nOn the other hand, I don't understand  what **allowed** really means for an issuer.\n\nAn issuer is expected to take a specific decision (always or never) for every attribute that is defined with an `allowed` property. Furthermore, this decision should be explicitly documented to the type metadata, with the issuer (extending to override) **allowed** properties.\n\n\n\n\n\n\n",
       "createdAt": "2025-07-08T07:06:30Z",
-      "updatedAt": "2025-07-08T07:06:43Z",
+      "updatedAt": "2025-09-29T21:43:58Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Apologies that this has been just sitting here for so long @babisRoutis. Can you help me better understand the question/issue? The sd property is part of the type metadata and, as you noted, a value of \"allowed\" means that \"The Issuer MAY make the claim selectively disclosable\". That means that making the given claim selectively disclosable or not is at the digression of the issuer. Note that in many (most?) cases the entity that publishes the type metadata is not the same as the issuer. I'm struggling to understand or answer the question, \"Should sd allowed be used by issuers?\" ",
+          "createdAt": "2025-09-29T21:08:20Z",
+          "updatedAt": "2025-09-29T21:08:20Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Apologies that this has been just sitting here for so long [@babisRoutis](https://github.com/babisRoutis). Can you help me better understand the question/issue? The sd property is part of the type metadata and, as you noted, a value of \"allowed\" means that \"The Issuer MAY make the claim selectively disclosable\". That means that making the given claim selectively disclosable or not is at the digression of the issuer. Note that in many (most?) cases the entity that publishes the type metadata is not the same as the issuer. I'm struggling to understand or answer the question, \"Should sd allowed be used by issuers?\"\n\nDear @bc-pi \n\nObviously my poor English are not helping, but I will try to elaborate \ud83d\ude04 \n\nHow a wallet or a RP should interpret a type definition (that after merging possible parent definitions) ends up with a claim having sd equal to allowed?\n\nShould they assume  that some times  this issuer encodes the claim as always selectively disclosable and others as never selectively disclosable?\n\nI guess no. \n\nWallets/RPs expect that an Issuer behaves in a consistent manner. \n\nAs I see it \n- sd allowed can/should be used only in parent type definitions (probably published by other entities, not the Issuer)\n- In such case, the Issuer must override those parent definitions to explicitly provide their decision.\n\nFinally, for what is worth, I have seen definitions having several claims marked with an  sd equal to allowed (by omitting an explicit value), which frankly I consider that makes the sd  attribute almost meaningless. ",
+          "createdAt": "2025-09-29T21:43:58Z",
+          "updatedAt": "2025-09-29T21:43:58Z"
+        }
+      ]
     },
     {
       "number": 325,
@@ -9044,7 +9073,7 @@
       ],
       "body": "The spec allows for extensibility by enabling ecosystems to specify additional Issuer Signature Mechanisms. Shouldn't ecosystems and their participants also be able to elect NOT to support mechanisms defined in section 3.5? \n\nGiven that this extensibility is created to, among others, address DIDs, I imagine that such pure did-as-iss-based ecosystems may elect not to support the two key mechanisms defined in this specification and still these ecosystems and its participants will be compliant with SD-JWT VC.",
       "createdAt": "2025-09-15T10:54:41Z",
-      "updatedAt": "2025-09-16T20:59:37Z",
+      "updatedAt": "2025-09-29T20:00:56Z",
       "closedAt": null,
       "comments": [
         {
@@ -9053,6 +9082,13 @@
           "body": "I read and tried to write [3.5. ](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#section-3.5)[Issuer Signature Mechanisms](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-10#name-issuer-signature-mechanisms) to say that one mechanism (from those defined herein or an ecosystem/profile defined one) had to be used/supported in signing and validation. Which, while I don't think it's great from an interoperability perspective, would say that a pure DID-as-iss-based ecosystems that didn't  support the two key mechanisms defined in the draft would be SD-JWT VC compliant. If that makes sense? And do you read that sec 3.5 differently or does that help put it in context? ",
           "createdAt": "2025-09-15T16:30:27Z",
           "updatedAt": "2025-09-15T16:30:27Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@yaromin, does that help answer you question at all? And/or are there additions or classifications that could reasonably be made to the draft that would help?",
+          "createdAt": "2025-09-29T20:00:55Z",
+          "updatedAt": "2025-09-29T20:00:55Z"
         }
       ]
     },
@@ -9173,10 +9209,12 @@
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "<img width=\"810\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b9b11c8e-9a0f-4d19-80aa-02de73b17924\" />\n\n> @bc-pi, I think I failed to explain that well. I concur with your intuition.\n> \n> The idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\n\nAh, I see. Thanks for clarifying. I think that is outside the scope of this PR. And IMHO not necessary and arguably not a proper place. \n\n> If you're looking for widespread adoption, \n\nThat's the goal, yes. \n\n> it might be great to provide such mechanism.\n\nI disagree. But will create an issue for further discussion so this conversation can be resolved and get this incorporated.\n\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345#discussion_r2373239594_\n            ",
       "createdAt": "2025-09-23T19:19:33Z",
-      "updatedAt": "2025-09-23T19:20:52Z",
+      "updatedAt": "2025-09-29T19:58:16Z",
       "closedAt": null,
       "comments": []
     }
@@ -26278,7 +26316,7 @@
       "labels": [],
       "body": "fixes #305\n\n- adds information for background image\n- using the reference to apple guidelines, allowing a more granual approach (different images for multiple dimensions, etc)\n- also aligning existing logo approach so both cases are using the same approach\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:35:04Z",
-      "updatedAt": "2025-09-17T11:30:47Z",
+      "updatedAt": "2025-09-29T21:15:48Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
@@ -26289,8 +26327,241 @@
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "would it be possible to do just the minimum viable/necessary things here? ",
+          "createdAt": "2025-09-29T21:15:48Z",
+          "updatedAt": "2025-09-29T21:15:48Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7DZC6g",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Thanks for the PR, Mirko!\r\n\r\nI think the new parts make sense to me, but as discussed on the editors call, we have no practical experience with this rendering stuff.",
+          "createdAt": "2025-09-29T06:37:10Z",
+          "updatedAt": "2025-09-29T07:02:35Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\r\n```\r\nSuggest to remove max_age, as it can be communicated via HTTP headers.",
+              "createdAt": "2025-09-29T06:37:10Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 65,
+              "body": "```suggestion\r\n   c. Cache per HTTP headers.\r\n```\r\nAs above.",
+              "createdAt": "2025-09-29T06:37:34Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 51,
+              "body": "```suggestion\r\n##### Wallet Behavior {#logo-wallet-behavior}\r\n```",
+              "createdAt": "2025-09-29T06:37:52Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 53,
+              "body": "```suggestion\r\nWhen rendering a credential that includes a `logo`, a Wallet SHOULD follow these steps unless they conflict with user interface or user experience requirements, operating system restrictions, or other limits of the application:\r\n```",
+              "createdAt": "2025-09-29T06:39:38Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 77,
+              "body": "```suggestion\r\n```\r\n\r\nThis should go into the existing privacy considerations.",
+              "createdAt": "2025-09-29T06:40:39Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 88,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-09-29T06:41:07Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 145,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-09-29T06:53:57Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 161,
+              "body": "```suggestion\r\n   c. Cache via HTTP headers.\r\n```",
+              "createdAt": "2025-09-29T06:54:07Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 169,
+              "body": "```suggestion\r\n```",
+              "createdAt": "2025-09-29T06:54:29Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 108,
+              "body": "```suggestion\r\n        \"uri\": \"https://cdn.example.org/brand/logo.svg\"\r\n```\r\nThis was not in the correct format. Since the #integrity part is optional and its use is demonstrated in many other places already, we don't need it here.",
+              "createdAt": "2025-09-29T06:59:34Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 117,
+              "body": "```suggestion\r\n        \"uri\": \"https://cdn.example.org/brand/logo-dark@3x.png\"\r\n```",
+              "createdAt": "2025-09-29T06:59:50Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 183,
+              "body": "```suggestion\r\n        \"uri\": \"https://cdn.example.org/brand/logo@2x.png\"\r\n```",
+              "createdAt": "2025-09-29T07:00:41Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 198,
+              "body": "```suggestion\r\n            \"uri\": \"https://cdn.example.org/vc/bg-dark@3x.png\"\r\n```",
+              "createdAt": "2025-09-29T07:00:54Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            },
+            {
+              "originalPosition": 205,
+              "body": "```suggestion\r\n            \"uri\": \"https://cdn.example.org/vc/bg.svg\"\r\n```",
+              "createdAt": "2025-09-29T07:01:02Z",
+              "updatedAt": "2025-09-29T07:02:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7DZVqm",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-29T07:03:15Z",
+          "updatedAt": "2025-09-29T07:03:39Z",
+          "comments": [
+            {
+              "originalPosition": 71,
+              "body": "```suggestion\r\n   b. If contrast is insufficient, wallets MAY switch to a different\r\n```",
+              "createdAt": "2025-09-29T07:03:15Z",
+              "updatedAt": "2025-09-29T07:03:39Z"
+            },
+            {
+              "originalPosition": 168,
+              "body": "```suggestion\r\n   a. Ensure contrast; if not achievable, do not render the image.\r\n```",
+              "createdAt": "2025-09-29T07:03:28Z",
+              "updatedAt": "2025-09-29T07:03:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7DdyFc",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-29T11:57:07Z",
+          "updatedAt": "2025-09-29T11:57:07Z",
+          "comments": [
+            {
+              "originalPosition": 29,
+              "body": "why are some things duplicated inside the objects in variants and some not? ",
+              "createdAt": "2025-09-29T11:57:07Z",
+              "updatedAt": "2025-09-29T11:57:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Dd2Bk",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-29T12:00:12Z",
+          "updatedAt": "2025-09-29T12:00:12Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "shouldn't this come from http's content-type? i guess that's where one might infer it from the resource but why repeat it here? ",
+              "createdAt": "2025-09-29T12:00:12Z",
+              "updatedAt": "2025-09-29T12:00:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Dd3W3",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-29T12:01:19Z",
+          "updatedAt": "2025-09-29T12:01:19Z",
+          "comments": [
+            {
+              "originalPosition": 37,
+              "body": "maybe a larger question but why is the SRI thing needed in this context? ",
+              "createdAt": "2025-09-29T12:01:19Z",
+              "updatedAt": "2025-09-29T12:01:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Dd5Oi",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-29T12:02:56Z",
+          "updatedAt": "2025-09-29T12:02:56Z",
+          "comments": [
+            {
+              "originalPosition": 44,
+              "body": "can't help but wonder wtf pixel density multiplier is... ",
+              "createdAt": "2025-09-29T12:02:56Z",
+              "updatedAt": "2025-09-29T12:02:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Dd9Fx",
+          "commit": {
+            "abbreviatedOid": "db5bc75"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-09-29T12:06:16Z",
+          "updatedAt": "2025-09-29T12:06:17Z",
+          "comments": [
+            {
+              "originalPosition": 141,
+              "body": "wanting to make https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/335/files#r2387686645 again and then worried about duplication ",
+              "createdAt": "2025-09-29T12:06:17Z",
+              "updatedAt": "2025-09-29T12:06:17Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 336,
@@ -27736,13 +28007,13 @@
       "labels": [],
       "body": "Fixes #223 ",
       "createdAt": "2025-09-23T18:44:22Z",
-      "updatedAt": "2025-09-23T19:48:32Z",
+      "updatedAt": "2025-09-29T11:13:57Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
+      "baseRefOid": "587520ce2ceac3575b71f96538cb7305e2dfef44",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/dead-or-alive",
-      "headRefOid": "785b141b0e91c2facf51fde2865f275c7e98f13a",
+      "headRefOid": "80498665f3d9133f77a30b554a85b37247aad911",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
