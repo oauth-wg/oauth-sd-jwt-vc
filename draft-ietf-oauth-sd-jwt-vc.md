@@ -1492,6 +1492,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Change `lang` to `locale`. While `lang` is more accurate, `locale` is what has traditionally been used in OpenID Connect and later related specs.
 * Remove JSON schema from Type Metadata
+* Introduce optional mandatory property for claims
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
