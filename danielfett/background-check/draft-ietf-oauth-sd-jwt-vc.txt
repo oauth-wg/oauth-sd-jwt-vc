@@ -567,9 +567,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Yc9Yo
-   tfnGtPQ7Y-tdXM9J4vIJGgPAvbybsNSJUxmyCxtNlfLkLoNdZ-DirTzsiacaYll11v8a
-   P_wIXDuANc3Dg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.JM3Yj
+   WCbVPE61AUeobWMafFQryG1lZROi_eDgDGPTZ-5UBNL6meBPCEBdrKqGCuYeoT1dTRH7
+   RkPCmw7khRDDA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -688,17 +688,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Yc9Yo
-   tfnGtPQ7Y-tdXM9J4vIJGgPAvbybsNSJUxmyCxtNlfLkLoNdZ-DirTzsiacaYll11v8a
-   P_wIXDuANc3Dg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.JM3Yj
+   WCbVPE61AUeobWMafFQryG1lZROi_eDgDGPTZ-5UBNL6meBPCEBdrKqGCuYeoT1dTRH7
+   RkPCmw7khRDDA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MTg4ND
-   csICJzZF9oYXNoIjogIk9TUkpnaTNXcUhYTVJjUW1GVzBUejVDVUE2YmFSeEwtMGZROE
-   d0Z0pVSWcifQ.6DcyMllL23cVYRQu_m6bgkqmq4SAZ_PqHlqcHwvtQnd4GLA3l5clqqe
-   6uCei4IarHcxdnOSpmzxj7KggqcXfqA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQwMT
+   ksICJzZF9oYXNoIjogIjNRNjBNM3dQeXVPVUE3bDJ0S0REZ1pKejVka3BycEZhNC1lSW
+   5mcm5rbjgifQ.JDYc29xUiSxi80t1WbIJsO3KnCxOgTQlkF4_hdfEEXnrlHkNlvr-OzO
+   f3H3Vmm_fCnoY-DNbR9fvRxU7Ad0_tA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -740,8 +740,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.otywEg2bRkkc7eNmhbL6VaFi8bAv-vTTB7ivAsCKXaeqqF
-   pWtQcuVXuZFphydSdoqjoyLzKJ5PiM4NQ9D8PqHA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.vJqiCpj4lyM38azRJPknLT9BEu-9A4p9MebnWumWxOJLW0
+   OCm6pFp7FAvJpdl_J5cEsOLe71CujsK34-1ZTNeg~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1823,8 +1823,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.o4CDRSucKMn3kdrp4GfYe4KVLRXiMh495sppTC3069U341h
-   vizIFAoSScp8y-4-63tlmg3CfXJ1p-BbI8AIr8w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.Z_IDvwaSwFPyZLZpZNIpw1dX-tuG2U7GX8IK-B5WEkEzwql
+   XJk7wDatiKCol-1kDC6tGgYgXeidNQCYIk6bfEA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2159,8 +2159,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.o4CDRSucKMn3kdrp4GfYe4KVLRXiMh495sppTC3069U341h
-   vizIFAoSScp8y-4-63tlmg3CfXJ1p-BbI8AIr8w~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.Z_IDvwaSwFPyZLZpZNIpw1dX-tuG2U7GX8IK-B5WEkEzwql
+   XJk7wDatiKCol-1kDC6tGgYgXeidNQCYIk6bfEA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2171,17 +2171,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTk0MTg4NDcsICJzZF9oYXNoIjogImtnZzRZZE9EZkFWRDlWYnpITFV1bjh
-   BYUVfY2F3TGFJTDlKVXpHVGs2ZWMifQ._OhyIQsUpsdT7K20gt-hRK_yfshGz2h9lAzZ
-   zsRsOxRPX71MwrOTyT10NRWRvqq2sTb2TNCwLEPHfVLaonUCsA
+   hdCI6IDE3NTk0MjQwMTksICJzZF9oYXNoIjogImY2dFlOOElzTmdhVXpZUElpWWtMS3l
+   EYXZRU0dqdzNGdmRjYnVwU3lDVzgifQ.7O4xUlxetan_wqVRCDM6Wp9a7fY9A0KWNMYU
+   p691jZjEUCu0zC1psMmTqZdYDz2NZgPcSa8ljjjahwr022puPA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1759418847,
-     "sd_hash": "kgg4YdODfAVD9VbzHLUun8AaE_cawLaIL9JUzGTk6ec"
+     "iat": 1759424019,
+     "sd_hash": "f6tYN8IsNgaUzYPIiYkLKyDavQSGjw3FvdcbupSyCW8"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2230,8 +2230,7 @@ B.2.  Example 2: Type Metadata
              },
              "background_image": {
                "uri": "https://betelgeuse.example.com/public/credential-background.png",
-               "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA=",
-               "alt_text": "Betelgeuse Ministry of Education background image"
+               "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
