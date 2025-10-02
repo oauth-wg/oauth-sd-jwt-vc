@@ -916,8 +916,8 @@ either `always` or `never` to avoid ambiguity.
 The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will override the corresponding object from the extended type.
 
 An extending type can specify an `sd` property for a claim that is marked as
-`allowed` in the extended type, changing it to either `always` or `never`.
-However, it MUST NOT change a claim that is `always` or `never` in the extended
+`allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.
+However, it MUST NOT change a claim that is marked as `always` or `never` in the extended
 type to a different value.
 
 Similarly, an extending type can set the `mandatory` property of a claim that is
