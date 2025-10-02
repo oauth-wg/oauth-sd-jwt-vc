@@ -668,6 +668,8 @@ support SVG rendering. The object contains the following properties:
 
 - `logo`: An object containing information about the logo to be displayed for
   the type, as described in (#logo-metadata). This property is OPTIONAL.
+- `background_image`: An object containing information about the background image to be displayed for
+  the type, as described in (#background-image-metadata). This property is OPTIONAL.
 - `background_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] for the background of the credential.
   This property is OPTIONAL.
 - `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
@@ -683,6 +685,16 @@ displayed for the type. The object contains the following properties:
   (#document-integrity). This property is OPTIONAL.
 - `alt_text`: A string containing alternative text for the logo image. This
   property is OPTIONAL.
+
+#### Background Image Metadata {#background-image-metadata}
+
+The `background_image` property is an object containing information about the background image to be
+displayed for the type. The object contains the following properties:
+
+- `uri`: A URI pointing to the background image. This property is REQUIRED.
+- `uri#integrity`: An "integrity metadata" string as described in
+  (#document-integrity). This property is OPTIONAL.
+
 
 ### Rendering Method "svg_template" {#rendering-method-svg}
 
@@ -1337,6 +1349,11 @@ After validation, the Verifier will have the following processed SD-JWT payload 
             "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Betelgeuse Ministry of Education logo"
           },
+          "background_image": {
+            "uri": "https://betelgeuse.example.com/public/credential-background.png",
+            "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA=",
+            "alt_text": "Betelgeuse Ministry of Education background image"
+          },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
         },
@@ -1362,6 +1379,11 @@ After validation, the Verifier will have the following processed SD-JWT payload 
             "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
             "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
+          },
+          "background_image": {
+            "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
+            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh=",
+            "alt_text": "Hintergrundbild des Betelgeusischen Bildungsministeriums"
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
@@ -1483,6 +1505,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
+* Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 
 -11
 
@@ -1584,4 +1607,3 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Adjusted terminology based on feedback
 * Added non-selectively disclosable JWT VC
 * Added a note that this is not W3C VCDM
-
