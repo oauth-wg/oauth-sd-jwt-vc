@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-09-30T00:32:43.639344+00:00",
+  "timestamp": "2025-10-02T00:30:57.701175+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -7674,15 +7674,15 @@
       "labels": [],
       "body": "```\r\n\r\n            +------------+\r\n            |            |\r\n            |   Issuer   |\r\n            |            |\r\n            +------------+\r\n                  |\r\n         Issues Digital Credentials\r\n         and All Disclosures when \r\n    selectively disclosure is supported\r\n                  |\r\n                  v\r\n            +------------+\r\n            |            |\r\n            |   Holder   |<---- Subject\r\n            |            |\r\n            +------------+\r\n                  |\r\n  Presents Digital Credential + Selected Disclosures\r\n     when selectively disclosure is supported\r\n       + optional Key Binding Token\r\n                  |\r\n                  v\r\n            +-------------+\r\n            |             |+                              +------------+\r\n            |  Verifiers  ||+ ----- optional use -------> |   Status   |\r\n            |             |||  of Token Status Lists      |  Provider  |\r\n            +-------------+||  to retrieve the status     |            |\r\n             +-------------+|  of the Digital Credential  +------------+\r\n              +-------------+\r\n```\r\n\r\n\r\n\r\n\r\nNote that the wording:\r\n\r\n> optionally retrieve status of Verifiable Credential \r\n\r\nhas been replaced by:\r\n\r\n> optional use of Token Status Lists to retrieve the status of the Digital Credential\r\n\r\nThis change is important as the current wording may let think that a Status provider is necessarily needed to know the status of a Digital Credential, whereas it is not the case.\r\n\r\n",
       "createdAt": "2024-12-07T22:03:28Z",
-      "updatedAt": "2025-09-23T15:38:57Z",
+      "updatedAt": "2025-09-30T11:40:05Z",
       "closedAt": null,
       "comments": [
         {
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
-          "body": "Status and Status Provide probably don't need this level of coverage in this draft. The inclusion of the `` claim with reference to [I-D.ietf-oauth-status-list](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#I-D.ietf-oauth-status-list) is arguably sufficient. ",
+          "body": "Status and Status Provide probably don't need this level of coverage in this draft. The inclusion of the `status` claim with reference to [I-D.ietf-oauth-status-list](https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#I-D.ietf-oauth-status-list) is arguably sufficient. ",
           "createdAt": "2025-09-23T15:38:57Z",
-          "updatedAt": "2025-09-23T15:38:57Z"
+          "updatedAt": "2025-09-30T11:40:05Z"
         }
       ]
     },
@@ -8272,7 +8272,7 @@
       ],
       "body": "I believe that it is not clear how to define an array to the type metadata.\n\n- Section 9, doesn't provide any clue\n- Section 9.1 describes claim path, in general and provides a way to select a JSON element using a a path (and a JSON to process).\n- Appendix B contains a example of how to define an array (degrees). Yet it is rather a basic, just an array of any JSON element.\n\nOn the other hand, SD-JWT, the base specification, allows the representation of very complex arrays.\nThus, I think it is critical to\n- Define explicitly how arrays are being representing to the type metadata.\n- Document the cases that cannot be described with type metadata \n- Provide some more detail examples.\n\nI will try to provide some indicative cases\n\n**Array with elements that have no disclosure properties.**\n\nAppendix B, provides the following example\n\n```json\n{  \"path\" : [\"degrees\", null] , \"sd\": \"allowed\" }\n```\n\nThe problem with such a definition is that it is not clear (at least for me) where the `sd` attribute applies.\nThe above can have two possible interpretations:\n- The entry represents the array itself. Thus, the `sd` defines the disclosure behavior of the array\n- The entry represents the elements of the array. In this case, the disclosure property of the array (not its elements) is undefined.\n\n**Array with elements that have disclosure properties.**\n\nTo describe the disclosure property of both the array and its elements, I believe two entries are needed:\n\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null] , \"sd\": \"always\" }\n```\nThe first describes the array itself, the second all entries. The \"sd\" can be different of course\n\nBy the way, this is the case of `nationalities` array as defined in ARF 1.8, requires \n\n> When issuing a PID compliant with [SD-JWT VC], a PID Provider SHALL make all claims (i.e., all top-level properties, all nested properties, and all array entries) selectively disclosable individually, except those claims defined as non-selectively disclosable in [SD-JWT VC].\n\n\n\n\n**Array of objects that have attributes with disclosable properties.**\n\nAssuming, that `degrees` is an array of  degree object which has attributes `type` and `university`, each one having their own `sd`\nI believe that we want the following entries to the type metadata\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"allowed\" }\n{  \"path\" : [\"degrees\", null ] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"type\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"university\"] , \"sd\": \"always\" }\n```\n\nThe first describes the disclosure property of the array (`degrees`)\nThe 2nd the disclosure property of `degree`\nThe 3d and 4th the disclosure property of `degree` attributes\n\n",
       "createdAt": "2025-05-29T21:20:16Z",
-      "updatedAt": "2025-09-29T21:30:14Z",
+      "updatedAt": "2025-09-30T07:12:24Z",
       "closedAt": null,
       "comments": [
         {
@@ -8295,6 +8295,13 @@
           "body": "@danielfett marked this with Ready-for-PR on Jun 3 but as I read through it to try and consider writing a PR, it's not clear to me what such a PR would look like. ",
           "createdAt": "2025-09-29T21:30:14Z",
           "updatedAt": "2025-09-29T21:30:14Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @bc-pi \n\nI was thinking the same. How to address this in a PR.\n\nSome suggestions:\n- For starters, appendix B could be updated to include an entry for the properties of the claim `degree`. As it is right now, it could mislead readers to get the impression that arrays could be described using a single entry about their elements, leaving unspecified the properties of the array container.\n- Two additional examples could be added for the `degree` claim, demonstrating different approaches (please see my 2nd, 3d points on the issue description).\n- Besides the non-normative examples, perhaps there needs to be a description about the distinct ways of defining an array claim\n  -Using a single entry about the array (not its elements)\n - Using two entries (for the array, and all its elements) \n - Using more than two entries (for the array, its elements, and the properties of each element)",
+          "createdAt": "2025-09-30T07:12:24Z",
+          "updatedAt": "2025-09-30T07:12:24Z"
         }
       ]
     },
@@ -9203,7 +9210,7 @@
     {
       "number": 354,
       "id": "I_kwDOJbVClc7Na-23",
-      "title": "metadata lists extensions that consumers must know to properly validate SD JWTs",
+      "title": "metadata to list extensions that consumers must know to properly validate SD JWTs",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/354",
       "state": "OPEN",
       "author": "bc-pi",
@@ -9214,7 +9221,7 @@
       ],
       "body": "<img width=\"810\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b9b11c8e-9a0f-4d19-80aa-02de73b17924\" />\n\n> @bc-pi, I think I failed to explain that well. I concur with your intuition.\n> \n> The idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\n\nAh, I see. Thanks for clarifying. I think that is outside the scope of this PR. And IMHO not necessary and arguably not a proper place. \n\n> If you're looking for widespread adoption, \n\nThat's the goal, yes. \n\n> it might be great to provide such mechanism.\n\nI disagree. But will create an issue for further discussion so this conversation can be resolved and get this incorporated.\n\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345#discussion_r2373239594_\n            ",
       "createdAt": "2025-09-23T19:19:33Z",
-      "updatedAt": "2025-09-29T19:58:16Z",
+      "updatedAt": "2025-09-30T11:35:34Z",
       "closedAt": null,
       "comments": []
     }
@@ -26316,7 +26323,7 @@
       "labels": [],
       "body": "fixes #305\n\n- adds information for background image\n- using the reference to apple guidelines, allowing a more granual approach (different images for multiple dimensions, etc)\n- also aligning existing logo approach so both cases are using the same approach\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:35:04Z",
-      "updatedAt": "2025-09-29T21:15:48Z",
+      "updatedAt": "2025-10-01T11:47:09Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
@@ -26334,6 +26341,20 @@
           "body": "would it be possible to do just the minimum viable/necessary things here? ",
           "createdAt": "2025-09-29T21:15:48Z",
           "updatedAt": "2025-09-29T21:15:48Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> would it be possible to do just the minimum viable/necessary things here? \n\nWhat do you mean with this, just to align with the existing definition of logo?\n\nI used the referenced approach from apple that got mentioned in the issue and that got \"ready for pr\"\n\n",
+          "createdAt": "2025-09-30T05:46:14Z",
+          "updatedAt": "2025-09-30T05:46:14Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> > would it be possible to do just the minimum viable/necessary things here?\r\n> \r\n> What do you mean with this, just to align with the existing definition of logo?\r\n\r\nI don't know. But there's a lot more here than I was expecting. I know @danielfett \"approved\" it but then said \"we have no practical experience with this rendering stuff\" and added a significant number of comments.  I had a significant number of additional comments and didn't even complete a review. \r\n\r\n> \r\n> I used the referenced approach from apple that got mentioned in the issue and that got \"ready for pr\"\r\n\r\nI'm struggling to reconcile it, to be honest. \r\n\r\n",
+          "createdAt": "2025-09-30T16:04:31Z",
+          "updatedAt": "2025-10-01T11:47:09Z"
         }
       ],
       "reviews": [
@@ -28007,7 +28028,7 @@
       "labels": [],
       "body": "Fixes #223 ",
       "createdAt": "2025-09-23T18:44:22Z",
-      "updatedAt": "2025-09-29T11:13:57Z",
+      "updatedAt": "2025-09-30T15:58:43Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "587520ce2ceac3575b71f96538cb7305e2dfef44",
@@ -28051,6 +28072,32 @@
           "body": "I'm equally happy to celebrate this tradition as I am to not celebrate it. But do think the history bullet should scope which specs are part of the tradition as per https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/353#discussion_r2373259268 ",
           "createdAt": "2025-09-23T19:48:10Z",
           "updatedAt": "2025-09-23T19:48:32Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7DzIk3",
+          "commit": {
+            "abbreviatedOid": "8049866"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-09-30T13:49:29Z",
+          "updatedAt": "2025-09-30T13:49:29Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7D2DHS",
+          "commit": {
+            "abbreviatedOid": "8049866"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "For the greater good of interop.",
+          "createdAt": "2025-09-30T15:58:43Z",
+          "updatedAt": "2025-09-30T15:58:43Z",
           "comments": []
         }
       ]
