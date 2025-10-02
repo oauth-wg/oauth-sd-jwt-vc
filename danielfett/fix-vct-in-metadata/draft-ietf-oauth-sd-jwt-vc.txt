@@ -567,9 +567,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.i8VD8
-   Z-9OO3O1KtepKR1y4IQ_P9OIGTPbfkpo6KZ3O2hjBgv7NQJaDeh6BsZtxKTHD_BnnbEa
-   x2u8EUbi-v5kA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Nd5n4
+   TeDbfnkqa-qBsIaLzWTtXuLKGYz5ZjfpE9mHDMx-n00jUS2nlnVVUTV_5G-O-pcqiWIg
+   5wn_6dklOOnUA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -688,17 +688,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.i8VD8
-   Z-9OO3O1KtepKR1y4IQ_P9OIGTPbfkpo6KZ3O2hjBgv7NQJaDeh6BsZtxKTHD_BnnbEa
-   x2u8EUbi-v5kA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Nd5n4
+   TeDbfnkqa-qBsIaLzWTtXuLKGYz5ZjfpE9mHDMx-n00jUS2nlnVVUTV_5G-O-pcqiWIg
+   5wn_6dklOOnUA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQyMD
-   YsICJzZF9oYXNoIjogIlVNTU1SQzBZLU1XOE1JSndNWDBkbi14NUVNY1RVMC1GODdHZk
-   Zwc1hzS1kifQ.b2yTuD7N0MgU84ObeXNMx4mqZqeFIJN2JuBMBywr_pRDghxjEfvPMET
-   fAWRh6bMOeixUx0jqa51u3FQUnrBgsA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQyMj
+   AsICJzZF9oYXNoIjogIklhQ2dZOHZLV3R6LTltdHBfN1h4NGtKa0NLdENMWXZNeXExdT
+   dzSEdaSkkifQ.XGR_GMzUw7T6a86upBMwydLdiRuIdNZWJHUQItauFLuPn8ovBfj7jr-
+   gXdKn_uYshnaotfvaF0vDsbxdHSqKYw
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -740,8 +740,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.JCWJkpm4ykv_JXhSTXy2XLRV6fRjSaX_PguNiRD8fRYQv4
-   A_IRlyD_2xBB488v2HVxtGjYCQtfT0SehniMNgaA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.tEhRXlGt8SCYTo9RcKS5rtUfaaf0rh43NKLUAtT1Wzzy08
+   za8K0yj8-GTkc0sSDnVCctNtM84-mVyEhVqQaz6Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -939,17 +939,16 @@ Table of Contents
 
    The Type Metadata document MUST be a JSON object.  The following
    properties are defined: * vct * REQUIRED.  The verifiable credential
-   type described by this type metadata document.  The value MUST be
-   identical to the vct claim used in the SD-JWT VC payload. * name *
-   OPTIONAL.  A human-readable name for the type, intended for
-   developers reading the JSON document. * description * OPTIONAL.  A
-   human-readable description for the type, intended for developers
-   reading the JSON document. * extends * OPTIONAL.  A URI of another
-   type that this type extends, as described in Section 6.4. * display:
-   An array of objects containing display information for the type, as
-   described in Section 8.  This property is OPTIONAL. * claims: An
-   array of objects containing claim information for the type, as
-   described in Section 9.  This property is OPTIONAL.
+   type described by this type metadata document. * name * OPTIONAL.  A
+   human-readable name for the type, intended for developers reading the
+   JSON document. * description * OPTIONAL.  A human-readable
+   description for the type, intended for developers reading the JSON
+   document. * extends * OPTIONAL.  A URI of another type that this type
+   extends, as described in Section 6.4. * display: An array of objects
+   containing display information for the type, as described in
+   Section 8.  This property is OPTIONAL. * claims: An array of objects
+   containing claim information for the type, as described in Section 9.
+   This property is OPTIONAL.
 
    A Type Metadata document MAY contain additional top level or
    subordinate properties.  Consumers MUST ignore properties that are
@@ -1812,8 +1811,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.OuiDb1hXgPUlQSYCj_CMem4ElkFc194XM4KgxfeycXw8bQH
-   8vdAnAUsXgzgyFPBPmUVSd1LUlh9C1jrw6bOZVQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.PKl2ykfkmXWCZjC2DAbsyfMEJMJ_-Vbu9AX7a9YnDRiy9Tb
+   wCCazcOyo4Q3QLJLO-afsWfHbeI02mJrTubNrHA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2148,8 +2147,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.OuiDb1hXgPUlQSYCj_CMem4ElkFc194XM4KgxfeycXw8bQH
-   8vdAnAUsXgzgyFPBPmUVSd1LUlh9C1jrw6bOZVQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.PKl2ykfkmXWCZjC2DAbsyfMEJMJ_-Vbu9AX7a9YnDRiy9Tb
+   wCCazcOyo4Q3QLJLO-afsWfHbeI02mJrTubNrHA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2160,17 +2159,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTk0MjQyMDYsICJzZF9oYXNoIjogIjRfTzBmQnJVX3kzQ3lPc19rSk82V0x
-   qY2thVDE2RUlFM0hSSkQ2VENYZmcifQ.Sq_rUA7oC1SYaH8kS2ANiIcjjYYiitgRpnfG
-   Ydd48Aot-Vs1JccqBNshew-EfZAGzs_kQ3FbTr2-WSxiCaAKrg
+   hdCI6IDE3NTk0MjQyMjAsICJzZF9oYXNoIjogIkJtbzJ2YnFSV3c2SHJzMFU0NUs5MzZ
+   vaEVXNm5PWUhvc0RwUkxRZF9KT28ifQ.RjZzgkJg5ENuCRRNrTSRXEVxl2pScSJgQYan
+   n2iMWNah5mvE3C1Vmv_YK6ydsgrNBKVnyyF0rO-aQDxVyZPyHw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1759424206,
-     "sd_hash": "4_O0fBrU_y3CyOs_kJO6WLjckaT16EIE3HRJD6TCXfg"
+     "iat": 1759424220,
+     "sd_hash": "Bmo2vbqRWw6Hrs0U45K936ohEW6nOYHosDpRLQd_JOo"
    }
 
    After validation, the Verifier will have the following processed SD-
