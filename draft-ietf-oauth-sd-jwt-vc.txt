@@ -568,9 +568,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.77QcP
-   gQshsZnx0HurRLfkRiW1FCdanonXIc_Y7kLhHn-F5JsMXSwGqA_bAZLx6hgMdJfBNnw5
-   Tw6SsOzfzNIyQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xpz96
+   ckiXBzm8Gtoioo99gZcBMqm4ud43kTvkaRx1y8nud1dCsLcVRMmgqQLcpW9E2wO8KViI
+   dKkyqH8LpA0Hw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -689,17 +689,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.77QcP
-   gQshsZnx0HurRLfkRiW1FCdanonXIc_Y7kLhHn-F5JsMXSwGqA_bAZLx6hgMdJfBNnw5
-   Tw6SsOzfzNIyQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xpz96
+   ckiXBzm8Gtoioo99gZcBMqm4ud43kTvkaRx1y8nud1dCsLcVRMmgqQLcpW9E2wO8KViI
+   dKkyqH8LpA0Hw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjM3MT
-   MsICJzZF9oYXNoIjogIkI5Sjhfd2FFcTc2elVtLWlQRHVtZ0RfWWhVeXpON3RBSVAtem
-   pMLXpMT00ifQ.QwtfUjoj5UV9HOiScU-DAvZ4Z6XqppUo7ZvdLLvov2TExZtv6i5M3qM
-   97KlPSe3SAI_Di78Oo8lXPEcIaQB8zQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQwOT
+   csICJzZF9oYXNoIjogImY2V2pZUDFXWC03dUVXY1dpZGctTmxwY2IyOV9RdTYtNTUxQj
+   lMdnBjQ2sifQ.P9H2BcOCEthNPqq3EYKsWLPzyz1eL2czaVHvrte_rL6XjJBOSYGJyGP
+   5HHTuJ4etFhXhk5tAaQzPo57coLhI_A
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -741,8 +741,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.Kl-0ykovLyLIojbdn7LLGRkeJNfmUCj-h4utwzUiqbPvkq
-   ZO9hescS42AISf_eTd_MDjkL0zchyBl260CB7cHQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.AXPBOyOBMXw7unTG8OfQPiHd6vDjq43X700kCt5A49nUKG
+   NuoS7vYodkJqBVhOJBtmUfefXV1Lua80jYYU5jaA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1064,6 +1064,9 @@ Table of Contents
    *  logo: An object containing information about the logo to be
       displayed for the type, as described in Section 8.1.1.1.  This
       property is OPTIONAL.
+   *  background_image: An object containing information about the
+      background image to be displayed for the type, as described in
+      Section 8.1.1.2.  This property is OPTIONAL.
    *  background_color: An RGB color value as defined in [W3C.CSS-COLOR]
       for the background of the credential.  This property is OPTIONAL.
    *  text_color: An RGB color value as defined in [W3C.CSS-COLOR] value
@@ -1080,6 +1083,17 @@ Table of Contents
       Section 7.  This property is OPTIONAL.
    *  alt_text: A string containing alternative text for the logo image.
       This property is OPTIONAL.
+
+8.1.1.2.  Background Image Metadata
+
+   The background_image property is an object containing information
+   about the background image to be displayed for the type.  The object
+   contains the following properties:
+
+   *  uri: A URI pointing to the background image.  This property is
+      REQUIRED.
+   *  uri#integrity: An "integrity metadata" string as described in
+      Section 7.  This property is OPTIONAL.
 
 8.1.2.  Rendering Method "svg_template"
 
@@ -1821,8 +1835,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.npUm6_TG2Mq5xLksNwJ2SMPKKqVVjWyy-lX2yuVUUXtDPZu
-   nN4L2yw8w2W1SFiCNGWD7A5LLPqNPxwskBvU0vQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.RA2i1KX6oq4WQvoubI_AG14TBCoUGZ6L3xCtTWyL4qFwd40
+   weLHHoQ6SNToiNxTmBYnh_F_Pk4hh9uIrIY1GuQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2157,8 +2171,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.npUm6_TG2Mq5xLksNwJ2SMPKKqVVjWyy-lX2yuVUUXtDPZu
-   nN4L2yw8w2W1SFiCNGWD7A5LLPqNPxwskBvU0vQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.RA2i1KX6oq4WQvoubI_AG14TBCoUGZ6L3xCtTWyL4qFwd40
+   weLHHoQ6SNToiNxTmBYnh_F_Pk4hh9uIrIY1GuQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2169,17 +2183,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTk0MjM3MTMsICJzZF9oYXNoIjogIk1wSWwxcVJwMzFoTTZiWHJLYURTaUZ
-   0ZFBGSVNudV8za2tJZHQ3alp2bWMifQ.8Dj7r3QBXLc4GdPCVK4FdCqb6d-LdQFRfpBP
-   -85ouf29T3o9wibLBXaYgifxhK-CIThGXUuSWWogz4Fo6LePNg
+   hdCI6IDE3NTk0MjQwOTcsICJzZF9oYXNoIjogIjRHUll2NHJLSmp3SkUySWtBaXlBQzV
+   OOE85c2t1TGtIeVozZU1lSU9YamcifQ.THoStfQCPzdSxL9exkuZSefjjyBmQRTldmwJ
+   6xtgvDdvtSdLlpHmgFqxohTGSMFDe56Fm2W6GZqBaTNTuvb7Gw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1759423713,
-     "sd_hash": "MpIl1qRp31hM6bXrKaDSiFtdPFISnu_3kkIdt7jZvmc"
+     "iat": 1759424097,
+     "sd_hash": "4GRYv4rKJjwJE2IkAiyAC5N8O9skuLkHyZ3eMeIOXjg"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2226,6 +2240,10 @@ B.2.  Example 2: Type Metadata
                "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Betelgeuse Ministry of Education logo"
              },
+             "background_image": {
+               "uri": "https://betelgeuse.example.com/public/credential-background.png",
+               "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
+             },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
            },
@@ -2251,6 +2269,10 @@ B.2.  Example 2: Type Metadata
                "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
                "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
+             },
+             "background_image": {
+               "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
+               "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
@@ -2361,6 +2383,8 @@ Appendix D.  Document History
    *  Remove the requirement to ignore unknown claims, as some
       applications may not want to follow this rule
    *  Fix cnf claim and JWK references and move them to normative
+   *  Add a background_image property to the simple rendering aligned
+      with the definition in OpenID4VCI
 
    -11
 
