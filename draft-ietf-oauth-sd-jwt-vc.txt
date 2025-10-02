@@ -568,9 +568,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xpz96
-   ckiXBzm8Gtoioo99gZcBMqm4ud43kTvkaRx1y8nud1dCsLcVRMmgqQLcpW9E2wO8KViI
-   dKkyqH8LpA0Hw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jV57_
+   R07bep4F3R-8dR-JuDyLn8W_zMVfGoT3Pqn4e8QXdXwzF78VaNmeEJi5gb_1S9sD4grL
+   HC_9xhGq63NdQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -689,17 +689,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xpz96
-   ckiXBzm8Gtoioo99gZcBMqm4ud43kTvkaRx1y8nud1dCsLcVRMmgqQLcpW9E2wO8KViI
-   dKkyqH8LpA0Hw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jV57_
+   R07bep4F3R-8dR-JuDyLn8W_zMVfGoT3Pqn4e8QXdXwzF78VaNmeEJi5gb_1S9sD4grL
+   HC_9xhGq63NdQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQwOT
-   csICJzZF9oYXNoIjogImY2V2pZUDFXWC03dUVXY1dpZGctTmxwY2IyOV9RdTYtNTUxQj
-   lMdnBjQ2sifQ.P9H2BcOCEthNPqq3EYKsWLPzyz1eL2czaVHvrte_rL6XjJBOSYGJyGP
-   5HHTuJ4etFhXhk5tAaQzPo57coLhI_A
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQ5Mz
+   csICJzZF9oYXNoIjogIkFubVJfVlY1WVJzVUs3VlRrM05sdjh6RkluMTNwbzZCT1JhNn
+   NfYXhQX0UifQ.nX4ZCcN5Trxy8oLAQO8ovF0hmNGa-xvXbyClNxqNGJ7RDjPniCt7wgi
+   QE-KZBFgLbdZDsc8nlEDvtu7f7-8-Ng
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -741,8 +741,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.AXPBOyOBMXw7unTG8OfQPiHd6vDjq43X700kCt5A49nUKG
-   NuoS7vYodkJqBVhOJBtmUfefXV1Lua80jYYU5jaA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.ExzI0jY4xF0Viv_DZUeuHerNSkDfzQwyR1y77c73imj3GH
+   lhVdijzURnAH0QcQ0hPCE6_XiLAFwSEWgHOmTQog~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -939,21 +939,17 @@ Table of Contents
 6.2.  Type Metadata Format
 
    The Type Metadata document MUST be a JSON object.  The following
-   properties are defined:
-
-   *  name
-      -  OPTIONAL.  A human-readable name for the type, intended for
-         developers reading the JSON document.
-   *  description
-      -  OPTIONAL.  A human-readable description for the type, intended
-         for developers reading the JSON document.
-   *  extends
-      -  OPTIONAL.  A URI of another type that this type extends, as
-         described in Section 6.4.
-   *  display: An array of objects containing display information for
-      the type, as described in Section 8.  This property is OPTIONAL.
-   *  claims: An array of objects containing claim information for the
-      type, as described in Section 9.  This property is OPTIONAL.
+   properties are defined: * vct * REQUIRED.  The verifiable credential
+   type described by this type metadata document. * name * OPTIONAL.  A
+   human-readable name for the type, intended for developers reading the
+   JSON document. * description * OPTIONAL.  A human-readable
+   description for the type, intended for developers reading the JSON
+   document. * extends * OPTIONAL.  A URI of another type that this type
+   extends, as described in Section 6.4. * display: An array of objects
+   containing display information for the type, as described in
+   Section 8.  This property is OPTIONAL. * claims: An array of objects
+   containing claim information for the type, as described in Section 9.
+   This property is OPTIONAL.
 
    A Type Metadata document MAY contain additional top level or
    subordinate properties.  Consumers MUST ignore properties that are
@@ -962,6 +958,13 @@ Table of Contents
    An example of a Type Metadata document is shown in Appendix B.2.
 
 6.3.  Retrieving Type Metadata
+
+   A consumer retrieving Type Metadata MUST ensure that the vct value in
+   the SD-JWT VC payload is identical to the vct value in the reference
+   to the Type Metadata (either in the SD-JWT VC itself or in an extends
+   property in a Type Metadata document).
+
+   The following sections define methods to retrieve Type Metadata.
 
 6.3.1.  From a URL in the vct Claim
 
@@ -1016,13 +1019,12 @@ Table of Contents
 
 7.  Document Integrity
 
-   Both the vct claim in the SD-JWT VC and the various URIs in the Type
-   Metadata MAY be accompanied by a respective claim suffixed with
-   #integrity, in particular:
+   The vct claim in the SD-JWT VC as defined in Section 3.2.2.2 and
+   various URIs in the Type Metadata MAY be accompanied by a respective
+   claim suffixed with #integrity, in particular:
 
-   *  vct as defined in Section 3.2.2.2,
-   *  extends as defined in Section 6.4
-   *  uri as used in two places in Section 8.1
+   *  extends as defined in Section 6.4, and
+   *  uri as used in two places in Section 8.1.
 
    The value MUST be an "integrity metadata" string as defined in
    Section 3 of [W3C.SRI].  A Consumer of the respective documents MUST
@@ -1835,8 +1837,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.RA2i1KX6oq4WQvoubI_AG14TBCoUGZ6L3xCtTWyL4qFwd40
-   weLHHoQ6SNToiNxTmBYnh_F_Pk4hh9uIrIY1GuQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.6YQRjoVup4I-SR4oAzLJfSupOEcJiCA9ceKzfSqU3R2y4pK
+   PSzbdKakoW-y1XSU4ad0e43EB8tpmZUJGIVIZtA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2171,8 +2173,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.RA2i1KX6oq4WQvoubI_AG14TBCoUGZ6L3xCtTWyL4qFwd40
-   weLHHoQ6SNToiNxTmBYnh_F_Pk4hh9uIrIY1GuQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.6YQRjoVup4I-SR4oAzLJfSupOEcJiCA9ceKzfSqU3R2y4pK
+   PSzbdKakoW-y1XSU4ad0e43EB8tpmZUJGIVIZtA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2183,17 +2185,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTk0MjQwOTcsICJzZF9oYXNoIjogIjRHUll2NHJLSmp3SkUySWtBaXlBQzV
-   OOE85c2t1TGtIeVozZU1lSU9YamcifQ.THoStfQCPzdSxL9exkuZSefjjyBmQRTldmwJ
-   6xtgvDdvtSdLlpHmgFqxohTGSMFDe56Fm2W6GZqBaTNTuvb7Gw
+   hdCI6IDE3NTk0MjQ5MzcsICJzZF9oYXNoIjogIjVmajM0X1gtc3luTkxzcFYyLWtnYnR
+   vZHJUVzV2am5qNlRweEl2Uk02UTgifQ.v5QRsdX5eOLFjopfwJHm6yBKjBpYkkSSzUgD
+   he63ZNQ2l62-QjaHXnGW_Zk4AWIqKB2l10MvlXnXxozFgq4guQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1759424097,
-     "sd_hash": "4GRYv4rKJjwJE2IkAiyAC5N8O9skuLkHyZ3eMeIOXjg"
+     "iat": 1759424937,
+     "sd_hash": "5fj34_X-synNLspV2-kgbtodrTW5vjnj6TpxIvRM6Q8"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2383,6 +2385,8 @@ Appendix D.  Document History
    *  Remove the requirement to ignore unknown claims, as some
       applications may not want to follow this rule
    *  Fix cnf claim and JWK references and move them to normative
+   *  List vct as one of the required values in type metadata and ensure
+      that the use of the document integrity claims is clear
    *  Add a background_image property to the simple rendering aligned
       with the definition in OpenID4VCI
 
