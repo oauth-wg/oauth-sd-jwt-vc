@@ -675,6 +675,8 @@ support SVG rendering. The object contains the following properties:
 
 - `logo`: An object containing information about the logo to be displayed for
   the type, as described in (#logo-metadata). This property is OPTIONAL.
+- `background_image`: An object containing information about the background image to be displayed for
+  the type, as described in (#background-image-metadata). This property is OPTIONAL.
 - `background_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] for the background of the credential.
   This property is OPTIONAL.
 - `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
@@ -690,6 +692,16 @@ displayed for the type. The object contains the following properties:
   (#document-integrity). This property is OPTIONAL.
 - `alt_text`: A string containing alternative text for the logo image. This
   property is OPTIONAL.
+
+#### Background Image Metadata {#background-image-metadata}
+
+The `background_image` property is an object containing information about the background image to be
+displayed for the type. The object contains the following properties:
+
+- `uri`: A URI pointing to the background image. This property is REQUIRED.
+- `uri#integrity`: An "integrity metadata" string as described in
+  (#document-integrity). This property is OPTIONAL.
+
 
 ### Rendering Method "svg_template" {#rendering-method-svg}
 
@@ -775,6 +787,9 @@ Each object contains the following properties:
   described below. This property is REQUIRED.
 - `display`: An array containing display information for the claim or claims that are being addressed, as
   described in (#claim-display-metadata). This property is OPTIONAL.
+- `mandatory`: A boolean indicating that the claim must be present in the issued
+  credential. This property is OPTIONAL. If omitted, the default value is `false`. See
+  (#claim-mandatory-metadata) for details.
 - `sd`: A string indicating whether the claim is selectively disclosable, as
   described in (#claim-selective-disclosure-metadata). This property is OPTIONAL.
 - `svg_id`: A string defining the ID of the claim for reference in the SVG
@@ -875,6 +890,14 @@ The objects in the array have the following properties:
   property is REQUIRED.
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
+
+## Claim Mandatory Metadata {#claim-mandatory-metadata}
+
+The `mandatory` property is a boolean indicating that, if set to `true`, the
+claim MUST be included in the credential by the Issuer. If the value is `false`
+or omitted, the claim is considered optional for the Issuer to include. A claim
+that is `mandatory` can nonetheless be selectively disclosable, as described in
+(#claim-selective-disclosure-metadata).
 
 ## Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
 
@@ -1344,6 +1367,10 @@ After validation, the Verifier will have the following processed SD-JWT payload 
             "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Betelgeuse Ministry of Education logo"
           },
+          "background_image": {
+            "uri": "https://betelgeuse.example.com/public/credential-background.png",
+            "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
+          },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
         },
@@ -1369,6 +1396,10 @@ After validation, the Verifier will have the following processed SD-JWT payload 
             "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
             "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
+          },
+          "background_image": {
+            "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
+            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
@@ -1402,7 +1433,8 @@ After validation, the Verifier will have the following processed SD-JWT payload 
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "allowed",
+      "mandatory": true
     },
     {
       "path": ["address"],
@@ -1487,10 +1519,12 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Change `lang` to `locale`. While `lang` is more accurate, `locale` is what has traditionally been used in OpenID Connect and later related specs.
 * Remove JSON schema from Type Metadata
+* Introduce optional mandatory property for claims
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
+* Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 
 -11
 
@@ -1592,4 +1626,3 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Adjusted terminology based on feedback
 * Added non-selectively disclosable JWT VC
 * Added a note that this is not W3C VCDM
-
