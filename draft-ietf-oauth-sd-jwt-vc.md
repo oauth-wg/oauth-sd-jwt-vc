@@ -768,6 +768,9 @@ Each object contains the following properties:
   described below. This property is REQUIRED.
 - `display`: An array containing display information for the claim or claims that are being addressed, as
   described in (#claim-display-metadata). This property is OPTIONAL.
+- `mandatory`: A boolean indicating that the claim must be present in the issued
+  credential. This property is OPTIONAL. If omitted, the default value is `false`. See
+  (#claim-mandatory-metadata) for details.
 - `sd`: A string indicating whether the claim is selectively disclosable, as
   described in (#claim-selective-disclosure-metadata). This property is OPTIONAL.
 - `svg_id`: A string defining the ID of the claim for reference in the SVG
@@ -868,6 +871,14 @@ The objects in the array have the following properties:
   property is REQUIRED.
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
+
+## Claim Mandatory Metadata {#claim-mandatory-metadata}
+
+The `mandatory` property is a boolean indicating that, if set to `true`, the
+claim MUST be included in the credential by the Issuer. If the value is `false`
+or omitted, the claim is considered optional for the Issuer to include. A claim
+that is `mandatory` can nonetheless be selectively disclosable, as described in
+(#claim-selective-disclosure-metadata).
 
 ## Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
 
@@ -1395,7 +1406,8 @@ After validation, the Verifier will have the following processed SD-JWT payload 
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "allowed",
+      "mandatory": true
     },
     {
       "path": ["address"],
@@ -1584,4 +1596,3 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Adjusted terminology based on feedback
 * Added non-selectively disclosable JWT VC
 * Added a note that this is not W3C VCDM
-
