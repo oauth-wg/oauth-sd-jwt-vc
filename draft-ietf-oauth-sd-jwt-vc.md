@@ -1381,8 +1381,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
           },
           "background_image": {
             "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
-            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh=",
-            "alt_text": "Hintergrundbild des Betelgeusischen Bildungsministeriums"
+            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
