@@ -908,11 +908,21 @@ disclosable. The following values are defined:
 - `allowed`: The Issuer MAY make the claim selectively disclosable.
 - `never`: The Issuer MUST NOT make the claim selectively disclosable.
 
-If omitted, the default value is `allowed`.
+If omitted, the default value is `allowed`. It is RECOMMENDED to use
+either `always` or `never` to avoid ambiguity.
 
 ## Extending Claim Metadata {#claim-metadata-extends}
 
 The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will override the corresponding object from the extended type.
+
+An extending type can specify an `sd` property for a claim that is marked as
+`allowed` in the extended type, changing it to either `always` or `never`.
+However, it MUST NOT change a claim that is `always` or `never` in the extended
+type to a different value.
+
+Similarly, an extending type can set the `mandatory` property of a claim that is
+optional in the extended type to `true`, but it MUST NOT change a claim that is
+`mandatory` in the extended type to `false`.
 
 Suppose we have a base type metadata document:
 
