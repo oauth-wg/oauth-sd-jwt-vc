@@ -580,6 +580,13 @@ An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
 ## Retrieving Type Metadata {#retrieving-type-metadata}
 
+A consumer retrieving Type Metadata MUST ensure that the `vct` value in the
+SD-JWT VC payload is identical to the `vct` value in the reference to the Type
+Metadata (either in the SD-JWT VC itself or in an `extends` property in the Type
+Metadata document).
+
+The following methods can be used to retrieve Type Metadata:
+
 ### From a URL in the `vct` Claim {#retrieval-from-vct-claim}
 
 A URI in the `vct` claim can be used to express a type. If the
