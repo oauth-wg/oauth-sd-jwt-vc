@@ -556,7 +556,9 @@ to the one in the `vct#integrity` claim in the SD-JWT VC payload,
 
 The Type Metadata document MUST be a JSON object. The following properties are
 defined:
-
+* `vct`
+  * REQUIRED. The verifiable credential type described by this type metadata document.
+    The value MUST be identical to the `vct` claim used in the SD-JWT VC payload.
 * `name`
   * OPTIONAL. A human-readable name for the type, intended for developers reading
   the JSON document.
@@ -624,17 +626,16 @@ chain or hierarchy of types. The security considerations described in
 
 # Document Integrity {#document-integrity}
 
-Both the `vct` claim in the SD-JWT VC and the various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with `#integrity`, in particular:
+The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
+Type Metadata MAY be accompanied by a respective claim suffixed with
+`#integrity`, in particular:
 
- * `vct` as defined in (#claims),
- * `extends` as defined in (#extending-type-metadata)
- * `uri` as used in two places in (#rendering-metadata)
+ * `extends` as defined in (#extending-type-metadata), and
+ * `uri` as used in two places in (#rendering-metadata).
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
 [@!W3C.SRI]. A Consumer of the respective documents MUST verify the
 integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
-
-
 
 # Display Metadata {#display-metadata}
 
@@ -1483,6 +1484,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
+* List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
 
 -11
 
