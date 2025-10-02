@@ -1287,10 +1287,13 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-claim-display-metadata" class="internal xref">Claim Display Metadata</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
-                <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-claim-selective-disclosure-" class="internal xref">Claim Selective Disclosure Metadata</a></p>
+                <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-claim-mandatory-metadata" class="internal xref">Claim Mandatory Metadata</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
-                <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-extending-claim-metadata" class="internal xref">Extending Claim Metadata</a></p>
+                <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-claim-selective-disclosure-" class="internal xref">Claim Selective Disclosure Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
+                <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-extending-claim-metadata" class="internal xref">Extending Claim Metadata</a></p>
 </li>
             </ul>
 </li>
@@ -1935,9 +1938,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kszr0
-sUegV-Je5xX5QF79kVqngHrZ36kwZT2r3hzMSI00ijzDr8x--BXsH-WnJXbAkmyziSN0
-r4n3AeSUOiAqQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.77QcP
+gQshsZnx0HurRLfkRiW1FCdanonXIc_Y7kLhHn-F5JsMXSwGqA_bAZLx6hgMdJfBNnw5
+Tw6SsOzfzNIyQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2048,17 +2051,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kszr0
-sUegV-Je5xX5QF79kVqngHrZ36kwZT2r3hzMSI00ijzDr8x--BXsH-WnJXbAkmyziSN0
-r4n3AeSUOiAqQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.77QcP
+gQshsZnx0HurRLfkRiW1FCdanonXIc_Y7kLhHn-F5JsMXSwGqA_bAZLx6hgMdJfBNnw5
+Tw6SsOzfzNIyQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MDYzMj
-EsICJzZF9oYXNoIjogIktaS2l3cWpWa0hsdV81NEpCSnVCUk1STTR2aHR1SDZrbDlLel
-lWMk5fdncifQ.bZl4t4AxT8EC8zXGjyaf_tafgaP4esjhbuYP3oFznK0OeP_2Bz1TjGD
-_jXgNXe5CDBdRiuwUNgbEcj5S_HfJ4Q
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjM3MT
+MsICJzZF9oYXNoIjogIkI5Sjhfd2FFcTc2elVtLWlQRHVtZ0RfWWhVeXpON3RBSVAtem
+pMLXpMT00ifQ.QwtfUjoj5UV9HOiScU-DAvZ4Z6XqppUo7ZvdLLvov2TExZtv6i5M3qM
+97KlPSe3SAI_Di78Oo8lXPEcIaQB8zQ
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2103,8 +2106,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.XLYp7CiQ4nKqR-QSrJtDcF2a3F3mC_TkP21_qZwvU5staQ
-meT9irAiEov8mONvklReTdfDRezERNZvjt7HBi9w~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.Kl-0ykovLyLIojbdn7LLGRkeJNfmUCj-h4utwzUiqbPvkq
+ZO9hescS42AISf_eTd_MDjkL0zchyBl260CB7cHQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2681,14 +2684,19 @@ described below. This property is REQUIRED.<a href="#section-9-3.1" class="pilcr
 described in <a href="#claim-display-metadata" class="auto internal xref">Section 9.2</a>. This property is OPTIONAL.<a href="#section-9-3.2" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-9-3.3">
-          <code>sd</code>: A string indicating whether the claim is selectively disclosable, as
-described in <a href="#claim-selective-disclosure-metadata" class="auto internal xref">Section 9.3</a>. This property is OPTIONAL.<a href="#section-9-3.3" class="pilcrow">¶</a>
+          <code>mandatory</code>: A boolean indicating that the claim must be present in the issued
+credential. This property is OPTIONAL. If omitted, the default value is <code>false</code>. See
+<a href="#claim-mandatory-metadata" class="auto internal xref">Section 9.3</a> for details.<a href="#section-9-3.3" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-9-3.4">
+          <code>sd</code>: A string indicating whether the claim is selectively disclosable, as
+described in <a href="#claim-selective-disclosure-metadata" class="auto internal xref">Section 9.4</a>. This property is OPTIONAL.<a href="#section-9-3.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-9-3.5">
           <code>svg_id</code>: A string defining the ID of the claim for reference in the SVG
 template, as described in <a href="#svg-rendering" class="auto internal xref">Section 8.1.2.2</a>. The ID MUST be unique within the
 type metadata. It MUST consist of only alphanumeric characters and underscores
-and MUST NOT start with a digit. This property is OPTIONAL.<a href="#section-9-3.4" class="pilcrow">¶</a>
+and MUST NOT start with a digit. This property is OPTIONAL.<a href="#section-9-3.5" class="pilcrow">¶</a>
 </li>
       </ul>
 <div id="claim-path">
@@ -2813,35 +2821,47 @@ users. This property is OPTIONAL.<a href="#section-9.2-3.3" class="pilcrow">¶</
         </ul>
 </section>
 </div>
-<div id="claim-selective-disclosure-metadata">
+<div id="claim-mandatory-metadata">
 <section id="section-9.3">
-        <h3 id="name-claim-selective-disclosure-">
-<a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-claim-selective-disclosure-" class="section-name selfRef">Claim Selective Disclosure Metadata</a>
+        <h3 id="name-claim-mandatory-metadata">
+<a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-claim-mandatory-metadata" class="section-name selfRef">Claim Mandatory Metadata</a>
         </h3>
-<p id="section-9.3-1">The <code>sd</code> property is a string indicating whether the claim is selectively
-disclosable. The following values are defined:<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+<p id="section-9.3-1">The <code>mandatory</code> property is a boolean indicating that, if set to <code>true</code>, the
+claim MUST be included in the credential by the Issuer. If the value is <code>false</code>
+or omitted, the claim is considered optional for the Issuer to include. A claim
+that is <code>mandatory</code> can nonetheless be selectively disclosable, as described in
+<a href="#claim-selective-disclosure-metadata" class="auto internal xref">Section 9.4</a>.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="claim-selective-disclosure-metadata">
+<section id="section-9.4">
+        <h3 id="name-claim-selective-disclosure-">
+<a href="#section-9.4" class="section-number selfRef">9.4. </a><a href="#name-claim-selective-disclosure-" class="section-name selfRef">Claim Selective Disclosure Metadata</a>
+        </h3>
+<p id="section-9.4-1">The <code>sd</code> property is a string indicating whether the claim is selectively
+disclosable. The following values are defined:<a href="#section-9.4-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-9.3-2.1">
-            <code>always</code>: The Issuer MUST make the claim selectively disclosable.<a href="#section-9.3-2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-9.4-2.1">
+            <code>always</code>: The Issuer MUST make the claim selectively disclosable.<a href="#section-9.4-2.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.3-2.2">
-            <code>allowed</code>: The Issuer MAY make the claim selectively disclosable.<a href="#section-9.3-2.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.4-2.2">
+            <code>allowed</code>: The Issuer MAY make the claim selectively disclosable.<a href="#section-9.4-2.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.3-2.3">
-            <code>never</code>: The Issuer MUST NOT make the claim selectively disclosable.<a href="#section-9.3-2.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.4-2.3">
+            <code>never</code>: The Issuer MUST NOT make the claim selectively disclosable.<a href="#section-9.4-2.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-9.3-3">If omitted, the default value is <code>allowed</code>.<a href="#section-9.3-3" class="pilcrow">¶</a></p>
+<p id="section-9.4-3">If omitted, the default value is <code>allowed</code>.<a href="#section-9.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claim-metadata-extends">
-<section id="section-9.4">
+<section id="section-9.5">
         <h3 id="name-extending-claim-metadata">
-<a href="#section-9.4" class="section-number selfRef">9.4. </a><a href="#name-extending-claim-metadata" class="section-name selfRef">Extending Claim Metadata</a>
+<a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-extending-claim-metadata" class="section-name selfRef">Extending Claim Metadata</a>
         </h3>
-<p id="section-9.4-1">The <code>extends</code> property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same <code>path</code> as in the extended type, the child type's object will override the corresponding object from the extended type.<a href="#section-9.4-1" class="pilcrow">¶</a></p>
-<p id="section-9.4-2">Suppose we have a base type metadata document:<a href="#section-9.4-2" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.4-3">
+<p id="section-9.5-1">The <code>extends</code> property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same <code>path</code> as in the extended type, the child type's object will override the corresponding object from the extended type.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
+<p id="section-9.5-2">Suppose we have a base type metadata document:<a href="#section-9.5-2" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5-3">
 <pre>{
   "vct": "https://example.com/base-type-metadata",
   "claims": [
@@ -2856,10 +2876,10 @@ disclosable. The following values are defined:<a href="#section-9.3-1" class="pi
   ]
 }
 
-</pre><a href="#section-9.4-3" class="pilcrow">¶</a>
+</pre><a href="#section-9.5-3" class="pilcrow">¶</a>
 </div>
-<p id="section-9.4-4">And a child type metadata document that extends the base type:<a href="#section-9.4-4" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.4-5">
+<p id="section-9.5-4">And a child type metadata document that extends the base type:<a href="#section-9.5-4" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5-5">
 <pre>{
   "vct": "https://example.com/custom-type-metadata",
   "extends": "https://example.com/base-type-metadata",
@@ -2875,10 +2895,10 @@ disclosable. The following values are defined:<a href="#section-9.3-1" class="pi
   ]
 }
 
-</pre><a href="#section-9.4-5" class="pilcrow">¶</a>
+</pre><a href="#section-9.5-5" class="pilcrow">¶</a>
 </div>
-<p id="section-9.4-6">In this example, the child type inherits the <code>name</code> claim metadata from the base type, but overrides the <code>address.city</code> claim metadata with its own definition. It also adds a new claim metadata for <code>nationalities</code>. The final effective claim metadata for the child type is:<a href="#section-9.4-6" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.4-7">
+<p id="section-9.5-6">In this example, the child type inherits the <code>name</code> claim metadata from the base type, but overrides the <code>address.city</code> claim metadata with its own definition. It also adds a new claim metadata for <code>nationalities</code>. The final effective claim metadata for the child type is:<a href="#section-9.5-6" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5-7">
 <pre>{
   "claims": [
     {
@@ -2896,7 +2916,7 @@ disclosable. The following values are defined:<a href="#section-9.3-1" class="pi
   ]
 }
 
-</pre><a href="#section-9.4-7" class="pilcrow">¶</a>
+</pre><a href="#section-9.5-7" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -3406,8 +3426,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.rDxmREEbL-9VNE-5Ki2ytB5qma-4d9zgFDYSLzLTvL0V-a9
-vEq_lersgWni8Kjl_YvuEeQYxGD4X2U3d__qi1Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.npUm6_TG2Mq5xLksNwJ2SMPKKqVVjWyy-lX2yuVUUXtDPZu
+nN4L2yw8w2W1SFiCNGWD7A5LLPqNPxwskBvU0vQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3848,8 +3868,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.rDxmREEbL-9VNE-5Ki2ytB5qma-4d9zgFDYSLzLTvL0V-a9
-vEq_lersgWni8Kjl_YvuEeQYxGD4X2U3d__qi1Q~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.npUm6_TG2Mq5xLksNwJ2SMPKKqVVjWyy-lX2yuVUUXtDPZu
+nN4L2yw8w2W1SFiCNGWD7A5LLPqNPxwskBvU0vQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3860,9 +3880,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NTk0MDYzMjEsICJzZF9oYXNoIjogIlo4c194dFh3TDUwc3J3V0NzV3EydkI
-tYUdQbEVhTGJvMklYQnRKQ0tUSXcifQ.dYrH0vSJR_IIL6aIVt860aG7r-gI8CBzkNdc
-0m02qxEub5Cy3qtZg0dxV_XFwJUH_7R2Bs-SLmFyUgjzsyn_YA
+hdCI6IDE3NTk0MjM3MTMsICJzZF9oYXNoIjogIk1wSWwxcVJwMzFoTTZiWHJLYURTaUZ
+0ZFBGSVNudV8za2tJZHQ3alp2bWMifQ.8Dj7r3QBXLc4GdPCVK4FdCqb6d-LdQFRfpBP
+-85ouf29T3o9wibLBXaYgifxhK-CIThGXUuSWWogz4Fo6LePNg
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3871,8 +3891,8 @@ tYUdQbEVhTGJvMklYQnRKQ0tUSXcifQ.dYrH0vSJR_IIL6aIVt860aG7r-gI8CBzkNdc
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1759406321,
-  "sd_hash": "Z8s_xtXwL50srwWCsWq2vB-aGPlEaLbo2IXBtJCKTIw"
+  "iat": 1759423713,
+  "sd_hash": "MpIl1qRp31hM6bXrKaDSiFtdPFISnu_3kkIdt7jZvmc"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -3986,7 +4006,8 @@ tYUdQbEVhTGJvMklYQnRKQ0tUSXcifQ.dYrH0vSJR_IIL6aIVt860aG7r-gI8CBzkNdc
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "allowed",
+      "mandatory": true
     },
     {
       "path": ["address"],
@@ -4085,11 +4106,13 @@ for their contributions (some of which substantial) to this draft and to the ini
 </li>
         <li class="compact" id="appendix-D-2.2">Remove JSON schema from Type Metadata<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.3">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-D-2.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.3">Introduce optional mandatory property for claims<a href="#appendix-D-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.4">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.4">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-D-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.5">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.5">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.6">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.6" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>
