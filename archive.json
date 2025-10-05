@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-02T00:30:57.701175+00:00",
+  "timestamp": "2025-10-05T00:35:29.549363+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -12,16 +12,6 @@
       "name": "enhancement",
       "description": "New feature or request",
       "color": "a2eeef"
-    },
-    {
-      "name": "good first issue",
-      "description": "Good for newcomers",
-      "color": "7057ff"
-    },
-    {
-      "name": "help wanted",
-      "description": "Extra attention is needed",
-      "color": "008672"
     },
     {
       "name": "question",
@@ -132,6 +122,11 @@
       "name": "policy",
       "description": "",
       "color": "7d9616"
+    },
+    {
+      "name": "version 1.0",
+      "description": "",
+      "color": "30844e"
     }
   ],
   "issues": [
@@ -3853,11 +3848,11 @@
         "danielfett"
       ],
       "labels": [
-        "discuss"
+        "future-extension"
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2025-09-16T14:39:00Z",
+      "updatedAt": "2025-10-02T17:08:29Z",
       "closedAt": null,
       "comments": [
         {
@@ -3978,6 +3973,13 @@
           "body": "@Sakurann is this still needed or did you find another solution for this?",
           "createdAt": "2025-09-16T14:39:00Z",
           "updatedAt": "2025-09-16T14:39:00Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I still thinks this need to be solved, but maybe not here and now. This might even become a separate specification.",
+          "createdAt": "2025-10-02T17:03:56Z",
+          "updatedAt": "2025-10-02T17:03:56Z"
         }
       ]
     },
@@ -5841,7 +5843,7 @@
       "id": "I_kwDOJbVClc6EU2up",
       "title": "lang vs. locale in type display metadata [was: I18N for Metadata]",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/223",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -5855,8 +5857,8 @@
       ],
       "body": "Once the type metadata gets merged #220 , we should consider I18N. \r\n\r\n@OR13 Since you raised the point on #220 . would we need to consider I18N only for information that is displayed to end-users or also to information intended for developers, e.g., name/description?",
       "createdAt": "2024-04-02T09:51:21Z",
-      "updatedAt": "2025-09-29T20:04:15Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-02T11:58:17Z",
+      "closedAt": "2025-10-02T11:58:17Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -6331,19 +6333,19 @@
       "id": "I_kwDOJbVClc6PX2yc",
       "title": "Claim 'vct' is missing in Type Metadata Format",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/241",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jtalir",
       "authorAssociation": "NONE",
       "assignees": [
         "danielfett"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "I'm not sure why 'vct' is not (as REQUIRED) in 6.2 Type Metadata Format. Is it bug or is this some sort of implicit? It is in the  6.1. Type Metadata Example and also it is twice referenced in 6.3.5 From Type Metadata Glue Documents: \"the Consumer MUST ensure that the vct claim in the credential matches the one in the Type Metadata document\" and \"the Consumer MUST ensure that the value of the extends property in the Type Metadata document matches that of the vct in the Type Metadata document\"\r\n",
       "createdAt": "2024-07-12T11:49:07Z",
-      "updatedAt": "2025-09-16T15:10:12Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-02T17:08:34Z",
+      "closedAt": "2025-10-02T17:08:34Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7947,7 +7949,7 @@
       "id": "I_kwDOJbVClc6vyaxc",
       "title": "Support PNG background besides just color or SVG",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/305",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "grausof",
       "authorAssociation": "NONE",
       "assignees": [
@@ -7959,8 +7961,8 @@
       ],
       "body": "For the \"simple\" rendering method in addition to supporting the `background_color` it could be a good idea to also support a `background_image` for those credentials that already have a **well-defined background** obviously going to specify the different dimensions and resolutions to support as for example is done for iOS and Android Wallets (see https://developer.apple.com/design/human-interface-guidelines/wallet). \n\nThe use of SVG is very complex and also requires a very high computational load for the rendering of complex objects or with many shades just think of the background of a national identity card.",
       "createdAt": "2025-03-26T11:18:33Z",
-      "updatedAt": "2025-09-16T15:41:57Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-02T16:56:00Z",
+      "closedAt": "2025-10-02T16:56:00Z",
       "comments": [
         {
           "author": "danielfett",
@@ -7989,6 +7991,13 @@
           "body": "> > I can work on this. By adding variants of the background image (one option for dark ui, one for light), I would also update the logo property since some of the features are also relevant for it\n> \n> [@cre8](https://github.com/cre8) are you still intending to do a PR?\n\n\"[cre8](https://github.com/cre8)\nlinked a pull request that will close this issue [3 weeks ago](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/305#event-3135205203)\n\n[fix: update logo and background structure #335](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/335)\"\n",
           "createdAt": "2025-09-16T15:41:57Z",
           "updatedAt": "2025-09-16T15:41:57Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[#358](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/358) fixes this ",
+          "createdAt": "2025-10-02T16:56:00Z",
+          "updatedAt": "2025-10-02T16:56:00Z"
         }
       ]
     },
@@ -8142,20 +8151,19 @@
       "id": "I_kwDOJbVClc63ZzTg",
       "title": "Should `mandatory` be added to claim metadata?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/310",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [
         "enhancement",
-        "discuss",
-        "Ready-for-PR",
+        "HAS PR",
         "schema"
       ],
       "body": "Currently, (sd-jwt-vc draft 8 and openid4vci draft 15) there is the following between credential issuer metadata and sd-jwt-vc type metadata\n\nOn the vci specification for each claim we have a `path` (holding a claim path) and an attribute `mandatory`\nWhereas in the [sd-jwt-vc metadata](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-08.html#claim-metadata) we have the `path` and \n\nVCI\n> mandatory : Boolean which, when set to true, indicates that the Credential Issuer will always include this claim in the issued Credential. If set to false, the claim is not included in the issued Credential if the wallet did not request the inclusion of the claim, and/or if the Credential Issuer chose to not include the claim. If the mandatory parameter is omitted, the default value is false\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"mandatory\": true,\n}\n```\n\n\nSD-JWT-VC Type metadata\n```json\n{\n  \"path\": [ \"given_name\" ],\n  \"sd\": \"always\"\n}\n```\n\nTo my understanding\n- `mandatory` ultimately expresses that if a given attribute will be always or optionally present, regardless of  `sd` behavior/value. \n- `sd` express the possible disclosure property of the attribute (ultimately, if it is selectively disclosable, or not)\n\nThose two properties are useful for somebody that wants to express a requirement. \nFor instance, perhaps it doesn't make sense to include in a DCQL query an explicitly reference to a claim that is mandatory & never selectively disclosable.\n\nIn addition, I think that the `schema` advertised by sd-jwt-vc metadata cannot express the `mandatory` semantics, given that is mostly driven by the `sd` value. For instance, I cannot express (to my understanding) that `family_name` is a mandatory field, yet always selectively disclosable. Merely I can say that if there is a \"family_name\" attribute present it has to be a string.\n\n\nFor these reasons, I was thinking whether `mandatory` should be added to the claim metadata of this spec.\n\nPS: Apologies for the lengthy description\n\n\n",
       "createdAt": "2025-05-20T13:14:59Z",
-      "updatedAt": "2025-09-17T12:09:20Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-02T16:48:13Z",
+      "closedAt": "2025-10-02T16:48:13Z",
       "comments": [
         {
           "author": "danielfett",
@@ -8531,7 +8539,7 @@
       "labels": [],
       "body": "Currently `sd` property has one of the following values\n\n- **always**: The Issuer MUST make the claim selectively disclosable. \n- **allowed**: The Issuer MAY make the claim selectively disclosable. \n- **never**: The Issuer MUST NOT make the claim selectively disclosable\n\nAnd in addition, **allowed** is the default if `sd` is not provided explicitly\n\n\nDoes it make sense for an issuer to use the value **allowed** (explicitly or implicitly)? \n\nTo my understanding **allowed** can certainly be used to a parent metadata. \nOn the other hand, I don't understand  what **allowed** really means for an issuer.\n\nAn issuer is expected to take a specific decision (always or never) for every attribute that is defined with an `allowed` property. Furthermore, this decision should be explicitly documented to the type metadata, with the issuer (extending to override) **allowed** properties.\n\n\n\n\n\n\n",
       "createdAt": "2025-07-08T07:06:30Z",
-      "updatedAt": "2025-09-29T21:43:58Z",
+      "updatedAt": "2025-10-03T07:24:22Z",
       "closedAt": null,
       "comments": [
         {
@@ -8547,6 +8555,27 @@
           "body": "> Apologies that this has been just sitting here for so long [@babisRoutis](https://github.com/babisRoutis). Can you help me better understand the question/issue? The sd property is part of the type metadata and, as you noted, a value of \"allowed\" means that \"The Issuer MAY make the claim selectively disclosable\". That means that making the given claim selectively disclosable or not is at the digression of the issuer. Note that in many (most?) cases the entity that publishes the type metadata is not the same as the issuer. I'm struggling to understand or answer the question, \"Should sd allowed be used by issuers?\"\n\nDear @bc-pi \n\nObviously my poor English are not helping, but I will try to elaborate \ud83d\ude04 \n\nHow a wallet or a RP should interpret a type definition (that after merging possible parent definitions) ends up with a claim having sd equal to allowed?\n\nShould they assume  that some times  this issuer encodes the claim as always selectively disclosable and others as never selectively disclosable?\n\nI guess no. \n\nWallets/RPs expect that an Issuer behaves in a consistent manner. \n\nAs I see it \n- sd allowed can/should be used only in parent type definitions (probably published by other entities, not the Issuer)\n- In such case, the Issuer must override those parent definitions to explicitly provide their decision.\n\nFinally, for what is worth, I have seen definitions having several claims marked with an  sd equal to allowed (by omitting an explicit value), which frankly I consider that makes the sd  attribute almost meaningless. ",
           "createdAt": "2025-09-29T21:43:58Z",
           "updatedAt": "2025-09-29T21:43:58Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "sd=allowed can be a signal to issuers, telling them whether they may make a claim selectively disclosable. If that is the case, a verifier or wallet cannot really deduce anything about the behavior of the issuer from this information. That is expected. If the issuer wants to provide more information, it should set sd to either `always` or `never`.\n\nSo our recommendation could be to set `always` or `never`, I guess?",
+          "createdAt": "2025-10-02T17:12:39Z",
+          "updatedAt": "2025-10-02T17:12:39Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> So our recommendation could be to set `always` or `never`, I guess?\n\nI am not convinced that is a recommendation we should make. Nor of the utility of #359. \n\n",
+          "createdAt": "2025-10-02T19:54:56Z",
+          "updatedAt": "2025-10-02T19:54:56Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> sd=allowed can be a signal to issuers, telling them whether they may make a claim selectively disclosable. If that is the case, a verifier or wallet cannot really deduce anything about the behavior of the issuer from this information. That is expected. If the issuer wants to provide more information, it should set sd to either `always` or `never`.\n> \n> So our recommendation could be to set `always` or `never`, I guess?\n\nHi @danielfett \n\nIndeed this was exactly my point. \n\nTo be frank, I believe that `allowed` should be removed. \n\nHere is why:\n\nAssume the following case:\n- a set of Issuers participating to the same ecosystem, which defines, a parent definition  for a credential.\n- this parent definition marks some claims as  `allowed`\n- a verifier that wants to query for a credential issued by any of the above issuers, for claims marked as `allowed`\n\nIn this case, verifier would base, ideally, its query to the parent definition and not the individual choices of each issuer. So, the only practical option for the verifier when requesting a claim marked to the parent with allowed, is to treat it as \"always\" to cover the case that some issuers would use this option.\n\n\n\n",
+          "createdAt": "2025-10-03T07:24:22Z",
+          "updatedAt": "2025-10-03T07:24:22Z"
         }
       ]
     },
@@ -8597,15 +8626,15 @@
       "id": "I_kwDOJbVClc7Bk14p",
       "title": "No more DIDs in 3.5 of draft 10",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/326",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ThierryThevenet",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "The disappearance of the DID in section 3.5 is causing questions and a lot of disappointment among projects. Considering that the SD-JWT VC standard is backward-looking, towards x509 certificates from the 1980s, while the demand today is clearly towards decentralized ecosystems. Just for your information.\nThe information in section 10.2 generally suggesting that in fact the other methods (DIDs?) would be less reliable than those cited is perplexing (this is a personal opinion).",
       "createdAt": "2025-07-21T08:15:03Z",
-      "updatedAt": "2025-07-22T21:20:07Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-03T12:17:34Z",
+      "closedAt": "2025-10-03T12:17:34Z",
       "comments": [
         {
           "author": "peacekeeper",
@@ -8620,6 +8649,13 @@
           "body": "@danielfett @awoie May you please explain the reasons for change? Why can\u00b4t we keep the section as agreed autumn 2024 and last month 2025\n\nfully agree to @peacekeeper @ThierryThevenet to keep the text\n\n\"DID Document Resolution: If a recipient supports DID Document Resolution and if the iss value contains a DID [[W3C.DID](https://www.w3.org/TR/did-core/)], the recipient MUST retrieve the public key from the DID Document resolved from the DID in the iss value. In this case, if the kid JWT header parameter is present, the kid MUST be a relative or absolute DID URL of the DID in the iss value, identifying the public key.\"",
           "createdAt": "2025-07-22T11:39:59Z",
           "updatedAt": "2025-07-22T21:20:07Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Closing this following WG consensus.\n\nhttps://mailarchive.ietf.org/arch/msg/oauth/Z71GOOkkjpC1O46kHPLafqAoz0E/",
+          "createdAt": "2025-10-03T12:17:34Z",
+          "updatedAt": "2025-10-03T12:17:34Z"
         }
       ]
     },
@@ -9080,7 +9116,7 @@
       ],
       "body": "The spec allows for extensibility by enabling ecosystems to specify additional Issuer Signature Mechanisms. Shouldn't ecosystems and their participants also be able to elect NOT to support mechanisms defined in section 3.5? \n\nGiven that this extensibility is created to, among others, address DIDs, I imagine that such pure did-as-iss-based ecosystems may elect not to support the two key mechanisms defined in this specification and still these ecosystems and its participants will be compliant with SD-JWT VC.",
       "createdAt": "2025-09-15T10:54:41Z",
-      "updatedAt": "2025-09-29T20:00:56Z",
+      "updatedAt": "2025-10-04T13:12:13Z",
       "closedAt": null,
       "comments": [
         {
@@ -9093,9 +9129,9 @@
         {
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
-          "body": "@yaromin, does that help answer you question at all? And/or are there additions or classifications that could reasonably be made to the draft that would help?",
+          "body": "@yaromin, does that help answer you question at all? And/or are there additions or clarifications that could reasonably be made to the draft that would help?\n\n[edit: fixed classifications to clarifications]\n",
           "createdAt": "2025-09-29T20:00:55Z",
-          "updatedAt": "2025-09-29T20:00:55Z"
+          "updatedAt": "2025-10-04T13:12:13Z"
         }
       ]
     },
@@ -9181,15 +9217,15 @@
       "id": "I_kwDOJbVClc7NSLwO",
       "title": "background_image is used in many OIDC4VCI configurations, would it be possible to add it as an option aside logo in the rendering method simple",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/352",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "ThierryThevenet",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-09-23T07:42:43Z",
-      "updatedAt": "2025-09-23T13:13:16Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-02T16:55:07Z",
+      "closedAt": "2025-10-02T16:55:07Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -9204,6 +9240,13 @@
           "body": "Sorry, I did  not. Good. Thank you.",
           "createdAt": "2025-09-23T13:13:15Z",
           "updatedAt": "2025-09-23T13:13:15Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[#358](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/358) fixes this ",
+          "createdAt": "2025-10-02T16:55:07Z",
+          "updatedAt": "2025-10-02T16:55:07Z"
         }
       ]
     },
@@ -9221,9 +9264,41 @@
       ],
       "body": "<img width=\"810\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b9b11c8e-9a0f-4d19-80aa-02de73b17924\" />\n\n> @bc-pi, I think I failed to explain that well. I concur with your intuition.\n> \n> The idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\n\nAh, I see. Thanks for clarifying. I think that is outside the scope of this PR. And IMHO not necessary and arguably not a proper place. \n\n> If you're looking for widespread adoption, \n\nThat's the goal, yes. \n\n> it might be great to provide such mechanism.\n\nI disagree. But will create an issue for further discussion so this conversation can be resolved and get this incorporated.\n\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345#discussion_r2373239594_\n            ",
       "createdAt": "2025-09-23T19:19:33Z",
-      "updatedAt": "2025-09-30T11:35:34Z",
+      "updatedAt": "2025-10-02T17:01:49Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "The use of Type Metadata is optional anyway, so it is very hard to imagine that any of the information would be critial. I suggest to close this issue.",
+          "createdAt": "2025-10-02T17:01:49Z",
+          "updatedAt": "2025-10-02T17:01:49Z"
+        }
+      ]
+    },
+    {
+      "number": 355,
+      "id": "I_kwDOJbVClc7PNEtU",
+      "title": "A new field called \"Issuer Authorization URI - \"iss_auth\"\"",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/355",
+      "state": "OPEN",
+      "author": "tweeddalex",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "**Section 10.6** of the spec clearly expresses that Verifiers/Wallets SHOULD check the authorization of the issuer. However, the spec currently leaves no room for the issuer authorization to be included within the credential itself - this is a bit of a catch 22. \n\nThis omission , therefore, puts the entire onus of establishing issuer authorization on profile extensions, which will likely lead to multiple competing profiles and approaches - inhibiting interop.\n\nI propose a simple **optional** field within the spec called \"`iss_auth`\" which expects a HTTP(s) URI pointing towards an external resource detailing information about what the issuer is authorized to do. This could be something like a VC, a flat governance file or a FederationId. \n\nProfiles can then define how the content at the other end of the  \"iss_auth\" URI is processed to determine the authorization of the issuer; but, including this optional field allows this type of profile to be added without deviating from the core data model. Therefore, verifying software will be less likely to throw an error as the field is expected to be included. \n\nCurrently, if an SD-JWT VC is signed using a JWT Issuer Metadata URI, there is NO WAY to determine the authorization of the issuer without some type of out-of-band information. This is massively problematic in practice, and makes signing using JWT Issuer Metadata a very unsecure signing method.",
+      "createdAt": "2025-10-02T06:57:55Z",
+      "updatedAt": "2025-10-02T20:01:17Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "The credential should not define its eco system, but it should be predefined by the verifier. This is self claiming and gives 0 security. Instead the following approach is used in the EUDI Wallet eco system according to the ARF\n\nLet's use the examples of diplomas in Germany:\n- An HR department will subscribe to an attestation rulebook that got published somewhere (catalog of attestations by a trusted source)\n- The verifier will accept the machine readable rulebook defining the SD JWT VC schema and also included a list of authorized issuers (allow list, root of trust, etc).\n- based on these information, the verifier is able to build a DCQL like \"present a credential of vct = german_diploma that got issued by this issuer that got its certificate of this PKI\".\n\nSee [technical discussion](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/428) for further information.",
+          "createdAt": "2025-10-02T20:01:17Z",
+          "updatedAt": "2025-10-02T20:01:17Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -26316,21 +26391,21 @@
       "id": "PR_kwDOJbVClc6lvPzR",
       "title": "fix: update logo and background structure",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/335",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "cre8",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "fixes #305\n\n- adds information for background image\n- using the reference to apple guidelines, allowing a more granual approach (different images for multiple dimensions, etc)\n- also aligning existing logo approach so both cases are using the same approach\n\nSigned-off-by: Mirko Mollik <mirko.mollik@eudi.sprind.org>",
       "createdAt": "2025-08-28T06:35:04Z",
-      "updatedAt": "2025-10-01T11:47:09Z",
+      "updatedAt": "2025-10-02T19:49:46Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "fc9a8d261dc0ca6ecf6c28cd16018a7b30dc9403",
       "headRepository": "cre8/oauth-sd-jwt-vc",
       "headRefName": "fix/305",
       "headRefOid": "db5bc75361dc61e46d3ef916aded5575bb50921d",
-      "closedAt": null,
+      "closedAt": "2025-10-02T19:49:46Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
@@ -26355,6 +26430,27 @@
           "body": "> > would it be possible to do just the minimum viable/necessary things here?\r\n> \r\n> What do you mean with this, just to align with the existing definition of logo?\r\n\r\nI don't know. But there's a lot more here than I was expecting. I know @danielfett \"approved\" it but then said \"we have no practical experience with this rendering stuff\" and added a significant number of comments.  I had a significant number of additional comments and didn't even complete a review. \r\n\r\n> \r\n> I used the referenced approach from apple that got mentioned in the issue and that got \"ready for pr\"\r\n\r\nI'm struggling to reconcile it, to be honest. \r\n\r\n",
           "createdAt": "2025-09-30T16:04:31Z",
           "updatedAt": "2025-10-01T11:47:09Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "I agree that this PR is adding a lot of features, but for a 1.0 release it's fine to go with #358 \r\n\r\nThe only approach where I saw this multi image approach was for app icons\r\n\r\nSo shall this be closed then @bc-pi @danielfett ?",
+          "createdAt": "2025-10-02T18:43:40Z",
+          "updatedAt": "2025-10-02T18:43:40Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Go enjoy your wedding @cre8! ",
+          "createdAt": "2025-10-02T19:48:48Z",
+          "updatedAt": "2025-10-02T19:48:48Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "thank you for the work that went into this @cre8 but yes I think we are going to favor https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/358 for the time being ",
+          "createdAt": "2025-10-02T19:49:46Z",
+          "updatedAt": "2025-10-02T19:49:46Z"
         }
       ],
       "reviews": [
@@ -28021,24 +28117,26 @@
       "id": "PR_kwDOJbVClc6qIE5k",
       "title": "Rename lang to locale (because tradition)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/353",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Fixes #223 ",
       "createdAt": "2025-09-23T18:44:22Z",
-      "updatedAt": "2025-09-30T15:58:43Z",
+      "updatedAt": "2025-10-02T11:58:16Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "587520ce2ceac3575b71f96538cb7305e2dfef44",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/dead-or-alive",
       "headRefOid": "80498665f3d9133f77a30b554a85b37247aad911",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-10-02T11:58:16Z",
+      "mergedAt": "2025-10-02T11:58:16Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "1dd44baf51c99b905c8d1b690a851636cabd5969"
+      },
       "comments": [],
       "reviews": [
         {
@@ -28099,6 +28197,421 @@
           "createdAt": "2025-09-30T15:58:43Z",
           "updatedAt": "2025-09-30T15:58:43Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 356,
+      "id": "PR_kwDOJbVClc6rwV7a",
+      "title": "Fix vct in metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/356",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear\r\n\r\nFixes #241 ",
+      "createdAt": "2025-10-02T12:10:42Z",
+      "updatedAt": "2025-10-02T17:08:33Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "937be08b4f5ae8d137b897972d0218cc3dab202e",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/fix-vct-in-metadata",
+      "headRefOid": "446eabd7dcbf4e7e2320b1fdf2e326428e7fe7a7",
+      "closedAt": "2025-10-02T17:08:33Z",
+      "mergedAt": "2025-10-02T17:08:33Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "eb4d731a5d01499d61cea474f79075864bdac229"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7EavRr",
+          "commit": {
+            "abbreviatedOid": "a03ecc6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:04:05Z",
+          "updatedAt": "2025-10-02T16:04:05Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Is this \"The value MUST be identical to the `vct` claim used in the SD-JWT VC payload\" problematic with metadata inheritance?    ",
+              "createdAt": "2025-10-02T16:04:05Z",
+              "updatedAt": "2025-10-02T16:04:05Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Eax6o",
+          "commit": {
+            "abbreviatedOid": "a03ecc6"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:07:44Z",
+          "updatedAt": "2025-10-02T16:07:44Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "Aaaahhh, yes, it is.\r\n\r\n```suggestion\r\n```",
+              "createdAt": "2025-10-02T16:07:44Z",
+              "updatedAt": "2025-10-02T16:07:44Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EayZ8",
+          "commit": {
+            "abbreviatedOid": "a03ecc6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:08:26Z",
+          "updatedAt": "2025-10-02T16:08:26Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "I know this isn't new but I'm hoping you can explain to me the justification/utility of #integrity suffixed things (which aren't claims except for vct#integrity). On a call sometime would be fine. Like the one we aren't having right now due to a different call running long. ",
+              "createdAt": "2025-10-02T16:08:26Z",
+              "updatedAt": "2025-10-02T16:08:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbPtc",
+          "commit": {
+            "abbreviatedOid": "a03ecc6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:46:20Z",
+          "updatedAt": "2025-10-02T16:46:20Z",
+          "comments": [
+            {
+              "originalPosition": 18,
+              "body": "Screenshotting this for use in some presentation or something in the future. ",
+              "createdAt": "2025-10-02T16:46:20Z",
+              "updatedAt": "2025-10-02T16:46:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbdS_",
+          "commit": {
+            "abbreviatedOid": "4aeceb3"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:57:13Z",
+          "updatedAt": "2025-10-02T16:57:13Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\nMetadata (either in the SD-JWT VC itself or in an `extends` property in a Type\r\n```",
+              "createdAt": "2025-10-02T16:57:13Z",
+              "updatedAt": "2025-10-02T16:57:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EberY",
+          "commit": {
+            "abbreviatedOid": "4aeceb3"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:58:15Z",
+          "updatedAt": "2025-10-02T16:58:15Z",
+          "comments": [
+            {
+              "originalPosition": 19,
+              "body": "```suggestion\r\nThe following sections define methods to retrieve Type Metadata.\r\n```",
+              "createdAt": "2025-10-02T16:58:15Z",
+              "updatedAt": "2025-10-02T16:58:16Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbfWn",
+          "commit": {
+            "abbreviatedOid": "4aeceb3"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-02T16:58:42Z",
+          "updatedAt": "2025-10-02T16:58:42Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbhXH",
+          "commit": {
+            "abbreviatedOid": "70c4de9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-02T17:00:11Z",
+          "updatedAt": "2025-10-02T17:00:11Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 357,
+      "id": "PR_kwDOJbVClc6rwnNm",
+      "title": "Introduce the `mandatory` claim from VCI",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/357",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/310\r\n\r\nYes, `mandatory` is a terrible choice in this context, but it is already in use in VCI with the same meaning.\r\n\r\nNote that mandatory is optional, but I would personally recommend to use it.",
+      "createdAt": "2025-10-02T12:36:20Z",
+      "updatedAt": "2025-10-02T16:48:13Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "1dd44baf51c99b905c8d1b690a851636cabd5969",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/optional-mandatory",
+      "headRefOid": "b2177745bcc7ac00b69d988764a1e5066665a499",
+      "closedAt": "2025-10-02T16:48:12Z",
+      "mergedAt": "2025-10-02T16:48:12Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "32779dda4333e85379e85c7be321fa3916c00e69"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Fixes #310\r\n> \r\n> Yes, `mandatory` is a terrible choice in this context, but it is already in use in VCI with the same meaning.\r\n\r\nAgree and agree. \r\n\r\n> \r\n> Note that mandatory is optional, but I would personally recommend to use it.\r\n\r\nI cannot tell if you are trolling here but I celebrate it nonetheless. \r\n\r\n",
+          "createdAt": "2025-10-02T15:59:45Z",
+          "updatedAt": "2025-10-02T15:59:45Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Thank you, by the way, for doing this. I can now close the tab I've had open for a week+ to https://openid.net/specs/openid-4-verifiable-credential-issuance-1_0.html#appendix-B.2-2.2 ",
+          "createdAt": "2025-10-02T16:26:20Z",
+          "updatedAt": "2025-10-02T16:26:20Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7EapgW",
+          "commit": {
+            "abbreviatedOid": "b217774"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T15:57:36Z",
+          "updatedAt": "2025-10-02T15:57:36Z",
+          "comments": [
+            {
+              "originalPosition": 39,
+              "body": "A+ wording here, love it. :) ",
+              "createdAt": "2025-10-02T15:57:36Z",
+              "updatedAt": "2025-10-02T15:57:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EasUu",
+          "commit": {
+            "abbreviatedOid": "b217774"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-02T16:00:15Z",
+          "updatedAt": "2025-10-02T16:00:15Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbQgB",
+          "commit": {
+            "abbreviatedOid": "b217774"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-02T16:47:30Z",
+          "updatedAt": "2025-10-02T16:47:30Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 358,
+      "id": "PR_kwDOJbVClc6ryqlK",
+      "title": "Simple background image aligned with OpenID4VCI",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/358",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Solves #352 \r\n\r\nSolves #305 \r\n\r\nThis is a replacement for PR #335 that introduces fewer additional mechanisms and details.",
+      "createdAt": "2025-10-02T15:28:26Z",
+      "updatedAt": "2025-10-02T16:54:34Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "1dd44baf51c99b905c8d1b690a851636cabd5969",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/background-check",
+      "headRefOid": "74ce6b04195b1baad39757f2fd826b1bd3736656",
+      "closedAt": "2025-10-02T16:54:34Z",
+      "mergedAt": "2025-10-02T16:54:34Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "937be08b4f5ae8d137b897972d0218cc3dab202e"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7EbShf",
+          "commit": {
+            "abbreviatedOid": "4e90905"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-02T16:49:53Z",
+          "updatedAt": "2025-10-02T16:49:53Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbWwM",
+          "commit": {
+            "abbreviatedOid": "4e90905"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:52:49Z",
+          "updatedAt": "2025-10-02T16:52:49Z",
+          "comments": [
+            {
+              "originalPosition": 33,
+              "body": "```suggestion\r\n            \"uri#integrity\": \"sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA=\"\r\n```",
+              "createdAt": "2025-10-02T16:52:49Z",
+              "updatedAt": "2025-10-02T16:52:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbW-m",
+          "commit": {
+            "abbreviatedOid": "4e90905"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T16:53:00Z",
+          "updatedAt": "2025-10-02T16:53:00Z",
+          "comments": [
+            {
+              "originalPosition": 45,
+              "body": "```suggestion\r\n            \"uri#integrity\": \"sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh=\"\r\n```",
+              "createdAt": "2025-10-02T16:53:00Z",
+              "updatedAt": "2025-10-02T16:53:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7EbYoy",
+          "commit": {
+            "abbreviatedOid": "74ce6b0"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-02T16:54:01Z",
+          "updatedAt": "2025-10-02T16:54:01Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 359,
+      "id": "PR_kwDOJbVClc6rzyRL",
+      "title": "Proposal for recommendation for sd and how extended types use it",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/359",
+      "state": "OPEN",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #323 \r\n\r\nAlso adds rules when extending types (both for `sd` and for `mandatory`).",
+      "createdAt": "2025-10-02T17:17:37Z",
+      "updatedAt": "2025-10-02T19:57:10Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "eb4d731a5d01499d61cea474f79075864bdac229",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/proposal-for-sd",
+      "headRefOid": "d5355af618f3ddec15f070fb652e8224bdb47701",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I realize this pull request is \"still a work in progress\" but I am not sure that making any more progress on it would be time well spent. ",
+          "createdAt": "2025-10-02T19:56:35Z",
+          "updatedAt": "2025-10-02T19:57:10Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7Eb6Le",
+          "commit": {
+            "abbreviatedOid": "a477a62"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-02T17:20:53Z",
+          "updatedAt": "2025-10-02T17:20:53Z",
+          "comments": [
+            {
+              "originalPosition": 14,
+              "body": "```suggestion\r\n`allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.\r\nHowever, it MUST NOT change a claim that is marked as `always` or `never` in the extended\r\n```",
+              "createdAt": "2025-10-02T17:20:53Z",
+              "updatedAt": "2025-10-02T17:20:54Z"
+            }
+          ]
         }
       ]
     }
