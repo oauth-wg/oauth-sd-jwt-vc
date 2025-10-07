@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-05T00:35:29.549363+00:00",
+  "timestamp": "2025-10-07T00:32:03.828049+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -6541,7 +6541,7 @@
       ],
       "body": "Per John Bradley comment during IETF 120",
       "createdAt": "2024-07-22T20:37:32Z",
-      "updatedAt": "2025-09-09T21:28:19Z",
+      "updatedAt": "2025-10-06T21:07:37Z",
       "closedAt": null,
       "comments": [
         {
@@ -6592,6 +6592,13 @@
           "body": "In the issue or some other we talked about if the schema should be either used by the holder to verify the schema of the issued credential or by the verifier to verify the presentation. In the last case, the schema has to be disclosed to the verifier. \n\nWhen using OID4VP with DCQL, the credential is requested anyway by the vct value. Therefore the URI should be known to the verifier in advance with all it's values. And since metadata value is not unique for each person, we are not sharing any personal critical data.",
           "createdAt": "2025-09-09T21:28:19Z",
           "updatedAt": "2025-09-09T21:28:19Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The result of #342 is that JSON schema is no longer part of type metadata but I think the sentiment behind @cre8's https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247#issuecomment-3272330455 \"since metadata value is not unique for each person, we are not sharing any personal critical data\" remains. I will not claim perfect privacy but don't see this as overtly problematic. So I'm back to this https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247#issuecomment-3246523715 from a month ago - if @ve7jtb or anyone has some actionable suggestion for this, let's consider it. Otherwise, I plan to close this in some reasonable time frame.",
+          "createdAt": "2025-10-06T21:06:47Z",
+          "updatedAt": "2025-10-06T21:07:37Z"
         }
       ]
     },
