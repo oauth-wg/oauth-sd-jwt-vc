@@ -1535,6 +1535,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Fix cnf claim and JWK references and move them to normative
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
+* Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
 
 -11
 
