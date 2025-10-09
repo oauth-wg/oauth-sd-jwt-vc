@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-07T00:32:03.828049+00:00",
+  "timestamp": "2025-10-09T00:32:04.399574+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5955,13 +5955,15 @@
       "state": "OPEN",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [
-        "discuss"
+        "Ready-for-PR"
       ],
       "body": "The spec should define a way to support other data types. Pictures of the credential holders will be a common case, but other data types might occur as well.\r\n\r\nOpenID Connect already defines a claim:\r\n> `picture` \tstring \tURL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.\r\n\r\nIn that sense, we could just recommend that data types other than the native JSON types should be encoded, for example, as data URIs (that would be compatible to the definition of `picture` above).",
       "createdAt": "2024-04-02T18:35:55Z",
-      "updatedAt": "2025-09-16T14:59:22Z",
+      "updatedAt": "2025-10-07T18:25:35Z",
       "closedAt": null,
       "comments": [
         {
@@ -5984,6 +5986,13 @@
           "body": "If we do this, we need security considerations since there could go a lot wrong when not sanitized properly before used in web pages or mobile apps:\n- XSS if the data URI has `data:text/html`, or `data:text/javascript`, an attacker could embed an executable script.\n- Phishing / UI Redressing, e.g., if `data:text/html;base64` payload renders a fake login page or misleading UI inside an `<iframe>` or popup.\n- Resource exhaustion / DoS, e.g., very large data URIs (MBs of base64) can crash parsers, browsers, or mobile apps.\n- Bypassing content security policies, e.g., if Content Security Policy does not block `data:` and content could be injected.\n- File handling quirks, e.g., if the data URI encodes an unexpected file type (SVG, PDF, etc.), it could contain embedded scripts or trigger exploits in certain renderers.",
           "createdAt": "2025-09-16T14:58:55Z",
           "updatedAt": "2025-09-16T14:59:09Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Agreed that this is useful but security considerations should be more general since it depends on the embedding context.",
+          "createdAt": "2025-10-07T18:25:35Z",
+          "updatedAt": "2025-10-07T18:25:35Z"
         }
       ]
     },
@@ -7348,12 +7357,14 @@
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
-        "danielfett"
+        "bc-pi"
       ],
-      "labels": [],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "[Dr. Horvat, PhD](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/264#issuecomment-2477101068):\r\n> However, metadata owner must be aware of the responsibility to take care of the versioning.\r\n\r\nWe could add this as a consideration to the spec.",
       "createdAt": "2024-11-15T10:44:07Z",
-      "updatedAt": "2025-09-16T15:17:00Z",
+      "updatedAt": "2025-10-07T18:22:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -7362,6 +7373,13 @@
           "body": "@danielfett couldn't the version be encoded in the `vct` value itself? However, I think it wouldn't be the worst to provide some guidance on versioning. Do you have a proposal @alenhorvat @danielfett ?",
           "createdAt": "2025-09-16T15:17:00Z",
           "updatedAt": "2025-09-16T15:17:00Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The `vct` value is the version and could even include version identifier. We can make it a bit more clear in the spec.",
+          "createdAt": "2025-10-07T18:22:26Z",
+          "updatedAt": "2025-10-07T18:22:26Z"
         }
       ]
     },
@@ -8546,7 +8564,7 @@
       "labels": [],
       "body": "Currently `sd` property has one of the following values\n\n- **always**: The Issuer MUST make the claim selectively disclosable. \n- **allowed**: The Issuer MAY make the claim selectively disclosable. \n- **never**: The Issuer MUST NOT make the claim selectively disclosable\n\nAnd in addition, **allowed** is the default if `sd` is not provided explicitly\n\n\nDoes it make sense for an issuer to use the value **allowed** (explicitly or implicitly)? \n\nTo my understanding **allowed** can certainly be used to a parent metadata. \nOn the other hand, I don't understand  what **allowed** really means for an issuer.\n\nAn issuer is expected to take a specific decision (always or never) for every attribute that is defined with an `allowed` property. Furthermore, this decision should be explicitly documented to the type metadata, with the issuer (extending to override) **allowed** properties.\n\n\n\n\n\n\n",
       "createdAt": "2025-07-08T07:06:30Z",
-      "updatedAt": "2025-10-03T07:24:22Z",
+      "updatedAt": "2025-10-08T16:10:34Z",
       "closedAt": null,
       "comments": [
         {
@@ -8583,6 +8601,20 @@
           "body": "> sd=allowed can be a signal to issuers, telling them whether they may make a claim selectively disclosable. If that is the case, a verifier or wallet cannot really deduce anything about the behavior of the issuer from this information. That is expected. If the issuer wants to provide more information, it should set sd to either `always` or `never`.\n> \n> So our recommendation could be to set `always` or `never`, I guess?\n\nHi @danielfett \n\nIndeed this was exactly my point. \n\nTo be frank, I believe that `allowed` should be removed. \n\nHere is why:\n\nAssume the following case:\n- a set of Issuers participating to the same ecosystem, which defines, a parent definition  for a credential.\n- this parent definition marks some claims as  `allowed`\n- a verifier that wants to query for a credential issued by any of the above issuers, for claims marked as `allowed`\n\nIn this case, verifier would base, ideally, its query to the parent definition and not the individual choices of each issuer. So, the only practical option for the verifier when requesting a claim marked to the parent with allowed, is to treat it as \"always\" to cover the case that some issuers would use this option.\n\n\n\n",
           "createdAt": "2025-10-03T07:24:22Z",
           "updatedAt": "2025-10-03T07:24:22Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "@babisRoutis, would you mind taking a look at https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/359, which @danielfett did largely to address this issue?",
+          "createdAt": "2025-10-08T15:48:28Z",
+          "updatedAt": "2025-10-08T15:48:28Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bc-pi  Yes I will provide my comment",
+          "createdAt": "2025-10-08T16:10:06Z",
+          "updatedAt": "2025-10-08T16:10:34Z"
         }
       ]
     },
@@ -28579,13 +28611,13 @@
       "labels": [],
       "body": "Fixes #323 \r\n\r\nAlso adds rules when extending types (both for `sd` and for `mandatory`).",
       "createdAt": "2025-10-02T17:17:37Z",
-      "updatedAt": "2025-10-02T19:57:10Z",
+      "updatedAt": "2025-10-08T16:43:26Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "eb4d731a5d01499d61cea474f79075864bdac229",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/proposal-for-sd",
-      "headRefOid": "d5355af618f3ddec15f070fb652e8224bdb47701",
+      "headRefOid": "0c2fa59c371b2ba565d7e9b0accfac6be122b1d9",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -28597,6 +28629,20 @@
           "body": "I realize this pull request is \"still a work in progress\" but I am not sure that making any more progress on it would be time well spent. ",
           "createdAt": "2025-10-02T19:56:35Z",
           "updatedAt": "2025-10-02T19:57:10Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Done!",
+          "createdAt": "2025-10-08T09:02:25Z",
+          "updatedAt": "2025-10-08T09:02:25Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@danielfett \r\n\r\nI believe that this PR although provides a clear logic for extending claims, it doesn't eliminate the problem discussed in #323.\r\n\r\nAn issuer can still use `sd` equal to `allowed` for a claim \r\n- When it doesn't extend a parent definition, or\r\n- When it doesn't extend a claim defined in a parent definition and marked as `allowed`\r\n\r\nTo my understanding :\r\n- `allowed` is just a signal to the Issuers, totally meaningless to RPs/Wallets.\r\n- RP/Wallets are more important consumers of type definitions (compared to the issuers) \r\n\r\nso, perhaps, it would be better to just  remove `allowed`.\r\n\r\n\r\n\r\n\r\n\r\n",
+          "createdAt": "2025-10-08T16:43:26Z",
+          "updatedAt": "2025-10-08T16:43:26Z"
         }
       ],
       "reviews": [
@@ -28619,6 +28665,58 @@
               "updatedAt": "2025-10-02T17:20:54Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7FXzwB",
+          "commit": {
+            "abbreviatedOid": "d5355af"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM",
+          "createdAt": "2025-10-07T18:13:48Z",
+          "updatedAt": "2025-10-07T18:13:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7FX1E_",
+          "commit": {
+            "abbreviatedOid": "d5355af"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-07T18:15:42Z",
+          "updatedAt": "2025-10-07T18:15:42Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7FX33v",
+          "commit": {
+            "abbreviatedOid": "d5355af"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "actually, can you add a history point for this? I use those in the presentations to the WG ",
+          "createdAt": "2025-10-07T18:18:56Z",
+          "updatedAt": "2025-10-07T18:48:24Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7FnkUD",
+          "commit": {
+            "abbreviatedOid": "0c2fa59"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-08T15:45:26Z",
+          "updatedAt": "2025-10-08T15:45:26Z",
+          "comments": []
         }
       ]
     }
