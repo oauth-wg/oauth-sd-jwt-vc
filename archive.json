@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-09T00:32:04.399574+00:00",
+  "timestamp": "2025-10-12T00:33:57.156762+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -28611,7 +28611,7 @@
       "labels": [],
       "body": "Fixes #323 \r\n\r\nAlso adds rules when extending types (both for `sd` and for `mandatory`).",
       "createdAt": "2025-10-02T17:17:37Z",
-      "updatedAt": "2025-10-08T16:43:26Z",
+      "updatedAt": "2025-10-09T07:17:28Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "eb4d731a5d01499d61cea474f79075864bdac229",
@@ -28643,6 +28643,20 @@
           "body": "@danielfett \r\n\r\nI believe that this PR although provides a clear logic for extending claims, it doesn't eliminate the problem discussed in #323.\r\n\r\nAn issuer can still use `sd` equal to `allowed` for a claim \r\n- When it doesn't extend a parent definition, or\r\n- When it doesn't extend a claim defined in a parent definition and marked as `allowed`\r\n\r\nTo my understanding :\r\n- `allowed` is just a signal to the Issuers, totally meaningless to RPs/Wallets.\r\n- RP/Wallets are more important consumers of type definitions (compared to the issuers) \r\n\r\nso, perhaps, it would be better to just  remove `allowed`.\r\n\r\n\r\n\r\n\r\n\r\n",
           "createdAt": "2025-10-08T16:43:26Z",
           "updatedAt": "2025-10-08T16:43:26Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "\r\n> An issuer can still use `sd` equal to `allowed` for a claim\r\n> \r\n>     * When it doesn't extend a parent definition, or\r\n> \r\n>     * When it doesn't extend a claim defined in a parent definition and marked as `allowed`\r\n\r\nThat is correct. I don't think we should restrict the use of `allowed` as we should leave the door open to use cases where the creator of the type metadata doesn't want to make a choice. We now recommend to not use `allowed`, which is enough in my opinion.\r\n\r\n>     * RP/Wallets are more important consumers of type definitions (compared to the issuers)\r\n\r\nI don't whink Wallets will care too much about the `sd` information, but for verifiers, `always` and `never` can be useful as they can adapt their DCQL query and their processing to that. But in the absence of `sd` information (or when it is `allowed`), they can still handle it, just with slightly more effort and less predictability of the result.\r\n",
+          "createdAt": "2025-10-09T06:48:29Z",
+          "updatedAt": "2025-10-09T06:48:29Z"
+        },
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": " \r\n> I don't whink Wallets will care too much about the `sd` information, but for verifiers, `always` and `never` can be useful as they can adapt their DCQL query and their processing to that. But in the absence of `sd` information (or when it is `allowed`), they can still handle it, just with slightly more effort and less predictability of the result.\r\n\r\nDear @danielfett \r\n\r\nI think Wallets could make a good use of `sd`. \r\nFor example, they can use this information to draw next to a each attribute something like a checkbox that if sd is `always` then it could be holder's choice to disclosed it or not, whereas if it is `never` it could be disabled. For this, wallets can depend solely on the type definition (if there is not `allowed`). \r\n\r\nIn the presence of `allowed` the Wallets should take into account not only the definition, but the issued credential itself. \r\n\r\nAnyway, I see that `allowed` is still considered useful despite the complexity (while extending a parent definition) and the ambiguity (to DCQL/UIX) that it introduces. So I guess it 's pointless for me to keep insisting on its removal :smile: \r\n\r\n\r\n\r\n\r\n\r\n",
+          "createdAt": "2025-10-09T07:14:35Z",
+          "updatedAt": "2025-10-09T07:14:35Z"
         }
       ],
       "reviews": [
@@ -28716,6 +28730,19 @@
           "body": "",
           "createdAt": "2025-10-08T15:45:26Z",
           "updatedAt": "2025-10-08T15:45:26Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7FvXtu",
+          "commit": {
+            "abbreviatedOid": "0c2fa59"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "I do think that the PR doesn't completely address issue #323 \r\nCertainly, though, it is a welcomed improvement:\r\n- Makes extension more clear\r\n- Recommends the usage of `never` and/or `always` for the `sd`\r\n\r\n",
+          "createdAt": "2025-10-09T07:17:28Z",
+          "updatedAt": "2025-10-09T07:17:28Z",
           "comments": []
         }
       ]
