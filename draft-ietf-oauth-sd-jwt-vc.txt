@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 5 April 2026                                      Authlete Inc.
+Expires: 16 April 2026                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                          2 October 2025
+                                                         13 October 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 5 April 2026.
+   This Internet-Draft will expire on 16 April 2026.
 
 Copyright Notice
 
@@ -568,9 +568,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jV57_
-   R07bep4F3R-8dR-JuDyLn8W_zMVfGoT3Pqn4e8QXdXwzF78VaNmeEJi5gb_1S9sD4grL
-   HC_9xhGq63NdQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.NGs0L
+   2wijTp9dNDnmx__TJxsx_RYKlaj0k78J3Hvj29qzpLjOvVrqZvLo4EqiHNRYzZGit2h4
+   zgbRjnaOMA5dA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -689,17 +689,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jV57_
-   R07bep4F3R-8dR-JuDyLn8W_zMVfGoT3Pqn4e8QXdXwzF78VaNmeEJi5gb_1S9sD4grL
-   HC_9xhGq63NdQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.NGs0L
+   2wijTp9dNDnmx__TJxsx_RYKlaj0k78J3Hvj29qzpLjOvVrqZvLo4EqiHNRYzZGit2h4
+   zgbRjnaOMA5dA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTk0MjQ5Mz
-   csICJzZF9oYXNoIjogIkFubVJfVlY1WVJzVUs3VlRrM05sdjh6RkluMTNwbzZCT1JhNn
-   NfYXhQX0UifQ.nX4ZCcN5Trxy8oLAQO8ovF0hmNGa-xvXbyClNxqNGJ7RDjPniCt7wgi
-   QE-KZBFgLbdZDsc8nlEDvtu7f7-8-Ng
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjAzMjEyND
+   UsICJzZF9oYXNoIjogIkdaVTRaRlZIeTU0TWRBdHlnLWRuNzJUUXBaY0puXzdCaGk0aU
+   tSd054OGsifQ.hqiZ1xB9OkSqiiXh9BN1kmiv-XvElidGCoOQjoAAffp0J8h9xrNWyQ_
+   RZXABGLeRNHxP7BUB4ed99E52xJj8Yg
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -741,8 +741,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.ExzI0jY4xF0Viv_DZUeuHerNSkDfzQwyR1y77c73imj3GH
-   lhVdijzURnAH0QcQ0hPCE6_XiLAFwSEWgHOmTQog~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.iDdliF7RTLEembMG05KxDkDf6h2nfx4VtZ5Ay5heBaJZvS
+   IuQ7JOFXo10CXLobzs3K87pZ6lJYgby4qbqChr7Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1317,7 +1317,8 @@ Table of Contents
    *  allowed: The Issuer MAY make the claim selectively disclosable.
    *  never: The Issuer MUST NOT make the claim selectively disclosable.
 
-   If omitted, the default value is allowed.
+   If omitted, the default value is allowed.  It is RECOMMENDED to use
+   either always or never to avoid ambiguity.
 
 9.5.  Extending Claim Metadata
 
@@ -1328,6 +1329,16 @@ Table of Contents
    properties.  If the child type defines claim metadata with the same
    path as in the extended type, the child type's object will override
    the corresponding object from the extended type.
+
+   An extending type can specify an sd property for a claim that is
+   marked as allowed in the extended type (or where sd was omitted),
+   changing it to either always or never.  However, it MUST NOT change a
+   claim that is marked as always or never in the extended type to a
+   different value.
+
+   Similarly, an extending type can set the mandatory property of a
+   claim that is optional in the extended type to true, but it MUST NOT
+   change a claim that is mandatory in the extended type to false.
 
    Suppose we have a base type metadata document:
 
@@ -1837,8 +1848,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.6YQRjoVup4I-SR4oAzLJfSupOEcJiCA9ceKzfSqU3R2y4pK
-   PSzbdKakoW-y1XSU4ad0e43EB8tpmZUJGIVIZtA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.HBdhLLPk4kq4S916cowunsMgc5h0PP5lzEX-kwWriPBNSZp
+   UIqKrapcDc2LD543CQ42qreNEb-iDNsMfm4PElg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2173,8 +2184,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.6YQRjoVup4I-SR4oAzLJfSupOEcJiCA9ceKzfSqU3R2y4pK
-   PSzbdKakoW-y1XSU4ad0e43EB8tpmZUJGIVIZtA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.HBdhLLPk4kq4S916cowunsMgc5h0PP5lzEX-kwWriPBNSZp
+   UIqKrapcDc2LD543CQ42qreNEb-iDNsMfm4PElg~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2185,17 +2196,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTk0MjQ5MzcsICJzZF9oYXNoIjogIjVmajM0X1gtc3luTkxzcFYyLWtnYnR
-   vZHJUVzV2am5qNlRweEl2Uk02UTgifQ.v5QRsdX5eOLFjopfwJHm6yBKjBpYkkSSzUgD
-   he63ZNQ2l62-QjaHXnGW_Zk4AWIqKB2l10MvlXnXxozFgq4guQ
+   hdCI6IDE3NjAzMjEyNDUsICJzZF9oYXNoIjogIm1KdEhiWXktcGgxOEdNMFRGanYzN3c
+   wcy1ZUFZ4QlRQZkxDZ0UxTzNLeFEifQ.aqbwdD61NelAGl5bcmOG0h86ZxmLwWq-om5u
+   mijVNYd_xF5t2kG_v-eH2nbuXn9n3b8N2_htIxcfSUk4LIchzA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1759424937,
-     "sd_hash": "5fj34_X-synNLspV2-kgbtodrTW5vjnj6TpxIvRM6Q8"
+     "iat": 1760321245,
+     "sd_hash": "mJtHbYy-ph18GM0TFjv37w0s-YPVxBTPfLCgE1O3KxQ"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2389,6 +2400,8 @@ Appendix D.  Document History
       that the use of the document integrity claims is clear
    *  Add a background_image property to the simple rendering aligned
       with the definition in OpenID4VCI
+   *  Recommend to use sd=always or sd=never to avoid ambiguity and
+      introduce rules for sd and mandatory when extending types
 
    -11
 
