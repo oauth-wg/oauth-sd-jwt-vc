@@ -73,24 +73,20 @@ Credentials are cryptographically secured statements about a Subject, typically 
                |
                v
          +-------------+
-         |             |+                          +------------+
-         |  Verifiers  ||+                         |   Status   |
-         |             |||----- optionally ------->|  Provider  |
-         +-------------+||   retrieve status of    |            |
-          +-------------+|  Verifiable Credential  +------------+
-           +-------------+
+         |             |-+
+         |  Verifiers  | |-+
+         |             | | |
+         +-------------+ | |
+           +-------------+ |
+             +-------------+
 ~~~
-Figure: Issuer-Holder-Verifier Model with optional Status Provider
+Figure: Issuer-Holder-Verifier Model
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
 are the intended Holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-To support revocation of Verifiable Credentials, revocation information can
-optionally be retrieved from a Status Provider. The role of a Status Provider
-can be fulfilled by either a fourth party or by the Issuer.
 
 ## SD-JWT as a Credential Format
 
@@ -146,9 +142,6 @@ Unsecured Payload of an SD-JWT VC:
 : A JSON object containing all selectively disclosable and non-selectively disclosable claims
 of the SD-JWT VC. The Unsecured Payload acts as the input JSON object to issue
 an SD-JWT VC complying to this specification.
-
-Status Provider:
-: An entity that provides status information (e.g. revocation) about a Verifiable Credential.
 
 # Scope
 
@@ -1506,6 +1499,7 @@ Andres Uribe,
 Andrii Deinega,
 Babis Routis,
 Christian Bormann,
+Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
@@ -1534,6 +1528,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
+* Remove discussion of status and Status Provider from the Introduction
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
 
