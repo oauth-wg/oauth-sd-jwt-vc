@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-12T00:33:57.156762+00:00",
+  "timestamp": "2025-10-14T00:31:53.879965+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -8557,15 +8557,15 @@
       "id": "I_kwDOJbVClc6_aMqN",
       "title": "Should `sd` `allowed` be used by issuers?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/323",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Currently `sd` property has one of the following values\n\n- **always**: The Issuer MUST make the claim selectively disclosable. \n- **allowed**: The Issuer MAY make the claim selectively disclosable. \n- **never**: The Issuer MUST NOT make the claim selectively disclosable\n\nAnd in addition, **allowed** is the default if `sd` is not provided explicitly\n\n\nDoes it make sense for an issuer to use the value **allowed** (explicitly or implicitly)? \n\nTo my understanding **allowed** can certainly be used to a parent metadata. \nOn the other hand, I don't understand  what **allowed** really means for an issuer.\n\nAn issuer is expected to take a specific decision (always or never) for every attribute that is defined with an `allowed` property. Furthermore, this decision should be explicitly documented to the type metadata, with the issuer (extending to override) **allowed** properties.\n\n\n\n\n\n\n",
       "createdAt": "2025-07-08T07:06:30Z",
-      "updatedAt": "2025-10-08T16:10:34Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-13T02:07:06Z",
+      "closedAt": "2025-10-13T02:07:06Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -28604,24 +28604,26 @@
       "id": "PR_kwDOJbVClc6rzyRL",
       "title": "Proposal for recommendation for sd and how extended types use it",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/359",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
       "labels": [],
       "body": "Fixes #323 \r\n\r\nAlso adds rules when extending types (both for `sd` and for `mandatory`).",
       "createdAt": "2025-10-02T17:17:37Z",
-      "updatedAt": "2025-10-09T07:17:28Z",
+      "updatedAt": "2025-10-13T02:07:05Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "eb4d731a5d01499d61cea474f79075864bdac229",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "danielfett/proposal-for-sd",
       "headRefOid": "0c2fa59c371b2ba565d7e9b0accfac6be122b1d9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-10-13T02:07:05Z",
+      "mergedAt": "2025-10-13T02:07:05Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -28657,6 +28659,13 @@
           "body": " \r\n> I don't whink Wallets will care too much about the `sd` information, but for verifiers, `always` and `never` can be useful as they can adapt their DCQL query and their processing to that. But in the absence of `sd` information (or when it is `allowed`), they can still handle it, just with slightly more effort and less predictability of the result.\r\n\r\nDear @danielfett \r\n\r\nI think Wallets could make a good use of `sd`. \r\nFor example, they can use this information to draw next to a each attribute something like a checkbox that if sd is `always` then it could be holder's choice to disclosed it or not, whereas if it is `never` it could be disabled. For this, wallets can depend solely on the type definition (if there is not `allowed`). \r\n\r\nIn the presence of `allowed` the Wallets should take into account not only the definition, but the issued credential itself. \r\n\r\nAnyway, I see that `allowed` is still considered useful despite the complexity (while extending a parent definition) and the ambiguity (to DCQL/UIX) that it introduces. So I guess it 's pointless for me to keep insisting on its removal :smile: \r\n\r\n\r\n\r\n\r\n\r\n",
           "createdAt": "2025-10-09T07:14:35Z",
           "updatedAt": "2025-10-09T07:14:35Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Submitter of #323 indicates it doesn't completely address everything but is a welcomed improvement nonetheless.",
+          "createdAt": "2025-10-13T02:06:57Z",
+          "updatedAt": "2025-10-13T02:06:57Z"
         }
       ],
       "reviews": [
