@@ -222,7 +222,11 @@ as it ties a particular instance of a credential to a specific set of semantics 
 When evolving a credential type, changes to the structure or meaning of the associated claims
 should be made in a way that preserves compatibility with existing implementations.
 
-If a change alters the meaning of existing content, adds new required claims, removes previously required elements, or otherwise introduces incompatibilities, it is generally advisable to treat that as a new version of the credential type and to convey it using a new `vct` value. This allows different versions of a credential type to coexist and helps ensure that participants interpret credentials consistently.
+If a change alters the meaning of existing content, adds new required claims, removes
+previously required elements, or otherwise introduces incompatibilities, it is
+generally advisable to treat that as a new version of the credential type and to
+convey it using a new `vct` value. This allows different versions of a credential
+type to coexist and helps ensure that participants interpret credentials consistently.
 
 The following is a non-normative example of how `vct` is used to express
 a type:
