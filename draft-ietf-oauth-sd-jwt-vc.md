@@ -353,6 +353,11 @@ If a recipient cannot validate that the public verification key corresponds the 
 This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.
 
+## Data Format
+
+A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
+as defined in Section 4 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+
 ## Key Binding JWT
 
 If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
