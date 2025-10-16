@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-14T00:31:53.879965+00:00",
+  "timestamp": "2025-10-16T00:33:16.001270+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -5773,11 +5773,11 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [
-        "Ready-for-PR"
+        "pending close"
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2025-09-16T15:57:00Z",
+      "updatedAt": "2025-10-14T18:27:13Z",
       "closedAt": null,
       "comments": [
         {
@@ -6319,13 +6319,15 @@
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [
-        "discuss"
+        "HAS PR"
       ],
       "body": "To mitigate attacks described in the X.509 IETF RFC [here](https://www.rfc-editor.org/rfc/rfc2634#section-5.1), we should add something like the following language:\r\n\r\nIf `x5c` is the in unprotected header or was received out-of-band, the verifier MUST check the `x5t` **protected** header.\r\n\r\nNote that COSE has this language built in, but JOSE leaves that open.\r\n",
       "createdAt": "2024-07-08T16:04:08Z",
-      "updatedAt": "2024-11-26T19:26:30Z",
+      "updatedAt": "2025-10-15T14:22:39Z",
       "closedAt": null,
       "comments": [
         {
@@ -6616,7 +6618,7 @@
       "id": "I_kwDOJbVClc6QkO4N",
       "title": "Provide information where a credential can be obtained",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/248",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [],
@@ -6625,8 +6627,8 @@
       ],
       "body": "We should consider adding type metadata that can help a wallet to guide a user to a place where they can have a credential of a specific type issued.",
       "createdAt": "2024-07-23T14:51:01Z",
-      "updatedAt": "2025-09-16T15:14:12Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-14T14:45:04Z",
+      "closedAt": "2025-10-14T14:45:03Z",
       "comments": [
         {
           "author": "awoie",
@@ -6655,6 +6657,13 @@
           "body": "I agree as well that this it out of scope of this document. I suggest to mark this as pending close unless @danielfett makes a strong case why this belongs in this specification.",
           "createdAt": "2025-09-16T15:14:02Z",
           "updatedAt": "2025-09-16T15:14:02Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "closing after a month in `pending close` \n\n",
+          "createdAt": "2025-10-14T14:45:04Z",
+          "updatedAt": "2025-10-14T14:45:04Z"
         }
       ]
     },
@@ -7360,11 +7369,11 @@
         "bc-pi"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "[Dr. Horvat, PhD](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/264#issuecomment-2477101068):\r\n> However, metadata owner must be aware of the responsibility to take care of the versioning.\r\n\r\nWe could add this as a consideration to the spec.",
       "createdAt": "2024-11-15T10:44:07Z",
-      "updatedAt": "2025-10-07T18:22:31Z",
+      "updatedAt": "2025-10-14T17:46:28Z",
       "closedAt": null,
       "comments": [
         {
@@ -7380,6 +7389,13 @@
           "body": "The `vct` value is the version and could even include version identifier. We can make it a bit more clear in the spec.",
           "createdAt": "2025-10-07T18:22:26Z",
           "updatedAt": "2025-10-07T18:22:26Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[#360](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/360) attempts to add some high level guidance on versioning and vct ",
+          "createdAt": "2025-10-14T17:42:01Z",
+          "updatedAt": "2025-10-14T17:42:01Z"
         }
       ]
     },
@@ -7548,13 +7564,15 @@
       "state": "OPEN",
       "author": "wbl",
       "authorAssociation": "NONE",
-      "assignees": [],
+      "assignees": [
+        "awoie"
+      ],
       "labels": [
         "Ready-for-PR"
       ],
       "body": "I really don't get why SVG logos for individual fields is supported. Also I'm not sure about the value of this display metadata. Are people going to use it?",
       "createdAt": "2024-12-04T00:31:21Z",
-      "updatedAt": "2025-09-16T15:21:22Z",
+      "updatedAt": "2025-10-14T18:29:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -7666,12 +7684,22 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "Section 3.1 states:\r\n\r\n>    SD-JWT VCs compliant with this specification MUST use the media type application/dc+sd-jwt as defined in Section 3.1.\r\n> \r\n>    The base subtype name dc is meant to stand for \"digital credential\", which is a term that is emerging as a conceptual synonym for\r\n>    \"verifiable credential\".\r\n\r\nThis change is significant and welcomed. \"Verifiable Credential\" is a term used in VCDM 2.0. It has a W3C connotation.\r\n\r\nIn VCDM 2.0 a Verifiable Credential is defined as:\r\n\r\n> A tamper-evident credential whose authorship can be cryptographically verified. Verifiable credentials can be used to build verifiable presentations, which can also be cryptographically verifiable. \r\n\r\nwhile a Verifiable Presentation is defined as:\r\n\r\n> A tamper-evident presentation of information encoded in such a way that authorship of the data can be trusted after a process of cryptographic verification. Certain types of verifiable presentations might contain data that is synthesized from, but does not contain, the original verifiable credentials (for example, zero-knowledge proofs).\r\n\r\nThese definitions are not crystal clear.\r\n\r\nThe acronym DC should be used everywhere including in the title of this draft. \r\n\r\nThe wording \"SD-JWT-based Verifiable Credentials (SD-JWT VC)\" should be changed into: \r\n\r\n> \"SD-JWT-based Digital Credentials (SD-JWT DC)\".\r\n\r\nThe name of the draft should be changed into:\r\n\r\n> draft-ietf-oauth-sd-jwt-dc\r\n",
       "createdAt": "2024-12-07T21:54:13Z",
-      "updatedAt": "2024-12-07T21:54:13Z",
+      "updatedAt": "2025-10-14T18:12:10Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "While I understand the issue, we are not changing this at this stage anymore since it would create unreasonable effort to change it in the spec and other external documents.",
+          "createdAt": "2025-10-14T18:12:02Z",
+          "updatedAt": "2025-10-14T18:12:02Z"
+        }
+      ]
     },
     {
       "number": 284,
@@ -7682,12 +7710,22 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "Section 1.1 states:\r\n\r\n> Verifiable Credentials are cryptographically secured statements about a Subject, typically the Holder.\r\n\r\nThis sentence is confusing as it does not distinguish between the Holder which is an application and a Subject which is usually an individual who has the control of the Holder.\r\n\r\nIt should be changed into:\r\n\r\n> Digital Credentials are cryptographically secured statements about a Subject issued by a Digital Credential Issuer.\r\n> \r\n> A Holder is an application placed under the control of a Subject that receives a Digital Credential from a Digital Credential Issuer and when selectively disclosure is supported add Selected Disclosures and optionally a Key Binding Token.\r\n> \r\n> A Key Binding Token allows the Verifier to know that the private key corresponding to a public key which is present in the Digital Credential has been used to create it. When selective disclosure is used, both the Digital Credential and the Selected Disclosures, if any, are integrity protected under that private key.\r\n> ",
       "createdAt": "2024-12-07T21:59:16Z",
-      "updatedAt": "2024-12-07T21:59:16Z",
+      "updatedAt": "2025-10-14T18:14:12Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Similar to base SD-JWT, the Holder can be the user or the app or both. Distinguishing further doesn't seem useful. ",
+          "createdAt": "2025-10-14T18:14:12Z",
+          "updatedAt": "2025-10-14T18:14:12Z"
+        }
+      ]
     },
     {
       "number": 285,
@@ -7697,11 +7735,15 @@
       "state": "OPEN",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "bc-pi"
+      ],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "```\r\n\r\n            +------------+\r\n            |            |\r\n            |   Issuer   |\r\n            |            |\r\n            +------------+\r\n                  |\r\n         Issues Digital Credentials\r\n         and All Disclosures when \r\n    selectively disclosure is supported\r\n                  |\r\n                  v\r\n            +------------+\r\n            |            |\r\n            |   Holder   |<---- Subject\r\n            |            |\r\n            +------------+\r\n                  |\r\n  Presents Digital Credential + Selected Disclosures\r\n     when selectively disclosure is supported\r\n       + optional Key Binding Token\r\n                  |\r\n                  v\r\n            +-------------+\r\n            |             |+                              +------------+\r\n            |  Verifiers  ||+ ----- optional use -------> |   Status   |\r\n            |             |||  of Token Status Lists      |  Provider  |\r\n            +-------------+||  to retrieve the status     |            |\r\n             +-------------+|  of the Digital Credential  +------------+\r\n              +-------------+\r\n```\r\n\r\n\r\n\r\n\r\nNote that the wording:\r\n\r\n> optionally retrieve status of Verifiable Credential \r\n\r\nhas been replaced by:\r\n\r\n> optional use of Token Status Lists to retrieve the status of the Digital Credential\r\n\r\nThis change is important as the current wording may let think that a Status provider is necessarily needed to know the status of a Digital Credential, whereas it is not the case.\r\n\r\n",
       "createdAt": "2024-12-07T22:03:28Z",
-      "updatedAt": "2025-09-30T11:40:05Z",
+      "updatedAt": "2025-10-14T17:59:47Z",
       "closedAt": null,
       "comments": [
         {
@@ -7776,12 +7818,22 @@
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "The current definition is :\r\n\r\n> Verifiable Credential (VC):  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).\r\n\r\nThe following change is proposed:\r\n\r\n> Digital Credential (DC): cryptographically secured statements about a Subject issued by a Digital Credential Issuer.\r\n",
       "createdAt": "2024-12-07T22:21:52Z",
-      "updatedAt": "2024-12-07T22:21:52Z",
+      "updatedAt": "2025-10-14T18:13:45Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "While I understand the issue, we are not changing this at this stage anymore since it would create unreasonable effort to change it in the spec and other external documents.",
+          "createdAt": "2025-10-14T18:13:34Z",
+          "updatedAt": "2025-10-14T18:13:34Z"
+        }
+      ]
     },
     {
       "number": 289,
@@ -7791,11 +7843,15 @@
       "state": "OPEN",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "bc-pi"
+      ],
+      "labels": [
+        "Ready-for-PR"
+      ],
       "body": "Section 3.2 states:\r\n\r\n> SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of [I-D.ietf-oauth-selective-disclosure-jwt].  A presentation of an SD-JWT VC MAY contain a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT VC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not contain any Disclosures.\r\n\r\nThe SD-JWT DC does not CONTAIN the Key Binding JWT. See the revised Figure 1. See #285.\r\nHowever, a SD-JWT VC CAN be ASSOCIATED with a Key Binding JWT\r\n\r\nThe following changes are proposed:\r\n\r\n> A presentation of an SD-JWT DC CAN be associated with a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT DC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not be associated with any Disclosures.\r\n> \r\n",
       "createdAt": "2024-12-07T22:27:24Z",
-      "updatedAt": "2024-12-16T17:27:23Z",
+      "updatedAt": "2025-10-14T18:21:32Z",
       "closedAt": null,
       "comments": [
         {
@@ -7897,11 +7953,15 @@
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
-      "labels": [],
+      "assignees": [
+        "awoie"
+      ],
+      "labels": [
+        "HAS PR"
+      ],
       "body": "Section 4 only says something about if the presentation contains a KB-JWT:\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4\n\nA reader that is not familiar with SD-JWT will probably appreciate guidance on presentations not containing KB-JWT.",
       "createdAt": "2025-01-20T14:10:36Z",
-      "updatedAt": "2025-01-20T14:10:36Z",
+      "updatedAt": "2025-10-15T14:05:04Z",
       "closedAt": null,
       "comments": []
     },
@@ -9151,11 +9211,12 @@
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [
-        "discuss"
+        "discuss",
+        "pending close"
       ],
       "body": "The spec allows for extensibility by enabling ecosystems to specify additional Issuer Signature Mechanisms. Shouldn't ecosystems and their participants also be able to elect NOT to support mechanisms defined in section 3.5? \n\nGiven that this extensibility is created to, among others, address DIDs, I imagine that such pure did-as-iss-based ecosystems may elect not to support the two key mechanisms defined in this specification and still these ecosystems and its participants will be compliant with SD-JWT VC.",
       "createdAt": "2025-09-15T10:54:41Z",
-      "updatedAt": "2025-10-04T13:12:13Z",
+      "updatedAt": "2025-10-14T14:42:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -9171,6 +9232,13 @@
           "body": "@yaromin, does that help answer you question at all? And/or are there additions or clarifications that could reasonably be made to the draft that would help?\n\n[edit: fixed classifications to clarifications]\n",
           "createdAt": "2025-09-29T20:00:55Z",
           "updatedAt": "2025-10-04T13:12:13Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Any thoughts @yaromin? I'm inclined to close this, if not. ",
+          "createdAt": "2025-10-14T14:41:52Z",
+          "updatedAt": "2025-10-14T14:41:52Z"
         }
       ]
     },
@@ -9294,7 +9362,7 @@
       "id": "I_kwDOJbVClc7Na-23",
       "title": "metadata to list extensions that consumers must know to properly validate SD JWTs",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/354",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -9303,8 +9371,8 @@
       ],
       "body": "<img width=\"810\" height=\"770\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/b9b11c8e-9a0f-4d19-80aa-02de73b17924\" />\n\n> @bc-pi, I think I failed to explain that well. I concur with your intuition.\n> \n> The idea isn\u2019t to provide a list of extensions that consumers must know to properly handle metadata, but rather a list of those extensions that consumers must know to properly validate SD JWTs (it just receives them through the metadata).\n\nAh, I see. Thanks for clarifying. I think that is outside the scope of this PR. And IMHO not necessary and arguably not a proper place. \n\n> If you're looking for widespread adoption, \n\nThat's the goal, yes. \n\n> it might be great to provide such mechanism.\n\nI disagree. But will create an issue for further discussion so this conversation can be resolved and get this incorporated.\n\n_Originally posted by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/345#discussion_r2373239594_\n            ",
       "createdAt": "2025-09-23T19:19:33Z",
-      "updatedAt": "2025-10-02T17:01:49Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-14T14:39:59Z",
+      "closedAt": "2025-10-14T14:39:59Z",
       "comments": [
         {
           "author": "danielfett",
@@ -9312,6 +9380,13 @@
           "body": "The use of Type Metadata is optional anyway, so it is very hard to imagine that any of the information would be critial. I suggest to close this issue.",
           "createdAt": "2025-10-02T17:01:49Z",
           "updatedAt": "2025-10-02T17:01:49Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing on advice of the Dr. ",
+          "createdAt": "2025-10-14T14:39:58Z",
+          "updatedAt": "2025-10-14T14:39:58Z"
         }
       ]
     },
@@ -28755,6 +28830,198 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 360,
+      "id": "PR_kwDOJbVClc6tuDDG",
+      "title": "Provide some guidance on versioning via the `vct` value",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/360",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #273",
+      "createdAt": "2025-10-14T17:40:11Z",
+      "updatedAt": "2025-10-14T18:02:15Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "types-versions-vtc-etc",
+      "headRefOid": "e00ed5f1584da17f1bc500bac10ea7fb2aa06d58",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": " @timcappalli and I chatted about this a bit in July  ",
+          "createdAt": "2025-10-14T17:43:34Z",
+          "updatedAt": "2025-10-14T17:43:34Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7G5C9I",
+          "commit": {
+            "abbreviatedOid": "00e234e"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-14T17:53:59Z",
+          "updatedAt": "2025-10-14T17:54:00Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "is it worth pointing out that this includes the structure as well?\r\n```suggestion\r\nThe `vct` value also effectively identifies the version of the credential type definition,\r\nas it ties a particular instance of a credential to a specific structure, set of semantics and rules.\r\n```",
+              "createdAt": "2025-10-14T17:54:00Z",
+              "updatedAt": "2025-10-14T17:54:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7G5E80",
+          "commit": {
+            "abbreviatedOid": "00e234e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-14T17:56:48Z",
+          "updatedAt": "2025-10-14T17:56:48Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "sure",
+              "createdAt": "2025-10-14T17:56:48Z",
+              "updatedAt": "2025-10-14T17:56:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7G5JBF",
+          "commit": {
+            "abbreviatedOid": "e00ed5f"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-14T18:02:15Z",
+          "updatedAt": "2025-10-14T18:02:15Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 361,
+      "id": "PR_kwDOJbVClc6tuLry",
+      "title": "Remove discussion of status and Status Provider from the Introduction",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/361",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #285",
+      "createdAt": "2025-10-14T17:55:49Z",
+      "updatedAt": "2025-10-14T17:55:50Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "status-status",
+      "headRefOid": "3a84a7f15b7f17157fa1c00735add844b8b97809",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 362,
+      "id": "PR_kwDOJbVClc6t5RHX",
+      "title": "make it clear that presentations don't need kb",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/362",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "fixes #297 \r\nwe have already examples for non-KB presentations",
+      "createdAt": "2025-10-15T14:04:00Z",
+      "updatedAt": "2025-10-15T14:04:44Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-297",
+      "headRefOid": "0685b4fe491d5a322537163713a08f22095e77db",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 363,
+      "id": "PR_kwDOJbVClc6t5jVK",
+      "title": "Require x5t for x5c in unprotected header",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/363",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #240 ",
+      "createdAt": "2025-10-15T14:22:08Z",
+      "updatedAt": "2025-10-15T14:22:09Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-240",
+      "headRefOid": "8fd9621880c19b859556fb834b833151ab2abab9",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 364,
+      "id": "PR_kwDOJbVClc6t5z_7",
+      "title": "editorial: fix formatting",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/364",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 6.2. bullet points rendering is broken. This PR fixes this.",
+      "createdAt": "2025-10-15T14:39:35Z",
+      "updatedAt": "2025-10-15T14:39:36Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-section-6.2-formatting",
+      "headRefOid": "21bf7b9c93640090e875e7baf15efb5c4f32bbc8",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
