@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 19 March 2026                                     Authlete Inc.
+Expires: 19 April 2026                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                       15 September 2025
+                                                         16 October 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 March 2026.
+   This Internet-Draft will expire on 19 April 2026.
 
 Copyright Notice
 
@@ -95,9 +95,6 @@ Table of Contents
        6.3.3.  Using a Defined Retrieval Method
        6.3.4.  From a Local Cache
      6.4.  Extending Type Metadata
-     6.5.  Schema Type Metadata
-       6.5.1.  Schema Definition
-       6.5.2.  Schema Validation
    7.  Document Integrity
    8.  Display Metadata
      8.1.  Rendering Metadata
@@ -106,8 +103,9 @@ Table of Contents
    9.  Claim Metadata
      9.1.  Claim Path
      9.2.  Claim Display Metadata
-     9.3.  Claim Selective Disclosure Metadata
-     9.4.  Extending Claim Metadata
+     9.3.  Claim Mandatory Metadata
+     9.4.  Claim Selective Disclosure Metadata
+     9.5.  Extending Claim Metadata
    10. Security Considerations
      10.1.  Server-Side Request Forgery
      10.2.  Ecosystem-specific Public Key Verification Methods
@@ -275,7 +273,8 @@ Table of Contents
 
    SD-JWT VCs MUST be encoded using the SD-JWT format defined in
    Section 4 of [I-D.ietf-oauth-selective-disclosure-jwt].  A
-   presentation of an SD-JWT VC MAY contain a KB-JWT.
+   presentation of an SD-JWT VC MAY have an associated KB-JWT (i.e., the
+   presentation is an SD-JWT+KB).
 
    Note that in some cases, an SD-JWT VC MAY have no selectively
    disclosable claims, and therefore the encoded SD-JWT will not contain
@@ -570,9 +569,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n2hyz
-   JOO2T3y8BdnZ4cX-DjOhJHsp93eutqnlOsmrqysjuXiFiA-QSKCQ96i_UScvRT_1ljxa
-   X_MqFPbIvX4VQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yyz90
+   MXeiHYJ-gLRL3Gre_321EW1QDFwUh8BuTTZO3vuIPaHkUcYl0N9UMouL-TPnVAD1F35h
+   nMgKB0Fb70CBg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -605,9 +604,6 @@ Table of Contents
    [I-D.ietf-oauth-selective-disclosure-jwt].  To verify the KB-JWT, the
    cnf claim of the SD-JWT MUST be used.
 
-   If a schema is provided in the Type Metadata, a recipient MUST
-   validate the schema as defined in Section 6.5.
-
    If there are no selectively disclosable claims, there is no need to
    process the _sd claim nor any Disclosures.
 
@@ -615,8 +611,6 @@ Table of Contents
    status SHOULD be checked.  It depends on the Verifier policy to
    reject or accept a presentation of a SD-JWT VC based on the status of
    the Verifiable Credential.
-
-   Any claims used that are not understood MUST be ignored.
 
    Additional validation rules MAY apply, but their use is out of the
    scope of this specification.
@@ -696,17 +690,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n2hyz
-   JOO2T3y8BdnZ4cX-DjOhJHsp93eutqnlOsmrqysjuXiFiA-QSKCQ96i_UScvRT_1ljxa
-   X_MqFPbIvX4VQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yyz90
+   MXeiHYJ-gLRL3Gre_321EW1QDFwUh8BuTTZO3vuIPaHkUcYl0N9UMouL-TPnVAD1F35h
+   nMgKB0Fb70CBg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTc5NTQ1OD
-   gsICJzZF9oYXNoIjogImxrQlk4NHgtMklBSGhIcFZDdTZDc05oU19CNmd6V3NwZ3B0N0
-   owS2ZhV2sifQ.eDu1Lo-vOnhP1T7VAAmQD5GCrnRmUPJMF5ro671oA0rPlZEwkzpcFr9
-   dz6LbUjMhA5yhjetMBDEErM8xuX8vGQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA2NTM3MD
+   AsICJzZF9oYXNoIjogIkRGdVVlekFPeUF4dmN3ZFBPTGVFV2tIdk0tZGJZMXhGWnRaRU
+   dXY1dRVjgifQ.AVK9nLxA5lGzeG7h18qCbJElRenQXz3IazdhwZ80UQTT9q1JqVYWoqS
+   gbqa_43ph7oRezH8WE0O3fz-5xZF-tQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -748,8 +742,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.DTLjwaZUl44jmZZQSfIZAZFPmcxGpMI8IrZNNeqj15U5Yw
-   HX2n4p_qDnze_DqDSmVC3RKWDPasrxYjEFRUzfkw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.MPiMhPMg8HpEIqWdrB9ZUEWwKRyeXvmMrKbr3ccp1uPvhb
+   lHXin4PcE8yefBRPmTYQkQC2iBrXzvWJ_-_R-uYw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -884,9 +878,8 @@ Table of Contents
 6.  SD-JWT VC Type Metadata
 
    An SD-JWT VC type, i.e., the vct value, is associated with Type
-   Metadata defining, for example, information about the type or a
-   schema defining (see Section 6.5.1) which claims MAY or MUST appear
-   in the SD-JWT VC, and how credentials are displayed.
+   Metadata defining, for example, information about the type and how
+   credentials are displayed.
 
    This section defines Type Metadata that can be associated with a type
    of an SD-JWT VC, as well as a method for retrieving the Type Metadata
@@ -934,9 +927,7 @@ Table of Contents
      "name":"Betelgeuse Education Credential - Preliminary Version",
      "description":"This is our development version of the education credential. Don't panic.",
      "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-     "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
-     "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-     "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+     "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
    }
 
    This example is shortened for presentation, a full Type Metadata
@@ -949,35 +940,32 @@ Table of Contents
 6.2.  Type Metadata Format
 
    The Type Metadata document MUST be a JSON object.  The following
-   properties are defined:
+   properties are defined: * vct * REQUIRED.  The verifiable credential
+   type described by this type metadata document. * name * OPTIONAL.  A
+   human-readable name for the type, intended for developers reading the
+   JSON document. * description * OPTIONAL.  A human-readable
+   description for the type, intended for developers reading the JSON
+   document. * extends * OPTIONAL.  A URI of another type that this type
+   extends, as described in Section 6.4. * display: An array of objects
+   containing display information for the type, as described in
+   Section 8.  This property is OPTIONAL. * claims: An array of objects
+   containing claim information for the type, as described in Section 9.
+   This property is OPTIONAL.
 
-   *  name
-      -  OPTIONAL.  A human-readable name for the type, intended for
-         developers reading the JSON document.
-   *  description
-      -  OPTIONAL.  A human-readable description for the type, intended
-         for developers reading the JSON document.
-   *  extends
-      -  OPTIONAL.  A URI of another type that this type extends, as
-         described in Section 6.4.
-   *  display: An array of objects containing display information for
-      the type, as described in Section 8.  This property is OPTIONAL.
-   *  claims: An array of objects containing claim information for the
-      type, as described in Section 9.  This property is OPTIONAL.
-   *  schema
-      -  OPTIONAL.  An embedded JSON Schema document describing the
-         structure of the Verifiable Credential as described in
-         Section 6.5.1. schema MUST NOT be used if schema_uri is
-         present.
-   *  schema_uri
-      -  OPTIONAL.  A URL pointing to a JSON Schema document describing
-         the structure of the Verifiable Credential as described in
-         Section 6.5.1. schema_uri MUST NOT be used if schema is
-         present.
+   A Type Metadata document MAY contain additional top level or
+   subordinate properties.  Consumers MUST ignore properties that are
+   not understood.
 
    An example of a Type Metadata document is shown in Appendix B.2.
 
 6.3.  Retrieving Type Metadata
+
+   A consumer retrieving Type Metadata MUST ensure that the vct value in
+   the SD-JWT VC payload is identical to the vct value in the reference
+   to the Type Metadata (either in the SD-JWT VC itself or in an extends
+   property in a Type Metadata document).
+
+   The following sections define methods to retrieve Type Metadata.
 
 6.3.1.  From a URL in the vct Claim
 
@@ -1030,149 +1018,14 @@ Table of Contents
    described in Section 10.3 apply in order to avoid problems with
    circular dependencies.
 
-6.5.  Schema Type Metadata
-
-6.5.1.  Schema Definition
-
-   Schemas for Verifiable Credentials are contained in the schema or
-   retrieved via the schema_uri Type Metadata parameters (as defined in
-   Section 6.2).  A schema MUST be represented by a JSON Schema document
-   according to draft version 2020-12 [JSON.SCHEMA.2020-12] or above.
-
-   The schema of a Verifiable Credential MUST include all properties
-   that are required by this specification and MUST NOT override their
-   cardinality, JSON data type, or semantic intent.
-
-   The following is a non-normative example of a JSON Schema document
-   for the example in Section 3.3 requiring the presence of the cnf
-   claim in an SD-JWT VC presentation:
-
-   {
-     "$schema":"https://json-schema.org/draft/2020-12/schema",
-     "type":"object",
-     "properties":{
-       "vct":{
-         "type":"string"
-       },
-       "iss":{
-         "type":"string"
-       },
-       "nbf":{
-         "type":"number"
-       },
-       "exp":{
-         "type":"number"
-       },
-       "cnf":{
-         "type":"object"
-       },
-       "status":{
-         "type":"object"
-       },
-       "given_name":{
-         "type":"string"
-       },
-       "family_name":{
-         "type":"string"
-       },
-       "email":{
-         "type":"string"
-       },
-       "phone_number":{
-         "type":"string"
-       },
-       "address":{
-         "type":"object",
-         "properties":{
-           "street_address":{
-             "type":"string"
-           },
-           "locality":{
-             "type":"string"
-           },
-           "region":{
-             "type":"string"
-           },
-           "country":{
-             "type":"string"
-           }
-         }
-       },
-       "birthdate":{
-         "type":"string"
-       },
-       "is_over_18":{
-         "type":"boolean"
-       },
-       "is_over_21":{
-         "type":"boolean"
-       },
-       "is_over_65":{
-         "type":"boolean"
-       }
-     },
-     "required":[
-       "iss",
-       "vct",
-       "cnf"
-     ]
-   }
-
-6.5.2.  Schema Validation
-
-   If a schema or schema_uri property is present, a Consumer MUST
-   validate the Processed SD-JWT Payload JSON document resulting from
-   the SD-JWT verification algorithm (as defined in Section 7.3 of
-   [I-D.ietf-oauth-selective-disclosure-jwt]) against the JSON Schema
-   document provided by the schema or schema_uri property.
-
-   If an extends property is present, the schema of the extended type
-   MUST also be validated in the same manner.  This process includes
-   validating all subsequent extended types recursively until a type is
-   encountered that does not contain an extends property in its Type
-   Metadata.  Each schema in this chain MUST be evaluated for a specific
-   Verifiable Credential.
-
-   If the schema validation fails for any of the types in the chain, the
-   Consumer MUST reject the Verifiable Credential.
-
-   The following is a non-normative example of a result JSON document
-   after executing the SD-JWT verification algorithm that is validated
-   against the JSON Schema document in the example provided in
-   Section 6.5.1:
-
-   {
-     "vct":"https://credentials.example.com/identity_credential",
-     "iss":"https://example.com/issuer",
-     "iat":1683000000,
-     "exp":1883000000,
-     "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
-     "address":{
-       "country":"DE"
-     },
-     "cnf":{
-       "jwk":{
-         "kty":"EC",
-         "crv":"P-256",
-         "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-         "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-       }
-     }
-   }
-
-   Note, the example above does not contain any _sd_alg, _sd, or ...
-   claims.
-
 7.  Document Integrity
 
-   Both the vct claim in the SD-JWT VC and the various URIs in the Type
-   Metadata MAY be accompanied by a respective claim suffixed with
-   #integrity, in particular:
+   The vct claim in the SD-JWT VC as defined in Section 3.2.2.2 and
+   various URIs in the Type Metadata MAY be accompanied by a respective
+   claim suffixed with #integrity, in particular:
 
-   *  vct as defined in Section 3.2.2.2,
-   *  extends as defined in Section 6.4
-   *  uri as used in two places in Section 8.1
-   *  schema_uri as defined in Section 6.5
+   *  extends as defined in Section 6.4, and
+   *  uri as used in two places in Section 8.1.
 
    The value MUST be an "integrity metadata" string as defined in
    Section 3 of [W3C.SRI].  A Consumer of the respective documents MUST
@@ -1182,13 +1035,13 @@ Table of Contents
 8.  Display Metadata
 
    The display property is an array containing display information for
-   the type.  The array MUST contain an object for each language that is
+   the type.  The array MUST contain an object for each locale that is
    supported by the type.  The consuming application MUST use the
    language tag it considers most appropriate for the user.
 
    The objects in the array have the following properties:
 
-   *  lang: A language tag as defined in Section 2 of [RFC5646].  This
+   *  locale: A language tag as defined in Section 2 of [RFC5646].  This
       property is REQUIRED.
    *  name: A human-readable name for the type, intended for end users.
       This property is REQUIRED.
@@ -1214,6 +1067,9 @@ Table of Contents
    *  logo: An object containing information about the logo to be
       displayed for the type, as described in Section 8.1.1.1.  This
       property is OPTIONAL.
+   *  background_image: An object containing information about the
+      background image to be displayed for the type, as described in
+      Section 8.1.1.2.  This property is OPTIONAL.
    *  background_color: An RGB color value as defined in [W3C.CSS-COLOR]
       for the background of the credential.  This property is OPTIONAL.
    *  text_color: An RGB color value as defined in [W3C.CSS-COLOR] value
@@ -1230,6 +1086,17 @@ Table of Contents
       Section 7.  This property is OPTIONAL.
    *  alt_text: A string containing alternative text for the logo image.
       This property is OPTIONAL.
+
+8.1.1.2.  Background Image Metadata
+
+   The background_image property is an object containing information
+   about the background image to be displayed for the type.  The object
+   contains the following properties:
+
+   *  uri: A URI pointing to the background image.  This property is
+      REQUIRED.
+   *  uri#integrity: An "integrity metadata" string as described in
+      Section 7.  This property is OPTIONAL.
 
 8.1.2.  Rendering Method "svg_template"
 
@@ -1302,7 +1169,7 @@ Table of Contents
    </svg>
 
    When rendering the SVG template, the consuming application MUST
-   ensure that malicious schema providers or issuers cannot inject
+   ensure that malicious metadata providers or issuers cannot inject
    executable code into the SVG template and thereby compromise the
    security of the consuming application.  The consuming application
    MUST NOT execute any code in the SVG template.  If code execution
@@ -1321,8 +1188,11 @@ Table of Contents
    *  display: An array containing display information for the claim or
       claims that are being addressed, as described in Section 9.2.
       This property is OPTIONAL.
+   *  mandatory: A boolean indicating that the claim must be present in
+      the issued credential.  This property is OPTIONAL.  If omitted,
+      the default value is false.  See Section 9.3 for details.
    *  sd: A string indicating whether the claim is selectively
-      disclosable, as described in Section 9.3.  This property is
+      disclosable, as described in Section 9.4.  This property is
       OPTIONAL.
    *  svg_id: A string defining the ID of the claim for reference in the
       SVG template, as described in Section 8.1.2.2.  The ID MUST be
@@ -1418,20 +1288,28 @@ Table of Contents
 9.2.  Claim Display Metadata
 
    The display property is an array containing display information for
-   the claim.  The array MUST contain an object for each language that
-   is supported by the type.  The consuming application MUST use the
+   the claim.  The array MUST contain an object for each locale that is
+   supported by the type.  The consuming application MUST use the
    language tag it considers most appropriate for the user.
 
    The objects in the array have the following properties:
 
-   *  lang: A language tag as defined in Section 2 of [RFC5646].  This
+   *  locale: A language tag as defined in Section 2 of [RFC5646].  This
       property is REQUIRED.
    *  label: A human-readable label for the claim, intended for end
       users.  This property is REQUIRED.
    *  description: A human-readable description for the claim, intended
       for end users.  This property is OPTIONAL.
 
-9.3.  Claim Selective Disclosure Metadata
+9.3.  Claim Mandatory Metadata
+
+   The mandatory property is a boolean indicating that, if set to true,
+   the claim MUST be included in the credential by the Issuer.  If the
+   value is false or omitted, the claim is considered optional for the
+   Issuer to include.  A claim that is mandatory can nonetheless be
+   selectively disclosable, as described in Section 9.4.
+
+9.4.  Claim Selective Disclosure Metadata
 
    The sd property is a string indicating whether the claim is
    selectively disclosable.  The following values are defined:
@@ -1440,9 +1318,10 @@ Table of Contents
    *  allowed: The Issuer MAY make the claim selectively disclosable.
    *  never: The Issuer MUST NOT make the claim selectively disclosable.
 
-   If omitted, the default value is allowed.
+   If omitted, the default value is allowed.  It is RECOMMENDED to use
+   either always or never to avoid ambiguity.
 
-9.4.  Extending Claim Metadata
+9.5.  Extending Claim Metadata
 
    The extends property allows a type to inherit claim metadata from
    another type.  When present, all claim metadata from the extended
@@ -1452,6 +1331,16 @@ Table of Contents
    path as in the extended type, the child type's object will override
    the corresponding object from the extended type.
 
+   An extending type can specify an sd property for a claim that is
+   marked as allowed in the extended type (or where sd was omitted),
+   changing it to either always or never.  However, it MUST NOT change a
+   claim that is marked as always or never in the extended type to a
+   different value.
+
+   Similarly, an extending type can set the mandatory property of a
+   claim that is optional in the extended type to true, but it MUST NOT
+   change a claim that is mandatory in the extended type to false.
+
    Suppose we have a base type metadata document:
 
    {
@@ -1459,11 +1348,11 @@ Table of Contents
      "claims": [
        {
          "path": ["name"],
-         "display": [{"label": "Full Name", "lang": "en"}]
+         "display": [{"label": "Full Name", "locale": "en"}]
        },
        {
          "path": ["address", "city"],
-         "display": [{"label": "City", "lang": "en"}]
+         "display": [{"label": "City", "locale": "en"}]
        }
      ]
    }
@@ -1476,11 +1365,11 @@ Table of Contents
      "claims": [
        {
          "path": ["address", "city"],
-         "display": [{"label": "Town", "lang": "en"}]
+         "display": [{"label": "Town", "locale": "en"}]
        },
        {
          "path": ["nationalities"],
-         "display": [{"label": "Nationalities", "lang": "en"}]
+         "display": [{"label": "Nationalities", "locale": "en"}]
        }
      ]
    }
@@ -1494,15 +1383,15 @@ Table of Contents
      "claims": [
        {
          "path": ["name"],
-         "display": [{"label": "Full Name", "lang": "en"}]
+         "display": [{"label": "Full Name", "locale": "en"}]
        },
        {
          "path": ["address", "city"],
-         "display": [{"label": "Town", "lang": "en"}]
+         "display": [{"label": "Town", "locale": "en"}]
        },
        {
          "path": ["nationalities"],
-         "display": [{"label": "Nationalities", "lang": "en"}]
+         "display": [{"label": "Nationalities", "locale": "en"}]
        }
      ]
    }
@@ -1683,14 +1572,14 @@ Table of Contents
    in the cnf claim that involve retrieving key material from a remote
    source, especially if that source is controlled by the issuer.  This
    includes, but is not limited to, the use of the x5u parameter in JWKs
-   ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]),
-   and cases where a URL is used in the kid parameter ([RFC7800, section
-   3.4]).  Future confirmation methods may also introduce remote
-   retrieval mechanisms.  Issuers are advised not to issue SD-JWT VCs
-   with such cnf methods, and Verifiers and Holders are advised not to
-   follow or resolve remote references for key material in the cnf
-   claim.  Only confirmation methods that do not require remote
-   retrieval of key material SHOULD be supported.
+   (Section 4.6 of [RFC7517]), the jku parameter (Section 3.5 of
+   [RFC7800]), and cases where a URL is used in the kid parameter
+   (Section 3.4 of [RFC7800]).  Future confirmation methods may also
+   introduce remote retrieval mechanisms.  Issuers are advised not to
+   issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are
+   advised not to follow or resolve remote references for key material
+   in the cnf claim.  Only confirmation methods that do not require
+   remote retrieval of key material SHOULD be supported.
 
    Holders are advised to reject SD-JWT VCs if they contain easily
    correlatable information in the Issuer identifier.
@@ -1755,6 +1644,10 @@ Table of Contents
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
               2015, <https://www.rfc-editor.org/info/rfc7515>.
 
+   [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
+              DOI 10.17487/RFC7517, May 2015,
+              <https://www.rfc-editor.org/info/rfc7517>.
+
    [RFC7519]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web Token
               (JWT)", RFC 7519, DOI 10.17487/RFC7519, May 2015,
               <https://www.rfc-editor.org/info/rfc7519>.
@@ -1789,10 +1682,6 @@ Table of Contents
               ISO/IEC, "ISO/IEC 18013-5:2021", 1 September 2024,
               <https://www.iso.org/standard/69084.html>.
 
-   [JSON.SCHEMA.2020-12]
-              Foundation, O., "JSON Schema (2020-12)",
-              <https://json-schema.org/draft/2020-12/release-notes>.
-
    [OWASP_SSRF]
               OWASP, "Server Side Request Forgery Prevention Cheat
               Sheet", <https://cheatsheetseries.owasp.org/cheatsheets/
@@ -1802,10 +1691,6 @@ Table of Contents
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
               DOI 10.17487/RFC6901, April 2013,
               <https://www.rfc-editor.org/info/rfc6901>.
-
-   [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
-              DOI 10.17487/RFC7517, May 2015,
-              <https://www.rfc-editor.org/info/rfc7517>.
 
    [RFC9535]  Gössner, S., Ed., Normington, G., Ed., and C. Bormann,
               Ed., "JSONPath: Query Expressions for JSON", RFC 9535,
@@ -1964,8 +1849,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.cq3YiqHnlfGiG_IXNBOnM37knZvXlzQ3VLBa4XfMKadR5Zi
-   zV8PEWynftB2pdFS4qux_KDV74PwM2JASefE_kg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.P2oOrR6DLw7EPFKfnIoRgntgblumhavZ4j_IfrYT0aQL34a
+   x3uOQUDiuDYF7IEd5CmTTx_kG3J_XlFjJb07ORw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2300,8 +2185,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.cq3YiqHnlfGiG_IXNBOnM37knZvXlzQ3VLBa4XfMKadR5Zi
-   zV8PEWynftB2pdFS4qux_KDV74PwM2JASefE_kg~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.P2oOrR6DLw7EPFKfnIoRgntgblumhavZ4j_IfrYT0aQL34a
+   x3uOQUDiuDYF7IEd5CmTTx_kG3J_XlFjJb07ORw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2312,17 +2197,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NTc5NTQ1ODgsICJzZF9oYXNoIjogIm10ZlVGSHozdFBKZVV5SWozVWhicGp
-   ZVTRWSWgweG5qSjNGVjdYQm5BVk0ifQ.C4QliJjWDP5J2qpu5mZR2hbWD6O71T0r7ZdS
-   HnWNt8PusEcD9Doj2aPcjWj7_GXmoLDU2566-HY3i3HC0cFeHw
+   hdCI6IDE3NjA2NTM3MDAsICJzZF9oYXNoIjogImZSYkVNeEtYVHcwbXhxaUEwVDJ3Yjd
+   Bb3dnUWtVdmF6dGJDQ1NKM0FaMG8ifQ.WUGEfDcIse2lLhJJeut-8etNNi0pcBBhMJda
+   1lw7rqZiqJ-U65mn1jRLMQEN4W3JDpSMmNPEqVwweMrLWwmACw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1757954588,
-     "sd_hash": "mtfUFHz3tPJeUyIj3UhbpjYU4VIh0xnjJ3FV7XBnAVM"
+     "iat": 1760653700,
+     "sd_hash": "fRbEMxKXTw0mxqiA0T2wb7AowgQkUvaztbCCSJ3AZ0o"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2359,7 +2244,7 @@ B.2.  Example 2: Type Metadata
      "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
      "display": [
        {
-         "lang": "en-US",
+         "locale": "en-US",
          "name": "Betelgeuse Education Credential",
          "description": "An education credential for all carbon-based life forms on Betelgeusians",
          "rendering": {
@@ -2368,6 +2253,10 @@ B.2.  Example 2: Type Metadata
                "uri": "https://betelgeuse.example.com/public/education-logo.png",
                "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Betelgeuse Ministry of Education logo"
+             },
+             "background_image": {
+               "uri": "https://betelgeuse.example.com/public/credential-background.png",
+               "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
@@ -2386,7 +2275,7 @@ B.2.  Example 2: Type Metadata
          }
        },
        {
-         "lang": "de-DE",
+         "locale": "de-DE",
          "name": "Betelgeuse-Bildungsnachweis",
          "rendering": {
            "simple": {
@@ -2394,6 +2283,10 @@ B.2.  Example 2: Type Metadata
                "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
                "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
+             },
+             "background_image": {
+               "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
+               "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
@@ -2417,28 +2310,29 @@ B.2.  Example 2: Type Metadata
          "path": ["name"],
          "display": [
            {
-             "lang": "de-DE",
+             "locale": "de-DE",
              "label": "Vor- und Nachname",
              "description": "Der Name des Studenten"
            },
            {
-             "lang": "en-US",
+             "locale": "en-US",
              "label": "Name",
              "description": "The name of the student"
            }
          ],
-         "sd": "allowed"
+         "sd": "allowed",
+         "mandatory": true
        },
        {
          "path": ["address"],
          "display": [
            {
-             "lang": "de-DE",
+             "locale": "de-DE",
              "label": "Adresse",
              "description": "Adresse zum Zeitpunkt des Abschlusses"
            },
            {
-             "lang": "en-US",
+             "locale": "en-US",
              "label": "Address",
              "description": "Address at the time of graduation"
            }
@@ -2449,11 +2343,11 @@ B.2.  Example 2: Type Metadata
          "path": ["address", "street_address"],
          "display": [
            {
-             "lang": "de-DE",
+             "locale": "de-DE",
              "label": "Straße"
            },
            {
-             "lang": "en-US",
+             "locale": "en-US",
              "label": "Street Address"
            }
          ],
@@ -2464,34 +2358,56 @@ B.2.  Example 2: Type Metadata
          "path": ["degrees", null],
          "display": [
            {
-             "lang": "de-DE",
+             "locale": "de-DE",
              "label": "Abschluss",
              "description": "Der Abschluss des Studenten"
            },
            {
-             "lang": "en-US",
+             "locale": "en-US",
              "label": "Degree",
              "description": "Degree earned by the student"
            }
          ],
          "sd": "allowed"
        }
-     ],
-     "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-     "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+     ]
    }
 
 Appendix C.  Acknowledgements
 
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
-   Andrii Deinega, Babis Routis, Christian Bormann, George J Padayatti,
-   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
-   Mike Prorock, Mirko Mollik, Orie Steele, Paul Bastian, Pavel Zarecky,
-   Stefan Charsley, Timo Glastra, Torsten Lodderstedt, Tobias Looker,
-   and Kristina Yasuda for their contributions (some of which
-   substantial) to this draft and to the initial set of implementations.
+   Andrii Deinega, Babis Routis, Christian Bormann, Denis Pinkas, George
+   J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael
+   B.  Jones, Mike Prorock, Mirko Mollik, Orie Steele, Paul Bastian,
+   Pavel Zarecky, Stefan Charsley, Timo Glastra, Torsten Lodderstedt,
+   Tobias Looker, and Kristina Yasuda for their contributions (some of
+   which substantial) to this draft and to the initial set of
+   implementations.
 
 Appendix D.  Document History
+
+   -12
+
+   *  Change lang to locale.  While lang is more accurate, locale is
+      what has traditionally been used in OpenID Connect and later
+      related specs.
+   *  Remove JSON schema from Type Metadata
+   *  Introduce optional mandatory property for claims
+   *  Explicitly mention that Type Metadata can have additional stuff
+      that has to be ignored if not understood
+   *  Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather
+      might have an associated one (which makes it a SD-JWT+KB and I'm
+      still not sure about the term or these words, but it's where we've
+      ended up)
+   *  Remove the requirement to ignore unknown claims, as some
+      applications may not want to follow this rule
+   *  Fix cnf claim and JWK references and move them to normative
+   *  List vct as one of the required values in type metadata and ensure
+      that the use of the document integrity claims is clear
+   *  Add a background_image property to the simple rendering aligned
+      with the definition in OpenID4VCI
+   *  Recommend to use sd=always or sd=never to avoid ambiguity and
+      introduce rules for sd and mandatory when extending types
 
    -11
 

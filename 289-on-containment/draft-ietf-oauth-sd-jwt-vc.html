@@ -12,13 +12,13 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.30.1" name="generator">
+<meta content="xml2rfc 3.30.2" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.1
+  xml2rfc 3.30.2
     Python 3.12.11
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
@@ -30,7 +30,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
     PyYAML 6.0.2
     requests 2.32.5
     setuptools 80.9.0
-    wcwidth 0.2.13
+    wcwidth 0.2.14
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1049,11 +1049,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">September 2025</td>
+<td class="right">October 2025</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 20 March 2026</td>
+<td class="center">Expires 19 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1066,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-09-16" class="published">16 September 2025</time>
+<time datetime="2025-10-16" class="published">16 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-03-20">20 March 2026</time></dd>
+<dd class="expires"><time datetime="2026-04-19">19 April 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1125,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 March 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1256,17 +1256,6 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.4">
                 <p id="section-toc.1-1.6.2.4.1"><a href="#section-6.4" class="auto internal xref">6.4</a>.  <a href="#name-extending-type-metadata" class="internal xref">Extending Type Metadata</a></p>
 </li>
-              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5">
-                <p id="section-toc.1-1.6.2.5.1"><a href="#section-6.5" class="auto internal xref">6.5</a>.  <a href="#name-schema-type-metadata" class="internal xref">Schema Type Metadata</a></p>
-<ul class="compact toc ulBare ulEmpty">
-<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.1">
-                    <p id="section-toc.1-1.6.2.5.2.1.1"><a href="#section-6.5.1" class="auto internal xref">6.5.1</a>.  <a href="#name-schema-definition" class="internal xref">Schema Definition</a></p>
-</li>
-                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.6.2.5.2.2">
-                    <p id="section-toc.1-1.6.2.5.2.2.1"><a href="#section-6.5.2" class="auto internal xref">6.5.2</a>.  <a href="#name-schema-validation" class="internal xref">Schema Validation</a></p>
-</li>
-                </ul>
-</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7">
@@ -1298,10 +1287,13 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-claim-display-metadata" class="internal xref">Claim Display Metadata</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.3">
-                <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-claim-selective-disclosure-" class="internal xref">Claim Selective Disclosure Metadata</a></p>
+                <p id="section-toc.1-1.9.2.3.1"><a href="#section-9.3" class="auto internal xref">9.3</a>.  <a href="#name-claim-mandatory-metadata" class="internal xref">Claim Mandatory Metadata</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.4">
-                <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-extending-claim-metadata" class="internal xref">Extending Claim Metadata</a></p>
+                <p id="section-toc.1-1.9.2.4.1"><a href="#section-9.4" class="auto internal xref">9.4</a>.  <a href="#name-claim-selective-disclosure-" class="internal xref">Claim Selective Disclosure Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
+                <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-extending-claim-metadata" class="internal xref">Extending Claim Metadata</a></p>
 </li>
             </ul>
 </li>
@@ -1581,7 +1573,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
         </h3>
 <p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. A presentation of an SD-JWT VC MAY
-contain a KB-JWT.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <div id="jose-header">
@@ -1946,9 +1938,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UwI8A
-7FUhnfp_9fop7x7RxlQFWZcC9o1ULDUVHeQMUQ0NHzifKjxXKejaHinv5wji_dcG4Qie
-wTMNKHcjsIv1w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yyz90
+MXeiHYJ-gLRL3Gre_321EW1QDFwUh8BuTTZO3vuIPaHkUcYl0N9UMouL-TPnVAD1F35h
+nMgKB0Fb70CBg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1979,15 +1971,13 @@ employing an Issuer Signature Mechanism (defined in <a href="#ism" class="auto i
 <p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>), the Verifier MUST verify the KB-JWT
 according to Section 7.3 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. To verify
 the KB-JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
-<p id="section-3.4-3">If a schema is provided in the Type Metadata, a recipient MUST validate the schema as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a>.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
-<p id="section-3.4-4">If there are no selectively disclosable claims, there is no need to process the
-<code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
-<p id="section-3.4-5">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
+<p id="section-3.4-3">If there are no selectively disclosable claims, there is no need to process the
+<code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
+<p id="section-3.4-4">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
 be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
-<p id="section-3.4-6">Any claims used that are not understood MUST be ignored.<a href="#section-3.4-6" class="pilcrow">¶</a></p>
-<p id="section-3.4-7">Additional validation rules MAY apply, but their use is out of the scope of this
-specification.<a href="#section-3.4-7" class="pilcrow">¶</a></p>
+of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+<p id="section-3.4-5">Additional validation rules MAY apply, but their use is out of the scope of this
+specification.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="ism">
@@ -2061,17 +2051,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UwI8A
-7FUhnfp_9fop7x7RxlQFWZcC9o1ULDUVHeQMUQ0NHzifKjxXKejaHinv5wji_dcG4Qie
-wTMNKHcjsIv1w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yyz90
+MXeiHYJ-gLRL3Gre_321EW1QDFwUh8BuTTZO3vuIPaHkUcYl0N9UMouL-TPnVAD1F35h
+nMgKB0Fb70CBg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NTgwMjQyNj
-MsICJzZF9oYXNoIjogIkNmMDBFZWpHV20yOHZpSHo4eTFnT3kyM3lDeUlnM1lKTkliUz
-NJbklrTm8ifQ.Q2x2vjUv8MQay8E5FTSC4zmo5BO-7mIbsm3I61mewFNwLEY78dP9lzy
-l42Azb3BHVYUf_tM-9mzhFkWzr8KZww
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA2NTM3MD
+AsICJzZF9oYXNoIjogIkRGdVVlekFPeUF4dmN3ZFBPTGVFV2tIdk0tZGJZMXhGWnRaRU
+dXY1dRVjgifQ.AVK9nLxA5lGzeG7h18qCbJElRenQXz3IazdhwZ80UQTT9q1JqVYWoqS
+gbqa_43ph7oRezH8WE0O3fz-5xZF-tQ
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2116,8 +2106,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.31wbb_fdWSdt9CVFZSMG1byIAJanzUcxTK-jHPtzTlomVk
-7lrXbvG0LkdLJKecUtlSTx_netH9tKID_VPLX0zw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.MPiMhPMg8HpEIqWdrB9ZUEWwKRyeXvmMrKbr3ccp1uPvhb
+lHXin4PcE8yefBRPmTYQkQC2iBrXzvWJ_-_R-uYw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2289,7 +2279,7 @@ MUST NOT be used.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
       <h2 id="name-sd-jwt-vc-type-metadata">
 <a href="#section-6" class="section-number selfRef">6. </a><a href="#name-sd-jwt-vc-type-metadata" class="section-name selfRef">SD-JWT VC Type Metadata</a>
       </h2>
-<p id="section-6-1">An SD-JWT VC type, i.e., the <code>vct</code> value, is associated with Type Metadata defining, for example, information about the type or a schema defining (see <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>) which claims MAY or MUST appear in the SD-JWT VC, and how credentials are displayed.<a href="#section-6-1" class="pilcrow">¶</a></p>
+<p id="section-6-1">An SD-JWT VC type, i.e., the <code>vct</code> value, is associated with Type Metadata defining, for example, information about the type and how credentials are displayed.<a href="#section-6-1" class="pilcrow">¶</a></p>
 <p id="section-6-2">This section defines Type Metadata that can be associated with a type of an SD-JWT VC, as well as a method for retrieving the Type Metadata and processing rules. This Type Metadata is intended to be used, among other things, for the following purposes:<a href="#section-6-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-6-3.1">Developers of Issuers and Verifiers can use the Type Metadata to understand the
@@ -2336,9 +2326,7 @@ retrieved from it:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
   "name":"Betelgeuse Education Credential - Preliminary Version",
   "description":"This is our development version of the education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
-  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
-  "schema_uri":"https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity":"sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 
 </pre><a href="#section-6.1-5" class="pilcrow">¶</a>
@@ -2355,59 +2343,24 @@ to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-type-metadata-format" class="section-name selfRef">Type Metadata Format</a>
         </h3>
 <p id="section-6.2-1">The Type Metadata document MUST be a JSON object. The following properties are
-defined:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.1">
-            <p id="section-6.2-2.1.1"><code>name</code><a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.1.2.1">OPTIONAL. A human-readable name for the type, intended for developers reading
-the JSON document.<a href="#section-6.2-2.1.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-          <li class="compact" id="section-6.2-2.2">
-            <p id="section-6.2-2.2.1"><code>description</code><a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.2.2.1">OPTIONAL. A human-readable description for the type, intended for
-developers reading the JSON document.<a href="#section-6.2-2.2.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-          <li class="compact" id="section-6.2-2.3">
-            <p id="section-6.2-2.3.1"><code>extends</code><a href="#section-6.2-2.3.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.3.2.1">OPTIONAL. A URI of another type that this type extends, as described in
-<a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>.<a href="#section-6.2-2.3.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-          <li class="compact" id="section-6.2-2.4">
-            <code>display</code>: An array of objects containing display information for the type, as described
-in <a href="#display-metadata" class="auto internal xref">Section 8</a>. This property is OPTIONAL.<a href="#section-6.2-2.4" class="pilcrow">¶</a>
-</li>
-          <li class="compact" id="section-6.2-2.5">
-            <code>claims</code>: An array of objects containing claim information for the type, as described in
-<a href="#claim-metadata" class="auto internal xref">Section 9</a>. This property is OPTIONAL.<a href="#section-6.2-2.5" class="pilcrow">¶</a>
-</li>
-          <li class="compact" id="section-6.2-2.6">
-            <p id="section-6.2-2.6.1"><code>schema</code><a href="#section-6.2-2.6.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.6.2.1">OPTIONAL. An embedded JSON Schema document describing the structure of
-the Verifiable Credential as described in <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>. <code>schema</code> MUST NOT be used
-if <code>schema_uri</code> is present.<a href="#section-6.2-2.6.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-          <li class="compact" id="section-6.2-2.7">
-            <p id="section-6.2-2.7.1"><code>schema_uri</code><a href="#section-6.2-2.7.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.7.2.1">OPTIONAL. A URL pointing to a JSON Schema document describing the structure
-of the Verifiable Credential as described in <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>. <code>schema_uri</code> MUST NOT
-be used if <code>schema</code> is present.<a href="#section-6.2-2.7.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
-</li>
-        </ul>
+defined:
+* <code>vct</code>
+  * REQUIRED. The verifiable credential type described by this type metadata document.
+* <code>name</code>
+  * OPTIONAL. A human-readable name for the type, intended for developers reading
+  the JSON document.
+* <code>description</code>
+  * OPTIONAL. A human-readable description for the type, intended for
+  developers reading the JSON document.
+* <code>extends</code>
+  * OPTIONAL. A URI of another type that this type extends, as described in
+  <a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>.
+* <code>display</code>: An array of objects containing display information for the type, as described
+  in <a href="#display-metadata" class="auto internal xref">Section 8</a>. This property is OPTIONAL.
+* <code>claims</code>: An array of objects containing claim information for the type, as described in
+  <a href="#claim-metadata" class="auto internal xref">Section 9</a>. This property is OPTIONAL.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<p id="section-6.2-2">A Type Metadata document MAY contain additional top level or subordinate properties.
+Consumers MUST ignore properties that are not understood.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
 <p id="section-6.2-3">An example of a Type Metadata document is shown in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2416,6 +2369,11 @@ be used if <code>schema</code> is present.<a href="#section-6.2-2.7.2.1" class="
         <h3 id="name-retrieving-type-metadata">
 <a href="#section-6.3" class="section-number selfRef">6.3. </a><a href="#name-retrieving-type-metadata" class="section-name selfRef">Retrieving Type Metadata</a>
         </h3>
+<p id="section-6.3-1">A consumer retrieving Type Metadata MUST ensure that the <code>vct</code> value in the
+SD-JWT VC payload is identical to the <code>vct</code> value in the reference to the Type
+Metadata (either in the SD-JWT VC itself or in an <code>extends</code> property in a Type
+Metadata document).<a href="#section-6.3-1" class="pilcrow">¶</a></p>
+<p id="section-6.3-2">The following sections define methods to retrieve Type Metadata.<a href="#section-6.3-2" class="pilcrow">¶</a></p>
 <div id="retrieval-from-vct-claim">
 <section id="section-6.3.1">
           <h4 id="name-from-a-url-in-the-vct-claim">
@@ -2478,135 +2436,6 @@ chain or hierarchy of types. The security considerations described in
 <a href="#circular-extends" class="auto internal xref">Section 10.3</a> apply in order to avoid problems with circular dependencies.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="schema-type-metadata">
-<section id="section-6.5">
-        <h3 id="name-schema-type-metadata">
-<a href="#section-6.5" class="section-number selfRef">6.5. </a><a href="#name-schema-type-metadata" class="section-name selfRef">Schema Type Metadata</a>
-        </h3>
-<div id="schema-definition">
-<section id="section-6.5.1">
-          <h4 id="name-schema-definition">
-<a href="#section-6.5.1" class="section-number selfRef">6.5.1. </a><a href="#name-schema-definition" class="section-name selfRef">Schema Definition</a>
-          </h4>
-<p id="section-6.5.1-1">Schemas for Verifiable Credentials are contained in the <code>schema</code> or retrieved via the <code>schema_uri</code> Type Metadata parameters (as defined in <a href="#type-metadata-format" class="auto internal xref">Section 6.2</a>).
-A schema MUST be represented by a JSON Schema document according to draft version 2020-12 <span>[<a href="#JSON.SCHEMA.2020-12" class="cite xref">JSON.SCHEMA.2020-12</a>]</span> or above.<a href="#section-6.5.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.5.1-2">The schema of a Verifiable Credential MUST include all properties that are required by this specification and MUST NOT override their cardinality, JSON data type, or semantic intent.<a href="#section-6.5.1-2" class="pilcrow">¶</a></p>
-<p id="section-6.5.1-3">The following is a non-normative example of a JSON Schema document for the example in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> requiring the presence of the <code>cnf</code> claim in an SD-JWT VC presentation:<a href="#section-6.5.1-3" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.5.1-4">
-<pre>{
-  "$schema":"https://json-schema.org/draft/2020-12/schema",
-  "type":"object",
-  "properties":{
-    "vct":{
-      "type":"string"
-    },
-    "iss":{
-      "type":"string"
-    },
-    "nbf":{
-      "type":"number"
-    },
-    "exp":{
-      "type":"number"
-    },
-    "cnf":{
-      "type":"object"
-    },
-    "status":{
-      "type":"object"
-    },
-    "given_name":{
-      "type":"string"
-    },
-    "family_name":{
-      "type":"string"
-    },
-    "email":{
-      "type":"string"
-    },
-    "phone_number":{
-      "type":"string"
-    },
-    "address":{
-      "type":"object",
-      "properties":{
-        "street_address":{
-          "type":"string"
-        },
-        "locality":{
-          "type":"string"
-        },
-        "region":{
-          "type":"string"
-        },
-        "country":{
-          "type":"string"
-        }
-      }
-    },
-    "birthdate":{
-      "type":"string"
-    },
-    "is_over_18":{
-      "type":"boolean"
-    },
-    "is_over_21":{
-      "type":"boolean"
-    },
-    "is_over_65":{
-      "type":"boolean"
-    }
-  },
-  "required":[
-    "iss",
-    "vct",
-    "cnf"
-  ]
-}
-
-</pre><a href="#section-6.5.1-4" class="pilcrow">¶</a>
-</div>
-</section>
-</div>
-<div id="schema-validation">
-<section id="section-6.5.2">
-          <h4 id="name-schema-validation">
-<a href="#section-6.5.2" class="section-number selfRef">6.5.2. </a><a href="#name-schema-validation" class="section-name selfRef">Schema Validation</a>
-          </h4>
-<p id="section-6.5.2-1">If a <code>schema</code> or <code>schema_uri</code> property is present, a Consumer MUST validate the Processed SD-JWT Payload JSON document resulting from the SD-JWT verification algorithm
-(as defined in Section 7.3 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>) against the JSON Schema document provided by the <code>schema</code> or <code>schema_uri</code> property.<a href="#section-6.5.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.5.2-2">If an <code>extends</code> property is present, the schema of the extended type MUST also be validated in the same manner. This process includes
-validating all subsequent extended types recursively until a type is encountered that does not contain an <code>extends</code> property in its Type Metadata.
-Each schema in this chain MUST be evaluated for a specific Verifiable Credential.<a href="#section-6.5.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.5.2-3">If the schema validation fails for any of the types in the chain, the Consumer MUST reject the Verifiable Credential.<a href="#section-6.5.2-3" class="pilcrow">¶</a></p>
-<p id="section-6.5.2-4">The following is a non-normative example of a result JSON document after executing the SD-JWT verification algorithm that is validated against the JSON Schema document in the example provided in <a href="#schema-definition" class="auto internal xref">Section 6.5.1</a>:<a href="#section-6.5.2-4" class="pilcrow">¶</a></p>
-<div class="alignLeft art-text artwork" id="section-6.5.2-5">
-<pre>{
-  "vct":"https://credentials.example.com/identity_credential",
-  "iss":"https://example.com/issuer",
-  "iat":1683000000,
-  "exp":1883000000,
-  "sub":"6c5c0a49-b589-431d-bae7-219122a9ec2c",
-  "address":{
-    "country":"DE"
-  },
-  "cnf":{
-    "jwk":{
-      "kty":"EC",
-      "crv":"P-256",
-      "x":"TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-      "y":"ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-    }
-  }
-}
-
-</pre><a href="#section-6.5.2-5" class="pilcrow">¶</a>
-</div>
-<p id="section-6.5.2-6">Note, the example above does not contain any <code>_sd_alg</code>, <code>_sd</code>, or <code>...</code> claims.<a href="#section-6.5.2-6" class="pilcrow">¶</a></p>
-</section>
-</div>
-</section>
-</div>
 </section>
 </div>
 <div id="document-integrity">
@@ -2614,19 +2443,15 @@ Each schema in this chain MUST be evaluated for a specific Verifiable Credential
       <h2 id="name-document-integrity">
 <a href="#section-7" class="section-number selfRef">7. </a><a href="#name-document-integrity" class="section-name selfRef">Document Integrity</a>
       </h2>
-<p id="section-7-1">Both the <code>vct</code> claim in the SD-JWT VC and the various URIs in the Type Metadata MAY be accompanied by a respective claim suffixed with <code>#integrity</code>, in particular:<a href="#section-7-1" class="pilcrow">¶</a></p>
+<p id="section-7-1">The <code>vct</code> claim in the SD-JWT VC as defined in <a href="#claims" class="auto internal xref">Section 3.2.2.2</a> and various URIs in the
+Type Metadata MAY be accompanied by a respective claim suffixed with
+<code>#integrity</code>, in particular:<a href="#section-7-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-7-2.1">
-          <code>vct</code> as defined in <a href="#claims" class="auto internal xref">Section 3.2.2.2</a>,<a href="#section-7-2.1" class="pilcrow">¶</a>
+          <code>extends</code> as defined in <a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>, and<a href="#section-7-2.1" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-7-2.2">
-          <code>extends</code> as defined in <a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a><a href="#section-7-2.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-7-2.3">
-          <code>uri</code> as used in two places in <a href="#rendering-metadata" class="auto internal xref">Section 8.1</a><a href="#section-7-2.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="section-7-2.4">
-          <code>schema_uri</code> as defined in <a href="#schema-type-metadata" class="auto internal xref">Section 6.5</a><a href="#section-7-2.4" class="pilcrow">¶</a>
+          <code>uri</code> as used in two places in <a href="#rendering-metadata" class="auto internal xref">Section 8.1</a>.<a href="#section-7-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="section-7-3">The value MUST be an "integrity metadata" string as defined in Section 3 of
@@ -2640,13 +2465,13 @@ integrity of the retrieved document as defined in Section 3.3.5 of <span>[<a hre
 <a href="#section-8" class="section-number selfRef">8. </a><a href="#name-display-metadata" class="section-name selfRef">Display Metadata</a>
       </h2>
 <p id="section-8-1">The <code>display</code> property is an array containing display information for the type.
-The array MUST contain an object for each language that is supported by the
+The array MUST contain an object for each locale that is supported by the
 type. The consuming application MUST use the language tag it considers most
 appropriate for the user.<a href="#section-8-1" class="pilcrow">¶</a></p>
 <p id="section-8-2">The objects in the array have the following properties:<a href="#section-8-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-8-3.1">
-          <code>lang</code>: A language tag as defined in Section 2 of <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>. This property is REQUIRED.<a href="#section-8-3.1" class="pilcrow">¶</a>
+          <code>locale</code>: A language tag as defined in Section 2 of <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>. This property is REQUIRED.<a href="#section-8-3.1" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-8-3.2">
           <code>name</code>: A human-readable name for the type, intended for end users. This
@@ -2684,12 +2509,16 @@ support SVG rendering. The object contains the following properties:<a href="#se
 the type, as described in <a href="#logo-metadata" class="auto internal xref">Section 8.1.1.1</a>. This property is OPTIONAL.<a href="#section-8.1.1-2.1" class="pilcrow">¶</a>
 </li>
             <li class="compact" id="section-8.1.1-2.2">
-              <code>background_color</code>: An RGB color value as defined in <span>[<a href="#W3C.CSS-COLOR" class="cite xref">W3C.CSS-COLOR</a>]</span> for the background of the credential.
-This property is OPTIONAL.<a href="#section-8.1.1-2.2" class="pilcrow">¶</a>
+              <code>background_image</code>: An object containing information about the background image to be displayed for
+the type, as described in <a href="#background-image-metadata" class="auto internal xref">Section 8.1.1.2</a>. This property is OPTIONAL.<a href="#section-8.1.1-2.2" class="pilcrow">¶</a>
 </li>
             <li class="compact" id="section-8.1.1-2.3">
+              <code>background_color</code>: An RGB color value as defined in <span>[<a href="#W3C.CSS-COLOR" class="cite xref">W3C.CSS-COLOR</a>]</span> for the background of the credential.
+This property is OPTIONAL.<a href="#section-8.1.1-2.3" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="section-8.1.1-2.4">
               <code>text_color</code>: An RGB color value as defined in <span>[<a href="#W3C.CSS-COLOR" class="cite xref">W3C.CSS-COLOR</a>]</span> value for the text of the credential. This property
-is OPTIONAL.<a href="#section-8.1.1-2.3" class="pilcrow">¶</a>
+is OPTIONAL.<a href="#section-8.1.1-2.4" class="pilcrow">¶</a>
 </li>
           </ul>
 <div id="logo-metadata">
@@ -2710,6 +2539,24 @@ displayed for the type. The object contains the following properties:<a href="#s
               <li class="compact" id="section-8.1.1.1-2.3">
                 <code>alt_text</code>: A string containing alternative text for the logo image. This
 property is OPTIONAL.<a href="#section-8.1.1.1-2.3" class="pilcrow">¶</a>
+</li>
+            </ul>
+</section>
+</div>
+<div id="background-image-metadata">
+<section id="section-8.1.1.2">
+            <h5 id="name-background-image-metadata">
+<a href="#section-8.1.1.2" class="section-number selfRef">8.1.1.2. </a><a href="#name-background-image-metadata" class="section-name selfRef">Background Image Metadata</a>
+            </h5>
+<p id="section-8.1.1.2-1">The <code>background_image</code> property is an object containing information about the background image to be
+displayed for the type. The object contains the following properties:<a href="#section-8.1.1.2-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-8.1.1.2-2.1">
+                <code>uri</code>: A URI pointing to the background image. This property is REQUIRED.<a href="#section-8.1.1.2-2.1" class="pilcrow">¶</a>
+</li>
+              <li class="compact" id="section-8.1.1.2-2.2">
+                <code>uri#integrity</code>: An "integrity metadata" string as described in
+<a href="#document-integrity" class="auto internal xref">Section 7</a>. This property is OPTIONAL.<a href="#section-8.1.1.2-2.2" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
@@ -2813,7 +2660,7 @@ example in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.
 </pre><a href="#section-8.1.2.2-7" class="pilcrow">¶</a>
 </div>
 <p id="section-8.1.2.2-8">When rendering the SVG template, the consuming application MUST ensure that
-malicious schema providers or issuers cannot inject executable code into the SVG
+malicious metadata providers or issuers cannot inject executable code into the SVG
 template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.<a href="#section-8.1.2.2-8" class="pilcrow">¶</a></p>
@@ -2844,14 +2691,19 @@ described below. This property is REQUIRED.<a href="#section-9-3.1" class="pilcr
 described in <a href="#claim-display-metadata" class="auto internal xref">Section 9.2</a>. This property is OPTIONAL.<a href="#section-9-3.2" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-9-3.3">
-          <code>sd</code>: A string indicating whether the claim is selectively disclosable, as
-described in <a href="#claim-selective-disclosure-metadata" class="auto internal xref">Section 9.3</a>. This property is OPTIONAL.<a href="#section-9-3.3" class="pilcrow">¶</a>
+          <code>mandatory</code>: A boolean indicating that the claim must be present in the issued
+credential. This property is OPTIONAL. If omitted, the default value is <code>false</code>. See
+<a href="#claim-mandatory-metadata" class="auto internal xref">Section 9.3</a> for details.<a href="#section-9-3.3" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-9-3.4">
+          <code>sd</code>: A string indicating whether the claim is selectively disclosable, as
+described in <a href="#claim-selective-disclosure-metadata" class="auto internal xref">Section 9.4</a>. This property is OPTIONAL.<a href="#section-9-3.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="section-9-3.5">
           <code>svg_id</code>: A string defining the ID of the claim for reference in the SVG
 template, as described in <a href="#svg-rendering" class="auto internal xref">Section 8.1.2.2</a>. The ID MUST be unique within the
 type metadata. It MUST consist of only alphanumeric characters and underscores
-and MUST NOT start with a digit. This property is OPTIONAL.<a href="#section-9-3.4" class="pilcrow">¶</a>
+and MUST NOT start with a digit. This property is OPTIONAL.<a href="#section-9-3.5" class="pilcrow">¶</a>
 </li>
       </ul>
 <div id="claim-path">
@@ -2957,13 +2809,13 @@ also security concerns with some implementations.<a href="#section-9.1-10" class
 <a href="#section-9.2" class="section-number selfRef">9.2. </a><a href="#name-claim-display-metadata" class="section-name selfRef">Claim Display Metadata</a>
         </h3>
 <p id="section-9.2-1">The <code>display</code> property is an array containing display information for the
-claim. The array MUST contain an object for each language that is supported by
+claim. The array MUST contain an object for each locale that is supported by
 the type. The consuming application MUST use the language tag it considers most
 appropriate for the user.<a href="#section-9.2-1" class="pilcrow">¶</a></p>
 <p id="section-9.2-2">The objects in the array have the following properties:<a href="#section-9.2-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-9.2-3.1">
-            <code>lang</code>: A language tag as defined in Section 2 of <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>. This property is REQUIRED.<a href="#section-9.2-3.1" class="pilcrow">¶</a>
+            <code>locale</code>: A language tag as defined in Section 2 of <span>[<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>. This property is REQUIRED.<a href="#section-9.2-3.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-9.2-3.2">
             <code>label</code>: A human-readable label for the claim, intended for end users. This
@@ -2976,90 +2828,110 @@ users. This property is OPTIONAL.<a href="#section-9.2-3.3" class="pilcrow">¶</
         </ul>
 </section>
 </div>
-<div id="claim-selective-disclosure-metadata">
+<div id="claim-mandatory-metadata">
 <section id="section-9.3">
-        <h3 id="name-claim-selective-disclosure-">
-<a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-claim-selective-disclosure-" class="section-name selfRef">Claim Selective Disclosure Metadata</a>
+        <h3 id="name-claim-mandatory-metadata">
+<a href="#section-9.3" class="section-number selfRef">9.3. </a><a href="#name-claim-mandatory-metadata" class="section-name selfRef">Claim Mandatory Metadata</a>
         </h3>
-<p id="section-9.3-1">The <code>sd</code> property is a string indicating whether the claim is selectively
-disclosable. The following values are defined:<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+<p id="section-9.3-1">The <code>mandatory</code> property is a boolean indicating that, if set to <code>true</code>, the
+claim MUST be included in the credential by the Issuer. If the value is <code>false</code>
+or omitted, the claim is considered optional for the Issuer to include. A claim
+that is <code>mandatory</code> can nonetheless be selectively disclosable, as described in
+<a href="#claim-selective-disclosure-metadata" class="auto internal xref">Section 9.4</a>.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="claim-selective-disclosure-metadata">
+<section id="section-9.4">
+        <h3 id="name-claim-selective-disclosure-">
+<a href="#section-9.4" class="section-number selfRef">9.4. </a><a href="#name-claim-selective-disclosure-" class="section-name selfRef">Claim Selective Disclosure Metadata</a>
+        </h3>
+<p id="section-9.4-1">The <code>sd</code> property is a string indicating whether the claim is selectively
+disclosable. The following values are defined:<a href="#section-9.4-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-9.3-2.1">
-            <code>always</code>: The Issuer MUST make the claim selectively disclosable.<a href="#section-9.3-2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-9.4-2.1">
+            <code>always</code>: The Issuer MUST make the claim selectively disclosable.<a href="#section-9.4-2.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.3-2.2">
-            <code>allowed</code>: The Issuer MAY make the claim selectively disclosable.<a href="#section-9.3-2.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.4-2.2">
+            <code>allowed</code>: The Issuer MAY make the claim selectively disclosable.<a href="#section-9.4-2.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.3-2.3">
-            <code>never</code>: The Issuer MUST NOT make the claim selectively disclosable.<a href="#section-9.3-2.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.4-2.3">
+            <code>never</code>: The Issuer MUST NOT make the claim selectively disclosable.<a href="#section-9.4-2.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-9.3-3">If omitted, the default value is <code>allowed</code>.<a href="#section-9.3-3" class="pilcrow">¶</a></p>
+<p id="section-9.4-3">If omitted, the default value is <code>allowed</code>. It is RECOMMENDED to use
+either <code>always</code> or <code>never</code> to avoid ambiguity.<a href="#section-9.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claim-metadata-extends">
-<section id="section-9.4">
+<section id="section-9.5">
         <h3 id="name-extending-claim-metadata">
-<a href="#section-9.4" class="section-number selfRef">9.4. </a><a href="#name-extending-claim-metadata" class="section-name selfRef">Extending Claim Metadata</a>
+<a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-extending-claim-metadata" class="section-name selfRef">Extending Claim Metadata</a>
         </h3>
-<p id="section-9.4-1">The <code>extends</code> property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same <code>path</code> as in the extended type, the child type's object will override the corresponding object from the extended type.<a href="#section-9.4-1" class="pilcrow">¶</a></p>
-<p id="section-9.4-2">Suppose we have a base type metadata document:<a href="#section-9.4-2" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.4-3">
+<p id="section-9.5-1">The <code>extends</code> property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same <code>path</code> as in the extended type, the child type's object will override the corresponding object from the extended type.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
+<p id="section-9.5-2">An extending type can specify an <code>sd</code> property for a claim that is marked as
+<code>allowed</code> in the extended type (or where <code>sd</code> was omitted), changing it to either <code>always</code> or <code>never</code>.
+However, it MUST NOT change a claim that is marked as <code>always</code> or <code>never</code> in the extended
+type to a different value.<a href="#section-9.5-2" class="pilcrow">¶</a></p>
+<p id="section-9.5-3">Similarly, an extending type can set the <code>mandatory</code> property of a claim that is
+optional in the extended type to <code>true</code>, but it MUST NOT change a claim that is
+<code>mandatory</code> in the extended type to <code>false</code>.<a href="#section-9.5-3" class="pilcrow">¶</a></p>
+<p id="section-9.5-4">Suppose we have a base type metadata document:<a href="#section-9.5-4" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5-5">
 <pre>{
   "vct": "https://example.com/base-type-metadata",
   "claims": [
     {
       "path": ["name"],
-      "display": [{"label": "Full Name", "lang": "en"}]
+      "display": [{"label": "Full Name", "locale": "en"}]
     },
     {
       "path": ["address", "city"],
-      "display": [{"label": "City", "lang": "en"}]
+      "display": [{"label": "City", "locale": "en"}]
     }
   ]
 }
 
-</pre><a href="#section-9.4-3" class="pilcrow">¶</a>
+</pre><a href="#section-9.5-5" class="pilcrow">¶</a>
 </div>
-<p id="section-9.4-4">And a child type metadata document that extends the base type:<a href="#section-9.4-4" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.4-5">
+<p id="section-9.5-6">And a child type metadata document that extends the base type:<a href="#section-9.5-6" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5-7">
 <pre>{
   "vct": "https://example.com/custom-type-metadata",
   "extends": "https://example.com/base-type-metadata",
   "claims": [
     {
       "path": ["address", "city"],
-      "display": [{"label": "Town", "lang": "en"}]
+      "display": [{"label": "Town", "locale": "en"}]
     },
     {
       "path": ["nationalities"],
-      "display": [{"label": "Nationalities", "lang": "en"}]
+      "display": [{"label": "Nationalities", "locale": "en"}]
     }
   ]
 }
 
-</pre><a href="#section-9.4-5" class="pilcrow">¶</a>
+</pre><a href="#section-9.5-7" class="pilcrow">¶</a>
 </div>
-<p id="section-9.4-6">In this example, the child type inherits the <code>name</code> claim metadata from the base type, but overrides the <code>address.city</code> claim metadata with its own definition. It also adds a new claim metadata for <code>nationalities</code>. The final effective claim metadata for the child type is:<a href="#section-9.4-6" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.4-7">
+<p id="section-9.5-8">In this example, the child type inherits the <code>name</code> claim metadata from the base type, but overrides the <code>address.city</code> claim metadata with its own definition. It also adds a new claim metadata for <code>nationalities</code>. The final effective claim metadata for the child type is:<a href="#section-9.5-8" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5-9">
 <pre>{
   "claims": [
     {
       "path": ["name"],
-      "display": [{"label": "Full Name", "lang": "en"}]
+      "display": [{"label": "Full Name", "locale": "en"}]
     },
     {
       "path": ["address", "city"],
-      "display": [{"label": "Town", "lang": "en"}]
+      "display": [{"label": "Town", "locale": "en"}]
     },
     {
       "path": ["nationalities"],
-      "display": [{"label": "Nationalities", "lang": "en"}]
+      "display": [{"label": "Nationalities", "locale": "en"}]
     }
   ]
 }
 
-</pre><a href="#section-9.4-7" class="pilcrow">¶</a>
+</pre><a href="#section-9.5-9" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -3239,7 +3111,7 @@ and how often the SD-JWT VC was used.<a href="#section-11.3-2" class="pilcrow">�
 and should monitor suspicious behavior such as frequent rotation of those identifiers.
 If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
 Issuers.<a href="#section-11.3-3" class="pilcrow">¶</a></p>
-<p id="section-11.3-4">Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([RFC7517, section 4.6]), the jku parameter ([RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.<a href="#section-11.3-4" class="pilcrow">¶</a></p>
+<p id="section-11.3-4">Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs (<span><a href="https://rfc-editor.org/rfc/rfc7517#section-4.6" class="relref">Section 4.6</a> of [<a href="#RFC7517" class="cite xref">RFC7517</a>]</span>), the jku parameter (<span><a href="https://rfc-editor.org/rfc/rfc7800#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>), and cases where a URL is used in the kid parameter (<span><a href="https://rfc-editor.org/rfc/rfc7800#section-3.4" class="relref">Section 3.4</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.<a href="#section-11.3-4" class="pilcrow">¶</a></p>
 <p id="section-11.3-5">Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
 in the Issuer identifier.<a href="#section-11.3-5" class="pilcrow">¶</a></p>
 </section>
@@ -3306,6 +3178,10 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Signature (JWS)"</span>, <span class="seriesInfo">RFC 7515</span>, <span class="seriesInfo">DOI 10.17487/RFC7515</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7515">https://www.rfc-editor.org/info/rfc7515</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC7517">[RFC7517]</dt>
+        <dd>
+<span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC7519">[RFC7519]</dt>
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">N. Sakimura</span>, <span class="refTitle">"JSON Web Token (JWT)"</span>, <span class="seriesInfo">RFC 7519</span>, <span class="seriesInfo">DOI 10.17487/RFC7519</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7519">https://www.rfc-editor.org/info/rfc7519</a>&gt;</span>. </dd>
@@ -3341,10 +3217,6 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">ISO/IEC</span>, <span class="refTitle">"ISO/IEC 18013-5:2021"</span>, <time datetime="2024-09-01" class="refDate">1 September 2024</time>, <span>&lt;<a href="https://www.iso.org/standard/69084.html">https://www.iso.org/standard/69084.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="JSON.SCHEMA.2020-12">[JSON.SCHEMA.2020-12]</dt>
-        <dd>
-<span class="refAuthor">Foundation, O.</span>, <span class="refTitle">"JSON Schema (2020-12)"</span>, <span>&lt;<a href="https://json-schema.org/draft/2020-12/release-notes">https://json-schema.org/draft/2020-12/release-notes</a>&gt;</span>. </dd>
-<dd class="break"></dd>
 <dt id="OWASP_SSRF">[OWASP_SSRF]</dt>
         <dd>
 <span class="refAuthor">OWASP</span>, <span class="refTitle">"Server Side Request Forgery Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/</a>&gt;</span>. </dd>
@@ -3352,10 +3224,6 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dt id="RFC6901">[RFC6901]</dt>
         <dd>
 <span class="refAuthor">Bryan, P., Ed.</span>, <span class="refAuthor">Zyp, K.</span>, and <span class="refAuthor">M. Nottingham, Ed.</span>, <span class="refTitle">"JavaScript Object Notation (JSON) Pointer"</span>, <span class="seriesInfo">RFC 6901</span>, <span class="seriesInfo">DOI 10.17487/RFC6901</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6901">https://www.rfc-editor.org/info/rfc6901</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC7517">[RFC7517]</dt>
-        <dd>
-<span class="refAuthor">Jones, M.</span>, <span class="refTitle">"JSON Web Key (JWK)"</span>, <span class="seriesInfo">RFC 7517</span>, <span class="seriesInfo">DOI 10.17487/RFC7517</span>, <time datetime="2015-05" class="refDate">May 2015</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7517">https://www.rfc-editor.org/info/rfc7517</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9535">[RFC9535]</dt>
         <dd>
@@ -3573,8 +3441,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.0m0SiMah0AK1B2b-fJxlHBj97zMxF1KYkF52nWvtVI22Mz8
-c3VHT-qCzSvtUzkawONLSKttJU1yIVnovGrMlLQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.P2oOrR6DLw7EPFKfnIoRgntgblumhavZ4j_IfrYT0aQL34a
+x3uOQUDiuDYF7IEd5CmTTx_kG3J_XlFjJb07ORw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -4015,8 +3883,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.0m0SiMah0AK1B2b-fJxlHBj97zMxF1KYkF52nWvtVI22Mz8
-c3VHT-qCzSvtUzkawONLSKttJU1yIVnovGrMlLQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.P2oOrR6DLw7EPFKfnIoRgntgblumhavZ4j_IfrYT0aQL34a
+x3uOQUDiuDYF7IEd5CmTTx_kG3J_XlFjJb07ORw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -4027,9 +3895,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NTgwMjQyNjMsICJzZF9oYXNoIjogIm9QWk94Vy1Ma0hwMTVELXdVQzh4ZTF
-jMzZ6RG81MTJYb2steXNlSEtkaW8ifQ.IrvBqS4SiwraPKtwi2o06U5uchmxz2vLZdfP
-aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
+hdCI6IDE3NjA2NTM3MDAsICJzZF9oYXNoIjogImZSYkVNeEtYVHcwbXhxaUEwVDJ3Yjd
+Bb3dnUWtVdmF6dGJDQ1NKM0FaMG8ifQ.WUGEfDcIse2lLhJJeut-8etNNi0pcBBhMJda
+1lw7rqZiqJ-U65mn1jRLMQEN4W3JDpSMmNPEqVwweMrLWwmACw
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -4038,8 +3906,8 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1758024263,
-  "sd_hash": "oPZOxW-LkHp15D-wUC8xe1c36zDo512Xok-yseHKdio"
+  "iat": 1760653700,
+  "sd_hash": "fRbEMxKXTw0mxqiA0T2wb7AowgQkUvaztbCCSJ3AZ0o"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -4085,7 +3953,7 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
   "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
-      "lang": "en-US",
+      "locale": "en-US",
       "name": "Betelgeuse Education Credential",
       "description": "An education credential for all carbon-based life forms on Betelgeusians",
       "rendering": {
@@ -4094,6 +3962,10 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
             "uri": "https://betelgeuse.example.com/public/education-logo.png",
             "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Betelgeuse Ministry of Education logo"
+          },
+          "background_image": {
+            "uri": "https://betelgeuse.example.com/public/credential-background.png",
+            "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
@@ -4112,7 +3984,7 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
       }
     },
     {
-      "lang": "de-DE",
+      "locale": "de-DE",
       "name": "Betelgeuse-Bildungsnachweis",
       "rendering": {
         "simple": {
@@ -4120,6 +3992,10 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
             "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
             "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
+          },
+          "background_image": {
+            "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
+            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
@@ -4143,28 +4019,29 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
       "path": ["name"],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Vor- und Nachname",
           "description": "Der Name des Studenten"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Name",
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "allowed",
+      "mandatory": true
     },
     {
       "path": ["address"],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Adresse",
           "description": "Adresse zum Zeitpunkt des Abschlusses"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Address",
           "description": "Address at the time of graduation"
         }
@@ -4175,11 +4052,11 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
       "path": ["address", "street_address"],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Straße"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Street Address"
         }
       ],
@@ -4190,21 +4067,19 @@ aoRKvPNsoAw-iWjGriOmhhhS1STIPoOqk-XSrP_qjP6IFRbyRg
       "path": ["degrees", null],
       "display": [
         {
-          "lang": "de-DE",
+          "locale": "de-DE",
           "label": "Abschluss",
           "description": "Der Abschluss des Studenten"
         },
         {
-          "lang": "en-US",
+          "locale": "en-US",
           "label": "Degree",
           "description": "Degree earned by the student"
         }
       ],
       "sd": "allowed"
     }
-  ],
-  "schema_uri": "https://exampleuniversity.com/public/credential-schema-0.9",
-  "schema_uri#integrity": "sha256-He4fNeA4xvjLbh/e+rd9Hw3l60OS4tEliHE7NDYXRwA="
+  ]
 }
 
 </pre><a href="#appendix-B.2-1" class="pilcrow">¶</a>
@@ -4225,6 +4100,7 @@ Andres Uribe,
 Andrii Deinega,
 Babis Routis,
 Christian Bormann,
+Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
@@ -4249,163 +4125,185 @@ for their contributions (some of which substantial) to this draft and to the ini
 <a href="#appendix-D" class="section-number selfRef">Appendix D. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
 <p id="appendix-D-1">-12<a href="#appendix-D-1" class="pilcrow">¶</a></p>
-<p id="appendix-D-2">-11<a href="#appendix-D-2" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-3.1">Clarify extend support for claim metadata<a href="#appendix-D-3.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-2.1">Change <code>lang</code> to <code>locale</code>. While <code>lang</code> is more accurate, <code>locale</code> is what has traditionally been used in OpenID Connect and later related specs.<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.2">Add privacy concerns regarding the use of <code>x5u</code> parameter in JWKs and similar remote retrieval mechanisms<a href="#appendix-D-3.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.2">Remove JSON schema from Type Metadata<a href="#appendix-D-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.3">Added a section on Credential Type Extension and Issuer Authorization.<a href="#appendix-D-3.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.3">Introduce optional mandatory property for claims<a href="#appendix-D-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.4">Fixed an inconsistency to the description of <code>display</code> attribute of claim metadata.<a href="#appendix-D-3.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.4">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-D-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.5">add <code>vct#integrity</code> to the list of claims that cannot be selectively disclosed<a href="#appendix-D-3.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.5">Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and I'm still not sure about the term or these words, but it's where we've ended up)<a href="#appendix-D-2.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.6">Drop explicit treatment of the glue type metadata document concept<a href="#appendix-D-3.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.6">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.7">Editorial updates and fixes.<a href="#appendix-D-3.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.7">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.8">State that when the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token has to be a JWT.<a href="#appendix-D-3.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.8">List <code>vct</code> as one of the required values in type metadata and ensure that the use of the document integrity claims is clear<a href="#appendix-D-2.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-3.9">
-          <code>vct</code> datatype is now just a string<a href="#appendix-D-3.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.9">Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI<a href="#appendix-D-2.9" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.10">Recommend to use <code>sd=always</code> or <code>sd=never</code> to avoid ambiguity and introduce rules for <code>sd</code> and <code>mandatory</code> when extending types<a href="#appendix-D-2.10" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-4">-10<a href="#appendix-D-4" class="pilcrow">¶</a></p>
+<p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-5.1">Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.<a href="#appendix-D-5.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-4.1">Clarify extend support for claim metadata<a href="#appendix-D-4.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-5.2">Fix <code>[...]#integrity</code> claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)<a href="#appendix-D-5.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-4.2">Add privacy concerns regarding the use of <code>x5u</code> parameter in JWKs and similar remote retrieval mechanisms<a href="#appendix-D-4.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.3">Added a section on Credential Type Extension and Issuer Authorization.<a href="#appendix-D-4.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.4">Fixed an inconsistency to the description of <code>display</code> attribute of claim metadata.<a href="#appendix-D-4.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.5">add <code>vct#integrity</code> to the list of claims that cannot be selectively disclosed<a href="#appendix-D-4.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.6">Drop explicit treatment of the glue type metadata document concept<a href="#appendix-D-4.6" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.7">Editorial updates and fixes.<a href="#appendix-D-4.7" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.8">State that when the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token has to be a JWT.<a href="#appendix-D-4.8" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-4.9">
+          <code>vct</code> datatype is now just a string<a href="#appendix-D-4.9" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-6">-09<a href="#appendix-D-6" class="pilcrow">¶</a></p>
+<p id="appendix-D-5">-10<a href="#appendix-D-5" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-7.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-D-7.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-6.1">Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.<a href="#appendix-D-6.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-7.2">Editorial changes<a href="#appendix-D-7.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-7.3">Document reasons for not using JSON Pointer or JSON Path (Issue #267)<a href="#appendix-D-7.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-7.4">Clarify that private claim names MAY be used<a href="#appendix-D-7.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-7.5">Update PID Example<a href="#appendix-D-7.5" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-7.6">Fix section numbering in a few SD-JWT references<a href="#appendix-D-7.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-6.2">Fix <code>[...]#integrity</code> claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)<a href="#appendix-D-6.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-8">-08<a href="#appendix-D-8" class="pilcrow">¶</a></p>
+<p id="appendix-D-7">-09<a href="#appendix-D-7" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-9.1">Fix formatting issue introduced by the reintroduction of the DID paragraph in -07<a href="#appendix-D-9.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-8.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-D-8.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-8.2">Editorial changes<a href="#appendix-D-8.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-8.3">Document reasons for not using JSON Pointer or JSON Path (Issue #267)<a href="#appendix-D-8.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-8.4">Clarify that private claim names MAY be used<a href="#appendix-D-8.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-8.5">Update PID Example<a href="#appendix-D-8.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-8.6">Fix section numbering in a few SD-JWT references<a href="#appendix-D-8.6" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-10">-07<a href="#appendix-D-10" class="pilcrow">¶</a></p>
+<p id="appendix-D-9">-08<a href="#appendix-D-9" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-11.1">Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-11.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-11.2">Remove the requirement to insert a .well-known part for vct URLs<a href="#appendix-D-11.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-11.3">fix section numbering in SD-JWT references to align with the latest -14 version<a href="#appendix-D-11.3" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-10.1">Fix formatting issue introduced by the reintroduction of the DID paragraph in -07<a href="#appendix-D-10.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-12">-06<a href="#appendix-D-12" class="pilcrow">¶</a></p>
+<p id="appendix-D-11">-07<a href="#appendix-D-11" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-13.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-D-13.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-12.1">Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-12.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-13.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-13.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-12.2">Remove the requirement to insert a .well-known part for vct URLs<a href="#appendix-D-12.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-13.3">Add the “Status” field for the well-known URI registration per IANA early review<a href="#appendix-D-13.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-12.3">fix section numbering in SD-JWT references to align with the latest -14 version<a href="#appendix-D-12.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-14">-05<a href="#appendix-D-14" class="pilcrow">¶</a></p>
+<p id="appendix-D-13">-06<a href="#appendix-D-13" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-15.1">Include display and claim type metadata<a href="#appendix-D-15.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-14.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-D-14.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-15.2">Added example for type metadata<a href="#appendix-D-15.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-14.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-D-14.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-15.3">Clarify, add context, or otherwise improved the examples<a href="#appendix-D-15.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-14.3">Add the “Status” field for the well-known URI registration per IANA early review<a href="#appendix-D-14.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-16">-04<a href="#appendix-D-16" class="pilcrow">¶</a></p>
+<p id="appendix-D-15">-05<a href="#appendix-D-15" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-17.1">update reference to IETF Status List<a href="#appendix-D-17.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-16.1">Include display and claim type metadata<a href="#appendix-D-16.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-17.2">Include Type Metadata<a href="#appendix-D-17.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-16.2">Added example for type metadata<a href="#appendix-D-16.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-17.3">Include schema Type Metadata<a href="#appendix-D-17.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-17.4">Editorial changes<a href="#appendix-D-17.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-17.5">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-D-17.5" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-17.6">Rework key resolution/validation for x5c<a href="#appendix-D-17.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-16.3">Clarify, add context, or otherwise improved the examples<a href="#appendix-D-16.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-18">-03<a href="#appendix-D-18" class="pilcrow">¶</a></p>
+<p id="appendix-D-17">-04<a href="#appendix-D-17" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-19.1">Include disclosure of age_equal_or_over/18 in the PID example<a href="#appendix-D-19.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-18.1">update reference to IETF Status List<a href="#appendix-D-18.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.2">Include Type Metadata<a href="#appendix-D-18.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.3">Include schema Type Metadata<a href="#appendix-D-18.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.4">Editorial changes<a href="#appendix-D-18.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.5">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-D-18.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-18.6">Rework key resolution/validation for x5c<a href="#appendix-D-18.6" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-20">-02<a href="#appendix-D-20" class="pilcrow">¶</a></p>
+<p id="appendix-D-19">-03<a href="#appendix-D-19" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-21.1">Made specific rules for public verification key validation conditional<a href="#appendix-D-21.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.2">Finetuned rules for obtaining public verification key<a href="#appendix-D-21.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.3">Editorial changes<a href="#appendix-D-21.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.4">added Brian Campbell as co-author<a href="#appendix-D-21.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.5">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-D-21.5" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.6">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-D-21.6" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.7">Fix inconstancy in the .well-known path construction<a href="#appendix-D-21.7" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.8">Added registration request to IANA for the well-known URI<a href="#appendix-D-21.8" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-D-21.9" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.10">Clarify the optionality of the <code>cnf</code> claim<a href="#appendix-D-21.10" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.11">Added relationships to other documents<a href="#appendix-D-21.11" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-D-21.12">Added PID example<a href="#appendix-D-21.12" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-20.1">Include disclosure of age_equal_or_over/18 in the PID example<a href="#appendix-D-20.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-22">-01<a href="#appendix-D-22" class="pilcrow">¶</a></p>
+<p id="appendix-D-21">-02<a href="#appendix-D-21" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-23.1">Introduce rules for type identifiers (Collision-Resistant Name)<a href="#appendix-D-23.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-22.1">Made specific rules for public verification key validation conditional<a href="#appendix-D-22.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-23.2">Rename <code>type</code> to <code>vct</code><a href="#appendix-D-23.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-22.2">Finetuned rules for obtaining public verification key<a href="#appendix-D-22.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-23.3">Removed duplicated and inconsistent requirements on KB-JWT<a href="#appendix-D-23.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-22.3">Editorial changes<a href="#appendix-D-22.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-23.4">Editorial changes<a href="#appendix-D-23.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-22.4">added Brian Campbell as co-author<a href="#appendix-D-22.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-23.5">Added issuer public verification key discovery section.<a href="#appendix-D-23.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-22.5">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-D-22.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.6">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-D-22.6" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.7">Fix inconstancy in the .well-known path construction<a href="#appendix-D-22.7" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.8">Added registration request to IANA for the well-known URI<a href="#appendix-D-22.8" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-D-22.9" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.10">Clarify the optionality of the <code>cnf</code> claim<a href="#appendix-D-22.10" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.11">Added relationships to other documents<a href="#appendix-D-22.11" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-22.12">Added PID example<a href="#appendix-D-22.12" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-24">-00<a href="#appendix-D-24" class="pilcrow">¶</a></p>
+<p id="appendix-D-23">-01<a href="#appendix-D-23" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-25.1">Upload as draft-ietf-oauth-sd-jwt-vc-00<a href="#appendix-D-25.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-24.1">Introduce rules for type identifiers (Collision-Resistant Name)<a href="#appendix-D-24.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-25.2">Aligned terminology and descriptions with latest version of SD-JWT<a href="#appendix-D-25.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-24.2">Rename <code>type</code> to <code>vct</code><a href="#appendix-D-24.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-24.3">Removed duplicated and inconsistent requirements on KB-JWT<a href="#appendix-D-24.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-24.4">Editorial changes<a href="#appendix-D-24.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-24.5">Added issuer public verification key discovery section.<a href="#appendix-D-24.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-D-26">[[ pre Working Group Adoption: ]]<a href="#appendix-D-26" class="pilcrow">¶</a></p>
-<p id="appendix-D-27">-00<a href="#appendix-D-27" class="pilcrow">¶</a></p>
+<p id="appendix-D-25">-00<a href="#appendix-D-25" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-28.1">Initial Version<a href="#appendix-D-28.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-26.1">Upload as draft-ietf-oauth-sd-jwt-vc-00<a href="#appendix-D-26.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-28.2">Removed W3C VCDM transformation algorithm<a href="#appendix-D-28.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-26.2">Aligned terminology and descriptions with latest version of SD-JWT<a href="#appendix-D-26.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-28.3">Various editorial changes based on feedback<a href="#appendix-D-28.3" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-D-27">[[ pre Working Group Adoption: ]]<a href="#appendix-D-27" class="pilcrow">¶</a></p>
+<p id="appendix-D-28">-00<a href="#appendix-D-28" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-D-29.1">Initial Version<a href="#appendix-D-29.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-28.4">Adjusted terminology based on feedback<a href="#appendix-D-28.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-29.2">Removed W3C VCDM transformation algorithm<a href="#appendix-D-29.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-28.5">Added non-selectively disclosable JWT VC<a href="#appendix-D-28.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-29.3">Various editorial changes based on feedback<a href="#appendix-D-29.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-28.6">Added a note that this is not W3C VCDM<a href="#appendix-D-28.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-29.4">Adjusted terminology based on feedback<a href="#appendix-D-29.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-29.5">Added non-selectively disclosable JWT VC<a href="#appendix-D-29.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-29.6">Added a note that this is not W3C VCDM<a href="#appendix-D-29.6" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
