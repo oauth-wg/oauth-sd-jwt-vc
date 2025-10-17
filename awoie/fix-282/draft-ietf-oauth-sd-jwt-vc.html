@@ -1206,10 +1206,13 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
             <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-presenting-verifiable-crede" class="internal xref">Presenting Verifiable Credentials</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
-                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-key-binding-jwt" class="internal xref">Key Binding JWT</a></p>
+                <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-data-format-2" class="internal xref">Data Format</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.2">
-                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
+                <p id="section-toc.1-1.4.2.2.1"><a href="#section-4.2" class="auto internal xref">4.2</a>.  <a href="#name-key-binding-jwt" class="internal xref">Key Binding JWT</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.3">
+                <p id="section-toc.1-1.4.2.3.1"><a href="#section-4.3" class="auto internal xref">4.3</a>.  <a href="#name-examples" class="internal xref">Examples</a></p>
 </li>
             </ul>
 </li>
@@ -1320,6 +1323,9 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.7">
                 <p id="section-toc.1-1.10.2.7.1"><a href="#section-10.7" class="auto internal xref">10.7</a>.  <a href="#name-trust-in-type-metadata" class="internal xref">Trust in Type Metadata</a></p>
+</li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.10.2.8">
+                <p id="section-toc.1-1.10.2.8.1"><a href="#section-10.8" class="auto internal xref">10.8</a>.  <a href="#name-use-of-data-uris-for-claim-" class="internal xref">Use of Data URIs for Claim Types</a></p>
 </li>
             </ul>
 </li>
@@ -1732,6 +1738,21 @@ exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2
             </h5>
 <p id="section-3.2.2.3-1">Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> MAY be used.<a href="#section-3.2.2.3-1" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.3-2">Binary data in claims SHOULD be encoded as data URIs as defined in <span>[<a href="#RFC2397" class="cite xref">RFC2397</a>]</span>. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.<a href="#section-3.2.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.3-3">The following is a non-normative example of user data in the unsecured payload
+of an SD-JWT VC that includes a binary image claim:<a href="#section-3.2.2.3-3" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-3.2.2.3-4">
+<pre>{
+  "vct": "https://credentials.example.com/identity_credential",
+  "given_name": "Jane",
+  "family_name": "Doe",
+  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+   AAAFCAYAAACNbyblAAAAHElEQVQI12P4
+   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+}
+
+</pre><a href="#section-3.2.2.3-4" class="pilcrow">¶</a>
+</div>
 </section>
 </div>
 <div id="sd-jwt-vc-without-selectively-disclosable-claims">
@@ -1941,9 +1962,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SVtkx
-bPZjXNCJCVVlLVHADmDkM0lwbYRtqCNiNTOXX8p7KYjYcMWNmJwS6D__u-JBgQAoMnW3
-Q5G1F_0T1QhsQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.USgZz
+dJzQbnJW-V1jxKZWUAwBh7w6T3MyHPJRLpJfz-AseTSmogXfSZSZ8ViB6Ljfuclab53W
+vHYvB-gwGkHxQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1957,7 +1978,7 @@ lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 
 </pre><a href="#section-3.3-26" class="pilcrow">¶</a>
 </div>
-<p id="section-3.3-27">Examples of what presentations of SD-JWT VCs might look like are provided in <a href="#presentation-examples" class="auto internal xref">Section 4.2</a>.<a href="#section-3.3-27" class="pilcrow">¶</a></p>
+<p id="section-3.3-27">Examples of what presentations of SD-JWT VCs might look like are provided in <a href="#presentation-examples" class="auto internal xref">Section 4.3</a>.<a href="#section-3.3-27" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="vc-sd-jwt-verification-and-processing">
@@ -2000,7 +2021,7 @@ This specification defines the following two Issuer Signature Mechanisms:<a href
             <p id="section-3.5-3.1.1">JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the <code>iss</code> claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 5</a>.<a href="#section-3.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-3.2">
-            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the <code>x5c</code> header parameter, the recipient uses the public key from the end-entity certificate of the certificates from the <code>x5c</code> header parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-3.5-4">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
@@ -2018,27 +2039,36 @@ See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 1
       </h2>
 <p id="section-4-1">This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
-<div id="key-binding-jwt">
+<div id="data-format-1">
 <section id="section-4.1">
-        <h3 id="name-key-binding-jwt">
-<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-key-binding-jwt" class="section-name selfRef">Key Binding JWT</a>
+        <h3 id="name-data-format-2">
+<a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-data-format-2" class="section-name selfRef">Data Format</a>
         </h3>
-<p id="section-4.1-1">If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
+<p id="section-4.1-1">A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
+as defined in Section 4 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="key-binding-jwt">
+<section id="section-4.2">
+        <h3 id="name-key-binding-jwt">
+<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-key-binding-jwt" class="section-name selfRef">Key Binding JWT</a>
+        </h3>
+<p id="section-4.2-1">If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
 MUST adhere to the rules defined in Section 4.3 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
-<p id="section-4.1-2">The KB-JWT MAY include additional claims which, when not understood, MUST
-be ignored by the Verifier.<a href="#section-4.1-2" class="pilcrow">¶</a></p>
+<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
+<p id="section-4.2-2">The KB-JWT MAY include additional claims which, when not understood, MUST
+be ignored by the Verifier.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="presentation-examples">
-<section id="section-4.2">
+<section id="section-4.3">
         <h3 id="name-examples">
-<a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
+<a href="#section-4.3" class="section-number selfRef">4.3. </a><a href="#name-examples" class="section-name selfRef">Examples</a>
         </h3>
-<p id="section-4.2-1">The following is a non-normative example of a presentation of the SD-JWT shown in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> including a KB-JWT.
+<p id="section-4.3-1">The following is a non-normative example of a presentation of the SD-JWT shown in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> including a KB-JWT.
 In this presentation, the Holder provides only the Disclosures for the <code>address</code> and <code>is_over_65</code> claims.
-Other claims are not disclosed to the Verifier.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<div class="lang-txt sourcecode" id="section-4.2-2">
+Other claims are not disclosed to the Verifier.<a href="#section-4.3-1" class="pilcrow">¶</a></p>
+<div class="lang-txt sourcecode" id="section-4.3-2">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
 Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
 VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
@@ -2054,22 +2084,22 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SVtkx
-bPZjXNCJCVVlLVHADmDkM0lwbYRtqCNiNTOXX8p7KYjYcMWNmJwS6D__u-JBgQAoMnW3
-Q5G1F_0T1QhsQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.USgZz
+dJzQbnJW-V1jxKZWUAwBh7w6T3MyHPJRLpJfz-AseTSmogXfSZSZ8ViB6Ljfuclab53W
+vHYvB-gwGkHxQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDkxOT
-IsICJzZF9oYXNoIjogIlFKODcteVZqODZrUmtEeTlMMGxGbVFlandUWUQ0c1gyeW5FcV
-9fMWRuMkkifQ.Po_J9LTLrfuJ3tJwRUZNLScCtGWDT6saRIqu009OeFMXl_eixvMP-HZ
-v5zNbEwalkkQ_2jhIq5jAy4NtUtcKdA
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDkzNT
+IsICJzZF9oYXNoIjogImtjTmo5TTN3dklGNk1hQzZ3NmlfSVdYWDg4WnpZMDJFNVUwNk
+5nQU9UeUkifQ.5VditaLgyB3J5UVjHz-pka7TOQHnWzWq7Yk9JCmEKYErvm5BRBJNy3e
+ZX2w_G3UnbKmuAfLoYagfXLFV-0Rmgw
 
-</pre><a href="#section-4.2-2" class="pilcrow">¶</a>
+</pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-3">After validation, the Verifier will have the following processed SD-JWT payload available for further handling:<a href="#section-4.2-3" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-4.2-4">
+<p id="section-4.3-3">After validation, the Verifier will have the following processed SD-JWT payload available for further handling:<a href="#section-4.3-3" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-4.3-4">
 <pre>{
   "iss": "https://example.com/issuer",
   "iat": 1683000000,
@@ -2092,11 +2122,11 @@ v5zNbEwalkkQ_2jhIq5jAy4NtUtcKdA
   }
 }
 
-</pre><a href="#section-4.2-4" class="pilcrow">¶</a>
+</pre><a href="#section-4.3-4" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-5">The following example shows a presentation of a (similar but different) SD-JWT without a
-KB-JWT:<a href="#section-4.2-5" class="pilcrow">¶</a></p>
-<div class="lang-txt sourcecode" id="section-4.2-6">
+<p id="section-4.3-5">The following example shows a presentation of a (similar but different) SD-JWT without a
+KB-JWT:<a href="#section-4.3-5" class="pilcrow">¶</a></p>
+<div class="lang-txt sourcecode" id="section-4.3-6">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
 ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
 wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
@@ -2109,17 +2139,17 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.HQf6FpOSEe-NEa7WqR1aXbs1fJcW3fgOZEmQ0E7g23iQ03
-1DPdlPfN_FAsg_Fi_aXOqITJSoEv0c8sNIQH0imw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.gNOvONaxzhXm5IZfnsaQDQx-2yL6fh6A1KcmnB9bDCYVHr
+8lcIxq6wlkPzOmAdNYrtWyUrFkvmoY2g_ommpZXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
 OiAiVVMifV0~
 
-</pre><a href="#section-4.2-6" class="pilcrow">¶</a>
+</pre><a href="#section-4.3-6" class="pilcrow">¶</a>
 </div>
-<p id="section-4.2-7">The Verifier will have the following processed SD-JWT payload after validation:<a href="#section-4.2-7" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-4.2-8">
+<p id="section-4.3-7">The Verifier will have the following processed SD-JWT payload after validation:<a href="#section-4.3-7" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-4.3-8">
 <pre>{
   "iss": "https://example.com/issuer",
   "iat": 1683000000,
@@ -2134,7 +2164,7 @@ OiAiVVMifV0~
   }
 }
 
-</pre><a href="#section-4.2-8" class="pilcrow">¶</a>
+</pre><a href="#section-4.3-8" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -2306,13 +2336,14 @@ consistent with the intent of the provider of the Type Metadata.<a href="#sectio
         <h3 id="name-type-metadata-example">
 <a href="#section-6.1" class="section-number selfRef">6.1. </a><a href="#name-type-metadata-example" class="section-name selfRef">Type Metadata Example</a>
         </h3>
-<p id="section-6.1-1">All examples in this section are non-normative.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
+<p id="section-6.1-1">All examples in this section are non-normative. This section only shows
+excerpts, the full examples can be found in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.1-1" class="pilcrow">¶</a></p>
 <p id="section-6.1-2">The following is an example of an SD-JWT VC payload, containing a <code>vct</code> claim
 with the value <code>https://betelgeuse.example.com/education_credential</code>:<a href="#section-6.1-2" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="section-6.1-3">
 <pre>{
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 
@@ -2334,10 +2365,9 @@ retrieved from it:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
 
 </pre><a href="#section-6.1-5" class="pilcrow">¶</a>
 </div>
-<p id="section-6.1-6">This example is shortened for presentation, a full Type Metadata example can be found in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
-<p id="section-6.1-7">Note: The hash of the Type Metadata document shown in the second example must be equal
+<p id="section-6.1-6">Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
-<code>WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=</code>.<a href="#section-6.1-7" class="pilcrow">¶</a></p>
+<code>1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=</code>.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="type-metadata-format">
@@ -2346,25 +2376,51 @@ to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
 <a href="#section-6.2" class="section-number selfRef">6.2. </a><a href="#name-type-metadata-format" class="section-name selfRef">Type Metadata Format</a>
         </h3>
 <p id="section-6.2-1">The Type Metadata document MUST be a JSON object. The following properties are
-defined:
-* <code>vct</code>
-  * REQUIRED. The verifiable credential type described by this type metadata document.
-* <code>name</code>
-  * OPTIONAL. A human-readable name for the type, intended for developers reading
-  the JSON document.
-* <code>description</code>
-  * OPTIONAL. A human-readable description for the type, intended for
-  developers reading the JSON document.
-* <code>extends</code>
-  * OPTIONAL. A URI of another type that this type extends, as described in
-  <a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>.
-* <code>display</code>: An array of objects containing display information for the type, as described
-  in <a href="#display-metadata" class="auto internal xref">Section 8</a>. This property is OPTIONAL.
-* <code>claims</code>: An array of objects containing claim information for the type, as described in
-  <a href="#claim-metadata" class="auto internal xref">Section 9</a>. This property is OPTIONAL.<a href="#section-6.2-1" class="pilcrow">¶</a></p>
-<p id="section-6.2-2">A Type Metadata document MAY contain additional top level or subordinate properties.
-Consumers MUST ignore properties that are not understood.<a href="#section-6.2-2" class="pilcrow">¶</a></p>
-<p id="section-6.2-3">An example of a Type Metadata document is shown in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+defined:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-6.2-2.1">
+            <p id="section-6.2-2.1.1"><code>vct</code><a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-6.2-2.1.2.1">REQUIRED. The verifiable credential type described by this type metadata document.<a href="#section-6.2-2.1.2.1" class="pilcrow">¶</a>
+</li>
+            </ul>
+</li>
+          <li class="compact" id="section-6.2-2.2">
+            <p id="section-6.2-2.2.1"><code>name</code><a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-6.2-2.2.2.1">OPTIONAL. A human-readable name for the type, intended for developers reading
+the JSON document.<a href="#section-6.2-2.2.2.1" class="pilcrow">¶</a>
+</li>
+            </ul>
+</li>
+          <li class="compact" id="section-6.2-2.3">
+            <p id="section-6.2-2.3.1"><code>description</code><a href="#section-6.2-2.3.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-6.2-2.3.2.1">OPTIONAL. A human-readable description for the type, intended for
+developers reading the JSON document.<a href="#section-6.2-2.3.2.1" class="pilcrow">¶</a>
+</li>
+            </ul>
+</li>
+          <li class="compact" id="section-6.2-2.4">
+            <p id="section-6.2-2.4.1"><code>extends</code><a href="#section-6.2-2.4.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="section-6.2-2.4.2.1">OPTIONAL. A URI of another type that this type extends, as described in
+<a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>.<a href="#section-6.2-2.4.2.1" class="pilcrow">¶</a>
+</li>
+            </ul>
+</li>
+          <li class="compact" id="section-6.2-2.5">
+            <code>display</code>: An array of objects containing display information for the type, as described
+in <a href="#display-metadata" class="auto internal xref">Section 8</a>. This property is OPTIONAL.<a href="#section-6.2-2.5" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-6.2-2.6">
+            <code>claims</code>: An array of objects containing claim information for the type, as described in
+<a href="#claim-metadata" class="auto internal xref">Section 9</a>. This property is OPTIONAL.<a href="#section-6.2-2.6" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="section-6.2-3">A Type Metadata document MAY contain additional top level or subordinate properties.
+Consumers MUST ignore properties that are not understood.<a href="#section-6.2-3" class="pilcrow">¶</a></p>
+<p id="section-6.2-4">An example of a Type Metadata document is shown in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a>.<a href="#section-6.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="retrieving-type-metadata">
@@ -2763,47 +2819,49 @@ claims in the credential above:<a href="#section-9.1-4" class="pilcrow">¶</a></
 selected.<a href="#section-9.1-5.4" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-9.1-6">In detail, the array is processed from left to right as follows:<a href="#section-9.1-6" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="compact type-1" id="section-9.1-7">
-<li id="section-9.1-7.1">Select the root element of the credential, i.e., the top-level JSON object.<a href="#section-9.1-7.1" class="pilcrow">¶</a>
+<p id="section-9.1-6">The example in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a> shows how the <code>path</code> can be used to
+address arrays and their elements.<a href="#section-9.1-6" class="pilcrow">¶</a></p>
+<p id="section-9.1-7">In detail, the array is processed from left to right as follows:<a href="#section-9.1-7" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-9.1-8">
+<li id="section-9.1-8.1">Select the root element of the credential, i.e., the top-level JSON object.<a href="#section-9.1-8.1" class="pilcrow">¶</a>
 </li>
-          <li id="section-9.1-7.2">
-            <p id="section-9.1-7.2.1">Process the <code>path</code> components from left to right:<a href="#section-9.1-7.2.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="compact type-1" id="section-9.1-7.2.2">
-<li id="section-9.1-7.2.2.1">If the <code>path</code> component is a string, select the element in the respective
+          <li id="section-9.1-8.2">
+            <p id="section-9.1-8.2.1">Process the <code>path</code> components from left to right:<a href="#section-9.1-8.2.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-9.1-8.2.2">
+<li id="section-9.1-8.2.2.1">If the <code>path</code> component is a string, select the element in the respective
 key in the currently selected element(s). If any of the currently
 selected element(s) is not an object, abort processing and return an
 error. If the key does not exist in any element currently selected,
-remove that element from the selection.<a href="#section-9.1-7.2.2.1" class="pilcrow">¶</a>
+remove that element from the selection.<a href="#section-9.1-8.2.2.1" class="pilcrow">¶</a>
 </li>
-              <li id="section-9.1-7.2.2.2">If the <code>path</code> component is <code>null</code>, select all elements of the currently
+              <li id="section-9.1-8.2.2.2">If the <code>path</code> component is <code>null</code>, select all elements of the currently
 selected array(s). If any of the currently selected element(s) is not an
-array, abort processing and return an error.<a href="#section-9.1-7.2.2.2" class="pilcrow">¶</a>
+array, abort processing and return an error.<a href="#section-9.1-8.2.2.2" class="pilcrow">¶</a>
 </li>
-              <li id="section-9.1-7.2.2.3">If the <code>path</code> component is a non-negative integer, select the element at
+              <li id="section-9.1-8.2.2.3">If the <code>path</code> component is a non-negative integer, select the element at
 the respective index in the currently selected array(s). If any of the
 currently selected element(s) is not an array, abort processing and
 return an error. If the index does not exist in a selected array, remove
-that array from the selection.<a href="#section-9.1-7.2.2.3" class="pilcrow">¶</a>
+that array from the selection.<a href="#section-9.1-8.2.2.3" class="pilcrow">¶</a>
 </li>
-              <li id="section-9.1-7.2.2.4">If the set of elements currently selected is empty, abort processing and
-return an error.<a href="#section-9.1-7.2.2.4" class="pilcrow">¶</a>
+              <li id="section-9.1-8.2.2.4">If the set of elements currently selected is empty, abort processing and
+return an error.<a href="#section-9.1-8.2.2.4" class="pilcrow">¶</a>
 </li>
             </ol>
 </li>
         </ol>
-<p id="section-9.1-8">The result of the processing is the set of elements to which the respective
-claim metadata applies.<a href="#section-9.1-8" class="pilcrow">¶</a></p>
-<p id="section-9.1-9">The <code>path</code> property MUST point to the respective claim as if all
+<p id="section-9.1-9">The result of the processing is the set of elements to which the respective
+claim metadata applies.<a href="#section-9.1-9" class="pilcrow">¶</a></p>
+<p id="section-9.1-10">The <code>path</code> property MUST point to the respective claim as if all
 selectively disclosable claims were disclosed to a Verifier. That means that a
 consuming application which does not have access to all disclosures may not be
-able to identify the claim which is being addressed.<a href="#section-9.1-9" class="pilcrow">¶</a></p>
-<p id="section-9.1-10">Note: This specification intentionally does not use JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> for
+able to identify the claim which is being addressed.<a href="#section-9.1-10" class="pilcrow">¶</a></p>
+<p id="section-9.1-11">Note: This specification intentionally does not use JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> for
 selecting claims, as JSON Pointer requires string parsing and does not support
 wildcard selection of array elements. It does not use JSON Path <span>[<a href="#RFC9535" class="cite xref">RFC9535</a>]</span> as
 that introduces a considerable complexity and brings in many features which
 are not needed for the use case of selecting claims in a credential. There are
-also security concerns with some implementations.<a href="#section-9.1-10" class="pilcrow">¶</a></p>
+also security concerns with some implementations.<a href="#section-9.1-11" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claim-display-metadata">
@@ -3070,6 +3128,14 @@ Verifiers and wallets SHOULD implement explicit checks for issuer authorization 
 <p id="section-10.7-3">Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.<a href="#section-10.7-3" class="pilcrow">¶</a></p>
 </section>
 </div>
+<div id="use-of-data-uris-for-claim-types">
+<section id="section-10.8">
+        <h3 id="name-use-of-data-uris-for-claim-">
+<a href="#section-10.8" class="section-number selfRef">10.8. </a><a href="#name-use-of-data-uris-for-claim-" class="section-name selfRef">Use of Data URIs for Claim Types</a>
+        </h3>
+<p id="section-10.8-1">The use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly escape, sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.<a href="#section-10.8-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="privacy-considerations">
@@ -3178,6 +3244,10 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="RFC2397">[RFC2397]</dt>
+        <dd>
+<span class="refAuthor">Masinter, L.</span>, <span class="refTitle">"The "data" URL scheme"</span>, <span class="seriesInfo">RFC 2397</span>, <span class="seriesInfo">DOI 10.17487/RFC2397</span>, <time datetime="1998-08" class="refDate">August 1998</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2397">https://www.rfc-editor.org/info/rfc2397</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC5646">[RFC5646]</dt>
         <dd>
@@ -3454,8 +3524,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.2d0J83y8tomjGvgGkrwcyj6fZXGGzUlfp-GB6U9RHNJXylg
-ftC_EGMnWj9cLCBXkU4kHnj8KWoo4FeeXMSlYpw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.jfAMSR1onDb_T_Mn0tAz391d60Merf5HVE0tHttqhWMsRlX
+VzpnWTgZOkSBmxCIO5deudfPOR4pbE3TTSPGwkw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3896,8 +3966,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.2d0J83y8tomjGvgGkrwcyj6fZXGGzUlfp-GB6U9RHNJXylg
-ftC_EGMnWj9cLCBXkU4kHnj8KWoo4FeeXMSlYpw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.jfAMSR1onDb_T_Mn0tAz391d60Merf5HVE0tHttqhWMsRlX
+VzpnWTgZOkSBmxCIO5deudfPOR4pbE3TTSPGwkw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3908,9 +3978,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NjA3MDkxOTIsICJzZF9oYXNoIjogImJvX3lzNWpVVkNKZ2hwZDlUcWF5bHV
-vOVZfUnZtQm9wODgtZVV3a2hUUUUifQ.x-mdNHrO2aLEvW8lbbJ-bwlWFPNbdgc_Adou
-J9vy-67JnSQCKFBg4pXjJCUjsU6iXRmI2p9ZAutNNCo3qWDcIw
+hdCI6IDE3NjA3MDkzNTIsICJzZF9oYXNoIjogIllYamYtTEJHQlp4ZzEzZ1lCaFlJOWV
+1Qk82c09KNXBRczVZTjZOa0tCUGMifQ.1ZW_4RQq0HK6yAy5JI6FIjv7KLGUFSlAXU6a
+sEkoSwOz3atG9IocIWmmb_JsDl4GQgmZl_HR8gGD-hsFrJ_nYg
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3919,8 +3989,8 @@ J9vy-67JnSQCKFBg4pXjJCUjsU6iXRmI2p9ZAutNNCo3qWDcIw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1760709192,
-  "sd_hash": "bo_ys5jUVCJghpd9Tqayluo9V_RvmBop88-eUwkhTQE"
+  "iat": 1760709352,
+  "sd_hash": "YXjf-LBGBZxg13gYBhYI9euBO6sOJ5pQs5YN6NkKBPc"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -3957,7 +4027,38 @@ J9vy-67JnSQCKFBg4pXjJCUjsU6iXRmI2p9ZAutNNCo3qWDcIw
         <h3 id="name-example-2-type-metadata">
 <a href="#appendix-B.2" class="section-number selfRef">B.2. </a><a href="#name-example-2-type-metadata" class="section-name selfRef">Example 2: Type Metadata</a>
         </h3>
-<div class="breakable lang-json sourcecode" id="appendix-B.2-1">
+<p id="appendix-B.2-1">The following example for Type Metadata assumes an SD-JWT VC payload structured as follows:<a href="#appendix-B.2-1" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="appendix-B.2-2">
+<pre>{
+  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+  "name": "Zaphod Beeblebrox",
+  "address": {
+    "street_address": "42 Galaxy Way",
+    "city": "Betelgeuse City",
+    "postal_code": "12345",
+    "country": "Betelgeuse"
+  },
+  "degrees": [
+    {
+      "field_of_study": "Intergalactic Politics",
+      "date_awarded": "2020-05-15"
+    },
+    {
+      "field_of_study": "Space Navigation",
+      "date_awarded": "2018-06-20"
+    },
+    {
+      "field_of_study": "Quantum Mechanics",
+      "date_awarded": "2016-07-25"
+    }
+  ]
+}
+
+</pre><a href="#appendix-B.2-2" class="pilcrow">¶</a>
+</div>
+<p id="appendix-B.2-3">The Type Metadata for this SD-JWT VC could be defined as follows:<a href="#appendix-B.2-3" class="pilcrow">¶</a></p>
+<div class="breakable lang-json sourcecode" id="appendix-B.2-4">
 <pre>{
   "vct": "https://betelgeuse.example.com/education_credential",
   "name": "Betelgeuse Education Credential - Preliminary Version",
@@ -4042,7 +4143,7 @@ J9vy-67JnSQCKFBg4pXjJCUjsU6iXRmI2p9ZAutNNCo3qWDcIw
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed",
+      "sd": "always",
       "mandatory": true
     },
     {
@@ -4077,26 +4178,69 @@ J9vy-67JnSQCKFBg4pXjJCUjsU6iXRmI2p9ZAutNNCo3qWDcIw
       "svg_id": "address_street_address"
     },
     {
-      "path": ["degrees", null],
+      "path": ["degrees"],
       "display": [
         {
           "locale": "de-DE",
-          "label": "Abschluss",
-          "description": "Der Abschluss des Studenten"
+          "label": "Abschlüsse",
+          "description": "Abschlüsse des Studenten"
         },
         {
           "locale": "en-US",
-          "label": "Degree",
-          "description": "Degree earned by the student"
+          "label": "Degrees",
+          "description": "Degrees earned by the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "never"
+    },
+    {
+      "path": ["degrees", null],
+      "sd": "always"
+    },
+    {
+      "path": ["degrees", null, "field_of_study"],
+      "display": [
+        {
+          "locale": "de-DE",
+          "label": "Studienfach"
+        },
+        {
+          "locale": "en-US",
+          "label": "Field of Study"
+        }
+      ],
+      "sd": "never"
+    },
+    {
+      "path": ["degrees", null, "date_awarded"],
+      "display": [
+        {
+          "locale": "de-DE",
+          "label": "Verleihungsdatum"
+        },
+        {
+          "locale": "en-US",
+          "label": "Date Awarded"
+        }
+      ],
+      "sd": "always"
     }
   ]
 }
 
-</pre><a href="#appendix-B.2-1" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.2-4" class="pilcrow">¶</a>
 </div>
+<p id="appendix-B.2-5">Note that in this example, there are four definitions affecting the <code>degrees</code> claim:<a href="#appendix-B.2-5" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="appendix-B.2-6">
+<li id="appendix-B.2-6.1">The <code>degrees</code> array itself is marked as <code>sd: never</code>, meaning the element <code>degrees</code> cannot be selectively disclosed and will always exist in the disclosed SD-JWT. Changing this to <code>sd: always</code> would mean that the <code>degrees</code> array itself is selectively disclosable.<a href="#appendix-B.2-6.1" class="pilcrow">¶</a>
+</li>
+          <li id="appendix-B.2-6.2">Each item in the <code>degrees</code> array (denoted by <code>null</code> in the path) is marked as <code>sd: always</code>, meaning each degree object will be selectively disclosed as a whole.<a href="#appendix-B.2-6.2" class="pilcrow">¶</a>
+</li>
+          <li id="appendix-B.2-6.3">The <code>field_of_study</code> property of each degree object is marked as <code>sd: never</code>, meaning that if the respective degree object is disclosed, the <code>field_of_study</code> property will always be included and cannot be hidden.<a href="#appendix-B.2-6.3" class="pilcrow">¶</a>
+</li>
+          <li id="appendix-B.2-6.4">The <code>date_awarded</code> property of each degree object is marked as <code>sd: always</code>, meaning it can be selectively disclosed.<a href="#appendix-B.2-6.4" class="pilcrow">¶</a>
+</li>
+        </ol>
 </section>
 </div>
 </section>
@@ -4157,6 +4301,14 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-D-2.9">Recommend to use <code>sd=always</code> or <code>sd=never</code> to avoid ambiguity and introduce rules for <code>sd</code> and <code>mandatory</code> when extending types<a href="#appendix-D-2.9" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-D-2.10">Add security considerations for trust in type metadata<a href="#appendix-D-2.10" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.11">Require data URIs for non-JSON types<a href="#appendix-D-2.11" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.12">Require <code>x5c</code> to be in the protected header<a href="#appendix-D-2.12" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.13">Clarify presentations of SD-JWT VC do not require KB<a href="#appendix-D-2.13" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.14">Updated/expanded example for Type Metadata<a href="#appendix-D-2.14" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>
