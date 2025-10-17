@@ -353,6 +353,11 @@ If a recipient cannot validate that the public verification key corresponds the 
 This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.
 
+## Data Format
+
+A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
+as defined in Section 4 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+
 ## Key Binding JWT
 
 If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
@@ -1538,6 +1543,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
+* Clarify presentations of SD-JWT VC do not require KB
 
 -11
 
