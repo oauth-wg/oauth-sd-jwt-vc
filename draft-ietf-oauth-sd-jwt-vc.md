@@ -561,16 +561,17 @@ to the one in the `vct#integrity` claim in the SD-JWT VC payload,
 
 The Type Metadata document MUST be a JSON object. The following properties are
 defined:
+
 * `vct`
-  * REQUIRED. The verifiable credential type described by this type metadata document.
+    * REQUIRED. The verifiable credential type described by this type metadata document.
 * `name`
-  * OPTIONAL. A human-readable name for the type, intended for developers reading
+    * OPTIONAL. A human-readable name for the type, intended for developers reading
   the JSON document.
 * `description`
-  * OPTIONAL. A human-readable description for the type, intended for
+    * OPTIONAL. A human-readable description for the type, intended for
   developers reading the JSON document.
 * `extends`
-  * OPTIONAL. A URI of another type that this type extends, as described in
+    * OPTIONAL. A URI of another type that this type extends, as described in
   (#extending-type-metadata).
 * `display`: An array of objects containing display information for the type, as described
   in (#display-metadata). This property is OPTIONAL.
