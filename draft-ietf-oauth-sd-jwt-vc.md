@@ -282,9 +282,9 @@ of an SD-JWT VC that includes a binary image claim:
   "vct": "https://credentials.example.com/identity_credential",
   "given_name": "Jane",
   "family_name": "Doe",
-  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA\
-AAAFCAYAAACNbyblAAAAHElEQVQI12P4\
-//8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+   AAAFCAYAAACNbyblAAAAHElEQVQI12P4
+   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
 }
 ```
 
