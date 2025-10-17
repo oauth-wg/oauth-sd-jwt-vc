@@ -569,9 +569,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.psBQJ
-   ApZETPgcm1Y2uatNs5N23WsAHsjyYMhCFLZsQMFEvDaAiloZ4NB_xlonJCX3TlDLvTvx
-   nhrnh3o663w3w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LT_3h
+   G2L0U-6-_SPgzulzLLsMH_MG-q8pJ8Pk-SNp3c0FZahXjDNn6I_d6e4oG-l2rOSbYZ6R
+   e0ULIlrs5sRFw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -637,9 +637,9 @@ Table of Contents
 
    *  X.509 Certificates: A mechanism to retrieve the Issuer's public
       key using the X.509 certificate chain in the SD-JWT header.  When
-      the header of the Issuer-signed JWT contains the x5c header
+      the protected header of the Issuer-signed JWT contains the x5c
       parameter, the recipient uses the public key from the end-entity
-      certificate of the certificates from the x5c header parameter and
+      certificate of the certificates from that x5c parameter and
       validates the X.509 certificate chain accordingly.  In this case,
       the Issuer of the Verifiable Credential is the subject of the end-
       entity certificate.
@@ -696,17 +696,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.psBQJ
-   ApZETPgcm1Y2uatNs5N23WsAHsjyYMhCFLZsQMFEvDaAiloZ4NB_xlonJCX3TlDLvTvx
-   nhrnh3o663w3w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LT_3h
+   G2L0U-6-_SPgzulzLLsMH_MG-q8pJ8Pk-SNp3c0FZahXjDNn6I_d6e4oG-l2rOSbYZ6R
+   e0ULIlrs5sRFw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDE3NT
-   UsICJzZF9oYXNoIjogIjJxcGRLVlRzOFR3eFVhZUhramlZNFB1N1dKNXV0bFlaQ0RjRk
-   hmNHh5b1EifQ.QGFNkeetDmA99Egu4EkFMbkgna-4WQmT1N4_4mI0rq_XW2LgUox_dnf
-   G8JP63Ffjw8hIPOOwStrawQkVs-9urQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDcyOD
+   csICJzZF9oYXNoIjogInBubWpaZkd0NzdOQmJxWDlMZ1VUWHU1SWV5VkRxWnZpT2FrYT
+   VjSWwwQUkifQ.kY7cyX59JAXbovBe3w3VR4RXkmQdfsL1M_neu5iJjrBX6iqu-U_Dm3L
+   uRoFEu4xiqvjHhMSp1-io0mAlXb5kxg
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -748,8 +748,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.gFNjgF7Ml1NlOUe0QaTvBgPJm0wQx3_1EsHclBWzsE_cuC
-   xnCf8gABUIbPv-XhiIj9fmpGQr7uEeILqdEyvnig~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.s-beNYrXPpt_Vx3cbwMTsauxl18ceLoxNohE057-2m2CRZ
+   94gfNBI-lCMjx1EUxvOW_2VzMZXmf3KOOkKxpIPw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1862,8 +1862,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.lpxG9x_Y7yxSZJgu8iM8R7az_QQZhKzQWOZYHeaJBYRnTcS
-   vkwRpOunJohNCla3t3TzAksBGnBewvS8KoLgMrw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.G5Uaa5kA6BbHCXq8GMYiekRaahH8ghtKqL3qMqa31g-Cn3c
+   Vmh1Kqa_IRiG79uA0YM9Gw6f0J0OiTLRvZCuJuA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2198,8 +2198,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.lpxG9x_Y7yxSZJgu8iM8R7az_QQZhKzQWOZYHeaJBYRnTcS
-   vkwRpOunJohNCla3t3TzAksBGnBewvS8KoLgMrw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.G5Uaa5kA6BbHCXq8GMYiekRaahH8ghtKqL3qMqa31g-Cn3c
+   Vmh1Kqa_IRiG79uA0YM9Gw6f0J0OiTLRvZCuJuA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2210,17 +2210,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA3MDE3NTUsICJzZF9oYXNoIjogIkl0SEVNaHlKUGJoYllkSTJscDFTWVB
-   nem9zNWRZREdma3FzWmxHR3lXVmMifQ.3w2Ej84Tbpx0MfrD2OYlElFoBXB2o81veFqQ
-   Mt01NGTOUw3bIPGyKejypwBDonmIgb5g8azZa8iOnmOZ5RxtbQ
+   hdCI6IDE3NjA3MDcyODcsICJzZF9oYXNoIjogInJfQkE3cS1yLTRvTEJLblhFSlhsMlZ
+   jbzE2VlNsbENBVU82cVppVnRnMDgifQ.yplf3z3xI6_HctnVJmIlKDsC6yzmGHsIJeoO
+   RNPYOEE4M2GsQZ7e7W3o-yEZIBlgLCCQ7PfSEyVkPWdH0aGt1g
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760701755,
-     "sd_hash": "ItHEMhyJPbhbYdI2lp1SYPgzos5dYDGfkqsZlGGyWVc"
+     "iat": 1760707287,
+     "sd_hash": "r_BA7q-r-4oLBKnXEJXl2Vco16VSllCAUO6qZiVtg08"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2416,6 +2416,7 @@ Appendix D.  Document History
       with the definition in OpenID4VCI
    *  Recommend to use sd=always or sd=never to avoid ambiguity and
       introduce rules for sd and mandatory when extending types
+   *  Require x5c to be in the protected header
    *  Clarify presentations of SD-JWT VC do not require KB
 
    -11
