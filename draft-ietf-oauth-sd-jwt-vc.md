@@ -73,24 +73,20 @@ Credentials are cryptographically secured statements about a Subject, typically 
                |
                v
          +-------------+
-         |             |+                          +------------+
-         |  Verifiers  ||+                         |   Status   |
-         |             |||----- optionally ------->|  Provider  |
-         +-------------+||   retrieve status of    |            |
-          +-------------+|  Verifiable Credential  +------------+
-           +-------------+
+         |             |-+
+         |  Verifiers  | |-+
+         |             | | |
+         +-------------+ | |
+           +-------------+ |
+             +-------------+
 ~~~
-Figure: Issuer-Holder-Verifier Model with optional Status Provider
+Figure: Issuer-Holder-Verifier Model
 
 Verifiers can check the authenticity of the data in the Verifiable Credentials
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
 are the intended Holder of the Verifiable Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
-
-To support revocation of Verifiable Credentials, revocation information can
-optionally be retrieved from a Status Provider. The role of a Status Provider
-can be fulfilled by either a fourth party or by the Issuer.
 
 ## SD-JWT as a Credential Format
 
@@ -147,9 +143,6 @@ Unsecured Payload of an SD-JWT VC:
 of the SD-JWT VC. The Unsecured Payload acts as the input JSON object to issue
 an SD-JWT VC complying to this specification.
 
-Status Provider:
-: An entity that provides status information (e.g. revocation) about a Verifiable Credential.
-
 # Scope
 
 * This specification defines
@@ -172,7 +165,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
-contain a KB-JWT.
+have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -283,6 +276,22 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
+Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
+
+The following is a non-normative example of user data in the unsecured payload
+of an SD-JWT VC that includes a binary image claim:
+
+```json
+{
+  "vct": "https://credentials.example.com/identity_credential",
+  "given_name": "Jane",
+  "family_name": "Doe",
+  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+   AAAFCAYAAACNbyblAAAAHElEQVQI12P4
+   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+}
+```
+
 #### SD-JWT VC without Selectively Disclosable Claims
 
 An SD-JWT VC MAY have no selectively disclosable claims.
@@ -351,7 +360,7 @@ This specification defines the following two Issuer Signature Mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the `x5c` header parameter, the recipient uses the public key from the end-entity certificate of the certificates from the `x5c` header parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
+- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional Issuer Signature Mechanisms; however, the specifics of such mechanisms are out of scope for this specification.
@@ -533,7 +542,8 @@ Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
 ## Type Metadata Example {#type-metadata-example}
 
-All examples in this section are non-normative.
+All examples in this section are non-normative. This section only shows
+excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following is an example of an SD-JWT VC payload, containing a `vct` claim
 with the value `https://betelgeuse.example.com/education_credential`:
@@ -541,7 +551,7 @@ with the value `https://betelgeuse.example.com/education_credential`:
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 ```
@@ -562,26 +572,26 @@ retrieved from it:
 }
 ```
 
-This example is shortened for presentation, a full Type Metadata example can be found in (#ExampleTypeMetadata).
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=`.
+`1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=`.
 
 ## Type Metadata Format {#type-metadata-format}
 
 The Type Metadata document MUST be a JSON object. The following properties are
 defined:
+
 * `vct`
-  * REQUIRED. The verifiable credential type described by this type metadata document.
+    * REQUIRED. The verifiable credential type described by this type metadata document.
 * `name`
-  * OPTIONAL. A human-readable name for the type, intended for developers reading
+    * OPTIONAL. A human-readable name for the type, intended for developers reading
   the JSON document.
 * `description`
-  * OPTIONAL. A human-readable description for the type, intended for
+    * OPTIONAL. A human-readable description for the type, intended for
   developers reading the JSON document.
 * `extends`
-  * OPTIONAL. A URI of another type that this type extends, as described in
+    * OPTIONAL. A URI of another type that this type extends, as described in
   (#extending-type-metadata).
 * `display`: An array of objects containing display information for the type, as described
   in (#display-metadata). This property is OPTIONAL.
@@ -857,6 +867,9 @@ claims in the credential above:
 - `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
   selected.
 
+The example in (#ExampleTypeMetadata) shows how the `path` can be used to
+address arrays and their elements.
+
 In detail, the array is processed from left to right as follows:
 
  1. Select the root element of the credential, i.e., the top-level JSON object.
@@ -1090,7 +1103,17 @@ confer any implicit authorization to issue credentials of that type or its exten
 **Recommendation:**
 Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
+## Trust in Type Metadata
 
+Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
+
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable credential types and under what conditions such metadata can be relied upon.
+
+Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.
+
+## Use of Data URIs for Claim Types
+
+The use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly escape, sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.
 
 # Privacy Considerations {#privacy-considerations}
 
@@ -1374,6 +1397,38 @@ After validation, the Verifier will have the following processed SD-JWT payload 
 
 ## Example 2: Type Metadata {#ExampleTypeMetadata}
 
+The following example for Type Metadata assumes an SD-JWT VC payload structured as follows:
+
+```json
+{
+  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+  "name": "Zaphod Beeblebrox",
+  "address": {
+    "street_address": "42 Galaxy Way",
+    "city": "Betelgeuse City",
+    "postal_code": "12345",
+    "country": "Betelgeuse"
+  },
+  "degrees": [
+    {
+      "field_of_study": "Intergalactic Politics",
+      "date_awarded": "2020-05-15"
+    },
+    {
+      "field_of_study": "Space Navigation",
+      "date_awarded": "2018-06-20"
+    },
+    {
+      "field_of_study": "Quantum Mechanics",
+      "date_awarded": "2016-07-25"
+    }
+  ]
+}
+```
+
+The Type Metadata for this SD-JWT VC could be defined as follows:
+
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
@@ -1459,7 +1514,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed",
+      "sd": "always",
       "mandatory": true
     },
     {
@@ -1494,24 +1549,64 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "svg_id": "address_street_address"
     },
     {
-      "path": ["degrees", null],
+      "path": ["degrees"],
       "display": [
         {
           "locale": "de-DE",
-          "label": "Abschluss",
-          "description": "Der Abschluss des Studenten"
+          "label": "Abschlüsse",
+          "description": "Abschlüsse des Studenten"
         },
         {
           "locale": "en-US",
-          "label": "Degree",
-          "description": "Degree earned by the student"
+          "label": "Degrees",
+          "description": "Degrees earned by the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "never"
+    },
+    {
+      "path": ["degrees", null],
+      "sd": "always"
+    },
+    {
+      "path": ["degrees", null, "field_of_study"],
+      "display": [
+        {
+          "locale": "de-DE",
+          "label": "Studienfach"
+        },
+        {
+          "locale": "en-US",
+          "label": "Field of Study"
+        }
+      ],
+      "sd": "never"
+    },
+    {
+      "path": ["degrees", null, "date_awarded"],
+      "display": [
+        {
+          "locale": "de-DE",
+          "label": "Verleihungsdatum"
+        },
+        {
+          "locale": "en-US",
+          "label": "Date Awarded"
+        }
+      ],
+      "sd": "always"
     }
   ]
 }
 ```
+
+Note that in this example, there are four definitions affecting the `degrees` claim:
+
+1. The `degrees` array itself is marked as `sd: never`, meaning the element `degrees` cannot be selectively disclosed and will always exist in the disclosed SD-JWT. Changing this to `sd: always` would mean that the `degrees` array itself is selectively disclosable.
+2. Each item in the `degrees` array (denoted by `null` in the path) is marked as `sd: always`, meaning each degree object will be selectively disclosed as a whole.
+3. The `field_of_study` property of each degree object is marked as `sd: never`, meaning that if the respective degree object is disclosed, the `field_of_study` property will always be included and cannot be hidden.
+4. The `date_awarded` property of each degree object is marked as `sd: always`, meaning it can be selectively disclosed.
+
 
 # Acknowledgements {#Acknowledgements}
 
@@ -1522,6 +1617,7 @@ Andres Uribe,
 Andrii Deinega,
 Babis Routis,
 Christian Bormann,
+Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
@@ -1548,13 +1644,19 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Remove JSON schema from Type Metadata
 * Introduce optional mandatory property for claims
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
+* Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
+* Remove discussion of status and Status Provider from the Introduction
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
 * Provide some guidance on versioning via the `vct` value
+* Add security considerations for trust in type metadata
+* Require data URIs for non-JSON types
+* Require `x5c` to be in the protected header
 * Clarify presentations of SD-JWT VC do not require KB
+* Updated/expanded example for Type Metadata
 
 -11
 
