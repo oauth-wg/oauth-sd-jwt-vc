@@ -1532,7 +1532,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Remove JSON schema from Type Metadata
 * Introduce optional mandatory property for claims
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
-* Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and I'm still not sure about the term or these words, but it's where we've ended up)
+* Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
