@@ -12,7 +12,7 @@ user_claims:
   !sd nationalities:
   - "Ændgard"
   !sd sex: 2
-  !sd birth_family_name: Holmgren
+  !sd birth_family_name: Jensen
   !sd place_of_birth:
     !sd locality: Ændholm
     !sd country: "Kingdom of Ændgard"
@@ -26,11 +26,14 @@ user_claims:
   !sd age_in_years: 47
   !sd age_birth_year: 1978
 
+  !sd portrait: data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAWAQMAAACSfKx9AAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA////pdmf3QAAAFFJREFUCNdNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y8NG3RMunw9Ai5p6/pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTjjKQAAAABJRU5ErkJggg==
+
   !sd issuance_date: "2024-01-15"
   !sd expiry_date: "2034-01-15"
 
   !sd issuing_authority: "Kingdom of Ændgard, Ministry of Interior"
   !sd issuing_country: "ÆG"
+
 
   #cnf:
   #  jwk:
