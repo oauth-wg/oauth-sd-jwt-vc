@@ -272,7 +272,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such. 
+Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
 
 The following is a non-normative example of user data in the unsecured payload
 of an SD-JWT VC that includes a binary image claim:
@@ -1099,6 +1099,14 @@ confer any implicit authorization to issue credentials of that type or its exten
 **Recommendation:**
 Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
+## Trust in Type Metadata
+
+Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
+
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable credential types and under what conditions such metadata can be relied upon.
+
+Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.
+
 ## Use of Data URIs for Claim Types
 
 The use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly escape, sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.
@@ -1637,6 +1645,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
+* Add security considerations for trust in type metadata
 * Require data URIs for non-JSON types
 * Require `x5c` to be in the protected header
 * Clarify presentations of SD-JWT VC do not require KB
