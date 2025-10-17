@@ -340,7 +340,7 @@ This specification defines the following two Issuer Signature Mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the `x5c` header parameter, the recipient uses the public key from the end-entity certificate of the certificates from the `x5c` header parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate. If the `x5c` header parameter is included in the unprotected header, the corresponding `x5t#S256` header parameter MUST also be included to bind the leaf certificate in the `x5c` header to a specific certificate instance and thereby mitigates substitution and reissue attacks as described in [@RFC2634].
+- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the `x5c` parameter in the proteceted header, the recipient uses the public key from the end-entity certificate of the certificates from the `x5c` parameter of the protected header and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional Issuer Signature Mechanisms; however, the specifics of such mechanisms are out of scope for this specification.
@@ -1536,7 +1536,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
-* Require `x5t#S256` for `x5c` in unprotected header
+* Require `x5c` to be in the protected header
 
 -11
 
