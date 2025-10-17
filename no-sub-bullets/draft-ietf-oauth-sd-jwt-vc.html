@@ -1573,9 +1573,9 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
         <h3 id="name-data-format">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-data-format" class="section-name selfRef">Data Format</a>
         </h3>
-<p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. A presentation of an SD-JWT VC MAY
-have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
+Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>, where support for the
+JWS JSON Serialization is OPTIONAL.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <div id="jose-header">
@@ -1705,20 +1705,7 @@ exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2
 <p id="section-3.2.2.3-1">Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> MAY be used.<a href="#section-3.2.2.3-1" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.3-2">Binary data in claims SHOULD be encoded as data URIs as defined in <span>[<a href="#RFC2397" class="cite xref">RFC2397</a>]</span>. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.<a href="#section-3.2.2.3-2" class="pilcrow">¶</a></p>
-<p id="section-3.2.2.3-3">The following is a non-normative example of user data in the unsecured payload
-of an SD-JWT VC that includes a binary image claim:<a href="#section-3.2.2.3-3" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-3.2.2.3-4">
-<pre>{
-  "vct": "https://credentials.example.com/identity_credential",
-  "given_name": "Jane",
-  "family_name": "Doe",
-  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
-   AAAFCAYAAACNbyblAAAAHElEQVQI12P4
-   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-}
-
-</pre><a href="#section-3.2.2.3-4" class="pilcrow">¶</a>
-</div>
+<p id="section-3.2.2.3-3">An example of a claim containing binary data encoded as a data URI is shown in <a href="#ExamplePID" class="auto internal xref">Appendix B.1</a>.<a href="#section-3.2.2.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sd-jwt-vc-without-selectively-disclosable-claims">
@@ -1928,9 +1915,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n7eSZ
-OJOyQXz_LC-iBOJ12ejrBC77b8rgG6n0YGt6Vuw3qBU8Io0T3nLPPt7gv5rZaOKFMCoo
-xfynPUNZyMZmQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.lUiqV
+wYohxNuYXD00xg9cR8v7jxSrYzOPCg7J6bi3qgEhIXpAdBvjWRLoPw7tq7EbzOoMg71G
+uP-0E3cwSwvYw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2010,8 +1997,11 @@ of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
         <h3 id="name-data-format-2">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-data-format-2" class="section-name selfRef">Data Format</a>
         </h3>
-<p id="section-4.1-1">A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
-as defined in Section 4 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-1">A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
+By default, the format defined in Section 4 of
+<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> is used, whereas support for the JWS
+JSON Serialization in Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>
+is OPTIONAL.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="key-binding-jwt">
@@ -2019,11 +2009,8 @@ as defined in Section 4 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-
         <h3 id="name-key-binding-jwt">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-key-binding-jwt" class="section-name selfRef">Key Binding JWT</a>
         </h3>
-<p id="section-4.2-1">If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
-MUST adhere to the rules defined in Section 4.3 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">The KB-JWT MAY include additional claims which, when not understood, MUST
-be ignored by the Verifier.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">The KB-JWT MAY include additional claims which, when not understood, MUST
+be ignored by the Verifier.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="presentation-examples">
@@ -2050,17 +2037,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n7eSZ
-OJOyQXz_LC-iBOJ12ejrBC77b8rgG6n0YGt6Vuw3qBU8Io0T3nLPPt7gv5rZaOKFMCoo
-xfynPUNZyMZmQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.lUiqV
+wYohxNuYXD00xg9cR8v7jxSrYzOPCg7J6bi3qgEhIXpAdBvjWRLoPw7tq7EbzOoMg71G
+uP-0E3cwSwvYw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjA5Mj
-gsICJzZF9oYXNoIjogIndYYjRzSVBnbzBqWmNuZHIwa3NZNlhlM0UyM2xvN2tOUm1kT3
-ZuVjAtMFkifQ.cXW6MJRh5ju4KCYJXicycZ4pzqEX_kdRfVjvMhrvnIrNgt_c4ky7vx2
-1zyVjSeKHYSpdGbjXsuuLo-2XkaQuKQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjEwNT
+AsICJzZF9oYXNoIjogImM5eWNEbVBtX09oWC00alVZMTI2TXhQby1VLVFMSjJVS3JrVz
+ZMVS1aeTAifQ.MlMW6QLtEq1RutmyzTkwZBsVFDFDyuwcdQ5xOPOM2mwbJucfWKurEbg
+JW8ET2NAe6LGO_fUrFUj3YWPBuV46vA
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2105,8 +2092,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.LZBNiYYOVDxAGB0EvVQ66hkg7sFt4Y8WzUQAvSn24j5TYZ
-ScHdiDLsXilxzMTVucaBC1vnS3lr1E430WFwd0bg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.m_fer32NfypxYdC-C0LW7-_s4yCdCF3PzLcXIPVSjSu0Dn
+-vqG_Wt-SAZqxB0sbz9iUY1ASPkMWcAOW-hQVsbw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3388,39 +3375,40 @@ by <span>[<a href="#RFC5785" class="cite xref">RFC5785</a>]</span>.<a href="#app
 illustrative purposes only. In particular, neither the structure of the claims
 nor the selection of selectively disclosable claims are normative.<a href="#appendix-B-1" class="pilcrow">¶</a></p>
 <p id="appendix-B-2">Line breaks have been added for readability.<a href="#appendix-B-2" class="pilcrow">¶</a></p>
-<div id="example-1-person-identification-data-pid-credential">
+<div id="ExamplePID">
 <section id="appendix-B.1">
         <h3 id="name-example-1-person-identifica">
 <a href="#appendix-B.1" class="section-number selfRef">B.1. </a><a href="#name-example-1-person-identifica" class="section-name selfRef">Example 1: Person Identification Data (PID) Credential</a>
         </h3>
 <p id="appendix-B.1-1">This example shows how the artifacts defined in this specification could be used
-to represent the concept of a Person Identification Data (PID) as defined in the
-"PID Rulebook" in <span>[<a href="#EUDIW.ARF" class="cite xref">EUDIW.ARF</a>]</span>. This example uses fictional data of a German
-citizen.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
+to represent the identity information of a person from a fictional European
+country. It leans on the concept of Person Identification Data (PID) as defined
+in the "PID Rulebook" in <span>[<a href="#EUDIW.ARF" class="cite xref">EUDIW.ARF</a>]</span>, but does not intend to fully comply with
+that specification.<a href="#appendix-B.1-1" class="pilcrow">¶</a></p>
 <p id="appendix-B.1-2">Key Binding is applied
 using the Holder's public key passed in a <code>cnf</code> claim in the SD-JWT.<a href="#appendix-B.1-2" class="pilcrow">¶</a></p>
 <p id="appendix-B.1-3">The following data about the citizen comprises the input JWT Claims Set used by the Issuer:<a href="#appendix-B.1-3" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="appendix-B.1-4">
 <pre>{
-  "iss": "https://pid-issuer.bund.de.example",
-  "vct": "urn:eudi:pid:de:1",
-  "given_name": "Erika",
-  "family_name": "Mustermann",
-  "birthdate": "1963-08-12",
+  "iss": "https://pid-issuer.aendgard.example",
+  "vct": "urn:eudi:pid:aendgard:1",
+  "given_name": "Astrid",
+  "family_name": "Holmgren",
+  "birthdate": "1978-04-10",
   "address": {
-    "street_address": "Heidestraße 17",
-    "locality": "Köln",
-    "postal_code": "51147",
-    "country": "DE"
+    "street_address": "Sjøgata 12",
+    "locality": "Viken",
+    "postal_code": "12001",
+    "country": "Kingdom of Ændgard"
   },
   "nationalities": [
-    "DE"
+    "Ændgard"
   ],
   "sex": 2,
-  "birth_family_name": "Gabler",
+  "birth_family_name": "Jensen",
   "place_of_birth": {
-    "locality": "Berlin",
-    "country": "DE"
+    "locality": "Ændholm",
+    "country": "Kingdom of Ændgard"
   },
   "age_equal_or_over": {
     "12": true,
@@ -3430,77 +3418,94 @@ using the Holder's public key passed in a <code>cnf</code> claim in the SD-JWT.<
     "21": true,
     "65": false
   },
-  "age_in_years": 62,
-  "age_birth_year": 1963,
-  "issuance_date": "2020-03-11",
-  "expiry_date": "2030-03-12",
-  "issuing_authority": "DE",
-  "issuing_country": "DE"
+  "age_in_years": 47,
+  "age_birth_year": 1978,
+  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA
+    WAQMAAACSfKx9AAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQA
+    AeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA///
+    /pdmf3QAAAFFJREFUCNdNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y
+    8NG3RMunw9Ai5p6/pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTj
+    jKQAAAABJRU5ErkJggg==",
+  "issuance_date": "2024-01-15",
+  "expiry_date": "2034-01-15",
+  "issuing_authority": "Kingdom of Ændgard, Ministry of Interior",
+  "issuing_country": "ÆG"
 }
 
 </pre><a href="#appendix-B.1-4" class="pilcrow">¶</a>
 </div>
 <p id="appendix-B.1-5">The following is the issued SD-JWT:<a href="#appendix-B.1-5" class="pilcrow">¶</a></p>
 <div class="breakable lang-txt sourcecode" id="appendix-B.1-6">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
-uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiMUNybjAzV21
-VZVJXcDR6d1B2dkNLWGw5WmFRcC1jZFFWX2dIZGFHU1dvdyIsICIycjAwOWR6dkh1VnJ
-XclJYVDVrSk1tSG5xRUhIbldlME1MVlp3OFBBVEI4IiwgIjZaTklTRHN0NjJ5bWxyT0F
-rYWRqZEQ1WnVsVDVBMjk5Sjc4U0xoTV9fT3MiLCAiNzhqZzc3LUdZQmVYOElRZm9FTFB
-5TDBEWVBkbWZabzBKZ1ZpVjBfbEtDTSIsICI5MENUOEFhQlBibjVYOG5SWGtlc2p1MWk
-wQnFoV3FaM3dxRDRqRi1xREdrIiwgIkkwMGZjRlVvRFhDdWNwNXl5MnVqcVBzc0RWR2F
-XTmlVbGlOel9hd0QwZ2MiLCAiS2pBWGdBQTlONVdIRUR0UkloNHU1TW4xWnNXaXhoaFd
-BaVgtQTRRaXdnQSIsICJMYWk2SVU2ZDdHUWFnWFI3QXZHVHJuWGdTbGQzejhFSWdfZnY
-zZk9aMVdnIiwgIkxlemphYlJxaVpPWHpFWW1WWmY4Uk1pOXhBa2QzX00xTFo4VTdFNHM
-zdTQiLCAiUlR6M3FUbUZOSGJwV3JyT01aUzQxRjQ3NGtGcVJ2M3ZJUHF0aDZQVWhsTSI
-sICJXMTRYSGJVZmZ6dVc0SUZNanBTVGIxbWVsV3hVV2Y0Tl9vMmxka2tJcWM4IiwgIld
-UcEk3UmNNM2d4WnJ1UnBYemV6U2JrYk9yOTNQVkZ2V3g4d29KM2oxY0UiLCAiX29oSlZ
-JUUlCc1U0dXBkTlM0X3c0S2IxTUhxSjBMOXFMR3NoV3E2SlhRcyIsICJ5NTBjemMwSVN
-DaHlfYnNiYTFkTW9VdUFPUTVBTW1PU2ZHb0VlODF2MUZVIl0sICJpc3MiOiAiaHR0cHM
-6Ly9waWQtaXNzdWVyLmJ1bmQuZGUuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCA
-iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
-fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
-iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
-sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.Fabur6IcAt552BlDVIXNJcuE_DdR-SM0M-IigLFY3MxcFi8
-YY2B_tLdnmYx3Fs8Y6w4nxT8zstRmOdvqkmCteA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
-Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
-V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
-9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
-BOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwgIkhlaWRlc3RyYVx1MDBkZmUgMT
-ciXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIktcdTAwZjZ
-sbiJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjUxMT
-Q3Il0~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiREUiXQ~WyJ
-HMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7Il9zZCI6IFsiQUxaRVJ
-zU241V05pRVhkQ2tzVzhJNXFRdzNfTnBBblJxcFNBWkR1ZGd3OCIsICJEX19XX3VZY3Z
-SejN0dlVuSUp2QkRIaVRjN0NfX3FIZDB4Tkt3SXNfdzlrIiwgImVCcENYVTFKNWRoSDJ
-nNHQ4UVlOVzVFeFM5QXhVVmJsVW9kb0xZb1BobzAiLCAieE9QeTktZ0pBTEs2VWJXS0Z
-MUjg1Y09CeVVEM0FiTndGZzNJM1lmUUVfSSJdfV0~WyJsa2x4RjVqTVlsR1RQVW92TU5
-JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJuUHVvUW5rUkZxM0JJZUFtN0
-FuWEZBIiwgInNleCIsIDJd~WyI1YlBzMUlxdVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX
-2ZhbWlseV9uYW1lIiwgIkdhYmxlciJd~WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13Iiwg
-ImxvY2FsaXR5IiwgIkJlcmxpbiJd~WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImN
-vdW50cnkiLCAiREUiXQ~WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29m
-X2JpcnRoIiwgeyJfc2QiOiBbIktVVmlhYUxuWTVqU01MOTBHMjlPT0xFTlBiYlhmaFNq
-U1BNalphR2t4QUUiLCAiWWJzVDBTNzZWcVhDVnNkMWpVU2x3S1BEZ21BTGVCMXVaY2xG
-SFhmLVVTUSJdfV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgIjEyIiwgdHJ1ZV0~
-WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjE0IiwgdHJ1ZV0~WyJIM28xdXN3UDc2
-MEZpMnllR2RWQ0VRIiwgIjE2IiwgdHJ1ZV0~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpB
-IiwgIjE4IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjIxIiwgdHJ1
-ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjY1IiwgZmFsc2Vd~WyJlSzVvNXB
-IZmd1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF
-0RWl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx
-5NVA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjh
-fM0FtSncyWFo4a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajB
-oczJaTnd4Y3FPbGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR
-6YUZDVWNlSVFBYUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnF
-xalFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3
-IiwgImFnZV9pbl95ZWFycyIsIDYyXQ~WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3IiwgI
-mFnZV9iaXJ0aF95ZWFyIiwgMTk2M10~WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgI
-mlzc3VhbmNlX2RhdGUiLCAiMjAyMC0wMy0xMSJd~WyI0S3lSMzJvSVp0LXprV3ZGcWJV
-TEtnIiwgImV4cGlyeV9kYXRlIiwgIjIwMzAtMDMtMTIiXQ~WyJjaEJDc3loeWgtSjg2S
-S1hd1FEaUNRIiwgImlzc3VpbmdfYXV0aG9yaXR5IiwgIkRFIl0~WyJmbE5QMW5jTXo5T
-GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
+5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
+CcWFFSXlYQ0hjbjRhNVlLSmFnUGdJUDBXa2c5QW9yZ0FLZyIsICI1Zm42SWlYalVQbUd
+RNG1ZSHhEZHQ2RWp2QlE3Z1J2R2NkRW5TQ0VOOEVrIiwgIjZCek1CazdGR2l2b2dibGR
+PNzVmM05Md2pGbGlDcWI3bm4xR2hnQ29rclEiLCAiOTBDVDhBYUJQYm41WDhuUlhrZXN
+qdTFpMEJxaFdxWjN3cUQ0akYtcURHayIsICI5bkV3VXJkZVo2a2NSYkVqNTJRSDNuT1I
+tb2llMF9wOXRNTklBRXVGdk1VIiwgIkhUaDZacjJKOGFpcXBhOTYzY0xrdUtlUURmOU8
+wMEZ6T0hoeWpHcFZmVGciLCAiSkNwMksyTmhILUxFNUwwajdNRTBMTngtVC1weDlRRnR
+hbVNzeG1DVUN4VSIsICJMb01HcmhsRG1fYlVXVVgxZ2RoUnhUc3k0ZDR6eXdHemxTVm9
+jUlNZMDFNIiwgIlVnVWpxNXdoelFld081OWZWTmowZjBtcXlWOFlQWFU1NHNwNGtMZWN
+3UWsiLCAiWTBILUUzaHpLRVVuQXlyaV94OXRUOWstajRpNjVhbzloa2VFSE5leG9zSSI
+sICJlekNBbWFUd0kyblBqXzFJaUIzS1pmaUVPUkxlUndoWnNNTURNWklKOGtBIiwgImk
+wSF8tV0FId2ZFanQ4dHFRSDc0dU9DV3ZxdVkzRnd1WC1reDRlMlJKSDgiLCAicjFHckg
+0NnlEVjYyc2V6SW1FanhhNmNKU1pNVDIxMmpyT1NIaWVjOXl0TSIsICJyVmozUkxzN0s
+4emROeTd6WHoxQ3IzOVk2cm9nOHVsTm96azRGN05DdUMwIiwgInQ1a3AwSGZ4TVMxZUh
+OQ0dSenJLOUdpNW9UWnJlZzVVZTlsTFFJdUx2QjQiXSwgImlzcyI6ICJodHRwczovL3B
+pZC1pc3N1ZXIuYWVuZGdhcmQuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXh
+wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
+fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+jQ0U2dDRqVDlGMkhaUSJ9fX0.cRhbUqZsy-XqLZevCOK-7-emvNqv-7vh6EShw2V8V-L
+cNziC-agk1DaIdWJU70bcheUcSgmCnCfQAbXbH_0fpA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
+bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
+Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
+UHBOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwgIlNqXHUwMGY4Z2F0YSAxMiJd
+~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIlZpa2VuIl0~WyJ
+BSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjEyMDAxIl0~WyJ
+QYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiS2luZ2RvbSBvZiBcdTA
+wYzZuZGdhcmQiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7
+Il9zZCI6IFsiNjBCM0N3cTA0aGxQQndzdnNmdks5SlV4dnVMRlViSlFmZ1BCYk9fSDly
+TSIsICI4eWpQUjNyOGRPNUhXTG55MWdCZU1KVFBSZ2tCY2h1cTQzcUg4V2xfZjFjIiwg
+Ik5hcmQ3NHcyTl85YW5WRW1TbGVjRUpscXgzanhiY3F4dlZ6QnNCRFgweHMiLCAiVS16
+RDFESS03WjB6WW94WHF5NUhTVE5VZWdhaFJDSHlkQWVzS09fc0VQYyJdfV0~WyJsa2x4
+RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIlx1MDBjNm5kZ2Fy
+ZCJdXQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiwgInNleCIsIDJd~WyI1YlBzMUlx
+dVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX2ZhbWlseV9uYW1lIiwgIkplbnNlbiJd~WyI
+1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIlx1MDBjNm5kaG9sbSJ
+d~WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiS2luZ2RvbSBvZi
+BcdTAwYzZuZGdhcmQiXQ~WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29
+mX2JpcnRoIiwgeyJfc2QiOiBbIkpET1lLUzB3MENvZm8tSGpaR3ZyZDdIaXJwU2ZpWUR
+BTFU2cjhUX0xFMWciLCAib1RacjlFbXk5eG1ycGNmUTVaU1U4c3Z4ZE1ZOHk0WElGXzV
+qOVAxdTF5QSJdfV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgIjEyIiwgdHJ1ZV0
+~WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjE0IiwgdHJ1ZV0~WyJIM28xdXN3UDc
+2MEZpMnllR2RWQ0VRIiwgIjE2IiwgdHJ1ZV0~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFp
+BIiwgIjE4IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjIxIiwgdHJ
+1ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjY1IiwgZmFsc2Vd~WyJlSzVvNX
+BIZmd1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIj
+F0RWl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbm
+x5NVA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcj
+hfM0FtSncyWFo4a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2aj
+BoczJaTnd4Y3FPbGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZV
+R6YUZDVWNlSVFBYUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWn
+FxalFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV
+3IiwgImFnZV9pbl95ZWFycyIsIDQ3XQ~WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3Iiwg
+ImFnZV9iaXJ0aF95ZWFyIiwgMTk3OF0~WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwg
+InBvcnRyYWl0IiwgImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFO
+U1VoRVVnQUFBQ1FBQUFBV0FRTUFBQUNTZkt4OUFBQUFBWE5TUjBJQjJja3Nmd0FBQUFS
+blFVMUJBQUN4and2OFlRVUFBQUFnWTBoU1RRQUFlaVlBQUlDRUFBRDZBQUFBZ09nQUFI
+VXdBQURxWUFBQU9wZ0FBQmR3bkxwUlBBQUFBQVpRVEZSRkFBQUEvLy8vcGRtZjNRQUFB
+RkZKUkVGVUNOZE55bEVOZ0RBUUE5QVNCSnlFV2NEQkxFMENUcERDcENEaFB2ZXhyQnds
+Qy95OE5HM1JNdW53OUFpNXA2L3ByL1p6bGNBaTRXaVJOMW5sWEFlc09naGVCVFNPOEpE
+bk5ENlozVytkOTBmQ25UampLUUFBQUFCSlJVNUVya0pnZ2c9PSJd~WyI0S3lSMzJvSVp
+0LXprV3ZGcWJVTEtnIiwgImlzc3VhbmNlX2RhdGUiLCAiMjAyNC0wMS0xNSJd~WyJjaE
+JDc3loeWgtSjg2SS1hd1FEaUNRIiwgImV4cGlyeV9kYXRlIiwgIjIwMzQtMDEtMTUiXQ
+~WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfYXV0aG9yaXR5IiwgIkt
+pbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRlcmlvciJd~WyJvdm
+9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIsICJcdTAwYzZHIl
+0~
 
 </pre><a href="#appendix-B.1-6" class="pilcrow">¶</a>
 </div>
@@ -3508,26 +3513,27 @@ GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
 <div class="lang-json sourcecode" id="appendix-B.1-8">
 <pre>{
   "_sd": [
-    "0HZmnSIPz337kSWe7C34l--88gzJi-eBJ2Vz_HJwATg",
-    "1Crn03WmUeRWp4zwPvvCKXl9ZaQp-cdQV_gHdaGSWow",
     "2r009dzvHuVrWrRXT5kJMmHnqEHHnWe0MLVZw8PATB8",
-    "6ZNISDst62ymlrOAkadjdD5ZulT5A299J78SLhM__Os",
-    "78jg77-GYBeX8IQfoELPyL0DYPdmfZo0JgViV0_lKCM",
+    "3NdDJYRwBqaEIyXCHcn4a5YKJagPgIP0Wkg9AorgAKg",
+    "5fn6IiXjUPmGQ4mYHxDdt6EjvBQ7gRvGcdEnSCEN8Ek",
+    "6BzMBk7FGivogbldO75f3NLwjFliCqb7nn1GhgCokrQ",
     "90CT8AaBPbn5X8nRXkesju1i0BqhWqZ3wqD4jF-qDGk",
-    "I00fcFUoDXCucp5yy2ujqPssDVGaWNiUliNz_awD0gc",
-    "KjAXgAA9N5WHEDtRIh4u5Mn1ZsWixhhWAiX-A4QiwgA",
-    "Lai6IU6d7GQagXR7AvGTrnXgSld3z8EIg_fv3fOZ1Wg",
-    "LezjabRqiZOXzEYmVZf8RMi9xAkd3_M1LZ8U7E4s3u4",
-    "RTz3qTmFNHbpWrrOMZS41F474kFqRv3vIPqth6PUhlM",
-    "W14XHbUffzuW4IFMjpSTb1melWxUWf4N_o2ldkkIqc8",
-    "WTpI7RcM3gxZruRpXzezSbkbOr93PVFvWx8woJ3j1cE",
-    "_ohJVIQIBsU4updNS4_w4Kb1MHqJ0L9qLGshWq6JXQs",
-    "y50czc0ISChy_bsba1dMoUuAOQ5AMmOSfGoEe81v1FU"
+    "9nEwUrdeZ6kcRbEj52QH3nOR-oie0_p9tMNIAEuFvMU",
+    "HTh6Zr2J8aiqpa963cLkuKeQDf9O00FzOHhyjGpVfTg",
+    "JCp2K2NhH-LE5L0j7ME0LNx-T-px9QFtamSsxmCUCxU",
+    "LoMGrhlDm_bUWUX1gdhRxTsy4d4zywGzlSVocRSY01M",
+    "UgUjq5whzQewO59fVNj0f0mqyV8YPXU54sp4kLecwQk",
+    "Y0H-E3hzKEUnAyri_x9tT9k-j4i65ao9hkeEHNexosI",
+    "ezCAmaTwI2nPj_1IiB3KZfiEORLeRwhZsMMDMZIJ8kA",
+    "i0H_-WAHwfEjt8tqQH74uOCWvquY3FwuX-kx4e2RJH8",
+    "r1GrH46yDV62sezImEjxa6cJSZMT212jrOSHiec9ytM",
+    "rVj3RLs7K8zdNy7zXz1Cr39Y6rog8ulNozk4F7NCuC0",
+    "t5kp0HfxMS1eHNCGRzrK9Gi5oTZreg5Ue9lLQIuLvB4"
   ],
-  "iss": "https://pid-issuer.bund.de.example",
+  "iss": "https://pid-issuer.aendgard.example",
   "iat": 1683000000,
   "exp": 1883000000,
-  "vct": "urn:eudi:pid:de:1",
+  "vct": "urn:eudi:pid:aendgard:1",
   "_sd_alg": "sha-256",
   "cnf": {
     "jwk": {
@@ -3544,118 +3550,121 @@ GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
 <p id="appendix-B.1-9">The digests in the SD-JWT payload reference the following Disclosures:<a href="#appendix-B.1-9" class="pilcrow">¶</a></p>
 <p id="appendix-B.1-10"><strong>Claim <code>given_name</code></strong>:<a href="#appendix-B.1-10" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-11.1">SHA-256 Hash: <code>0HZmnSIPz337kSWe7C34l--88gzJi-eBJ2Vz_HJwATg</code><a href="#appendix-B.1-11.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-11.1">SHA-256 Hash: <code>3NdDJYRwBqaEIyXCHcn4a5YKJagPgIP0Wkg9AorgAKg</code><a href="#appendix-B.1-11.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-11.2">Disclosure:<br>
-            <code>WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiRXJp</code><br>
-            <code>a2EiXQ</code><a href="#appendix-B.1-11.2" class="pilcrow">¶</a>
+            <code>WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0</code><br>
+            <code>cmlkIl0</code><a href="#appendix-B.1-11.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-11.3">Contents:
-<code>["2GLC42sKQveCfGfryNRN9w", "given_name", "Erika"]</code><a href="#appendix-B.1-11.3" class="pilcrow">¶</a>
+<code>["2GLC42sKQveCfGfryNRN9w", "given_name", "Astrid"]</code><a href="#appendix-B.1-11.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-12"><strong>Claim <code>family_name</code></strong>:<a href="#appendix-B.1-12" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-13.1">SHA-256 Hash: <code>I00fcFUoDXCucp5yy2ujqPssDVGaWNiUliNz_awD0gc</code><a href="#appendix-B.1-13.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-13.1">SHA-256 Hash: <code>JCp2K2NhH-LE5L0j7ME0LNx-T-px9QFtamSsxmCUCxU</code><a href="#appendix-B.1-13.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-13.2">Disclosure:<br>
-            <code>WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIk11</code><br>
-            <code>c3Rlcm1hbm4iXQ</code><a href="#appendix-B.1-13.2" class="pilcrow">¶</a>
+            <code>WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhv</code><br>
+            <code>bG1ncmVuIl0</code><a href="#appendix-B.1-13.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-13.3">Contents:
-<code>["eluV5Og3gSNII8EYnsxA_A", "family_name", "Mustermann"]</code><a href="#appendix-B.1-13.3" class="pilcrow">¶</a>
+<code>["eluV5Og3gSNII8EYnsxA_A", "family_name", "Holmgren"]</code><a href="#appendix-B.1-13.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-14"><strong>Claim <code>birthdate</code></strong>:<a href="#appendix-B.1-14" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-15.1">SHA-256 Hash: <code>Lai6IU6d7GQagXR7AvGTrnXgSld3z8EIg_fv3fOZ1Wg</code><a href="#appendix-B.1-15.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-15.1">SHA-256 Hash: <code>5fn6IiXjUPmGQ4mYHxDdt6EjvBQ7gRvGcdEnSCEN8Ek</code><a href="#appendix-B.1-15.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-15.2">Disclosure:<br>
-            <code>WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYz</code><br>
-            <code>LTA4LTEyIl0</code><a href="#appendix-B.1-15.2" class="pilcrow">¶</a>
+            <code>WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4</code><br>
+            <code>LTA0LTEwIl0</code><a href="#appendix-B.1-15.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-15.3">Contents:
-<code>["6Ij7tM-a5iVPGboS5tmvVA", "birthdate", "1963-08-12"]</code><a href="#appendix-B.1-15.3" class="pilcrow">¶</a>
+<code>["6Ij7tM-a5iVPGboS5tmvVA", "birthdate", "1978-04-10"]</code><a href="#appendix-B.1-15.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-16"><strong>Claim <code>street_address</code></strong>:<a href="#appendix-B.1-16" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-17.1">SHA-256 Hash: <code>ALZERsSn5WNiEXdCksW8I5qQw3_NpAnRqpSAZDudgw8</code><a href="#appendix-B.1-17.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-17.1">SHA-256 Hash: <code>8yjPR3r8dO5HWLny1gBeMJTPRgkBchuq43qH8Wl_f1c</code><a href="#appendix-B.1-17.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-17.2">Disclosure:<br>
             <code>WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwg</code><br>
-            <code>IkhlaWRlc3RyYVx1MDBkZmUgMTciXQ</code><a href="#appendix-B.1-17.2" class="pilcrow">¶</a>
+            <code>IlNqXHUwMGY4Z2F0YSAxMiJd</code><a href="#appendix-B.1-17.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-17.3">Contents:
-<code>["eI8ZWm9QnKPpNPeNenHdhQ", "street_address",</code><br>
-            <code>"Heidestra\u00dfe 17"]</code><a href="#appendix-B.1-17.3" class="pilcrow">¶</a>
+<code>["eI8ZWm9QnKPpNPeNenHdhQ", "street_address", "Sj\u00f8gata</code><br>
+            <code>12"]</code><a href="#appendix-B.1-17.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-18"><strong>Claim <code>locality</code></strong>:<a href="#appendix-B.1-18" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-19.1">SHA-256 Hash: <code>D__W_uYcvRz3tvUnIJvBDHiTc7C__qHd0xNKwIs_w9k</code><a href="#appendix-B.1-19.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-19.1">SHA-256 Hash: <code>Nard74w2N_9anVEmSlecEJlqx3jxbcqxvVzBsBDX0xs</code><a href="#appendix-B.1-19.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-19.2">Disclosure:<br>
-            <code>WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIktcdTAw</code><br>
-            <code>ZjZsbiJd</code><a href="#appendix-B.1-19.2" class="pilcrow">¶</a>
+            <code>WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIlZpa2Vu</code><br>
+            <code>Il0</code><a href="#appendix-B.1-19.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-19.3">Contents:
-<code>["Qg_O64zqAxe412a108iroA", "locality", "K\u00f6ln"]</code><a href="#appendix-B.1-19.3" class="pilcrow">¶</a>
+<code>["Qg_O64zqAxe412a108iroA", "locality", "Viken"]</code><a href="#appendix-B.1-19.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-20"><strong>Claim <code>postal_code</code></strong>:<a href="#appendix-B.1-20" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-21.1">SHA-256 Hash: <code>xOPy9-gJALK6UbWKFLR85cOByUD3AbNwFg3I3YfQE_I</code><a href="#appendix-B.1-21.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-21.1">SHA-256 Hash: <code>60B3Cwq04hlPBwsvsfvK9JUxvuLFUbJQfgPBbO_H9rM</code><a href="#appendix-B.1-21.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-21.2">Disclosure:<br>
-            <code>WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjUx</code><br>
-            <code>MTQ3Il0</code><a href="#appendix-B.1-21.2" class="pilcrow">¶</a>
+            <code>WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjEy</code><br>
+            <code>MDAxIl0</code><a href="#appendix-B.1-21.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-21.3">Contents:
-<code>["AJx-095VPrpTtN4QMOqROA", "postal_code", "51147"]</code><a href="#appendix-B.1-21.3" class="pilcrow">¶</a>
+<code>["AJx-095VPrpTtN4QMOqROA", "postal_code", "12001"]</code><a href="#appendix-B.1-21.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-22"><strong>Claim <code>country</code></strong>:<a href="#appendix-B.1-22" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-23.1">SHA-256 Hash: <code>eBpCXU1J5dhH2g4t8QYNW5ExS9AxUVblUodoLYoPho0</code><a href="#appendix-B.1-23.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-23.1">SHA-256 Hash: <code>U-zD1DI-7Z0zYoxXqy5HSTNUegahRCHydAesKO_sEPc</code><a href="#appendix-B.1-23.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-23.2">Disclosure:<br>
-            <code>WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiREUiXQ</code><a href="#appendix-B.1-23.2" class="pilcrow">¶</a>
+            <code>WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiS2luZ2Rv</code><br>
+            <code>bSBvZiBcdTAwYzZuZGdhcmQiXQ</code><a href="#appendix-B.1-23.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-23.3">Contents:
-<code>["Pc33JM2LchcU_lHggv_ufQ", "country", "DE"]</code><a href="#appendix-B.1-23.3" class="pilcrow">¶</a>
+<code>["Pc33JM2LchcU_lHggv_ufQ", "country", "Kingdom of</code><br>
+            <code>\u00c6ndgard"]</code><a href="#appendix-B.1-23.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-24"><strong>Claim <code>address</code></strong>:<a href="#appendix-B.1-24" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-25.1">SHA-256 Hash: <code>RTz3qTmFNHbpWrrOMZS41F474kFqRv3vIPqth6PUhlM</code><a href="#appendix-B.1-25.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-25.1">SHA-256 Hash: <code>i0H_-WAHwfEjt8tqQH74uOCWvquY3FwuX-kx4e2RJH8</code><a href="#appendix-B.1-25.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-25.2">Disclosure:<br>
             <code>WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7Il9zZCI6</code><br>
-            <code>IFsiQUxaRVJzU241V05pRVhkQ2tzVzhJNXFRdzNfTnBBblJxcFNBWkR1ZGd3</code><br>
-            <code>OCIsICJEX19XX3VZY3ZSejN0dlVuSUp2QkRIaVRjN0NfX3FIZDB4Tkt3SXNf</code><br>
-            <code>dzlrIiwgImVCcENYVTFKNWRoSDJnNHQ4UVlOVzVFeFM5QXhVVmJsVW9kb0xZ</code><br>
-            <code>b1BobzAiLCAieE9QeTktZ0pBTEs2VWJXS0ZMUjg1Y09CeVVEM0FiTndGZzNJ</code><br>
-            <code>M1lmUUVfSSJdfV0</code><a href="#appendix-B.1-25.2" class="pilcrow">¶</a>
+            <code>IFsiNjBCM0N3cTA0aGxQQndzdnNmdks5SlV4dnVMRlViSlFmZ1BCYk9fSDly</code><br>
+            <code>TSIsICI4eWpQUjNyOGRPNUhXTG55MWdCZU1KVFBSZ2tCY2h1cTQzcUg4V2xf</code><br>
+            <code>ZjFjIiwgIk5hcmQ3NHcyTl85YW5WRW1TbGVjRUpscXgzanhiY3F4dlZ6QnNC</code><br>
+            <code>RFgweHMiLCAiVS16RDFESS03WjB6WW94WHF5NUhTVE5VZWdhaFJDSHlkQWVz</code><br>
+            <code>S09fc0VQYyJdfV0</code><a href="#appendix-B.1-25.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-25.3">Contents:
 <code>["G02NSrQfjFXQ7Io09syajA", "address", {"_sd":</code><br>
-            <code>["ALZERsSn5WNiEXdCksW8I5qQw3_NpAnRqpSAZDudgw8",</code><br>
-            <code>"D__W_uYcvRz3tvUnIJvBDHiTc7C__qHd0xNKwIs_w9k",</code><br>
-            <code>"eBpCXU1J5dhH2g4t8QYNW5ExS9AxUVblUodoLYoPho0",</code><br>
-            <code>"xOPy9-gJALK6UbWKFLR85cOByUD3AbNwFg3I3YfQE_I"]}]</code><a href="#appendix-B.1-25.3" class="pilcrow">¶</a>
+            <code>["60B3Cwq04hlPBwsvsfvK9JUxvuLFUbJQfgPBbO_H9rM",</code><br>
+            <code>"8yjPR3r8dO5HWLny1gBeMJTPRgkBchuq43qH8Wl_f1c",</code><br>
+            <code>"Nard74w2N_9anVEmSlecEJlqx3jxbcqxvVzBsBDX0xs",</code><br>
+            <code>"U-zD1DI-7Z0zYoxXqy5HSTNUegahRCHydAesKO_sEPc"]}]</code><a href="#appendix-B.1-25.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-26"><strong>Claim <code>nationalities</code></strong>:<a href="#appendix-B.1-26" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-27.1">SHA-256 Hash: <code>y50czc0ISChy_bsba1dMoUuAOQ5AMmOSfGoEe81v1FU</code><a href="#appendix-B.1-27.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-27.1">SHA-256 Hash: <code>HTh6Zr2J8aiqpa963cLkuKeQDf9O00FzOHhyjGpVfTg</code><a href="#appendix-B.1-27.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-27.2">Disclosure:<br>
             <code>WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBb</code><br>
-            <code>IkRFIl1d</code><a href="#appendix-B.1-27.2" class="pilcrow">¶</a>
+            <code>Ilx1MDBjNm5kZ2FyZCJdXQ</code><a href="#appendix-B.1-27.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-27.3">Contents:
-<code>["lklxF5jMYlGTPUovMNIvCA", "nationalities", ["DE"]]</code><a href="#appendix-B.1-27.3" class="pilcrow">¶</a>
+<code>["lklxF5jMYlGTPUovMNIvCA", "nationalities",</code><br>
+            <code>["\u00c6ndgard"]]</code><a href="#appendix-B.1-27.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-28"><strong>Claim <code>sex</code></strong>:<a href="#appendix-B.1-28" class="pilcrow">¶</a></p>
@@ -3671,53 +3680,55 @@ GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
         </ul>
 <p id="appendix-B.1-30"><strong>Claim <code>birth_family_name</code></strong>:<a href="#appendix-B.1-30" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-31.1">SHA-256 Hash: <code>KjAXgAA9N5WHEDtRIh4u5Mn1ZsWixhhWAiX-A4QiwgA</code><a href="#appendix-B.1-31.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-31.1">SHA-256 Hash: <code>t5kp0HfxMS1eHNCGRzrK9Gi5oTZreg5Ue9lLQIuLvB4</code><a href="#appendix-B.1-31.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-31.2">Disclosure:<br>
             <code>WyI1YlBzMUlxdVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX2ZhbWlseV9uYW1l</code><br>
-            <code>IiwgIkdhYmxlciJd</code><a href="#appendix-B.1-31.2" class="pilcrow">¶</a>
+            <code>IiwgIkplbnNlbiJd</code><a href="#appendix-B.1-31.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-31.3">Contents:
-<code>["5bPs1IquZNa0hkaFzzzZNw", "birth_family_name", "Gabler"]</code><a href="#appendix-B.1-31.3" class="pilcrow">¶</a>
+<code>["5bPs1IquZNa0hkaFzzzZNw", "birth_family_name", "Jensen"]</code><a href="#appendix-B.1-31.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-32"><strong>Claim <code>locality</code></strong>:<a href="#appendix-B.1-32" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-33.1">SHA-256 Hash: <code>KUViaaLnY5jSML90G29OOLENPbbXfhSjSPMjZaGkxAE</code><a href="#appendix-B.1-33.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-33.1">SHA-256 Hash: <code>JDOYKS0w0Cofo-HjZGvrd7HirpSfiYDALU6r8T_LE1g</code><a href="#appendix-B.1-33.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-33.2">Disclosure:<br>
-            <code>WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIkJlcmxp</code><br>
-            <code>biJd</code><a href="#appendix-B.1-33.2" class="pilcrow">¶</a>
+            <code>WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIlx1MDBj</code><br>
+            <code>Nm5kaG9sbSJd</code><a href="#appendix-B.1-33.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-33.3">Contents:
-<code>["5a2W0_NrlEZzfqmk_7Pq-w", "locality", "Berlin"]</code><a href="#appendix-B.1-33.3" class="pilcrow">¶</a>
+<code>["5a2W0_NrlEZzfqmk_7Pq-w", "locality", "\u00c6ndholm"]</code><a href="#appendix-B.1-33.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-34"><strong>Claim <code>country</code></strong>:<a href="#appendix-B.1-34" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-35.1">SHA-256 Hash: <code>YbsT0S76VqXCVsd1jUSlwKPDgmALeB1uZclFHXf-USQ</code><a href="#appendix-B.1-35.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-35.1">SHA-256 Hash: <code>oTZr9Emy9xmrpcfQ5ZSU8svxdMY8y4XIF_5j9P1u1yA</code><a href="#appendix-B.1-35.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-35.2">Disclosure:<br>
-            <code>WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiREUiXQ</code><a href="#appendix-B.1-35.2" class="pilcrow">¶</a>
+            <code>WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiS2luZ2Rv</code><br>
+            <code>bSBvZiBcdTAwYzZuZGdhcmQiXQ</code><a href="#appendix-B.1-35.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-35.3">Contents:
-<code>["y1sVU5wdfJahVdgwPgS7RQ", "country", "DE"]</code><a href="#appendix-B.1-35.3" class="pilcrow">¶</a>
+<code>["y1sVU5wdfJahVdgwPgS7RQ", "country", "Kingdom of</code><br>
+            <code>\u00c6ndgard"]</code><a href="#appendix-B.1-35.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-36"><strong>Claim <code>place_of_birth</code></strong>:<a href="#appendix-B.1-36" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-37.1">SHA-256 Hash: <code>1Crn03WmUeRWp4zwPvvCKXl9ZaQp-cdQV_gHdaGSWow</code><a href="#appendix-B.1-37.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-37.1">SHA-256 Hash: <code>r1GrH46yDV62sezImEjxa6cJSZMT212jrOSHiec9ytM</code><a href="#appendix-B.1-37.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-37.2">Disclosure:<br>
             <code>WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29mX2JpcnRoIiwg</code><br>
-            <code>eyJfc2QiOiBbIktVVmlhYUxuWTVqU01MOTBHMjlPT0xFTlBiYlhmaFNqU1BN</code><br>
-            <code>alphR2t4QUUiLCAiWWJzVDBTNzZWcVhDVnNkMWpVU2x3S1BEZ21BTGVCMXVa</code><br>
-            <code>Y2xGSFhmLVVTUSJdfV0</code><a href="#appendix-B.1-37.2" class="pilcrow">¶</a>
+            <code>eyJfc2QiOiBbIkpET1lLUzB3MENvZm8tSGpaR3ZyZDdIaXJwU2ZpWURBTFU2</code><br>
+            <code>cjhUX0xFMWciLCAib1RacjlFbXk5eG1ycGNmUTVaU1U4c3Z4ZE1ZOHk0WElG</code><br>
+            <code>XzVqOVAxdTF5QSJdfV0</code><a href="#appendix-B.1-37.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-37.3">Contents:
 <code>["HbQ4X8srVW3QDxnIJdqyOA", "place_of_birth", {"_sd":</code><br>
-            <code>["KUViaaLnY5jSML90G29OOLENPbbXfhSjSPMjZaGkxAE",</code><br>
-            <code>"YbsT0S76VqXCVsd1jUSlwKPDgmALeB1uZclFHXf-USQ"]}]</code><a href="#appendix-B.1-37.3" class="pilcrow">¶</a>
+            <code>["JDOYKS0w0Cofo-HjZGvrd7HirpSfiYDALU6r8T_LE1g",</code><br>
+            <code>"oTZr9Emy9xmrpcfQ5ZSU8svxdMY8y4XIF_5j9P1u1yA"]}]</code><a href="#appendix-B.1-37.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-38"><strong>Claim <code>12</code></strong>:<a href="#appendix-B.1-38" class="pilcrow">¶</a></p>
@@ -3812,134 +3823,162 @@ GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
         </ul>
 <p id="appendix-B.1-52"><strong>Claim <code>age_in_years</code></strong>:<a href="#appendix-B.1-52" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-53.1">SHA-256 Hash: <code>WTpI7RcM3gxZruRpXzezSbkbOr93PVFvWx8woJ3j1cE</code><a href="#appendix-B.1-53.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-53.1">SHA-256 Hash: <code>LoMGrhlDm_bUWUX1gdhRxTsy4d4zywGzlSVocRSY01M</code><a href="#appendix-B.1-53.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-53.2">Disclosure:<br>
-            <code>WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3IiwgImFnZV9pbl95ZWFycyIsIDYy</code><br>
+            <code>WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3IiwgImFnZV9pbl95ZWFycyIsIDQ3</code><br>
             <code>XQ</code><a href="#appendix-B.1-53.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-53.3">Contents:
-<code>["j7ADdb0UVb0Li0ciPcP0ew", "age_in_years", 62]</code><a href="#appendix-B.1-53.3" class="pilcrow">¶</a>
+<code>["j7ADdb0UVb0Li0ciPcP0ew", "age_in_years", 47]</code><a href="#appendix-B.1-53.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="appendix-B.1-54"><strong>Claim <code>age_birth_year</code></strong>:<a href="#appendix-B.1-54" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-55.1">SHA-256 Hash: <code>LezjabRqiZOXzEYmVZf8RMi9xAkd3_M1LZ8U7E4s3u4</code><a href="#appendix-B.1-55.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-55.1">SHA-256 Hash: <code>rVj3RLs7K8zdNy7zXz1Cr39Y6rog8ulNozk4F7NCuC0</code><a href="#appendix-B.1-55.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-55.2">Disclosure:<br>
             <code>WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3IiwgImFnZV9iaXJ0aF95ZWFyIiwg</code><br>
-            <code>MTk2M10</code><a href="#appendix-B.1-55.2" class="pilcrow">¶</a>
+            <code>MTk3OF0</code><a href="#appendix-B.1-55.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-55.3">Contents:
-<code>["WpxJrFuX8uSi2p4ht09jvw", "age_birth_year", 1963]</code><a href="#appendix-B.1-55.3" class="pilcrow">¶</a>
+<code>["WpxJrFuX8uSi2p4ht09jvw", "age_birth_year", 1978]</code><a href="#appendix-B.1-55.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="appendix-B.1-56"><strong>Claim <code>issuance_date</code></strong>:<a href="#appendix-B.1-56" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-56"><strong>Claim <code>portrait</code></strong>:<a href="#appendix-B.1-56" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-57.1">SHA-256 Hash: <code>W14XHbUffzuW4IFMjpSTb1melWxUWf4N_o2ldkkIqc8</code><a href="#appendix-B.1-57.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-57.1">SHA-256 Hash: <code>9nEwUrdeZ6kcRbEj52QH3nOR-oie0_p9tMNIAEuFvMU</code><a href="#appendix-B.1-57.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-57.2">Disclosure:<br>
-            <code>WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgImlzc3VhbmNlX2RhdGUiLCAi</code><br>
-            <code>MjAyMC0wMy0xMSJd</code><a href="#appendix-B.1-57.2" class="pilcrow">¶</a>
+            <code>WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgInBvcnRyYWl0IiwgImRhdGE6</code><br>
+            <code>aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQ1FB</code><br>
+            <code>QUFBV0FRTUFBQUNTZkt4OUFBQUFBWE5TUjBJQjJja3Nmd0FBQUFSblFVMUJB</code><br>
+            <code>QUN4and2OFlRVUFBQUFnWTBoU1RRQUFlaVlBQUlDRUFBRDZBQUFBZ09nQUFI</code><br>
+            <code>VXdBQURxWUFBQU9wZ0FBQmR3bkxwUlBBQUFBQVpRVEZSRkFBQUEvLy8vcGRt</code><br>
+            <code>ZjNRQUFBRkZKUkVGVUNOZE55bEVOZ0RBUUE5QVNCSnlFV2NEQkxFMENUcERD</code><br>
+            <code>cENEaFB2ZXhyQndsQy95OE5HM1JNdW53OUFpNXA2L3ByL1p6bGNBaTRXaVJO</code><br>
+            <code>MW5sWEFlc09naGVCVFNPOEpEbk5ENlozVytkOTBmQ25UampLUUFBQUFCSlJV</code><br>
+            <code>NUVya0pnZ2c9PSJd</code><a href="#appendix-B.1-57.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-57.3">Contents:
-<code>["atSmFACYMbJVKD05o3JgtQ", "issuance_date", "2020-03-11"]</code><a href="#appendix-B.1-57.3" class="pilcrow">¶</a>
+<code>["atSmFACYMbJVKD05o3JgtQ", "portrait", "data:image/png;base6</code><br>
+            <code>4,iVBORw0KGgoAAAANSUhEUgAAACQAAAAWAQMAAACSfKx9AAAAAXNSR0IB2c</code><br>
+            <code>ksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAH</code><br>
+            <code>UwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA////pdmf3QAAAFFJREFUCN</code><br>
+            <code>dNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y8NG3RMunw9Ai5p6</code><br>
+            <code>/pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTjjKQAAAABJRU</code><br>
+            <code>5ErkJggg=="]</code><a href="#appendix-B.1-57.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="appendix-B.1-58"><strong>Claim <code>expiry_date</code></strong>:<a href="#appendix-B.1-58" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-58"><strong>Claim <code>issuance_date</code></strong>:<a href="#appendix-B.1-58" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-59.1">SHA-256 Hash: <code>78jg77-GYBeX8IQfoELPyL0DYPdmfZo0JgViV0_lKCM</code><a href="#appendix-B.1-59.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-59.1">SHA-256 Hash: <code>ezCAmaTwI2nPj_1IiB3KZfiEORLeRwhZsMMDMZIJ8kA</code><a href="#appendix-B.1-59.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-59.2">Disclosure:<br>
-            <code>WyI0S3lSMzJvSVp0LXprV3ZGcWJVTEtnIiwgImV4cGlyeV9kYXRlIiwgIjIw</code><br>
-            <code>MzAtMDMtMTIiXQ</code><a href="#appendix-B.1-59.2" class="pilcrow">¶</a>
+            <code>WyI0S3lSMzJvSVp0LXprV3ZGcWJVTEtnIiwgImlzc3VhbmNlX2RhdGUiLCAi</code><br>
+            <code>MjAyNC0wMS0xNSJd</code><a href="#appendix-B.1-59.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-59.3">Contents:
-<code>["4KyR32oIZt-zkWvFqbULKg", "expiry_date", "2030-03-12"]</code><a href="#appendix-B.1-59.3" class="pilcrow">¶</a>
+<code>["4KyR32oIZt-zkWvFqbULKg", "issuance_date", "2024-01-15"]</code><a href="#appendix-B.1-59.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="appendix-B.1-60"><strong>Claim <code>issuing_authority</code></strong>:<a href="#appendix-B.1-60" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-60"><strong>Claim <code>expiry_date</code></strong>:<a href="#appendix-B.1-60" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-61.1">SHA-256 Hash: <code>6ZNISDst62ymlrOAkadjdD5ZulT5A299J78SLhM__Os</code><a href="#appendix-B.1-61.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-61.1">SHA-256 Hash: <code>Y0H-E3hzKEUnAyri_x9tT9k-j4i65ao9hkeEHNexosI</code><a href="#appendix-B.1-61.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-61.2">Disclosure:<br>
-            <code>WyJjaEJDc3loeWgtSjg2SS1hd1FEaUNRIiwgImlzc3VpbmdfYXV0aG9yaXR5</code><br>
-            <code>IiwgIkRFIl0</code><a href="#appendix-B.1-61.2" class="pilcrow">¶</a>
+            <code>WyJjaEJDc3loeWgtSjg2SS1hd1FEaUNRIiwgImV4cGlyeV9kYXRlIiwgIjIw</code><br>
+            <code>MzQtMDEtMTUiXQ</code><a href="#appendix-B.1-61.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-61.3">Contents:
-<code>["chBCsyhyh-J86I-awQDiCQ", "issuing_authority", "DE"]</code><a href="#appendix-B.1-61.3" class="pilcrow">¶</a>
+<code>["chBCsyhyh-J86I-awQDiCQ", "expiry_date", "2034-01-15"]</code><a href="#appendix-B.1-61.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="appendix-B.1-62"><strong>Claim <code>issuing_country</code></strong>:<a href="#appendix-B.1-62" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-62"><strong>Claim <code>issuing_authority</code></strong>:<a href="#appendix-B.1-62" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-B.1-63.1">SHA-256 Hash: <code>_ohJVIQIBsU4updNS4_w4Kb1MHqJ0L9qLGshWq6JXQs</code><a href="#appendix-B.1-63.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-B.1-63.1">SHA-256 Hash: <code>6BzMBk7FGivogbldO75f3NLwjFliCqb7nn1GhgCokrQ</code><a href="#appendix-B.1-63.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-63.2">Disclosure:<br>
-            <code>WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIs</code><br>
-            <code>ICJERSJd</code><a href="#appendix-B.1-63.2" class="pilcrow">¶</a>
+            <code>WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfYXV0aG9yaXR5</code><br>
+            <code>IiwgIktpbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRl</code><br>
+            <code>cmlvciJd</code><a href="#appendix-B.1-63.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-B.1-63.3">Contents:
-<code>["flNP1ncMz9Lg-c9qMIz_9g", "issuing_country", "DE"]</code><a href="#appendix-B.1-63.3" class="pilcrow">¶</a>
+<code>["flNP1ncMz9Lg-c9qMIz_9g", "issuing_authority", "Kingdom of</code><br>
+            <code>\u00c6ndgard, Ministry of Interior"]</code><a href="#appendix-B.1-63.3" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="appendix-B.1-64">This shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:<a href="#appendix-B.1-64" class="pilcrow">¶</a></p>
-<div class="lang-txt sourcecode" id="appendix-B.1-65">
-<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
-uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiMUNybjAzV21
-VZVJXcDR6d1B2dkNLWGw5WmFRcC1jZFFWX2dIZGFHU1dvdyIsICIycjAwOWR6dkh1VnJ
-XclJYVDVrSk1tSG5xRUhIbldlME1MVlp3OFBBVEI4IiwgIjZaTklTRHN0NjJ5bWxyT0F
-rYWRqZEQ1WnVsVDVBMjk5Sjc4U0xoTV9fT3MiLCAiNzhqZzc3LUdZQmVYOElRZm9FTFB
-5TDBEWVBkbWZabzBKZ1ZpVjBfbEtDTSIsICI5MENUOEFhQlBibjVYOG5SWGtlc2p1MWk
-wQnFoV3FaM3dxRDRqRi1xREdrIiwgIkkwMGZjRlVvRFhDdWNwNXl5MnVqcVBzc0RWR2F
-XTmlVbGlOel9hd0QwZ2MiLCAiS2pBWGdBQTlONVdIRUR0UkloNHU1TW4xWnNXaXhoaFd
-BaVgtQTRRaXdnQSIsICJMYWk2SVU2ZDdHUWFnWFI3QXZHVHJuWGdTbGQzejhFSWdfZnY
-zZk9aMVdnIiwgIkxlemphYlJxaVpPWHpFWW1WWmY4Uk1pOXhBa2QzX00xTFo4VTdFNHM
-zdTQiLCAiUlR6M3FUbUZOSGJwV3JyT01aUzQxRjQ3NGtGcVJ2M3ZJUHF0aDZQVWhsTSI
-sICJXMTRYSGJVZmZ6dVc0SUZNanBTVGIxbWVsV3hVV2Y0Tl9vMmxka2tJcWM4IiwgIld
-UcEk3UmNNM2d4WnJ1UnBYemV6U2JrYk9yOTNQVkZ2V3g4d29KM2oxY0UiLCAiX29oSlZ
-JUUlCc1U0dXBkTlM0X3c0S2IxTUhxSjBMOXFMR3NoV3E2SlhRcyIsICJ5NTBjemMwSVN
-DaHlfYnNiYTFkTW9VdUFPUTVBTW1PU2ZHb0VlODF2MUZVIl0sICJpc3MiOiAiaHR0cHM
-6Ly9waWQtaXNzdWVyLmJ1bmQuZGUuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCA
-iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
-fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
-iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
-sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.Fabur6IcAt552BlDVIXNJcuE_DdR-SM0M-IigLFY3MxcFi8
-YY2B_tLdnmYx3Fs8Y6w4nxT8zstRmOdvqkmCteA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
-QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
-U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
-UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
-eTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajBoczJaTnd4Y3FPbGY4
-bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR6YUZDVWNlSVFBYUlk
-aHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnFxalFXejB0TGl1Q21N
-ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
-V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
-l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
-0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NjA3MjA5MjgsICJzZF9oYXNoIjogIlRNd0dENlNkN1FxanprempEUVlQVHY
-tOVFxakh3ZHhEOUVGbzlfVV93U2MifQ.6KmnEwhE0FgjoeCtnjsoUw-65W7H6qPu_9Df
-Qe7lxRFIxspxM24LvwSyzDTaabMd9iSqV38nPt0SJLPTMbl3tg
-
-</pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
-</div>
-<p id="appendix-B.1-66">The following is the payload of a corresponding Key Binding JWT:<a href="#appendix-B.1-66" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="appendix-B.1-67">
-<pre>{
-  "nonce": "1234567890",
-  "aud": "https://example.com/verifier",
-  "iat": 1760720928,
-  "sd_hash": "TMwGD6Sd7QqjzkzjDQYPTv-9QqjHwdxD9EFo9_U_wSc"
-}
+<p id="appendix-B.1-64"><strong>Claim <code>issuing_country</code></strong>:<a href="#appendix-B.1-64" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-B.1-65.1">SHA-256 Hash: <code>UgUjq5whzQewO59fVNj0f0mqyV8YPXU54sp4kLecwQk</code><a href="#appendix-B.1-65.1" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="appendix-B.1-65.2">Disclosure:<br>
+            <code>WyJvdm9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIs</code><br>
+            <code>ICJcdTAwYzZHIl0</code><a href="#appendix-B.1-65.2" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="appendix-B.1-65.3">Contents:
+<code>["ovoV1rkh_ANm861qUAA2Aw", "issuing_country", "\u00c6G"]</code><a href="#appendix-B.1-65.3" class="pilcrow">¶</a>
+</li>
+        </ul>
+<p id="appendix-B.1-66">This shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:<a href="#appendix-B.1-66" class="pilcrow">¶</a></p>
+<div class="lang-txt sourcecode" id="appendix-B.1-67">
+<pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
+5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
+CcWFFSXlYQ0hjbjRhNVlLSmFnUGdJUDBXa2c5QW9yZ0FLZyIsICI1Zm42SWlYalVQbUd
+RNG1ZSHhEZHQ2RWp2QlE3Z1J2R2NkRW5TQ0VOOEVrIiwgIjZCek1CazdGR2l2b2dibGR
+PNzVmM05Md2pGbGlDcWI3bm4xR2hnQ29rclEiLCAiOTBDVDhBYUJQYm41WDhuUlhrZXN
+qdTFpMEJxaFdxWjN3cUQ0akYtcURHayIsICI5bkV3VXJkZVo2a2NSYkVqNTJRSDNuT1I
+tb2llMF9wOXRNTklBRXVGdk1VIiwgIkhUaDZacjJKOGFpcXBhOTYzY0xrdUtlUURmOU8
+wMEZ6T0hoeWpHcFZmVGciLCAiSkNwMksyTmhILUxFNUwwajdNRTBMTngtVC1weDlRRnR
+hbVNzeG1DVUN4VSIsICJMb01HcmhsRG1fYlVXVVgxZ2RoUnhUc3k0ZDR6eXdHemxTVm9
+jUlNZMDFNIiwgIlVnVWpxNXdoelFld081OWZWTmowZjBtcXlWOFlQWFU1NHNwNGtMZWN
+3UWsiLCAiWTBILUUzaHpLRVVuQXlyaV94OXRUOWstajRpNjVhbzloa2VFSE5leG9zSSI
+sICJlekNBbWFUd0kyblBqXzFJaUIzS1pmaUVPUkxlUndoWnNNTURNWklKOGtBIiwgImk
+wSF8tV0FId2ZFanQ4dHFRSDc0dU9DV3ZxdVkzRnd1WC1reDRlMlJKSDgiLCAicjFHckg
+0NnlEVjYyc2V6SW1FanhhNmNKU1pNVDIxMmpyT1NIaWVjOXl0TSIsICJyVmozUkxzN0s
+4emROeTd6WHoxQ3IzOVk2cm9nOHVsTm96azRGN05DdUMwIiwgInQ1a3AwSGZ4TVMxZUh
+OQ0dSenJLOUdpNW9UWnJlZzVVZTlsTFFJdUx2QjQiXSwgImlzcyI6ICJodHRwczovL3B
+pZC1pc3N1ZXIuYWVuZGdhcmQuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXh
+wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
+fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+jQ0U2dDRqVDlGMkhaUSJ9fX0.cRhbUqZsy-XqLZevCOK-7-emvNqv-7vh6EShw2V8V-L
+cNziC-agk1DaIdWJU70bcheUcSgmCnCfQAbXbH_0fpA~WyJlSzVvNXBIZmd1cFBwbHRq
+MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
+c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
+d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
+a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajBoczJaTnd4Y3FP
+bGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR6YUZDVWNlSVFB
+YUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnFxalFXejB0TGl1
+Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
+HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
+lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
+yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
+3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjEwNTAsICJzZF9oYXNoIjogIm8xUlhsc2ZlR
+UhZcF8zaHQwTDRuWEFLOUI1MXpyeG9tMlJBMzMwQlZVMFUifQ.0lh8_WVG1fuZwANyQe
+b4VEfXCBmms6p1zcHYQ5b3JsCsawPrifvOBAiRpPkPDgLMObwkZZKTDSNRztjsdVYIsA
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
 </div>
-<p id="appendix-B.1-68">After validation, the Verifier will have the following processed SD-JWT payload available for further handling:<a href="#appendix-B.1-68" class="pilcrow">¶</a></p>
+<p id="appendix-B.1-68">The following is the payload of a corresponding Key Binding JWT:<a href="#appendix-B.1-68" class="pilcrow">¶</a></p>
 <div class="lang-json sourcecode" id="appendix-B.1-69">
 <pre>{
-  "iss": "https://pid-issuer.bund.de.example",
+  "nonce": "1234567890",
+  "aud": "https://example.com/verifier",
+  "iat": 1760721050,
+  "sd_hash": "o1RXlsfeEHYp_3ht0L4nXAK9B51zrxom2RA330BVU0U"
+}
+
+</pre><a href="#appendix-B.1-69" class="pilcrow">¶</a>
+</div>
+<p id="appendix-B.1-70">After validation, the Verifier will have the following processed SD-JWT payload available for further handling:<a href="#appendix-B.1-70" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="appendix-B.1-71">
+<pre>{
+  "iss": "https://pid-issuer.aendgard.example",
   "iat": 1683000000,
   "exp": 1883000000,
-  "vct": "urn:eudi:pid:de:1",
+  "vct": "urn:eudi:pid:aendgard:1",
   "cnf": {
     "jwk": {
       "kty": "EC",
@@ -3952,11 +3991,11 @@ Qe7lxRFIxspxM24LvwSyzDTaabMd9iSqV38nPt0SJLPTMbl3tg
     "18": true
   },
   "nationalities": [
-    "DE"
+    "Ændgard"
   ]
 }
 
-</pre><a href="#appendix-B.1-69" class="pilcrow">¶</a>
+</pre><a href="#appendix-B.1-71" class="pilcrow">¶</a>
 </div>
 </section>
 </div>
@@ -4257,6 +4296,8 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-D-2.17">Updated/expanded example for Type Metadata<a href="#appendix-D-2.17" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-D-2.18">Be more consistent with style for lists of claims/parameters/properties<a href="#appendix-D-2.18" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.19">Update PID example to make clear that it is not normative<a href="#appendix-D-2.19" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>

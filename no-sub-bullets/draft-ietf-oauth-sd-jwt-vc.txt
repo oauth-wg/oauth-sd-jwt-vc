@@ -268,9 +268,8 @@ Table of Contents
 3.2.  Data Format
 
    SD-JWT VCs MUST be encoded using the SD-JWT format defined in
-   Section 4 of [I-D.ietf-oauth-selective-disclosure-jwt].  A
-   presentation of an SD-JWT VC MAY have an associated KB-JWT (i.e., the
-   presentation is an SD-JWT+KB).
+   Section 4 or Section 8 of [I-D.ietf-oauth-selective-disclosure-jwt],
+   where support for the JWS JSON Serialization is OPTIONAL.
 
    Note that in some cases, an SD-JWT VC MAY have no selectively
    disclosable claims, and therefore the encoded SD-JWT will not contain
@@ -416,17 +415,8 @@ Table of Contents
    would make use of data URIs, whereas hash digests in base64 encoding
    do not need to be encoded as such.
 
-   The following is a non-normative example of user data in the
-   unsecured payload of an SD-JWT VC that includes a binary image claim:
-
-   {
-     "vct": "https://credentials.example.com/identity_credential",
-     "given_name": "Jane",
-     "family_name": "Doe",
-     "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
-      AAAFCAYAAACNbyblAAAAHElEQVQI12P4
-      //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-   }
+   An example of a claim containing binary data encoded as a data URI is
+   shown in Appendix B.1.
 
 3.2.2.4.  SD-JWT VC without Selectively Disclosable Claims
 
@@ -590,9 +580,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n7eSZ
-   OJOyQXz_LC-iBOJ12ejrBC77b8rgG6n0YGt6Vuw3qBU8Io0T3nLPPt7gv5rZaOKFMCoo
-   xfynPUNZyMZmQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.lUiqV
+   wYohxNuYXD00xg9cR8v7jxSrYzOPCg7J6bi3qgEhIXpAdBvjWRLoPw7tq7EbzOoMg71G
+   uP-0E3cwSwvYw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -682,15 +672,13 @@ Table of Contents
 
 4.1.  Data Format
 
-   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an
-   SD-JWT+KB, as defined in Section 4 of
-   [I-D.ietf-oauth-selective-disclosure-jwt].
+   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an
+   SD-JWT+KB.  By default, the format defined in Section 4 of
+   [I-D.ietf-oauth-selective-disclosure-jwt] is used, whereas support
+   for the JWS JSON Serialization in Section 8 of
+   [I-D.ietf-oauth-selective-disclosure-jwt] is OPTIONAL.
 
 4.2.  Key Binding JWT
-
-   If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the
-   KB-JWT MUST adhere to the rules defined in Section 4.3 of
-   [I-D.ietf-oauth-selective-disclosure-jwt].
 
    The KB-JWT MAY include additional claims which, when not understood,
    MUST be ignored by the Verifier.
@@ -717,17 +705,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n7eSZ
-   OJOyQXz_LC-iBOJ12ejrBC77b8rgG6n0YGt6Vuw3qBU8Io0T3nLPPt7gv5rZaOKFMCoo
-   xfynPUNZyMZmQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.lUiqV
+   wYohxNuYXD00xg9cR8v7jxSrYzOPCg7J6bi3qgEhIXpAdBvjWRLoPw7tq7EbzOoMg71G
+   uP-0E3cwSwvYw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjA5Mj
-   gsICJzZF9oYXNoIjogIndYYjRzSVBnbzBqWmNuZHIwa3NZNlhlM0UyM2xvN2tOUm1kT3
-   ZuVjAtMFkifQ.cXW6MJRh5ju4KCYJXicycZ4pzqEX_kdRfVjvMhrvnIrNgt_c4ky7vx2
-   1zyVjSeKHYSpdGbjXsuuLo-2XkaQuKQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjEwNT
+   AsICJzZF9oYXNoIjogImM5eWNEbVBtX09oWC00alVZMTI2TXhQby1VLVFMSjJVS3JrVz
+   ZMVS1aeTAifQ.MlMW6QLtEq1RutmyzTkwZBsVFDFDyuwcdQ5xOPOM2mwbJucfWKurEbg
+   JW8ET2NAe6LGO_fUrFUj3YWPBuV46vA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -769,8 +757,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.LZBNiYYOVDxAGB0EvVQ66hkg7sFt4Y8WzUQAvSn24j5TYZ
-   ScHdiDLsXilxzMTVucaBC1vnS3lr1E430WFwd0bg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.m_fer32NfypxYdC-C0LW7-_s4yCdCF3PzLcXIPVSjSu0Dn
+   -vqG_Wt-SAZqxB0sbz9iUY1ASPkMWcAOW-hQVsbw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1843,9 +1831,11 @@ Appendix B.  Examples
 B.1.  Example 1: Person Identification Data (PID) Credential
 
    This example shows how the artifacts defined in this specification
-   could be used to represent the concept of a Person Identification
-   Data (PID) as defined in the "PID Rulebook" in [EUDIW.ARF].  This
-   example uses fictional data of a German citizen.
+   could be used to represent the identity information of a person from
+   a fictional European country.  It leans on the concept of Person
+   Identification Data (PID) as defined in the "PID Rulebook" in
+   [EUDIW.ARF], but does not intend to fully comply with that
+   specification.
 
    Key Binding is applied using the Holder's public key passed in a cnf
    claim in the SD-JWT.
@@ -1854,25 +1844,25 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    Set used by the Issuer:
 
    {
-     "iss": "https://pid-issuer.bund.de.example",
-     "vct": "urn:eudi:pid:de:1",
-     "given_name": "Erika",
-     "family_name": "Mustermann",
-     "birthdate": "1963-08-12",
+     "iss": "https://pid-issuer.aendgard.example",
+     "vct": "urn:eudi:pid:aendgard:1",
+     "given_name": "Astrid",
+     "family_name": "Holmgren",
+     "birthdate": "1978-04-10",
      "address": {
-       "street_address": "Heidestraße 17",
-       "locality": "Köln",
-       "postal_code": "51147",
-       "country": "DE"
+       "street_address": "Sjøgata 12",
+       "locality": "Viken",
+       "postal_code": "12001",
+       "country": "Kingdom of Ændgard"
      },
      "nationalities": [
-       "DE"
+       "Ændgard"
      ],
      "sex": 2,
-     "birth_family_name": "Gabler",
+     "birth_family_name": "Jensen",
      "place_of_birth": {
-       "locality": "Berlin",
-       "country": "DE"
+       "locality": "Ændholm",
+       "country": "Kingdom of Ændgard"
      },
      "age_equal_or_over": {
        "12": true,
@@ -1882,100 +1872,118 @@ B.1.  Example 1: Person Identification Data (PID) Credential
        "21": true,
        "65": false
      },
-     "age_in_years": 62,
-     "age_birth_year": 1963,
-     "issuance_date": "2020-03-11",
-     "expiry_date": "2030-03-12",
-     "issuing_authority": "DE",
-     "issuing_country": "DE"
+     "age_in_years": 47,
+     "age_birth_year": 1978,
+     "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA
+       WAQMAAACSfKx9AAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQA
+       AeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA///
+       /pdmf3QAAAFFJREFUCNdNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y
+       8NG3RMunw9Ai5p6/pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTj
+       jKQAAAABJRU5ErkJggg==",
+     "issuance_date": "2024-01-15",
+     "expiry_date": "2034-01-15",
+     "issuing_authority": "Kingdom of Ændgard, Ministry of Interior",
+     "issuing_country": "ÆG"
    }
 
    The following is the issued SD-JWT:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
-   uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiMUNybjAzV21
-   VZVJXcDR6d1B2dkNLWGw5WmFRcC1jZFFWX2dIZGFHU1dvdyIsICIycjAwOWR6dkh1VnJ
-   XclJYVDVrSk1tSG5xRUhIbldlME1MVlp3OFBBVEI4IiwgIjZaTklTRHN0NjJ5bWxyT0F
-   rYWRqZEQ1WnVsVDVBMjk5Sjc4U0xoTV9fT3MiLCAiNzhqZzc3LUdZQmVYOElRZm9FTFB
-   5TDBEWVBkbWZabzBKZ1ZpVjBfbEtDTSIsICI5MENUOEFhQlBibjVYOG5SWGtlc2p1MWk
-   wQnFoV3FaM3dxRDRqRi1xREdrIiwgIkkwMGZjRlVvRFhDdWNwNXl5MnVqcVBzc0RWR2F
-   XTmlVbGlOel9hd0QwZ2MiLCAiS2pBWGdBQTlONVdIRUR0UkloNHU1TW4xWnNXaXhoaFd
-   BaVgtQTRRaXdnQSIsICJMYWk2SVU2ZDdHUWFnWFI3QXZHVHJuWGdTbGQzejhFSWdfZnY
-   zZk9aMVdnIiwgIkxlemphYlJxaVpPWHpFWW1WWmY4Uk1pOXhBa2QzX00xTFo4VTdFNHM
-   zdTQiLCAiUlR6M3FUbUZOSGJwV3JyT01aUzQxRjQ3NGtGcVJ2M3ZJUHF0aDZQVWhsTSI
-   sICJXMTRYSGJVZmZ6dVc0SUZNanBTVGIxbWVsV3hVV2Y0Tl9vMmxka2tJcWM4IiwgIld
-   UcEk3UmNNM2d4WnJ1UnBYemV6U2JrYk9yOTNQVkZ2V3g4d29KM2oxY0UiLCAiX29oSlZ
-   JUUlCc1U0dXBkTlM0X3c0S2IxTUhxSjBMOXFMR3NoV3E2SlhRcyIsICJ5NTBjemMwSVN
-   DaHlfYnNiYTFkTW9VdUFPUTVBTW1PU2ZHb0VlODF2MUZVIl0sICJpc3MiOiAiaHR0cHM
-   6Ly9waWQtaXNzdWVyLmJ1bmQuZGUuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCA
-   iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
-   fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
-   iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
-   sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.Fabur6IcAt552BlDVIXNJcuE_DdR-SM0M-IigLFY3MxcFi8
-   YY2B_tLdnmYx3Fs8Y6w4nxT8zstRmOdvqkmCteA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
-   Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
-   V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
-   9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
-   BOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwgIkhlaWRlc3RyYVx1MDBkZmUgMT
-   ciXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIktcdTAwZjZ
-   sbiJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjUxMT
-   Q3Il0~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiREUiXQ~WyJ
-   HMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7Il9zZCI6IFsiQUxaRVJ
-   zU241V05pRVhkQ2tzVzhJNXFRdzNfTnBBblJxcFNBWkR1ZGd3OCIsICJEX19XX3VZY3Z
-   SejN0dlVuSUp2QkRIaVRjN0NfX3FIZDB4Tkt3SXNfdzlrIiwgImVCcENYVTFKNWRoSDJ
-   nNHQ4UVlOVzVFeFM5QXhVVmJsVW9kb0xZb1BobzAiLCAieE9QeTktZ0pBTEs2VWJXS0Z
-   MUjg1Y09CeVVEM0FiTndGZzNJM1lmUUVfSSJdfV0~WyJsa2x4RjVqTVlsR1RQVW92TU5
-   JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJuUHVvUW5rUkZxM0JJZUFtN0
-   FuWEZBIiwgInNleCIsIDJd~WyI1YlBzMUlxdVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX
-   2ZhbWlseV9uYW1lIiwgIkdhYmxlciJd~WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13Iiwg
-   ImxvY2FsaXR5IiwgIkJlcmxpbiJd~WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImN
-   vdW50cnkiLCAiREUiXQ~WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29m
-   X2JpcnRoIiwgeyJfc2QiOiBbIktVVmlhYUxuWTVqU01MOTBHMjlPT0xFTlBiYlhmaFNq
-   U1BNalphR2t4QUUiLCAiWWJzVDBTNzZWcVhDVnNkMWpVU2x3S1BEZ21BTGVCMXVaY2xG
-   SFhmLVVTUSJdfV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgIjEyIiwgdHJ1ZV0~
-   WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjE0IiwgdHJ1ZV0~WyJIM28xdXN3UDc2
-   MEZpMnllR2RWQ0VRIiwgIjE2IiwgdHJ1ZV0~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpB
-   IiwgIjE4IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjIxIiwgdHJ1
-   ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjY1IiwgZmFsc2Vd~WyJlSzVvNXB
-   IZmd1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF
-   0RWl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx
-   5NVA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjh
-   fM0FtSncyWFo4a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajB
-   oczJaTnd4Y3FPbGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR
-   6YUZDVWNlSVFBYUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnF
-   xalFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3
-   IiwgImFnZV9pbl95ZWFycyIsIDYyXQ~WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3IiwgI
-   mFnZV9iaXJ0aF95ZWFyIiwgMTk2M10~WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgI
-   mlzc3VhbmNlX2RhdGUiLCAiMjAyMC0wMy0xMSJd~WyI0S3lSMzJvSVp0LXprV3ZGcWJV
-   TEtnIiwgImV4cGlyeV9kYXRlIiwgIjIwMzAtMDMtMTIiXQ~WyJjaEJDc3loeWgtSjg2S
-   S1hd1FEaUNRIiwgImlzc3VpbmdfYXV0aG9yaXR5IiwgIkRFIl0~WyJmbE5QMW5jTXo5T
-   GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
+   5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
+   CcWFFSXlYQ0hjbjRhNVlLSmFnUGdJUDBXa2c5QW9yZ0FLZyIsICI1Zm42SWlYalVQbUd
+   RNG1ZSHhEZHQ2RWp2QlE3Z1J2R2NkRW5TQ0VOOEVrIiwgIjZCek1CazdGR2l2b2dibGR
+   PNzVmM05Md2pGbGlDcWI3bm4xR2hnQ29rclEiLCAiOTBDVDhBYUJQYm41WDhuUlhrZXN
+   qdTFpMEJxaFdxWjN3cUQ0akYtcURHayIsICI5bkV3VXJkZVo2a2NSYkVqNTJRSDNuT1I
+   tb2llMF9wOXRNTklBRXVGdk1VIiwgIkhUaDZacjJKOGFpcXBhOTYzY0xrdUtlUURmOU8
+   wMEZ6T0hoeWpHcFZmVGciLCAiSkNwMksyTmhILUxFNUwwajdNRTBMTngtVC1weDlRRnR
+   hbVNzeG1DVUN4VSIsICJMb01HcmhsRG1fYlVXVVgxZ2RoUnhUc3k0ZDR6eXdHemxTVm9
+   jUlNZMDFNIiwgIlVnVWpxNXdoelFld081OWZWTmowZjBtcXlWOFlQWFU1NHNwNGtMZWN
+   3UWsiLCAiWTBILUUzaHpLRVVuQXlyaV94OXRUOWstajRpNjVhbzloa2VFSE5leG9zSSI
+   sICJlekNBbWFUd0kyblBqXzFJaUIzS1pmaUVPUkxlUndoWnNNTURNWklKOGtBIiwgImk
+   wSF8tV0FId2ZFanQ4dHFRSDc0dU9DV3ZxdVkzRnd1WC1reDRlMlJKSDgiLCAicjFHckg
+   0NnlEVjYyc2V6SW1FanhhNmNKU1pNVDIxMmpyT1NIaWVjOXl0TSIsICJyVmozUkxzN0s
+   4emROeTd6WHoxQ3IzOVk2cm9nOHVsTm96azRGN05DdUMwIiwgInQ1a3AwSGZ4TVMxZUh
+   OQ0dSenJLOUdpNW9UWnJlZzVVZTlsTFFJdUx2QjQiXSwgImlzcyI6ICJodHRwczovL3B
+   pZC1pc3N1ZXIuYWVuZGdhcmQuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXh
+   wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
+   fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+   jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+   pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.cRhbUqZsy-XqLZevCOK-7-emvNqv-7vh6EShw2V8V-L
+   cNziC-agk1DaIdWJU70bcheUcSgmCnCfQAbXbH_0fpA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
+   bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
+   Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
+   UHBOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwgIlNqXHUwMGY4Z2F0YSAxMiJd
+   ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIlZpa2VuIl0~WyJ
+   BSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjEyMDAxIl0~WyJ
+   QYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiS2luZ2RvbSBvZiBcdTA
+   wYzZuZGdhcmQiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7
+   Il9zZCI6IFsiNjBCM0N3cTA0aGxQQndzdnNmdks5SlV4dnVMRlViSlFmZ1BCYk9fSDly
+   TSIsICI4eWpQUjNyOGRPNUhXTG55MWdCZU1KVFBSZ2tCY2h1cTQzcUg4V2xfZjFjIiwg
+   Ik5hcmQ3NHcyTl85YW5WRW1TbGVjRUpscXgzanhiY3F4dlZ6QnNCRFgweHMiLCAiVS16
+   RDFESS03WjB6WW94WHF5NUhTVE5VZWdhaFJDSHlkQWVzS09fc0VQYyJdfV0~WyJsa2x4
+   RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIlx1MDBjNm5kZ2Fy
+   ZCJdXQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiwgInNleCIsIDJd~WyI1YlBzMUlx
+   dVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX2ZhbWlseV9uYW1lIiwgIkplbnNlbiJd~WyI
+   1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIlx1MDBjNm5kaG9sbSJ
+   d~WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiS2luZ2RvbSBvZi
+   BcdTAwYzZuZGdhcmQiXQ~WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29
+   mX2JpcnRoIiwgeyJfc2QiOiBbIkpET1lLUzB3MENvZm8tSGpaR3ZyZDdIaXJwU2ZpWUR
+   BTFU2cjhUX0xFMWciLCAib1RacjlFbXk5eG1ycGNmUTVaU1U4c3Z4ZE1ZOHk0WElGXzV
+   qOVAxdTF5QSJdfV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgIjEyIiwgdHJ1ZV0
+   ~WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjE0IiwgdHJ1ZV0~WyJIM28xdXN3UDc
+   2MEZpMnllR2RWQ0VRIiwgIjE2IiwgdHJ1ZV0~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFp
+   BIiwgIjE4IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjIxIiwgdHJ
+   1ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjY1IiwgZmFsc2Vd~WyJlSzVvNX
+   BIZmd1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIj
+   F0RWl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbm
+   x5NVA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcj
+   hfM0FtSncyWFo4a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2aj
+   BoczJaTnd4Y3FPbGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZV
+   R6YUZDVWNlSVFBYUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWn
+   FxalFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV
+   3IiwgImFnZV9pbl95ZWFycyIsIDQ3XQ~WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3Iiwg
+   ImFnZV9iaXJ0aF95ZWFyIiwgMTk3OF0~WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwg
+   InBvcnRyYWl0IiwgImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFO
+   U1VoRVVnQUFBQ1FBQUFBV0FRTUFBQUNTZkt4OUFBQUFBWE5TUjBJQjJja3Nmd0FBQUFS
+   blFVMUJBQUN4and2OFlRVUFBQUFnWTBoU1RRQUFlaVlBQUlDRUFBRDZBQUFBZ09nQUFI
+   VXdBQURxWUFBQU9wZ0FBQmR3bkxwUlBBQUFBQVpRVEZSRkFBQUEvLy8vcGRtZjNRQUFB
+   RkZKUkVGVUNOZE55bEVOZ0RBUUE5QVNCSnlFV2NEQkxFMENUcERDcENEaFB2ZXhyQnds
+   Qy95OE5HM1JNdW53OUFpNXA2L3ByL1p6bGNBaTRXaVJOMW5sWEFlc09naGVCVFNPOEpE
+   bk5ENlozVytkOTBmQ25UampLUUFBQUFCSlJVNUVya0pnZ2c9PSJd~WyI0S3lSMzJvSVp
+   0LXprV3ZGcWJVTEtnIiwgImlzc3VhbmNlX2RhdGUiLCAiMjAyNC0wMS0xNSJd~WyJjaE
+   JDc3loeWgtSjg2SS1hd1FEaUNRIiwgImV4cGlyeV9kYXRlIiwgIjIwMzQtMDEtMTUiXQ
+   ~WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfYXV0aG9yaXR5IiwgIkt
+   pbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRlcmlvciJd~WyJvdm
+   9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIsICJcdTAwYzZHIl
+   0~
 
    This is the payload of that SD-JWT:
 
    {
      "_sd": [
-       "0HZmnSIPz337kSWe7C34l--88gzJi-eBJ2Vz_HJwATg",
-       "1Crn03WmUeRWp4zwPvvCKXl9ZaQp-cdQV_gHdaGSWow",
        "2r009dzvHuVrWrRXT5kJMmHnqEHHnWe0MLVZw8PATB8",
-       "6ZNISDst62ymlrOAkadjdD5ZulT5A299J78SLhM__Os",
-       "78jg77-GYBeX8IQfoELPyL0DYPdmfZo0JgViV0_lKCM",
+       "3NdDJYRwBqaEIyXCHcn4a5YKJagPgIP0Wkg9AorgAKg",
+       "5fn6IiXjUPmGQ4mYHxDdt6EjvBQ7gRvGcdEnSCEN8Ek",
+       "6BzMBk7FGivogbldO75f3NLwjFliCqb7nn1GhgCokrQ",
        "90CT8AaBPbn5X8nRXkesju1i0BqhWqZ3wqD4jF-qDGk",
-       "I00fcFUoDXCucp5yy2ujqPssDVGaWNiUliNz_awD0gc",
-       "KjAXgAA9N5WHEDtRIh4u5Mn1ZsWixhhWAiX-A4QiwgA",
-       "Lai6IU6d7GQagXR7AvGTrnXgSld3z8EIg_fv3fOZ1Wg",
-       "LezjabRqiZOXzEYmVZf8RMi9xAkd3_M1LZ8U7E4s3u4",
-       "RTz3qTmFNHbpWrrOMZS41F474kFqRv3vIPqth6PUhlM",
-       "W14XHbUffzuW4IFMjpSTb1melWxUWf4N_o2ldkkIqc8",
-       "WTpI7RcM3gxZruRpXzezSbkbOr93PVFvWx8woJ3j1cE",
-       "_ohJVIQIBsU4updNS4_w4Kb1MHqJ0L9qLGshWq6JXQs",
-       "y50czc0ISChy_bsba1dMoUuAOQ5AMmOSfGoEe81v1FU"
+       "9nEwUrdeZ6kcRbEj52QH3nOR-oie0_p9tMNIAEuFvMU",
+       "HTh6Zr2J8aiqpa963cLkuKeQDf9O00FzOHhyjGpVfTg",
+       "JCp2K2NhH-LE5L0j7ME0LNx-T-px9QFtamSsxmCUCxU",
+       "LoMGrhlDm_bUWUX1gdhRxTsy4d4zywGzlSVocRSY01M",
+       "UgUjq5whzQewO59fVNj0f0mqyV8YPXU54sp4kLecwQk",
+       "Y0H-E3hzKEUnAyri_x9tT9k-j4i65ao9hkeEHNexosI",
+       "ezCAmaTwI2nPj_1IiB3KZfiEORLeRwhZsMMDMZIJ8kA",
+       "i0H_-WAHwfEjt8tqQH74uOCWvquY3FwuX-kx4e2RJH8",
+       "r1GrH46yDV62sezImEjxa6cJSZMT212jrOSHiec9ytM",
+       "rVj3RLs7K8zdNy7zXz1Cr39Y6rog8ulNozk4F7NCuC0",
+       "t5kp0HfxMS1eHNCGRzrK9Gi5oTZreg5Ue9lLQIuLvB4"
      ],
-     "iss": "https://pid-issuer.bund.de.example",
+     "iss": "https://pid-issuer.aendgard.example",
      "iat": 1683000000,
      "exp": 1883000000,
-     "vct": "urn:eudi:pid:de:1",
+     "vct": "urn:eudi:pid:aendgard:1",
      "_sd_alg": "sha-256",
      "cnf": {
        "jwk": {
@@ -1992,83 +2000,87 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim given_name*:
 
-   *  SHA-256 Hash: 0HZmnSIPz337kSWe7C34l--88gzJi-eBJ2Vz_HJwATg
+   *  SHA-256 Hash: 3NdDJYRwBqaEIyXCHcn4a5YKJagPgIP0Wkg9AorgAKg
    *  Disclosure:
-      WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiRXJp
-      a2EiXQ
-   *  Contents: ["2GLC42sKQveCfGfryNRN9w", "given_name", "Erika"]
+      WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0
+      cmlkIl0
+   *  Contents: ["2GLC42sKQveCfGfryNRN9w", "given_name", "Astrid"]
 
    *Claim family_name*:
 
-   *  SHA-256 Hash: I00fcFUoDXCucp5yy2ujqPssDVGaWNiUliNz_awD0gc
+   *  SHA-256 Hash: JCp2K2NhH-LE5L0j7ME0LNx-T-px9QFtamSsxmCUCxU
    *  Disclosure:
-      WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIk11
-      c3Rlcm1hbm4iXQ
-   *  Contents: ["eluV5Og3gSNII8EYnsxA_A", "family_name", "Mustermann"]
+      WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhv
+      bG1ncmVuIl0
+   *  Contents: ["eluV5Og3gSNII8EYnsxA_A", "family_name", "Holmgren"]
 
    *Claim birthdate*:
 
-   *  SHA-256 Hash: Lai6IU6d7GQagXR7AvGTrnXgSld3z8EIg_fv3fOZ1Wg
+   *  SHA-256 Hash: 5fn6IiXjUPmGQ4mYHxDdt6EjvBQ7gRvGcdEnSCEN8Ek
    *  Disclosure:
-      WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYz
-      LTA4LTEyIl0
-   *  Contents: ["6Ij7tM-a5iVPGboS5tmvVA", "birthdate", "1963-08-12"]
+      WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4
+      LTA0LTEwIl0
+   *  Contents: ["6Ij7tM-a5iVPGboS5tmvVA", "birthdate", "1978-04-10"]
 
    *Claim street_address*:
 
-   *  SHA-256 Hash: ALZERsSn5WNiEXdCksW8I5qQw3_NpAnRqpSAZDudgw8
+   *  SHA-256 Hash: 8yjPR3r8dO5HWLny1gBeMJTPRgkBchuq43qH8Wl_f1c
    *  Disclosure:
       WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwg
-      IkhlaWRlc3RyYVx1MDBkZmUgMTciXQ
+      IlNqXHUwMGY4Z2F0YSAxMiJd
    *  Contents: ["eI8ZWm9QnKPpNPeNenHdhQ", "street_address",
-      "Heidestra\u00dfe 17"]
+      "Sj\u00f8gata
+      12"]
 
    *Claim locality*:
 
-   *  SHA-256 Hash: D__W_uYcvRz3tvUnIJvBDHiTc7C__qHd0xNKwIs_w9k
+   *  SHA-256 Hash: Nard74w2N_9anVEmSlecEJlqx3jxbcqxvVzBsBDX0xs
    *  Disclosure:
-      WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIktcdTAw
-      ZjZsbiJd
-   *  Contents: ["Qg_O64zqAxe412a108iroA", "locality", "K\u00f6ln"]
+      WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIlZpa2Vu
+      Il0
+   *  Contents: ["Qg_O64zqAxe412a108iroA", "locality", "Viken"]
 
    *Claim postal_code*:
 
-   *  SHA-256 Hash: xOPy9-gJALK6UbWKFLR85cOByUD3AbNwFg3I3YfQE_I
+   *  SHA-256 Hash: 60B3Cwq04hlPBwsvsfvK9JUxvuLFUbJQfgPBbO_H9rM
    *  Disclosure:
-      WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjUx
-      MTQ3Il0
-   *  Contents: ["AJx-095VPrpTtN4QMOqROA", "postal_code", "51147"]
+      WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjEy
+      MDAxIl0
+   *  Contents: ["AJx-095VPrpTtN4QMOqROA", "postal_code", "12001"]
 
    *Claim country*:
 
-   *  SHA-256 Hash: eBpCXU1J5dhH2g4t8QYNW5ExS9AxUVblUodoLYoPho0
+   *  SHA-256 Hash: U-zD1DI-7Z0zYoxXqy5HSTNUegahRCHydAesKO_sEPc
    *  Disclosure:
-      WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiREUiXQ
-   *  Contents: ["Pc33JM2LchcU_lHggv_ufQ", "country", "DE"]
+      WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiS2luZ2Rv
+      bSBvZiBcdTAwYzZuZGdhcmQiXQ
+   *  Contents: ["Pc33JM2LchcU_lHggv_ufQ", "country", "Kingdom of
+      \u00c6ndgard"]
 
    *Claim address*:
 
-   *  SHA-256 Hash: RTz3qTmFNHbpWrrOMZS41F474kFqRv3vIPqth6PUhlM
+   *  SHA-256 Hash: i0H_-WAHwfEjt8tqQH74uOCWvquY3FwuX-kx4e2RJH8
    *  Disclosure:
       WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7Il9zZCI6
-      IFsiQUxaRVJzU241V05pRVhkQ2tzVzhJNXFRdzNfTnBBblJxcFNBWkR1ZGd3
-      OCIsICJEX19XX3VZY3ZSejN0dlVuSUp2QkRIaVRjN0NfX3FIZDB4Tkt3SXNf
-      dzlrIiwgImVCcENYVTFKNWRoSDJnNHQ4UVlOVzVFeFM5QXhVVmJsVW9kb0xZ
-      b1BobzAiLCAieE9QeTktZ0pBTEs2VWJXS0ZMUjg1Y09CeVVEM0FiTndGZzNJ
-      M1lmUUVfSSJdfV0
+      IFsiNjBCM0N3cTA0aGxQQndzdnNmdks5SlV4dnVMRlViSlFmZ1BCYk9fSDly
+      TSIsICI4eWpQUjNyOGRPNUhXTG55MWdCZU1KVFBSZ2tCY2h1cTQzcUg4V2xf
+      ZjFjIiwgIk5hcmQ3NHcyTl85YW5WRW1TbGVjRUpscXgzanhiY3F4dlZ6QnNC
+      RFgweHMiLCAiVS16RDFESS03WjB6WW94WHF5NUhTVE5VZWdhaFJDSHlkQWVz
+      S09fc0VQYyJdfV0
    *  Contents: ["G02NSrQfjFXQ7Io09syajA", "address", {"_sd":
-      ["ALZERsSn5WNiEXdCksW8I5qQw3_NpAnRqpSAZDudgw8",
-      "D__W_uYcvRz3tvUnIJvBDHiTc7C__qHd0xNKwIs_w9k",
-      "eBpCXU1J5dhH2g4t8QYNW5ExS9AxUVblUodoLYoPho0",
-      "xOPy9-gJALK6UbWKFLR85cOByUD3AbNwFg3I3YfQE_I"]}]
+      ["60B3Cwq04hlPBwsvsfvK9JUxvuLFUbJQfgPBbO_H9rM",
+      "8yjPR3r8dO5HWLny1gBeMJTPRgkBchuq43qH8Wl_f1c",
+      "Nard74w2N_9anVEmSlecEJlqx3jxbcqxvVzBsBDX0xs",
+      "U-zD1DI-7Z0zYoxXqy5HSTNUegahRCHydAesKO_sEPc"]}]
 
    *Claim nationalities*:
 
-   *  SHA-256 Hash: y50czc0ISChy_bsba1dMoUuAOQ5AMmOSfGoEe81v1FU
+   *  SHA-256 Hash: HTh6Zr2J8aiqpa963cLkuKeQDf9O00FzOHhyjGpVfTg
    *  Disclosure:
       WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBb
-      IkRFIl1d
-   *  Contents: ["lklxF5jMYlGTPUovMNIvCA", "nationalities", ["DE"]]
+      Ilx1MDBjNm5kZ2FyZCJdXQ
+   *  Contents: ["lklxF5jMYlGTPUovMNIvCA", "nationalities",
+      ["\u00c6ndgard"]]
 
    *Claim sex*:
 
@@ -2079,39 +2091,41 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim birth_family_name*:
 
-   *  SHA-256 Hash: KjAXgAA9N5WHEDtRIh4u5Mn1ZsWixhhWAiX-A4QiwgA
+   *  SHA-256 Hash: t5kp0HfxMS1eHNCGRzrK9Gi5oTZreg5Ue9lLQIuLvB4
    *  Disclosure:
       WyI1YlBzMUlxdVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX2ZhbWlseV9uYW1l
-      IiwgIkdhYmxlciJd
+      IiwgIkplbnNlbiJd
    *  Contents: ["5bPs1IquZNa0hkaFzzzZNw", "birth_family_name",
-      "Gabler"]
+      "Jensen"]
 
    *Claim locality*:
 
-   *  SHA-256 Hash: KUViaaLnY5jSML90G29OOLENPbbXfhSjSPMjZaGkxAE
+   *  SHA-256 Hash: JDOYKS0w0Cofo-HjZGvrd7HirpSfiYDALU6r8T_LE1g
    *  Disclosure:
-      WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIkJlcmxp
-      biJd
-   *  Contents: ["5a2W0_NrlEZzfqmk_7Pq-w", "locality", "Berlin"]
+      WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIlx1MDBj
+      Nm5kaG9sbSJd
+   *  Contents: ["5a2W0_NrlEZzfqmk_7Pq-w", "locality", "\u00c6ndholm"]
 
    *Claim country*:
 
-   *  SHA-256 Hash: YbsT0S76VqXCVsd1jUSlwKPDgmALeB1uZclFHXf-USQ
+   *  SHA-256 Hash: oTZr9Emy9xmrpcfQ5ZSU8svxdMY8y4XIF_5j9P1u1yA
    *  Disclosure:
-      WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiREUiXQ
-   *  Contents: ["y1sVU5wdfJahVdgwPgS7RQ", "country", "DE"]
+      WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiS2luZ2Rv
+      bSBvZiBcdTAwYzZuZGdhcmQiXQ
+   *  Contents: ["y1sVU5wdfJahVdgwPgS7RQ", "country", "Kingdom of
+      \u00c6ndgard"]
 
    *Claim place_of_birth*:
 
-   *  SHA-256 Hash: 1Crn03WmUeRWp4zwPvvCKXl9ZaQp-cdQV_gHdaGSWow
+   *  SHA-256 Hash: r1GrH46yDV62sezImEjxa6cJSZMT212jrOSHiec9ytM
    *  Disclosure:
       WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29mX2JpcnRoIiwg
-      eyJfc2QiOiBbIktVVmlhYUxuWTVqU01MOTBHMjlPT0xFTlBiYlhmaFNqU1BN
-      alphR2t4QUUiLCAiWWJzVDBTNzZWcVhDVnNkMWpVU2x3S1BEZ21BTGVCMXVa
-      Y2xGSFhmLVVTUSJdfV0
+      eyJfc2QiOiBbIkpET1lLUzB3MENvZm8tSGpaR3ZyZDdIaXJwU2ZpWURBTFU2
+      cjhUX0xFMWciLCAib1RacjlFbXk5eG1ycGNmUTVaU1U4c3Z4ZE1ZOHk0WElG
+      XzVqOVAxdTF5QSJdfV0
    *  Contents: ["HbQ4X8srVW3QDxnIJdqyOA", "place_of_birth", {"_sd":
-      ["KUViaaLnY5jSML90G29OOLENPbbXfhSjSPMjZaGkxAE",
-      "YbsT0S76VqXCVsd1jUSlwKPDgmALeB1uZclFHXf-USQ"]}]
+      ["JDOYKS0w0Cofo-HjZGvrd7HirpSfiYDALU6r8T_LE1g",
+      "oTZr9Emy9xmrpcfQ5ZSU8svxdMY8y4XIF_5j9P1u1yA"]}]
 
    *Claim 12*:
 
@@ -2177,110 +2191,136 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim age_in_years*:
 
-   *  SHA-256 Hash: WTpI7RcM3gxZruRpXzezSbkbOr93PVFvWx8woJ3j1cE
+   *  SHA-256 Hash: LoMGrhlDm_bUWUX1gdhRxTsy4d4zywGzlSVocRSY01M
    *  Disclosure:
-      WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3IiwgImFnZV9pbl95ZWFycyIsIDYy
+      WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3IiwgImFnZV9pbl95ZWFycyIsIDQ3
       XQ
-   *  Contents: ["j7ADdb0UVb0Li0ciPcP0ew", "age_in_years", 62]
+   *  Contents: ["j7ADdb0UVb0Li0ciPcP0ew", "age_in_years", 47]
 
    *Claim age_birth_year*:
 
-   *  SHA-256 Hash: LezjabRqiZOXzEYmVZf8RMi9xAkd3_M1LZ8U7E4s3u4
+   *  SHA-256 Hash: rVj3RLs7K8zdNy7zXz1Cr39Y6rog8ulNozk4F7NCuC0
    *  Disclosure:
       WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3IiwgImFnZV9iaXJ0aF95ZWFyIiwg
-      MTk2M10
-   *  Contents: ["WpxJrFuX8uSi2p4ht09jvw", "age_birth_year", 1963]
+      MTk3OF0
+   *  Contents: ["WpxJrFuX8uSi2p4ht09jvw", "age_birth_year", 1978]
+
+   *Claim portrait*:
+
+   *  SHA-256 Hash: 9nEwUrdeZ6kcRbEj52QH3nOR-oie0_p9tMNIAEuFvMU
+   *  Disclosure:
+      WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgInBvcnRyYWl0IiwgImRhdGE6
+      aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQ1FB
+      QUFBV0FRTUFBQUNTZkt4OUFBQUFBWE5TUjBJQjJja3Nmd0FBQUFSblFVMUJB
+      QUN4and2OFlRVUFBQUFnWTBoU1RRQUFlaVlBQUlDRUFBRDZBQUFBZ09nQUFI
+      VXdBQURxWUFBQU9wZ0FBQmR3bkxwUlBBQUFBQVpRVEZSRkFBQUEvLy8vcGRt
+      ZjNRQUFBRkZKUkVGVUNOZE55bEVOZ0RBUUE5QVNCSnlFV2NEQkxFMENUcERD
+      cENEaFB2ZXhyQndsQy95OE5HM1JNdW53OUFpNXA2L3ByL1p6bGNBaTRXaVJO
+      MW5sWEFlc09naGVCVFNPOEpEbk5ENlozVytkOTBmQ25UampLUUFBQUFCSlJV
+      NUVya0pnZ2c9PSJd
+   *  Contents: ["atSmFACYMbJVKD05o3JgtQ", "portrait", "data:image/
+      png;base6
+      4,iVBORw0KGgoAAAANSUhEUgAAACQAAAAWAQMAAACSfKx9AAAAAXNSR0IB2c
+      ksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAH
+      UwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA////pdmf3QAAAFFJREFUCN
+      dNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y8NG3RMunw9Ai5p6
+      /pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTjjKQAAAABJRU
+      5ErkJggg=="]
 
    *Claim issuance_date*:
 
-   *  SHA-256 Hash: W14XHbUffzuW4IFMjpSTb1melWxUWf4N_o2ldkkIqc8
+   *  SHA-256 Hash: ezCAmaTwI2nPj_1IiB3KZfiEORLeRwhZsMMDMZIJ8kA
    *  Disclosure:
-      WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgImlzc3VhbmNlX2RhdGUiLCAi
-      MjAyMC0wMy0xMSJd
-   *  Contents: ["atSmFACYMbJVKD05o3JgtQ", "issuance_date",
-      "2020-03-11"]
+      WyI0S3lSMzJvSVp0LXprV3ZGcWJVTEtnIiwgImlzc3VhbmNlX2RhdGUiLCAi
+      MjAyNC0wMS0xNSJd
+   *  Contents: ["4KyR32oIZt-zkWvFqbULKg", "issuance_date",
+      "2024-01-15"]
 
    *Claim expiry_date*:
 
-   *  SHA-256 Hash: 78jg77-GYBeX8IQfoELPyL0DYPdmfZo0JgViV0_lKCM
+   *  SHA-256 Hash: Y0H-E3hzKEUnAyri_x9tT9k-j4i65ao9hkeEHNexosI
    *  Disclosure:
-      WyI0S3lSMzJvSVp0LXprV3ZGcWJVTEtnIiwgImV4cGlyeV9kYXRlIiwgIjIw
-      MzAtMDMtMTIiXQ
-   *  Contents: ["4KyR32oIZt-zkWvFqbULKg", "expiry_date", "2030-03-12"]
+      WyJjaEJDc3loeWgtSjg2SS1hd1FEaUNRIiwgImV4cGlyeV9kYXRlIiwgIjIw
+      MzQtMDEtMTUiXQ
+   *  Contents: ["chBCsyhyh-J86I-awQDiCQ", "expiry_date", "2034-01-15"]
 
    *Claim issuing_authority*:
 
-   *  SHA-256 Hash: 6ZNISDst62ymlrOAkadjdD5ZulT5A299J78SLhM__Os
+   *  SHA-256 Hash: 6BzMBk7FGivogbldO75f3NLwjFliCqb7nn1GhgCokrQ
    *  Disclosure:
-      WyJjaEJDc3loeWgtSjg2SS1hd1FEaUNRIiwgImlzc3VpbmdfYXV0aG9yaXR5
-      IiwgIkRFIl0
-   *  Contents: ["chBCsyhyh-J86I-awQDiCQ", "issuing_authority", "DE"]
+      WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfYXV0aG9yaXR5
+      IiwgIktpbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRl
+      cmlvciJd
+   *  Contents: ["flNP1ncMz9Lg-c9qMIz_9g", "issuing_authority", "Kingdom
+      of
+      \u00c6ndgard, Ministry of Interior"]
 
    *Claim issuing_country*:
 
-   *  SHA-256 Hash: _ohJVIQIBsU4updNS4_w4Kb1MHqJ0L9qLGshWq6JXQs
+   *  SHA-256 Hash: UgUjq5whzQewO59fVNj0f0mqyV8YPXU54sp4kLecwQk
    *  Disclosure:
-      WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIs
-      ICJERSJd
-   *  Contents: ["flNP1ncMz9Lg-c9qMIz_9g", "issuing_country", "DE"]
+      WyJvdm9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIs
+      ICJcdTAwYzZHIl0
+   *  Contents: ["ovoV1rkh_ANm861qUAA2Aw", "issuing_country", "\u00c6G"]
 
    This shows a presentation of the SD-JWT with a Key Binding JWT that
    discloses only nationality and the fact that the person is over 18
    years old:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
-   uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiMUNybjAzV21
-   VZVJXcDR6d1B2dkNLWGw5WmFRcC1jZFFWX2dIZGFHU1dvdyIsICIycjAwOWR6dkh1VnJ
-   XclJYVDVrSk1tSG5xRUhIbldlME1MVlp3OFBBVEI4IiwgIjZaTklTRHN0NjJ5bWxyT0F
-   rYWRqZEQ1WnVsVDVBMjk5Sjc4U0xoTV9fT3MiLCAiNzhqZzc3LUdZQmVYOElRZm9FTFB
-   5TDBEWVBkbWZabzBKZ1ZpVjBfbEtDTSIsICI5MENUOEFhQlBibjVYOG5SWGtlc2p1MWk
-   wQnFoV3FaM3dxRDRqRi1xREdrIiwgIkkwMGZjRlVvRFhDdWNwNXl5MnVqcVBzc0RWR2F
-   XTmlVbGlOel9hd0QwZ2MiLCAiS2pBWGdBQTlONVdIRUR0UkloNHU1TW4xWnNXaXhoaFd
-   BaVgtQTRRaXdnQSIsICJMYWk2SVU2ZDdHUWFnWFI3QXZHVHJuWGdTbGQzejhFSWdfZnY
-   zZk9aMVdnIiwgIkxlemphYlJxaVpPWHpFWW1WWmY4Uk1pOXhBa2QzX00xTFo4VTdFNHM
-   zdTQiLCAiUlR6M3FUbUZOSGJwV3JyT01aUzQxRjQ3NGtGcVJ2M3ZJUHF0aDZQVWhsTSI
-   sICJXMTRYSGJVZmZ6dVc0SUZNanBTVGIxbWVsV3hVV2Y0Tl9vMmxka2tJcWM4IiwgIld
-   UcEk3UmNNM2d4WnJ1UnBYemV6U2JrYk9yOTNQVkZ2V3g4d29KM2oxY0UiLCAiX29oSlZ
-   JUUlCc1U0dXBkTlM0X3c0S2IxTUhxSjBMOXFMR3NoV3E2SlhRcyIsICJ5NTBjemMwSVN
-   DaHlfYnNiYTFkTW9VdUFPUTVBTW1PU2ZHb0VlODF2MUZVIl0sICJpc3MiOiAiaHR0cHM
-   6Ly9waWQtaXNzdWVyLmJ1bmQuZGUuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCA
-   iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
-   fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
-   iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
-   sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.Fabur6IcAt552BlDVIXNJcuE_DdR-SM0M-IigLFY3MxcFi8
-   YY2B_tLdnmYx3Fs8Y6w4nxT8zstRmOdvqkmCteA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
-   QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
-   U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
-   UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
-   eTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajBoczJaTnd4Y3FPbGY4
-   bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR6YUZDVWNlSVFBYUlk
-   aHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnFxalFXejB0TGl1Q21N
-   ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
-   V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
-   l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
-   0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA3MjA5MjgsICJzZF9oYXNoIjogIlRNd0dENlNkN1FxanprempEUVlQVHY
-   tOVFxakh3ZHhEOUVGbzlfVV93U2MifQ.6KmnEwhE0FgjoeCtnjsoUw-65W7H6qPu_9Df
-   Qe7lxRFIxspxM24LvwSyzDTaabMd9iSqV38nPt0SJLPTMbl3tg
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
+   5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
+   CcWFFSXlYQ0hjbjRhNVlLSmFnUGdJUDBXa2c5QW9yZ0FLZyIsICI1Zm42SWlYalVQbUd
+   RNG1ZSHhEZHQ2RWp2QlE3Z1J2R2NkRW5TQ0VOOEVrIiwgIjZCek1CazdGR2l2b2dibGR
+   PNzVmM05Md2pGbGlDcWI3bm4xR2hnQ29rclEiLCAiOTBDVDhBYUJQYm41WDhuUlhrZXN
+   qdTFpMEJxaFdxWjN3cUQ0akYtcURHayIsICI5bkV3VXJkZVo2a2NSYkVqNTJRSDNuT1I
+   tb2llMF9wOXRNTklBRXVGdk1VIiwgIkhUaDZacjJKOGFpcXBhOTYzY0xrdUtlUURmOU8
+   wMEZ6T0hoeWpHcFZmVGciLCAiSkNwMksyTmhILUxFNUwwajdNRTBMTngtVC1weDlRRnR
+   hbVNzeG1DVUN4VSIsICJMb01HcmhsRG1fYlVXVVgxZ2RoUnhUc3k0ZDR6eXdHemxTVm9
+   jUlNZMDFNIiwgIlVnVWpxNXdoelFld081OWZWTmowZjBtcXlWOFlQWFU1NHNwNGtMZWN
+   3UWsiLCAiWTBILUUzaHpLRVVuQXlyaV94OXRUOWstajRpNjVhbzloa2VFSE5leG9zSSI
+   sICJlekNBbWFUd0kyblBqXzFJaUIzS1pmaUVPUkxlUndoWnNNTURNWklKOGtBIiwgImk
+   wSF8tV0FId2ZFanQ4dHFRSDc0dU9DV3ZxdVkzRnd1WC1reDRlMlJKSDgiLCAicjFHckg
+   0NnlEVjYyc2V6SW1FanhhNmNKU1pNVDIxMmpyT1NIaWVjOXl0TSIsICJyVmozUkxzN0s
+   4emROeTd6WHoxQ3IzOVk2cm9nOHVsTm96azRGN05DdUMwIiwgInQ1a3AwSGZ4TVMxZUh
+   OQ0dSenJLOUdpNW9UWnJlZzVVZTlsTFFJdUx2QjQiXSwgImlzcyI6ICJodHRwczovL3B
+   pZC1pc3N1ZXIuYWVuZGdhcmQuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXh
+   wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
+   fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+   jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+   pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.cRhbUqZsy-XqLZevCOK-7-emvNqv-7vh6EShw2V8V-L
+   cNziC-agk1DaIdWJU70bcheUcSgmCnCfQAbXbH_0fpA~WyJlSzVvNXBIZmd1cFBwbHRq
+   MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
+   c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
+   d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
+   a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajBoczJaTnd4Y3FP
+   bGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR6YUZDVWNlSVFB
+   YUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnFxalFXejB0TGl1
+   Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
+   HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
+   lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
+   yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjEwNTAsICJzZF9oYXNoIjogIm8xUlhsc2ZlR
+   UhZcF8zaHQwTDRuWEFLOUI1MXpyeG9tMlJBMzMwQlZVMFUifQ.0lh8_WVG1fuZwANyQe
+   b4VEfXCBmms6p1zcHYQ5b3JsCsawPrifvOBAiRpPkPDgLMObwkZZKTDSNRztjsdVYIsA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760720928,
-     "sd_hash": "TMwGD6Sd7QqjzkzjDQYPTv-9QqjHwdxD9EFo9_U_wSc"
+     "iat": 1760721050,
+     "sd_hash": "o1RXlsfeEHYp_3ht0L4nXAK9B51zrxom2RA330BVU0U"
    }
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
 
    {
-     "iss": "https://pid-issuer.bund.de.example",
+     "iss": "https://pid-issuer.aendgard.example",
      "iat": 1683000000,
      "exp": 1883000000,
-     "vct": "urn:eudi:pid:de:1",
+     "vct": "urn:eudi:pid:aendgard:1",
      "cnf": {
        "jwk": {
          "kty": "EC",
@@ -2293,7 +2333,7 @@ B.1.  Example 1: Person Identification Data (PID) Credential
        "18": true
      },
      "nationalities": [
-       "DE"
+       "Ændgard"
      ]
    }
 
@@ -2561,6 +2601,7 @@ Appendix D.  Document History
    *  Updated/expanded example for Type Metadata
    *  Be more consistent with style for lists of claims/parameters/
       properties
+   *  Update PID example to make clear that it is not normative
 
    -11
 
