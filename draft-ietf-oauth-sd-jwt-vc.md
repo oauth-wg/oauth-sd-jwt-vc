@@ -356,7 +356,7 @@ This specification defines the following two Issuer Signature Mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the `x5c` header parameter, the recipient uses the public key from the end-entity certificate of the certificates from the `x5c` header parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
+- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional Issuer Signature Mechanisms; however, the specifics of such mechanisms are out of scope for this specification.
@@ -538,7 +538,8 @@ Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
 ## Type Metadata Example {#type-metadata-example}
 
-All examples in this section are non-normative.
+All examples in this section are non-normative. This section only shows
+excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following is an example of an SD-JWT VC payload, containing a `vct` claim
 with the value `https://betelgeuse.example.com/education_credential`:
@@ -546,7 +547,7 @@ with the value `https://betelgeuse.example.com/education_credential`:
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 ```
@@ -567,11 +568,10 @@ retrieved from it:
 }
 ```
 
-This example is shortened for presentation, a full Type Metadata example can be found in (#ExampleTypeMetadata).
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=`.
+`1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=`.
 
 ## Type Metadata Format {#type-metadata-format}
 
@@ -862,6 +862,9 @@ claims in the credential above:
   `42 Market Street` is selected.
 - `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
   selected.
+
+The example in (#ExampleTypeMetadata) shows how the `path` can be used to
+address arrays and their elements.
 
 In detail, the array is processed from left to right as follows:
 
@@ -1382,6 +1385,38 @@ After validation, the Verifier will have the following processed SD-JWT payload 
 
 ## Example 2: Type Metadata {#ExampleTypeMetadata}
 
+The following example for Type Metadata assumes an SD-JWT VC payload structured as follows:
+
+```json
+{
+  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+  "name": "Zaphod Beeblebrox",
+  "address": {
+    "street_address": "42 Galaxy Way",
+    "city": "Betelgeuse City",
+    "postal_code": "12345",
+    "country": "Betelgeuse"
+  },
+  "degrees": [
+    {
+      "field_of_study": "Intergalactic Politics",
+      "date_awarded": "2020-05-15"
+    },
+    {
+      "field_of_study": "Space Navigation",
+      "date_awarded": "2018-06-20"
+    },
+    {
+      "field_of_study": "Quantum Mechanics",
+      "date_awarded": "2016-07-25"
+    }
+  ]
+}
+```
+
+The Type Metadata for this SD-JWT VC could be defined as follows:
+
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
@@ -1467,7 +1502,7 @@ After validation, the Verifier will have the following processed SD-JWT payload 
           "description": "The name of the student"
         }
       ],
-      "sd": "allowed",
+      "sd": "always",
       "mandatory": true
     },
     {
@@ -1502,24 +1537,64 @@ After validation, the Verifier will have the following processed SD-JWT payload 
       "svg_id": "address_street_address"
     },
     {
-      "path": ["degrees", null],
+      "path": ["degrees"],
       "display": [
         {
           "locale": "de-DE",
-          "label": "Abschluss",
-          "description": "Der Abschluss des Studenten"
+          "label": "Abschlüsse",
+          "description": "Abschlüsse des Studenten"
         },
         {
           "locale": "en-US",
-          "label": "Degree",
-          "description": "Degree earned by the student"
+          "label": "Degrees",
+          "description": "Degrees earned by the student"
         }
       ],
-      "sd": "allowed"
+      "sd": "never"
+    },
+    {
+      "path": ["degrees", null],
+      "sd": "always"
+    },
+    {
+      "path": ["degrees", null, "field_of_study"],
+      "display": [
+        {
+          "locale": "de-DE",
+          "label": "Studienfach"
+        },
+        {
+          "locale": "en-US",
+          "label": "Field of Study"
+        }
+      ],
+      "sd": "never"
+    },
+    {
+      "path": ["degrees", null, "date_awarded"],
+      "display": [
+        {
+          "locale": "de-DE",
+          "label": "Verleihungsdatum"
+        },
+        {
+          "locale": "en-US",
+          "label": "Date Awarded"
+        }
+      ],
+      "sd": "always"
     }
   ]
 }
 ```
+
+Note that in this example, there are four definitions affecting the `degrees` claim:
+
+1. The `degrees` array itself is marked as `sd: never`, meaning the element `degrees` cannot be selectively disclosed and will always exist in the disclosed SD-JWT. Changing this to `sd: always` would mean that the `degrees` array itself is selectively disclosable.
+2. Each item in the `degrees` array (denoted by `null` in the path) is marked as `sd: always`, meaning each degree object will be selectively disclosed as a whole.
+3. The `field_of_study` property of each degree object is marked as `sd: never`, meaning that if the respective degree object is disclosed, the `field_of_study` property will always be included and cannot be hidden.
+4. The `date_awarded` property of each degree object is marked as `sd: always`, meaning it can be selectively disclosed.
+
 
 # Acknowledgements {#Acknowledgements}
 
@@ -1561,7 +1636,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
 * Require data URIs for non-JSON types
+* Require `x5c` to be in the protected header
 * Clarify presentations of SD-JWT VC do not require KB
+* Updated/expanded example for Type Metadata
 
 -11
 
