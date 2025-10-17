@@ -210,6 +210,17 @@ it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
 validating credentials beyond what is defined in this specification).
 
+The `vct` value also effectively identifies the version of the credential type definition,
+as it ties a particular instance of a credential to a specific structure, set of semantics and rules.
+When evolving a credential type without updating the version, changes to the structure or meaning of the associated claims
+need to be made in a way that preserves compatibility with existing implementations.
+
+If a change alters the meaning of existing content, adds new required claims, removes
+previously required elements, or otherwise introduces incompatibilities, it is
+generally advisable to treat that as a new version of the credential type and to
+convey it using a new `vct` value. This allows different versions of a credential
+type to coexist and helps ensure that participants interpret credentials consistently.
+
 The following is a non-normative example of how `vct` is used to express
 a type:
 
@@ -1618,6 +1629,7 @@ Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
 Stefan Charsley,
+Tim Cappalli,
 Timo Glastra,
 Torsten Lodderstedt,
 Tobias Looker, and
@@ -1639,6 +1651,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Remove discussion of status and Status Provider from the Introduction
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
+* Provide some guidance on versioning via the `vct` value
 * Add security considerations for trust in type metadata
 * Require data URIs for non-JSON types
 * Require `x5c` to be in the protected header
