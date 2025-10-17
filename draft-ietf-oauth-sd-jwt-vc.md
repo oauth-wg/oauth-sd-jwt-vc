@@ -1360,9 +1360,10 @@ Line breaks have been added for readability.
 ## Example 1: Person Identification Data (PID) Credential
 
 This example shows how the artifacts defined in this specification could be used
-to represent the concept of a Person Identification Data (PID) as defined in the
-"PID Rulebook" in [@EUDIW.ARF]. This example uses fictional data of a German
-citizen.
+to represent the identity information of a person from a fictional European
+country. It leans on the concept of Person Identification Data (PID) as defined
+in the "PID Rulebook" in [@EUDIW.ARF], but does not intend to fully comply with
+that specification.
 
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
