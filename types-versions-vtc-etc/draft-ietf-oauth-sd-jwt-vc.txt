@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 17 April 2026                                     Authlete Inc.
+Expires: 20 April 2026                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         14 October 2025
+                                                         17 October 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2026.
+   This Internet-Draft will expire on 20 April 2026.
 
 Copyright Notice
 
@@ -80,8 +80,9 @@ Table of Contents
      3.4.  Verification and Processing
      3.5.  Issuer Signature Mechanisms
    4.  Presenting Verifiable Credentials
-     4.1.  Key Binding JWT
-     4.2.  Examples
+     4.1.  Data Format
+     4.2.  Key Binding JWT
+     4.3.  Examples
    5.  JWT VC Issuer Metadata
      5.1.  JWT VC Issuer Metadata Request
      5.2.  JWT VC Issuer Metadata Response
@@ -583,9 +584,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iBy1n
-   tXBbOrGh9Dd0GfP559jsRTTlnsgEjrhQykwrZgWJhZwcZCM1VFZn6nZ3jZ5JQN9LaFXV
-   DbDdKYo2gCd-g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.WLj83
+   NyqeXFcVdwe9Vaw_aoZW9hMDDiJxEzlL-T2gRrTpCLvbLZUB545vwGZ6J_6tbpLf-CgY
+   g6L1EbmHwLPPw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -598,7 +599,7 @@ Table of Contents
    lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 
    Examples of what presentations of SD-JWT VCs might look like are
-   provided in Section 4.2.
+   provided in Section 4.3.
 
 3.4.  Verification and Processing
 
@@ -673,7 +674,13 @@ Table of Contents
    This section defines encoding, validation and processing rules for
    presentations of SD-JWT VCs.
 
-4.1.  Key Binding JWT
+4.1.  Data Format
+
+   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an
+   SD-JWT+KB, as defined in Section 4 of
+   [I-D.ietf-oauth-selective-disclosure-jwt].
+
+4.2.  Key Binding JWT
 
    If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the
    KB-JWT MUST adhere to the rules defined in Section 4.3 of
@@ -682,7 +689,7 @@ Table of Contents
    The KB-JWT MAY include additional claims which, when not understood,
    MUST be ignored by the Verifier.
 
-4.2.  Examples
+4.3.  Examples
 
    The following is a non-normative example of a presentation of the SD-
    JWT shown in Section 3.3 including a KB-JWT.  In this presentation,
@@ -704,17 +711,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iBy1n
-   tXBbOrGh9Dd0GfP559jsRTTlnsgEjrhQykwrZgWJhZwcZCM1VFZn6nZ3jZ5JQN9LaFXV
-   DbDdKYo2gCd-g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.WLj83
+   NyqeXFcVdwe9Vaw_aoZW9hMDDiJxEzlL-T2gRrTpCLvbLZUB545vwGZ6J_6tbpLf-CgY
+   g6L1EbmHwLPPw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA0NjQ2NT
-   QsICJzZF9oYXNoIjogIktPRVZ4Y3BFYmwtTkJ5M2dISG9aUWswVUdFMGV6aVkwVVhqZ2
-   VoSjc4Y0EifQ.nQXFmAHg7kg6gJE4NAAQgUztjZvdPgYGXSB57RJkWkHPUxMxk8BCb-o
-   ioyG307k57J9z-wTnv7h8l1Kh51tJkg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA2OTg5Mj
+   AsICJzZF9oYXNoIjogInFBa3VLYjBRcmJMYzBOcTJNTUNDQXpTZEtEdFAwXzVXdlVJWn
+   FrNjRxY0UifQ.MzFk8rZ17nkTdSFhyc3HLIoip9A26rbcqAzPUpi_7Yt6DWOz9vBWGQn
+   KsrmHvPGxPsTaPbRSqctSubHdEtS4EA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -756,8 +763,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.xhivf7ec-smLTvtYmTYubF7SsNp9ZaiJyl7ldvdWElJBIA
-   wJPv0TxDCInR1atRm802ShLdkq7k_8QCPuydlyXg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.zV-zFPlTfrUTrpFI1Q-8DrrSREBXx_bW7DTrcLGONXJBdH
+   iGORxNfzDcihPx0IaygzlAmX3TCZdasL85Pk8L4g~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1863,8 +1870,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.R7cZ3GsXEoCZQ7CD79cxmmA2uwjQd2rr7GOIvExdDIf8mKa
-   i_TtEYvCRAO3herIV-lJ2MLjcgIA_snv619L_Ww~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.5AaHpMskaEQBTWH80wON7MHLW-ueYZNXHt9NBnBov9_4oCL
+   D5vm3GjFsGKVoX0zz2pcPWIlsW5SldbbWE-nJeA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2199,8 +2206,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.R7cZ3GsXEoCZQ7CD79cxmmA2uwjQd2rr7GOIvExdDIf8mKa
-   i_TtEYvCRAO3herIV-lJ2MLjcgIA_snv619L_Ww~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.5AaHpMskaEQBTWH80wON7MHLW-ueYZNXHt9NBnBov9_4oCL
+   D5vm3GjFsGKVoX0zz2pcPWIlsW5SldbbWE-nJeA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2211,17 +2218,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA0NjQ2NTQsICJzZF9oYXNoIjogIldsVTY2R3NWTWxCbWZvUVByRmJ0U0J
-   JQnB0SUNpbFl6Sl9IMkdVVHVneG8ifQ.YuKTMRiMZ1iaX6FhKzWdnbqEjPx354T7865H
-   fSgg9Dr4i2w7s6JTW6mr5u-Gaui5xLFSOvOwvsd2fHDY4cGnaA
+   hdCI6IDE3NjA2OTg5MjAsICJzZF9oYXNoIjogIkpuOXVSdWhfNXlfWVRMblBMS1AzVzR
+   hWHdiODgxdGhqbE84WW44TXhZNVEifQ.z3FPGze6gjvA4IFmN5q17s9E6-DsQSdCL-rz
+   x1F1FHrGZOI-NythrIxOnU2Q6VCcsLVaXQAdYtZpE23GfFpDyw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760464654,
-     "sd_hash": "WlU66GsVMlBmfoQPrFbtSBIBptICilYzJ_H2GUTugxo"
+     "iat": 1760698920,
+     "sd_hash": "Jn9uRuh_5y_YTLnPLKP3W4aXwb881thjlO8Yn8MxY5Q"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2419,6 +2426,7 @@ Appendix D.  Document History
    *  Recommend to use sd=always or sd=never to avoid ambiguity and
       introduce rules for sd and mandatory when extending types
    *  Provide some guidance on versioning via the vct value
+   *  Clarify presentations of SD-JWT VC do not require KB
 
    -11
 
