@@ -114,6 +114,8 @@ Table of Contents
      10.4.  Robust Retrieval of Type Metadata
      10.5.  Risks Associated with Textual Information
      10.6.  Credential Type Extension and Issuer Authorization
+     10.7.  Trust in Type Metadata
+     10.8.  Use of Data URIs for Claim Types
    11. Privacy Considerations
      11.1.  Unlinkability
      11.2.  Verifiable Credential Type Identifier
@@ -408,6 +410,25 @@ Table of Contents
    Additionally, any public and private claims as defined in Sections
    4.2 and 4.3 of [RFC7519] MAY be used.
 
+   Binary data in claims SHOULD be encoded as data URIs as defined in
+   [RFC2397].  Exceptions can be made when data formats are used that
+   already define a text encoding suitable for use in JSON or where an
+   established text encoding is commonly used.  For example, images
+   would make use of data URIs, whereas hash digests in base64 encoding
+   do not need to be encoded as such.
+
+   The following is a non-normative example of user data in the
+   unsecured payload of an SD-JWT VC that includes a binary image claim:
+
+   {
+     "vct": "https://credentials.example.com/identity_credential",
+     "given_name": "Jane",
+     "family_name": "Doe",
+     "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
+      AAAFCAYAAACNbyblAAAAHElEQVQI12P4
+      //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
+   }
+
 3.2.2.4.  SD-JWT VC without Selectively Disclosable Claims
 
    An SD-JWT VC MAY have no selectively disclosable claims.  In that
@@ -570,9 +591,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yqm9x
-   iMd3osf8cglAaq-x0hdfqQFxX8BjVEUGJuNS8H6QcuzCyuw6uWhVEdmE5-q5ZWfnLP3r
-   6xKbmafEnYYXg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EwGg0
+   XeepD1iqLRZuzAsMvHRZoraUkxQCAihB1YnUrGpJH0Iqe4h8UcDH--Rqeyw925RrtB4C
+   uLSBnNb4DCzOA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -638,9 +659,9 @@ Table of Contents
 
    *  X.509 Certificates: A mechanism to retrieve the Issuer's public
       key using the X.509 certificate chain in the SD-JWT header.  When
-      the header of the Issuer-signed JWT contains the x5c header
+      the protected header of the Issuer-signed JWT contains the x5c
       parameter, the recipient uses the public key from the end-entity
-      certificate of the certificates from the x5c header parameter and
+      certificate of the certificates from that x5c parameter and
       validates the X.509 certificate chain accordingly.  In this case,
       the Issuer of the Verifiable Credential is the subject of the end-
       entity certificate.
@@ -697,17 +718,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.yqm9x
-   iMd3osf8cglAaq-x0hdfqQFxX8BjVEUGJuNS8H6QcuzCyuw6uWhVEdmE5-q5ZWfnLP3r
-   6xKbmafEnYYXg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EwGg0
+   XeepD1iqLRZuzAsMvHRZoraUkxQCAihB1YnUrGpJH0Iqe4h8UcDH--Rqeyw925RrtB4C
+   uLSBnNb4DCzOA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDEzMz
-   MsICJzZF9oYXNoIjogImFfQmF4MkQ2dXE1VTQzdTRlSzFDQW83eU44ZnhUa2tsV3NQQ3
-   l6Qy1WVW8ifQ.qaw9T2c-rZLCT6NRFG98c9D3i25n-_a4F9wU532FwfWzhsT5i3HVvYK
-   iKIdEHZXu1cCG3KmCiF0vqNd9wUMGXw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk0ND
+   IsICJzZF9oYXNoIjogIm9IbFdISlBNZnFHQllqZVdGaDJ1dlFhdUF5OGlhYmZzck1Mal
+   JlLVpzZm8ifQ.MyNo6_W31_NMHNOKvmtq5XB2lUTlf6eaqiR2Rlsa2tzxjfLyz37CKmG
+   VIpahJ5x5xjDVgs96RIxM4x-qo4NqKQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -749,8 +770,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.p5lvCMdMtbe48iqTkdQ5PjLkTZ1kK87AnDT1ZYMMROIpOX
-   VO10T6JZXpVRQS_LuXLFqpC787-OZW1oNwXMMkfA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.fM7kPzA2p4N1pyQCQEPQbu_CkGbhiiYGG6eahqa5VE_oJS
+   61aJI1PKUgbFqul9_8twC2rniBPTD4BLsSxOILng~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -911,7 +932,8 @@ Table of Contents
 
 6.1.  Type Metadata Example
 
-   All examples in this section are non-normative.
+   All examples in this section are non-normative.  This section only
+   shows excerpts, the full examples can be found in Appendix B.2.
 
    The following is an example of an SD-JWT VC payload, containing a vct
    claim with the value https://betelgeuse.example.com/
@@ -919,7 +941,7 @@ Table of Contents
 
    {
      "vct": "https://betelgeuse.example.com/education_credential",
-     "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
+     "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
      ...
    }
 
@@ -937,27 +959,31 @@ Table of Contents
      "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
    }
 
-   This example is shortened for presentation, a full Type Metadata
-   example can be found in Appendix B.2.
-
    Note: The hash of the Type Metadata document shown in the second
    example must be equal to the one in the vct#integrity claim in the
-   SD-JWT VC payload, WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=.
+   SD-JWT VC payload, 1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=.
 
 6.2.  Type Metadata Format
 
    The Type Metadata document MUST be a JSON object.  The following
-   properties are defined: * vct * REQUIRED.  The verifiable credential
-   type described by this type metadata document. * name * OPTIONAL.  A
-   human-readable name for the type, intended for developers reading the
-   JSON document. * description * OPTIONAL.  A human-readable
-   description for the type, intended for developers reading the JSON
-   document. * extends * OPTIONAL.  A URI of another type that this type
-   extends, as described in Section 6.4. * display: An array of objects
-   containing display information for the type, as described in
-   Section 8.  This property is OPTIONAL. * claims: An array of objects
-   containing claim information for the type, as described in Section 9.
-   This property is OPTIONAL.
+   properties are defined:
+
+   *  vct
+      -  REQUIRED.  The verifiable credential type described by this
+         type metadata document.
+   *  name
+      -  OPTIONAL.  A human-readable name for the type, intended for
+         developers reading the JSON document.
+   *  description
+      -  OPTIONAL.  A human-readable description for the type, intended
+         for developers reading the JSON document.
+   *  extends
+      -  OPTIONAL.  A URI of another type that this type extends, as
+         described in Section 6.4.
+   *  display: An array of objects containing display information for
+      the type, as described in Section 8.  This property is OPTIONAL.
+   *  claims: An array of objects containing claim information for the
+      type, as described in Section 9.  This property is OPTIONAL.
 
    A Type Metadata document MAY contain additional top level or
    subordinate properties.  Consumers MUST ignore properties that are
@@ -1251,6 +1277,9 @@ Table of Contents
    *  ["degrees", null, "type"]: All type claims in the degrees array
       are selected.
 
+   The example in Appendix B.2 shows how the path can be used to address
+   arrays and their elements.
+
    In detail, the array is processed from left to right as follows:
 
    1.  Select the root element of the credential, i.e., the top-level
@@ -1524,6 +1553,37 @@ Table of Contents
    MUST be based on both the credential type and the verified authority
    of the issuer.
 
+10.7.  Trust in Type Metadata
+
+   Type Metadata associated with an SD-JWT VC, e.g., rendering metadata,
+   is asserted by the publisher of the Type Metadata and trust in this
+   metadata depends on the trust relationship between its publisher and
+   the consumer.  A consumer MUST NOT assume that Type Metadata is
+   accurate or meaningful unless the publisher is recognized as
+   authoritative for the type in question.
+
+   Ecosystems SHOULD define governance or accreditation mechanisms that
+   specify which publishers are authorized to provide Type Metadata for
+   specific verifiable credential types and under what conditions such
+   metadata can be relied upon.
+
+   Consumers SHOULD treat with reduced trust any Type Metadata if the
+   publisher is not accredited or otherwise trusted within the
+   applicable ecosystem.
+
+10.8.  Use of Data URIs for Claim Types
+
+   The use of data URIs allows embedding of data directly within
+   credential payloads.  Implementations SHOULD treat data URIs as
+   untrusted input at the processing and rendering layer and apply
+   appropriate validation and handling.  Failure to properly escape,
+   sanitize or constrain their use can lead to security issues such as
+   unintended code execution, resource exhaustion, or misuse of embedded
+   content.  Implementations SHOULD restrict the set of accepted media
+   types, enforce reasonable size and content limits, and avoid
+   dereferencing or interpreting data URIs in ways that could execute or
+   render active content, consistent with their overall security model.
+
 11.  Privacy Considerations
 
    The Privacy Considerations in the SD-JWT specification
@@ -1637,6 +1697,10 @@ Table of Contents
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC2397]  Masinter, L., "The "data" URL scheme", RFC 2397,
+              DOI 10.17487/RFC2397, August 1998,
+              <https://www.rfc-editor.org/info/rfc2397>.
 
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
@@ -1856,8 +1920,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.Fgn8SsXuFE5OT5JJJ94qpuPUosnXPY5MZHOQe6TMuqX_uJ4
-   csXB6zA2u9Aehy3DTOB_kpcaFFfaxTHpbjqNvAg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.DU7m2QUCQhPQfYe2dA2e8d4gwrKwKAkt73omXwD2Ijug_L-
+   tH-wlVE750LFU8tdFYq7gz8AqSVWEyLiCGd6Ovw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2192,8 +2256,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.Fgn8SsXuFE5OT5JJJ94qpuPUosnXPY5MZHOQe6TMuqX_uJ4
-   csXB6zA2u9Aehy3DTOB_kpcaFFfaxTHpbjqNvAg~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.DU7m2QUCQhPQfYe2dA2e8d4gwrKwKAkt73omXwD2Ijug_L-
+   tH-wlVE750LFU8tdFYq7gz8AqSVWEyLiCGd6Ovw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2204,17 +2268,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA3MDEzMzMsICJzZF9oYXNoIjogIkVHSzVLQS1jT0dMTjVDaVRYQ0VoLWt
-   pYjZKRW9oUHB6S2pCeGczWHZfNHcifQ.5uwotyz2pDdSiuOdGcgpGMum_4je0FluFkO2
-   5SHDxntx1i4JeDQHg0wVzQtD3uIc3VUo9Cxyep302WGWrcpvmQ
+   hdCI6IDE3NjA3MDk0NDIsICJzZF9oYXNoIjogImdzOWp1T1ViUldCV0tPdmNCYUJwdXd
+   Ka0ppc29jRlNpUVVmZWhibnZEcW8ifQ._JRGAKdG_Mr77uAHi7M7OwAAjsFHh54Fjg99
+   vjR5sgoxZqGHGmMpGiztOVwGSWefbcHZOw4vwLRyokxdKaU7vA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760701333,
-     "sd_hash": "EGK5KA-cOGLN5CiTXCEh-kib6JEohPpzKjBxg3Xv_4w"
+     "iat": 1760709442,
+     "sd_hash": "gs9juOUbRWBWKOvcBaBpuwJkJisocFSiQUfehbnvDqo"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2242,6 +2306,37 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    }
 
 B.2.  Example 2: Type Metadata
+
+   The following example for Type Metadata assumes an SD-JWT VC payload
+   structured as follows:
+
+   {
+     "vct": "https://betelgeuse.example.com/education_credential",
+     "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+     "name": "Zaphod Beeblebrox",
+     "address": {
+       "street_address": "42 Galaxy Way",
+       "city": "Betelgeuse City",
+       "postal_code": "12345",
+       "country": "Betelgeuse"
+     },
+     "degrees": [
+       {
+         "field_of_study": "Intergalactic Politics",
+         "date_awarded": "2020-05-15"
+       },
+       {
+         "field_of_study": "Space Navigation",
+         "date_awarded": "2018-06-20"
+       },
+       {
+         "field_of_study": "Quantum Mechanics",
+         "date_awarded": "2016-07-25"
+       }
+     ]
+   }
+
+   The Type Metadata for this SD-JWT VC could be defined as follows:
 
    {
      "vct": "https://betelgeuse.example.com/education_credential",
@@ -2327,7 +2422,7 @@ B.2.  Example 2: Type Metadata
              "description": "The name of the student"
            }
          ],
-         "sd": "allowed",
+         "sd": "always",
          "mandatory": true
        },
        {
@@ -2362,23 +2457,72 @@ B.2.  Example 2: Type Metadata
          "svg_id": "address_street_address"
        },
        {
-         "path": ["degrees", null],
+         "path": ["degrees"],
          "display": [
            {
              "locale": "de-DE",
-             "label": "Abschluss",
-             "description": "Der Abschluss des Studenten"
+             "label": "Abschlüsse",
+             "description": "Abschlüsse des Studenten"
            },
            {
              "locale": "en-US",
-             "label": "Degree",
-             "description": "Degree earned by the student"
+             "label": "Degrees",
+             "description": "Degrees earned by the student"
            }
          ],
-         "sd": "allowed"
+         "sd": "never"
+       },
+       {
+         "path": ["degrees", null],
+         "sd": "always"
+       },
+       {
+         "path": ["degrees", null, "field_of_study"],
+         "display": [
+           {
+             "locale": "de-DE",
+             "label": "Studienfach"
+           },
+           {
+             "locale": "en-US",
+             "label": "Field of Study"
+           }
+         ],
+         "sd": "never"
+       },
+       {
+         "path": ["degrees", null, "date_awarded"],
+         "display": [
+           {
+             "locale": "de-DE",
+             "label": "Verleihungsdatum"
+           },
+           {
+             "locale": "en-US",
+             "label": "Date Awarded"
+           }
+         ],
+         "sd": "always"
        }
      ]
    }
+
+   Note that in this example, there are four definitions affecting the
+   degrees claim:
+
+   1.  The degrees array itself is marked as sd: never, meaning the
+       element degrees cannot be selectively disclosed and will always
+       exist in the disclosed SD-JWT.  Changing this to sd: always would
+       mean that the degrees array itself is selectively disclosable.
+   2.  Each item in the degrees array (denoted by null in the path) is
+       marked as sd: always, meaning each degree object will be
+       selectively disclosed as a whole.
+   3.  The field_of_study property of each degree object is marked as
+       sd: never, meaning that if the respective degree object is
+       disclosed, the field_of_study property will always be included
+       and cannot be hidden.
+   4.  The date_awarded property of each degree object is marked as sd:
+       always, meaning it can be selectively disclosed.
 
 Appendix C.  Acknowledgements
 
@@ -2415,7 +2559,11 @@ Appendix D.  Document History
       with the definition in OpenID4VCI
    *  Recommend to use sd=always or sd=never to avoid ambiguity and
       introduce rules for sd and mandatory when extending types
+   *  Add security considerations for trust in type metadata
+   *  Require data URIs for non-JSON types
+   *  Require x5c to be in the protected header
    *  Clarify presentations of SD-JWT VC do not require KB
+   *  Updated/expanded example for Type Metadata
 
    -11
 
