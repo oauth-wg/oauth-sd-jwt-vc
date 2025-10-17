@@ -1076,13 +1076,11 @@ Verifiers and wallets SHOULD implement explicit checks for issuer authorization 
 
 ## Trust in Type Metadata
 
-Type metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the issuer and trust in this metadata depends on the trust relationship between the verifier and the issuer. A verifier MUST NOT assume that type metadata is accurate or meaningful unless the issuer is recognized as authoritative for the type in question.
+Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
 
-Ecosystems SHOULD define governance or accreditation mechanisms that specify which issuers are authorized to issue specific verifiable credential types and under what conditions such metadata can be relied upon.
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable credential types and under what conditions such metadata can be relied upon.
 
-Verifiers SHOULD treat with reduced trust any type metadata received from issuers that are not accredited or otherwise trusted within the applicable ecosystem.
-
-This requirement limits the risk of confusion or misrepresentation caused by ungoverned or self-asserted type metadata (for example, where an issuer claims a type identifier that conveys a false level of authority or endorsement).
+Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.
 
 # Privacy Considerations {#privacy-considerations}
 
