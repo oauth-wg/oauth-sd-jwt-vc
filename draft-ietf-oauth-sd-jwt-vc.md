@@ -163,9 +163,10 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
-have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).
+SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
+Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt], where support for the
+JWS JSON Serialization is OPTIONAL. A presentation of an SD-JWT VC MAY have an
+associated KB-JWT (i.e., the presentation is an SD-JWT+KB).
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -375,14 +376,13 @@ of SD-JWT VCs.
 
 ## Data Format
 
-A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
-as defined in Section 4 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
+By default, the format defined in Section 4 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt] is used, whereas support for the JWS
+JSON Serialization in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+is OPTIONAL.
 
 ## Key Binding JWT
-
-If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
-MUST adhere to the rules defined in Section 4.3 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The KB-JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.
