@@ -163,9 +163,9 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
-have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).
+SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
+Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt], where support for the
+JWS JSON Serialization is OPTIONAL.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -269,19 +269,7 @@ Additionally, any public and private claims as defined in Sections 4.2 and 4.3 o
 
 Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
 
-The following is a non-normative example of user data in the unsecured payload
-of an SD-JWT VC that includes a binary image claim:
-
-```json
-{
-  "vct": "https://credentials.example.com/identity_credential",
-  "given_name": "Jane",
-  "family_name": "Doe",
-  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
-   AAAFCAYAAACNbyblAAAAHElEQVQI12P4
-   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-}
-```
+An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
 #### SD-JWT VC without Selectively Disclosable Claims
 
@@ -366,14 +354,13 @@ of SD-JWT VCs.
 
 ## Data Format
 
-A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
-as defined in Section 4 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
+By default, the format defined in Section 4 of
+[@!I-D.ietf-oauth-selective-disclosure-jwt] is used, whereas support for the JWS
+JSON Serialization in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+is OPTIONAL.
 
 ## Key Binding JWT
-
-If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
-MUST adhere to the rules defined in Section 4.3 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 The KB-JWT MAY include additional claims which, when not understood, MUST
 be ignored by the Verifier.
@@ -1341,12 +1328,13 @@ nor the selection of selectively disclosable claims are normative.
 
 Line breaks have been added for readability.
 
-## Example 1: Person Identification Data (PID) Credential
+## Example 1: Person Identification Data (PID) Credential {#ExamplePID}
 
 This example shows how the artifacts defined in this specification could be used
-to represent the concept of a Person Identification Data (PID) as defined in the
-"PID Rulebook" in [@EUDIW.ARF]. This example uses fictional data of a German
-citizen.
+to represent the identity information of a person from a fictional European
+country. It leans on the concept of Person Identification Data (PID) as defined
+in the "PID Rulebook" in [@EUDIW.ARF], but does not intend to fully comply with
+that specification.
 
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
@@ -1642,6 +1630,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Clarify presentations of SD-JWT VC do not require KB
 * Updated/expanded example for Type Metadata
 * Be more consistent with style for lists of claims/parameters/properties
+* Update PID example to make clear that it is not normative
 
 -11
 
