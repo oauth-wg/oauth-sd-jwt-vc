@@ -172,7 +172,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. A presentation of an SD-JWT VC MAY
-contain a KB-JWT.
+have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -1613,6 +1613,7 @@ Andres Uribe,
 Andrii Deinega,
 Babis Routis,
 Christian Bormann,
+Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
@@ -1638,6 +1639,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Remove JSON schema from Type Metadata
 * Introduce optional mandatory property for claims
 * Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood
+* Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)
 * Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule
 * Fix cnf claim and JWK references and move them to normative
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
