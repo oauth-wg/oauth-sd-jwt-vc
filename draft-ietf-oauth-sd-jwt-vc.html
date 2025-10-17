@@ -1582,7 +1582,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
         </h3>
 <p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
 <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. A presentation of an SD-JWT VC MAY
-contain a KB-JWT.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <div id="jose-header">
@@ -1962,9 +1962,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hbhpL
-mHugOPAbQeqIWPYFiNCBHbb3DU9vm9j3wk93HrvIkDuHnTaJLRNx_qYHR0I2CFZeGHOz
-eSj2wcovOmqJw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KMe4k
+mSja7KbVcm2tEaReWsmJw-BdFXVLlEUxE3xSuSS5GaP6GOVNsxp_bOca6LLz-fLJWru0
+lM26mQE0k9ihg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2084,17 +2084,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hbhpL
-mHugOPAbQeqIWPYFiNCBHbb3DU9vm9j3wk93HrvIkDuHnTaJLRNx_qYHR0I2CFZeGHOz
-eSj2wcovOmqJw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KMe4k
+mSja7KbVcm2tEaReWsmJw-BdFXVLlEUxE3xSuSS5GaP6GOVNsxp_bOca6LLz-fLJWru0
+lM26mQE0k9ihg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk0Mj
-gsICJzZF9oYXNoIjogImJla2xFTURha2pCdWN6NVdSOGtRczB2RmFGR0UwOC1lakZrdX
-NEeDBwaEEifQ.bz9DkVshPiIyrKlVTjoznJoU7MuWzqZVkWUXKll_j_qzn-z2erhs3_m
-Daea9f0LLTb_2CRKuaKNFm6AqIDqWUw
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk0OT
+ksICJzZF9oYXNoIjogInREUHQyeHRGS2hrVm9LRlVHNEdtRnVaZUVPaUtaUjh0MklLNm
+ozU0tJUm8ifQ.pEhKeq1UbWLUvk0MDrlrR1QbTdpsOgmX8PPG6Wq7FXBsWtmeTcQTaLO
+Selw6kaLxEufKa_roWg0sYSq7tuYYaw
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2139,8 +2139,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.ACnPSzaplcabans4FrF1H7oRougjlls0IpdIiiuP4jP04s
-xi9S7HjUnTKsSvxlGnr_4oyFEwvVhsp6jqPcmzrw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.ENkI09SqhSTe9FVn5GBLong-PdqOJexUNMpiQuAfcLkGdo
+58l4-4r10pujdsf6s-GgbZNlOEthrRIoc7e8Wi0A~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3524,8 +3524,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.sshPF_QsHHq-cea-RRe4LacEsKt2DkPx7zoVk7E5TZkCU0i
-RxegWLbjk-7Po5b33QkwmTkNU-A8J2pCJ_-c8xg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.P_Cb1RsHgEzpP65cP_Ojo_L19NFxE0PO0NwBZmyltdpdAB9
+r-34NjL5HVph9UV5dn5mklFXmq_ogzns1fTxJ4w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3966,8 +3966,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.sshPF_QsHHq-cea-RRe4LacEsKt2DkPx7zoVk7E5TZkCU0i
-RxegWLbjk-7Po5b33QkwmTkNU-A8J2pCJ_-c8xg~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.P_Cb1RsHgEzpP65cP_Ojo_L19NFxE0PO0NwBZmyltdpdAB9
+r-34NjL5HVph9UV5dn5mklFXmq_ogzns1fTxJ4w~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3978,9 +3978,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NjA3MDk0MjgsICJzZF9oYXNoIjogInZTanI1MUluWkRLckNxbnBKRnJmUWt
-LTmVtcFVQRnN0U3FTSTNlOWJiR00ifQ.BoRaF5jyTviI-POfBHhP1eFntwKpHs2s390X
-nFVzwu1pUXVLkLz24spnkPdXu_G4yNkGlfzOYgGUMaYv3lba3Q
+hdCI6IDE3NjA3MDk0OTksICJzZF9oYXNoIjogIk1rcE9OcWpuQzZ3ZXVzMmRqbXU5V05
+pZDdIZTh0NktSVzJSWFRiZWk4blEifQ.u9E7viLRsgSzhwFYPo6xqsML45KoHmomqIX6
+ZMsKqGPr2k4h6jLqGtrWBQLOY3u5-kRlUVDr8-4_h9gXJBZKNQ
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3989,8 +3989,8 @@ nFVzwu1pUXVLkLz24spnkPdXu_G4yNkGlfzOYgGUMaYv3lba3Q
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1760709428,
-  "sd_hash": "vSjr51InZDKrCqnpJFrfQkKNempUPFstSqSI3e9bbGM"
+  "iat": 1760709499,
+  "sd_hash": "MkpONqjnC6weus2djmu9WNid7He8t6KRW2RXTbei8nQ"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
@@ -4257,6 +4257,7 @@ Andres Uribe,
 Andrii Deinega,
 Babis Routis,
 Christian Bormann,
+Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
@@ -4290,25 +4291,27 @@ for their contributions (some of which substantial) to this draft and to the ini
 </li>
         <li class="compact" id="appendix-D-2.4">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-D-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.5">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.5">Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)<a href="#appendix-D-2.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.6">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.6">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-D-2.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.7">List <code>vct</code> as one of the required values in type metadata and ensure that the use of the document integrity claims is clear<a href="#appendix-D-2.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.7">Fix cnf claim and JWK references and move them to normative<a href="#appendix-D-2.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.8">Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI<a href="#appendix-D-2.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.8">List <code>vct</code> as one of the required values in type metadata and ensure that the use of the document integrity claims is clear<a href="#appendix-D-2.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.9">Recommend to use <code>sd=always</code> or <code>sd=never</code> to avoid ambiguity and introduce rules for <code>sd</code> and <code>mandatory</code> when extending types<a href="#appendix-D-2.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.9">Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI<a href="#appendix-D-2.9" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.10">Add security considerations for trust in type metadata<a href="#appendix-D-2.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.10">Recommend to use <code>sd=always</code> or <code>sd=never</code> to avoid ambiguity and introduce rules for <code>sd</code> and <code>mandatory</code> when extending types<a href="#appendix-D-2.10" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.11">Require data URIs for non-JSON types<a href="#appendix-D-2.11" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.11">Add security considerations for trust in type metadata<a href="#appendix-D-2.11" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.12">Require <code>x5c</code> to be in the protected header<a href="#appendix-D-2.12" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.12">Require data URIs for non-JSON types<a href="#appendix-D-2.12" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.13">Clarify presentations of SD-JWT VC do not require KB<a href="#appendix-D-2.13" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.13">Require <code>x5c</code> to be in the protected header<a href="#appendix-D-2.13" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.14">Updated/expanded example for Type Metadata<a href="#appendix-D-2.14" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.14">Clarify presentations of SD-JWT VC do not require KB<a href="#appendix-D-2.14" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.15">Updated/expanded example for Type Metadata<a href="#appendix-D-2.15" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>
