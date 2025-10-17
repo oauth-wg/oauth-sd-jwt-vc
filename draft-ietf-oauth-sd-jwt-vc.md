@@ -219,8 +219,8 @@ validating credentials beyond what is defined in this specification).
 
 The `vct` value also effectively identifies the version of the credential type definition,
 as it ties a particular instance of a credential to a specific structure, set of semantics and rules.
-When evolving a credential type, changes to the structure or meaning of the associated claims
-should be made in a way that preserves compatibility with existing implementations.
+When evolving a credential type without updating the version, changes to the structure or meaning of the associated claims
+need to be made in a way that preserves compatibility with existing implementations.
 
 If a change alters the meaning of existing content, adds new required claims, removes
 previously required elements, or otherwise introduces incompatibilities, it is
