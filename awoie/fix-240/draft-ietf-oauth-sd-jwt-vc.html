@@ -1938,9 +1938,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.uVxOi
-c1XLHRwcI3cSJGXueg4lnmdGLNKBiDB6RYFJsj1a5P1C4gL8YTDieTfmJOioWeowfKSy
-dYha32melDtOw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3GHfa
+Vg2EQsSpWC7DroR_bvtLEYwUB_tCyLK3ck3h8Nij2LGwSTXCbz9alNEmS1VvgkgG0EzV
+uuKFRrT9qWixA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1997,7 +1997,7 @@ This specification defines the following two Issuer Signature Mechanisms:<a href
             <p id="section-3.5-3.1.1">JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the <code>iss</code> claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 5</a>.<a href="#section-3.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-3.2">
-            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the header of the Issuer-signed JWT contains the <code>x5c</code> parameter in the proteceted header, the recipient uses the public key from the end-entity certificate of the certificates from the <code>x5c</code> parameter of the protected header and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-3.5-4">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
@@ -2051,17 +2051,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.uVxOi
-c1XLHRwcI3cSJGXueg4lnmdGLNKBiDB6RYFJsj1a5P1C4gL8YTDieTfmJOioWeowfKSy
-dYha32melDtOw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3GHfa
+Vg2EQsSpWC7DroR_bvtLEYwUB_tCyLK3ck3h8Nij2LGwSTXCbz9alNEmS1VvgkgG0EzV
+uuKFRrT9qWixA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA2ODU0Nj
-EsICJzZF9oYXNoIjogIjdhWTY5OEc1Qm1nY0s4dTUyOUNWVWtFa2YweTcyQktuUHVFNH
-kzTHB1U28ifQ.Cf24Uqn6flLVUvN-0kJS5kRwEloVLoPr81rZ4_9qpClXP-kvKAcHHWU
-bp7BnA9uw3H-8pPGSr7gsjy7iZWs2VQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA2ODk5Mj
+QsICJzZF9oYXNoIjogIjJHWEJzME5EYWxkMFVBZWFMS1hlZHpHcFF6MHRoU1ZQeFVmaF
+cyRlJmZjQifQ.K_xjgYwn3qIV2Pk1No8xLaFAE4l6V6GFDFAChxIdRAlut79HhOh414s
+QnPtihPeXk0AolTcv3B47MNVlXdOPfA
 
 </pre><a href="#section-4.2-2" class="pilcrow">¶</a>
 </div>
@@ -2106,8 +2106,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.ODGtaGQWB210E5PC7GWhoO1yGko16RJF7m0nLv4FGd1BRv
-gZRF9mPbMmPCxwR046U01LEa4iPDxI0mVqxUq53A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.kXDh3-FaLXnxoM5kYM0lVBDV_DA0vfoGbHCivY9l57uHw0
+j5Kp6PQbiIdpOQuTFzFp0oPwxE-odvXUYaMgtr0w~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3441,8 +3441,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.A5yk-8rNacv8-ksvKYoT_mTVuM3ftK-LLXKzhqvYJ3CeEP-
-TLKqade38jwcqisdGzgI_zjxfiMH01UQKvOF79A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.SHVndGraV8al8H_zn4e-0__u-tHXgDg8yU2BHCFXpf_n2in
+b5zPBnwrU74IpmO-iJzXkXQyppgo6DJ-pkKjU7w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3883,8 +3883,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.A5yk-8rNacv8-ksvKYoT_mTVuM3ftK-LLXKzhqvYJ3CeEP-
-TLKqade38jwcqisdGzgI_zjxfiMH01UQKvOF79A~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.SHVndGraV8al8H_zn4e-0__u-tHXgDg8yU2BHCFXpf_n2in
+b5zPBnwrU74IpmO-iJzXkXQyppgo6DJ-pkKjU7w~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3895,9 +3895,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NjA2ODU0NjEsICJzZF9oYXNoIjogInZoX2lfeWFZdkpxTmlacGtPOFJiLXd
-TSlhFQUI2YVIwaUg5MW9mSFFHamMifQ.aCT03fCAfoqs6DazK8_1mM01AQrF0CS1qQI7
-hxuLQc_IfpZYNBr7D3kMAabo9hVoz7m1foBuYoa7fw3q85bcVg
+hdCI6IDE3NjA2ODk5MjQsICJzZF9oYXNoIjogImhzZTMzZ1E3ajJMdDZiejFFbEhseE5
+1Ml9RNzU3VEJGTTl3RzZpb1pzc3MifQ.b5FhQd4cZhFp5cRJqOc0BRJBrcKGrdy-tHDK
+2W6erUpUOHs5fai09XLfE6qDjqcp20XxYQ4G3SzvjspHn4QUAA
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3906,8 +3906,8 @@ hxuLQc_IfpZYNBr7D3kMAabo9hVoz7m1foBuYoa7fw3q85bcVg
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1760685461,
-  "sd_hash": "vh_i_yaYvJqNiZpkO8Rb-wSJXEAB6aR0iH91ofHQGjc"
+  "iat": 1760689924,
+  "sd_hash": "hse33gQ7j2Lt6bz1ElHlxNu2_Q757TBFM9wG6ioZsss"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
