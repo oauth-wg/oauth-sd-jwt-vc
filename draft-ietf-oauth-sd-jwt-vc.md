@@ -165,8 +165,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
 Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt], where support for the
-JWS JSON Serialization is OPTIONAL. A presentation of an SD-JWT VC MAY have an
-associated KB-JWT (i.e., the presentation is an SD-JWT+KB).
+JWS JSON Serialization is OPTIONAL.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
