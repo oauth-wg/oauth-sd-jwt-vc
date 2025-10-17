@@ -238,37 +238,28 @@ registry as defined in [@!RFC7519].
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:
 
-* `iss`
-    * OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Credential
+* `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Credential
     when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
-* `nbf`
-    * OPTIONAL. The time before which the Verifiable Credential MUST NOT be
+* `nbf`: OPTIONAL. The time before which the Verifiable Credential MUST NOT be
 accepted before validating. See [@!RFC7519] for more information.
-* `exp`
-    * OPTIONAL. The expiry time of the Verifiable Credential after which the
+* `exp`: OPTIONAL. The expiry time of the Verifiable Credential after which the
 Verifiable Credential is no longer valid. See [@!RFC7519] for more
 information.
-* `cnf`
-    * OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.
-* `vct`
-    * REQUIRED. The type of the Verifiable Credential, e.g.,
+* `cnf`: OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.
+* `vct`: REQUIRED. The type of the Verifiable Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
-* `vct#integrity`
-    * OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
-* `status`
-    * OPTIONAL. The information on how to read the status of the Verifiable
+* `vct#integrity`: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
+* `status`: OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@!I-D.ietf-oauth-status-list]
  for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
 
-* `sub`
-    * OPTIONAL. The identifier of the Subject of the Verifiable Credential.
+* `sub`: OPTIONAL. The identifier of the Subject of the Verifiable Credential.
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
-* `iat`
-    * OPTIONAL. The time of issuance of the Verifiable Credential. See
+* `iat`: OPTIONAL. The time of issuance of the Verifiable Credential. See
       [@!RFC7519] for more information.
 
 #### Public and Private JWT claims
@@ -445,15 +436,12 @@ An error response uses the applicable HTTP status code value.
 This specification defines the following JWT VC Issuer Metadata configuration
 parameters:
 
-* `issuer`
-    * REQUIRED. The Issuer identifier, which MUST be identical to the `iss`
+* `issuer`: REQUIRED. The Issuer identifier, which MUST be identical to the `iss`
 value in the JWT.
-* `jwks_uri`
-    * OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
+* `jwks_uri`: OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
 [@!RFC7517] document which contains the Issuer's public keys. The value of
 this field MUST point to a valid JWK Set document.
-* `jwks`
-    * OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
+* `jwks`: OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
 contains the Issuer's public keys. The value of this field MUST be a JSON
 object containing a valid JWK Set.
 
@@ -569,16 +557,12 @@ to the one in the `vct#integrity` claim in the SD-JWT VC payload,
 The Type Metadata document MUST be a JSON object. The following properties are
 defined:
 
-* `vct`
-    * REQUIRED. The verifiable credential type described by this type metadata document.
-* `name`
-    * OPTIONAL. A human-readable name for the type, intended for developers reading
+* `vct`: REQUIRED. The verifiable credential type described by this type metadata document.
+* `name`: OPTIONAL. A human-readable name for the type, intended for developers reading
   the JSON document.
-* `description`
-    * OPTIONAL. A human-readable description for the type, intended for
+* `description`: OPTIONAL. A human-readable description for the type, intended for
   developers reading the JSON document.
-* `extends`
-    * OPTIONAL. A URI of another type that this type extends, as described in
+* `extends`: OPTIONAL. A URI of another type that this type extends, as described in
   (#extending-type-metadata).
 * `display`: An array of objects containing display information for the type, as described
   in (#display-metadata). This property is OPTIONAL.
@@ -1645,6 +1629,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Require `x5c` to be in the protected header
 * Clarify presentations of SD-JWT VC do not require KB
 * Updated/expanded example for Type Metadata
+* Be more consistent with style for lists of claims/parameters/properties
 * Update PID example to make clear that it is not normative
 
 -11
