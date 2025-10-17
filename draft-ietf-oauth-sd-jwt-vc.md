@@ -1074,7 +1074,15 @@ confer any implicit authorization to issue credentials of that type or its exten
 **Recommendation:**
 Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
+## Trust in Type Metadata
 
+Type metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the issuer and trust in this metadata depends on the trust relationship between the verifier and the issuer. A verifier MUST NOT assume that type metadata is accurate or meaningful unless the issuer is recognized as authoritative for the type in question.
+
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which issuers are authorized to issue specific verifiable credential types and under what conditions such metadata can be relied upon.
+
+Verifiers SHOULD treat with reduced trust any type metadata received from issuers that are not accredited or otherwise trusted within the applicable ecosystem.
+
+This requirement limits the risk of confusion or misrepresentation caused by ungoverned or self-asserted type metadata (for example, where an issuer claims a type identifier that conveys a false level of authority or endorsement).
 
 # Privacy Considerations {#privacy-considerations}
 
@@ -1536,6 +1544,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * List `vct` as one of the required values in type metadata and ensure that the use of the document integrity claims is clear
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
+* Add security considerations for trust in type metadata
 
 -11
 
