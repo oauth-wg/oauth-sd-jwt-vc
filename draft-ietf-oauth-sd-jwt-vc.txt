@@ -325,6 +325,21 @@ Table of Contents
    policies for issuing and validating credentials beyond what is
    defined in this specification).
 
+   The vct value also effectively identifies the version of the
+   credential type definition, as it ties a particular instance of a
+   credential to a specific structure, set of semantics and rules.  When
+   evolving a credential type without updating the version, changes to
+   the structure or meaning of the associated claims need to be made in
+   a way that preserves compatibility with existing implementations.
+
+   If a change alters the meaning of existing content, adds new required
+   claims, removes previously required elements, or otherwise introduces
+   incompatibilities, it is generally advisable to treat that as a new
+   version of the credential type and to convey it using a new vct
+   value.  This allows different versions of a credential type to
+   coexist and helps ensure that participants interpret credentials
+   consistently.
+
    The following is a non-normative example of how vct is used to
    express a type:
 
@@ -584,9 +599,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jZ1WX
-   _qWVPsSDMVvjNuGPfv34VDLz0WU97mp0OfRcEKhBNXSi4hrsACFtgwLcMXti2ED9tf5o
-   Le02bDCydK3mQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.THJg3
+   Nbe_ARKZ2yirSyAxOMwA9sfwFED-zInIXYUqCGOHr3rZUf55wGsACyyDAB4AqUM_yoo1
+   x1yOA6lGNpjxg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -711,17 +726,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jZ1WX
-   _qWVPsSDMVvjNuGPfv34VDLz0WU97mp0OfRcEKhBNXSi4hrsACFtgwLcMXti2ED9tf5o
-   Le02bDCydK3mQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.THJg3
+   Nbe_ARKZ2yirSyAxOMwA9sfwFED-zInIXYUqCGOHr3rZUf55wGsACyyDAB4AqUM_yoo1
+   x1yOA6lGNpjxg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk1OD
-   ksICJzZF9oYXNoIjogImkwcTRPMU1nb2ViZzJvMmRfVEJxUjJyU2JwQ2VEblloajJGRk
-   luY2U3ckUifQ.SR8nDHbyqVJAv_Ull59hePF16nRHc2YrQYlRneFLT3u2T7OY0lLTN3L
-   xQD-_gf1rFrocDAZt0_tBARPbwaRQSQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk4Nz
+   MsICJzZF9oYXNoIjogIi16M1NKbXNqT2lab2lYVHlpcVRrekFNMHFDZHFZMlcyWllQZj
+   JBWlJpdm8ifQ.Tty7XZdmOvZpxpY7RM3qXqLe-eXLXdkBzcmXjpvEY4rc872JWbY3SZy
+   pbaGXFf2o38iZByZ-ZVhKfFClhya9aA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -763,8 +778,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.EmlfblaKuXkI2zSqRLAyZDeOaUa8IFD9lpUS73UU8roi9r
-   9dO-ifavyxkO_JCI_d_WD6xvX5h4JziBX9OXt_rw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.4m3_SF5ptpW7jveNQXPzbLugjMVXzQFZ_MjoeDEBTLY9nR
+   Znr7urnnbDcUcPrhasAkB-1DRsas1l5AOBOc2bwQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1913,8 +1928,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.ypQ0jku-pAbJxoS-TNHvAxBeRWgt0_9lfA-vjivtdsNWjM8
-   ozJG5XjId-g2ytdyBv_KIfHW3HKBbQ-gwrdpCkw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.UsXhzDYFt6Ibis_chorAaTYXzG_TqJyWa5ZtX6iab65lw3Q
+   fLbgC6PxauxiLlEr2OURXGRe0QXpu45N9peHVQA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2249,8 +2264,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.ypQ0jku-pAbJxoS-TNHvAxBeRWgt0_9lfA-vjivtdsNWjM8
-   ozJG5XjId-g2ytdyBv_KIfHW3HKBbQ-gwrdpCkw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.UsXhzDYFt6Ibis_chorAaTYXzG_TqJyWa5ZtX6iab65lw3Q
+   fLbgC6PxauxiLlEr2OURXGRe0QXpu45N9peHVQA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2261,17 +2276,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA3MDk1ODksICJzZF9oYXNoIjogIlpibE10R1cyRHpjbWcydDhId1YwLTl
-   JMHVWbFo5enN5R1hrSlduRkRGVzAifQ.GfU0pO_4xYb3LmxpQHhJDqEt_Ubze039CRgx
-   CpQx87KtGrrNNb4uPACFK6gvG_F8kuYB4hA7WyOL5sFoyQOP-w
+   hdCI6IDE3NjA3MDk4NzMsICJzZF9oYXNoIjogImk5YWJhYUprSkx1OC1kUVZJQkNUNFZ
+   4alhuaVR5a2twSWh3NWlpeENEWWcifQ.yofgTqy1QpRwh04_vqoMQJrNBVj-8nB8nMaU
+   mgqO8U_mH7c3W26Jvs3uc-7HrpDMRtIRU8_BzbMjmfSqKOP3fw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760709589,
-     "sd_hash": "ZblMtGW2Dzcmg2t8HwV0-9I0uVlZ9zsyGXkJWnFDFW0"
+     "iat": 1760709873,
+     "sd_hash": "i9abaaJkJLu8-dQVIBCT4VxjXniTykkpIhw5iixCDYg"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2523,10 +2538,10 @@ Appendix C.  Acknowledgements
    Andrii Deinega, Babis Routis, Christian Bormann, Denis Pinkas, George
    J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael
    B.  Jones, Mike Prorock, Mirko Mollik, Orie Steele, Paul Bastian,
-   Pavel Zarecky, Stefan Charsley, Timo Glastra, Torsten Lodderstedt,
-   Tobias Looker, and Kristina Yasuda for their contributions (some of
-   which substantial) to this draft and to the initial set of
-   implementations.
+   Pavel Zarecky, Stefan Charsley, Tim Cappalli, Timo Glastra, Torsten
+   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
+   contributions (some of which substantial) to this draft and to the
+   initial set of implementations.
 
 Appendix D.  Document History
 
@@ -2554,6 +2569,7 @@ Appendix D.  Document History
       with the definition in OpenID4VCI
    *  Recommend to use sd=always or sd=never to avoid ambiguity and
       introduce rules for sd and mandatory when extending types
+   *  Provide some guidance on versioning via the vct value
    *  Add security considerations for trust in type metadata
    *  Require data URIs for non-JSON types
    *  Require x5c to be in the protected header
