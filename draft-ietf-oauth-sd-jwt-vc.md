@@ -454,9 +454,9 @@ value in the JWT.
 * `jwks_uri`: OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
 [@!RFC7517] document which contains the Issuer's public keys. The value of
 this field MUST point to a valid JWK Set document.
-  * `jwks`: OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
-  contains the Issuer's public keys. The value of this field MUST be a JSON
-  object containing a valid JWK Set.
+* `jwks`: OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
+contains the Issuer's public keys. The value of this field MUST be a JSON
+object containing a valid JWK Set.
 
 JWT VC Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT VC
 Issuer Metadata, but not both.
