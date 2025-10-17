@@ -369,6 +369,11 @@ If a recipient cannot validate that the public verification key corresponds the 
 This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.
 
+## Data Format
+
+A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
+as defined in Section 4 of [@!I-D.ietf-oauth-selective-disclosure-jwt].
+
 ## Key Binding JWT
 
 If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
@@ -572,16 +577,17 @@ to the one in the `vct#integrity` claim in the SD-JWT VC payload,
 
 The Type Metadata document MUST be a JSON object. The following properties are
 defined:
+
 * `vct`
-  * REQUIRED. The verifiable credential type described by this type metadata document.
+    * REQUIRED. The verifiable credential type described by this type metadata document.
 * `name`
-  * OPTIONAL. A human-readable name for the type, intended for developers reading
+    * OPTIONAL. A human-readable name for the type, intended for developers reading
   the JSON document.
 * `description`
-  * OPTIONAL. A human-readable description for the type, intended for
+    * OPTIONAL. A human-readable description for the type, intended for
   developers reading the JSON document.
 * `extends`
-  * OPTIONAL. A URI of another type that this type extends, as described in
+    * OPTIONAL. A URI of another type that this type extends, as described in
   (#extending-type-metadata).
 * `display`: An array of objects containing display information for the type, as described
   in (#display-metadata). This property is OPTIONAL.
@@ -1555,6 +1561,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI
 * Recommend to use `sd=always` or `sd=never` to avoid ambiguity and introduce rules for `sd` and `mandatory` when extending types
 * Require data URIs for non-JSON types
+* Clarify presentations of SD-JWT VC do not require KB
 
 -11
 
