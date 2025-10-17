@@ -278,19 +278,7 @@ Additionally, any public and private claims as defined in Sections 4.2 and 4.3 o
 
 Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
 
-The following is a non-normative example of user data in the unsecured payload
-of an SD-JWT VC that includes a binary image claim:
-
-```json
-{
-  "vct": "https://credentials.example.com/identity_credential",
-  "given_name": "Jane",
-  "family_name": "Doe",
-  "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA
-   AAAFCAYAAACNbyblAAAAHElEQVQI12P4
-   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg=="
-}
-```
+An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
 #### SD-JWT VC without Selectively Disclosable Claims
 
@@ -1356,12 +1344,13 @@ nor the selection of selectively disclosable claims are normative.
 
 Line breaks have been added for readability.
 
-## Example 1: Person Identification Data (PID) Credential
+## Example 1: Person Identification Data (PID) Credential {#ExamplePID}
 
 This example shows how the artifacts defined in this specification could be used
-to represent the concept of a Person Identification Data (PID) as defined in the
-"PID Rulebook" in [@EUDIW.ARF]. This example uses fictional data of a German
-citizen.
+to represent the identity information of a person from a fictional European
+country. It leans on the concept of Person Identification Data (PID) as defined
+in the "PID Rulebook" in [@EUDIW.ARF], but does not intend to fully comply with
+that specification.
 
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
@@ -1656,6 +1645,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Require `x5c` to be in the protected header
 * Clarify presentations of SD-JWT VC do not require KB
 * Updated/expanded example for Type Metadata
+* Update PID example to make clear that it is not normative
 
 -11
 
