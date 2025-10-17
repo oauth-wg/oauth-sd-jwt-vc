@@ -272,7 +272,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests (in hex or base64 encoding) or HTML data do not need to be encoded as such. 
+Binary data SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests (in hex or base64 encoding) do not need to be encoded as such. 
 
 The following is a non-normative example of user data in the unsecured payload
 of an SD-JWT VC that includes a binary image claim:
