@@ -1093,7 +1093,7 @@ Verifiers and wallets SHOULD implement explicit checks for issuer authorization 
 
 ## Use of Data URIs for Claim Types
 
-The use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.
+The use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly escape, sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.
 
 # Privacy Considerations {#privacy-considerations}
 
