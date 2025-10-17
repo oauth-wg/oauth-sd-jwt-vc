@@ -1573,9 +1573,9 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
         <h3 id="name-data-format">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-data-format" class="section-name selfRef">Data Format</a>
         </h3>
-<p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. A presentation of an SD-JWT VC MAY
-have an associated KB-JWT (i.e., the presentation is an SD-JWT+KB).<a href="#section-3.2-1" class="pilcrow">¶</a></p>
+<p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
+Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>, where support for the
+JWS JSON Serialization is OPTIONAL.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
 <div id="jose-header">
@@ -1964,9 +1964,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.THJg3
-Nbe_ARKZ2yirSyAxOMwA9sfwFED-zInIXYUqCGOHr3rZUf55wGsACyyDAB4AqUM_yoo1
-x1yOA6lGNpjxg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.XE0Kq
+swQdJll6bXQW8_oVS_N7fgA4CXwRO6SwdbL7JvkC71_L6jdhK5ZEO6pd57XodScxvj1T
+P24nr6nXlJrrQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2046,8 +2046,11 @@ of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
         <h3 id="name-data-format-2">
 <a href="#section-4.1" class="section-number selfRef">4.1. </a><a href="#name-data-format-2" class="section-name selfRef">Data Format</a>
         </h3>
-<p id="section-4.1-1">A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an SD-JWT+KB,
-as defined in Section 4 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
+<p id="section-4.1-1">A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
+By default, the format defined in Section 4 of
+<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> is used, whereas support for the JWS
+JSON Serialization in Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>
+is OPTIONAL.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="key-binding-jwt">
@@ -2055,11 +2058,8 @@ as defined in Section 4 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-
         <h3 id="name-key-binding-jwt">
 <a href="#section-4.2" class="section-number selfRef">4.2. </a><a href="#name-key-binding-jwt" class="section-name selfRef">Key Binding JWT</a>
         </h3>
-<p id="section-4.2-1">If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the KB-JWT
-MUST adhere to the rules defined in Section 4.3 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
-<p id="section-4.2-2">The KB-JWT MAY include additional claims which, when not understood, MUST
-be ignored by the Verifier.<a href="#section-4.2-2" class="pilcrow">¶</a></p>
+<p id="section-4.2-1">The KB-JWT MAY include additional claims which, when not understood, MUST
+be ignored by the Verifier.<a href="#section-4.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="presentation-examples">
@@ -2086,17 +2086,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.THJg3
-Nbe_ARKZ2yirSyAxOMwA9sfwFED-zInIXYUqCGOHr3rZUf55wGsACyyDAB4AqUM_yoo1
-x1yOA6lGNpjxg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.XE0Kq
+swQdJll6bXQW8_oVS_N7fgA4CXwRO6SwdbL7JvkC71_L6jdhK5ZEO6pd57XodScxvj1T
+P24nr6nXlJrrQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk4Nz
-MsICJzZF9oYXNoIjogIi16M1NKbXNqT2lab2lYVHlpcVRrekFNMHFDZHFZMlcyWllQZj
-JBWlJpdm8ifQ.Tty7XZdmOvZpxpY7RM3qXqLe-eXLXdkBzcmXjpvEY4rc872JWbY3SZy
-pbaGXFf2o38iZByZ-ZVhKfFClhya9aA
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MTk4Nj
+IsICJzZF9oYXNoIjogIkREbGtEYzhDRmM5RFdXRnJEandLNmktdlZLNTMzNkswQjdrRE
+JlQlMxYlUifQ.R1mOHQFAH6zibZWdrYRfLRa8vIEgzy20u0KreCfQq6Bwbmauw7tHjP5
+xNVc-LsIaXn_4UGNVmoX3noOBEORFzQ
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2141,8 +2141,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.4m3_SF5ptpW7jveNQXPzbLugjMVXzQFZ_MjoeDEBTLY9nR
-Znr7urnnbDcUcPrhasAkB-1DRsas1l5AOBOc2bwQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.i9icrfabD3dQyrwBNtCKidOZh_nTVekiocEX40lLoldcwz
+gbXQl68_MN-H3MlPSOKyURkLdIfDyIKNwsDwjRZQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3526,8 +3526,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.UsXhzDYFt6Ibis_chorAaTYXzG_TqJyWa5ZtX6iab65lw3Q
-fLbgC6PxauxiLlEr2OURXGRe0QXpu45N9peHVQA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+2dDRqVDlGMkhaUSJ9fX0.JYBHOjGr8dI57x7htAtk6rdMNyyiB6JVRUu-jeQzI2RkLjV
+oCh7r-UufxH-8qI9Vk0AWvoru0aWTEFqYcIPUlQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
 Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
 V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
 9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -3968,8 +3968,8 @@ iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
 fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
 iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
 sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-2dDRqVDlGMkhaUSJ9fX0.UsXhzDYFt6Ibis_chorAaTYXzG_TqJyWa5ZtX6iab65lw3Q
-fLbgC6PxauxiLlEr2OURXGRe0QXpu45N9peHVQA~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+2dDRqVDlGMkhaUSJ9fX0.JYBHOjGr8dI57x7htAtk6rdMNyyiB6JVRUu-jeQzI2RkLjV
+oCh7r-UufxH-8qI9Vk0AWvoru0aWTEFqYcIPUlQ~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
 QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
 U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
 UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -3980,9 +3980,9 @@ ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
 V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
 l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
 0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-hdCI6IDE3NjA3MDk4NzMsICJzZF9oYXNoIjogImk5YWJhYUprSkx1OC1kUVZJQkNUNFZ
-4alhuaVR5a2twSWh3NWlpeENEWWcifQ.yofgTqy1QpRwh04_vqoMQJrNBVj-8nB8nMaU
-mgqO8U_mH7c3W26Jvs3uc-7HrpDMRtIRU8_BzbMjmfSqKOP3fw
+hdCI6IDE3NjA3MTk4NjIsICJzZF9oYXNoIjogIktTcW5ndTFRdWp3eWpuazZ0NjJVdUp
+4RVlYSENsdDJjMXRSV2hsYXdNRTgifQ.qA9pnlrGtU4OZ01ZEsEbfBWgMdXjaUivoK2S
+je4l5nOvMsVHrlSSWSS4iAOJ-iefM-MMg5n5zJqPR1LPs_tIUQ
 
 </pre><a href="#appendix-B.1-65" class="pilcrow">¶</a>
 </div>
@@ -3991,8 +3991,8 @@ mgqO8U_mH7c3W26Jvs3uc-7HrpDMRtIRU8_BzbMjmfSqKOP3fw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1760709873,
-  "sd_hash": "i9abaaJkJLu8-dQVIBCT4VxjXniTykkpIhw5iixCDYg"
+  "iat": 1760719862,
+  "sd_hash": "KSqngu1Qujwyjnk6t62UuJxEYXHClt2c1tRWhlawME8"
 }
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
