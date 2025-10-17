@@ -531,7 +531,7 @@ with the value `https://betelgeuse.example.com/education_credential`:
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 ```
@@ -555,7 +555,7 @@ retrieved from it:
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=`.
+`1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=`.
 
 ## Type Metadata Format {#type-metadata-format}
 
@@ -1371,7 +1371,7 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential",
-  "vct#integrity": "sha256-WRL5ca/xGgX3c1VLmXfh+9cLlJNXN+TsMk+PmKjZ5t0=",
+  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   "name": "Zaphod Beeblebrox",
   "address": {
     "street_address": "42 Galaxy Way",
