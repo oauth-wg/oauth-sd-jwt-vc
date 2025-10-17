@@ -1572,7 +1572,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows:
 Note that in this example, there are four definitions affecting the `degrees` claim:
 
 1. The `degrees` array itself is marked as `sd: never`, meaning the element `degrees` cannot be selectively disclosed and will always exist in the disclosed SD-JWT. Changing this to `sd: always` would mean that the `degrees` array itself is selectively disclosable.
-2. Each item in the `degrees` array (denoted by `null` in the path) is marked as `sd: always`, meaning each degree object can be selectively disclosed as a whole.
+2. Each item in the `degrees` array (denoted by `null` in the path) is marked as `sd: always`, meaning each degree object will be selectively disclosed as a whole.
 3. The `field_of_study` property of each degree object is marked as `sd: never`, meaning that if the respective degree object is disclosed, the `field_of_study` property will always be included and cannot be hidden.
 4. The `date_awarded` property of each degree object is marked as `sd: always`, meaning it can be selectively disclosed.
 
