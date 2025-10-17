@@ -167,14 +167,14 @@ Table of Contents
                   |
                   v
             +-------------+
-            |             |+                          +------------+
-            |  Verifiers  ||+                         |   Status   |
-            |             |||----- optionally ------->|  Provider  |
-            +-------------+||   retrieve status of    |            |
-             +-------------+|  Verifiable Credential  +------------+
-              +-------------+
+            |             |-+
+            |  Verifiers  | |-+
+            |             | | |
+            +-------------+ | |
+              +-------------+ |
+                +-------------+
 
-    Figure 1: Issuer-Holder-Verifier Model with optional Status Provider
+                   Figure 1: Issuer-Holder-Verifier Model
 
    Verifiers can check the authenticity of the data in the Verifiable
    Credentials and optionally enforce Key Binding, i.e., ask the Holder
@@ -182,11 +182,6 @@ Table of Contents
    Credential, for example, by proving possession of a cryptographic key
    referenced in the credential.  This process is further described in
    [I-D.ietf-oauth-selective-disclosure-jwt].
-
-   To support revocation of Verifiable Credentials, revocation
-   information can optionally be retrieved from a Status Provider.  The
-   role of a Status Provider can be fulfilled by either a fourth party
-   or by the Issuer.
 
 1.2.  SD-JWT as a Credential Format
 
@@ -248,8 +243,6 @@ Table of Contents
       selectively disclosable and non-selectively disclosable claims of
       the SD-JWT VC.  The Unsecured Payload acts as the input JSON
       object to issue an SD-JWT VC complying to this specification.
-   Status Provider:  An entity that provides status information (e.g.
-      revocation) about a Verifiable Credential.
 
 2.  Scope
 
@@ -591,9 +584,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KMe4k
-   mSja7KbVcm2tEaReWsmJw-BdFXVLlEUxE3xSuSS5GaP6GOVNsxp_bOca6LLz-fLJWru0
-   lM26mQE0k9ihg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jZ1WX
+   _qWVPsSDMVvjNuGPfv34VDLz0WU97mp0OfRcEKhBNXSi4hrsACFtgwLcMXti2ED9tf5o
+   Le02bDCydK3mQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -718,17 +711,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KMe4k
-   mSja7KbVcm2tEaReWsmJw-BdFXVLlEUxE3xSuSS5GaP6GOVNsxp_bOca6LLz-fLJWru0
-   lM26mQE0k9ihg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.jZ1WX
+   _qWVPsSDMVvjNuGPfv34VDLz0WU97mp0OfRcEKhBNXSi4hrsACFtgwLcMXti2ED9tf5o
+   Le02bDCydK3mQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk0OT
-   ksICJzZF9oYXNoIjogInREUHQyeHRGS2hrVm9LRlVHNEdtRnVaZUVPaUtaUjh0MklLNm
-   ozU0tJUm8ifQ.pEhKeq1UbWLUvk0MDrlrR1QbTdpsOgmX8PPG6Wq7FXBsWtmeTcQTaLO
-   Selw6kaLxEufKa_roWg0sYSq7tuYYaw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDk1OD
+   ksICJzZF9oYXNoIjogImkwcTRPMU1nb2ViZzJvMmRfVEJxUjJyU2JwQ2VEblloajJGRk
+   luY2U3ckUifQ.SR8nDHbyqVJAv_Ull59hePF16nRHc2YrQYlRneFLT3u2T7OY0lLTN3L
+   xQD-_gf1rFrocDAZt0_tBARPbwaRQSQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -770,8 +763,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.ENkI09SqhSTe9FVn5GBLong-PdqOJexUNMpiQuAfcLkGdo
-   58l4-4r10pujdsf6s-GgbZNlOEthrRIoc7e8Wi0A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.EmlfblaKuXkI2zSqRLAyZDeOaUa8IFD9lpUS73UU8roi9r
+   9dO-ifavyxkO_JCI_d_WD6xvX5h4JziBX9OXt_rw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1920,8 +1913,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.P_Cb1RsHgEzpP65cP_Ojo_L19NFxE0PO0NwBZmyltdpdAB9
-   r-34NjL5HVph9UV5dn5mklFXmq_ogzns1fTxJ4w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
+   2dDRqVDlGMkhaUSJ9fX0.ypQ0jku-pAbJxoS-TNHvAxBeRWgt0_9lfA-vjivtdsNWjM8
+   ozJG5XjId-g2ytdyBv_KIfHW3HKBbQ-gwrdpCkw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
    Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
    V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
    9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
@@ -2256,8 +2249,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
    iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
    sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.P_Cb1RsHgEzpP65cP_Ojo_L19NFxE0PO0NwBZmyltdpdAB9
-   r-34NjL5HVph9UV5dn5mklFXmq_ogzns1fTxJ4w~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
+   2dDRqVDlGMkhaUSJ9fX0.ypQ0jku-pAbJxoS-TNHvAxBeRWgt0_9lfA-vjivtdsNWjM8
+   ozJG5XjId-g2ytdyBv_KIfHW3HKBbQ-gwrdpCkw~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
    QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
    U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
    UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
@@ -2268,17 +2261,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
    l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
    0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA3MDk0OTksICJzZF9oYXNoIjogIk1rcE9OcWpuQzZ3ZXVzMmRqbXU5V05
-   pZDdIZTh0NktSVzJSWFRiZWk4blEifQ.u9E7viLRsgSzhwFYPo6xqsML45KoHmomqIX6
-   ZMsKqGPr2k4h6jLqGtrWBQLOY3u5-kRlUVDr8-4_h9gXJBZKNQ
+   hdCI6IDE3NjA3MDk1ODksICJzZF9oYXNoIjogIlpibE10R1cyRHpjbWcydDhId1YwLTl
+   JMHVWbFo5enN5R1hrSlduRkRGVzAifQ.GfU0pO_4xYb3LmxpQHhJDqEt_Ubze039CRgx
+   CpQx87KtGrrNNb4uPACFK6gvG_F8kuYB4hA7WyOL5sFoyQOP-w
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760709499,
-     "sd_hash": "MkpONqjnC6weus2djmu9WNid7He8t6KRW2RXTbei8nQ"
+     "iat": 1760709589,
+     "sd_hash": "ZblMtGW2Dzcmg2t8HwV0-9I0uVlZ9zsyGXkJWnFDFW0"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2555,6 +2548,8 @@ Appendix D.  Document History
    *  Fix cnf claim and JWK references and move them to normative
    *  List vct as one of the required values in type metadata and ensure
       that the use of the document integrity claims is clear
+   *  Remove discussion of status and Status Provider from the
+      Introduction
    *  Add a background_image property to the simple rendering aligned
       with the definition in OpenID4VCI
    *  Recommend to use sd=always or sd=never to avoid ambiguity and
