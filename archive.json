@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-16T00:33:16.001270+00:00",
+  "timestamp": "2025-10-19T00:37:01.397064+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -3848,11 +3848,12 @@
         "danielfett"
       ],
       "labels": [
+        "pending close",
         "future-extension"
       ],
       "body": "like biometrics-based binding\r\n\r\nTorsten started with this example in [this PR in sd-jwt repo](https://github.com/oauth-wg/oauth-selective-disclosure-jwt/pull/210/files) but i do not think it's viable anymore: \r\n\r\n```\r\n    \"binding\":\r\n      [\r\n        {\r\n          \"type\": \"CryptographicBinding2022\",\r\n          \"cnf\":\r\n            {\r\n              \"jwk\":\r\n                {\r\n                  \"kty\": \"RSA\",\r\n                  \"n\": \"0vx7agoebGcQSuuPiLJXZptN9nndrQmbXEps2aiAFbWhM78LhWx4cbbf\r\n                    AAtVT86zwu1RK7aPFFxuhDR1L6tSoc_BJECPebWKRXjBZCiFV4n3oknjhMst\r\n                    n64tZ_2W-5JsGY4Hc5n9yBXArwl93lqt7_RN5w6Cf0h4QyQ5v-65YGjQR0_F\r\n                    DW2QvzqY368QQMicAtaSqzs8KJZgnYb9c7d0zgdAZHzu6qMQvRL5hajrn1n9\r\n                    1CbOpbISD08qNLyrdkt-bFTWhAI4vMQFh6WeZu0fM4lFd2NcRwr3XPksINHa\r\n                    Q-G_xBniIqbw0Ls1jF44-csFCur-kEgU8awapJzKnqDKgw\",\r\n                  \"e\": \"AQAB\",\r\n                },\r\n            },\r\n        },\r\n        { \"type\": \"BiometricBinding2022\", \"template\": \"...\" },\r\n      ]\r\n```",
       "createdAt": "2023-06-28T19:25:10Z",
-      "updatedAt": "2025-10-02T17:08:29Z",
+      "updatedAt": "2025-10-17T16:41:51Z",
       "closedAt": null,
       "comments": [
         {
@@ -3980,6 +3981,13 @@
           "body": "I still thinks this need to be solved, but maybe not here and now. This might even become a separate specification.",
           "createdAt": "2025-10-02T17:03:56Z",
           "updatedAt": "2025-10-02T17:03:56Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> I still thinks this need to be solved, but maybe not here and now. This might even become a separate specification.\n\nI agree in as much as I think there's a potential need but I don't belive this document is the right place to address that need nor is there an obvious/consensus approach to address it.",
+          "createdAt": "2025-10-17T16:41:38Z",
+          "updatedAt": "2025-10-17T16:41:38Z"
         }
       ]
     },
@@ -5766,9 +5774,9 @@
     {
       "number": 222,
       "id": "I_kwDOJbVClc6Dqvi_",
-      "title": "Add JWS JSON serialization example",
+      "title": "allow JWS JSON serialization (was add example)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/222",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -5777,8 +5785,8 @@
       ],
       "body": "Since SD-JWT allows JWS JSON serialization, we should add an example of how one could do that with SD-JWT VC.",
       "createdAt": "2024-03-26T18:33:42Z",
-      "updatedAt": "2025-10-14T18:27:13Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T16:50:41Z",
+      "closedAt": "2025-10-17T16:50:41Z",
       "comments": [
         {
           "author": "awoie",
@@ -5835,6 +5843,27 @@
           "body": "> [@bc-pi](https://github.com/bc-pi) does the tooling support JWS JSON serialization yet?\n\nYes, @danielfett added that a long time ago. I don't necessarily think an example of that is needed. But the tooling is in place. ",
           "createdAt": "2025-09-16T15:57:00Z",
           "updatedAt": "2025-09-16T15:57:00Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Noting that the text in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-11.html#name-data-format would seem to even preclude the use of the JWS JSON serialization: \"SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-11.html#I-D.ietf-oauth-selective-disclosure-jwt)].\" as Section 4 of SD-JWT seems to only be about the compact / regular format. ",
+          "createdAt": "2025-10-16T21:23:12Z",
+          "updatedAt": "2025-10-16T21:23:12Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Noting that the text in https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-11.html#name-data-format would seem to even preclude the use of the JWS JSON serialization: \"SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 of [[I-D.ietf-oauth-selective-disclosure-jwt](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-11.html#I-D.ietf-oauth-selective-disclosure-jwt)].\" as Section 4 of SD-JWT seems to only be about the compact / regular format.\n\nInteresting. Perhaps the reference hasn't been updated? Let's discuss.",
+          "createdAt": "2025-10-17T07:15:55Z",
+          "updatedAt": "2025-10-17T07:15:55Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Discussed with Brian: We should change the wording, it was not meant to preclude JWS JSON serialization. Adding an example is not a priority though at the moment.",
+          "createdAt": "2025-10-17T14:06:47Z",
+          "updatedAt": "2025-10-17T14:06:47Z"
         }
       ]
     },
@@ -5952,19 +5981,19 @@
       "id": "I_kwDOJbVClc6EZG6q",
       "title": "Consider recommending a way to encode other data types.",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/225",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
         "awoie"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "The spec should define a way to support other data types. Pictures of the credential holders will be a common case, but other data types might occur as well.\r\n\r\nOpenID Connect already defines a claim:\r\n> `picture` \tstring \tURL of the End-User's profile picture. This URL MUST refer to an image file (for example, a PNG, JPEG, or GIF image file), rather than to a Web page containing an image.\r\n\r\nIn that sense, we could just recommend that data types other than the native JSON types should be encoded, for example, as data URIs (that would be compatible to the definition of `picture` above).",
       "createdAt": "2024-04-02T18:35:55Z",
-      "updatedAt": "2025-10-07T18:25:35Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T13:41:24Z",
+      "closedAt": "2025-10-17T13:41:24Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -6316,7 +6345,7 @@
       "id": "I_kwDOJbVClc6O0GWM",
       "title": "Add language on x5c protection",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/240",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -6327,8 +6356,8 @@
       ],
       "body": "To mitigate attacks described in the X.509 IETF RFC [here](https://www.rfc-editor.org/rfc/rfc2634#section-5.1), we should add something like the following language:\r\n\r\nIf `x5c` is the in unprotected header or was received out-of-band, the verifier MUST check the `x5t` **protected** header.\r\n\r\nNote that COSE has this language built in, but JOSE leaves that open.\r\n",
       "createdAt": "2024-07-08T16:04:08Z",
-      "updatedAt": "2025-10-15T14:22:39Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T13:21:04Z",
+      "closedAt": "2025-10-17T13:21:04Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -6542,7 +6571,7 @@
       "id": "I_kwDOJbVClc6Qdy1b",
       "title": "Potential Privacy implications of verifier knowing display information",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Sakurann",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -6552,8 +6581,8 @@
       ],
       "body": "Per John Bradley comment during IETF 120",
       "createdAt": "2024-07-22T20:37:32Z",
-      "updatedAt": "2025-10-06T21:07:37Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T15:52:05Z",
+      "closedAt": "2025-10-17T15:52:05Z",
       "comments": [
         {
           "author": "danielfett",
@@ -6610,6 +6639,13 @@
           "body": "The result of #342 is that JSON schema is no longer part of type metadata but I think the sentiment behind @cre8's https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247#issuecomment-3272330455 \"since metadata value is not unique for each person, we are not sharing any personal critical data\" remains. I will not claim perfect privacy but don't see this as overtly problematic. So I'm back to this https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247#issuecomment-3246523715 from a month ago - if @ve7jtb or anyone has some actionable suggestion for this, let's consider it. Otherwise, I plan to close this in some reasonable time frame.",
           "createdAt": "2025-10-06T21:06:47Z",
           "updatedAt": "2025-10-06T21:07:37Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The result of [#342](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/342) is that JSON schema is no longer part of type metadata but I think the sentiment behind [@cre8](https://github.com/cre8)'s [#247 (comment)](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247#issuecomment-3272330455) \"since metadata value is not unique for each person, we are not sharing any personal critical data\" remains. I will not claim perfect privacy but don't see this as overtly problematic. So I'm back to this [#247 (comment)](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/247#issuecomment-3246523715) from a month ago - if [@ve7jtb](https://github.com/ve7jtb) or anyone has some actionable suggestion for this, let's consider it. Otherwise, I plan to close this in some reasonable time frame.\n\nThat was two weeks ago, which feels like a reasonable time frame.",
+          "createdAt": "2025-10-17T15:52:05Z",
+          "updatedAt": "2025-10-17T15:52:05Z"
         }
       ]
     },
@@ -7362,7 +7398,7 @@
       "id": "I_kwDOJbVClc6epMV1",
       "title": "Provide guidance on versioning",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/273",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "danielfett",
       "authorAssociation": "MEMBER",
       "assignees": [
@@ -7373,8 +7409,8 @@
       ],
       "body": "[Dr. Horvat, PhD](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/264#issuecomment-2477101068):\r\n> However, metadata owner must be aware of the responsibility to take care of the versioning.\r\n\r\nWe could add this as a consideration to the spec.",
       "createdAt": "2024-11-15T10:44:07Z",
-      "updatedAt": "2025-10-14T17:46:28Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:04:02Z",
+      "closedAt": "2025-10-17T14:04:02Z",
       "comments": [
         {
           "author": "awoie",
@@ -7561,19 +7597,19 @@
       "id": "I_kwDOJbVClc6h5yvx",
       "title": "Add security considerations on when/what metadata is/can be trusted",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/282",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "wbl",
       "authorAssociation": "NONE",
       "assignees": [
         "awoie"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "I really don't get why SVG logos for individual fields is supported. Also I'm not sure about the value of this display metadata. Are people going to use it?",
       "createdAt": "2024-12-04T00:31:21Z",
-      "updatedAt": "2025-10-14T18:29:00Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T13:56:48Z",
+      "closedAt": "2025-10-17T13:56:48Z",
       "comments": [
         {
           "author": "danielfett",
@@ -7680,7 +7716,7 @@
       "id": "I_kwDOJbVClc6iaZVJ",
       "title": "The wording \"Verifiable Credentials\" should be changed into \"Digital Credentials\"",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/283",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7689,8 +7725,8 @@
       ],
       "body": "Section 3.1 states:\r\n\r\n>    SD-JWT VCs compliant with this specification MUST use the media type application/dc+sd-jwt as defined in Section 3.1.\r\n> \r\n>    The base subtype name dc is meant to stand for \"digital credential\", which is a term that is emerging as a conceptual synonym for\r\n>    \"verifiable credential\".\r\n\r\nThis change is significant and welcomed. \"Verifiable Credential\" is a term used in VCDM 2.0. It has a W3C connotation.\r\n\r\nIn VCDM 2.0 a Verifiable Credential is defined as:\r\n\r\n> A tamper-evident credential whose authorship can be cryptographically verified. Verifiable credentials can be used to build verifiable presentations, which can also be cryptographically verifiable. \r\n\r\nwhile a Verifiable Presentation is defined as:\r\n\r\n> A tamper-evident presentation of information encoded in such a way that authorship of the data can be trusted after a process of cryptographic verification. Certain types of verifiable presentations might contain data that is synthesized from, but does not contain, the original verifiable credentials (for example, zero-knowledge proofs).\r\n\r\nThese definitions are not crystal clear.\r\n\r\nThe acronym DC should be used everywhere including in the title of this draft. \r\n\r\nThe wording \"SD-JWT-based Verifiable Credentials (SD-JWT VC)\" should be changed into: \r\n\r\n> \"SD-JWT-based Digital Credentials (SD-JWT DC)\".\r\n\r\nThe name of the draft should be changed into:\r\n\r\n> draft-ietf-oauth-sd-jwt-dc\r\n",
       "createdAt": "2024-12-07T21:54:13Z",
-      "updatedAt": "2025-10-14T18:12:10Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:24:57Z",
+      "closedAt": "2025-10-17T14:24:57Z",
       "comments": [
         {
           "author": "awoie",
@@ -7698,6 +7734,13 @@
           "body": "While I understand the issue, we are not changing this at this stage anymore since it would create unreasonable effort to change it in the spec and other external documents.",
           "createdAt": "2025-10-14T18:12:02Z",
           "updatedAt": "2025-10-14T18:12:02Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Over the lifetime of this draft we discussed a couple of times whether we want to change to \"Digital Credentials\", but there has been little support for this, mainly due to \"SD-JWT VC\" being an established name now and referenced elsewhere.",
+          "createdAt": "2025-10-17T14:24:57Z",
+          "updatedAt": "2025-10-17T14:24:57Z"
         }
       ]
     },
@@ -7706,7 +7749,7 @@
       "id": "I_kwDOJbVClc6iaZqU",
       "title": "A statement about \"Verifiable Credentials\" should be changed",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/284",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7715,8 +7758,8 @@
       ],
       "body": "Section 1.1 states:\r\n\r\n> Verifiable Credentials are cryptographically secured statements about a Subject, typically the Holder.\r\n\r\nThis sentence is confusing as it does not distinguish between the Holder which is an application and a Subject which is usually an individual who has the control of the Holder.\r\n\r\nIt should be changed into:\r\n\r\n> Digital Credentials are cryptographically secured statements about a Subject issued by a Digital Credential Issuer.\r\n> \r\n> A Holder is an application placed under the control of a Subject that receives a Digital Credential from a Digital Credential Issuer and when selectively disclosure is supported add Selected Disclosures and optionally a Key Binding Token.\r\n> \r\n> A Key Binding Token allows the Verifier to know that the private key corresponding to a public key which is present in the Digital Credential has been used to create it. When selective disclosure is used, both the Digital Credential and the Selected Disclosures, if any, are integrity protected under that private key.\r\n> ",
       "createdAt": "2024-12-07T21:59:16Z",
-      "updatedAt": "2025-10-14T18:14:12Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:27:23Z",
+      "closedAt": "2025-10-17T14:27:23Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7724,6 +7767,13 @@
           "body": "Similar to base SD-JWT, the Holder can be the user or the app or both. Distinguishing further doesn't seem useful. ",
           "createdAt": "2025-10-14T18:14:12Z",
           "updatedAt": "2025-10-14T18:14:12Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I agree. ",
+          "createdAt": "2025-10-17T14:27:23Z",
+          "updatedAt": "2025-10-17T14:27:23Z"
         }
       ]
     },
@@ -7732,7 +7782,7 @@
       "id": "I_kwDOJbVClc6iaZ-o",
       "title": "Figure 1  Issuer-Holder-Verifier Model should be modified",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/285",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [
@@ -7743,8 +7793,8 @@
       ],
       "body": "```\r\n\r\n            +------------+\r\n            |            |\r\n            |   Issuer   |\r\n            |            |\r\n            +------------+\r\n                  |\r\n         Issues Digital Credentials\r\n         and All Disclosures when \r\n    selectively disclosure is supported\r\n                  |\r\n                  v\r\n            +------------+\r\n            |            |\r\n            |   Holder   |<---- Subject\r\n            |            |\r\n            +------------+\r\n                  |\r\n  Presents Digital Credential + Selected Disclosures\r\n     when selectively disclosure is supported\r\n       + optional Key Binding Token\r\n                  |\r\n                  v\r\n            +-------------+\r\n            |             |+                              +------------+\r\n            |  Verifiers  ||+ ----- optional use -------> |   Status   |\r\n            |             |||  of Token Status Lists      |  Provider  |\r\n            +-------------+||  to retrieve the status     |            |\r\n             +-------------+|  of the Digital Credential  +------------+\r\n              +-------------+\r\n```\r\n\r\n\r\n\r\n\r\nNote that the wording:\r\n\r\n> optionally retrieve status of Verifiable Credential \r\n\r\nhas been replaced by:\r\n\r\n> optional use of Token Status Lists to retrieve the status of the Digital Credential\r\n\r\nThis change is important as the current wording may let think that a Status provider is necessarily needed to know the status of a Digital Credential, whereas it is not the case.\r\n\r\n",
       "createdAt": "2024-12-07T22:03:28Z",
-      "updatedAt": "2025-10-14T17:59:47Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T13:59:24Z",
+      "closedAt": "2025-10-17T13:59:24Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7760,7 +7810,7 @@
       "id": "I_kwDOJbVClc6iaahG",
       "title": "Suspension and revocation of Digital Credentials",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/286",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7771,8 +7821,8 @@
       ],
       "body": "The end of section 1.1 states:\r\n\r\n>    To support revocation of Verifiable Credentials, revocation information can optionally be retrieved from a Status Provider.  The\r\n>    role of a Status Provider can be fulfilled by either a fourth party or by the Issuer.\r\n> \r\n\r\nBoth suspension and revocation of Digital Credentials should be mentioned. It should also be observed that the suspension or the revocation of Digital Credentials does not need necessarily involve a Status Provider.\r\n\r\nSince Digital Credentials are hosted by a Holder which is an application, that application can contact the Issuer of the Digital Credential and be instructed by the Issuer to suspend or to stop (i.e. revoke) the use of a Digital Credential. \r\n\r\nIt is proposed to change the end of this section into:\r\n\r\n>    If the suspension or the revocation of a Digital Credential is  supported, an information SHALL be included into the Digital \r\n>    Credential.\r\n> \r\n>    If Token Status Lists are used, then a specific claim (i.e., status) shall be included into the Digital Credential to indicate that this \r\n>   mechanism  is supported.\r\n> \r\n>    If a \"Digital Credential Policy\", analogous to a \"Certificate Policy\" for X.509 certificate, is included into the Digital Credential, then \r\n>    in some cases, the characteristics of the Holder can be known by the Verifier.  In this way, the Verifier can be able to know that the \r\n>    Holder will contact the Issuer of the Digital Credential from time  to time and can be instructed by the Issuer to suspend or to stop \r\n>    (i.e. revoke) the use of a Digital Credential, when necessary. \r\n> \r\n>    If the Holder is unable to contact an Issuer during a defined period of time, e.g. 24 hours, the Holder will suspend all the Digital \r\n>    Credentials  issued by that issuer. When a Digital Credential  has been suspended, the process can be reversed. However, when a \r\n>   Digital Credential  has been invalidated (e.g., revoked),  the process  cannot be reversed. \r\n",
       "createdAt": "2024-12-07T22:11:04Z",
-      "updatedAt": "2025-09-16T22:43:12Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:30:45Z",
+      "closedAt": "2025-10-17T14:30:45Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7780,6 +7830,13 @@
           "body": "Similar to https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212 and https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/319 and #325 there doesn't seem to be a clearly preferred (or workable) way to express policy (even if you call it \"Digital Credential Policy\") in the credential itself or even if such policy is necessary or appropriate in the credential. A future or ecosystem specific profile or extension or even type can define (or not) what makes sense in the given context. But, in the interest of moving forward, it's out of scope for (this version of) this specification. ",
           "createdAt": "2025-09-16T22:43:01Z",
           "updatedAt": "2025-09-16T22:43:01Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "What Brian said \u2014 it is not clear at the moment whether there is any interest in this and whether the proposed solution is suitable.",
+          "createdAt": "2025-10-17T14:30:45Z",
+          "updatedAt": "2025-10-17T14:30:45Z"
         }
       ]
     },
@@ -7788,7 +7845,7 @@
       "id": "I_kwDOJbVClc6iabKk",
       "title": "The following sentence would need to be clarified and reworded",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/287",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7797,8 +7854,8 @@
       ],
       "body": "On page 5, section 1.2 , the text states:\r\n\r\n> However, SD-JWT itself does not define the claims that must be used within the payload or their semantics.\r\n\r\n\r\nPlease, reword it.\r\n",
       "createdAt": "2024-12-07T22:20:18Z",
-      "updatedAt": "2025-09-23T15:33:06Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:26:35Z",
+      "closedAt": "2025-10-17T14:26:35Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7806,6 +7863,13 @@
           "body": "\n> On page 5, section 1.2 , the text states:\n> \n> > However, SD-JWT itself does not define the claims that must be used within the payload or their semantics.\n> \n> Please, reword it.\n\nReword it to what? And why? ",
           "createdAt": "2025-09-23T15:33:06Z",
           "updatedAt": "2025-09-23T15:33:06Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "The sentence is correct as far as I can tell. Closing this since we don't know what we should change here.",
+          "createdAt": "2025-10-17T14:26:35Z",
+          "updatedAt": "2025-10-17T14:26:35Z"
         }
       ]
     },
@@ -7814,7 +7878,7 @@
       "id": "I_kwDOJbVClc6iabRn",
       "title": "The definition of \"Verifiable Credential (VC)\"should be replaced by a definition of \"Digital Credential (DC)\"",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/288",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7823,8 +7887,8 @@
       ],
       "body": "The current definition is :\r\n\r\n> Verifiable Credential (VC):  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).\r\n\r\nThe following change is proposed:\r\n\r\n> Digital Credential (DC): cryptographically secured statements about a Subject issued by a Digital Credential Issuer.\r\n",
       "createdAt": "2024-12-07T22:21:52Z",
-      "updatedAt": "2025-10-14T18:13:45Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:25:11Z",
+      "closedAt": "2025-10-17T14:25:11Z",
       "comments": [
         {
           "author": "awoie",
@@ -7832,6 +7896,13 @@
           "body": "While I understand the issue, we are not changing this at this stage anymore since it would create unreasonable effort to change it in the spec and other external documents.",
           "createdAt": "2025-10-14T18:13:34Z",
           "updatedAt": "2025-10-14T18:13:34Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Over the lifetime of this draft we discussed a couple of times whether we want to change to \"Digital Credentials\", but there has been little support for this, mainly due to \"SD-JWT VC\" being an established name now and referenced elsewhere.",
+          "createdAt": "2025-10-17T14:25:11Z",
+          "updatedAt": "2025-10-17T14:25:11Z"
         }
       ]
     },
@@ -7840,19 +7911,19 @@
       "id": "I_kwDOJbVClc6iabqI",
       "title": "The SD-JWT DC does not CONTAIN the Key Binding JWT",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/289",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [
         "bc-pi"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "Section 3.2 states:\r\n\r\n> SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 5 of [I-D.ietf-oauth-selective-disclosure-jwt].  A presentation of an SD-JWT VC MAY contain a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT VC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not contain any Disclosures.\r\n\r\nThe SD-JWT DC does not CONTAIN the Key Binding JWT. See the revised Figure 1. See #285.\r\nHowever, a SD-JWT VC CAN be ASSOCIATED with a Key Binding JWT\r\n\r\nThe following changes are proposed:\r\n\r\n> A presentation of an SD-JWT DC CAN be associated with a Key Binding JWT.\r\n> \r\n> Note that in some cases, an SD-JWT DC MAY have no selectively disclosable claims, and therefore the encoded SD-JWT will not be associated with any Disclosures.\r\n> \r\n",
       "createdAt": "2024-12-07T22:27:24Z",
-      "updatedAt": "2025-10-14T18:21:32Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T13:57:57Z",
+      "closedAt": "2025-10-17T13:57:57Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -7860,6 +7931,13 @@
           "body": "Although, I agree with the proposed idea (I also think that SD-JWT doesn't contain a KB-JWT, rather a KB-JWT may be associated to an SD-JWT presentation), yet I feel that this proposal should target SD-JWT and not SD-JWT-VC.\r\n\r\n\r\n\r\n",
           "createdAt": "2024-12-16T17:27:20Z",
           "updatedAt": "2024-12-16T17:27:20Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "#365 is an attempt to be more clear here but also #362 is related maybe ",
+          "createdAt": "2025-10-16T22:31:06Z",
+          "updatedAt": "2025-10-16T22:31:06Z"
         }
       ]
     },
@@ -7899,7 +7977,7 @@
       "id": "I_kwDOJbVClc6iac1E",
       "title": "Support of the suspension or of the revovation of  a Digital Credential without using the status claim",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/291",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Denisthemalice",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -7909,8 +7987,8 @@
       ],
       "body": "In section 3.4 , the text states:\r\n\r\n>    If status is present in the verified payload of the SD-JWT, the\r\n>    status SHOULD be checked.  It depends on the Verifier policy to\r\n>    reject or accept a presentation of a SD-JWT VC based on the status of\r\n>    the Verifiable Credential.\r\n\r\nAnother sentence should be added:\r\n\r\n> If dcpol is present in the verified payload of the SD-JWT, the Digital Credential Policy under which the Digital Credential has been issued by the Issuer SHOULD be considered by the Verifier.  When the Verifier is able to derive from it the characteristics of the Holder, the Verifier can know that the presentation of the Digital Credential to the Verifier by the Holder has not been suspended nor invalided by the Digital Credential Issuer. It depends on the Verifier policy to reject or accept a presentation of a SD-JWT DC when this claim is present.\r\n",
       "createdAt": "2024-12-07T22:43:55Z",
-      "updatedAt": "2025-09-16T22:45:46Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:22:38Z",
+      "closedAt": "2025-10-17T14:22:38Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7918,6 +7996,13 @@
           "body": "dcpol isn't defined anywhere nor is this draft likely to define it ",
           "createdAt": "2025-09-16T22:45:46Z",
           "updatedAt": "2025-09-16T22:45:46Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I agree. ",
+          "createdAt": "2025-10-17T14:22:38Z",
+          "updatedAt": "2025-10-17T14:22:38Z"
         }
       ]
     },
@@ -7926,15 +8011,15 @@
       "id": "I_kwDOJbVClc6k2lGi",
       "title": "Risk of issuer monitoring with jwt-vc-issuer metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/293",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "cre8",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "In case the the credential includes a link to the hosted metadata, the relying party will fetch it like:\r\n```\r\nGET /.well-known/jwt-vc-issuer HTTP/1.1\r\nHost: example.com\r\n```\r\n\r\nA malicious issuer could add unique subdomains to add a tracker, e.g. the jti value or another internal identifier `<jti>.exmaple.com/.well-known/jwt-vc-issuer`. This can not be detected by the relying party since the url of the `jwks_uri` must not match with the same host as the vct value (or the issuer uses an x509 that must also not be bound to a domain, or maybe it's a wildcard one).\r\n\r\nSuggestion:\r\nAdd a privacy consideration note that this can be used for presentation tracking. An alternative suggestion would be to allow the Wallet to include the vct issuer metadata into the e.g. presentation response when using OID4VP. In this case the issuer may only know that the wallet is presenting a credential, when the VCT it was not cached before (in case an integrity value was provided, the wallet can be sure it never has an outdated version of the vct values).",
       "createdAt": "2025-01-02T10:20:00Z",
-      "updatedAt": "2025-06-10T18:24:08Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T09:46:36Z",
+      "closedAt": "2025-10-17T09:46:36Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -7942,6 +8027,27 @@
           "body": "> could add unique subdomains to add a tracker, e.g. the jti value or another internal identifier `<jti>.exmaple.com/.well-known/jwt-vc-issuer`.\n\nis exmaple.com a site for Canadian expats?\n\n",
           "createdAt": "2025-06-10T18:24:07Z",
           "updatedAt": "2025-06-10T18:24:07Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "We discussed this during the editors' call and concluded that an additional note may not be necessary, as the risk appears to have limited practical impact. The same consideration would apply to any kind of hosted metadata, including both type and jwt issuer metadata.\n\nIn practice, verifiers are expected to operate with a defined set of accepted credential types and trusted issuer identifiers (if jwt issuer metadata is used). Unless a verifier and issuer are actively collaborating, any attempt to embed tracking information (e.g., in subdomains or query parameters or paths that are user/wallet-specific) would likely be detected through inconsistencies in the expected type or `iss` values.\n\nThis means that `jti-1234.exmaple.com` is a different issuer than `jti-5678.exmaple.com`. The same logic applies to type.\n\n@cre8 Does that reasoning align with your understanding?\n\nWe could add a privacy consideration for this but I believe the impact of such an attack is very limited.",
+          "createdAt": "2025-10-17T07:37:47Z",
+          "updatedAt": "2025-10-17T07:43:46Z"
+        },
+        {
+          "author": "cre8",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @awoie \nI agree we you, from my side the issue can be closed without further actions.",
+          "createdAt": "2025-10-17T09:33:04Z",
+          "updatedAt": "2025-10-17T09:33:04Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Closing issue since @cre8 agreed there is nothing we need to add.",
+          "createdAt": "2025-10-17T09:46:36Z",
+          "updatedAt": "2025-10-17T09:46:36Z"
         }
       ]
     },
@@ -7950,7 +8056,7 @@
       "id": "I_kwDOJbVClc6m2wpp",
       "title": "Say something about presentations if KB-JWT is not used",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/297",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [
@@ -7961,8 +8067,8 @@
       ],
       "body": "Section 4 only says something about if the presentation contains a KB-JWT:\nhttps://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4\n\nA reader that is not familiar with SD-JWT will probably appreciate guidance on presentations not containing KB-JWT.",
       "createdAt": "2025-01-20T14:10:36Z",
-      "updatedAt": "2025-10-15T14:05:04Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T08:33:24Z",
+      "closedAt": "2025-10-17T08:33:24Z",
       "comments": []
     },
     {
@@ -8354,19 +8460,19 @@
       "id": "I_kwDOJbVClc643WP_",
       "title": "Declaration of arrays to the type metadata.",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/314",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "babisRoutis",
       "authorAssociation": "CONTRIBUTOR",
       "assignees": [
         "danielfett"
       ],
       "labels": [
-        "Ready-for-PR"
+        "HAS PR"
       ],
       "body": "I believe that it is not clear how to define an array to the type metadata.\n\n- Section 9, doesn't provide any clue\n- Section 9.1 describes claim path, in general and provides a way to select a JSON element using a a path (and a JSON to process).\n- Appendix B contains a example of how to define an array (degrees). Yet it is rather a basic, just an array of any JSON element.\n\nOn the other hand, SD-JWT, the base specification, allows the representation of very complex arrays.\nThus, I think it is critical to\n- Define explicitly how arrays are being representing to the type metadata.\n- Document the cases that cannot be described with type metadata \n- Provide some more detail examples.\n\nI will try to provide some indicative cases\n\n**Array with elements that have no disclosure properties.**\n\nAppendix B, provides the following example\n\n```json\n{  \"path\" : [\"degrees\", null] , \"sd\": \"allowed\" }\n```\n\nThe problem with such a definition is that it is not clear (at least for me) where the `sd` attribute applies.\nThe above can have two possible interpretations:\n- The entry represents the array itself. Thus, the `sd` defines the disclosure behavior of the array\n- The entry represents the elements of the array. In this case, the disclosure property of the array (not its elements) is undefined.\n\n**Array with elements that have disclosure properties.**\n\nTo describe the disclosure property of both the array and its elements, I believe two entries are needed:\n\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null] , \"sd\": \"always\" }\n```\nThe first describes the array itself, the second all entries. The \"sd\" can be different of course\n\nBy the way, this is the case of `nationalities` array as defined in ARF 1.8, requires \n\n> When issuing a PID compliant with [SD-JWT VC], a PID Provider SHALL make all claims (i.e., all top-level properties, all nested properties, and all array entries) selectively disclosable individually, except those claims defined as non-selectively disclosable in [SD-JWT VC].\n\n\n\n\n**Array of objects that have attributes with disclosable properties.**\n\nAssuming, that `degrees` is an array of  degree object which has attributes `type` and `university`, each one having their own `sd`\nI believe that we want the following entries to the type metadata\n```json\n{  \"path\" : [\"degrees\"] , \"sd\": \"allowed\" }\n{  \"path\" : [\"degrees\", null ] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"type\"] , \"sd\": \"never\" }\n{  \"path\" : [\"degrees\", null, \"university\"] , \"sd\": \"always\" }\n```\n\nThe first describes the disclosure property of the array (`degrees`)\nThe 2nd the disclosure property of `degree`\nThe 3d and 4th the disclosure property of `degree` attributes\n\n",
       "createdAt": "2025-05-29T21:20:16Z",
-      "updatedAt": "2025-09-30T07:12:24Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T13:33:08Z",
+      "closedAt": "2025-10-17T13:33:08Z",
       "comments": [
         {
           "author": "danielfett",
@@ -9206,7 +9312,7 @@
       "id": "I_kwDOJbVClc7LsbFl",
       "title": "Support of the default Issuer Signature Mechanism. Required or not?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/346",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaromin",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -9216,8 +9322,8 @@
       ],
       "body": "The spec allows for extensibility by enabling ecosystems to specify additional Issuer Signature Mechanisms. Shouldn't ecosystems and their participants also be able to elect NOT to support mechanisms defined in section 3.5? \n\nGiven that this extensibility is created to, among others, address DIDs, I imagine that such pure did-as-iss-based ecosystems may elect not to support the two key mechanisms defined in this specification and still these ecosystems and its participants will be compliant with SD-JWT VC.",
       "createdAt": "2025-09-15T10:54:41Z",
-      "updatedAt": "2025-10-14T14:42:00Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-17T14:28:02Z",
+      "closedAt": "2025-10-17T14:28:01Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -9239,6 +9345,13 @@
           "body": "Any thoughts @yaromin? I'm inclined to close this, if not. ",
           "createdAt": "2025-10-14T14:41:52Z",
           "updatedAt": "2025-10-14T14:41:52Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Closing this as we have not received any new information in the last weeks.",
+          "createdAt": "2025-10-17T14:28:01Z",
+          "updatedAt": "2025-10-17T14:28:01Z"
         }
       ]
     },
@@ -9399,10 +9512,12 @@
       "author": "tweeddalex",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "policy"
+      ],
       "body": "**Section 10.6** of the spec clearly expresses that Verifiers/Wallets SHOULD check the authorization of the issuer. However, the spec currently leaves no room for the issuer authorization to be included within the credential itself - this is a bit of a catch 22. \n\nThis omission , therefore, puts the entire onus of establishing issuer authorization on profile extensions, which will likely lead to multiple competing profiles and approaches - inhibiting interop.\n\nI propose a simple **optional** field within the spec called \"`iss_auth`\" which expects a HTTP(s) URI pointing towards an external resource detailing information about what the issuer is authorized to do. This could be something like a VC, a flat governance file or a FederationId. \n\nProfiles can then define how the content at the other end of the  \"iss_auth\" URI is processed to determine the authorization of the issuer; but, including this optional field allows this type of profile to be added without deviating from the core data model. Therefore, verifying software will be less likely to throw an error as the field is expected to be included. \n\nCurrently, if an SD-JWT VC is signed using a JWT Issuer Metadata URI, there is NO WAY to determine the authorization of the issuer without some type of out-of-band information. This is massively problematic in practice, and makes signing using JWT Issuer Metadata a very unsecure signing method.",
       "createdAt": "2025-10-02T06:57:55Z",
-      "updatedAt": "2025-10-02T20:01:17Z",
+      "updatedAt": "2025-10-17T16:54:16Z",
       "closedAt": null,
       "comments": [
         {
@@ -9411,6 +9526,35 @@
           "body": "The credential should not define its eco system, but it should be predefined by the verifier. This is self claiming and gives 0 security. Instead the following approach is used in the EUDI Wallet eco system according to the ARF\n\nLet's use the examples of diplomas in Germany:\n- An HR department will subscribe to an attestation rulebook that got published somewhere (catalog of attestations by a trusted source)\n- The verifier will accept the machine readable rulebook defining the SD JWT VC schema and also included a list of authorized issuers (allow list, root of trust, etc).\n- based on these information, the verifier is able to build a DCQL like \"present a credential of vct = german_diploma that got issued by this issuer that got its certificate of this PKI\".\n\nSee [technical discussion](https://github.com/eu-digital-identity-wallet/eudi-doc-standards-and-technical-specifications/discussions/428) for further information.",
           "createdAt": "2025-10-02T20:01:17Z",
           "updatedAt": "2025-10-02T20:01:17Z"
+        }
+      ]
+    },
+    {
+      "number": 369,
+      "id": "I_kwDOJbVClc7SJa6J",
+      "title": "don't use sub-bullets for definitions ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/369",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [
+        "bc-pi"
+      ],
+      "labels": [
+        "HAS PR",
+        "editorial"
+      ],
+      "body": "> this does seem to fix the more serious formatting, so approving, but I do wonder if there's a reason to use bullets for these definitions at all?\r\n\r\nI don't see a reason to do so.\r\n\r\n_Originally posted by @danielfett in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/364#issuecomment-3414368808_\r\n\r\n\r\n            ",
+      "createdAt": "2025-10-17T11:14:23Z",
+      "updatedAt": "2025-10-17T17:10:39Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "there's a few places but 6.2 here has mixed use even <img width=\"701\" height=\"526\" alt=\"Image\" src=\"https://github.com/user-attachments/assets/418d2155-bd9c-4591-a288-75e558bf67c5\" />\n\n",
+          "createdAt": "2025-10-17T11:16:15Z",
+          "updatedAt": "2025-10-17T11:16:15Z"
         }
       ]
     }
@@ -28836,24 +28980,26 @@
       "id": "PR_kwDOJbVClc6tuDDG",
       "title": "Provide some guidance on versioning via the `vct` value",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/360",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #273",
       "createdAt": "2025-10-14T17:40:11Z",
-      "updatedAt": "2025-10-14T18:02:15Z",
+      "updatedAt": "2025-10-17T14:04:01Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "baseRefOid": "26281565edb7879016156fbf2b8d58e314d334c7",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "types-versions-vtc-etc",
-      "headRefOid": "e00ed5f1584da17f1bc500bac10ea7fb2aa06d58",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "793e33a302ca76fdf815e6a852096f3823da4075",
+      "closedAt": "2025-10-17T14:04:01Z",
+      "mergedAt": "2025-10-17T14:04:01Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "b41c6722ec70aa6af34021c7f764959a34d88694"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -28916,6 +29062,139 @@
           "createdAt": "2025-10-14T18:02:15Z",
           "updatedAt": "2025-10-14T18:02:15Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HmsrC",
+          "commit": {
+            "abbreviatedOid": "e00ed5f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:13:31Z",
+          "updatedAt": "2025-10-17T08:13:58Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "I'm not sure I understand the sentence. Is \"When evolving _and updating the version_\" the implied meaning or the opposite (evolving _without_ updating the version)?",
+              "createdAt": "2025-10-17T08:13:31Z",
+              "updatedAt": "2025-10-17T08:13:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HpSSP",
+          "commit": {
+            "abbreviatedOid": "e00ed5f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T10:54:40Z",
+          "updatedAt": "2025-10-17T10:54:40Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "It was meant to mean the latter (evolving without updating the version) and be kind of a setup for the next paragraph that talks about bigger changes that do need version update. \n\nDoes it need to be more explicit somehow? ",
+              "createdAt": "2025-10-17T10:54:40Z",
+              "updatedAt": "2025-10-17T10:54:40Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsU1E",
+          "commit": {
+            "abbreviatedOid": "6f944a4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:04:50Z",
+          "updatedAt": "2025-10-17T13:04:50Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "yes",
+              "createdAt": "2025-10-17T13:04:50Z",
+              "updatedAt": "2025-10-17T13:04:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hsakf",
+          "commit": {
+            "abbreviatedOid": "6f944a4"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:09:26Z",
+          "updatedAt": "2025-10-17T13:09:26Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "is should, SHOULD here?",
+              "createdAt": "2025-10-17T13:09:26Z",
+              "updatedAt": "2025-10-17T13:09:26Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsbrT",
+          "commit": {
+            "abbreviatedOid": "6f944a4"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:10:46Z",
+          "updatedAt": "2025-10-17T13:10:47Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nWhen evolving a credential type without updating the version, changes to the structure or meaning of the associated claims\r\nMUST be made in a way that preserves compatibility with existing implementations.\r\n```",
+              "createdAt": "2025-10-17T13:10:46Z",
+              "updatedAt": "2025-10-17T13:10:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtKo3",
+          "commit": {
+            "abbreviatedOid": "6f944a4"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T14:00:45Z",
+          "updatedAt": "2025-10-17T14:00:45Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nWhen evolving a credential type without updating the version, changes to the structure or meaning of the associated claims\r\nneed to be made in a way that preserves compatibility with existing implementations.\r\n```",
+              "createdAt": "2025-10-17T14:00:45Z",
+              "updatedAt": "2025-10-17T14:00:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtLE6",
+          "commit": {
+            "abbreviatedOid": "387432e"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T14:01:08Z",
+          "updatedAt": "2025-10-17T14:01:08Z",
+          "comments": []
         }
       ]
     },
@@ -28924,98 +29203,1271 @@
       "id": "PR_kwDOJbVClc6tuLry",
       "title": "Remove discussion of status and Status Provider from the Introduction",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/361",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #285",
       "createdAt": "2025-10-14T17:55:49Z",
-      "updatedAt": "2025-10-14T17:55:50Z",
+      "updatedAt": "2025-10-17T13:59:23Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "status-status",
       "headRefOid": "3a84a7f15b7f17157fa1c00735add844b8b97809",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-10-17T13:59:23Z",
+      "mergedAt": "2025-10-17T13:59:23Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "26281565edb7879016156fbf2b8d58e314d334c7"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7Hmtyf",
+          "commit": {
+            "abbreviatedOid": "3a84a7f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T08:14:33Z",
+          "updatedAt": "2025-10-17T08:14:33Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hsdml",
+          "commit": {
+            "abbreviatedOid": "3a84a7f"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "i think having status provider here is ok but removing it is also ok.......",
+          "createdAt": "2025-10-17T13:12:53Z",
+          "updatedAt": "2025-10-17T13:12:53Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsqOD",
+          "commit": {
+            "abbreviatedOid": "3a84a7f"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:27:00Z",
+          "updatedAt": "2025-10-17T13:27:00Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtHfl",
+          "commit": {
+            "abbreviatedOid": "3a84a7f"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:58:35Z",
+          "updatedAt": "2025-10-17T13:58:35Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 362,
       "id": "PR_kwDOJbVClc6t5RHX",
       "title": "make it clear that presentations don't need kb",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/362",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "fixes #297 \r\nwe have already examples for non-KB presentations",
       "createdAt": "2025-10-15T14:04:00Z",
-      "updatedAt": "2025-10-15T14:04:44Z",
+      "updatedAt": "2025-10-17T08:33:23Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-297",
       "headRefOid": "0685b4fe491d5a322537163713a08f22095e77db",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "closedAt": "2025-10-17T08:33:23Z",
+      "mergedAt": "2025-10-17T08:33:23Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "c72aa52e5d5aed8ab9f2c25fd73bd840615bb722"
+      },
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Two approvals, merging.",
+          "createdAt": "2025-10-17T08:33:20Z",
+          "updatedAt": "2025-10-17T08:33:20Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HgdPV",
+          "commit": {
+            "abbreviatedOid": "0685b4f"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "okay",
+          "createdAt": "2025-10-16T22:12:06Z",
+          "updatedAt": "2025-10-16T22:12:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HmuEt",
+          "commit": {
+            "abbreviatedOid": "0685b4f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T08:14:53Z",
+          "updatedAt": "2025-10-17T08:14:53Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 363,
       "id": "PR_kwDOJbVClc6t5jVK",
-      "title": "Require x5t for x5c in unprotected header",
+      "title": "Limit scope of x509 certificates to protected header",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/363",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "discuss",
+        "DO NOT MERGE"
+      ],
       "body": "Fixes #240 ",
       "createdAt": "2025-10-15T14:22:08Z",
-      "updatedAt": "2025-10-15T14:22:09Z",
+      "updatedAt": "2025-10-17T13:21:03Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
+      "baseRefOid": "b779301218ba48fef590273d9cb25789cf1efd97",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-240",
-      "headRefOid": "8fd9621880c19b859556fb834b833151ab2abab9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "headRefOid": "aa1e9578762d8e7ca4f4509869e48332a08c5cfd",
+      "closedAt": "2025-10-17T13:21:03Z",
+      "mergedAt": "2025-10-17T13:21:03Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "5f9e00862210c8a0cd256832ef0b6ede0e5d278b"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I got the impression that we were going to just say that x5c has to be in the protected header. I don't think we want to encourage use of the unprotected header and I just noticed that arguably it's not even allowed in SD-JWT VC https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/222#issuecomment-3412913147 so kinda weird to talk about its use. \r\n\r\nIf we want to allow for or define rules for x5t, then it should probably be more generally about if the certificates were somehow obtained out of band or outside the thing. I'm not sure that's something that we should pursue though. \r\n\r\n",
+          "createdAt": "2025-10-16T21:31:46Z",
+          "updatedAt": "2025-10-16T21:31:46Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> this diverged from my expectations, let's discuss\r\n\r\nI'm happy to limit `x5c` to be in the protected. In this case, we don't have to say anything about the risks. This is also the safer approach.",
+          "createdAt": "2025-10-17T06:56:44Z",
+          "updatedAt": "2025-10-17T06:56:44Z"
+        },
+        {
+          "author": "peppelinux",
+          "authorAssociation": "NONE",
+          "body": "as far I understand, the value proposition of having x5c in the unprotectred header is about enabling the update of credential issuer's chain, within the credential headers, when the x.509 expires, or changes some of its properties or any other requiring its update, but uses the same criptographic material\r\n\r\nthis allows a wallet instance to not ask the reissuance of the credential\r\n\r\nthis enables the use of short lived X.509 certificates in long lived credentials.\r\n\r\nlet's suppose to have a credential that has an exp datetime of 5 years, or that it simply doesn't require any expiration threshold (eg: attestation of birth), while the X.509 certificates has an expiration datetime. The lifecycle of the two could be decoupled if we enable the feature proposed in this PR\r\n\r\nfor what it worths, mdoc cbor's MSO uses the strategy proposed in this PR.\r\n\r\n",
+          "createdAt": "2025-10-17T07:00:31Z",
+          "updatedAt": "2025-10-17T07:00:31Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> as far I understand, the value proposition of having x5c in the unprotectred header is about enabling the update of credential issuer's chain, within the credential headers, when the x.509 expires, or changes some of its properties or any other requiring its update, but uses the same criptographic material\r\n> \r\n> this allows a wallet instance to not ask the reissuance of the credential\r\n> \r\n> this enables the use of short lived X.509 certificates in long lived credentials.\r\n> \r\n> let's suppose to have a credential that has an exp datetime of 5 years, or that it simply doesn't require any expiration threshold (eg: attestation of birth), while the X.509 certificates has an expiration datetime. The lifecycle of the two could be decoupled if we enable the feature proposed in this PR\r\n> \r\n> for what it worths, mdoc cbor's MSO uses the strategy proposed in this PR.\r\n\r\nWell, is it likely that the signer certificate has a shorter validity period than the credential itself? In the mdoc world, the validity period of signer certificates is max. 457 days.\r\n\r\nHowever, I updated the PR to require x5c in the protected header but I'm no longer sure what the right approach is, also given that unprotected header or JWS JSON serialization might be precluded at all.",
+          "createdAt": "2025-10-17T07:21:49Z",
+          "updatedAt": "2025-10-17T07:21:49Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> as far I understand, the value proposition of having x5c in the unprotectred header is about enabling the update of credential issuer's chain, within the credential headers, when the x.509 expires, or changes some of its properties or any other requiring its update, but uses the same criptographic material\r\n> \r\n> this allows a wallet instance to not ask the reissuance of the credential\r\n> \r\n> this enables the use of short lived X.509 certificates in long lived credentials.\r\n> \r\n> let's suppose to have a credential that has an exp datetime of 5 years, or that it simply doesn't require any expiration threshold (eg: attestation of birth), while the X.509 certificates has an expiration datetime. The lifecycle of the two could be decoupled if we enable the feature proposed in this PR\r\n> \r\n> for what it worths, mdoc cbor's MSO uses the strategy proposed in this PR.\r\n\r\nAs I read the PR ~13 hours ago, those cases would be precluded by the x5t in the protected header and requirement to check it. \r\n\r\nAs I understand things, a feature like that is effectively the attack that's described in the #240 issue behind this PR.",
+          "createdAt": "2025-10-17T11:10:24Z",
+          "updatedAt": "2025-10-17T11:10:24Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Discussed on the editors call: The proposed wording doesn't preclude using the x5c thingy in an unprotected header, but it just defines what happens if it appears in the protected header. Alternative Issuer Signature Mechanisms may be defined to cover the case where x5c appears in the unprotected header.",
+          "createdAt": "2025-10-17T13:20:04Z",
+          "updatedAt": "2025-10-17T13:20:04Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HgHRc",
+          "commit": {
+            "abbreviatedOid": "8fd9621"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "this diverged from my expectations, let's discuss ",
+          "createdAt": "2025-10-16T21:34:07Z",
+          "updatedAt": "2025-10-16T21:34:07Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hmvif",
+          "commit": {
+            "abbreviatedOid": "453692a"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:16:15Z",
+          "updatedAt": "2025-10-17T08:16:20Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\n- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.\r\n```",
+              "createdAt": "2025-10-17T08:16:15Z",
+              "updatedAt": "2025-10-17T08:16:21Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HpqMu",
+          "commit": {
+            "abbreviatedOid": "cdb6ccb"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T11:11:32Z",
+          "updatedAt": "2025-10-17T11:11:32Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HskcE",
+          "commit": {
+            "abbreviatedOid": "cdb6ccb"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:20:20Z",
+          "updatedAt": "2025-10-17T13:20:20Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 364,
       "id": "PR_kwDOJbVClc6t5z_7",
       "title": "editorial: fix formatting",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/364",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Section 6.2. bullet points rendering is broken. This PR fixes this.",
       "createdAt": "2025-10-15T14:39:35Z",
-      "updatedAt": "2025-10-15T14:39:36Z",
+      "updatedAt": "2025-10-17T11:48:48Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "ff9c9f2871f19e3d1ba95b69bc63d7b5a0e09540",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-section-6.2-formatting",
       "headRefOid": "21bf7b9c93640090e875e7baf15efb5c4f32bbc8",
+      "closedAt": "2025-10-17T11:48:48Z",
+      "mergedAt": "2025-10-17T11:48:48Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "b779301218ba48fef590273d9cb25789cf1efd97"
+      },
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "> this does seem to fix the more serious formatting, so approving, but I do wonder if there's a reason to use bullets for these definitions at all?\r\n\r\nI don't see a reason to do so.",
+          "createdAt": "2025-10-17T08:17:10Z",
+          "updatedAt": "2025-10-17T08:17:10Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "merging since two approvals and we have an issue #369 ",
+          "createdAt": "2025-10-17T11:48:37Z",
+          "updatedAt": "2025-10-17T11:48:37Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HfzCq",
+          "commit": {
+            "abbreviatedOid": "21bf7b9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "this does seem to fix the more serious formatting, so approving, but I do wonder if there's a reason to use bullets for these definitions at all? ",
+          "createdAt": "2025-10-16T21:04:39Z",
+          "updatedAt": "2025-10-16T21:04:39Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hmwsp",
+          "commit": {
+            "abbreviatedOid": "21bf7b9"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T08:17:20Z",
+          "updatedAt": "2025-10-17T08:17:20Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 365,
+      "id": "PR_kwDOJbVClc6uLwGr",
+      "title": "Clarify that an SD-JWT VC doesn't contain a KB-JWT ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/365",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and I'm still not sure about the term or these words, but it's where we've ended up)\r\n\r\n",
+      "createdAt": "2025-10-16T22:29:22Z",
+      "updatedAt": "2025-10-17T13:57:57Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "57b00fa798f26c2cf22b661c9a93586163df273c",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "289-on-containment",
+      "headRefOid": "1d3257738bca7e78180c1e7f022f9e00b6919e15",
+      "closedAt": "2025-10-17T13:57:56Z",
+      "mergedAt": "2025-10-17T13:57:56Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "bc61bf12db4bb4886da24aad0ea033180da7af98"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HmxmD",
+          "commit": {
+            "abbreviatedOid": "4541e5b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:18:14Z",
+          "updatedAt": "2025-10-17T08:18:19Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "```suggestion\r\n* Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)\r\n```",
+              "createdAt": "2025-10-17T08:18:14Z",
+              "updatedAt": "2025-10-17T08:18:19Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hmy6J",
+          "commit": {
+            "abbreviatedOid": "4541e5b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:19:36Z",
+          "updatedAt": "2025-10-17T08:19:36Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "[DVD-R vs. DVD+R](https://www.youtube.com/watch?v=e1mJv9pxm7M)",
+              "createdAt": "2025-10-17T08:19:36Z",
+              "updatedAt": "2025-10-17T08:19:36Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HqJo-",
+          "commit": {
+            "abbreviatedOid": "4541e5b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T11:33:59Z",
+          "updatedAt": "2025-10-17T11:33:59Z",
+          "comments": [
+            {
+              "originalPosition": 21,
+              "body": "> [DVD-R vs. DVD+R](https://www.youtube.com/watch?v=e1mJv9pxm7M)\r\n\r\nThis is amazing. Can this guy do a video the digital and\\or verifiable credential and\\or mobile document format wars? ",
+              "createdAt": "2025-10-17T11:33:59Z",
+              "updatedAt": "2025-10-17T11:33:59Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HslzV",
+          "commit": {
+            "abbreviatedOid": "1d32577"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:21:57Z",
+          "updatedAt": "2025-10-17T13:56:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsmaM",
+          "commit": {
+            "abbreviatedOid": "1d32577"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:22:40Z",
+          "updatedAt": "2025-10-17T13:56:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HssAN",
+          "commit": {
+            "abbreviatedOid": "1d32577"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:28:48Z",
+          "updatedAt": "2025-10-17T13:56:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtFln",
+          "commit": {
+            "abbreviatedOid": "1d32577"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:56:28Z",
+          "updatedAt": "2025-10-17T13:56:58Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 366,
+      "id": "PR_kwDOJbVClc6uPfpa",
+      "title": "add security considerations for trust in type metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/366",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #282 \r\n\r\nDo we need more normative verbs similar to other security considerations?",
+      "createdAt": "2025-10-17T07:09:50Z",
+      "updatedAt": "2025-10-17T13:56:47Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "49f65b0c9286d73ed74058bf6aa988ce7408d5fe",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-282",
+      "headRefOid": "ec852337cbdef96949cab1ecbd79091ccf618022",
+      "closedAt": "2025-10-17T13:56:47Z",
+      "mergedAt": "2025-10-17T13:56:47Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "57b00fa798f26c2cf22b661c9a93586163df273c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7Hm0w-",
+          "commit": {
+            "abbreviatedOid": "cab0309"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:21:47Z",
+          "updatedAt": "2025-10-17T08:21:47Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Issuer being the issuer of the type metadata? If so, we should clarify. And probably slightly change this to say that all consumers of the type metadata need to trust the issuer of the type metadata, less so if the issuer of the credential uses #integrity to ensure the type metadata cannot be changed over time.",
+              "createdAt": "2025-10-17T08:21:47Z",
+              "updatedAt": "2025-10-17T08:21:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hqq4B",
+          "commit": {
+            "abbreviatedOid": "cab0309"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T11:55:01Z",
+          "updatedAt": "2025-10-17T11:55:01Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "Maybe we can call the thing that makes/produces/publishes the type metadata something other than issuer? Issuer is pretty loaded term in these parts. And not even really right IMO. Creator, publisher, producer, maker, something ",
+              "createdAt": "2025-10-17T11:55:01Z",
+              "updatedAt": "2025-10-17T11:55:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HqwOx",
+          "commit": {
+            "abbreviatedOid": "cab0309"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "need to tease apart the roles of issuer of creds and the thing which does the type meta ",
+          "createdAt": "2025-10-17T11:58:15Z",
+          "updatedAt": "2025-10-17T11:58:15Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HspUE",
+          "commit": {
+            "abbreviatedOid": "cab0309"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:26:01Z",
+          "updatedAt": "2025-10-17T13:26:01Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "do you already say somewhere explicitly that issuer of the credential does not have to be the same as the issuer of the type metadata?",
+              "createdAt": "2025-10-17T13:26:01Z",
+              "updatedAt": "2025-10-17T13:26:02Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtCTh",
+          "commit": {
+            "abbreviatedOid": "cab0309"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:52:45Z",
+          "updatedAt": "2025-10-17T13:52:46Z",
+          "comments": [
+            {
+              "originalPosition": 12,
+              "body": "```suggestion\r\nType Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.\r\n\r\nEcosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable credential types and under what conditions such metadata can be relied upon.\r\n\r\nConsumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.\r\n```",
+              "createdAt": "2025-10-17T13:52:46Z",
+              "updatedAt": "2025-10-17T13:52:46Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtDMP",
+          "commit": {
+            "abbreviatedOid": "488b187"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:53:46Z",
+          "updatedAt": "2025-10-17T13:53:46Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtDgG",
+          "commit": {
+            "abbreviatedOid": "488b187"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:54:06Z",
+          "updatedAt": "2025-10-17T13:54:06Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HtDpV",
+          "commit": {
+            "abbreviatedOid": "488b187"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:54:16Z",
+          "updatedAt": "2025-10-17T13:54:16Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 367,
+      "id": "PR_kwDOJbVClc6uQIK_",
+      "title": "recommend data URIs for non-JSON types",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/367",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #225 ",
+      "createdAt": "2025-10-17T08:15:12Z",
+      "updatedAt": "2025-10-17T13:41:24Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "6f79aaa18a8f14ccd2987b96c0178f7a518be851",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-225",
+      "headRefOid": "091f02c506e2bd076bc4ee99cd573106ebce425e",
+      "closedAt": "2025-10-17T13:41:23Z",
+      "mergedAt": "2025-10-17T13:41:23Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "49f65b0c9286d73ed74058bf6aa988ce7408d5fe"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7Hm-4d",
+          "commit": {
+            "abbreviatedOid": "d531579"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "CHANGES_REQUESTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:30:47Z",
+          "updatedAt": "2025-10-17T08:32:41Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Everything binary can be encoded in JSON, the question is just how. Also I'm not sure we should make this a hard requirement. So I would propose to change this to:\r\n\r\n```suggestion\r\nBinary data SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests (in hex or base64 encoding) or HTML data do not need to be encoded as such. \r\n```",
+              "createdAt": "2025-10-17T08:30:47Z",
+              "updatedAt": "2025-10-17T08:32:41Z"
+            },
+            {
+              "originalPosition": 30,
+              "body": "```suggestion\r\nThe use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly escape, sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.\r\n```",
+              "createdAt": "2025-10-17T08:32:30Z",
+              "updatedAt": "2025-10-17T08:32:41Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HnFBd",
+          "commit": {
+            "abbreviatedOid": "d531579"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:36:57Z",
+          "updatedAt": "2025-10-17T08:36:58Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Perhaps we recommend this for known media types?",
+              "createdAt": "2025-10-17T08:36:58Z",
+              "updatedAt": "2025-10-17T08:37:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HnP0g",
+          "commit": {
+            "abbreviatedOid": "d531579"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:49:08Z",
+          "updatedAt": "2025-10-17T08:49:08Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Also, HTML is not binary data.",
+              "createdAt": "2025-10-17T08:49:08Z",
+              "updatedAt": "2025-10-17T08:49:08Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HnVaD",
+          "commit": {
+            "abbreviatedOid": "d531579"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:55:10Z",
+          "updatedAt": "2025-10-17T08:55:10Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "All known media types?",
+              "createdAt": "2025-10-17T08:55:10Z",
+              "updatedAt": "2025-10-17T08:55:10Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HnZ3k",
+          "commit": {
+            "abbreviatedOid": "d531579"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T08:59:59Z",
+          "updatedAt": "2025-10-17T09:00:00Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Is there a reason not to recommend this for known media types? Wouldn't it help with parsing, especially if the media type is included? You could even recommend this for unknown media types, e.g., `data:;base64,SGVsbG8sIFdvcmxkIQ==` if you want to allow parsers to get some guidance.",
+              "createdAt": "2025-10-17T08:59:59Z",
+              "updatedAt": "2025-10-17T09:00:09Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hnbu0",
+          "commit": {
+            "abbreviatedOid": "424ef4c"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T09:02:14Z",
+          "updatedAt": "2025-10-17T09:02:14Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "```suggestion\r\nBinary data SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests (in hex or base64 encoding) do not need to be encoded as such. \r\n```",
+              "createdAt": "2025-10-17T09:02:14Z",
+              "updatedAt": "2025-10-17T09:02:15Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HncVn",
+          "commit": {
+            "abbreviatedOid": "2bac105"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T09:03:01Z",
+          "updatedAt": "2025-10-17T09:03:01Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "Is there value to recommend hash digests or b64 content as a data URI like this? @danielfett @bc-pi \r\n\r\n`data:;base64,SGVsbG8sIFdvcmxkIQ==`\r\n",
+              "createdAt": "2025-10-17T09:03:01Z",
+              "updatedAt": "2025-10-17T09:03:01Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HnfEW",
+          "commit": {
+            "abbreviatedOid": "d531579"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T09:06:07Z",
+          "updatedAt": "2025-10-17T09:06:07Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "All known media types includes, for example, plain text. I don't think we need data URIs for that.\r\n\r\nAnd HTML was not a good example, but JWT would be an example of something that encodes binary data in text already.",
+              "createdAt": "2025-10-17T09:06:07Z",
+              "updatedAt": "2025-10-17T09:06:07Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HoESO",
+          "commit": {
+            "abbreviatedOid": "2bac105"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T09:50:22Z",
+          "updatedAt": "2025-10-17T09:50:22Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "My assumption is that the value of the data URIs, in most cases, will be that receivers can distinguish different formats for a single field (e.g., portrait as PNG or JPG) and that there is a defined method for encoding those binary formats in the JSON, preventing SD-JWT VC implementers from coming up with their own ones. Not sure if the latter is valueable without the former.",
+              "createdAt": "2025-10-17T09:50:22Z",
+              "updatedAt": "2025-10-17T09:53:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hswrd",
+          "commit": {
+            "abbreviatedOid": "2bac105"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:33:43Z",
+          "updatedAt": "2025-10-17T13:33:43Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "This reads that it is only valuable if there is binary data that can have different media types but uses the same claim.",
+              "createdAt": "2025-10-17T13:33:43Z",
+              "updatedAt": "2025-10-17T13:33:43Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hsxps",
+          "commit": {
+            "abbreviatedOid": "1bdd02f"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:34:41Z",
+          "updatedAt": "2025-10-17T13:34:41Z",
+          "comments": [
+            {
+              "originalPosition": 4,
+              "body": "```suggestion\r\nBinary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such. \r\n```",
+              "createdAt": "2025-10-17T13:34:41Z",
+              "updatedAt": "2025-10-17T13:38:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hs2Eg",
+          "commit": {
+            "abbreviatedOid": "8c59e3b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:39:05Z",
+          "updatedAt": "2025-10-17T13:39:05Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hs3Wh",
+          "commit": {
+            "abbreviatedOid": "2f0ac58"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:40:29Z",
+          "updatedAt": "2025-10-17T13:40:29Z",
+          "comments": [
+            {
+              "originalPosition": 16,
+              "body": "```suggestion\r\n  \"portrait\": \"data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAUA\r\n   AAAFCAYAAACNbyblAAAAHElEQVQI12P4\r\n   //8/w38GIAXDIBKE0DHxgljNBAAO9TXL0Y4OHwAAAABJRU5ErkJggg==\"\r\n```",
+              "createdAt": "2025-10-17T13:40:29Z",
+              "updatedAt": "2025-10-17T13:40:29Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hs4GJ",
+          "commit": {
+            "abbreviatedOid": "1bdd02f"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:41:12Z",
+          "updatedAt": "2025-10-17T13:41:12Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 368,
+      "id": "PR_kwDOJbVClc6uRE5r",
+      "title": "Improve example around array elements and paths",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/368",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Attempt to fix #314 ",
+      "createdAt": "2025-10-17T09:40:40Z",
+      "updatedAt": "2025-10-17T13:33:07Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c72aa52e5d5aed8ab9f2c25fd73bd840615bb722",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/declaration-of-arrays",
+      "headRefOid": "01270fc0a0abcfdf3c7021b2dc792ba3736c9d10",
+      "closedAt": "2025-10-17T13:33:07Z",
+      "mergedAt": "2025-10-17T13:33:07Z",
+      "mergedBy": "danielfett",
+      "mergeCommit": {
+        "oid": "6f79aaa18a8f14ccd2987b96c0178f7a518be851"
+      },
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "We discussed on the editors call to go ahead with the current PR.",
+          "createdAt": "2025-10-17T13:33:03Z",
+          "updatedAt": "2025-10-17T13:33:03Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HqX6y",
+          "commit": {
+            "abbreviatedOid": "0a84dd3"
+          },
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "Hi  @danielfett \r\n\r\nThe PR makes the example look \"complete\" and explains in detail the definition of the `degrees` and its related (sub)claims. Definetly, a very informative example.\r\n\r\nMy only cosideration is that, somebody could argue that this is just \"non-normative\"  example and that the spec should have also a normative description of this.\r\n\r\n(I have a really hard-time to figure out how such a normative text could look, though :smile: )",
+          "createdAt": "2025-10-17T11:43:18Z",
+          "updatedAt": "2025-10-17T11:43:18Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HshAc",
+          "commit": {
+            "abbreviatedOid": "0a84dd3"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:16:19Z",
+          "updatedAt": "2025-10-17T13:16:19Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsqZ4",
+          "commit": {
+            "abbreviatedOid": "0a84dd3"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:27:12Z",
+          "updatedAt": "2025-10-17T13:27:13Z",
+          "comments": [
+            {
+              "originalPosition": 153,
+              "body": "```suggestion\r\n1. The `degrees` array itself is marked as `sd: never`, meaning the element `degrees` cannot be selectively disclosed and will always exist in the disclosed SD-JWT. Changing this to `sd: always` would mean that the `degrees` array itself is selectively disclosable.\r\n```",
+              "createdAt": "2025-10-17T13:27:12Z",
+              "updatedAt": "2025-10-17T13:27:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HssTf",
+          "commit": {
+            "abbreviatedOid": "e3f2204"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T13:29:04Z",
+          "updatedAt": "2025-10-17T13:29:04Z",
+          "comments": [
+            {
+              "originalPosition": 154,
+              "body": "```suggestion\n2. Each item in the `degrees` array (denoted by `null` in the path) is marked as `sd: always`, meaning each degree object will be selectively disclosed as a whole.\n```",
+              "createdAt": "2025-10-17T13:29:04Z",
+              "updatedAt": "2025-10-17T13:29:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsvS3",
+          "commit": {
+            "abbreviatedOid": "01270fc"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:32:26Z",
+          "updatedAt": "2025-10-17T13:32:26Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HsvlA",
+          "commit": {
+            "abbreviatedOid": "e3f2204"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T13:32:41Z",
+          "updatedAt": "2025-10-17T13:32:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 370,
+      "id": "PR_kwDOJbVClc6uUjn1",
+      "title": "Improve wording around JWS JSON Serialization",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/370",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #222 ",
+      "createdAt": "2025-10-17T14:12:49Z",
+      "updatedAt": "2025-10-17T16:50:40Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "b41c6722ec70aa6af34021c7f764959a34d88694",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/allow-json-serialization",
+      "headRefOid": "30e718a40584658397e62d7407e85f2119907ef4",
+      "closedAt": "2025-10-17T16:50:40Z",
+      "mergedAt": "2025-10-17T16:50:40Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "296c1acea26e171ad8a75d7658c1eb0a99046141"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HtazD",
+          "commit": {
+            "abbreviatedOid": "0647966"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T14:14:11Z",
+          "updatedAt": "2025-10-17T14:14:11Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HuwBl",
+          "commit": {
+            "abbreviatedOid": "0647966"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T15:50:30Z",
+          "updatedAt": "2025-10-17T15:50:30Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hvf7D",
+          "commit": {
+            "abbreviatedOid": "0647966"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T16:44:48Z",
+          "updatedAt": "2025-10-17T16:44:49Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "Not sure if we need the statement about presentations if we discuss the presentation format again in the other data format section.\r\n```suggestion\r\nJWS JSON Serialization is OPTIONAL.\r\n```",
+              "createdAt": "2025-10-17T16:44:48Z",
+              "updatedAt": "2025-10-17T16:44:49Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hvijv",
+          "commit": {
+            "abbreviatedOid": "30e718a"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T16:49:10Z",
+          "updatedAt": "2025-10-17T16:49:10Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Hvi-r",
+          "commit": {
+            "abbreviatedOid": "30e718a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2025-10-17T16:49:52Z",
+          "updatedAt": "2025-10-17T16:49:52Z",
+          "comments": [
+            {
+              "originalPosition": 10,
+              "body": "that text was kinda carried (somewhat modified) over from prior versions but is probably fine to be removed ",
+              "createdAt": "2025-10-17T16:49:52Z",
+              "updatedAt": "2025-10-17T16:49:53Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 371,
+      "id": "PR_kwDOJbVClc6uU6yg",
+      "title": "Change PID example to make clear that it is not normative in any way",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/371",
+      "state": "MERGED",
+      "author": "danielfett",
+      "authorAssociation": "MEMBER",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-10-17T14:45:45Z",
+      "updatedAt": "2025-10-17T16:53:45Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "b41c6722ec70aa6af34021c7f764959a34d88694",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "danielfett/kingdom-of-\u00e6ndgard",
+      "headRefOid": "53d877a5419fc9f878f94099307a1bfa297ea16a",
+      "closedAt": "2025-10-17T16:53:45Z",
+      "mergedAt": "2025-10-17T16:53:45Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "ef14c511a90f6b685562c5a6999d51bd0dca9b57"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/danielfett/kingdom-of-%C3%A6ndgard/draft-ietf-oauth-sd-jwt-vc.html#name-example-1-person-identifica to see the output ",
+          "createdAt": "2025-10-17T15:44:10Z",
+          "updatedAt": "2025-10-17T15:44:10Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7HuvH4",
+          "commit": {
+            "abbreviatedOid": "53d877a"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-10-17T15:49:21Z",
+          "updatedAt": "2025-10-17T15:49:21Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7HvlyS",
+          "commit": {
+            "abbreviatedOid": "53d877a"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "at some point it would be nice to update the spec to match what is in the rulebook but approving this pr since it is an improvement.",
+          "createdAt": "2025-10-17T16:53:37Z",
+          "updatedAt": "2025-10-17T16:53:37Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 372,
+      "id": "PR_kwDOJbVClc6uWa75",
+      "title": "Be more consistent with style for lists of claims/parameters/properties",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/372",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "see the preview https://drafts.oauth.net/oauth-sd-jwt-vc/no-sub-bullets/draft-ietf-oauth-sd-jwt-vc.html ",
+      "createdAt": "2025-10-17T17:06:51Z",
+      "updatedAt": "2025-10-17T17:10:21Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ef14c511a90f6b685562c5a6999d51bd0dca9b57",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "no-sub-bullets",
+      "headRefOid": "6ff0db6e4e9d55d5d0ba1cb462385eab5511e13d",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
