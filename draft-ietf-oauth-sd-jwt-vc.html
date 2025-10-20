@@ -12,24 +12,23 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
-<meta content="xml2rfc 3.30.2" name="generator">
+<meta content="xml2rfc 3.31.0" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.30.2
-    Python 3.12.11
+  xml2rfc 3.31.0
+    Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
     intervaltree 3.1.0
     Jinja2 3.1.6
     lxml 5.3.1
-    platformdirs 4.4.0
+    platformdirs 4.5.0
     pycountry 24.6.1
     PyYAML 6.0.2
     requests 2.32.5
-    setuptools 80.9.0
     wcwidth 0.2.14
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
@@ -1053,7 +1052,7 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 20 April 2026</td>
+<td class="center">Expires 23 April 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1066,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-10-17" class="published">17 October 2025</time>
+<time datetime="2025-10-20" class="published">20 October 2025</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-04-20">20 April 2026</time></dd>
+<dd class="expires"><time datetime="2026-04-23">23 April 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1125,7 +1124,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 23 April 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1654,81 +1653,45 @@ registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]<
 <p id="section-3.2.2.2-2">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:<a href="#section-3.2.2.2-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-3.1">
-                <p id="section-3.2.2.2-3.1.1"><code>iss</code><a href="#section-3.2.2.2-3.1.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.1.2.1">OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Credential
-when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an <code>x5c</code> header).<a href="#section-3.2.2.2-3.1.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+                <code>iss</code>: OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Credential
+when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an <code>x5c</code> header).<a href="#section-3.2.2.2-3.1" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.2">
-                <p id="section-3.2.2.2-3.2.1"><code>nbf</code><a href="#section-3.2.2.2-3.2.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.2.2.1">OPTIONAL. The time before which the Verifiable Credential MUST NOT be
-accepted before validating. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.2.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+                <code>nbf</code>: OPTIONAL. The time before which the Verifiable Credential MUST NOT be
+accepted before validating. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.2" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.3">
-                <p id="section-3.2.2.2-3.3.1"><code>exp</code><a href="#section-3.2.2.2-3.3.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.3.2.1">OPTIONAL. The expiry time of the Verifiable Credential after which the
+                <code>exp</code>: OPTIONAL. The expiry time of the Verifiable Credential after which the
 Verifiable Credential is no longer valid. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more
-information.<a href="#section-3.2.2.2-3.3.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+information.<a href="#section-3.2.2.2-3.3" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.4">
-                <p id="section-3.2.2.2-3.4.1"><code>cnf</code><a href="#section-3.2.2.2-3.4.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.4.2.1">OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.<a href="#section-3.2.2.2-3.4.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+                <code>cnf</code>: OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.<a href="#section-3.2.2.2-3.4" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.5">
-                <p id="section-3.2.2.2-3.5.1"><code>vct</code><a href="#section-3.2.2.2-3.5.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.5.2.1">REQUIRED. The type of the Verifiable Credential, e.g.,
-<code>https://credentials.example.com/identity_credential</code>, as defined in <a href="#type-claim" class="auto internal xref">Section 3.2.2.1</a>.<a href="#section-3.2.2.2-3.5.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+                <code>vct</code>: REQUIRED. The type of the Verifiable Credential, e.g.,
+<code>https://credentials.example.com/identity_credential</code>, as defined in <a href="#type-claim" class="auto internal xref">Section 3.2.2.1</a>.<a href="#section-3.2.2.2-3.5" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.6">
-                <p id="section-3.2.2.2-3.6.1"><code>vct#integrity</code><a href="#section-3.2.2.2-3.6.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.6.2.1">OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in <a href="#document-integrity" class="auto internal xref">Section 7</a>.<a href="#section-3.2.2.2-3.6.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+                <code>vct#integrity</code>: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in <a href="#document-integrity" class="auto internal xref">Section 7</a>.<a href="#section-3.2.2.2-3.6" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.7">
-                <p id="section-3.2.2.2-3.7.1"><code>status</code><a href="#section-3.2.2.2-3.7.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-3.7.2.1">OPTIONAL. The information on how to read the status of the Verifiable
+                <code>status</code>: OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See <span>[<a href="#I-D.ietf-oauth-status-list" class="cite xref">I-D.ietf-oauth-status-list</a>]</span>
-for more information. When the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token MUST be in JWT format.<a href="#section-3.2.2.2-3.7.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+for more information. When the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token MUST be in JWT format.<a href="#section-3.2.2.2-3.7" class="pilcrow">¶</a>
 </li>
             </ul>
 <p id="section-3.2.2.2-4">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:<a href="#section-3.2.2.2-4" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-5.1">
-                <p id="section-3.2.2.2-5.1.1"><code>sub</code><a href="#section-3.2.2.2-5.1.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-5.1.2.1">OPTIONAL. The identifier of the Subject of the Verifiable Credential.
+                <code>sub</code>: OPTIONAL. The identifier of the Subject of the Verifiable Credential.
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
-exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2.2.2-5.1.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2.2.2-5.1" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-5.2">
-                <p id="section-3.2.2.2-5.2.1"><code>iat</code><a href="#section-3.2.2.2-5.2.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-3.2.2.2-5.2.2.1">OPTIONAL. The time of issuance of the Verifiable Credential. See
-<span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-5.2.2.1" class="pilcrow">¶</a>
-</li>
-                </ul>
+                <code>iat</code>: OPTIONAL. The time of issuance of the Verifiable Credential. See
+  <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-5.2" class="pilcrow">¶</a>
 </li>
             </ul>
 </section>
@@ -1951,9 +1914,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n4twq
-lOJlcVn_J1VWWS8IbOQlTSmMyC3vDlBlkqVp4LbtqPaOUrFwhd9mu2Ftcs0rusVzqe9r
-zi_f9eIMMMkLQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZwWBv
+gTi72kihkH_wz8mLri1ONZjpHb6JymetyDshI5ewAGBlHbfz-gYJfqmuM6MKllDurpv-
+CyJ4v4s0R5KEA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2073,17 +2036,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.n4twq
-lOJlcVn_J1VWWS8IbOQlTSmMyC3vDlBlkqVp4LbtqPaOUrFwhd9mu2Ftcs0rusVzqe9r
-zi_f9eIMMMkLQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZwWBv
+gTi72kihkH_wz8mLri1ONZjpHb6JymetyDshI5ewAGBlHbfz-gYJfqmuM6MKllDurpv-
+CyJ4v4s0R5KEA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjAwNT
-ksICJzZF9oYXNoIjogIkFoamtrYVYxNmxGQjZ1M2duYjdlOUZCa1ZtaFdsMlg2dEJ5QU
-RvUE1JWW8ifQ.hbQcxv3mvi4LawfWQk_M80A4A8_nmq0LqArF7W71r0Ck4vEIcxUHcru
-70o5ouojHn1G2kxKSXvHotg9ZW2nHgw
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA5NTgzMj
+MsICJzZF9oYXNoIjogInNVWENDXy1ZREowa0ZPZEZaWFBUeUVPYzEyNWdnWmt5NGhwVm
+s4a05YVmcifQ.mHG4uA214uMmJin8SA7e1qLlUorIx9I9YQtg3IFUxzjtgw1r7_t7Ltu
+6Wlfzo3GkPokMfSvI1McY3FBx1PqAhw
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2128,8 +2091,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.vq24wmVr2EuIAsHozN68hd_8EBZ5_uAs2r7wW_vY-aQXDB
-526dXxcYhwnWAJOX9Sb__iLKGVE4osCvYHeKtKBg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.Xo_KaNC_AbrRMZFD26553ZuyFaSrj082jy8NRla5NSf0Cu
+GVWTS6lTChmddT-EMYEOKmcCjVeLIyj2dZ8Bmaaw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2215,30 +2178,18 @@ Metadata configuration using the <code>application/json</code> content type.<a h
 parameters:<a href="#section-5.2-3" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-5.2-4.1">
-            <p id="section-5.2-4.1.1"><code>issuer</code><a href="#section-5.2-4.1.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-5.2-4.1.2.1">REQUIRED. The Issuer identifier, which MUST be identical to the <code>iss</code>
-value in the JWT.<a href="#section-5.2-4.1.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+            <code>issuer</code>: REQUIRED. The Issuer identifier, which MUST be identical to the <code>iss</code>
+value in the JWT.<a href="#section-5.2-4.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-5.2-4.2">
-            <p id="section-5.2-4.2.1"><code>jwks_uri</code><a href="#section-5.2-4.2.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-5.2-4.2.2.1">OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
+            <code>jwks_uri</code>: OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
 <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> document which contains the Issuer's public keys. The value of
-this field MUST point to a valid JWK Set document.<a href="#section-5.2-4.2.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+this field MUST point to a valid JWK Set document.<a href="#section-5.2-4.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-5.2-4.3">
-            <p id="section-5.2-4.3.1"><code>jwks</code><a href="#section-5.2-4.3.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-5.2-4.3.2.1">OPTIONAL. Issuer's JSON Web Key Set <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> document value, which
+            <code>jwks</code>: OPTIONAL. Issuer's JSON Web Key Set <span>[<a href="#RFC7517" class="cite xref">RFC7517</a>]</span> document value, which
 contains the Issuer's public keys. The value of this field MUST be a JSON
-object containing a valid JWK Set.<a href="#section-5.2-4.3.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+object containing a valid JWK Set.<a href="#section-5.2-4.3" class="pilcrow">¶</a>
 </li>
         </ul>
 <p id="section-5.2-5">JWT VC Issuer Metadata MUST include either <code>jwks_uri</code> or <code>jwks</code> in their JWT VC
@@ -2368,35 +2319,19 @@ to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
 defined:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-6.2-2.1">
-            <p id="section-6.2-2.1.1"><code>vct</code><a href="#section-6.2-2.1.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.1.2.1">REQUIRED. The verifiable credential type described by this type metadata document.<a href="#section-6.2-2.1.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+            <code>vct</code>: REQUIRED. The verifiable credential type described by this type metadata document.<a href="#section-6.2-2.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-6.2-2.2">
-            <p id="section-6.2-2.2.1"><code>name</code><a href="#section-6.2-2.2.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.2.2.1">OPTIONAL. A human-readable name for the type, intended for developers reading
-the JSON document.<a href="#section-6.2-2.2.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+            <code>name</code>: OPTIONAL. A human-readable name for the type, intended for developers reading
+the JSON document.<a href="#section-6.2-2.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-6.2-2.3">
-            <p id="section-6.2-2.3.1"><code>description</code><a href="#section-6.2-2.3.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.3.2.1">OPTIONAL. A human-readable description for the type, intended for
-developers reading the JSON document.<a href="#section-6.2-2.3.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+            <code>description</code>: OPTIONAL. A human-readable description for the type, intended for
+developers reading the JSON document.<a href="#section-6.2-2.3" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-6.2-2.4">
-            <p id="section-6.2-2.4.1"><code>extends</code><a href="#section-6.2-2.4.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-6.2-2.4.2.1">OPTIONAL. A URI of another type that this type extends, as described in
-<a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>.<a href="#section-6.2-2.4.2.1" class="pilcrow">¶</a>
-</li>
-            </ul>
+            <code>extends</code>: OPTIONAL. A URI of another type that this type extends, as described in
+<a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>.<a href="#section-6.2-2.4" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-6.2-2.5">
             <code>display</code>: An array of objects containing display information for the type, as described
@@ -3521,8 +3456,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.TAGFhchsqKMNQIAY-t3Uqt4uXjGeYIwIL8R0yMr8Ws3
-ZSrOUikcQwh1AWYggHb3Zgb-X14WjiVVyg9fQfKIILQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.tteQlyryazS6mSh_Vfg-WTITkQe3XK9Om46_HVa3uK1
+u9S8PO1v94lmMPfbXvtVjxW6p6Ak8jmz80E_SVWOWvw~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -4007,8 +3942,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.TAGFhchsqKMNQIAY-t3Uqt4uXjGeYIwIL8R0yMr8Ws3
-ZSrOUikcQwh1AWYggHb3Zgb-X14WjiVVyg9fQfKIILQ~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.tteQlyryazS6mSh_Vfg-WTITkQe3XK9Om46_HVa3uK1
+u9S8PO1v94lmMPfbXvtVjxW6p6Ak8jmz80E_SVWOWvw~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -4019,9 +3954,9 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MjAwNTksICJzZF9oYXNoIjogIlNpNmROOC0xM
-zR5bUNvWWJrZjU3aFpMeHhIT0QxYmUwNFNoU1lfUk8yOEUifQ.EyoVTCCSHxMuyZm-wj
-MCf1CkWpHXxnXZV5il7SgDe_qR9-m-gIBA404lUKcqFRGUoFQT2X72k6VzZdpmvkgJCw
+3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA5NTgzMjMsICJzZF9oYXNoIjogIlpQS1p5c3pEN
+WZvUDRnTG12SVZWZWREbDdUczBWZ3h4emVXejFVTzBOVEEifQ.7-23iCon8pA6xQKpuN
+PAh1akw2Du--BJbsz8UDQges2YjA7x4VWwEbMFeiLelZcgF95fcLL7pa3uX8Jq2CrYlA
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
 </div>
@@ -4030,8 +3965,8 @@ MCf1CkWpHXxnXZV5il7SgDe_qR9-m-gIBA404lUKcqFRGUoFQT2X72k6VzZdpmvkgJCw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1760720059,
-  "sd_hash": "Si6dN8-134ymCoYbkf57hZLxxHOD1be04ShSY_RO28E"
+  "iat": 1760958323,
+  "sd_hash": "ZPKZyszD5foP4gLmvIVVedDl7Ts0VgxxzeWz1UO0NTA"
 }
 
 </pre><a href="#appendix-B.1-69" class="pilcrow">¶</a>
@@ -4359,7 +4294,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 </li>
         <li class="compact" id="appendix-D-2.17">Updated/expanded example for Type Metadata<a href="#appendix-D-2.17" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-D-2.18">Update PID example to make clear that it is not normative<a href="#appendix-D-2.18" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-D-2.18">Be more consistent with style for lists of claims/parameters/properties<a href="#appendix-D-2.18" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.19">Update PID example to make clear that it is not normative<a href="#appendix-D-2.19" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>
