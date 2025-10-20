@@ -113,7 +113,7 @@ SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
 
-Note: This specification does not utilize the W3C's Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
+Note: This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
 
 ## Requirements Notation and Conventions
 
@@ -145,9 +145,10 @@ an SD-JWT VC complying to this specification.
 
 # Scope
 
-* This specification defines
-  - Data model and media types for Verifiable Credentials based on SD-JWTs.
-  - Validation and processing rules for Verifiers and Holders.
+This specification defines
+
+- a data model and media types for Verifiable Credentials based on SD-JWTs, and
+- validation and processing rules for Verifiers and Holders.
 
 # Verifiable Credentials based on SD-JWT
 
@@ -156,14 +157,14 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 ## Media Type
 
 SD-JWT VCs compliant with this specification MUST use the media type
-`application/dc+sd-jwt` as defined in (#media-type).
+`application/dc+sd-jwt`.
 
 The base subtype name `dc` is meant to stand for "digital credential", which is
 a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
+An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or
 Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt], where support for the
 JWS JSON Serialization is OPTIONAL.
 
@@ -177,8 +178,8 @@ SD-JWT VC.
 
 The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
 use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
-JSON and follows the rules as defined in this specification. It further
-indicates that the SD-JWT is a SD-JWT component of a SD-JWT VC.
+JSON and follows the rules defined in this specification. It further
+indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 
 The following is a non-normative example of a decoded SD-JWT header:
 
@@ -198,8 +199,8 @@ SD-JWT VCs.
 
 #### Verifiable Credential Type - `vct` Claim {#type-claim}
 
-This specification defines the new JWT claim `vct` (for verifiable credential type). The `vct` value MUST be a
-case-sensitive string value serving as an identifier
+This specification defines the new JWT claim `vct` (for verifiable credential type). Its value MUST be a
+case-sensitive string serving as an identifier
 for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
 
@@ -211,7 +212,7 @@ the semantics of the respective claims and associated rules (e.g., policies for 
 validating credentials beyond what is defined in this specification).
 
 The `vct` value also effectively identifies the version of the credential type definition,
-as it ties a particular instance of a credential to a specific structure, set of semantics and rules.
+as it ties a particular instance of a credential to a specific structure, set of semantics, and rules.
 When evolving a credential type without updating the version, changes to the structure or meaning of the associated claims
 need to be made in a way that preserves compatibility with existing implementations.
 
@@ -229,6 +230,7 @@ a type:
   "vct": "https://credentials.example.com/identity_credential"
 }
 ```
+
 For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
 
 #### Registered JWT Claims {#claims}
@@ -627,6 +629,9 @@ The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 (#circular-extends) apply in order to avoid problems with circular dependencies.
 
+Processing details when extending type metadata are described in
+(#display-metadata-extends) and (#claim-metadata-extends).
+
 # Document Integrity {#document-integrity}
 
 The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
@@ -772,6 +777,17 @@ template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.
 
+Furthermore, consuming applications MUST ensure that references to external
+resources (images, etc.) from within the SVG cannot be used to track users or
+the usage of credentials.
+
+## Extending Display Metadata {#display-metadata-extends}
+
+When an SD-JWT VC type extends another type as described in
+(#extending-type-metadata), the `display` metadata remains valid for the
+inheriting type unless that type defines its own `display` property, in which
+case the original display metadata is ignored.
+
 # Claim Metadata {#claim-metadata}
 
 The `claims` property is an array of objects containing information about
@@ -802,6 +818,8 @@ or a set of claims. A string indicates that the respective key is to be
 selected, a `null` value indicates that all elements of the currently selected
 array(s) are to be selected, and a non-negative integer indicates that the
 respective index in an array is to be selected.
+
+### Example
 
 The following shows a non-normative, reduced example of a credential:
 
@@ -841,7 +859,9 @@ claims in the credential above:
 The example in (#ExampleTypeMetadata) shows how the `path` can be used to
 address arrays and their elements.
 
-In detail, the array is processed from left to right as follows:
+### Processing of `path`
+
+In detail, the array components of `path` are processed from left to right as follows:
 
  1. Select the root element of the credential, i.e., the top-level JSON object.
  2. Process the `path` components from left to right:
@@ -913,7 +933,14 @@ either `always` or `never` to avoid ambiguity.
 
 ## Extending Claim Metadata {#claim-metadata-extends}
 
-The `extends` property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same `path` as in the extended type, the child type's object will override the corresponding object from the extended type.
+When an SD-JWT VC type extends another type as described in
+(#extending-type-metadata), all claim metadata from the extended type MUST be
+respected and are inherited by the child type. The child type can extend the
+claim metadata by adding new claims or properties. If the child type defines
+claim metadata with the same `path` as in the extended type, the child type's
+object will override the corresponding object from the extended type.
+
+### Limitations for `sd` and `mandatory`
 
 An extending type can specify an `sd` property for a claim that is marked as
 `allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.
@@ -923,6 +950,8 @@ type to a different value.
 Similarly, an extending type can set the `mandatory` property of a claim that is
 optional in the extended type to `true`, but it MUST NOT change a claim that is
 `mandatory` in the extended type to `false`.
+
+### Example for Extending Type Metadata
 
 Suppose we have a base type metadata document:
 
@@ -1631,6 +1660,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Updated/expanded example for Type Metadata
 * Be more consistent with style for lists of claims/parameters/properties
 * Update PID example to make clear that it is not normative
+* Clarification on processing of display metadata
 
 -11
 
