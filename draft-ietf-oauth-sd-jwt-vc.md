@@ -177,7 +177,7 @@ This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.
 
 The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
-be `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
+use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules defined in this specification. It further
 indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 
