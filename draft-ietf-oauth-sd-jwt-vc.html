@@ -1277,6 +1277,9 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 </li>
                 </ul>
 </li>
+              <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.8.2.2">
+                <p id="section-toc.1-1.8.2.2.1"><a href="#section-8.2" class="auto internal xref">8.2</a>.  <a href="#name-extending-display-metadata" class="internal xref">Extending Display Metadata</a></p>
+</li>
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9">
@@ -1284,6 +1287,14 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1">
                 <p id="section-toc.1-1.9.2.1.1"><a href="#section-9.1" class="auto internal xref">9.1</a>.  <a href="#name-claim-path" class="internal xref">Claim Path</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.1">
+                    <p id="section-toc.1-1.9.2.1.2.1.1"><a href="#section-9.1.1" class="auto internal xref">9.1.1</a>.  <a href="#name-example-2" class="internal xref">Example</a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.1.2.2">
+                    <p id="section-toc.1-1.9.2.1.2.2.1"><a href="#section-9.1.2" class="auto internal xref">9.1.2</a>.  <a href="#name-processing-of-path" class="internal xref">Processing of <code>path</code></a></p>
+</li>
+                </ul>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.2">
                 <p id="section-toc.1-1.9.2.2.1"><a href="#section-9.2" class="auto internal xref">9.2</a>.  <a href="#name-claim-display-metadata" class="internal xref">Claim Display Metadata</a></p>
@@ -1296,6 +1307,14 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5">
                 <p id="section-toc.1-1.9.2.5.1"><a href="#section-9.5" class="auto internal xref">9.5</a>.  <a href="#name-extending-claim-metadata" class="internal xref">Extending Claim Metadata</a></p>
+<ul class="compact toc ulBare ulEmpty">
+<li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5.2.1">
+                    <p id="section-toc.1-1.9.2.5.2.1.1"><a href="#section-9.5.1" class="auto internal xref">9.5.1</a>.  <a href="#name-limitations-for-sd-and-mand" class="internal xref">Limitations for <code>sd</code> and <code>mandatory</code></a></p>
+</li>
+                  <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.9.2.5.2.2">
+                    <p id="section-toc.1-1.9.2.5.2.2.1"><a href="#section-9.5.2" class="auto internal xref">9.5.2</a>.  <a href="#name-example-for-extending-type-" class="internal xref">Example for Extending Type Metadata</a></p>
+</li>
+                </ul>
 </li>
             </ul>
 </li>
@@ -1485,7 +1504,7 @@ selective disclosure in SD-JWT VCs is OPTIONAL.<a href="#section-1.2-4" class="p
 <p id="section-1.2-5">SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>, as well as public and
 private claims.<a href="#section-1.2-5" class="pilcrow">¶</a></p>
-<p id="section-1.2-6">Note: This specification does not utilize the W3C's Verifiable Credentials Data Model v1.0, v1.1, or v2.0.<a href="#section-1.2-6" class="pilcrow">¶</a></p>
+<p id="section-1.2-6">Note: This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.<a href="#section-1.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-notation-and-conventions">
@@ -1537,15 +1556,11 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.8" class="p
       <h2 id="name-scope">
 <a href="#section-2" class="section-number selfRef">2. </a><a href="#name-scope" class="section-name selfRef">Scope</a>
       </h2>
+<p id="section-2-1">This specification defines<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-2-1.1">
-          <p id="section-2-1.1.1">This specification defines<a href="#section-2-1.1.1" class="pilcrow">¶</a></p>
-<ul class="compact">
-<li class="compact" id="section-2-1.1.2.1">Data model and media types for Verifiable Credentials based on SD-JWTs.<a href="#section-2-1.1.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-2-2.1">a data model and media types for Verifiable Credentials based on SD-JWTs, and<a href="#section-2-2.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="section-2-1.1.2.2">Validation and processing rules for Verifiers and Holders.<a href="#section-2-1.1.2.2" class="pilcrow">¶</a>
-</li>
-          </ul>
+        <li class="compact" id="section-2-2.2">validation and processing rules for Verifiers and Holders.<a href="#section-2-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
@@ -1562,7 +1577,7 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.8" class="p
 <a href="#section-3.1" class="section-number selfRef">3.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
         </h3>
 <p id="section-3.1-1">SD-JWT VCs compliant with this specification MUST use the media type
-<code>application/dc+sd-jwt</code> as defined in <a href="#media-type" class="auto internal xref">Section 3.1</a>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
+<code>application/dc+sd-jwt</code>.<a href="#section-3.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.1-2">The base subtype name <code>dc</code> is meant to stand for "digital credential", which is
 a term that is emerging as a conceptual synonym for "verifiable credential".<a href="#section-3.1-2" class="pilcrow">¶</a></p>
 </section>
@@ -1572,7 +1587,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
         <h3 id="name-data-format">
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-data-format" class="section-name selfRef">Data Format</a>
         </h3>
-<p id="section-3.2-1">SD-JWT VCs MUST be encoded using the SD-JWT format defined in Section 4 or
+<p id="section-3.2-1">An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or
 Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>, where support for the
 JWS JSON Serialization is OPTIONAL.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
@@ -1586,8 +1601,8 @@ claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a hre
 SD-JWT VC.<a href="#section-3.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-2">The <code>typ</code> header parameter of the SD-JWT MUST be present. The <code>typ</code> value MUST
 use <code>dc+sd-jwt</code>. This indicates that the payload of the SD-JWT contains plain
-JSON and follows the rules as defined in this specification. It further
-indicates that the SD-JWT is a SD-JWT component of a SD-JWT VC.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
+JSON and follows the rules defined in this specification. It further
+indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.<a href="#section-3.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-3.2.1-3">The following is a non-normative example of a decoded SD-JWT header:<a href="#section-3.2.1-3" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.2.1-4">
 <pre>{
@@ -1612,8 +1627,8 @@ SD-JWT VCs.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
             <h5 id="name-verifiable-credential-type-">
 <a href="#section-3.2.2.1" class="section-number selfRef">3.2.2.1. </a><a href="#name-verifiable-credential-type-" class="section-name selfRef">Verifiable Credential Type - <code>vct</code> Claim</a>
             </h5>
-<p id="section-3.2.2.1-1">This specification defines the new JWT claim <code>vct</code> (for verifiable credential type). The <code>vct</code> value MUST be a
-case-sensitive string value serving as an identifier
+<p id="section-3.2.2.1-1">This specification defines the new JWT claim <code>vct</code> (for verifiable credential type). Its value MUST be a
+case-sensitive string serving as an identifier
 for the type of the SD-JWT VC. The <code>vct</code> value MUST be a Collision-Resistant
 Name as defined in Section 2 of <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.<a href="#section-3.2.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.1-2">A type is associated with rules defining which claims may or must appear in the
@@ -1623,7 +1638,7 @@ it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
 validating credentials beyond what is defined in this specification).<a href="#section-3.2.2.1-2" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.1-3">The <code>vct</code> value also effectively identifies the version of the credential type definition,
-as it ties a particular instance of a credential to a specific structure, set of semantics and rules.
+as it ties a particular instance of a credential to a specific structure, set of semantics, and rules.
 When evolving a credential type without updating the version, changes to the structure or meaning of the associated claims
 need to be made in a way that preserves compatibility with existing implementations.<a href="#section-3.2.2.1-3" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.1-4">If a change alters the meaning of existing content, adds new required claims, removes
@@ -1914,9 +1929,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZwWBv
-gTi72kihkH_wz8mLri1ONZjpHb6JymetyDshI5ewAGBlHbfz-gYJfqmuM6MKllDurpv-
-CyJ4v4s0R5KEA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xRsJ_
+ANei34hdtvh_Hj7pYLJSG8eE7RV7X0wKoDcc05Go7IFnxQu2N0AebUGE-6k37HmR5wbz
+iZu21im4_rWYg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2036,17 +2051,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZwWBv
-gTi72kihkH_wz8mLri1ONZjpHb6JymetyDshI5ewAGBlHbfz-gYJfqmuM6MKllDurpv-
-CyJ4v4s0R5KEA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xRsJ_
+ANei34hdtvh_Hj7pYLJSG8eE7RV7X0wKoDcc05Go7IFnxQu2N0AebUGE-6k37HmR5wbz
+iZu21im4_rWYg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA5NTgzMj
-MsICJzZF9oYXNoIjogInNVWENDXy1ZREowa0ZPZEZaWFBUeUVPYzEyNWdnWmt5NGhwVm
-s4a05YVmcifQ.mHG4uA214uMmJin8SA7e1qLlUorIx9I9YQtg3IFUxzjtgw1r7_t7Ltu
-6Wlfzo3GkPokMfSvI1McY3FBx1PqAhw
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA5NzY1Mj
+YsICJzZF9oYXNoIjogIl9OQlZVMVFKY3ZuMGUybDRqTFRZZG1EMlVkbF9MTnNkaFE3Vl
+JHYTNMTUUifQ.A7OdLDDGlT-ddcLHip_wjqBl4GSaMItqGZviThWuSu5W0JTMzWNy3fh
+AaD3Ux_FjIaHaCaMM05L5SlMwDncSRQ
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2091,8 +2106,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.Xo_KaNC_AbrRMZFD26553ZuyFaSrj082jy8NRla5NSf0Cu
-GVWTS6lTChmddT-EMYEOKmcCjVeLIyj2dZ8Bmaaw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.erfU26VdNaVpInmLdb609pv3osl-Zc8YM2GmIUPfXvvC3t
+y_dIXw26uVuOvxaSkuwKtIraiRd8IR8xAP1LY2kg~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2417,6 +2432,8 @@ type.<a href="#section-6.4-1" class="pilcrow">¶</a></p>
 <p id="section-6.4-2">The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 <a href="#circular-extends" class="auto internal xref">Section 10.3</a> apply in order to avoid problems with circular dependencies.<a href="#section-6.4-2" class="pilcrow">¶</a></p>
+<p id="section-6.4-3">Processing details when extending type metadata are described in
+<a href="#display-metadata-extends" class="auto internal xref">Section 8.2</a> and <a href="#claim-metadata-extends" class="auto internal xref">Section 9.5</a>.<a href="#section-6.4-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2647,10 +2664,24 @@ malicious metadata providers or issuers cannot inject executable code into the S
 template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.<a href="#section-8.1.2.2-8" class="pilcrow">¶</a></p>
+<p id="section-8.1.2.2-9">Furthermore, consuming applications MUST ensure that references to external
+resources (images, etc.) from within the SVG cannot be used to track users or
+the usage of credentials.<a href="#section-8.1.2.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
 </div>
+</section>
+</div>
+<div id="display-metadata-extends">
+<section id="section-8.2">
+        <h3 id="name-extending-display-metadata">
+<a href="#section-8.2" class="section-number selfRef">8.2. </a><a href="#name-extending-display-metadata" class="section-name selfRef">Extending Display Metadata</a>
+        </h3>
+<p id="section-8.2-1">When an SD-JWT VC type extends another type as described in
+<a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>, the <code>display</code> metadata remains valid for the
+inheriting type unless that type defines its own <code>display</code> property, in which
+case the original display metadata is ignored.<a href="#section-8.2-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2700,8 +2731,13 @@ or a set of claims. A string indicates that the respective key is to be
 selected, a <code>null</code> value indicates that all elements of the currently selected
 array(s) are to be selected, and a non-negative integer indicates that the
 respective index in an array is to be selected.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
-<p id="section-9.1-2">The following shows a non-normative, reduced example of a credential:<a href="#section-9.1-2" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.1-3">
+<div id="example">
+<section id="section-9.1.1">
+          <h4 id="name-example-2">
+<a href="#section-9.1.1" class="section-number selfRef">9.1.1. </a><a href="#name-example-2" class="section-name selfRef">Example</a>
+          </h4>
+<p id="section-9.1.1-1">The following shows a non-normative, reduced example of a credential:<a href="#section-9.1.1-1" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.1.1-2">
 <pre>{
   "vct": "https://betelgeuse.example.com/education_credential",
   "name": "Arthur Dent",
@@ -2723,69 +2759,78 @@ respective index in an array is to be selected.<a href="#section-9.1-1" class="p
   "nationalities": ["British", "Betelgeusian"]
 }
 
-</pre><a href="#section-9.1-3" class="pilcrow">¶</a>
+</pre><a href="#section-9.1.1-2" class="pilcrow">¶</a>
 </div>
-<p id="section-9.1-4">The following shows examples of <code>path</code> values and the respective selected
-claims in the credential above:<a href="#section-9.1-4" class="pilcrow">¶</a></p>
+<p id="section-9.1.1-3">The following shows examples of <code>path</code> values and the respective selected
+claims in the credential above:<a href="#section-9.1.1-3" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-9.1-5.1">
-            <code>["name"]</code>: The claim <code>name</code> with the value <code>Arthur Dent</code> is selected.<a href="#section-9.1-5.1" class="pilcrow">¶</a>
+<li class="compact" id="section-9.1.1-4.1">
+              <code>["name"]</code>: The claim <code>name</code> with the value <code>Arthur Dent</code> is selected.<a href="#section-9.1.1-4.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-5.2">
-            <code>["address"]</code>: The claim <code>address</code> with its sub-claims as the value is selected.<a href="#section-9.1-5.2" class="pilcrow">¶</a>
+            <li class="compact" id="section-9.1.1-4.2">
+              <code>["address"]</code>: The claim <code>address</code> with its sub-claims as the value is selected.<a href="#section-9.1.1-4.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-5.3">
-            <code>["address", "street_address"]</code>: The claim <code>street_address</code> with the value
-<code>42 Market Street</code> is selected.<a href="#section-9.1-5.3" class="pilcrow">¶</a>
+            <li class="compact" id="section-9.1.1-4.3">
+              <code>["address", "street_address"]</code>: The claim <code>street_address</code> with the value
+<code>42 Market Street</code> is selected.<a href="#section-9.1.1-4.3" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-5.4">
-            <code>["degrees", null, "type"]</code>: All <code>type</code> claims in the <code>degrees</code> array are
-selected.<a href="#section-9.1-5.4" class="pilcrow">¶</a>
+            <li class="compact" id="section-9.1.1-4.4">
+              <code>["degrees", null, "type"]</code>: All <code>type</code> claims in the <code>degrees</code> array are
+selected.<a href="#section-9.1.1-4.4" class="pilcrow">¶</a>
 </li>
-        </ul>
-<p id="section-9.1-6">The example in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a> shows how the <code>path</code> can be used to
-address arrays and their elements.<a href="#section-9.1-6" class="pilcrow">¶</a></p>
-<p id="section-9.1-7">In detail, the array is processed from left to right as follows:<a href="#section-9.1-7" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="compact type-1" id="section-9.1-8">
-<li id="section-9.1-8.1">Select the root element of the credential, i.e., the top-level JSON object.<a href="#section-9.1-8.1" class="pilcrow">¶</a>
+          </ul>
+<p id="section-9.1.1-5">The example in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix B.2</a> shows how the <code>path</code> can be used to
+address arrays and their elements.<a href="#section-9.1.1-5" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="processing-of-path">
+<section id="section-9.1.2">
+          <h4 id="name-processing-of-path">
+<a href="#section-9.1.2" class="section-number selfRef">9.1.2. </a><a href="#name-processing-of-path" class="section-name selfRef">Processing of <code>path</code></a>
+          </h4>
+<p id="section-9.1.2-1">In detail, the array components of <code>path</code> are processed from left to right as follows:<a href="#section-9.1.2-1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-9.1.2-2">
+<li id="section-9.1.2-2.1">Select the root element of the credential, i.e., the top-level JSON object.<a href="#section-9.1.2-2.1" class="pilcrow">¶</a>
 </li>
-          <li id="section-9.1-8.2">
-            <p id="section-9.1-8.2.1">Process the <code>path</code> components from left to right:<a href="#section-9.1-8.2.1" class="pilcrow">¶</a></p>
-<ol start="1" type="1" class="compact type-1" id="section-9.1-8.2.2">
-<li id="section-9.1-8.2.2.1">If the <code>path</code> component is a string, select the element in the respective
+            <li id="section-9.1.2-2.2">
+              <p id="section-9.1.2-2.2.1">Process the <code>path</code> components from left to right:<a href="#section-9.1.2-2.2.1" class="pilcrow">¶</a></p>
+<ol start="1" type="1" class="compact type-1" id="section-9.1.2-2.2.2">
+<li id="section-9.1.2-2.2.2.1">If the <code>path</code> component is a string, select the element in the respective
 key in the currently selected element(s). If any of the currently
 selected element(s) is not an object, abort processing and return an
 error. If the key does not exist in any element currently selected,
-remove that element from the selection.<a href="#section-9.1-8.2.2.1" class="pilcrow">¶</a>
+remove that element from the selection.<a href="#section-9.1.2-2.2.2.1" class="pilcrow">¶</a>
 </li>
-              <li id="section-9.1-8.2.2.2">If the <code>path</code> component is <code>null</code>, select all elements of the currently
+                <li id="section-9.1.2-2.2.2.2">If the <code>path</code> component is <code>null</code>, select all elements of the currently
 selected array(s). If any of the currently selected element(s) is not an
-array, abort processing and return an error.<a href="#section-9.1-8.2.2.2" class="pilcrow">¶</a>
+array, abort processing and return an error.<a href="#section-9.1.2-2.2.2.2" class="pilcrow">¶</a>
 </li>
-              <li id="section-9.1-8.2.2.3">If the <code>path</code> component is a non-negative integer, select the element at
+                <li id="section-9.1.2-2.2.2.3">If the <code>path</code> component is a non-negative integer, select the element at
 the respective index in the currently selected array(s). If any of the
 currently selected element(s) is not an array, abort processing and
 return an error. If the index does not exist in a selected array, remove
-that array from the selection.<a href="#section-9.1-8.2.2.3" class="pilcrow">¶</a>
+that array from the selection.<a href="#section-9.1.2-2.2.2.3" class="pilcrow">¶</a>
 </li>
-              <li id="section-9.1-8.2.2.4">If the set of elements currently selected is empty, abort processing and
-return an error.<a href="#section-9.1-8.2.2.4" class="pilcrow">¶</a>
+                <li id="section-9.1.2-2.2.2.4">If the set of elements currently selected is empty, abort processing and
+return an error.<a href="#section-9.1.2-2.2.2.4" class="pilcrow">¶</a>
 </li>
-            </ol>
+              </ol>
 </li>
-        </ol>
-<p id="section-9.1-9">The result of the processing is the set of elements to which the respective
-claim metadata applies.<a href="#section-9.1-9" class="pilcrow">¶</a></p>
-<p id="section-9.1-10">The <code>path</code> property MUST point to the respective claim as if all
+          </ol>
+<p id="section-9.1.2-3">The result of the processing is the set of elements to which the respective
+claim metadata applies.<a href="#section-9.1.2-3" class="pilcrow">¶</a></p>
+<p id="section-9.1.2-4">The <code>path</code> property MUST point to the respective claim as if all
 selectively disclosable claims were disclosed to a Verifier. That means that a
 consuming application which does not have access to all disclosures may not be
-able to identify the claim which is being addressed.<a href="#section-9.1-10" class="pilcrow">¶</a></p>
-<p id="section-9.1-11">Note: This specification intentionally does not use JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> for
+able to identify the claim which is being addressed.<a href="#section-9.1.2-4" class="pilcrow">¶</a></p>
+<p id="section-9.1.2-5">Note: This specification intentionally does not use JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> for
 selecting claims, as JSON Pointer requires string parsing and does not support
 wildcard selection of array elements. It does not use JSON Path <span>[<a href="#RFC9535" class="cite xref">RFC9535</a>]</span> as
 that introduces a considerable complexity and brings in many features which
 are not needed for the use case of selecting claims in a credential. There are
-also security concerns with some implementations.<a href="#section-9.1-11" class="pilcrow">¶</a></p>
+also security concerns with some implementations.<a href="#section-9.1.2-5" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="claim-display-metadata">
@@ -2852,16 +2897,33 @@ either <code>always</code> or <code>never</code> to avoid ambiguity.<a href="#se
         <h3 id="name-extending-claim-metadata">
 <a href="#section-9.5" class="section-number selfRef">9.5. </a><a href="#name-extending-claim-metadata" class="section-name selfRef">Extending Claim Metadata</a>
         </h3>
-<p id="section-9.5-1">The <code>extends</code> property allows a type to inherit claim metadata from another type. When present, all claim metadata from the extended type MUST be respected and are inherited by the child type. The child type can extend the claim metadata by adding new claims or properties. If the child type defines claim metadata with the same <code>path</code> as in the extended type, the child type's object will override the corresponding object from the extended type.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
-<p id="section-9.5-2">An extending type can specify an <code>sd</code> property for a claim that is marked as
+<p id="section-9.5-1">When an SD-JWT VC type extends another type as described in
+<a href="#extending-type-metadata" class="auto internal xref">Section 6.4</a>, all claim metadata from the extended type MUST be
+respected and are inherited by the child type. The child type can extend the
+claim metadata by adding new claims or properties. If the child type defines
+claim metadata with the same <code>path</code> as in the extended type, the child type's
+object will override the corresponding object from the extended type.<a href="#section-9.5-1" class="pilcrow">¶</a></p>
+<div id="limitations-for-sd-and-mandatory">
+<section id="section-9.5.1">
+          <h4 id="name-limitations-for-sd-and-mand">
+<a href="#section-9.5.1" class="section-number selfRef">9.5.1. </a><a href="#name-limitations-for-sd-and-mand" class="section-name selfRef">Limitations for <code>sd</code> and <code>mandatory</code></a>
+          </h4>
+<p id="section-9.5.1-1">An extending type can specify an <code>sd</code> property for a claim that is marked as
 <code>allowed</code> in the extended type (or where <code>sd</code> was omitted), changing it to either <code>always</code> or <code>never</code>.
 However, it MUST NOT change a claim that is marked as <code>always</code> or <code>never</code> in the extended
-type to a different value.<a href="#section-9.5-2" class="pilcrow">¶</a></p>
-<p id="section-9.5-3">Similarly, an extending type can set the <code>mandatory</code> property of a claim that is
+type to a different value.<a href="#section-9.5.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.5.1-2">Similarly, an extending type can set the <code>mandatory</code> property of a claim that is
 optional in the extended type to <code>true</code>, but it MUST NOT change a claim that is
-<code>mandatory</code> in the extended type to <code>false</code>.<a href="#section-9.5-3" class="pilcrow">¶</a></p>
-<p id="section-9.5-4">Suppose we have a base type metadata document:<a href="#section-9.5-4" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.5-5">
+<code>mandatory</code> in the extended type to <code>false</code>.<a href="#section-9.5.1-2" class="pilcrow">¶</a></p>
+</section>
+</div>
+<div id="example-for-extending-type-metadata">
+<section id="section-9.5.2">
+          <h4 id="name-example-for-extending-type-">
+<a href="#section-9.5.2" class="section-number selfRef">9.5.2. </a><a href="#name-example-for-extending-type-" class="section-name selfRef">Example for Extending Type Metadata</a>
+          </h4>
+<p id="section-9.5.2-1">Suppose we have a base type metadata document:<a href="#section-9.5.2-1" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5.2-2">
 <pre>{
   "vct": "https://example.com/base-type-metadata",
   "claims": [
@@ -2876,10 +2938,10 @@ optional in the extended type to <code>true</code>, but it MUST NOT change a cla
   ]
 }
 
-</pre><a href="#section-9.5-5" class="pilcrow">¶</a>
+</pre><a href="#section-9.5.2-2" class="pilcrow">¶</a>
 </div>
-<p id="section-9.5-6">And a child type metadata document that extends the base type:<a href="#section-9.5-6" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.5-7">
+<p id="section-9.5.2-3">And a child type metadata document that extends the base type:<a href="#section-9.5.2-3" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5.2-4">
 <pre>{
   "vct": "https://example.com/custom-type-metadata",
   "extends": "https://example.com/base-type-metadata",
@@ -2895,10 +2957,10 @@ optional in the extended type to <code>true</code>, but it MUST NOT change a cla
   ]
 }
 
-</pre><a href="#section-9.5-7" class="pilcrow">¶</a>
+</pre><a href="#section-9.5.2-4" class="pilcrow">¶</a>
 </div>
-<p id="section-9.5-8">In this example, the child type inherits the <code>name</code> claim metadata from the base type, but overrides the <code>address.city</code> claim metadata with its own definition. It also adds a new claim metadata for <code>nationalities</code>. The final effective claim metadata for the child type is:<a href="#section-9.5-8" class="pilcrow">¶</a></p>
-<div class="lang-json sourcecode" id="section-9.5-9">
+<p id="section-9.5.2-5">In this example, the child type inherits the <code>name</code> claim metadata from the base type, but overrides the <code>address.city</code> claim metadata with its own definition. It also adds a new claim metadata for <code>nationalities</code>. The final effective claim metadata for the child type is:<a href="#section-9.5.2-5" class="pilcrow">¶</a></p>
+<div class="lang-json sourcecode" id="section-9.5.2-6">
 <pre>{
   "claims": [
     {
@@ -2916,7 +2978,9 @@ optional in the extended type to <code>true</code>, but it MUST NOT change a cla
   ]
 }
 
-</pre><a href="#section-9.5-9" class="pilcrow">¶</a>
+</pre><a href="#section-9.5.2-6" class="pilcrow">¶</a>
+</div>
+</section>
 </div>
 </section>
 </div>
@@ -3456,8 +3520,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.tteQlyryazS6mSh_Vfg-WTITkQe3XK9Om46_HVa3uK1
-u9S8PO1v94lmMPfbXvtVjxW6p6Ak8jmz80E_SVWOWvw~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.6xUt6fUKbk9ftkhCkZTpxdVKnOfz-6CD3BuuknEqDUh
+ayJaAlPOcKJzzN3li_XKDRw9DI2upv5MEbYziiBMy_A~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -3942,8 +4006,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.tteQlyryazS6mSh_Vfg-WTITkQe3XK9Om46_HVa3uK1
-u9S8PO1v94lmMPfbXvtVjxW6p6Ak8jmz80E_SVWOWvw~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.6xUt6fUKbk9ftkhCkZTpxdVKnOfz-6CD3BuuknEqDUh
+ayJaAlPOcKJzzN3li_XKDRw9DI2upv5MEbYziiBMy_A~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -3954,9 +4018,9 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA5NTgzMjMsICJzZF9oYXNoIjogIlpQS1p5c3pEN
-WZvUDRnTG12SVZWZWREbDdUczBWZ3h4emVXejFVTzBOVEEifQ.7-23iCon8pA6xQKpuN
-PAh1akw2Du--BJbsz8UDQges2YjA7x4VWwEbMFeiLelZcgF95fcLL7pa3uX8Jq2CrYlA
+3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA5NzY1MjYsICJzZF9oYXNoIjogIlgyWTN0dDVzQ
+WZOOENRWXdaM2FlbkxKOVhidDdUcVBPMDR1RUxiaGlQblUifQ.UVtcplEVPCiFO2dnNK
+strbFexDKICL5oLPh_u0WzICN_-o3DCbEhATZACKRuoGpnRt5aiN7C454Rzq-yqBTvkg
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
 </div>
@@ -3965,8 +4029,8 @@ PAh1akw2Du--BJbsz8UDQges2YjA7x4VWwEbMFeiLelZcgF95fcLL7pa3uX8Jq2CrYlA
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1760958323,
-  "sd_hash": "ZPKZyszD5foP4gLmvIVVedDl7Ts0VgxxzeWz1UO0NTA"
+  "iat": 1760976526,
+  "sd_hash": "X2Y3tt5sAfN8CQYwZ3aenLJ9Xbt7TqPO04uELbhiPnU"
 }
 
 </pre><a href="#appendix-B.1-69" class="pilcrow">¶</a>
@@ -4297,6 +4361,8 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-D-2.18">Be more consistent with style for lists of claims/parameters/properties<a href="#appendix-D-2.18" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-D-2.19">Update PID example to make clear that it is not normative<a href="#appendix-D-2.19" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.20">Clarification on processing of display metadata<a href="#appendix-D-2.20" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-11<a href="#appendix-D-3" class="pilcrow">¶</a></p>
