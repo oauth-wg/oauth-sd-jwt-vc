@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-21T00:33:32.291297+00:00",
+  "timestamp": "2025-10-30T00:34:39.006788+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9522,7 +9522,7 @@
       "id": "I_kwDOJbVClc7PNEtU",
       "title": "A new field called \"Issuer Authorization URI - \"iss_auth\"\"",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/355",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "tweeddalex",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -9533,8 +9533,8 @@
       ],
       "body": "**Section 10.6** of the spec clearly expresses that Verifiers/Wallets SHOULD check the authorization of the issuer. However, the spec currently leaves no room for the issuer authorization to be included within the credential itself - this is a bit of a catch 22. \n\nThis omission , therefore, puts the entire onus of establishing issuer authorization on profile extensions, which will likely lead to multiple competing profiles and approaches - inhibiting interop.\n\nI propose a simple **optional** field within the spec called \"`iss_auth`\" which expects a HTTP(s) URI pointing towards an external resource detailing information about what the issuer is authorized to do. This could be something like a VC, a flat governance file or a FederationId. \n\nProfiles can then define how the content at the other end of the  \"iss_auth\" URI is processed to determine the authorization of the issuer; but, including this optional field allows this type of profile to be added without deviating from the core data model. Therefore, verifying software will be less likely to throw an error as the field is expected to be included. \n\nCurrently, if an SD-JWT VC is signed using a JWT Issuer Metadata URI, there is NO WAY to determine the authorization of the issuer without some type of out-of-band information. This is massively problematic in practice, and makes signing using JWT Issuer Metadata a very unsecure signing method.",
       "createdAt": "2025-10-02T06:57:55Z",
-      "updatedAt": "2025-10-20T13:44:25Z",
-      "closedAt": null,
+      "updatedAt": "2025-10-28T17:05:19Z",
+      "closedAt": "2025-10-28T17:05:19Z",
       "comments": [
         {
           "author": "cre8",
@@ -9556,6 +9556,13 @@
           "body": "> I agree with Mirko and propose to close this issue for now. This might be included in a future update/extension of SD-JWT VC.\n\nI agree so too. Everything that we would define here, would be too pre-mature and not be adopted by any ecosystem. I don't think we should or can standardize this in v1.",
           "createdAt": "2025-10-20T13:44:25Z",
           "updatedAt": "2025-10-20T13:44:25Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Similar to https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/212 and other [similarish issues](https://github.com/oauth-wg/oauth-sd-jwt-vc/issues?q=state%3Aclosed%20label%3A%22policy%22) there doesn't seem to be a clearly preferred way to express issuance policy, presentation policy, or other policy in the credential itself or even if such policy is necessary or appropriate in the credential. A future ecosystem specific profile or extension or even vct type can define (or not) what makes sense in the given context. But, in the interest of moving this work forward, it's out of scope for (this version of) this specification.\n\nI'd also ask that hyperbolic and alarmist statements like \"massively problematic\" and \"very unsecure [sic]\" not be made without some actual basis or justification. \n\n",
+          "createdAt": "2025-10-28T17:03:40Z",
+          "updatedAt": "2025-10-28T17:03:40Z"
         }
       ]
     },
@@ -9594,6 +9601,22 @@
           "updatedAt": "2025-10-20T11:05:32Z"
         }
       ]
+    },
+    {
+      "number": 374,
+      "id": "I_kwDOJbVClc7UYyrA",
+      "title": "8.1.2. Rendering Method \"svg_template\" differs from Example B.2",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/374",
+      "state": "OPEN",
+      "author": "queekusme",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "8.1.2 refers to the method of rendering as \"svg_template\" whereas the example in B2 refers to the method as \"svg_templates\" aka plural.\n\nWould it be possible to clarify which object key is preferred.\n\ne.g.\n\n(current)\n```markdown\n### Rendering Method \"svg_template\" {#rendering-method-svg}\n\nThe `svg_template` rendering method...\n```\n\nor \n\n(pluralised, matching Example B.2)\n```markdown\n### Rendering Method \"svg_templates\" {#rendering-method-svg}\n\nThe `svg_templates` rendering method...\n```\n\nPersonally, as the text states \"The object MUST contain an array of objects\" I am leaning towards the latter, pluralised variant.\n\nI would also posit updating the text \"The object MUST contain an array of objects\" to be \"svg_templates MUST contain an array of objects\" to avoid ambiguity with what \"object\" means in this context\n\nI can put together a PR outlining the changes if that is preferred",
+      "createdAt": "2025-10-28T20:31:55Z",
+      "updatedAt": "2025-10-28T20:31:55Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
