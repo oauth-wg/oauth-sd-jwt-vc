@@ -705,10 +705,10 @@ displayed for the type. The object contains the following properties:
   (#document-integrity). This property is OPTIONAL.
 
 
-### Rendering Method "svg_template" {#rendering-method-svg}
+### Rendering Method "svg_templates" {#rendering-method-svg}
 
-The `svg_template` rendering method is intended for use in applications that
-support SVG rendering. The object MUST contain an array of objects containing
+The `svg_templates` rendering method is intended for use in applications that
+support SVG rendering. svg_templates MUST contain an array of objects containing
 information about the SVG templates available for the type. Each object contains
 the following properties:
 
@@ -1616,6 +1616,7 @@ Aaron Parecki,
 Alen Horvat,
 Andres Uribe,
 Andrii Deinega,
+Annabelle Kennedy,
 Babis Routis,
 Christian Bormann,
 Denis Pinkas,
