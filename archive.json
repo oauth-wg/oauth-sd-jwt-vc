@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-10-30T00:34:39.006788+00:00",
+  "timestamp": "2025-11-02T00:36:45.531933+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9614,9 +9614,24 @@
       "labels": [],
       "body": "8.1.2 refers to the method of rendering as \"svg_template\" whereas the example in B2 refers to the method as \"svg_templates\" aka plural.\n\nWould it be possible to clarify which object key is preferred.\n\ne.g.\n\n(current)\n```markdown\n### Rendering Method \"svg_template\" {#rendering-method-svg}\n\nThe `svg_template` rendering method...\n```\n\nor \n\n(pluralised, matching Example B.2)\n```markdown\n### Rendering Method \"svg_templates\" {#rendering-method-svg}\n\nThe `svg_templates` rendering method...\n```\n\nPersonally, as the text states \"The object MUST contain an array of objects\" I am leaning towards the latter, pluralised variant.\n\nI would also posit updating the text \"The object MUST contain an array of objects\" to be \"svg_templates MUST contain an array of objects\" to avoid ambiguity with what \"object\" means in this context\n\nI can put together a PR outlining the changes if that is preferred",
       "createdAt": "2025-10-28T20:31:55Z",
-      "updatedAt": "2025-10-28T20:31:55Z",
+      "updatedAt": "2025-10-30T20:15:26Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "thanks for catching this @queekusme ! \n\nI think changing to the pluralized \"svg_templates\" and updating the text, as you've suggested, would be preferred indeed. A PR would be most welcome. Please feel free to add yourself to the acknowledgements in the PR too, if you'd like. ",
+          "createdAt": "2025-10-30T20:11:40Z",
+          "updatedAt": "2025-10-30T20:11:40Z"
+        },
+        {
+          "author": "queekusme",
+          "authorAssociation": "NONE",
+          "body": "No worries, I realised it when I got an error in my code as I copied the example but my ts interface followed the spec\n\nI'll have a look at putting in a PR tomorrow",
+          "createdAt": "2025-10-30T20:15:25Z",
+          "updatedAt": "2025-10-30T20:15:25Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -30665,6 +30680,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 375,
+      "id": "PR_kwDOJbVClc6w2xBW",
+      "title": "Updated svg_template to match pluralised appendix example",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/375",
+      "state": "OPEN",
+      "author": "queekusme",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #374\r\nFix discrepancy between svg_template rendering method and Appendix example which uses pluralised form.\r\nClarified wording for svg_templates MUST contain to avoid ambiguity on the definition of 'the object'",
+      "createdAt": "2025-10-31T15:20:34Z",
+      "updatedAt": "2025-10-31T15:20:35Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d96324d7688de7ccd79daf909e81fbc3566565e4",
+      "headRepository": "queekusme/oauth-sd-jwt-vc",
+      "headRefName": "374-8_1_2-Rendering-Method-svg_template-differs",
+      "headRefOid": "29422d7458d9a4a4566abeca47097c8765f2bb9d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
