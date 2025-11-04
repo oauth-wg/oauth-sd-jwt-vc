@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-02T00:36:45.531933+00:00",
+  "timestamp": "2025-11-04T00:33:58.026386+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -30693,13 +30693,53 @@
       "labels": [],
       "body": "Fixes #374\r\nFix discrepancy between svg_template rendering method and Appendix example which uses pluralised form.\r\nClarified wording for svg_templates MUST contain to avoid ambiguity on the definition of 'the object'",
       "createdAt": "2025-10-31T15:20:34Z",
-      "updatedAt": "2025-10-31T15:20:35Z",
+      "updatedAt": "2025-11-02T13:41:40Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d96324d7688de7ccd79daf909e81fbc3566565e4",
       "headRepository": "queekusme/oauth-sd-jwt-vc",
       "headRefName": "374-8_1_2-Rendering-Method-svg_template-differs",
       "headRefOid": "29422d7458d9a4a4566abeca47097c8765f2bb9d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7LLhy1",
+          "commit": {
+            "abbreviatedOid": "29422d7"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thanks @queekusme, the changes look good to me ",
+          "createdAt": "2025-11-02T13:41:40Z",
+          "updatedAt": "2025-11-02T13:41:40Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 376,
+      "id": "PR_kwDOJbVClc6xEBFl",
+      "title": "add a -13 to history",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/376",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-11-02T14:20:34Z",
+      "updatedAt": "2025-11-02T14:20:35Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d96324d7688de7ccd79daf909e81fbc3566565e4",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "bc-pi-patch-1",
+      "headRefOid": "22bb5fddf1770b80be32ab1330d0711646dfb613",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
