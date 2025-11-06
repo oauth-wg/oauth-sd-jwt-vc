@@ -100,7 +100,7 @@ Table of Contents
    8.  Display Metadata
      8.1.  Rendering Metadata
        8.1.1.  Rendering Method "simple"
-       8.1.2.  Rendering Method "svg_template"
+       8.1.2.  Rendering Method "svg_templates"
      8.2.  Extending Display Metadata
    9.  Claim Metadata
      9.1.  Claim Path
@@ -585,9 +585,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZDkXu
-   IWtpgLDYPGqp5AXKgtoXWnYgxnm-DMQ14TqZd8qcDNri7NXUtboPROc34y5k8xg6MCLw
-   Pt0gI1eZ7a72A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eoJGf
+   qU9BCr-_JZWz80i3EvhnkEICj_QaOUE9EGIveXgVjBN8WN_O2XOJhRNcokYYH9fC5S4W
+   X6GvWncf5dQyg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -710,17 +710,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZDkXu
-   IWtpgLDYPGqp5AXKgtoXWnYgxnm-DMQ14TqZd8qcDNri7NXUtboPROc34y5k8xg6MCLw
-   Pt0gI1eZ7a72A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eoJGf
+   qU9BCr-_JZWz80i3EvhnkEICj_QaOUE9EGIveXgVjBN8WN_O2XOJhRNcokYYH9fC5S4W
+   X6GvWncf5dQyg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjI0MzE2NT
-   EsICJzZF9oYXNoIjogIjZLTDFmSld1NG8zNTVhcXBoMFVOWjU4dUQtSTVjcnVMbVlpN3
-   pzSXc1bmMifQ.yOg8R_J4MPFwFkd8I4_7k62lmtzsBTFCBz15aUnl9JpF-JnVxRuh5he
-   E9Bos79F5n4wUpetg6D9_EXtz2msCjA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjI0MzIzND
+   IsICJzZF9oYXNoIjogIkpjWUtHZVBSREdaOXVPWldrVlk2Q1dJY3NYeTRCWm9KUEVwSW
+   xpS3lVM0UifQ.nvQiA_hOP_CgQfi4tYRgW9Pbipz_MZUDublhkGeUTCVuGOn5mCsH5wR
+   k56Kg3dmFyhUrfUpl_ZPaoEl0Hs6nxg
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -762,8 +762,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.ay8AswTtPVltRIoIxJSsqL9EzlrFs7UfszEKgnW599g3QD
-   WscRxbmtuL5CGuE2ISrW8uzZi3bH_GmbToKpzVgQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.WOyVnnDKFMQQnDAJDM2gtgJVU019NWjybitGmEdJaLGn2V
+   oK1yhNE-Qx4nhD4bLnkAz0DBWHkZLaIYcafDHU_A~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1119,12 +1119,13 @@ Table of Contents
    *  uri#integrity: An "integrity metadata" string as described in
       Section 7.  This property is OPTIONAL.
 
-8.1.2.  Rendering Method "svg_template"
+8.1.2.  Rendering Method "svg_templates"
 
-   The svg_template rendering method is intended for use in applications
-   that support SVG rendering.  The object MUST contain an array of
-   objects containing information about the SVG templates available for
-   the type.  Each object contains the following properties:
+   The svg_templates rendering method is intended for use in
+   applications that support SVG rendering. svg_templates MUST contain
+   an array of objects containing information about the SVG templates
+   available for the type.  Each object contains the following
+   properties:
 
    *  uri: A URI pointing to the SVG template.  This property is
       REQUIRED.
@@ -1937,8 +1938,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.NIyF5C-MKU_5UDYnMxvSrMPI5I8AaQttjWkG9IID1Qp
-   PNeL7suBT3AKnp-oX3Fw9UDHCRhMKpmsm_Xefb_ZAzg~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.dj8dMGete8nCZpL99l7DsT4JWndZRtT20DvhAl7L2Ja
+   v1_TODxKRWoieWRsnycqdnGg8QpHTD6PaXOfqzR85Mw~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2316,8 +2317,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.NIyF5C-MKU_5UDYnMxvSrMPI5I8AaQttjWkG9IID1Qp
-   PNeL7suBT3AKnp-oX3Fw9UDHCRhMKpmsm_Xefb_ZAzg~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.dj8dMGete8nCZpL99l7DsT4JWndZRtT20DvhAl7L2Ja
+   v1_TODxKRWoieWRsnycqdnGg8QpHTD6PaXOfqzR85Mw~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2328,17 +2329,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjI0MzE2NTEsICJzZF9oYXNoIjogIjBPYzZMd2ExS
-   DdpT3d6RmJMYmpMeUs1LVd1T2FrV25JOEVyc2E2VnRpUE0ifQ.9Bk8nbAnisI7Wq3-QM
-   yvybdP4wsrWJZqowdGfKCtWqPYhrigYbCmUpYH5-Wn0p8kzlxlkyXxdS8o5sj3WWNDmw
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjI0MzIzNDIsICJzZF9oYXNoIjogImkxUllNWWpOZ
+   EV2RWNuX3B3bm85R3NjQlhWTERWd1FISjFHQjB0cm83V2cifQ.kcb3lSZLh_NKN1hjW9
+   JwAhsxdlaUiyc6gjF6CeGQP9ZGytF0EFPqv_HnHPNdmZrus5LqNQXSBpYxWjgWawEnhA
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1762431651,
-     "sd_hash": "0Oc6Lwa1H7iOwzFbLbjLyK5-WuOakWnI8Ersa6VtiPM"
+     "iat": 1762432342,
+     "sd_hash": "i1RYMYjNdEvEcn_pwno9GscBXVLDVwQHJ1GB0tro7Wg"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2587,17 +2588,19 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
-   Andrii Deinega, Babis Routis, Christian Bormann, Denis Pinkas, George
-   J Padayatti, Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael
-   B.  Jones, Mike Prorock, Mirko Mollik, Orie Steele, Paul Bastian,
-   Pavel Zarecky, Stefan Charsley, Tim Cappalli, Timo Glastra, Torsten
-   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
-   contributions (some of which substantial) to this draft and to the
-   initial set of implementations.
+   Andrii Deinega, Annabelle Kennedy, Babis Routis, Christian Bormann,
+   Denis Pinkas, George J Padayatti, Giuseppe De Marco, Lukas J Han,
+   Leif Johansson, Michael B.  Jones, Mike Prorock, Mirko Mollik, Orie
+   Steele, Paul Bastian, Pavel Zarecky, Stefan Charsley, Tim Cappalli,
+   Timo Glastra, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda
+   for their contributions (some of which substantial) to this draft and
+   to the initial set of implementations.
 
 Appendix D.  Document History
 
    -13
+
+   *  Updated svg_template to match pluralised appendix example
 
    -12
 
