@@ -1640,6 +1640,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-13
+
+
 -12
 
 * Change `lang` to `locale`. While `lang` is more accurate, `locale` is what has traditionally been used in OpenID Connect and later related specs.
