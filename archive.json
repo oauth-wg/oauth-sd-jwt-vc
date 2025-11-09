@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-04T00:33:58.026386+00:00",
+  "timestamp": "2025-11-09T00:36:47.057109+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9607,15 +9607,15 @@
       "id": "I_kwDOJbVClc7UYyrA",
       "title": "8.1.2. Rendering Method \"svg_template\" differs from Example B.2",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/374",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "queekusme",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "8.1.2 refers to the method of rendering as \"svg_template\" whereas the example in B2 refers to the method as \"svg_templates\" aka plural.\n\nWould it be possible to clarify which object key is preferred.\n\ne.g.\n\n(current)\n```markdown\n### Rendering Method \"svg_template\" {#rendering-method-svg}\n\nThe `svg_template` rendering method...\n```\n\nor \n\n(pluralised, matching Example B.2)\n```markdown\n### Rendering Method \"svg_templates\" {#rendering-method-svg}\n\nThe `svg_templates` rendering method...\n```\n\nPersonally, as the text states \"The object MUST contain an array of objects\" I am leaning towards the latter, pluralised variant.\n\nI would also posit updating the text \"The object MUST contain an array of objects\" to be \"svg_templates MUST contain an array of objects\" to avoid ambiguity with what \"object\" means in this context\n\nI can put together a PR outlining the changes if that is preferred",
       "createdAt": "2025-10-28T20:31:55Z",
-      "updatedAt": "2025-10-30T20:15:26Z",
-      "closedAt": null,
+      "updatedAt": "2025-11-06T12:31:59Z",
+      "closedAt": "2025-11-06T12:31:59Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -9626,10 +9626,34 @@
         },
         {
           "author": "queekusme",
-          "authorAssociation": "NONE",
+          "authorAssociation": "CONTRIBUTOR",
           "body": "No worries, I realised it when I got an error in my code as I copied the example but my ts interface followed the spec\n\nI'll have a look at putting in a PR tomorrow",
           "createdAt": "2025-10-30T20:15:25Z",
           "updatedAt": "2025-10-30T20:15:25Z"
+        }
+      ]
+    },
+    {
+      "number": 377,
+      "id": "I_kwDOJbVClc7WX6sO",
+      "title": "Other Issuer Signature Mechanisms using https scheme",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/377",
+      "state": "OPEN",
+      "author": "yaromin",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Section 3.5 states that _When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata._\n\nHowever, it also states that \"separate specifications or ecosystem regulations may define **additional** Issuer Signature Mechanisms.\"\n\nThe **additional** creates potential ambiguity:\n1. Does the HTTPS scheme exclusively trigger JWT VC Issuer Metadata?\n2. Or can additional mechanisms also be defined that use HTTPS URIs as iss values?\n\nIt makes the JWT VC Issuer Metadata, that is defined as optional for this spec, de facto mandatory in many, if not most, cases because when the fairly popular`https` scheme is used, it is mandatory. It eliminates other options like OpenID Federation or any other mechanism that uses the `https` scheme. \n\nAssuming that it wasn't the intention, I'd like to propose to clarify that by adding _Additional mechanisms MAY use the HTTPS scheme for iss values._ or something along these lines to the paragraph below the bullet points.",
+      "createdAt": "2025-11-06T16:33:12Z",
+      "updatedAt": "2025-11-07T14:26:52Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "selfissued",
+          "authorAssociation": "NONE",
+          "body": "I support the conclusions that @yaromin reaches above.",
+          "createdAt": "2025-11-07T14:26:52Z",
+          "updatedAt": "2025-11-07T14:26:52Z"
         }
       ]
     }
@@ -30686,37 +30710,74 @@
       "id": "PR_kwDOJbVClc6w2xBW",
       "title": "Updated svg_template to match pluralised appendix example",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/375",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "queekusme",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #374\r\nFix discrepancy between svg_template rendering method and Appendix example which uses pluralised form.\r\nClarified wording for svg_templates MUST contain to avoid ambiguity on the definition of 'the object'",
       "createdAt": "2025-10-31T15:20:34Z",
-      "updatedAt": "2025-11-02T13:41:40Z",
+      "updatedAt": "2025-11-06T12:33:13Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "d96324d7688de7ccd79daf909e81fbc3566565e4",
+      "baseRefOid": "5395ab7b4dbf55dfe2270bc9c1ab85893f67aab7",
       "headRepository": "queekusme/oauth-sd-jwt-vc",
       "headRefName": "374-8_1_2-Rendering-Method-svg_template-differs",
-      "headRefOid": "29422d7458d9a4a4566abeca47097c8765f2bb9d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "headRefOid": "3285255d9fe8ca1b0be9e6d4f6fdc41396c30560",
+      "closedAt": "2025-11-06T12:31:58Z",
+      "mergedAt": "2025-11-06T12:31:58Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "06ee5d9bd2e0b943d4261992647ac9e313e0d45c"
+      },
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "doc history is missing but that can be done either in this PR or we just create a quick one after this.",
+          "createdAt": "2025-11-06T12:21:23Z",
+          "updatedAt": "2025-11-06T12:21:23Z"
+        },
+        {
+          "author": "queekusme",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@awoie document history now updated",
+          "createdAt": "2025-11-06T12:31:04Z",
+          "updatedAt": "2025-11-06T12:31:04Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> @awoie document history now updated\r\n\r\nawesome, thank you!",
+          "createdAt": "2025-11-06T12:33:13Z",
+          "updatedAt": "2025-11-06T12:33:13Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc7LLhy1",
           "commit": {
-            "abbreviatedOid": "29422d7"
+            "abbreviatedOid": "adbcbba"
           },
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
           "state": "APPROVED",
           "body": "thanks @queekusme, the changes look good to me ",
           "createdAt": "2025-11-02T13:41:40Z",
-          "updatedAt": "2025-11-02T13:41:40Z",
+          "updatedAt": "2025-11-06T12:25:10Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7MUcaQ",
+          "commit": {
+            "abbreviatedOid": "adbcbba"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-11-06T12:19:38Z",
+          "updatedAt": "2025-11-06T12:25:10Z",
           "comments": []
         }
       ]
@@ -30726,26 +30787,42 @@
       "id": "PR_kwDOJbVClc6xEBFl",
       "title": "add a -13 to history",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/376",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-11-02T14:20:34Z",
-      "updatedAt": "2025-11-02T14:20:35Z",
+      "updatedAt": "2025-11-06T12:20:31Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "d96324d7688de7ccd79daf909e81fbc3566565e4",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc-pi-patch-1",
       "headRefOid": "22bb5fddf1770b80be32ab1330d0711646dfb613",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-11-06T12:20:31Z",
+      "mergedAt": "2025-11-06T12:20:31Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "5395ab7b4dbf55dfe2270bc9c1ab85893f67aab7"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7MUbn3",
+          "commit": {
+            "abbreviatedOid": "22bb5fd"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-11-06T12:18:55Z",
+          "updatedAt": "2025-11-06T12:18:55Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
