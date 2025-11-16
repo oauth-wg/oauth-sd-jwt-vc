@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-09T00:36:47.057109+00:00",
+  "timestamp": "2025-11-16T00:37:49.418530+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9645,7 +9645,7 @@
       "labels": [],
       "body": "Section 3.5 states that _When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata._\n\nHowever, it also states that \"separate specifications or ecosystem regulations may define **additional** Issuer Signature Mechanisms.\"\n\nThe **additional** creates potential ambiguity:\n1. Does the HTTPS scheme exclusively trigger JWT VC Issuer Metadata?\n2. Or can additional mechanisms also be defined that use HTTPS URIs as iss values?\n\nIt makes the JWT VC Issuer Metadata, that is defined as optional for this spec, de facto mandatory in many, if not most, cases because when the fairly popular`https` scheme is used, it is mandatory. It eliminates other options like OpenID Federation or any other mechanism that uses the `https` scheme. \n\nAssuming that it wasn't the intention, I'd like to propose to clarify that by adding _Additional mechanisms MAY use the HTTPS scheme for iss values._ or something along these lines to the paragraph below the bullet points.",
       "createdAt": "2025-11-06T16:33:12Z",
-      "updatedAt": "2025-11-07T14:26:52Z",
+      "updatedAt": "2025-11-14T23:22:23Z",
       "closedAt": null,
       "comments": [
         {
@@ -9654,6 +9654,13 @@
           "body": "I support the conclusions that @yaromin reaches above.",
           "createdAt": "2025-11-07T14:26:52Z",
           "updatedAt": "2025-11-07T14:26:52Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I am not convinced of this ambiguity as each mechanism is its own self contained thing. ",
+          "createdAt": "2025-11-14T19:17:23Z",
+          "updatedAt": "2025-11-14T23:22:23Z"
         }
       ]
     }
