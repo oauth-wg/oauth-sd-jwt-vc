@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 20 April 2026                                     Authlete Inc.
+Expires: 5 June 2026                                       Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         17 October 2025
+                                                         2 December 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 April 2026.
+   This Internet-Draft will expire on 5 June 2026.
 
 Copyright Notice
 
@@ -100,13 +100,18 @@ Table of Contents
    8.  Display Metadata
      8.1.  Rendering Metadata
        8.1.1.  Rendering Method "simple"
-       8.1.2.  Rendering Method "svg_template"
+       8.1.2.  Rendering Method "svg_templates"
+     8.2.  Extending Display Metadata
    9.  Claim Metadata
      9.1.  Claim Path
+       9.1.1.  Example
+       9.1.2.  Processing of path
      9.2.  Claim Display Metadata
      9.3.  Claim Mandatory Metadata
      9.4.  Claim Selective Disclosure Metadata
      9.5.  Extending Claim Metadata
+       9.5.1.  Limitations for sd and mandatory
+       9.5.2.  Example for Extending Type Metadata
    10. Security Considerations
      10.1.  Server-Side Request Forgery
      10.2.  Ecosystem-specific Public Key Verification Methods
@@ -114,6 +119,8 @@ Table of Contents
      10.4.  Robust Retrieval of Type Metadata
      10.5.  Risks Associated with Textual Information
      10.6.  Credential Type Extension and Issuer Authorization
+     10.7.  Trust in Type Metadata
+     10.8.  Use of Data URIs for Claim Types
    11. Privacy Considerations
      11.1.  Unlinkability
      11.2.  Verifiable Credential Type Identifier
@@ -165,14 +172,14 @@ Table of Contents
                   |
                   v
             +-------------+
-            |             |+                          +------------+
-            |  Verifiers  ||+                         |   Status   |
-            |             |||----- optionally ------->|  Provider  |
-            +-------------+||   retrieve status of    |            |
-             +-------------+|  Verifiable Credential  +------------+
-              +-------------+
+            |             |-+
+            |  Verifiers  | |-+
+            |             | | |
+            +-------------+ | |
+              +-------------+ |
+                +-------------+
 
-    Figure 1: Issuer-Holder-Verifier Model with optional Status Provider
+                   Figure 1: Issuer-Holder-Verifier Model
 
    Verifiers can check the authenticity of the data in the Verifiable
    Credentials and optionally enforce Key Binding, i.e., ask the Holder
@@ -180,11 +187,6 @@ Table of Contents
    Credential, for example, by proving possession of a cryptographic key
    referenced in the credential.  This process is further described in
    [I-D.ietf-oauth-selective-disclosure-jwt].
-
-   To support revocation of Verifiable Credentials, revocation
-   information can optionally be retrieved from a Status Provider.  The
-   role of a Status Provider can be fulfilled by either a fourth party
-   or by the Issuer.
 
 1.2.  SD-JWT as a Credential Format
 
@@ -214,7 +216,7 @@ Table of Contents
    Claims" registry as defined in [RFC7519], as well as public and
    private claims.
 
-   Note: This specification does not utilize the W3C's Verifiable
+   Note: This specification does not utilize the W3C Verifiable
    Credentials Data Model v1.0, v1.1, or v2.0.
 
 1.3.  Requirements Notation and Conventions
@@ -246,15 +248,14 @@ Table of Contents
       selectively disclosable and non-selectively disclosable claims of
       the SD-JWT VC.  The Unsecured Payload acts as the input JSON
       object to issue an SD-JWT VC complying to this specification.
-   Status Provider:  An entity that provides status information (e.g.
-      revocation) about a Verifiable Credential.
 
 2.  Scope
 
-   *  This specification defines
-      -  Data model and media types for Verifiable Credentials based on
-         SD-JWTs.
-      -  Validation and processing rules for Verifiers and Holders.
+   This specification defines
+
+   *  a data model and media types for Verifiable Credentials based on
+      SD-JWTs, and
+   *  validation and processing rules for Verifiers and Holders.
 
 3.  Verifiable Credentials based on SD-JWT
 
@@ -264,7 +265,7 @@ Table of Contents
 3.1.  Media Type
 
    SD-JWT VCs compliant with this specification MUST use the media type
-   application/dc+sd-jwt as defined in Section 3.1.
+   application/dc+sd-jwt.
 
    The base subtype name dc is meant to stand for "digital credential",
    which is a term that is emerging as a conceptual synonym for
@@ -272,9 +273,9 @@ Table of Contents
 
 3.2.  Data Format
 
-   SD-JWT VCs MUST be encoded using the SD-JWT format defined in
-   Section 4 of [I-D.ietf-oauth-selective-disclosure-jwt].  A
-   presentation of an SD-JWT VC MAY contain a KB-JWT.
+   An SD-JWT VC MUST be encoded using the SD-JWT format defined in
+   Section 4 or Section 8 of [I-D.ietf-oauth-selective-disclosure-jwt],
+   where support for the JWS JSON Serialization is OPTIONAL.
 
    Note that in some cases, an SD-JWT VC MAY have no selectively
    disclosable claims, and therefore the encoded SD-JWT will not contain
@@ -287,9 +288,9 @@ Table of Contents
 
    The typ header parameter of the SD-JWT MUST be present.  The typ
    value MUST use dc+sd-jwt.  This indicates that the payload of the SD-
-   JWT contains plain JSON and follows the rules as defined in this
-   specification.  It further indicates that the SD-JWT is a SD-JWT
-   component of a SD-JWT VC.
+   JWT contains plain JSON and follows the rules defined in this
+   specification.  It further indicates that the SD-JWT is an SD-JWT
+   component of an SD-JWT VC.
 
    The following is a non-normative example of a decoded SD-JWT header:
 
@@ -315,10 +316,9 @@ Table of Contents
 3.2.2.1.  Verifiable Credential Type - vct Claim
 
    This specification defines the new JWT claim vct (for verifiable
-   credential type).  The vct value MUST be a case-sensitive string
-   value serving as an identifier for the type of the SD-JWT VC.  The
-   vct value MUST be a Collision-Resistant Name as defined in Section 2
-   of [RFC7515].
+   credential type).  Its value MUST be a case-sensitive string serving
+   as an identifier for the type of the SD-JWT VC.  The vct value MUST
+   be a Collision-Resistant Name as defined in Section 2 of [RFC7515].
 
    A type is associated with rules defining which claims may or must
    appear in the Unsecured Payload of the SD-JWT VC and whether they
@@ -328,6 +328,21 @@ Table of Contents
    semantics of the respective claims and associated rules (e.g.,
    policies for issuing and validating credentials beyond what is
    defined in this specification).
+
+   The vct value also effectively identifies the version of the
+   credential type definition, as it ties a particular instance of a
+   credential to a specific structure, set of semantics, and rules.
+   When evolving a credential type without updating the version, changes
+   to the structure or meaning of the associated claims need to be made
+   in a way that preserves compatibility with existing implementations.
+
+   If a change alters the meaning of existing content, adds new required
+   claims, removes previously required elements, or otherwise introduces
+   incompatibilities, it is generally advisable to treat that as a new
+   version of the credential type and to convey it using a new vct
+   value.  This allows different versions of a credential type to
+   coexist and helps ensure that participants interpret credentials
+   consistently.
 
    The following is a non-normative example of how vct is used to
    express a type:
@@ -354,58 +369,59 @@ Table of Contents
    component of the SD-JWT VC and MUST NOT be included in the
    Disclosures, i.e., cannot be selectively disclosed:
 
-   *  iss
-      -  OPTIONAL.  As defined in Section 4.1.1 of [RFC7519] this claim
-         explicitly indicates the Issuer of the Verifiable Credential
-         when it is not conveyed by other means (e.g., the subject of
-         the end-entity certificate of an x5c header).
-   *  nbf
-      -  OPTIONAL.  The time before which the Verifiable Credential MUST
-         NOT be accepted before validating.  See [RFC7519] for more
-         information.
-   *  exp
-      -  OPTIONAL.  The expiry time of the Verifiable Credential after
-         which the Verifiable Credential is no longer valid.  See
-         [RFC7519] for more information.
-   *  cnf
-      -  OPTIONAL unless cryptographic Key Binding is to be supported,
-         in which case it is REQUIRED.  Contains the confirmation method
-         identifying the proof of possession key as defined in
-         [RFC7800].  It is RECOMMENDED that this contains a JWK as
-         defined in Section 3.2 of [RFC7800].  For proof of
-         cryptographic Key Binding, the KB-JWT in the presentation of
-         the SD-JWT MUST be secured by the key identified in this claim.
-   *  vct
-      -  REQUIRED.  The type of the Verifiable Credential, e.g.,
-         https://credentials.example.com/identity_credential, as defined
-         in Section 3.2.2.1.
-   *  vct#integrity
-      -  OPTIONAL.  The hash of the Type Metadata document to provide
-         integrity as defined in Section 7.
-   *  status
-      -  OPTIONAL.  The information on how to read the status of the
-         Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
-         more information.  When the status claim is present and using
-         the status_list mechanism, the associated Status List Token
-         MUST be in JWT format.
+   *  iss: OPTIONAL.  As defined in Section 4.1.1 of [RFC7519] this
+      claim explicitly indicates the Issuer of the Verifiable Credential
+      when it is not conveyed by other means (e.g., the subject of the
+      end-entity certificate of an x5c header).
+   *  nbf: OPTIONAL.  The time before which the Verifiable Credential
+      MUST NOT be accepted before validating.  See [RFC7519] for more
+      information.
+   *  exp: OPTIONAL.  The expiry time of the Verifiable Credential after
+      which the Verifiable Credential is no longer valid.  See [RFC7519]
+      for more information.
+   *  cnf: OPTIONAL unless cryptographic Key Binding is to be supported,
+      in which case it is REQUIRED.  Contains the confirmation method
+      identifying the proof of possession key as defined in [RFC7800].
+      It is RECOMMENDED that this contains a JWK as defined in
+      Section 3.2 of [RFC7800].  For proof of cryptographic Key Binding,
+      the KB-JWT in the presentation of the SD-JWT MUST be secured by
+      the key identified in this claim.
+   *  vct: REQUIRED.  The type of the Verifiable Credential, e.g.,
+      https://credentials.example.com/identity_credential, as defined in
+      Section 3.2.2.1.
+   *  vct#integrity: OPTIONAL.  The hash of the Type Metadata document
+      to provide integrity as defined in Section 7.
+   *  status: OPTIONAL.  The information on how to read the status of
+      the Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
+      more information.  When the status claim is present and using the
+      status_list mechanism, the associated Status List Token MUST be in
+      JWT format.
 
    The following registered JWT claims are used within the SD-JWT
    component of the SD-JWT VC and MAY be included in Disclosures, i.e.,
    can be selectively disclosed:
 
-   *  sub
-      -  OPTIONAL.  The identifier of the Subject of the Verifiable
-         Credential.  The Issuer MAY use it to provide the Subject
-         identifier known by the Issuer.  There is no requirement for a
-         binding to exist between sub and cnf claims.
-   *  iat
-      -  OPTIONAL.  The time of issuance of the Verifiable Credential.
-         See [RFC7519] for more information.
+   *  sub: OPTIONAL.  The identifier of the Subject of the Verifiable
+      Credential.  The Issuer MAY use it to provide the Subject
+      identifier known by the Issuer.  There is no requirement for a
+      binding to exist between sub and cnf claims.
+   *  iat: OPTIONAL.  The time of issuance of the Verifiable Credential.
+      See [RFC7519] for more information.
 
 3.2.2.3.  Public and Private JWT claims
 
    Additionally, any public and private claims as defined in Sections
    4.2 and 4.3 of [RFC7519] MAY be used.
+
+   Binary data in claims SHOULD be encoded as data URIs as defined in
+   [RFC2397].  Exceptions can be made when data formats are used that
+   already define a text encoding suitable for use in JSON or where an
+   established text encoding is commonly used.  For example, images
+   would make use of data URIs, whereas hash digests in base64 encoding
+   do not need to be encoded as such.
+
+   An example of a claim containing binary data encoded as a data URI is
+   shown in Appendix B.1.
 
 3.2.2.4.  SD-JWT VC without Selectively Disclosable Claims
 
@@ -569,9 +585,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.VMqms
-   _Pv2uvfDCr6TI9bUVAP5S32NQ5rhGKTnbMklWZNRglueBPE2BH83i0gMALiYT7LJnnMo
-   r1Tdyj6IsywrA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SnzQ0
+   _FrlRwZFo98Vyh0iq-ngJc62v9Q6VmVo2XISEIPDX0av3nuosI6lSF2QKRT-zyD3_JI2
+   Ou22F-KKeCOfQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -637,18 +653,19 @@ Table of Contents
 
    *  X.509 Certificates: A mechanism to retrieve the Issuer's public
       key using the X.509 certificate chain in the SD-JWT header.  When
-      the header of the Issuer-signed JWT contains the x5c header
+      the protected header of the Issuer-signed JWT contains the x5c
       parameter, the recipient uses the public key from the end-entity
-      certificate of the certificates from the x5c header parameter and
+      certificate of the certificates from that x5c parameter and
       validates the X.509 certificate chain accordingly.  In this case,
       the Issuer of the Verifiable Credential is the subject of the end-
       entity certificate.
 
    To enable different trust anchoring systems or key resolution
    methods, separate specifications or ecosystem regulations may define
-   additional Issuer Signature Mechanisms; however, the specifics of
-   such mechanisms are out of scope for this specification.  See
-   Section 10.2 for related security considerations.
+   additional Issuer Signature Mechanisms may complement or override the
+   mechanisms defined above; however, the specifics of such mechanisms
+   are out of scope for this specification.  See Section 10.2 for
+   related security considerations.
 
    If a recipient cannot validate that the public verification key
    corresponds the Issuer of the Issuer-signed JWT using a permitted
@@ -661,15 +678,13 @@ Table of Contents
 
 4.1.  Data Format
 
-   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT, or as an
-   SD-JWT+KB, as defined in Section 4 of
-   [I-D.ietf-oauth-selective-disclosure-jwt].
+   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an
+   SD-JWT+KB.  By default, the format defined in Section 4 of
+   [I-D.ietf-oauth-selective-disclosure-jwt] is used, whereas support
+   for the JWS JSON Serialization in Section 8 of
+   [I-D.ietf-oauth-selective-disclosure-jwt] is OPTIONAL.
 
 4.2.  Key Binding JWT
-
-   If the presentation of the SD-JWT VC is encoded as an SD-JWT+KB, the
-   KB-JWT MUST adhere to the rules defined in Section 4.3 of
-   [I-D.ietf-oauth-selective-disclosure-jwt].
 
    The KB-JWT MAY include additional claims which, when not understood,
    MUST be ignored by the Verifier.
@@ -696,17 +711,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.VMqms
-   _Pv2uvfDCr6TI9bUVAP5S32NQ5rhGKTnbMklWZNRglueBPE2BH83i0gMALiYT7LJnnMo
-   r1Tdyj6IsywrA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SnzQ0
+   _FrlRwZFo98Vyh0iq-ngJc62v9Q6VmVo2XISEIPDX0av3nuosI6lSF2QKRT-zyD3_JI2
+   Ou22F-KKeCOfQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjA3MDc5NT
-   MsICJzZF9oYXNoIjogInBUa1JxdlB1WTliRTRmT1dCSkhJcVlpWlU5TU5EYkJ4b3JpcF
-   VFWDhfU3MifQ.ulw8zF0dfuJXxRvOR3qqHiMgoG8z336JanW3J8IEWRQNGEWwuF0M0KI
-   O-GiJU9GfboGWZwYmIQVixyHHcBJ7_A
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjQ2MzU5MT
+   UsICJzZF9oYXNoIjogIlBqQ3Bsazc5VWJPcUxIYXdYWG9fbE1MN1dzWlE1MXFCYjJuZX
+   BMcXVpMXMifQ.Egvn33zyAQaVD8MxxrICUo0ZHDAwU7iSvid2QqMInVlY6rRXEm4emrM
+   ZP9cXX1bpaX1e97tU5-Kl3PON-_FqgA
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -748,8 +763,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.eShFkRqcPQbLVpWJrxfMr39olqCXeRqyq8QZl4PgdDde5x
-   OVNfxciN8VhUF_Q6bRtmjZITQrYmT-h3UmbtV73g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.mUv4hIIDsEkkvuKxy8cnXvMpvSvpRg4g-k0otXqBZVQbSw
+   bGfLNN47AKhHrsbkZEAvWBKVIyCqiREEQ43xFbHQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -821,18 +836,15 @@ Table of Contents
    This specification defines the following JWT VC Issuer Metadata
    configuration parameters:
 
-   *  issuer
-      -  REQUIRED.  The Issuer identifier, which MUST be identical to
-         the iss value in the JWT.
-   *  jwks_uri
-      -  OPTIONAL.  URL string referencing the Issuer's JSON Web Key
-         (JWK) Set [RFC7517] document which contains the Issuer's public
-         keys.  The value of this field MUST point to a valid JWK Set
-         document.
-   *  jwks
-      -  OPTIONAL.  Issuer's JSON Web Key Set [RFC7517] document value,
-         which contains the Issuer's public keys.  The value of this
-         field MUST be a JSON object containing a valid JWK Set.
+   *  issuer: REQUIRED.  The Issuer identifier, which MUST be identical
+      to the iss value in the JWT.
+   *  jwks_uri: OPTIONAL.  URL string referencing the Issuer's JSON Web
+      Key (JWK) Set [RFC7517] document which contains the Issuer's
+      public keys.  The value of this field MUST point to a valid JWK
+      Set document.
+   *  jwks: OPTIONAL.  Issuer's JSON Web Key Set [RFC7517] document
+      value, which contains the Issuer's public keys.  The value of this
+      field MUST be a JSON object containing a valid JWK Set.
 
    JWT VC Issuer Metadata MUST include either jwks_uri or jwks in their
    JWT VC Issuer Metadata, but not both.
@@ -944,17 +956,20 @@ Table of Contents
 6.2.  Type Metadata Format
 
    The Type Metadata document MUST be a JSON object.  The following
-   properties are defined: * vct * REQUIRED.  The verifiable credential
-   type described by this type metadata document. * name * OPTIONAL.  A
-   human-readable name for the type, intended for developers reading the
-   JSON document. * description * OPTIONAL.  A human-readable
-   description for the type, intended for developers reading the JSON
-   document. * extends * OPTIONAL.  A URI of another type that this type
-   extends, as described in Section 6.4. * display: An array of objects
-   containing display information for the type, as described in
-   Section 8.  This property is OPTIONAL. * claims: An array of objects
-   containing claim information for the type, as described in Section 9.
-   This property is OPTIONAL.
+   properties are defined:
+
+   *  vct: REQUIRED.  The verifiable credential type described by this
+      type metadata document.
+   *  name: OPTIONAL.  A human-readable name for the type, intended for
+      developers reading the JSON document.
+   *  description: OPTIONAL.  A human-readable description for the type,
+      intended for developers reading the JSON document.
+   *  extends: OPTIONAL.  A URI of another type that this type extends,
+      as described in Section 6.4.
+   *  display: An array of objects containing display information for
+      the type, as described in Section 8.  This property is OPTIONAL.
+   *  claims: An array of objects containing claim information for the
+      type, as described in Section 9.  This property is OPTIONAL.
 
    A Type Metadata document MAY contain additional top level or
    subordinate properties.  Consumers MUST ignore properties that are
@@ -1021,6 +1036,9 @@ Table of Contents
    to create a chain or hierarchy of types.  The security considerations
    described in Section 10.3 apply in order to avoid problems with
    circular dependencies.
+
+   Processing details when extending type metadata are described in
+   Section 8.2 and Section 9.5.
 
 7.  Document Integrity
 
@@ -1102,12 +1120,13 @@ Table of Contents
    *  uri#integrity: An "integrity metadata" string as described in
       Section 7.  This property is OPTIONAL.
 
-8.1.2.  Rendering Method "svg_template"
+8.1.2.  Rendering Method "svg_templates"
 
-   The svg_template rendering method is intended for use in applications
-   that support SVG rendering.  The object MUST contain an array of
-   objects containing information about the SVG templates available for
-   the type.  Each object contains the following properties:
+   The svg_templates rendering method is intended for use in
+   applications that support SVG rendering. svg_templates MUST contain
+   an array of objects containing information about the SVG templates
+   available for the type.  Each object contains the following
+   properties:
 
    *  uri: A URI pointing to the SVG template.  This property is
       REQUIRED.
@@ -1179,6 +1198,17 @@ Table of Contents
    MUST NOT execute any code in the SVG template.  If code execution
    cannot be prevented reliably, the SVG display MUST be sandboxed.
 
+   Furthermore, consuming applications MUST ensure that references to
+   external resources (images, etc.) from within the SVG cannot be used
+   to track users or the usage of credentials.
+
+8.2.  Extending Display Metadata
+
+   When an SD-JWT VC type extends another type as described in
+   Section 6.4, the display metadata remains valid for the inheriting
+   type unless that type defines its own display property, in which case
+   the original display metadata is ignored.
+
 9.  Claim Metadata
 
    The claims property is an array of objects containing information
@@ -1213,6 +1243,8 @@ Table of Contents
    elements of the currently selected array(s) are to be selected, and a
    non-negative integer indicates that the respective index in an array
    is to be selected.
+
+9.1.1.  Example
 
    The following shows a non-normative, reduced example of a credential:
 
@@ -1251,7 +1283,10 @@ Table of Contents
    The example in Appendix B.2 shows how the path can be used to address
    arrays and their elements.
 
-   In detail, the array is processed from left to right as follows:
+9.1.2.  Processing of path
+
+   In detail, the array components of path are processed from left to
+   right as follows:
 
    1.  Select the root element of the credential, i.e., the top-level
        JSON object.
@@ -1330,13 +1365,15 @@ Table of Contents
 
 9.5.  Extending Claim Metadata
 
-   The extends property allows a type to inherit claim metadata from
-   another type.  When present, all claim metadata from the extended
-   type MUST be respected and are inherited by the child type.  The
-   child type can extend the claim metadata by adding new claims or
-   properties.  If the child type defines claim metadata with the same
-   path as in the extended type, the child type's object will override
-   the corresponding object from the extended type.
+   When an SD-JWT VC type extends another type as described in
+   Section 6.4, all claim metadata from the extended type MUST be
+   respected and are inherited by the child type.  The child type can
+   extend the claim metadata by adding new claims or properties.  If the
+   child type defines claim metadata with the same path as in the
+   extended type, the child type's object will override the
+   corresponding object from the extended type.
+
+9.5.1.  Limitations for sd and mandatory
 
    An extending type can specify an sd property for a claim that is
    marked as allowed in the extended type (or where sd was omitted),
@@ -1347,6 +1384,8 @@ Table of Contents
    Similarly, an extending type can set the mandatory property of a
    claim that is optional in the extended type to true, but it MUST NOT
    change a claim that is mandatory in the extended type to false.
+
+9.5.2.  Example for Extending Type Metadata
 
    Suppose we have a base type metadata document:
 
@@ -1524,6 +1563,37 @@ Table of Contents
    MUST be based on both the credential type and the verified authority
    of the issuer.
 
+10.7.  Trust in Type Metadata
+
+   Type Metadata associated with an SD-JWT VC, e.g., rendering metadata,
+   is asserted by the publisher of the Type Metadata and trust in this
+   metadata depends on the trust relationship between its publisher and
+   the consumer.  A consumer MUST NOT assume that Type Metadata is
+   accurate or meaningful unless the publisher is recognized as
+   authoritative for the type in question.
+
+   Ecosystems SHOULD define governance or accreditation mechanisms that
+   specify which publishers are authorized to provide Type Metadata for
+   specific verifiable credential types and under what conditions such
+   metadata can be relied upon.
+
+   Consumers SHOULD treat with reduced trust any Type Metadata if the
+   publisher is not accredited or otherwise trusted within the
+   applicable ecosystem.
+
+10.8.  Use of Data URIs for Claim Types
+
+   The use of data URIs allows embedding of data directly within
+   credential payloads.  Implementations SHOULD treat data URIs as
+   untrusted input at the processing and rendering layer and apply
+   appropriate validation and handling.  Failure to properly escape,
+   sanitize or constrain their use can lead to security issues such as
+   unintended code execution, resource exhaustion, or misuse of embedded
+   content.  Implementations SHOULD restrict the set of accepted media
+   types, enforce reasonable size and content limits, and avoid
+   dereferencing or interpreting data URIs in ways that could execute or
+   render active content, consistent with their overall security model.
+
 11.  Privacy Considerations
 
    The Privacy Considerations in the SD-JWT specification
@@ -1629,14 +1699,18 @@ Table of Contents
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
-              oauth-status-list-12, 7 July 2025,
+              oauth-status-list-13, 20 October 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-12>.
+              status-list-13>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
               DOI 10.17487/RFC2119, March 1997,
               <https://www.rfc-editor.org/info/rfc2119>.
+
+   [RFC2397]  Masinter, L., "The "data" URL scheme", RFC 2397,
+              DOI 10.17487/RFC2397, August 1998,
+              <https://www.rfc-editor.org/info/rfc2397>.
 
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
@@ -1787,9 +1861,11 @@ Appendix B.  Examples
 B.1.  Example 1: Person Identification Data (PID) Credential
 
    This example shows how the artifacts defined in this specification
-   could be used to represent the concept of a Person Identification
-   Data (PID) as defined in the "PID Rulebook" in [EUDIW.ARF].  This
-   example uses fictional data of a German citizen.
+   could be used to represent the identity information of a person from
+   a fictional European country.  It leans on the concept of Person
+   Identification Data (PID) as defined in the "PID Rulebook" in
+   [EUDIW.ARF], but does not intend to fully comply with that
+   specification.
 
    Key Binding is applied using the Holder's public key passed in a cnf
    claim in the SD-JWT.
@@ -1798,25 +1874,25 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    Set used by the Issuer:
 
    {
-     "iss": "https://pid-issuer.bund.de.example",
-     "vct": "urn:eudi:pid:de:1",
-     "given_name": "Erika",
-     "family_name": "Mustermann",
-     "birthdate": "1963-08-12",
+     "iss": "https://pid-issuer.aendgard.example",
+     "vct": "urn:eudi:pid:aendgard:1",
+     "given_name": "Astrid",
+     "family_name": "Holmgren",
+     "birthdate": "1978-04-10",
      "address": {
-       "street_address": "Heidestraße 17",
-       "locality": "Köln",
-       "postal_code": "51147",
-       "country": "DE"
+       "street_address": "Sjøgata 12",
+       "locality": "Viken",
+       "postal_code": "12001",
+       "country": "Kingdom of Ændgard"
      },
      "nationalities": [
-       "DE"
+       "Ændgard"
      ],
      "sex": 2,
-     "birth_family_name": "Gabler",
+     "birth_family_name": "Jensen",
      "place_of_birth": {
-       "locality": "Berlin",
-       "country": "DE"
+       "locality": "Ændholm",
+       "country": "Kingdom of Ændgard"
      },
      "age_equal_or_over": {
        "12": true,
@@ -1826,100 +1902,118 @@ B.1.  Example 1: Person Identification Data (PID) Credential
        "21": true,
        "65": false
      },
-     "age_in_years": 62,
-     "age_birth_year": 1963,
-     "issuance_date": "2020-03-11",
-     "expiry_date": "2030-03-12",
-     "issuing_authority": "DE",
-     "issuing_country": "DE"
+     "age_in_years": 47,
+     "age_birth_year": 1978,
+     "portrait": "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAA
+       WAQMAAACSfKx9AAAAAXNSR0IB2cksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQA
+       AeiYAAICEAAD6AAAAgOgAAHUwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA///
+       /pdmf3QAAAFFJREFUCNdNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y
+       8NG3RMunw9Ai5p6/pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTj
+       jKQAAAABJRU5ErkJggg==",
+     "issuance_date": "2024-01-15",
+     "expiry_date": "2034-01-15",
+     "issuing_authority": "Kingdom of Ændgard, Ministry of Interior",
+     "issuing_country": "ÆG"
    }
 
    The following is the issued SD-JWT:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
-   uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiMUNybjAzV21
-   VZVJXcDR6d1B2dkNLWGw5WmFRcC1jZFFWX2dIZGFHU1dvdyIsICIycjAwOWR6dkh1VnJ
-   XclJYVDVrSk1tSG5xRUhIbldlME1MVlp3OFBBVEI4IiwgIjZaTklTRHN0NjJ5bWxyT0F
-   rYWRqZEQ1WnVsVDVBMjk5Sjc4U0xoTV9fT3MiLCAiNzhqZzc3LUdZQmVYOElRZm9FTFB
-   5TDBEWVBkbWZabzBKZ1ZpVjBfbEtDTSIsICI5MENUOEFhQlBibjVYOG5SWGtlc2p1MWk
-   wQnFoV3FaM3dxRDRqRi1xREdrIiwgIkkwMGZjRlVvRFhDdWNwNXl5MnVqcVBzc0RWR2F
-   XTmlVbGlOel9hd0QwZ2MiLCAiS2pBWGdBQTlONVdIRUR0UkloNHU1TW4xWnNXaXhoaFd
-   BaVgtQTRRaXdnQSIsICJMYWk2SVU2ZDdHUWFnWFI3QXZHVHJuWGdTbGQzejhFSWdfZnY
-   zZk9aMVdnIiwgIkxlemphYlJxaVpPWHpFWW1WWmY4Uk1pOXhBa2QzX00xTFo4VTdFNHM
-   zdTQiLCAiUlR6M3FUbUZOSGJwV3JyT01aUzQxRjQ3NGtGcVJ2M3ZJUHF0aDZQVWhsTSI
-   sICJXMTRYSGJVZmZ6dVc0SUZNanBTVGIxbWVsV3hVV2Y0Tl9vMmxka2tJcWM4IiwgIld
-   UcEk3UmNNM2d4WnJ1UnBYemV6U2JrYk9yOTNQVkZ2V3g4d29KM2oxY0UiLCAiX29oSlZ
-   JUUlCc1U0dXBkTlM0X3c0S2IxTUhxSjBMOXFMR3NoV3E2SlhRcyIsICJ5NTBjemMwSVN
-   DaHlfYnNiYTFkTW9VdUFPUTVBTW1PU2ZHb0VlODF2MUZVIl0sICJpc3MiOiAiaHR0cHM
-   6Ly9waWQtaXNzdWVyLmJ1bmQuZGUuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCA
-   iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
-   fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
-   iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
-   sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.m6l7WXnOqXFYD825C6fSmcscoN9as8xzJSLM54LpF2aFe68
-   Zy8XAVfHiNBc-YtbJRGvAc-JSHYkP2L4brBKy0A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5S
-   Tjl3IiwgImdpdmVuX25hbWUiLCAiRXJpa2EiXQ~WyJlbHVWNU9nM2dTTklJOEVZbnN4Q
-   V9BIiwgImZhbWlseV9uYW1lIiwgIk11c3Rlcm1hbm4iXQ~WyI2SWo3dE0tYTVpVlBHYm
-   9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYzLTA4LTEyIl0~WyJlSThaV205UW5LUH
-   BOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwgIkhlaWRlc3RyYVx1MDBkZmUgMT
-   ciXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIktcdTAwZjZ
-   sbiJd~WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjUxMT
-   Q3Il0~WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiREUiXQ~WyJ
-   HMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7Il9zZCI6IFsiQUxaRVJ
-   zU241V05pRVhkQ2tzVzhJNXFRdzNfTnBBblJxcFNBWkR1ZGd3OCIsICJEX19XX3VZY3Z
-   SejN0dlVuSUp2QkRIaVRjN0NfX3FIZDB4Tkt3SXNfdzlrIiwgImVCcENYVTFKNWRoSDJ
-   nNHQ4UVlOVzVFeFM5QXhVVmJsVW9kb0xZb1BobzAiLCAieE9QeTktZ0pBTEs2VWJXS0Z
-   MUjg1Y09CeVVEM0FiTndGZzNJM1lmUUVfSSJdfV0~WyJsa2x4RjVqTVlsR1RQVW92TU5
-   JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFIl1d~WyJuUHVvUW5rUkZxM0JJZUFtN0
-   FuWEZBIiwgInNleCIsIDJd~WyI1YlBzMUlxdVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX
-   2ZhbWlseV9uYW1lIiwgIkdhYmxlciJd~WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13Iiwg
-   ImxvY2FsaXR5IiwgIkJlcmxpbiJd~WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImN
-   vdW50cnkiLCAiREUiXQ~WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29m
-   X2JpcnRoIiwgeyJfc2QiOiBbIktVVmlhYUxuWTVqU01MOTBHMjlPT0xFTlBiYlhmaFNq
-   U1BNalphR2t4QUUiLCAiWWJzVDBTNzZWcVhDVnNkMWpVU2x3S1BEZ21BTGVCMXVaY2xG
-   SFhmLVVTUSJdfV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgIjEyIiwgdHJ1ZV0~
-   WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjE0IiwgdHJ1ZV0~WyJIM28xdXN3UDc2
-   MEZpMnllR2RWQ0VRIiwgIjE2IiwgdHJ1ZV0~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpB
-   IiwgIjE4IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjIxIiwgdHJ1
-   ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjY1IiwgZmFsc2Vd~WyJlSzVvNXB
-   IZmd1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF
-   0RWl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx
-   5NVA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjh
-   fM0FtSncyWFo4a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajB
-   oczJaTnd4Y3FPbGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR
-   6YUZDVWNlSVFBYUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnF
-   xalFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3
-   IiwgImFnZV9pbl95ZWFycyIsIDYyXQ~WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3IiwgI
-   mFnZV9iaXJ0aF95ZWFyIiwgMTk2M10~WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgI
-   mlzc3VhbmNlX2RhdGUiLCAiMjAyMC0wMy0xMSJd~WyI0S3lSMzJvSVp0LXprV3ZGcWJV
-   TEtnIiwgImV4cGlyeV9kYXRlIiwgIjIwMzAtMDMtMTIiXQ~WyJjaEJDc3loeWgtSjg2S
-   S1hd1FEaUNRIiwgImlzc3VpbmdfYXV0aG9yaXR5IiwgIkRFIl0~WyJmbE5QMW5jTXo5T
-   GctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIsICJERSJd~
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
+   5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
+   CcWFFSXlYQ0hjbjRhNVlLSmFnUGdJUDBXa2c5QW9yZ0FLZyIsICI1Zm42SWlYalVQbUd
+   RNG1ZSHhEZHQ2RWp2QlE3Z1J2R2NkRW5TQ0VOOEVrIiwgIjZCek1CazdGR2l2b2dibGR
+   PNzVmM05Md2pGbGlDcWI3bm4xR2hnQ29rclEiLCAiOTBDVDhBYUJQYm41WDhuUlhrZXN
+   qdTFpMEJxaFdxWjN3cUQ0akYtcURHayIsICI5bkV3VXJkZVo2a2NSYkVqNTJRSDNuT1I
+   tb2llMF9wOXRNTklBRXVGdk1VIiwgIkhUaDZacjJKOGFpcXBhOTYzY0xrdUtlUURmOU8
+   wMEZ6T0hoeWpHcFZmVGciLCAiSkNwMksyTmhILUxFNUwwajdNRTBMTngtVC1weDlRRnR
+   hbVNzeG1DVUN4VSIsICJMb01HcmhsRG1fYlVXVVgxZ2RoUnhUc3k0ZDR6eXdHemxTVm9
+   jUlNZMDFNIiwgIlVnVWpxNXdoelFld081OWZWTmowZjBtcXlWOFlQWFU1NHNwNGtMZWN
+   3UWsiLCAiWTBILUUzaHpLRVVuQXlyaV94OXRUOWstajRpNjVhbzloa2VFSE5leG9zSSI
+   sICJlekNBbWFUd0kyblBqXzFJaUIzS1pmaUVPUkxlUndoWnNNTURNWklKOGtBIiwgImk
+   wSF8tV0FId2ZFanQ4dHFRSDc0dU9DV3ZxdVkzRnd1WC1reDRlMlJKSDgiLCAicjFHckg
+   0NnlEVjYyc2V6SW1FanhhNmNKU1pNVDIxMmpyT1NIaWVjOXl0TSIsICJyVmozUkxzN0s
+   4emROeTd6WHoxQ3IzOVk2cm9nOHVsTm96azRGN05DdUMwIiwgInQ1a3AwSGZ4TVMxZUh
+   OQ0dSenJLOUdpNW9UWnJlZzVVZTlsTFFJdUx2QjQiXSwgImlzcyI6ICJodHRwczovL3B
+   pZC1pc3N1ZXIuYWVuZGdhcmQuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXh
+   wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
+   fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+   jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+   pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.ynzAzghGmJgEYbYheF6x8fju5YcVxF9X37Z-Mt2eZ8u
+   PPcVZ7MDq5YkcajulBzjkvrgcga_MPNImYsbJAquFlA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
+   bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
+   Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
+   UHBOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwgIlNqXHUwMGY4Z2F0YSAxMiJd
+   ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIlZpa2VuIl0~WyJ
+   BSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjEyMDAxIl0~WyJ
+   QYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiS2luZ2RvbSBvZiBcdTA
+   wYzZuZGdhcmQiXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7
+   Il9zZCI6IFsiNjBCM0N3cTA0aGxQQndzdnNmdks5SlV4dnVMRlViSlFmZ1BCYk9fSDly
+   TSIsICI4eWpQUjNyOGRPNUhXTG55MWdCZU1KVFBSZ2tCY2h1cTQzcUg4V2xfZjFjIiwg
+   Ik5hcmQ3NHcyTl85YW5WRW1TbGVjRUpscXgzanhiY3F4dlZ6QnNCRFgweHMiLCAiVS16
+   RDFESS03WjB6WW94WHF5NUhTVE5VZWdhaFJDSHlkQWVzS09fc0VQYyJdfV0~WyJsa2x4
+   RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIlx1MDBjNm5kZ2Fy
+   ZCJdXQ~WyJuUHVvUW5rUkZxM0JJZUFtN0FuWEZBIiwgInNleCIsIDJd~WyI1YlBzMUlx
+   dVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX2ZhbWlseV9uYW1lIiwgIkplbnNlbiJd~WyI
+   1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIlx1MDBjNm5kaG9sbSJ
+   d~WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiS2luZ2RvbSBvZi
+   BcdTAwYzZuZGdhcmQiXQ~WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29
+   mX2JpcnRoIiwgeyJfc2QiOiBbIkpET1lLUzB3MENvZm8tSGpaR3ZyZDdIaXJwU2ZpWUR
+   BTFU2cjhUX0xFMWciLCAib1RacjlFbXk5eG1ycGNmUTVaU1U4c3Z4ZE1ZOHk0WElGXzV
+   qOVAxdTF5QSJdfV0~WyJDOUdTb3VqdmlKcXVFZ1lmb2pDYjFBIiwgIjEyIiwgdHJ1ZV0
+   ~WyJreDVrRjE3Vi14MEptd1V4OXZndnR3IiwgIjE0IiwgdHJ1ZV0~WyJIM28xdXN3UDc
+   2MEZpMnllR2RWQ0VRIiwgIjE2IiwgdHJ1ZV0~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFp
+   BIiwgIjE4IiwgdHJ1ZV0~WyJNMEpiNTd0NDF1YnJrU3V5ckRUM3hBIiwgIjIxIiwgdHJ
+   1ZV0~WyJEc210S05ncFY0ZEFIcGpyY2Fvc0F3IiwgIjY1IiwgZmFsc2Vd~WyJlSzVvNX
+   BIZmd1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIj
+   F0RWl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbm
+   x5NVA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcj
+   hfM0FtSncyWFo4a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2aj
+   BoczJaTnd4Y3FPbGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZV
+   R6YUZDVWNlSVFBYUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWn
+   FxalFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV
+   3IiwgImFnZV9pbl95ZWFycyIsIDQ3XQ~WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3Iiwg
+   ImFnZV9iaXJ0aF95ZWFyIiwgMTk3OF0~WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwg
+   InBvcnRyYWl0IiwgImRhdGE6aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFO
+   U1VoRVVnQUFBQ1FBQUFBV0FRTUFBQUNTZkt4OUFBQUFBWE5TUjBJQjJja3Nmd0FBQUFS
+   blFVMUJBQUN4and2OFlRVUFBQUFnWTBoU1RRQUFlaVlBQUlDRUFBRDZBQUFBZ09nQUFI
+   VXdBQURxWUFBQU9wZ0FBQmR3bkxwUlBBQUFBQVpRVEZSRkFBQUEvLy8vcGRtZjNRQUFB
+   RkZKUkVGVUNOZE55bEVOZ0RBUUE5QVNCSnlFV2NEQkxFMENUcERDcENEaFB2ZXhyQnds
+   Qy95OE5HM1JNdW53OUFpNXA2L3ByL1p6bGNBaTRXaVJOMW5sWEFlc09naGVCVFNPOEpE
+   bk5ENlozVytkOTBmQ25UampLUUFBQUFCSlJVNUVya0pnZ2c9PSJd~WyI0S3lSMzJvSVp
+   0LXprV3ZGcWJVTEtnIiwgImlzc3VhbmNlX2RhdGUiLCAiMjAyNC0wMS0xNSJd~WyJjaE
+   JDc3loeWgtSjg2SS1hd1FEaUNRIiwgImV4cGlyeV9kYXRlIiwgIjIwMzQtMDEtMTUiXQ
+   ~WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfYXV0aG9yaXR5IiwgIkt
+   pbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRlcmlvciJd~WyJvdm
+   9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIsICJcdTAwYzZHIl
+   0~
 
    This is the payload of that SD-JWT:
 
    {
      "_sd": [
-       "0HZmnSIPz337kSWe7C34l--88gzJi-eBJ2Vz_HJwATg",
-       "1Crn03WmUeRWp4zwPvvCKXl9ZaQp-cdQV_gHdaGSWow",
        "2r009dzvHuVrWrRXT5kJMmHnqEHHnWe0MLVZw8PATB8",
-       "6ZNISDst62ymlrOAkadjdD5ZulT5A299J78SLhM__Os",
-       "78jg77-GYBeX8IQfoELPyL0DYPdmfZo0JgViV0_lKCM",
+       "3NdDJYRwBqaEIyXCHcn4a5YKJagPgIP0Wkg9AorgAKg",
+       "5fn6IiXjUPmGQ4mYHxDdt6EjvBQ7gRvGcdEnSCEN8Ek",
+       "6BzMBk7FGivogbldO75f3NLwjFliCqb7nn1GhgCokrQ",
        "90CT8AaBPbn5X8nRXkesju1i0BqhWqZ3wqD4jF-qDGk",
-       "I00fcFUoDXCucp5yy2ujqPssDVGaWNiUliNz_awD0gc",
-       "KjAXgAA9N5WHEDtRIh4u5Mn1ZsWixhhWAiX-A4QiwgA",
-       "Lai6IU6d7GQagXR7AvGTrnXgSld3z8EIg_fv3fOZ1Wg",
-       "LezjabRqiZOXzEYmVZf8RMi9xAkd3_M1LZ8U7E4s3u4",
-       "RTz3qTmFNHbpWrrOMZS41F474kFqRv3vIPqth6PUhlM",
-       "W14XHbUffzuW4IFMjpSTb1melWxUWf4N_o2ldkkIqc8",
-       "WTpI7RcM3gxZruRpXzezSbkbOr93PVFvWx8woJ3j1cE",
-       "_ohJVIQIBsU4updNS4_w4Kb1MHqJ0L9qLGshWq6JXQs",
-       "y50czc0ISChy_bsba1dMoUuAOQ5AMmOSfGoEe81v1FU"
+       "9nEwUrdeZ6kcRbEj52QH3nOR-oie0_p9tMNIAEuFvMU",
+       "HTh6Zr2J8aiqpa963cLkuKeQDf9O00FzOHhyjGpVfTg",
+       "JCp2K2NhH-LE5L0j7ME0LNx-T-px9QFtamSsxmCUCxU",
+       "LoMGrhlDm_bUWUX1gdhRxTsy4d4zywGzlSVocRSY01M",
+       "UgUjq5whzQewO59fVNj0f0mqyV8YPXU54sp4kLecwQk",
+       "Y0H-E3hzKEUnAyri_x9tT9k-j4i65ao9hkeEHNexosI",
+       "ezCAmaTwI2nPj_1IiB3KZfiEORLeRwhZsMMDMZIJ8kA",
+       "i0H_-WAHwfEjt8tqQH74uOCWvquY3FwuX-kx4e2RJH8",
+       "r1GrH46yDV62sezImEjxa6cJSZMT212jrOSHiec9ytM",
+       "rVj3RLs7K8zdNy7zXz1Cr39Y6rog8ulNozk4F7NCuC0",
+       "t5kp0HfxMS1eHNCGRzrK9Gi5oTZreg5Ue9lLQIuLvB4"
      ],
-     "iss": "https://pid-issuer.bund.de.example",
+     "iss": "https://pid-issuer.aendgard.example",
      "iat": 1683000000,
      "exp": 1883000000,
-     "vct": "urn:eudi:pid:de:1",
+     "vct": "urn:eudi:pid:aendgard:1",
      "_sd_alg": "sha-256",
      "cnf": {
        "jwk": {
@@ -1936,83 +2030,87 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim given_name*:
 
-   *  SHA-256 Hash: 0HZmnSIPz337kSWe7C34l--88gzJi-eBJ2Vz_HJwATg
+   *  SHA-256 Hash: 3NdDJYRwBqaEIyXCHcn4a5YKJagPgIP0Wkg9AorgAKg
    *  Disclosure:
-      WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiRXJp
-      a2EiXQ
-   *  Contents: ["2GLC42sKQveCfGfryNRN9w", "given_name", "Erika"]
+      WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0
+      cmlkIl0
+   *  Contents: ["2GLC42sKQveCfGfryNRN9w", "given_name", "Astrid"]
 
    *Claim family_name*:
 
-   *  SHA-256 Hash: I00fcFUoDXCucp5yy2ujqPssDVGaWNiUliNz_awD0gc
+   *  SHA-256 Hash: JCp2K2NhH-LE5L0j7ME0LNx-T-px9QFtamSsxmCUCxU
    *  Disclosure:
-      WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIk11
-      c3Rlcm1hbm4iXQ
-   *  Contents: ["eluV5Og3gSNII8EYnsxA_A", "family_name", "Mustermann"]
+      WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhv
+      bG1ncmVuIl0
+   *  Contents: ["eluV5Og3gSNII8EYnsxA_A", "family_name", "Holmgren"]
 
    *Claim birthdate*:
 
-   *  SHA-256 Hash: Lai6IU6d7GQagXR7AvGTrnXgSld3z8EIg_fv3fOZ1Wg
+   *  SHA-256 Hash: 5fn6IiXjUPmGQ4mYHxDdt6EjvBQ7gRvGcdEnSCEN8Ek
    *  Disclosure:
-      WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTYz
-      LTA4LTEyIl0
-   *  Contents: ["6Ij7tM-a5iVPGboS5tmvVA", "birthdate", "1963-08-12"]
+      WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4
+      LTA0LTEwIl0
+   *  Contents: ["6Ij7tM-a5iVPGboS5tmvVA", "birthdate", "1978-04-10"]
 
    *Claim street_address*:
 
-   *  SHA-256 Hash: ALZERsSn5WNiEXdCksW8I5qQw3_NpAnRqpSAZDudgw8
+   *  SHA-256 Hash: 8yjPR3r8dO5HWLny1gBeMJTPRgkBchuq43qH8Wl_f1c
    *  Disclosure:
       WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInN0cmVldF9hZGRyZXNzIiwg
-      IkhlaWRlc3RyYVx1MDBkZmUgMTciXQ
+      IlNqXHUwMGY4Z2F0YSAxMiJd
    *  Contents: ["eI8ZWm9QnKPpNPeNenHdhQ", "street_address",
-      "Heidestra\u00dfe 17"]
+      "Sj\u00f8gata
+      12"]
 
    *Claim locality*:
 
-   *  SHA-256 Hash: D__W_uYcvRz3tvUnIJvBDHiTc7C__qHd0xNKwIs_w9k
+   *  SHA-256 Hash: Nard74w2N_9anVEmSlecEJlqx3jxbcqxvVzBsBDX0xs
    *  Disclosure:
-      WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIktcdTAw
-      ZjZsbiJd
-   *  Contents: ["Qg_O64zqAxe412a108iroA", "locality", "K\u00f6ln"]
+      WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImxvY2FsaXR5IiwgIlZpa2Vu
+      Il0
+   *  Contents: ["Qg_O64zqAxe412a108iroA", "locality", "Viken"]
 
    *Claim postal_code*:
 
-   *  SHA-256 Hash: xOPy9-gJALK6UbWKFLR85cOByUD3AbNwFg3I3YfQE_I
+   *  SHA-256 Hash: 60B3Cwq04hlPBwsvsfvK9JUxvuLFUbJQfgPBbO_H9rM
    *  Disclosure:
-      WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjUx
-      MTQ3Il0
-   *  Contents: ["AJx-095VPrpTtN4QMOqROA", "postal_code", "51147"]
+      WyJBSngtMDk1VlBycFR0TjRRTU9xUk9BIiwgInBvc3RhbF9jb2RlIiwgIjEy
+      MDAxIl0
+   *  Contents: ["AJx-095VPrpTtN4QMOqROA", "postal_code", "12001"]
 
    *Claim country*:
 
-   *  SHA-256 Hash: eBpCXU1J5dhH2g4t8QYNW5ExS9AxUVblUodoLYoPho0
+   *  SHA-256 Hash: U-zD1DI-7Z0zYoxXqy5HSTNUegahRCHydAesKO_sEPc
    *  Disclosure:
-      WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiREUiXQ
-   *  Contents: ["Pc33JM2LchcU_lHggv_ufQ", "country", "DE"]
+      WyJQYzMzSk0yTGNoY1VfbEhnZ3ZfdWZRIiwgImNvdW50cnkiLCAiS2luZ2Rv
+      bSBvZiBcdTAwYzZuZGdhcmQiXQ
+   *  Contents: ["Pc33JM2LchcU_lHggv_ufQ", "country", "Kingdom of
+      \u00c6ndgard"]
 
    *Claim address*:
 
-   *  SHA-256 Hash: RTz3qTmFNHbpWrrOMZS41F474kFqRv3vIPqth6PUhlM
+   *  SHA-256 Hash: i0H_-WAHwfEjt8tqQH74uOCWvquY3FwuX-kx4e2RJH8
    *  Disclosure:
       WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImFkZHJlc3MiLCB7Il9zZCI6
-      IFsiQUxaRVJzU241V05pRVhkQ2tzVzhJNXFRdzNfTnBBblJxcFNBWkR1ZGd3
-      OCIsICJEX19XX3VZY3ZSejN0dlVuSUp2QkRIaVRjN0NfX3FIZDB4Tkt3SXNf
-      dzlrIiwgImVCcENYVTFKNWRoSDJnNHQ4UVlOVzVFeFM5QXhVVmJsVW9kb0xZ
-      b1BobzAiLCAieE9QeTktZ0pBTEs2VWJXS0ZMUjg1Y09CeVVEM0FiTndGZzNJ
-      M1lmUUVfSSJdfV0
+      IFsiNjBCM0N3cTA0aGxQQndzdnNmdks5SlV4dnVMRlViSlFmZ1BCYk9fSDly
+      TSIsICI4eWpQUjNyOGRPNUhXTG55MWdCZU1KVFBSZ2tCY2h1cTQzcUg4V2xf
+      ZjFjIiwgIk5hcmQ3NHcyTl85YW5WRW1TbGVjRUpscXgzanhiY3F4dlZ6QnNC
+      RFgweHMiLCAiVS16RDFESS03WjB6WW94WHF5NUhTVE5VZWdhaFJDSHlkQWVz
+      S09fc0VQYyJdfV0
    *  Contents: ["G02NSrQfjFXQ7Io09syajA", "address", {"_sd":
-      ["ALZERsSn5WNiEXdCksW8I5qQw3_NpAnRqpSAZDudgw8",
-      "D__W_uYcvRz3tvUnIJvBDHiTc7C__qHd0xNKwIs_w9k",
-      "eBpCXU1J5dhH2g4t8QYNW5ExS9AxUVblUodoLYoPho0",
-      "xOPy9-gJALK6UbWKFLR85cOByUD3AbNwFg3I3YfQE_I"]}]
+      ["60B3Cwq04hlPBwsvsfvK9JUxvuLFUbJQfgPBbO_H9rM",
+      "8yjPR3r8dO5HWLny1gBeMJTPRgkBchuq43qH8Wl_f1c",
+      "Nard74w2N_9anVEmSlecEJlqx3jxbcqxvVzBsBDX0xs",
+      "U-zD1DI-7Z0zYoxXqy5HSTNUegahRCHydAesKO_sEPc"]}]
 
    *Claim nationalities*:
 
-   *  SHA-256 Hash: y50czc0ISChy_bsba1dMoUuAOQ5AMmOSfGoEe81v1FU
+   *  SHA-256 Hash: HTh6Zr2J8aiqpa963cLkuKeQDf9O00FzOHhyjGpVfTg
    *  Disclosure:
       WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBb
-      IkRFIl1d
-   *  Contents: ["lklxF5jMYlGTPUovMNIvCA", "nationalities", ["DE"]]
+      Ilx1MDBjNm5kZ2FyZCJdXQ
+   *  Contents: ["lklxF5jMYlGTPUovMNIvCA", "nationalities",
+      ["\u00c6ndgard"]]
 
    *Claim sex*:
 
@@ -2023,39 +2121,41 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim birth_family_name*:
 
-   *  SHA-256 Hash: KjAXgAA9N5WHEDtRIh4u5Mn1ZsWixhhWAiX-A4QiwgA
+   *  SHA-256 Hash: t5kp0HfxMS1eHNCGRzrK9Gi5oTZreg5Ue9lLQIuLvB4
    *  Disclosure:
       WyI1YlBzMUlxdVpOYTBoa2FGenp6Wk53IiwgImJpcnRoX2ZhbWlseV9uYW1l
-      IiwgIkdhYmxlciJd
+      IiwgIkplbnNlbiJd
    *  Contents: ["5bPs1IquZNa0hkaFzzzZNw", "birth_family_name",
-      "Gabler"]
+      "Jensen"]
 
    *Claim locality*:
 
-   *  SHA-256 Hash: KUViaaLnY5jSML90G29OOLENPbbXfhSjSPMjZaGkxAE
+   *  SHA-256 Hash: JDOYKS0w0Cofo-HjZGvrd7HirpSfiYDALU6r8T_LE1g
    *  Disclosure:
-      WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIkJlcmxp
-      biJd
-   *  Contents: ["5a2W0_NrlEZzfqmk_7Pq-w", "locality", "Berlin"]
+      WyI1YTJXMF9OcmxFWnpmcW1rXzdQcS13IiwgImxvY2FsaXR5IiwgIlx1MDBj
+      Nm5kaG9sbSJd
+   *  Contents: ["5a2W0_NrlEZzfqmk_7Pq-w", "locality", "\u00c6ndholm"]
 
    *Claim country*:
 
-   *  SHA-256 Hash: YbsT0S76VqXCVsd1jUSlwKPDgmALeB1uZclFHXf-USQ
+   *  SHA-256 Hash: oTZr9Emy9xmrpcfQ5ZSU8svxdMY8y4XIF_5j9P1u1yA
    *  Disclosure:
-      WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiREUiXQ
-   *  Contents: ["y1sVU5wdfJahVdgwPgS7RQ", "country", "DE"]
+      WyJ5MXNWVTV3ZGZKYWhWZGd3UGdTN1JRIiwgImNvdW50cnkiLCAiS2luZ2Rv
+      bSBvZiBcdTAwYzZuZGdhcmQiXQ
+   *  Contents: ["y1sVU5wdfJahVdgwPgS7RQ", "country", "Kingdom of
+      \u00c6ndgard"]
 
    *Claim place_of_birth*:
 
-   *  SHA-256 Hash: 1Crn03WmUeRWp4zwPvvCKXl9ZaQp-cdQV_gHdaGSWow
+   *  SHA-256 Hash: r1GrH46yDV62sezImEjxa6cJSZMT212jrOSHiec9ytM
    *  Disclosure:
       WyJIYlE0WDhzclZXM1FEeG5JSmRxeU9BIiwgInBsYWNlX29mX2JpcnRoIiwg
-      eyJfc2QiOiBbIktVVmlhYUxuWTVqU01MOTBHMjlPT0xFTlBiYlhmaFNqU1BN
-      alphR2t4QUUiLCAiWWJzVDBTNzZWcVhDVnNkMWpVU2x3S1BEZ21BTGVCMXVa
-      Y2xGSFhmLVVTUSJdfV0
+      eyJfc2QiOiBbIkpET1lLUzB3MENvZm8tSGpaR3ZyZDdIaXJwU2ZpWURBTFU2
+      cjhUX0xFMWciLCAib1RacjlFbXk5eG1ycGNmUTVaU1U4c3Z4ZE1ZOHk0WElG
+      XzVqOVAxdTF5QSJdfV0
    *  Contents: ["HbQ4X8srVW3QDxnIJdqyOA", "place_of_birth", {"_sd":
-      ["KUViaaLnY5jSML90G29OOLENPbbXfhSjSPMjZaGkxAE",
-      "YbsT0S76VqXCVsd1jUSlwKPDgmALeB1uZclFHXf-USQ"]}]
+      ["JDOYKS0w0Cofo-HjZGvrd7HirpSfiYDALU6r8T_LE1g",
+      "oTZr9Emy9xmrpcfQ5ZSU8svxdMY8y4XIF_5j9P1u1yA"]}]
 
    *Claim 12*:
 
@@ -2121,110 +2221,136 @@ B.1.  Example 1: Person Identification Data (PID) Credential
 
    *Claim age_in_years*:
 
-   *  SHA-256 Hash: WTpI7RcM3gxZruRpXzezSbkbOr93PVFvWx8woJ3j1cE
+   *  SHA-256 Hash: LoMGrhlDm_bUWUX1gdhRxTsy4d4zywGzlSVocRSY01M
    *  Disclosure:
-      WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3IiwgImFnZV9pbl95ZWFycyIsIDYy
+      WyJqN0FEZGIwVVZiMExpMGNpUGNQMGV3IiwgImFnZV9pbl95ZWFycyIsIDQ3
       XQ
-   *  Contents: ["j7ADdb0UVb0Li0ciPcP0ew", "age_in_years", 62]
+   *  Contents: ["j7ADdb0UVb0Li0ciPcP0ew", "age_in_years", 47]
 
    *Claim age_birth_year*:
 
-   *  SHA-256 Hash: LezjabRqiZOXzEYmVZf8RMi9xAkd3_M1LZ8U7E4s3u4
+   *  SHA-256 Hash: rVj3RLs7K8zdNy7zXz1Cr39Y6rog8ulNozk4F7NCuC0
    *  Disclosure:
       WyJXcHhKckZ1WDh1U2kycDRodDA5anZ3IiwgImFnZV9iaXJ0aF95ZWFyIiwg
-      MTk2M10
-   *  Contents: ["WpxJrFuX8uSi2p4ht09jvw", "age_birth_year", 1963]
+      MTk3OF0
+   *  Contents: ["WpxJrFuX8uSi2p4ht09jvw", "age_birth_year", 1978]
+
+   *Claim portrait*:
+
+   *  SHA-256 Hash: 9nEwUrdeZ6kcRbEj52QH3nOR-oie0_p9tMNIAEuFvMU
+   *  Disclosure:
+      WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgInBvcnRyYWl0IiwgImRhdGE6
+      aW1hZ2UvcG5nO2Jhc2U2NCxpVkJPUncwS0dnb0FBQUFOU1VoRVVnQUFBQ1FB
+      QUFBV0FRTUFBQUNTZkt4OUFBQUFBWE5TUjBJQjJja3Nmd0FBQUFSblFVMUJB
+      QUN4and2OFlRVUFBQUFnWTBoU1RRQUFlaVlBQUlDRUFBRDZBQUFBZ09nQUFI
+      VXdBQURxWUFBQU9wZ0FBQmR3bkxwUlBBQUFBQVpRVEZSRkFBQUEvLy8vcGRt
+      ZjNRQUFBRkZKUkVGVUNOZE55bEVOZ0RBUUE5QVNCSnlFV2NEQkxFMENUcERD
+      cENEaFB2ZXhyQndsQy95OE5HM1JNdW53OUFpNXA2L3ByL1p6bGNBaTRXaVJO
+      MW5sWEFlc09naGVCVFNPOEpEbk5ENlozVytkOTBmQ25UampLUUFBQUFCSlJV
+      NUVya0pnZ2c9PSJd
+   *  Contents: ["atSmFACYMbJVKD05o3JgtQ", "portrait", "data:image/
+      png;base6
+      4,iVBORw0KGgoAAAANSUhEUgAAACQAAAAWAQMAAACSfKx9AAAAAXNSR0IB2c
+      ksfwAAAARnQU1BAACxjwv8YQUAAAAgY0hSTQAAeiYAAICEAAD6AAAAgOgAAH
+      UwAADqYAAAOpgAABdwnLpRPAAAAAZQTFRFAAAA////pdmf3QAAAFFJREFUCN
+      dNylENgDAQA9ASBJyEWcDBLE0CTpDCpCDhPvexrBwlC/y8NG3RMunw9Ai5p6
+      /pr/ZzlcAi4WiRN1nlXAesOgheBTSO8JDnND6Z3W+d90fCnTjjKQAAAABJRU
+      5ErkJggg=="]
 
    *Claim issuance_date*:
 
-   *  SHA-256 Hash: W14XHbUffzuW4IFMjpSTb1melWxUWf4N_o2ldkkIqc8
+   *  SHA-256 Hash: ezCAmaTwI2nPj_1IiB3KZfiEORLeRwhZsMMDMZIJ8kA
    *  Disclosure:
-      WyJhdFNtRkFDWU1iSlZLRDA1bzNKZ3RRIiwgImlzc3VhbmNlX2RhdGUiLCAi
-      MjAyMC0wMy0xMSJd
-   *  Contents: ["atSmFACYMbJVKD05o3JgtQ", "issuance_date",
-      "2020-03-11"]
+      WyI0S3lSMzJvSVp0LXprV3ZGcWJVTEtnIiwgImlzc3VhbmNlX2RhdGUiLCAi
+      MjAyNC0wMS0xNSJd
+   *  Contents: ["4KyR32oIZt-zkWvFqbULKg", "issuance_date",
+      "2024-01-15"]
 
    *Claim expiry_date*:
 
-   *  SHA-256 Hash: 78jg77-GYBeX8IQfoELPyL0DYPdmfZo0JgViV0_lKCM
+   *  SHA-256 Hash: Y0H-E3hzKEUnAyri_x9tT9k-j4i65ao9hkeEHNexosI
    *  Disclosure:
-      WyI0S3lSMzJvSVp0LXprV3ZGcWJVTEtnIiwgImV4cGlyeV9kYXRlIiwgIjIw
-      MzAtMDMtMTIiXQ
-   *  Contents: ["4KyR32oIZt-zkWvFqbULKg", "expiry_date", "2030-03-12"]
+      WyJjaEJDc3loeWgtSjg2SS1hd1FEaUNRIiwgImV4cGlyeV9kYXRlIiwgIjIw
+      MzQtMDEtMTUiXQ
+   *  Contents: ["chBCsyhyh-J86I-awQDiCQ", "expiry_date", "2034-01-15"]
 
    *Claim issuing_authority*:
 
-   *  SHA-256 Hash: 6ZNISDst62ymlrOAkadjdD5ZulT5A299J78SLhM__Os
+   *  SHA-256 Hash: 6BzMBk7FGivogbldO75f3NLwjFliCqb7nn1GhgCokrQ
    *  Disclosure:
-      WyJjaEJDc3loeWgtSjg2SS1hd1FEaUNRIiwgImlzc3VpbmdfYXV0aG9yaXR5
-      IiwgIkRFIl0
-   *  Contents: ["chBCsyhyh-J86I-awQDiCQ", "issuing_authority", "DE"]
+      WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfYXV0aG9yaXR5
+      IiwgIktpbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRl
+      cmlvciJd
+   *  Contents: ["flNP1ncMz9Lg-c9qMIz_9g", "issuing_authority", "Kingdom
+      of
+      \u00c6ndgard, Ministry of Interior"]
 
    *Claim issuing_country*:
 
-   *  SHA-256 Hash: _ohJVIQIBsU4updNS4_w4Kb1MHqJ0L9qLGshWq6JXQs
+   *  SHA-256 Hash: UgUjq5whzQewO59fVNj0f0mqyV8YPXU54sp4kLecwQk
    *  Disclosure:
-      WyJmbE5QMW5jTXo5TGctYzlxTUl6XzlnIiwgImlzc3VpbmdfY291bnRyeSIs
-      ICJERSJd
-   *  Contents: ["flNP1ncMz9Lg-c9qMIz_9g", "issuing_country", "DE"]
+      WyJvdm9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIs
+      ICJcdTAwYzZHIl0
+   *  Contents: ["ovoV1rkh_ANm861qUAA2Aw", "issuing_country", "\u00c6G"]
 
    This shows a presentation of the SD-JWT with a Key Binding JWT that
    discloses only nationality and the fact that the person is over 18
    years old:
 
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjBIWm1
-   uU0lQejMzN2tTV2U3QzM0bC0tODhnekppLWVCSjJWel9ISndBVGciLCAiMUNybjAzV21
-   VZVJXcDR6d1B2dkNLWGw5WmFRcC1jZFFWX2dIZGFHU1dvdyIsICIycjAwOWR6dkh1VnJ
-   XclJYVDVrSk1tSG5xRUhIbldlME1MVlp3OFBBVEI4IiwgIjZaTklTRHN0NjJ5bWxyT0F
-   rYWRqZEQ1WnVsVDVBMjk5Sjc4U0xoTV9fT3MiLCAiNzhqZzc3LUdZQmVYOElRZm9FTFB
-   5TDBEWVBkbWZabzBKZ1ZpVjBfbEtDTSIsICI5MENUOEFhQlBibjVYOG5SWGtlc2p1MWk
-   wQnFoV3FaM3dxRDRqRi1xREdrIiwgIkkwMGZjRlVvRFhDdWNwNXl5MnVqcVBzc0RWR2F
-   XTmlVbGlOel9hd0QwZ2MiLCAiS2pBWGdBQTlONVdIRUR0UkloNHU1TW4xWnNXaXhoaFd
-   BaVgtQTRRaXdnQSIsICJMYWk2SVU2ZDdHUWFnWFI3QXZHVHJuWGdTbGQzejhFSWdfZnY
-   zZk9aMVdnIiwgIkxlemphYlJxaVpPWHpFWW1WWmY4Uk1pOXhBa2QzX00xTFo4VTdFNHM
-   zdTQiLCAiUlR6M3FUbUZOSGJwV3JyT01aUzQxRjQ3NGtGcVJ2M3ZJUHF0aDZQVWhsTSI
-   sICJXMTRYSGJVZmZ6dVc0SUZNanBTVGIxbWVsV3hVV2Y0Tl9vMmxka2tJcWM4IiwgIld
-   UcEk3UmNNM2d4WnJ1UnBYemV6U2JrYk9yOTNQVkZ2V3g4d29KM2oxY0UiLCAiX29oSlZ
-   JUUlCc1U0dXBkTlM0X3c0S2IxTUhxSjBMOXFMR3NoV3E2SlhRcyIsICJ5NTBjemMwSVN
-   DaHlfYnNiYTFkTW9VdUFPUTVBTW1PU2ZHb0VlODF2MUZVIl0sICJpc3MiOiAiaHR0cHM
-   6Ly9waWQtaXNzdWVyLmJ1bmQuZGUuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCA
-   iZXhwIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6ZGU6MSIsICJfc2R
-   fYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJjcnY
-   iOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUxpbER
-   sczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWVjQ0U
-   2dDRqVDlGMkhaUSJ9fX0.m6l7WXnOqXFYD825C6fSmcscoN9as8xzJSLM54LpF2aFe68
-   Zy8XAVfHiNBc-YtbJRGvAc-JSHYkP2L4brBKy0A~WyJlSzVvNXBIZmd1cFBwbHRqMXFo
-   QUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9Lc2Y3
-   U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNFd3R4
-   UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4a0kx
-   eTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajBoczJaTnd4Y3FPbGY4
-   bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR6YUZDVWNlSVFBYUlk
-   aHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnFxalFXejB0TGl1Q21N
-   ZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4IiwgdHJ1Z
-   V0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbIkRFI
-   l1d~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM
-   0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgIml
-   hdCI6IDE3NjA3MDc5NTMsICJzZF9oYXNoIjogImtveS1VTmdBdEJQdUR6aVl6WDJNQ29
-   CVDAwcTllV2diQ0hYWnZ0VVlTZHMifQ.EmyJRiZbJr8WBfc0sDOVahct4KTbWw3AbCLe
-   Su9mcVQ8rzHpvR4SOHrXZNZu9mw_QH3421Zbr5Spbj5ROkRCaw
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
+   5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
+   CcWFFSXlYQ0hjbjRhNVlLSmFnUGdJUDBXa2c5QW9yZ0FLZyIsICI1Zm42SWlYalVQbUd
+   RNG1ZSHhEZHQ2RWp2QlE3Z1J2R2NkRW5TQ0VOOEVrIiwgIjZCek1CazdGR2l2b2dibGR
+   PNzVmM05Md2pGbGlDcWI3bm4xR2hnQ29rclEiLCAiOTBDVDhBYUJQYm41WDhuUlhrZXN
+   qdTFpMEJxaFdxWjN3cUQ0akYtcURHayIsICI5bkV3VXJkZVo2a2NSYkVqNTJRSDNuT1I
+   tb2llMF9wOXRNTklBRXVGdk1VIiwgIkhUaDZacjJKOGFpcXBhOTYzY0xrdUtlUURmOU8
+   wMEZ6T0hoeWpHcFZmVGciLCAiSkNwMksyTmhILUxFNUwwajdNRTBMTngtVC1weDlRRnR
+   hbVNzeG1DVUN4VSIsICJMb01HcmhsRG1fYlVXVVgxZ2RoUnhUc3k0ZDR6eXdHemxTVm9
+   jUlNZMDFNIiwgIlVnVWpxNXdoelFld081OWZWTmowZjBtcXlWOFlQWFU1NHNwNGtMZWN
+   3UWsiLCAiWTBILUUzaHpLRVVuQXlyaV94OXRUOWstajRpNjVhbzloa2VFSE5leG9zSSI
+   sICJlekNBbWFUd0kyblBqXzFJaUIzS1pmaUVPUkxlUndoWnNNTURNWklKOGtBIiwgImk
+   wSF8tV0FId2ZFanQ4dHFRSDc0dU9DV3ZxdVkzRnd1WC1reDRlMlJKSDgiLCAicjFHckg
+   0NnlEVjYyc2V6SW1FanhhNmNKU1pNVDIxMmpyT1NIaWVjOXl0TSIsICJyVmozUkxzN0s
+   4emROeTd6WHoxQ3IzOVk2cm9nOHVsTm96azRGN05DdUMwIiwgInQ1a3AwSGZ4TVMxZUh
+   OQ0dSenJLOUdpNW9UWnJlZzVVZTlsTFFJdUx2QjQiXSwgImlzcyI6ICJodHRwczovL3B
+   pZC1pc3N1ZXIuYWVuZGdhcmQuZXhhbXBsZSIsICJpYXQiOiAxNjgzMDAwMDAwLCAiZXh
+   wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
+   fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
+   jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
+   pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.ynzAzghGmJgEYbYheF6x8fju5YcVxF9X37Z-Mt2eZ8u
+   PPcVZ7MDq5YkcajulBzjkvrgcga_MPNImYsbJAquFlA~WyJlSzVvNXBIZmd1cFBwbHRq
+   MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
+   c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
+   d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
+   a0kxeTBRel96ZTlpT2NXMlczUkxwWEdnIiwgImdrdnkwRnV2QkJ2ajBoczJaTnd4Y3FP
+   bGY4bXUyLWtDRTctTmIyUXh1QlUiLCAiaHJZNEhubUY1YjVKd0M5ZVR6YUZDVWNlSVFB
+   YUlkaHJxVVhRTkNXYmZaSSIsICJ5NlNGclZGUnlxNTBJYlJKdmlUWnFxalFXejB0TGl1
+   Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
+   HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
+   lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
+   yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjQ2MzU5MTUsICJzZF9oYXNoIjogIlZyQW1MTHdJS
+   k1qR2ZWVXJjQ2l5SEJma09zS0JIMEU5VHpCT2JOb3ZDTDAifQ.W7ItsSlgc6v2H_H8Nj
+   zbp8wpMOjVZx31kJRRYf_1GhXtYEqg2ukssk1GaceLbjsFjBqmcBkPwrh8DN2uIjC9SQ
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1760707953,
-     "sd_hash": "koy-UNgAtBPuDziYzX2MCoBT00q9eWgbCHXZvtUYSds"
+     "iat": 1764635915,
+     "sd_hash": "VrAmLLwIJMjGfVUrcCiyHBfkOsKBH0E9TzBObNovCL0"
    }
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
 
    {
-     "iss": "https://pid-issuer.bund.de.example",
+     "iss": "https://pid-issuer.aendgard.example",
      "iat": 1683000000,
      "exp": 1883000000,
-     "vct": "urn:eudi:pid:de:1",
+     "vct": "urn:eudi:pid:aendgard:1",
      "cnf": {
        "jwk": {
          "kty": "EC",
@@ -2237,7 +2363,7 @@ B.1.  Example 1: Person Identification Data (PID) Credential
        "18": true
      },
      "nationalities": [
-       "DE"
+       "Ændgard"
      ]
    }
 
@@ -2463,14 +2589,24 @@ B.2.  Example 2: Type Metadata
 Appendix C.  Acknowledgements
 
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
-   Andrii Deinega, Babis Routis, Christian Bormann, George J Padayatti,
-   Giuseppe De Marco, Lukas J Han, Leif Johansson, Michael B.  Jones,
-   Mike Prorock, Mirko Mollik, Orie Steele, Paul Bastian, Pavel Zarecky,
-   Stefan Charsley, Timo Glastra, Torsten Lodderstedt, Tobias Looker,
-   and Kristina Yasuda for their contributions (some of which
+   Andrii Deinega, Annabelle Kennedy, Babis Routis, Christian Bormann,
+   Denis Pinkas, George J Padayatti, Giuseppe De Marco, Lukas J Han,
+   Lukasz Jaromin, Leif Johansson, Michael B.  Jones, Mike Prorock,
+   Mirko Mollik, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan
+   Charsley, Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias
+   Looker, and Kristina Yasuda for their contributions (some of which
    substantial) to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
+
+   -14
+
+   *  State more explicitly that additional Issuer Signature Mechanisms
+      can complement or override the defined mechanisms
+
+   -13
+
+   *  Updated svg_template to match pluralised appendix example
 
    -12
 
@@ -2481,16 +2617,31 @@ Appendix D.  Document History
    *  Introduce optional mandatory property for claims
    *  Explicitly mention that Type Metadata can have additional stuff
       that has to be ignored if not understood
+   *  Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather
+      might have an associated one (which makes it a SD-JWT+KB and Brian
+      is still not sure about the term or these words, but it's where
+      we've ended up)
    *  Remove the requirement to ignore unknown claims, as some
       applications may not want to follow this rule
    *  Fix cnf claim and JWK references and move them to normative
    *  List vct as one of the required values in type metadata and ensure
       that the use of the document integrity claims is clear
+   *  Remove discussion of status and Status Provider from the
+      Introduction
    *  Add a background_image property to the simple rendering aligned
       with the definition in OpenID4VCI
    *  Recommend to use sd=always or sd=never to avoid ambiguity and
       introduce rules for sd and mandatory when extending types
+   *  Provide some guidance on versioning via the vct value
+   *  Add security considerations for trust in type metadata
+   *  Require data URIs for non-JSON types
+   *  Require x5c to be in the protected header
    *  Clarify presentations of SD-JWT VC do not require KB
+   *  Updated/expanded example for Type Metadata
+   *  Be more consistent with style for lists of claims/parameters/
+      properties
+   *  Update PID example to make clear that it is not normative
+   *  Clarification on processing of display metadata
 
    -11
 
