@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-11-23T00:40:09.909241+00:00",
+  "timestamp": "2025-12-04T00:35:36.413479+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9645,7 +9645,7 @@
       "labels": [],
       "body": "Section 3.5 states that _When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata._\n\nHowever, it also states that \"separate specifications or ecosystem regulations may define **additional** Issuer Signature Mechanisms.\"\n\nThe **additional** creates potential ambiguity:\n1. Does the HTTPS scheme exclusively trigger JWT VC Issuer Metadata?\n2. Or can additional mechanisms also be defined that use HTTPS URIs as iss values?\n\nIt makes the JWT VC Issuer Metadata, that is defined as optional for this spec, de facto mandatory in many, if not most, cases because when the fairly popular`https` scheme is used, it is mandatory. It eliminates other options like OpenID Federation or any other mechanism that uses the `https` scheme. \n\nAssuming that it wasn't the intention, I'd like to propose to clarify that by adding _Additional mechanisms MAY use the HTTPS scheme for iss values._ or something along these lines to the paragraph below the bullet points.",
       "createdAt": "2025-11-06T16:33:12Z",
-      "updatedAt": "2025-11-18T09:27:41Z",
+      "updatedAt": "2025-12-02T00:45:57Z",
       "closedAt": null,
       "comments": [
         {
@@ -9668,6 +9668,20 @@
           "body": "\nLooks like we agree in principle that it shall be allowed. The key is the word **additional** that allows defining new mechanisms, but objectively doesn't implicitly allow overwriting rules for existing ones.\n\nI was about to raise a PR with the fix I proposed (focused solely on HTTPS scheme to keep the change as small as possible), but if they are self-contained perhaps a more explicit statement would be more appropriate, such as: \n... _may define additional Issuer Signature Mechanisms that **may complement or override the mechanisms defined above.**_\n\nAlso, regarding the current language: which mechanism should the verifier use if both `x5c` is present and the `iss` uses the HTTPS scheme? ",
           "createdAt": "2025-11-18T09:27:41Z",
           "updatedAt": "2025-11-18T09:27:41Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "PR #379 adds the language proposed by @yaromin ",
+          "createdAt": "2025-12-02T00:42:14Z",
+          "updatedAt": "2025-12-02T00:42:14Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Also, regarding the current language: which mechanism should the verifier use if both `x5c` is present and the `iss` uses the HTTPS scheme?\n\nWhichever one the verifier supports or prefers for the given context. I feel like this is reasonably clear from the content of the draft. But do you think something more is needed?  ",
+          "createdAt": "2025-12-02T00:45:57Z",
+          "updatedAt": "2025-12-02T00:45:57Z"
         }
       ]
     },
@@ -30861,6 +30875,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 379,
+      "id": "PR_kwDOJbVClc62ehRV",
+      "title": "State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/379",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2025-12-02T00:39:27Z",
+      "updatedAt": "2025-12-02T00:39:28Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "096f48f4c8e9794db4b10f80687f70d4c951d1f8",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "read-the-room",
+      "headRefOid": "1125a53a8650ec7976a5ef5afbe2bc84fa71aa46",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
