@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-04T00:35:36.413479+00:00",
+  "timestamp": "2025-12-09T00:36:11.689987+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -30888,7 +30888,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-12-02T00:39:27Z",
-      "updatedAt": "2025-12-02T00:39:28Z",
+      "updatedAt": "2025-12-07T17:50:42Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "096f48f4c8e9794db4b10f80687f70d4c951d1f8",
@@ -30900,7 +30900,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7TkGDW",
+          "commit": {
+            "abbreviatedOid": "1125a53"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-12-07T17:50:42Z",
+          "updatedAt": "2025-12-07T17:50:42Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
