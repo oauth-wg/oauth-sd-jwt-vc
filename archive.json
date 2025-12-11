@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-09T00:36:11.689987+00:00",
+  "timestamp": "2025-12-11T00:37:00.222647+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9645,7 +9645,7 @@
       "labels": [],
       "body": "Section 3.5 states that _When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata._\n\nHowever, it also states that \"separate specifications or ecosystem regulations may define **additional** Issuer Signature Mechanisms.\"\n\nThe **additional** creates potential ambiguity:\n1. Does the HTTPS scheme exclusively trigger JWT VC Issuer Metadata?\n2. Or can additional mechanisms also be defined that use HTTPS URIs as iss values?\n\nIt makes the JWT VC Issuer Metadata, that is defined as optional for this spec, de facto mandatory in many, if not most, cases because when the fairly popular`https` scheme is used, it is mandatory. It eliminates other options like OpenID Federation or any other mechanism that uses the `https` scheme. \n\nAssuming that it wasn't the intention, I'd like to propose to clarify that by adding _Additional mechanisms MAY use the HTTPS scheme for iss values._ or something along these lines to the paragraph below the bullet points.",
       "createdAt": "2025-11-06T16:33:12Z",
-      "updatedAt": "2025-12-02T00:45:57Z",
+      "updatedAt": "2025-12-10T21:42:31Z",
       "closedAt": null,
       "comments": [
         {
@@ -9682,6 +9682,13 @@
           "body": "> Also, regarding the current language: which mechanism should the verifier use if both `x5c` is present and the `iss` uses the HTTPS scheme?\n\nWhichever one the verifier supports or prefers for the given context. I feel like this is reasonably clear from the content of the draft. But do you think something more is needed?  ",
           "createdAt": "2025-12-02T00:45:57Z",
           "updatedAt": "2025-12-02T00:45:57Z"
+        },
+        {
+          "author": "yaromin",
+          "authorAssociation": "NONE",
+          "body": "Thank you for creating PR @bc-pi \n\nWhen it comes to the question, I'd say that in this \"default configuration\" offered by the spec, if both HTTPS is used in the `iss` claim and `x5c` is present, then X.509 shall be used by the verifier. Primarily to avoid verifier confusion and unnecessary checks. \n\nI understand that if the `x5c`claim is there, it is there for a reason. If the issuer wanted verifiers to use JWT VC Issuer Metadata, then they would  not include the `x5c` claim. \n\nI can imagine a case when an issuer that is identified with HTTPS is in multiple trust frameworks. In the first one it is identified with HTTPS and uses the JWT VC Issuer Metadata, while in 10 different frameworks it is still identified with HTTPS scheme but X.509 is used there and a different keys than the ones defined in JWT VC Issuer Metadata.\n\nMoreover this order of identification of issuer signature mechanisms would comply with what we have in the [Registered JWT Claims section (first bullet)](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#registered-jwt-claims-claims)",
+          "createdAt": "2025-12-10T21:42:31Z",
+          "updatedAt": "2025-12-10T21:42:31Z"
         }
       ]
     },
@@ -9708,6 +9715,38 @@
           "updatedAt": "2025-11-20T08:55:51Z"
         }
       ]
+    },
+    {
+      "number": 380,
+      "id": "I_kwDOJbVClc7dXM-X",
+      "title": "Support images as part of SVG rendering?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/380",
+      "state": "OPEN",
+      "author": "TimoGlastra",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "If a value within a credential is a `data:` URI, it would be nice if this could be used in the SVG rendering template. This would allow to represent a credential like you would a physical identity card, and place e.g. the portrait and signature in the credential rendering.\n\nCurrently the following text would prevent this from happening:\n> Placeholders MUST only be used in the text content of the SVG template and MUST NOT be used in any other part of the SVG template, e.g., in attributes or comments.\n\nTo render an image within an svg you need to put the value within the `href` attribute.\n\nSince images are already allowed (\"consuming applications MUST ensure that references to external resources (images, etc.) from within the SVG cannot be used to track users or the usage of credentials\"), and you must escape content, i don't see any additional security concerns for this.\n\n",
+      "createdAt": "2025-12-10T06:45:34Z",
+      "updatedAt": "2025-12-10T07:04:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 381,
+      "id": "I_kwDOJbVClc7di-U-",
+      "title": "Query or fragment components in the iss using HTTPS scheme",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/381",
+      "state": "OPEN",
+      "author": "yaromin",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "While analysing #377 I bumped at this sentence\n\n_The iss MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components._ \n\nthat is in the [JWT VC Issuer Metadata ](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#jwt-vc-issuer-metadata-jwt-vc-issuer-metadata) section. \n\nI would recommend moving it up in the spec to avoid creating an ambiguity where a verifier follows the procedure defined in the [Issuer Signature Mechanisms](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#issuer-signature-mechanisms-ism) and interprets the HTTPS scheme without any additional conditions, and then it turns out that additional conditions apply down the path related to query and fragment components and that the URL doesn't meet these conditions.\n\nI would either move it to [Registered JWT Claims](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#jwt-vc-issuer-metadata) and clarify there that if the HTTPS scheme is used, then it shall not contain query or fragment components. \n\nOr alternatively, I would see it in the first bullet in the [Issuer Signature Mechanisms](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#issuer-signature-mechanisms-ism).\n\n\n",
+      "createdAt": "2025-12-10T22:03:00Z",
+      "updatedAt": "2025-12-10T22:03:00Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
@@ -30888,7 +30927,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2025-12-02T00:39:27Z",
-      "updatedAt": "2025-12-07T17:50:42Z",
+      "updatedAt": "2025-12-10T20:26:20Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "096f48f4c8e9794db4b10f80687f70d4c951d1f8",
@@ -30912,6 +30951,19 @@
           "body": "",
           "createdAt": "2025-12-07T17:50:42Z",
           "updatedAt": "2025-12-07T17:50:42Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Uc7Vg",
+          "commit": {
+            "abbreviatedOid": "1125a53"
+          },
+          "author": "lj-raidiam",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-12-10T20:26:20Z",
+          "updatedAt": "2025-12-10T20:26:20Z",
           "comments": []
         }
       ]
