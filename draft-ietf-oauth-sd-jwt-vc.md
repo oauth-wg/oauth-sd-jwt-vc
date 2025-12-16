@@ -344,7 +344,7 @@ This specification defines the following two Issuer Signature Mechanisms:
 - X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
-may define additional Issuer Signature Mechanisms; however, the specifics of such mechanisms are out of scope for this specification.
+may define additional Issuer Signature Mechanisms may complement or override the mechanisms defined above; however, the specifics of such mechanisms are out of scope for this specification.
 See (#ecosystem-verification-rules) for related security considerations.
 
 If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
@@ -1623,6 +1623,7 @@ Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Lukas J Han,
+Lukasz Jaromin,
 Leif Johansson,
 Michael B. Jones,
 Mike Prorock,
@@ -1642,6 +1643,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -14
 
+* State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms
 
 -13
 
