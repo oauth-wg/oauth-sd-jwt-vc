@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 15 May 2026                                       Authlete Inc.
+Expires: 19 June 2026                                      Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        11 November 2025
+                                                        16 December 2025
 
 
             SD-JWT-based Verifiable Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 May 2026.
+   This Internet-Draft will expire on 19 June 2026.
 
 Copyright Notice
 
@@ -585,9 +585,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3wwSP
-   oWvm2V_b0hV_PlyOdVr2671GFLv2wd-a4A52LNSfv_G936_dq9RmcmUi_hHjdmvUdneM
-   boAdjEl2JNX6Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dAsQu
+   hd4eYEsFDSQRJXxG2-dGamx1Nsrekqvb-erOVrxtTVhEI0C4ux8sOL6bNuDymg3TDQ6g
+   taSEoaT4Tw9PA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -662,9 +662,10 @@ Table of Contents
 
    To enable different trust anchoring systems or key resolution
    methods, separate specifications or ecosystem regulations may define
-   additional Issuer Signature Mechanisms; however, the specifics of
-   such mechanisms are out of scope for this specification.  See
-   Section 10.2 for related security considerations.
+   additional Issuer Signature Mechanisms may complement or override the
+   mechanisms defined above; however, the specifics of such mechanisms
+   are out of scope for this specification.  See Section 10.2 for
+   related security considerations.
 
    If a recipient cannot validate that the public verification key
    corresponds the Issuer of the Issuer-signed JWT using a permitted
@@ -710,17 +711,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3wwSP
-   oWvm2V_b0hV_PlyOdVr2671GFLv2wd-a4A52LNSfv_G936_dq9RmcmUi_hHjdmvUdneM
-   boAdjEl2JNX6Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dAsQu
+   hd4eYEsFDSQRJXxG2-dGamx1Nsrekqvb-erOVrxtTVhEI0C4ux8sOL6bNuDymg3TDQ6g
+   taSEoaT4Tw9PA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjI4OTAwOT
-   ksICJzZF9oYXNoIjogIlA5TjdyUmZncWRacFVsTzh3MEk5bmFLaUctcGw2M29STUF0dD
-   YyN05abGsifQ.iFyLPca5lriR_p5VT9hzbmXq9-cFNVC6B8rUAo_3BlvUadxBq4X_LcC
-   VcfOme_f8nPiGbB7Jtmm_ba27HBCjVQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjU5MDY1MT
+   csICJzZF9oYXNoIjogIlNmUFU5aEM1b1J6TGRMaUFvQl9yZXk0ckVMQzAybmdDME5yWU
+   RodHMzcm8ifQ.ppybJOjyDdP4YKoKnS-B3JKFRW5QC0OgDAm3gs1bkthHKU5b-XApT7v
+   rBP9cP4pBm8wLTwpWSE-4mT-qw8C6iQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -762,8 +763,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.mJTasJVEpCTOX0w27V36ghz22akZusf74gW4jWfX1nGneL
-   JyEYM4DCo557U6zjFh7Qc9aao_SwtuZS2xPFMWkg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.TYwFvtpfJQKevGW2btG-q7e98n0zrlXD-Oc0YsVPCh3XvD
+   bWUA-BFuHmFBCHuCYJnXTW0xzt35zgSAj9g86TzQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1698,9 +1699,9 @@ Table of Contents
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
-              oauth-status-list-13, 20 October 2025,
+              oauth-status-list-14, 10 December 2025,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-13>.
+              status-list-14>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1938,8 +1939,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.T5_A-HW8BV4dPDiCdnAoKeKRD8MbAIvS5j3HTYy-h8n
-   eRLgI_JjCmmm1X2cWNFjgozD_yrJBveIdndZYhTGBhQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.iOlNUj6bRoRXo77YZBSJZDdtmUqKnYDLAZOzxxw-vFJ
+   qLOEcAT2LVgZzxrk6ArJhINy7tkTi1MYGBnfPU2TTKA~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2317,8 +2318,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.T5_A-HW8BV4dPDiCdnAoKeKRD8MbAIvS5j3HTYy-h8n
-   eRLgI_JjCmmm1X2cWNFjgozD_yrJBveIdndZYhTGBhQ~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.iOlNUj6bRoRXo77YZBSJZDdtmUqKnYDLAZOzxxw-vFJ
+   qLOEcAT2LVgZzxrk6ArJhINy7tkTi1MYGBnfPU2TTKA~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2329,17 +2330,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjI4OTAwOTksICJzZF9oYXNoIjogIjExLTRiU18zS
-   XlvN0M0SHlVMTVqX1FwSktrbk1MWWJ4Y0NpTVFIOVM1b1UifQ.wXm8GO10dO5LhZ9YaJ
-   YFfrLBNnXUPboZEsvDMSHZkebDidlayoVzGx66L_hO48_XVBPMfE2XotRtkLFQq_HpRA
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjU5MDY1MTcsICJzZF9oYXNoIjogIlJnV3UwYnZQT
+   EItclZudmVPVFQ4WFBLZEI4QVBfaHpTQ3lVR2ZySkRWR0UifQ.qLhxWK_dkCfK15ZFX-
+   RRcDipXuYTd-Id3VuN1GNDEucJDgcbGze7dp-u_rEy6GVmRSu_WcakyDBLhxNekKhB_A
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1762890099,
-     "sd_hash": "11-4bS_3Iyo7C4HyU15j_QpJKknMLYbxcCiMQH9S5oU"
+     "iat": 1765906517,
+     "sd_hash": "RgWu0bvPLB-rVnveOTT8XPKdB8AP_hzSCyUGfrJDVGE"
    }
 
    After validation, the Verifier will have the following processed SD-
@@ -2590,15 +2591,18 @@ Appendix C.  Acknowledgements
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
    Andrii Deinega, Annabelle Kennedy, Babis Routis, Christian Bormann,
    Denis Pinkas, George J Padayatti, Giuseppe De Marco, Lukas J Han,
-   Leif Johansson, Michael B.  Jones, Mike Prorock, Mirko Mollik, Orie
-   Steele, Paul Bastian, Pavel Zarecky, Stefan Charsley, Tim Cappalli,
-   Timo Glastra, Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda
-   for their contributions (some of which substantial) to this draft and
-   to the initial set of implementations.
+   Lukasz Jaromin, Leif Johansson, Michael B.  Jones, Mike Prorock,
+   Mirko Mollik, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan
+   Charsley, Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias
+   Looker, and Kristina Yasuda for their contributions (some of which
+   substantial) to this draft and to the initial set of implementations.
 
 Appendix D.  Document History
 
    -14
+
+   *  State more explicitly that additional Issuer Signature Mechanisms
+      can complement or override the defined mechanisms
 
    -13
 
