@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-11T00:37:00.222647+00:00",
+  "timestamp": "2025-12-18T00:33:22.149206+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9638,15 +9638,15 @@
       "id": "I_kwDOJbVClc7WX6sO",
       "title": "Other Issuer Signature Mechanisms using https scheme",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/377",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "yaromin",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Section 3.5 states that _When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata._\n\nHowever, it also states that \"separate specifications or ecosystem regulations may define **additional** Issuer Signature Mechanisms.\"\n\nThe **additional** creates potential ambiguity:\n1. Does the HTTPS scheme exclusively trigger JWT VC Issuer Metadata?\n2. Or can additional mechanisms also be defined that use HTTPS URIs as iss values?\n\nIt makes the JWT VC Issuer Metadata, that is defined as optional for this spec, de facto mandatory in many, if not most, cases because when the fairly popular`https` scheme is used, it is mandatory. It eliminates other options like OpenID Federation or any other mechanism that uses the `https` scheme. \n\nAssuming that it wasn't the intention, I'd like to propose to clarify that by adding _Additional mechanisms MAY use the HTTPS scheme for iss values._ or something along these lines to the paragraph below the bullet points.",
       "createdAt": "2025-11-06T16:33:12Z",
-      "updatedAt": "2025-12-10T21:42:31Z",
-      "closedAt": null,
+      "updatedAt": "2025-12-16T17:34:54Z",
+      "closedAt": "2025-12-16T17:34:54Z",
       "comments": [
         {
           "author": "selfissued",
@@ -9689,6 +9689,13 @@
           "body": "Thank you for creating PR @bc-pi \n\nWhen it comes to the question, I'd say that in this \"default configuration\" offered by the spec, if both HTTPS is used in the `iss` claim and `x5c` is present, then X.509 shall be used by the verifier. Primarily to avoid verifier confusion and unnecessary checks. \n\nI understand that if the `x5c`claim is there, it is there for a reason. If the issuer wanted verifiers to use JWT VC Issuer Metadata, then they would  not include the `x5c` claim. \n\nI can imagine a case when an issuer that is identified with HTTPS is in multiple trust frameworks. In the first one it is identified with HTTPS and uses the JWT VC Issuer Metadata, while in 10 different frameworks it is still identified with HTTPS scheme but X.509 is used there and a different keys than the ones defined in JWT VC Issuer Metadata.\n\nMoreover this order of identification of issuer signature mechanisms would comply with what we have in the [Registered JWT Claims section (first bullet)](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#registered-jwt-claims-claims)",
           "createdAt": "2025-12-10T21:42:31Z",
           "updatedAt": "2025-12-10T21:42:31Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The intent is that one mechanism that the verifier supports is ok and sufficient. I'd be very reluctant to change that. I was asking if that wasn't clear. ",
+          "createdAt": "2025-12-16T17:34:33Z",
+          "updatedAt": "2025-12-16T17:34:33Z"
         }
       ]
     },
@@ -9744,7 +9751,176 @@
       "labels": [],
       "body": "While analysing #377 I bumped at this sentence\n\n_The iss MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components._ \n\nthat is in the [JWT VC Issuer Metadata ](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#jwt-vc-issuer-metadata-jwt-vc-issuer-metadata) section. \n\nI would recommend moving it up in the spec to avoid creating an ambiguity where a verifier follows the procedure defined in the [Issuer Signature Mechanisms](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#issuer-signature-mechanisms-ism) and interprets the HTTPS scheme without any additional conditions, and then it turns out that additional conditions apply down the path related to query and fragment components and that the URL doesn't meet these conditions.\n\nI would either move it to [Registered JWT Claims](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#jwt-vc-issuer-metadata) and clarify there that if the HTTPS scheme is used, then it shall not contain query or fragment components. \n\nOr alternatively, I would see it in the first bullet in the [Issuer Signature Mechanisms](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#issuer-signature-mechanisms-ism).\n\n\n",
       "createdAt": "2025-12-10T22:03:00Z",
-      "updatedAt": "2025-12-10T22:03:00Z",
+      "updatedAt": "2025-12-16T18:51:34Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "JWT VC Issuer Metadata is where that sentience applies though. ",
+          "createdAt": "2025-12-16T18:51:34Z",
+          "updatedAt": "2025-12-16T18:51:34Z"
+        }
+      ]
+    },
+    {
+      "number": 382,
+      "id": "I_kwDOJbVClc7eqco_",
+      "title": "Dan's SD-JWT-VC-13 Review",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/382",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "see https://mailarchive.ietf.org/arch/msg/oauth/1ggoWOFf8ZKmKbI8BUo_tAdAp-o/ ",
+      "createdAt": "2025-12-16T17:22:10Z",
+      "updatedAt": "2025-12-16T17:22:10Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 383,
+      "id": "I_kwDOJbVClc7eqdKh",
+      "title": "Tim's SD-JWT-VC-13 Review",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/383",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "see https://mailarchive.ietf.org/arch/msg/oauth/ySO813MwnLBsHTIm8y8bzG8t7FA/",
+      "createdAt": "2025-12-16T17:22:55Z",
+      "updatedAt": "2025-12-16T17:22:55Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 384,
+      "id": "I_kwDOJbVClc7esm6a",
+      "title": "vct unique per issuer or per VC type?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/384",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "Hi,\n\nis vct unique per issuer or per credential type?\n\nif vct metadata is used, vct resolves to the metadata that contains display information, which contains a logo.\nThis indicates, that vct is unqiue per issuer; e.g., meaning that PID vct for the same data model would be\n  \"vct\": \"urn:eudi:pid:spain:1\" \n  \"vct\": \"urn:eudi:pid:germany:1\" \n  \"vct\": \"urn:eudi:pid:italy:1\" \n  \"vct\": \"urn:eudi:pid:...:1\" \n\nif that's the case, I believe the vct_values in the OID4VP would need to list all the vcts in EU when requesting a PID?\n    \"meta\": {\n        \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\",   \"vct\": \"urn:eudi:pid:germany:1\", ... ]\n\nIf vct is to be unique per vc type, meaning for EU   \"vct\": \"urn:eudi:pid:1\"\nthen display properties cannot be used in the metadata and it's unclear how to communicate them.\n\nThanks for the help!\n",
+      "createdAt": "2025-12-16T20:33:44Z",
+      "updatedAt": "2025-12-17T17:23:10Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "No, for this reason the spec contains the `extends` mechanism. Some metadata claims can be defined by the extending types. A credential is an instance of all types in their type hierarchy.\n\nSee https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-8.2\n\nYou can have a generic credential type of a PID that can be extended by member states with a more specific type. The credential would be an instance of both. In OID4VP, a verifier could use the generic PID type when requesting a credential.\n\nDoes this answer your question @alenhorvat ?",
+          "createdAt": "2025-12-17T09:22:24Z",
+          "updatedAt": "2025-12-17T09:24:20Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "No, that's not my question :) Can you check and confirm or deny the validity of the examples I provided above?\n\nHow does a DCQL request look like when requesting by \"parent\" credential type?",
+          "createdAt": "2025-12-17T09:29:14Z",
+          "updatedAt": "2025-12-17T09:29:40Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> No, that's not my question :) Can you check and confirm or deny the validity of the examples I provided above?\n\nI don't know what `vct` values these member states are going to use for their PIDs. That is beyond the scope of this specification. But all of these `vct` values are valid as far as I can tell.\n\n> How does a DCQL request look like when requesting by \"parent\" credential type?\n\nI would assume that there is a base `vct` type that PIDs use, e.g., `urn:eudi:pid:1` or something and member states could then extend this type as described above. The DCQL query could ask for a specific `vct` value if the verifier wants that, or just ask for the base type which I assume is what is going to happen. Hence, the `vct_values` does not have to list all of the specific types and the base type should be fine, e.g., something like this `\"vct_values\": [\"urn:eudi:pid:1\"]`.\n\n\n",
+          "createdAt": "2025-12-17T16:13:58Z",
+          "updatedAt": "2025-12-17T16:14:39Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "> The Wallet MAY return Credentials that inherit from any of the specified types, following the inheritance logic defined in [[I-D.ietf-oauth-sd-jwt-vc](https://openid.net/specs/openid-4-verifiable-presentations-1_0.html#I-D.ietf-oauth-sd-jwt-vc)].\n\nthis part?",
+          "createdAt": "2025-12-17T17:06:19Z",
+          "updatedAt": "2025-12-17T17:06:19Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> he Wallet MAY return Credentials that inherit from any of the specified types, following the inheritance logic defined\n\nYep, that is the section in OID4VP.",
+          "createdAt": "2025-12-17T17:07:16Z",
+          "updatedAt": "2025-12-17T17:07:16Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "In this case the use of type metadata is required, else the wallet and other consumers cannot verify the relationships (except if there is a 1 level extension), or?\nIs vct metadata required or optional? Reads like optional\n\n>  Type Metadata that **can** be associated with a type of an SD-JWT VC",
+          "createdAt": "2025-12-17T17:23:10Z",
+          "updatedAt": "2025-12-17T17:23:10Z"
+        }
+      ]
+    },
+    {
+      "number": 385,
+      "id": "I_kwDOJbVClc7esoqO",
+      "title": "vct -> semantics, but no sematics",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/385",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [
+        "pending close"
+      ],
+      "body": "_The vct value also effectively identifies the version of the credential type definition, as it ties a particular instance of a credential to a specific structure, set of semantics, and rules._ \n\nThe document doesn't define how to express semantics using vct (metadata)",
+      "createdAt": "2025-12-16T20:36:40Z",
+      "updatedAt": "2025-12-17T17:47:51Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The document does not intend to define the semantics of credential types, neither of claims beyond what is defined in the document. However, credential type designers will need to define a credential type as well as credential type definition which then defines the specific structure, set of semantics and rules of the credential type itself as well as the claims contained in instances of credentials of such types.\n\nSo, the semantics are part of the credential type definition, not part of this document.\n\nFor example, an photo card credential type definition defines the structure of the credential, e.g., contains a `portrait` claim but what that claim means, is decided by another document that contains the credential type definition.\n\nIMO, there is no issue with this paragraph.\n\nI suggest pending close if no further comments @alenhorvat.",
+          "createdAt": "2025-12-17T09:17:11Z",
+          "updatedAt": "2025-12-17T09:20:13Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Question is, how to define/link the semantics via the metadata. It remains unspecified. IMO it would help interoperability if there was a sentence clarifying how to link semantics/where to define it\n\nEdit: the document is saying \n _ties a particular instance of a credential to a specific structure, set of semantics, and rules._\nbut it doesn't specify how.\n\nEither claims about specifying structure, semantics, and rules are removed, or it's defined how to do it.",
+          "createdAt": "2025-12-17T09:20:46Z",
+          "updatedAt": "2025-12-17T09:24:22Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Question is, how to define/link the semantics via the metadata. It remains unspecified. IMO it would help interoperability if there was a sentence clarifying how to link semantics/where to define it\n> \n> Edit: the document is saying _ties a particular instance of a credential to a specific structure, set of semantics, and rules._ but it doesn't specify how.\n> \n> Either claims about specifying structure, semantics, and rules are removed, or it's defined how to do it.\n\nI don't think there are false claims because that information is tied to a credential type. Whoever writes the document that defines the credential type will also define the structure, semantics and rules around it, e.g., ETSI 119 472-1 defines this for PID. One can also use the `claims` metadata to define the structure though.\n\nFrom SD-JWT VC which makes it clear that this is ecosystem-related:\n> This specification does not define any vct values; instead it is expected that ecosystems using SD-JWT VCs define such values including the semantics of the respective claims and associated rules (e.g., policies for issuing and validating credentials beyond what is defined in this specification).",
+          "createdAt": "2025-12-17T17:27:03Z",
+          "updatedAt": "2025-12-17T17:29:00Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "The document doesn't define how these things are expressed so that they can be processed within the ecosystem; json-ld, json schema, shacl, ... ? Not giving guidelines is the same as not mentioning it.",
+          "createdAt": "2025-12-17T17:40:36Z",
+          "updatedAt": "2025-12-17T17:40:36Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> The document doesn't define how these things are expressed so that they can be processed within the ecosystem; json-ld, json schema, shacl, ... ? Not giving guidelines is the same as not mentioning it.\n\n\"instead it is expected that ecosystems using SD-JWT VCs define such values including the semantics of the respective claims and associated rules (e.g., policies for issuing and validating credentials beyond what is defined in this specification).\"\n\nIMO, it is pretty obvious that somebody needs to list all the possible claims and what their semantic is which already happened in practice, see ETSI. The same approach works well for ISO mdocs. What additional guidance do you need?",
+          "createdAt": "2025-12-17T17:47:51Z",
+          "updatedAt": "2025-12-17T17:47:51Z"
+        }
+      ]
+    },
+    {
+      "number": 386,
+      "id": "I_kwDOJbVClc7esspZ",
+      "title": "Expressing claims in multiple languages?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/386",
+      "state": "OPEN",
+      "author": "alenhorvat",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "In some use cases, claim values (not the display metadata) may need to be expressed in different languages; example: course title may be in english, spanish, and italian.\n\nExample in w3c vc would be:\ntitle: {\n  en: basics of data modelling,\n  es: conceptos b\u00e1sicos de modelado de datos,\n  it: basi della modellazione dei dati\n}\n\nwould in sd jwt Verifiable Credential be using OIDC-like approach?\n\n  title#en: basics of data modelling,\n  title#es: conceptos b\u00e1sicos de modelado de datos,\n  title#it: basi della modellazione dei dati\n\nIf so, is it defined in the document?",
+      "createdAt": "2025-12-16T20:43:12Z",
+      "updatedAt": "2025-12-16T20:43:12Z",
       "closedAt": null,
       "comments": []
     }
@@ -30920,24 +31096,26 @@
       "id": "PR_kwDOJbVClc62ehRV",
       "title": "State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/379",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2025-12-02T00:39:27Z",
-      "updatedAt": "2025-12-10T20:26:20Z",
+      "updatedAt": "2025-12-16T17:34:53Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "096f48f4c8e9794db4b10f80687f70d4c951d1f8",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "read-the-room",
       "headRefOid": "1125a53a8650ec7976a5ef5afbe2bc84fa71aa46",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2025-12-16T17:34:53Z",
+      "mergedAt": "2025-12-16T17:34:53Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8db83c8d2c9ab04f95addf5fc0c796f5939a95ac"
+      },
       "comments": [],
       "reviews": [
         {
@@ -30964,6 +31142,19 @@
           "body": "",
           "createdAt": "2025-12-10T20:26:20Z",
           "updatedAt": "2025-12-10T20:26:20Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7Vn6_H",
+          "commit": {
+            "abbreviatedOid": "1125a53"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2025-12-16T16:40:30Z",
+          "updatedAt": "2025-12-16T16:40:30Z",
           "comments": []
         }
       ]
