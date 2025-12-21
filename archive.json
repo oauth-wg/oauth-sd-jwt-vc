@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-18T00:33:22.149206+00:00",
+  "timestamp": "2025-12-21T00:40:07.281877+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9645,7 +9645,7 @@
       "labels": [],
       "body": "Section 3.5 states that _When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata._\n\nHowever, it also states that \"separate specifications or ecosystem regulations may define **additional** Issuer Signature Mechanisms.\"\n\nThe **additional** creates potential ambiguity:\n1. Does the HTTPS scheme exclusively trigger JWT VC Issuer Metadata?\n2. Or can additional mechanisms also be defined that use HTTPS URIs as iss values?\n\nIt makes the JWT VC Issuer Metadata, that is defined as optional for this spec, de facto mandatory in many, if not most, cases because when the fairly popular`https` scheme is used, it is mandatory. It eliminates other options like OpenID Federation or any other mechanism that uses the `https` scheme. \n\nAssuming that it wasn't the intention, I'd like to propose to clarify that by adding _Additional mechanisms MAY use the HTTPS scheme for iss values._ or something along these lines to the paragraph below the bullet points.",
       "createdAt": "2025-11-06T16:33:12Z",
-      "updatedAt": "2025-12-16T17:34:54Z",
+      "updatedAt": "2025-12-18T12:36:31Z",
       "closedAt": "2025-12-16T17:34:54Z",
       "comments": [
         {
@@ -9696,6 +9696,13 @@
           "body": "The intent is that one mechanism that the verifier supports is ok and sufficient. I'd be very reluctant to change that. I was asking if that wasn't clear. ",
           "createdAt": "2025-12-16T17:34:33Z",
           "updatedAt": "2025-12-16T17:34:33Z"
+        },
+        {
+          "author": "lj-raidiam",
+          "authorAssociation": "NONE",
+          "body": "Respecting the intent, I would like to suggest a slight improvement.\n\nCurrently the structure is like:\n\n```\nRecipient must determine the public verification key \nand select out of supported mechanisms permitted to the policy.\nThis spec defines two mechanisms:\n - A: When `iss` equals HTTPS then the recipient obtains key by ...\n - B: When `x5c` present then the recipient obtains key by ...\n```\n\n\nAccording to this:\n1. The policy and NOT this specification controls the supported mechanisms in the trust domain. Is the intent to, by default, assume that both mechanisms, defined in this specification, are permitted by the policy unless this policy explicitly bans or alters either or both of them?\n\nIf so I would suggest to explicitly state that both are permitted as currently it looks like the spec provides a default menu of mechanisms with no link to what is by default allowed and what not.\n\n2. When the policy is mute on the mechanisms, which means that it permits them as-is, why do we need these de facto \"if then\" conditions inside each mechanism/option? \n\nCouldn't we turn these conditions into MUSTs so that it is clear that they are equal e.g. for the first bullet. \n\n_JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. ~~When the value of t~~The iss claim of the Issuer-signed JWT ~~is~~ MUST be an HTTPS URI.~~,~~ The recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in [Section 5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc#jwt-vc-issuer-metadata)._",
+          "createdAt": "2025-12-18T12:36:31Z",
+          "updatedAt": "2025-12-18T12:36:31Z"
         }
       ]
     },
@@ -9807,7 +9814,7 @@
       "labels": [],
       "body": "Hi,\n\nis vct unique per issuer or per credential type?\n\nif vct metadata is used, vct resolves to the metadata that contains display information, which contains a logo.\nThis indicates, that vct is unqiue per issuer; e.g., meaning that PID vct for the same data model would be\n  \"vct\": \"urn:eudi:pid:spain:1\" \n  \"vct\": \"urn:eudi:pid:germany:1\" \n  \"vct\": \"urn:eudi:pid:italy:1\" \n  \"vct\": \"urn:eudi:pid:...:1\" \n\nif that's the case, I believe the vct_values in the OID4VP would need to list all the vcts in EU when requesting a PID?\n    \"meta\": {\n        \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\",   \"vct\": \"urn:eudi:pid:germany:1\", ... ]\n\nIf vct is to be unique per vc type, meaning for EU   \"vct\": \"urn:eudi:pid:1\"\nthen display properties cannot be used in the metadata and it's unclear how to communicate them.\n\nThanks for the help!\n",
       "createdAt": "2025-12-16T20:33:44Z",
-      "updatedAt": "2025-12-17T17:23:10Z",
+      "updatedAt": "2025-12-18T10:27:46Z",
       "closedAt": null,
       "comments": [
         {
@@ -9851,6 +9858,34 @@
           "body": "In this case the use of type metadata is required, else the wallet and other consumers cannot verify the relationships (except if there is a 1 level extension), or?\nIs vct metadata required or optional? Reads like optional\n\n>  Type Metadata that **can** be associated with a type of an SD-JWT VC",
           "createdAt": "2025-12-17T17:23:10Z",
           "updatedAt": "2025-12-17T17:23:10Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> In this case the use of type metadata is required, else the wallet and other consumers cannot verify the relationships (except if there is a 1 level extension), or? Is vct metadata required or optional? Reads like optional\n> \n> > Type Metadata that **can** be associated with a type of an SD-JWT VC\n\nIt is optional. But indeed, if you want this generalization, then metadata is required. There are several ways of obtaining it.",
+          "createdAt": "2025-12-18T08:08:42Z",
+          "updatedAt": "2025-12-18T08:08:42Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "If you want to request by parent \"urn:eudi:pid:1\" it is actually required; should this be clarified? Else\n\"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\", \"vct\": \"urn:eudi:pid:germany:1\", ... ] you need to list all issuers of the VC to request vc by type;\n\nIf you want to request an educational achievement, you'd need to list vct of all registered institutions as there would be 1 vct per institution (where each extends from the same parent type)\n\nI'm still looking for an answer to my question :)\n\nif vct metadata is used, vct resolves to the metadata that contains display information, which contains a logo.\nThis indicates, that vct is unqiue per issuer; e.g., meaning that PID vct for the same data model would be\n\"vct\": \"urn:eudi:pid:spain:1\"\n\"vct\": \"urn:eudi:pid:germany:1\"\n\"vct\": \"urn:eudi:pid:italy:1\"\n\"vct\": \"urn:eudi:pid:...:1\"\n\nif that's the case, I believe the vct_values in the OID4VP would need to list all the vcts in EU when requesting a PID?\n\"meta\": {\n\"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\", \"vct\": \"urn:eudi:pid:germany:1\", ... ]\n\nIf vct is to be unique per vc type, meaning for EU \"vct\": \"urn:eudi:pid:1\"\nthen display properties cannot be used in the metadata and it's unclear how to communicate them.\n\na) either the metadata is required in cases when vct's are derived\nb) RPs will need to send long lists of vcts to the wallet\n",
+          "createdAt": "2025-12-18T08:37:07Z",
+          "updatedAt": "2025-12-18T08:37:07Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> If you want to request by parent \"urn:eudi:pid:1\" it is actually required; should this be clarified? Else \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\", \"vct\": \"urn:eudi:pid:germany:1\", ... ] you need to list all issuers of the VC to request vc by type;\n\nThis is out of scope of SD-JWT VC. This would be more appropriate in OID4VP. Essentially, the verifier would need access to the metadata. The wallet should have that information anyways.\n\n> \n> If you want to request an educational achievement, you'd need to list vct of all registered institutions as there would be 1 vct per institution (where each extends from the same parent type)\n> \n> I'm still looking for an answer to my question :)\n\nA verifier could have the metadata of all the institutions and can use the general `vct` value in their query (see above), or institutions just use one `vct` value.\n\n> \n> if vct metadata is used, vct resolves to the metadata that contains display information, which contains a logo. This indicates, that vct is unqiue per issuer; e.g., meaning that PID vct for the same data model would be \"vct\": \"urn:eudi:pid:spain:1\" \"vct\": \"urn:eudi:pid:germany:1\" \"vct\": \"urn:eudi:pid:italy:1\" \"vct\": \"urn:eudi:pid:...:1\"\n\nIf you want to have logos per issuer, then this information can be provided by the sub-types.\n\n> \n> if that's the case, I believe the vct_values in the OID4VP would need to list all the vcts in EU when requesting a PID? \"meta\": { \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\", \"vct\": \"urn:eudi:pid:germany:1\", ... ]\n\nNo, because the SD-JWT VC contains the `vct` sub-type which can then resolve the metadata of each institution to get the logo.\n\n> \n> If vct is to be unique per vc type, meaning for EU \"vct\": \"urn:eudi:pid:1\" then display properties cannot be used in the metadata and it's unclear how to communicate them.\n\nIt can but it would apply to all institutions.\n\n> \n> a) either the metadata is required in cases when vct's are derived b) RPs will need to send long lists of vcts to the wallet\n\nSee above. _Updated:_ a verifier can use the generic type in the query and when they encounter a sub-type they can either retrieve the sub-type metadata dynamically and cache it for later, or they could have the metadata pre-configured or automatically synced but these are implementation details.\n",
+          "createdAt": "2025-12-18T08:58:43Z",
+          "updatedAt": "2025-12-18T09:52:26Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "If you want to request by parent \"urn:eudi:pid:1\" it is actually required; should this be clarified? Else \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\", \"vct\": \"urn:eudi:pid:germany:1\", ... ] you need to list all issuers of the VC to request vc by type;\n\nThis is out of scope of SD-JWT VC. This would be more appropriate in OID4VP. Essentially, the verifier would need access to the metadata. The wallet should have that information anyways.\n\nBut how if the metadata is optional? This part creates coupling with the DCQL specification.\nThe document should clarify that vct metadata is required when extensions are used;\n\n> If you want to have logos per issuer, then this information can be provided by the sub-types.\n\nI agree :) but the text should clarify the scenario and the fact that metadata is required when subtypes are used else you cannot query the VC per type; Either the issue is fixed here or is fixed in DCQL.\n",
+          "createdAt": "2025-12-18T10:27:46Z",
+          "updatedAt": "2025-12-18T10:27:46Z"
         }
       ]
     },
@@ -9868,7 +9903,7 @@
       ],
       "body": "_The vct value also effectively identifies the version of the credential type definition, as it ties a particular instance of a credential to a specific structure, set of semantics, and rules._ \n\nThe document doesn't define how to express semantics using vct (metadata)",
       "createdAt": "2025-12-16T20:36:40Z",
-      "updatedAt": "2025-12-17T17:47:51Z",
+      "updatedAt": "2025-12-18T08:45:21Z",
       "closedAt": null,
       "comments": [
         {
@@ -9905,6 +9940,13 @@
           "body": "> The document doesn't define how these things are expressed so that they can be processed within the ecosystem; json-ld, json schema, shacl, ... ? Not giving guidelines is the same as not mentioning it.\n\n\"instead it is expected that ecosystems using SD-JWT VCs define such values including the semantics of the respective claims and associated rules (e.g., policies for issuing and validating credentials beyond what is defined in this specification).\"\n\nIMO, it is pretty obvious that somebody needs to list all the possible claims and what their semantic is which already happened in practice, see ETSI. The same approach works well for ISO mdocs. What additional guidance do you need?",
           "createdAt": "2025-12-17T17:47:51Z",
           "updatedAt": "2025-12-17T17:47:51Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "That's only partially correct as ETSI only defines the envelope, but not the data elements that are defined within a use case;\nSo in most cases there will be 2 sources for structure and semantics: a) ETSI, b) use-cases\n\nBut even in this case, if I look at SD JWT VC, there's no way for me to (easily) identify where the semantics is defined\n\nISO clearly defines rules for the namespaces, so this is not really the same approach as iso mdocs ...\n\nMy question is the same: document states that ecosystem defines semantics, etc, but the specification doesn't define how to discover the information, etc; Same goes for the structure -- nothing in the specification guarantees that the VC I receive is the one that conforms to the vct\n\nYou can close the issue without solving the problem, as usual, but the issue remains :)",
+          "createdAt": "2025-12-18T08:45:20Z",
+          "updatedAt": "2025-12-18T08:45:20Z"
         }
       ]
     },
