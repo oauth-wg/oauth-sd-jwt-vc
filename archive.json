@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2025-12-21T00:40:07.281877+00:00",
+  "timestamp": "2026-01-11T00:42:09.187867+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9742,9 +9742,17 @@
       "labels": [],
       "body": "If a value within a credential is a `data:` URI, it would be nice if this could be used in the SVG rendering template. This would allow to represent a credential like you would a physical identity card, and place e.g. the portrait and signature in the credential rendering.\n\nCurrently the following text would prevent this from happening:\n> Placeholders MUST only be used in the text content of the SVG template and MUST NOT be used in any other part of the SVG template, e.g., in attributes or comments.\n\nTo render an image within an svg you need to put the value within the `href` attribute.\n\nSince images are already allowed (\"consuming applications MUST ensure that references to external resources (images, etc.) from within the SVG cannot be used to track users or the usage of credentials\"), and you must escape content, i don't see any additional security concerns for this.\n\n",
       "createdAt": "2025-12-10T06:45:34Z",
-      "updatedAt": "2025-12-10T07:04:10Z",
+      "updatedAt": "2026-01-09T20:32:34Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There's some general thinking that that digital credentials shouldn't be displayed in a view that looks like a traditional ID or is accepted on sight like the physical credential. Without a cryptographic verification, spoofing an image like display of a credential is trivial. What's supported in SD-JWT VC metadata's SVG rendering won't eliminated that kind of thing but I'd argue that we shouldn't be adding features that normalize or promote displaying credentials like you would a physical identity card. \n\nWhile some of that general thinking might or might not be behind ISO paywalls, a colleague did point me to this  \nhttps://www.aamva.org/getmedia/261ed16b-3f5c-4678-a2db-cc3016934234/MobileDLImplementationGuidelines-Version1-3.pdf - see sec. 8 NO \u201cFLASH PASS\u201d USE. \n\nThere was recently an incident in my home state involving spoofed government id images https://www.9news.com/article/news/crime/spoof-state-id-app-forge-digital-drivers-licenses/73-7aeb1ad1-79e4-4551-9c9a-110c6727d7a7\n\n\n\n",
+          "createdAt": "2026-01-09T20:32:34Z",
+          "updatedAt": "2026-01-09T20:32:34Z"
+        }
+      ]
     },
     {
       "number": 381,
@@ -9755,10 +9763,12 @@
       "author": "yaromin",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "While analysing #377 I bumped at this sentence\n\n_The iss MUST be a case-sensitive URL using the HTTPS scheme that contains scheme, host and, optionally, port number and path components, but no query or fragment components._ \n\nthat is in the [JWT VC Issuer Metadata ](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#jwt-vc-issuer-metadata-jwt-vc-issuer-metadata) section. \n\nI would recommend moving it up in the spec to avoid creating an ambiguity where a verifier follows the procedure defined in the [Issuer Signature Mechanisms](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#issuer-signature-mechanisms-ism) and interprets the HTTPS scheme without any additional conditions, and then it turns out that additional conditions apply down the path related to query and fragment components and that the URL doesn't meet these conditions.\n\nI would either move it to [Registered JWT Claims](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#jwt-vc-issuer-metadata) and clarify there that if the HTTPS scheme is used, then it shall not contain query or fragment components. \n\nOr alternatively, I would see it in the first bullet in the [Issuer Signature Mechanisms](https://github.com/oauth-wg/oauth-sd-jwt-vc/blob/main/draft-ietf-oauth-sd-jwt-vc.md#issuer-signature-mechanisms-ism).\n\n\n",
       "createdAt": "2025-12-10T22:03:00Z",
-      "updatedAt": "2025-12-16T18:51:34Z",
+      "updatedAt": "2026-01-08T17:27:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -9767,6 +9777,13 @@
           "body": "JWT VC Issuer Metadata is where that sentience applies though. ",
           "createdAt": "2025-12-16T18:51:34Z",
           "updatedAt": "2025-12-16T18:51:34Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "I agree with Brian - the sent<strike>i</strike>ence is in the right place. ",
+          "createdAt": "2026-01-08T17:25:55Z",
+          "updatedAt": "2026-01-08T17:27:00Z"
         }
       ]
     },
@@ -9959,12 +9976,50 @@
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "In some use cases, claim values (not the display metadata) may need to be expressed in different languages; example: course title may be in english, spanish, and italian.\n\nExample in w3c vc would be:\ntitle: {\n  en: basics of data modelling,\n  es: conceptos b\u00e1sicos de modelado de datos,\n  it: basi della modellazione dei dati\n}\n\nwould in sd jwt Verifiable Credential be using OIDC-like approach?\n\n  title#en: basics of data modelling,\n  title#es: conceptos b\u00e1sicos de modelado de datos,\n  title#it: basi della modellazione dei dati\n\nIf so, is it defined in the document?",
       "createdAt": "2025-12-16T20:43:12Z",
-      "updatedAt": "2025-12-16T20:43:12Z",
+      "updatedAt": "2026-01-08T18:20:54Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "The OIDC-like approach is pretty much the assumption. I'm not sure we need to define anything in the document though.",
+          "createdAt": "2026-01-08T17:04:08Z",
+          "updatedAt": "2026-01-08T17:04:08Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "My intuition is that multiple languages in a single credential will be uncommon and would be dealt with in the type definition.  Probably with an OIDC-like approach. ",
+          "createdAt": "2026-01-08T17:31:19Z",
+          "updatedAt": "2026-01-08T17:31:19Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "So you confirm this specification does not support multi-language credentials?",
+          "createdAt": "2026-01-08T18:08:30Z",
+          "updatedAt": "2026-01-08T18:08:30Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> So you confirm this specification does not support multi-language credentials?\n\nNo. That wasn't said or implied. ",
+          "createdAt": "2026-01-08T18:18:51Z",
+          "updatedAt": "2026-01-08T18:18:51Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "It's not defined. We can assume as well that w3c language maps are used for multi-language credentials.",
+          "createdAt": "2026-01-08T18:20:54Z",
+          "updatedAt": "2026-01-08T18:20:54Z"
+        }
+      ]
     }
   ],
   "pulls": [
