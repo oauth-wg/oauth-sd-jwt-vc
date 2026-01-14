@@ -41,7 +41,7 @@ organization="Ping Identity"
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
+rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT [@!RFC9901] format.
 
 {mainmatter}
 
@@ -86,7 +86,7 @@ Verifiers can check the authenticity of the data in a Verifiable Digital Credent
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
 are the intended Holder of the Verifiable Digital Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
-described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
+described in [@!RFC9901].
 
 ## SD-JWT as a Credential Format
 
@@ -94,7 +94,7 @@ JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Digital Credentials in a way that is easy to understand and process as it
 builds upon established web primitives.
 
-Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
+Selective Disclosure JWT (SD-JWT) [@!RFC9901] is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
@@ -125,7 +125,7 @@ document are to be interpreted as described in RFC 2119 [@!RFC2119].
 
 This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", "Selectively Disclosable JWT (SD-JWT)", "Key Binding",
 "Key Binding JWT (KB-JWT)", "Selectively Disclosable JWT with Key Binding (SD-JWT+KB)" defined by
-[@!I-D.ietf-oauth-selective-disclosure-jwt].
+[@!RFC9901].
 
 Consumer:
 : Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
@@ -135,7 +135,7 @@ Verifiable Digital Credential:
 
 SD-JWT-based Verifiable Digital Credential (SD-JWT VC):
 : A Verifiable Digital Credential encoded using the format defined in
-[@!I-D.ietf-oauth-selective-disclosure-jwt]. It may or may not contain
+[@!RFC9901]. It may or may not contain
 selectively disclosable claims.
 Note that the three-word term “Verifiable Digital Credential” is used to distinguish it from the W3C Verifiable Credentials Data Model
 and to better align with preferred terminology emerging elsewhere (see, for example, [@?NIST-BLOG.VDCE]).
@@ -169,7 +169,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 ## Data Format
 
 An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or
-Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt], where support for the
+Section 8 of [@!RFC9901], where support for the
 JWS JSON Serialization is OPTIONAL.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
@@ -315,13 +315,13 @@ Examples of what presentations of SD-JWT VCs might look like are provided in (#p
 
 The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 7].
-The check in point 2.3 of Section 7.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt],
+The check in point 2.3 of Section 7.1 of [@!RFC9901],
 which validates the Issuer and ensures that the signing key belongs to the Issuer,
 MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
 employing an Issuer Signature Mechanism (defined in (#ism)) that is permitted for the Issuer according to policy.
 
-If Key Binding is required (refer to the security considerations in Section 9.5 of [@!I-D.ietf-oauth-selective-disclosure-jwt]), the Verifier MUST verify the KB-JWT
-according to Section 7.3 of [@!I-D.ietf-oauth-selective-disclosure-jwt]. To verify
+If Key Binding is required (refer to the security considerations in Section 9.5 of [@!RFC9901]), the Verifier MUST verify the KB-JWT
+according to Section 7.3 of [@!RFC9901]. To verify
 the KB-JWT, the `cnf` claim of the SD-JWT MUST be used.
 
 If there are no selectively disclosable claims, there is no need to process the
@@ -364,8 +364,8 @@ of SD-JWT VCs.
 
 A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
 By default, the format defined in Section 4 of
-[@!I-D.ietf-oauth-selective-disclosure-jwt] is used, whereas support for the JWS
-JSON Serialization in Section 8 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+[@!RFC9901] is used, whereas support for the JWS
+JSON Serialization in Section 8 of [@!RFC9901]
 is OPTIONAL.
 
 ## Key Binding JWT
@@ -1020,7 +1020,7 @@ In this example, the child type inherits the `name` claim metadata from the base
 # Security Considerations {#security-considerations}
 
 The Security Considerations in the SD-JWT specification
-[@!I-D.ietf-oauth-selective-disclosure-jwt] apply to this specification.
+[@!RFC9901] apply to this specification.
 Additionally, the following security considerations need to be taken into
 account when using SD-JWT VCs:
 
@@ -1124,13 +1124,13 @@ The use of data URIs allows embedding of data directly within credential payload
 # Privacy Considerations {#privacy-considerations}
 
 The Privacy Considerations in the SD-JWT specification
-[@!I-D.ietf-oauth-selective-disclosure-jwt] apply to this specification.
+[@!RFC9901] apply to this specification.
 Additionally, the following privacy considerations need to be taken into
 account when using SD-JWT VCs.
 
 ## Unlinkability
 
-The Privacy Considerations in Section 10.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
+The Privacy Considerations in Section 10.1 of [@!RFC9901]
 apply especially to the `cnf` claim.
 
 ## Verifiable Digital Credential Type Identifier
@@ -1173,7 +1173,7 @@ in the Issuer identifier.
 # Relationships to Other Documents
 
 This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
-payloads and secured by SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]. Other specifications exist
+payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
 ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
@@ -1661,6 +1661,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms
 * Add example of a vct value that is versioned (in the text)
 * Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document
+* Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901
 
 -13
 
