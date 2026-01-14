@@ -436,7 +436,7 @@ Host: example.com
 
 ## JWT VC Issuer Metadata Response
 
-A successful response MUST use the `200 OK HTTP` and return the JWT VC Issuer
+A successful response MUST use an HTTP `200` status code and return the JWT VC Issuer
 Metadata configuration using the `application/json` content type.
 
 An error response uses the applicable HTTP status code value.
@@ -596,8 +596,9 @@ The following sections define methods to retrieve Type Metadata.
 A URI in the `vct` claim can be used to express a type. If the
 type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.
 
-The Type Metadata is retrieved using the HTTP GET method. The response MUST be a JSON
-object as defined in (#type-metadata-format).
+The Type Metadata is retrieved using the HTTP GET method.
+A successful response MUST use an HTTP `200` status code and return a JSON
+object as defined in (#type-metadata-format) using the `application/json` content type.
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
 `vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
@@ -1662,6 +1663,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Add example of a vct value that is versioned (in the text)
 * Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document
 * Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901
+* More consistent use of `application/json` content type and 200 status code when retrieving metadata
 
 -13
 
