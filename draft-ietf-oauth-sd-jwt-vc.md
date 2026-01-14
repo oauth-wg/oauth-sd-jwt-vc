@@ -1,5 +1,5 @@
 %%%
-title = "SD-JWT-based Verifiable Credentials (SD-JWT VC)"
+title = "SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)"
 abbrev = "SD-JWT VC"
 ipr = "trust200902"
 area = "Security"
@@ -41,7 +41,7 @@ organization="Ping Identity"
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
+rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt] format.
 
 {mainmatter}
 
@@ -49,9 +49,9 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 
 ## Issuer-Holder-Verifier Model
 
-In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
-Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
-Credentials are cryptographically secured statements about a Subject, typically the Holder.
+In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Digital Credentials to a
+Holder, who can then present the credentials to Verifiers.  Verifiable digital
+credentials are cryptographically secured statements about a Subject, typically the Holder.
 
 ~~~ ascii-art
          +------------+
@@ -60,7 +60,7 @@ Credentials are cryptographically secured statements about a Subject, typically 
          |            |
          +------------+
                |
-    Issues Verifiable Credential
+        Issues SD-JWT VC
                |
                v
          +------------+
@@ -69,7 +69,7 @@ Credentials are cryptographically secured statements about a Subject, typically 
          |            |
          +------------+
                |
-  Presents Verifiable Credential
+       Presents SD-JWT VC
                |
                v
          +-------------+
@@ -82,16 +82,16 @@ Credentials are cryptographically secured statements about a Subject, typically 
 ~~~
 Figure: Issuer-Holder-Verifier Model
 
-Verifiers can check the authenticity of the data in the Verifiable Credentials
+Verifiers can check the authenticity of the data in a Verifiable Digital Credential
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended Holder of the Verifiable Credential, for example, by proving possession of a
+are the intended Holder of the Verifiable Digital Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
 described in [@!I-D.ietf-oauth-selective-disclosure-jwt].
 
 ## SD-JWT as a Credential Format
 
 JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
-Verifiable Credentials in a way that is easy to understand and process as it
+Verifiable Digital Credentials in a way that is easy to understand and process as it
 builds upon established web primitives.
 
 Selective Disclosure JWT (SD-JWT) [@!I-D.ietf-oauth-selective-disclosure-jwt] is
@@ -105,8 +105,8 @@ long term archiving and multi signatures. However, SD-JWT itself does not define
 the claims that must be used within the payload or their semantics.
 
 This specification uses SD-JWT and the well-established JWT content rules and
-extensibility model as basis for representing Verifiable Credentials with JSON
-payloads. These Verifiable Credentials are called SD-JWT VCs. The use of
+extensibility model as basis for representing Verifiable Digital Credentials with JSON
+payloads. These Verifiable Digital Credentials are called SD-JWT VCs. The use of
 selective disclosure in SD-JWT VCs is OPTIONAL.
 
 SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
@@ -130,13 +130,17 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 Consumer:
 : Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
 
-Verifiable Credential (VC):
+Verifiable Digital Credential:
 :  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
 
-SD-JWT-based Verifiable Credential (SD-JWT VC):
-: A Verifiable Credential encoded using the format defined in
+SD-JWT-based Verifiable Digital Credential (SD-JWT VC):
+: A Verifiable Digital Credential encoded using the format defined in
 [@!I-D.ietf-oauth-selective-disclosure-jwt]. It may or may not contain
 selectively disclosable claims.
+Note that the three-word term “Verifiable Digital Credential” is used to distinguish it from the W3C Verifiable Credentials Data Model
+and to better align with preferred terminology emerging elsewhere (see, for example, [@?NIST-BLOG.VDCE]).
+However, the “D” is omitted in the short form “SD-JWT VC” in order to preserve the name that has been widely
+used to refer to this specification since its inception.
 
 Unsecured Payload of an SD-JWT VC:
 : A JSON object containing all selectively disclosable and non-selectively disclosable claims
@@ -147,10 +151,10 @@ an SD-JWT VC complying to this specification.
 
 This specification defines
 
-- a data model and media types for Verifiable Credentials based on SD-JWTs, and
+- a data model and media types for Verifiable Digital Credentials based on SD-JWTs, and
 - validation and processing rules for Verifiers and Holders.
 
-# Verifiable Credentials based on SD-JWT
+# Verifiable Digital Credentials based on SD-JWT
 
 This section defines encoding, validation and processing rules for SD-JWT VCs.
 
@@ -197,7 +201,7 @@ Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its 
 This section defines the claims that can be included in the payload of
 SD-JWT VCs.
 
-#### Verifiable Credential Type - `vct` Claim {#type-claim}
+#### Verifiable Digital Credential Type - `vct` Claim {#type-claim}
 
 This specification defines the new JWT claim `vct` (for verifiable credential type). Its value MUST be a
 case-sensitive string serving as an identifier
@@ -242,15 +246,15 @@ registry as defined in [@!RFC7519].
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:
 
-* `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Credential
+* `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Digital Credential
     when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
-* `nbf`: OPTIONAL. The time before which the Verifiable Credential MUST NOT be
+* `nbf`: OPTIONAL. The time before which the Verifiable Digital Credential MUST NOT be
 accepted before validating. See [@!RFC7519] for more information.
-* `exp`: OPTIONAL. The expiry time of the Verifiable Credential after which the
-Verifiable Credential is no longer valid. See [@!RFC7519] for more
+* `exp`: OPTIONAL. The expiry time of the Verifiable Digital Credential after which the
+Verifiable Digital Credential is no longer valid. See [@!RFC7519] for more
 information.
 * `cnf`: OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in [@!RFC7800]. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of [@!RFC7800]. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.
-* `vct`: REQUIRED. The type of the Verifiable Credential, e.g.,
+* `vct`: REQUIRED. The type of the Verifiable Digital Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `vct#integrity`: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
 * `status`: OPTIONAL. The information on how to read the status of the Verifiable
@@ -259,11 +263,11 @@ Credential. See [@!I-D.ietf-oauth-status-list]
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
 
-* `sub`: OPTIONAL. The identifier of the Subject of the Verifiable Credential.
+* `sub`: OPTIONAL. The identifier of the Subject of the Verifiable Digital Credential.
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between `sub` and `cnf` claims.
-* `iat`: OPTIONAL. The time of issuance of the Verifiable Credential. See
+* `iat`: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
       [@!RFC7519] for more information.
 
 #### Public and Private JWT claims
@@ -325,7 +329,7 @@ If there are no selectively disclosable claims, there is no need to process the
 
 If `status` is present in the verified payload of the SD-JWT, the status SHOULD
 be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Credential.
+of a SD-JWT VC based on the status of the Verifiable Digital Credential.
 
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
@@ -343,7 +347,7 @@ This specification defines the following two Issuer Signature Mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.
+- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional Issuer Signature Mechanisms may complement or override the mechanisms defined above; however, the specifics of such mechanisms are out of scope for this specification.
@@ -351,7 +355,7 @@ See (#ecosystem-verification-rules) for related security considerations.
 
 If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
 
-# Presenting Verifiable Credentials
+# Presenting Verifiable Digital Credentials
 
 This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.
@@ -561,7 +565,7 @@ to the one in the `vct#integrity` claim in the SD-JWT VC payload,
 The Type Metadata document MUST be a JSON object. The following properties are
 defined:
 
-* `vct`: REQUIRED. The verifiable credential type described by this type metadata document.
+* `vct`: REQUIRED. The verifiable digital credential type described by this type metadata document.
 * `name`: OPTIONAL. A human-readable name for the type, intended for developers reading
   the JSON document.
 * `description`: OPTIONAL. A human-readable description for the type, intended for
@@ -1109,7 +1113,7 @@ Verifiers and wallets SHOULD implement explicit checks for issuer authorization 
 
 Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
 
-Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable credential types and under what conditions such metadata can be relied upon.
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.
 
 Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.
 
@@ -1129,7 +1133,7 @@ account when using SD-JWT VCs.
 The Privacy Considerations in Section 10.1 of [@!I-D.ietf-oauth-selective-disclosure-jwt]
 apply especially to the `cnf` claim.
 
-## Verifiable Credential Type Identifier
+## Verifiable Digital Credential Type Identifier
 
 Issuers and Holders have to be aware that while this specification supports selective
 disclosure of claims of a given SD-JWT VC, the `vct` claim is not selectively disclosable.
@@ -1168,11 +1172,11 @@ in the Issuer identifier.
 
 # Relationships to Other Documents
 
-This specification defines validation and processing rules for verifiable credentials using JSON
+This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
 payloads and secured by SD-JWT [@!I-D.ietf-oauth-selective-disclosure-jwt]. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of verifiable credentials in the mobile document (mdoc)
+ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
 format encoded as CBOR and secured using COSE.
 
 ## Privacy-Preserving Retrieval of Type Metadata {#privacy-preserving-retrieval-of-type-metadata}
@@ -1296,6 +1300,15 @@ recommendations in (#robust-retrieval) apply.
   </front>
 </reference>
 
+<reference anchor="NIST-BLOG.VDCE" target="https://www.nist.gov/blogs/cybersecurity-insights/digital-identities-getting-know-verifiable-digital-credential-ecosystem">
+    <front>
+        <author fullname="Bill Fisher"/>
+        <author fullname="Ryan Galluzzo"/>
+        <title>Digital Identities: Getting to Know the Verifiable Digital Credential Ecosystem</title>
+        <date day="13" month="November" year="2024"/>
+    </front>
+</reference>
+
 {backmatter}
 
 # IANA Considerations
@@ -1303,7 +1316,7 @@ recommendations in (#robust-retrieval) apply.
 ## JSON Web Token Claims Registration
 
 - Claim Name: "vct"
-- Claim Description: Verifiable credential type identifier
+- Claim Description: Verifiable digital Credential Type identifier
 - Change Controller: IETF
 - Specification Document(s): [[ (#type-claim) of this specification ]]
 
@@ -1326,7 +1339,7 @@ The Internet media type for an SD-JWT VC is `application/dc+sd-jwt`.
 * Security considerations: See Security Considerations in (#security-considerations).
 * Interoperability considerations: n/a
 * Published specification: [[ this specification ]]
-* Applications that use this media type: Applications that issue, present, and verify SD-JWT-based verifiable credentials.
+* Applications that use this media type: Applications that issue, present, and verify SD-JWT-based Verifiable Digital Credentials.
 * Additional information:
   - Magic number(s): n/a
   - File extension(s): n/a
@@ -1647,6 +1660,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms
 * Add example of a vct value that is versioned (in the text)
+* Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document
 
 -13
 
