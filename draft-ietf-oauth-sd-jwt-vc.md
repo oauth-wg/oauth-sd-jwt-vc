@@ -221,6 +221,8 @@ previously required elements, or otherwise introduces incompatibilities, it is
 generally advisable to treat that as a new version of the credential type and to
 convey it using a new `vct` value. This allows different versions of a credential
 type to coexist and helps ensure that participants interpret credentials consistently.
+For example, if such a need came about for the hypothetical type `urn:eudi:pid:aendgard:1`,
+a new version could be defined using a 'vct' of `urn:eudi:pid:aendgard:2`.
 
 The following is a non-normative example of how `vct` is used to express
 a type:
