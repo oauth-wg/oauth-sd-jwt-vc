@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-11T00:42:09.187867+00:00",
+  "timestamp": "2026-01-15T00:35:15.058682+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -31255,6 +31255,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 387,
+      "id": "PR_kwDOJbVClc69QWL1",
+      "title": "Items based on Tim Cappalli's review of -13",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/387",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-01-14T22:04:14Z",
+      "updatedAt": "2026-01-14T23:40:23Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8db83c8d2c9ab04f95addf5fc0c796f5939a95ac",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "tim-13-review",
+      "headRefOid": "5f1f2c1a157d7b60124aace933387a7dbbd7e9a6",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
