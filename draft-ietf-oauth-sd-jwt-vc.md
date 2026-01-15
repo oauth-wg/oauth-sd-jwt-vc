@@ -328,8 +328,8 @@ If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
 If `status` is present in the verified payload of the SD-JWT, the status SHOULD
-be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Digital Credential.
+be checked. Verifier policy decides whether to reject or accept a presentation of
+a SD-JWT VC based on the status of the Verifiable Digital Credential.
 
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
@@ -558,7 +558,7 @@ retrieved from it:
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=`.
+`1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=` (see (#document-integrity) for details).
 
 ## Type Metadata Format {#type-metadata-format}
 
@@ -743,7 +743,7 @@ MUST contain at least one of the following properties:
 
 #### SVG Rendering {#svg-rendering}
 
-Consuming application MUST preprocess the SVG template by replacing placeholders
+A consuming application MUST preprocess the SVG template by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
 placeholders MUST be defined in the SVG template using the syntax
 `{{svg_id}}`, where `svg_id` is an identifier defined in the claim metadata as
@@ -1131,8 +1131,7 @@ account when using SD-JWT VCs.
 
 ## Unlinkability
 
-The Privacy Considerations in Section 10.1 of [@!RFC9901]
-apply especially to the `cnf` claim.
+The Privacy Considerations in Section 10.1 of [@!RFC9901] apply, especially to the `cnf` claim.
 
 ## Verifiable Digital Credential Type Identifier
 
@@ -1664,6 +1663,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document
 * Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901
 * More consistent use of `application/json` content type and 200 status code when retrieving metadata
+* Editorial improvements based on review feedback of -13
 
 -13
 
