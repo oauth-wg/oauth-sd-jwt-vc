@@ -149,7 +149,7 @@ Table of Contents
 
    In the so-called Issuer-Holder-Verifier Model, Issuers issue so-
    called Verifiable Digital Credentials to a Holder, who can then
-   present the credentials to Verifiers.  Verifiable digital credentials
+   present the credentials to Verifiers.  Verifiable Digital Credentials
    are cryptographically secured statements about a Subject, typically
    the Holder.
 
@@ -591,9 +591,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MTFRW
-   9RwYC_004a65_X4z-SihrU5-pQlKWcIa5zcQiAneCH672goNwI3SVFCDZwjVSd9fEayP
-   fzqbyGXQrZWgg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.75-kN
+   FztVQ9tKILu-8Hx7SCESA2Bjylrmf4c9e4bvinso-K7InEF0wirnn59hokqV8Lh9EX8C
+   sO5Mmme43SW2g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -715,17 +715,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MTFRW
-   9RwYC_004a65_X4z-SihrU5-pQlKWcIa5zcQiAneCH672goNwI3SVFCDZwjVSd9fEayP
-   fzqbyGXQrZWgg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.75-kN
+   FztVQ9tKILu-8Hx7SCESA2Bjylrmf4c9e4bvinso-K7InEF0wirnn59hokqV8Lh9EX8C
+   sO5Mmme43SW2g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0ODMyNz
-   AsICJzZF9oYXNoIjogImdXVGNkdVFBS1R4eG5UOENNaVJwNHpWdWhBUUdTQXJQZUxxa0
-   ZEbWFTWG8ifQ.Iu61ZdO0tmF2AnDp-sjhzeFFtE3La6bZVzApprb1fIhA4i3cWdxCaeU
-   MbHqU8BmRTgcn-hxl3RXaSXAU53ctTw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0OTY5Nj
+   MsICJzZF9oYXNoIjogIjdmQllwX0ZWYWlfSWVFY0xsYUpsV0VQVVZKdWdTUWxqXzhHS2
+   RhWXJjMHMifQ.Vo2ar4aPkBpD4vMORilf0IZlXtzlodgHZItwj1gdoZoE4QCXAHLdEtH
+   pNi4PAprSTUim_fE3UtjZFDW4KaNDuQ
 
    After validation, the Verifier will have the following processed SD-
    JWT payload available for further handling:
@@ -767,8 +767,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.nD1bymXaYuiqT8HOU8GbJJvjIBvBu1P2U577vsqysxxkHM
-   J6k1-fkfTTk-peOWEK3j_deZWDaQ531Co48qLkGA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.87BD5iGkIJ6HnSQgWY38WSVSZGM43g_zsKCu3Awll6p2D_
+   Gce9ibpfoBZra6hoxHNZDVGSSHVy7-n1R7S38u8Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1954,8 +1954,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.8SOKoYgio5xIwT8znRFZG887cf3LlynmYKsExo8lq_Q
-   F1NQOkVVdp3fXAeKvzdKTYsMx5G2_cdVKI_qT8cE2Bw~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.mhvEanG9nWv2TNs_nomC8GZ8eclL_aqxZLtSzjvTIQP
+   YWlBQxFBCiSFnTKOEhVcMojRCAjlPmmsepyt6YUznSw~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2333,8 +2333,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.8SOKoYgio5xIwT8znRFZG887cf3LlynmYKsExo8lq_Q
-   F1NQOkVVdp3fXAeKvzdKTYsMx5G2_cdVKI_qT8cE2Bw~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.mhvEanG9nWv2TNs_nomC8GZ8eclL_aqxZLtSzjvTIQP
+   YWlBQxFBCiSFnTKOEhVcMojRCAjlPmmsepyt6YUznSw~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2345,17 +2345,17 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0ODMyNzAsICJzZF9oYXNoIjogIkJJS2JWRzNPR
-   DBkQzd0RUNDYXVheGlvUFN3OERVODF4a0tRSDRBUHJIR3MifQ.PPuAMOrsqAfmJu9kyf
-   btc7-mIn-FNUeNskDcUehIoGHO1U2Z8CUnDtX1temRMXU3FYM_faL6VmFkk2XKzn-0bA
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0OTY5NjMsICJzZF9oYXNoIjogIjJ6OURQT1lRd
+   UdvR3FMalFmMjkzNTlISmxndFRENlktc3VrSTNJY1NmcFkifQ.uHUF3dGNOqBWOujqRy
+   TO1YIUPOdePlYrEdJRfjwO_MiAD43KCsjk8yClF6Le4470tCbR6l_c_cGJxk2T5L2WWw
 
    The following is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1768483270,
-     "sd_hash": "BIKbVG3OD0dC7tECCauaxioPSw8DU81xkKQH4APrHGs"
+     "iat": 1768496963,
+     "sd_hash": "2z9DPOYQuGoGqLjQf29359HJlgtTD6Y-sukI3IcSfpY"
    }
 
    After validation, the Verifier will have the following processed SD-
