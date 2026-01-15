@@ -4,13 +4,13 @@
 <meta charset="utf-8">
 <meta content="Common,Latin" name="scripts">
 <meta content="initial-scale=1.0" name="viewport">
-<title>SD-JWT-based Verifiable Credentials (SD-JWT VC)</title>
+<title>SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)</title>
 <meta content="Oliver Terbu" name="author">
 <meta content="Daniel Fett" name="author">
 <meta content="Brian Campbell" name="author">
 <meta content="
        This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
+rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT   format. 
     " name="description">
 <meta content="xml2rfc 3.31.0" name="generator">
 <meta content="security" name="keyword">
@@ -22,12 +22,12 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
     Python 3.12.12
     ConfigArgParse 1.7
     google-i18n-address 3.1.1
-    intervaltree 3.1.0
+    intervaltree 3.2.1
     Jinja2 3.1.6
-    lxml 5.3.1
-    platformdirs 4.5.0
+    lxml 6.0.2
+    platformdirs 4.5.1
     pycountry 24.6.1
-    PyYAML 6.0.2
+    PyYAML 6.0.3
     requests 2.32.5
     wcwidth 0.2.14
 -->
@@ -1048,11 +1048,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">December 2025</td>
+<td class="right">January 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 19 June 2026</td>
+<td class="center">Expires 19 July 2026</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1065,12 +1065,12 @@ svg :is([fill="white"], [fill^="#fff"]) {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2025-12-16" class="published">16 December 2025</time>
+<time datetime="2026-01-15" class="published">15 January 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2026-06-19">19 June 2026</time></dd>
+<dd class="expires"><time datetime="2026-07-19">19 July 2026</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1088,11 +1088,11 @@ svg :is([fill="white"], [fill^="#fff"]) {
 </dd>
 </dl>
 </div>
-<h1 id="title">SD-JWT-based Verifiable Credentials (SD-JWT VC)</h1>
+<h1 id="title">SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)</h1>
 <section id="section-abstract">
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This specification describes data formats as well as validation and processing
-rules to express Verifiable Credentials with JSON payloads with and without selective disclosure based on the SD-JWT <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> format.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> format.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1124,7 +1124,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 19 June 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 19 July 2026.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1133,7 +1133,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
 <a href="#name-copyright-notice" class="section-name selfRef">Copyright Notice</a>
         </h2>
 <p id="section-boilerplate.2-1">
-            Copyright (c) 2025 IETF Trust and the persons identified as the
+            Copyright (c) 2026 IETF Trust and the persons identified as the
             document authors. All rights reserved.<a href="#section-boilerplate.2-1" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.2-2">
             This document is subject to BCP 78 and the IETF Trust's Legal
@@ -1174,7 +1174,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
             <p id="section-toc.1-1.2.1"><a href="#section-2" class="auto internal xref">2</a>.  <a href="#name-scope" class="internal xref">Scope</a></p>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3">
-            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-verifiable-credentials-base" class="internal xref">Verifiable Credentials based on SD-JWT</a></p>
+            <p id="section-toc.1-1.3.1"><a href="#section-3" class="auto internal xref">3</a>.  <a href="#name-verifiable-digital-credenti" class="internal xref">Verifiable Digital Credentials based on SD-JWT</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.3.2.1">
                 <p id="section-toc.1-1.3.2.1.1"><a href="#section-3.1" class="auto internal xref">3.1</a>.  <a href="#name-media-type" class="internal xref">Media Type</a></p>
@@ -1202,7 +1202,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
             </ul>
 </li>
           <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4">
-            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-presenting-verifiable-crede" class="internal xref">Presenting Verifiable Credentials</a></p>
+            <p id="section-toc.1-1.4.1"><a href="#section-4" class="auto internal xref">4</a>.  <a href="#name-presenting-verifiable-digit" class="internal xref">Presenting Verifiable Digital Credentials</a></p>
 <ul class="compact toc ulBare ulEmpty">
 <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.4.2.1">
                 <p id="section-toc.1-1.4.2.1.1"><a href="#section-4.1" class="auto internal xref">4.1</a>.  <a href="#name-data-format-2" class="internal xref">Data Format</a></p>
@@ -1354,7 +1354,7 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
                 <p id="section-toc.1-1.11.2.1.1"><a href="#section-11.1" class="auto internal xref">11.1</a>.  <a href="#name-unlinkability" class="internal xref">Unlinkability</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.2">
-                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-verifiable-credential-type-i" class="internal xref">Verifiable Credential Type Identifier</a></p>
+                <p id="section-toc.1-1.11.2.2.1"><a href="#section-11.2" class="auto internal xref">11.2</a>.  <a href="#name-verifiable-digital-credential" class="internal xref">Verifiable Digital Credential Type Identifier</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.11.2.3">
                 <p id="section-toc.1-1.11.2.3.1"><a href="#section-11.3" class="auto internal xref">11.3</a>.  <a href="#name-issuer-phone-home" class="internal xref">Issuer Phone-Home</a></p>
@@ -1438,8 +1438,8 @@ rules to express Verifiable Credentials with JSON payloads with and without sele
         <h3 id="name-issuer-holder-verifier-mode">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-issuer-holder-verifier-mode" class="section-name selfRef">Issuer-Holder-Verifier Model</a>
         </h3>
-<p id="section-1.1-1">In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Credentials to a
-Holder, who can then present the Verifiable Credentials to Verifiers. Verifiable
+<p id="section-1.1-1">In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Digital Credentials to a
+Holder, who can then present the credentials to Verifiers. Verifiable Digital
 Credentials are cryptographically secured statements about a Subject, typically the Holder.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <span id="name-issuer-holder-verifier-model"></span><figure id="figure-1">
           <div class="lang-ascii-art sourcecode" id="section-1.1-2.1">
@@ -1449,7 +1449,7 @@ Credentials are cryptographically secured statements about a Subject, typically 
          |            |
          +------------+
                |
-    Issues Verifiable Credential
+        Issues SD-JWT VC
                |
                v
          +------------+
@@ -1458,7 +1458,7 @@ Credentials are cryptographically secured statements about a Subject, typically 
          |            |
          +------------+
                |
-  Presents Verifiable Credential
+       Presents SD-JWT VC
                |
                v
          +-------------+
@@ -1474,11 +1474,11 @@ Credentials are cryptographically secured statements about a Subject, typically 
 <figcaption><a href="#figure-1" class="selfRef">Figure 1</a>:
 <a href="#name-issuer-holder-verifier-model" class="selfRef">Issuer-Holder-Verifier Model</a>
           </figcaption></figure>
-<p id="section-1.1-3">Verifiers can check the authenticity of the data in the Verifiable Credentials
+<p id="section-1.1-3">Verifiers can check the authenticity of the data in a Verifiable Digital Credential
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended Holder of the Verifiable Credential, for example, by proving possession of a
+are the intended Holder of the Verifiable Digital Credential, for example, by proving possession of a
 cryptographic key referenced in the credential. This process is further
-described in <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
+described in <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>.<a href="#section-1.1-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="sd-jwt-as-a-credential-format">
@@ -1487,9 +1487,9 @@ described in <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="ci
 <a href="#section-1.2" class="section-number selfRef">1.2. </a><a href="#name-sd-jwt-as-a-credential-form" class="section-name selfRef">SD-JWT as a Credential Format</a>
         </h3>
 <p id="section-1.2-1">JSON Web Tokens (JWTs) <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> can in principle be used to express
-Verifiable Credentials in a way that is easy to understand and process as it
+Verifiable Digital Credentials in a way that is easy to understand and process as it
 builds upon established web primitives.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
-<p id="section-1.2-2">Selective Disclosure JWT (SD-JWT) <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> is
+<p id="section-1.2-2">Selective Disclosure JWT (SD-JWT) <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).<a href="#section-1.2-2" class="pilcrow">¶</a></p>
@@ -1498,8 +1498,8 @@ disclosable claims and also supports JWS JSON serialization, which is useful for
 long term archiving and multi signatures. However, SD-JWT itself does not define
 the claims that must be used within the payload or their semantics.<a href="#section-1.2-3" class="pilcrow">¶</a></p>
 <p id="section-1.2-4">This specification uses SD-JWT and the well-established JWT content rules and
-extensibility model as basis for representing Verifiable Credentials with JSON
-payloads. These Verifiable Credentials are called SD-JWT VCs. The use of
+extensibility model as basis for representing Verifiable Digital Credentials with JSON
+payloads. These Verifiable Digital Credentials are called SD-JWT VCs. The use of
 selective disclosure in SD-JWT VCs is OPTIONAL.<a href="#section-1.2-4" class="pilcrow">¶</a></p>
 <p id="section-1.2-5">SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>, as well as public and
@@ -1524,20 +1524,24 @@ document are to be interpreted as described in RFC 2119 <span>[<a href="#RFC2119
         </h3>
 <p id="section-1.4-1">This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", "Selectively Disclosable JWT (SD-JWT)", "Key Binding",
 "Key Binding JWT (KB-JWT)", "Selectively Disclosable JWT with Key Binding (SD-JWT+KB)" defined by
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.<a href="#section-1.4-1" class="pilcrow">¶</a></p>
+<span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>.<a href="#section-1.4-1" class="pilcrow">¶</a></p>
 <span class="break"></span><dl class="dlCompact dlParallel" id="section-1.4-2">
           <dt id="section-1.4-2.1">Consumer:</dt>
           <dd style="margin-left: 1.5em" id="section-1.4-2.2">Applications using the Type Metadata specified in <a href="#type-metadata" class="auto internal xref">Section 6</a> are called Consumer. This typically includes Issuers, Verifiers, and Wallets.<a href="#section-1.4-2.2" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-1.4-2.3">Verifiable Credential (VC):</dt>
+<dt id="section-1.4-2.3">Verifiable Digital Credential:</dt>
           <dd style="margin-left: 1.5em" id="section-1.4-2.4">An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).<a href="#section-1.4-2.4" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
-<dt id="section-1.4-2.5">SD-JWT-based Verifiable Credential (SD-JWT VC):</dt>
-          <dd style="margin-left: 1.5em" id="section-1.4-2.6">A Verifiable Credential encoded using the format defined in
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. It may or may not contain
-selectively disclosable claims.<a href="#section-1.4-2.6" class="pilcrow">¶</a>
+<dt id="section-1.4-2.5">SD-JWT-based Verifiable Digital Credential (SD-JWT VC):</dt>
+          <dd style="margin-left: 1.5em" id="section-1.4-2.6">A Verifiable Digital Credential encoded using the format defined in
+<span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>. It may or may not contain
+selectively disclosable claims.
+Note that the three-word term “Verifiable Digital Credential” is used to distinguish it from the W3C Verifiable Credentials Data Model
+and to better align with preferred terminology emerging elsewhere (see, for example, <span>[<a href="#NIST-BLOG.VDCE" class="cite xref">NIST-BLOG.VDCE</a>]</span>).
+However, the “D” is omitted in the short form “SD-JWT VC” in order to preserve the name that has been widely
+used to refer to this specification since its inception.<a href="#section-1.4-2.6" class="pilcrow">¶</a>
 </dd>
           <dd class="break"></dd>
 <dt id="section-1.4-2.7">Unsecured Payload of an SD-JWT VC:</dt>
@@ -1558,17 +1562,17 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.8" class="p
       </h2>
 <p id="section-2-1">This specification defines<a href="#section-2-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-2-2.1">a data model and media types for Verifiable Credentials based on SD-JWTs, and<a href="#section-2-2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-2-2.1">a data model and media types for Verifiable Digital Credentials based on SD-JWTs, and<a href="#section-2-2.1" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="section-2-2.2">validation and processing rules for Verifiers and Holders.<a href="#section-2-2.2" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
 </div>
-<div id="verifiable-credentials-based-on-sd-jwt">
+<div id="verifiable-digital-credentials-based-on-sd-jwt">
 <section id="section-3">
-      <h2 id="name-verifiable-credentials-base">
-<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-verifiable-credentials-base" class="section-name selfRef">Verifiable Credentials based on SD-JWT</a>
+      <h2 id="name-verifiable-digital-credenti">
+<a href="#section-3" class="section-number selfRef">3. </a><a href="#name-verifiable-digital-credenti" class="section-name selfRef">Verifiable Digital Credentials based on SD-JWT</a>
       </h2>
 <p id="section-3-1">This section defines encoding, validation and processing rules for SD-JWT VCs.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <div id="media-type">
@@ -1588,7 +1592,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".<a h
 <a href="#section-3.2" class="section-number selfRef">3.2. </a><a href="#name-data-format" class="section-name selfRef">Data Format</a>
         </h3>
 <p id="section-3.2-1">An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or
-Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>, where support for the
+Section 8 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>, where support for the
 JWS JSON Serialization is OPTIONAL.<a href="#section-3.2-1" class="pilcrow">¶</a></p>
 <p id="section-3.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-3.2-2" class="pilcrow">¶</a></p>
@@ -1624,8 +1628,8 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.<a href="#secti
 SD-JWT VCs.<a href="#section-3.2.2-1" class="pilcrow">¶</a></p>
 <div id="type-claim">
 <section id="section-3.2.2.1">
-            <h5 id="name-verifiable-credential-type-">
-<a href="#section-3.2.2.1" class="section-number selfRef">3.2.2.1. </a><a href="#name-verifiable-credential-type-" class="section-name selfRef">Verifiable Credential Type - <code>vct</code> Claim</a>
+            <h5 id="name-verifiable-digital-credentia">
+<a href="#section-3.2.2.1" class="section-number selfRef">3.2.2.1. </a><a href="#name-verifiable-digital-credentia" class="section-name selfRef">Verifiable Digital Credential Type - <code>vct</code> Claim</a>
             </h5>
 <p id="section-3.2.2.1-1">This specification defines the new JWT claim <code>vct</code> (for verifiable credential type). Its value MUST be a
 case-sensitive string serving as an identifier
@@ -1645,7 +1649,9 @@ need to be made in a way that preserves compatibility with existing implementati
 previously required elements, or otherwise introduces incompatibilities, it is
 generally advisable to treat that as a new version of the credential type and to
 convey it using a new <code>vct</code> value. This allows different versions of a credential
-type to coexist and helps ensure that participants interpret credentials consistently.<a href="#section-3.2.2.1-4" class="pilcrow">¶</a></p>
+type to coexist and helps ensure that participants interpret credentials consistently.
+For example, if such a need came about for the hypothetical type <code>urn:eudi:pid:aendgard:1</code>,
+a new version could be defined using a 'vct' of <code>urn:eudi:pid:aendgard:2</code>.<a href="#section-3.2.2.1-4" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.1-5">The following is a non-normative example of how <code>vct</code> is used to express
 a type:<a href="#section-3.2.2.1-5" class="pilcrow">¶</a></p>
 <div class="alignLeft art-text artwork" id="section-3.2.2.1-6">
@@ -1668,23 +1674,23 @@ registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]<
 <p id="section-3.2.2.2-2">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:<a href="#section-3.2.2.2-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-3.1">
-                <code>iss</code>: OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Credential
+                <code>iss</code>: OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Digital Credential
 when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an <code>x5c</code> header).<a href="#section-3.2.2.2-3.1" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.2">
-                <code>nbf</code>: OPTIONAL. The time before which the Verifiable Credential MUST NOT be
+                <code>nbf</code>: OPTIONAL. The time before which the Verifiable Digital Credential MUST NOT be
 accepted before validating. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-3.2" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.3">
-                <code>exp</code>: OPTIONAL. The expiry time of the Verifiable Credential after which the
-Verifiable Credential is no longer valid. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more
+                <code>exp</code>: OPTIONAL. The expiry time of the Verifiable Digital Credential after which the
+Verifiable Digital Credential is no longer valid. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more
 information.<a href="#section-3.2.2.2-3.3" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.4">
                 <code>cnf</code>: OPTIONAL unless cryptographic Key Binding is to be supported, in which case it is REQUIRED. Contains the confirmation method identifying the proof of possession key as defined in <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. It is RECOMMENDED that this contains a JWK as defined in Section 3.2 of <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>. For proof of cryptographic Key Binding, the KB-JWT in the presentation of the SD-JWT MUST be secured by the key identified in this claim.<a href="#section-3.2.2.2-3.4" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.5">
-                <code>vct</code>: REQUIRED. The type of the Verifiable Credential, e.g.,
+                <code>vct</code>: REQUIRED. The type of the Verifiable Digital Credential, e.g.,
 <code>https://credentials.example.com/identity_credential</code>, as defined in <a href="#type-claim" class="auto internal xref">Section 3.2.2.1</a>.<a href="#section-3.2.2.2-3.5" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-3.6">
@@ -1699,13 +1705,13 @@ for more information. When the <code>status</code> claim is present and using th
 <p id="section-3.2.2.2-4">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:<a href="#section-3.2.2.2-4" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-3.2.2.2-5.1">
-                <code>sub</code>: OPTIONAL. The identifier of the Subject of the Verifiable Credential.
+                <code>sub</code>: OPTIONAL. The identifier of the Subject of the Verifiable Digital Credential.
 The Issuer MAY use it to provide the Subject
 identifier known by the Issuer. There is no requirement for a binding to
 exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2.2.2-5.1" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-3.2.2.2-5.2">
-                <code>iat</code>: OPTIONAL. The time of issuance of the Verifiable Credential. See
+                <code>iat</code>: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
   <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-3.2.2.2-5.2" class="pilcrow">¶</a>
 </li>
             </ul>
@@ -1929,9 +1935,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dAsQu
-hd4eYEsFDSQRJXxG2-dGamx1Nsrekqvb-erOVrxtTVhEI0C4ux8sOL6bNuDymg3TDQ6g
-taSEoaT4Tw9PA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xPk_t
+ndAFcPC2_VdBPXbJNjfedrpVkIvhTok4Yh51xF2mr5j-IBG5u5Gc7u0tzTtd7VT4KY4N
+4p_30RaDAwmUg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1955,18 +1961,18 @@ lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
         </h3>
 <p id="section-3.4-1">The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
 SD-JWT VC as described in <span><a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-selective-disclosure-jwt-22#section-7" class="relref">Section 7</a> of [<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>.
-The check in point 2.3 of Section 7.1 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>,
+The check in point 2.3 of Section 7.1 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>,
 which validates the Issuer and ensures that the signing key belongs to the Issuer,
 MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
 employing an Issuer Signature Mechanism (defined in <a href="#ism" class="auto internal xref">Section 3.5</a>) that is permitted for the Issuer according to policy.<a href="#section-3.4-1" class="pilcrow">¶</a></p>
-<p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>), the Verifier MUST verify the KB-JWT
-according to Section 7.3 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. To verify
+<p id="section-3.4-2">If Key Binding is required (refer to the security considerations in Section 9.5 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>), the Verifier MUST verify the KB-JWT
+according to Section 7.3 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>. To verify
 the KB-JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#section-3.4-2" class="pilcrow">¶</a></p>
 <p id="section-3.4-3">If there are no selectively disclosable claims, there is no need to process the
 <code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 <p id="section-3.4-4">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
-be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Credential.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+be checked. Verifier policy decides whether to reject or accept a presentation of
+a SD-JWT VC based on the status of the Verifiable Digital Credential.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
 <p id="section-3.4-5">Additional validation rules MAY apply, but their use is out of the scope of this
 specification.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
 </section>
@@ -1988,7 +1994,7 @@ This specification defines the following two Issuer Signature Mechanisms:<a href
             <p id="section-3.5-3.1.1">JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the <code>iss</code> claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 5</a>.<a href="#section-3.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-3.5-3.2">
-            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-3.5-3.2.1">X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.<a href="#section-3.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-3.5-4">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
@@ -1999,10 +2005,10 @@ See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 1
 </div>
 </section>
 </div>
-<div id="presenting-verifiable-credentials">
+<div id="presenting-verifiable-digital-credentials">
 <section id="section-4">
-      <h2 id="name-presenting-verifiable-crede">
-<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-presenting-verifiable-crede" class="section-name selfRef">Presenting Verifiable Credentials</a>
+      <h2 id="name-presenting-verifiable-digit">
+<a href="#section-4" class="section-number selfRef">4. </a><a href="#name-presenting-verifiable-digit" class="section-name selfRef">Presenting Verifiable Digital Credentials</a>
       </h2>
 <p id="section-4-1">This section defines encoding, validation and processing rules for presentations
 of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
@@ -2013,8 +2019,8 @@ of SD-JWT VCs.<a href="#section-4-1" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-4.1-1">A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
 By default, the format defined in Section 4 of
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> is used, whereas support for the JWS
-JSON Serialization in Section 8 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>
+<span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> is used, whereas support for the JWS
+JSON Serialization in Section 8 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>
 is OPTIONAL.<a href="#section-4.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2051,17 +2057,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dAsQu
-hd4eYEsFDSQRJXxG2-dGamx1Nsrekqvb-erOVrxtTVhEI0C4ux8sOL6bNuDymg3TDQ6g
-taSEoaT4Tw9PA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xPk_t
+ndAFcPC2_VdBPXbJNjfedrpVkIvhTok4Yh51xF2mr5j-IBG5u5Gc7u0tzTtd7VT4KY4N
+4p_30RaDAwmUg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjU5MDY1MT
-csICJzZF9oYXNoIjogIlNmUFU5aEM1b1J6TGRMaUFvQl9yZXk0ckVMQzAybmdDME5yWU
-RodHMzcm8ifQ.ppybJOjyDdP4YKoKnS-B3JKFRW5QC0OgDAm3gs1bkthHKU5b-XApT7v
-rBP9cP4pBm8wLTwpWSE-4mT-qw8C6iQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0OTcxMD
+csICJzZF9oYXNoIjogIkxpQWtveGZpYnJCejJIcDFxWnFTaWFsZXMydmJUeGpwb3gwbW
+9ybm1xTXcifQ.3JZFxbETIS3vRmUx0fk5Gk_NAwCxBjvh9euMVByF2BBitXgTNejPn3Y
+vLje7n-_kTicgpKUiA4Nh42bo7feBnQ
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2106,8 +2112,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.TYwFvtpfJQKevGW2btG-q7e98n0zrlXD-Oc0YsVPCh3XvD
-bWUA-BFuHmFBCHuCYJnXTW0xzt35zgSAj9g86TzQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.s8hbgeMS0eaiHyueFRLFcD1-BfGvaPAfATQKFWmMYfCE6e
+BufpZfN_49QWeT-8gMc5zb1VotZgA5a1B2SQ3pGg~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2186,7 +2192,7 @@ Host: example.com
         <h3 id="name-jwt-vc-issuer-metadata-resp">
 <a href="#section-5.2" class="section-number selfRef">5.2. </a><a href="#name-jwt-vc-issuer-metadata-resp" class="section-name selfRef">JWT VC Issuer Metadata Response</a>
         </h3>
-<p id="section-5.2-1">A successful response MUST use the <code>200 OK HTTP</code> and return the JWT VC Issuer
+<p id="section-5.2-1">A successful response MUST use an HTTP <code>200</code> status code and return the JWT VC Issuer
 Metadata configuration using the <code>application/json</code> content type.<a href="#section-5.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.2-2">An error response uses the applicable HTTP status code value.<a href="#section-5.2-2" class="pilcrow">¶</a></p>
 <p id="section-5.2-3">This specification defines the following JWT VC Issuer Metadata configuration
@@ -2322,7 +2328,7 @@ retrieved from it:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
 </div>
 <p id="section-6.1-6">Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
-<code>1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=</code>.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
+<code>1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=</code> (see <a href="#document-integrity" class="auto internal xref">Section 7</a> for details).<a href="#section-6.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="type-metadata-format">
@@ -2334,7 +2340,7 @@ to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
 defined:<a href="#section-6.2-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-6.2-2.1">
-            <code>vct</code>: REQUIRED. The verifiable credential type described by this type metadata document.<a href="#section-6.2-2.1" class="pilcrow">¶</a>
+            <code>vct</code>: REQUIRED. The verifiable digital credential type described by this type metadata document.<a href="#section-6.2-2.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-6.2-2.2">
             <code>name</code>: OPTIONAL. A human-readable name for the type, intended for developers reading
@@ -2379,8 +2385,9 @@ Metadata document).<a href="#section-6.3-1" class="pilcrow">¶</a></p>
           </h4>
 <p id="section-6.3.1-1">A URI in the <code>vct</code> claim can be used to express a type. If the
 type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.<a href="#section-6.3.1-1" class="pilcrow">¶</a></p>
-<p id="section-6.3.1-2">The Type Metadata is retrieved using the HTTP GET method. The response MUST be a JSON
-object as defined in <a href="#type-metadata-format" class="auto internal xref">Section 6.2</a>.<a href="#section-6.3.1-2" class="pilcrow">¶</a></p>
+<p id="section-6.3.1-2">The Type Metadata is retrieved using the HTTP GET method.
+A successful response MUST use an HTTP <code>200</code> status code and return a JSON
+object as defined in <a href="#type-metadata-format" class="auto internal xref">Section 6.2</a> using the <code>application/json</code> content type.<a href="#section-6.3.1-2" class="pilcrow">¶</a></p>
 <p id="section-6.3.1-3">If the claim <code>vct#integrity</code> is present in the SD-JWT VC, its value
 <code>vct#integrity</code> MUST be an "integrity metadata" string as defined in Section <a href="#document-integrity" class="auto internal xref">Section 7</a>.<a href="#section-6.3.1-3" class="pilcrow">¶</a></p>
 </section>
@@ -2617,7 +2624,7 @@ values being <code>normal</code> and <code>high</code>. This property is OPTIONA
             <h5 id="name-svg-rendering">
 <a href="#section-8.1.2.2" class="section-number selfRef">8.1.2.2. </a><a href="#name-svg-rendering" class="section-name selfRef">SVG Rendering</a>
             </h5>
-<p id="section-8.1.2.2-1">Consuming application MUST preprocess the SVG template by replacing placeholders
+<p id="section-8.1.2.2-1">A consuming application MUST preprocess the SVG template by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
 placeholders MUST be defined in the SVG template using the syntax
 <code>{{svg_id}}</code>, where <code>svg_id</code> is an identifier defined in the claim metadata as
@@ -2992,7 +2999,7 @@ optional in the extended type to <code>true</code>, but it MUST NOT change a cla
 <a href="#section-10" class="section-number selfRef">10. </a><a href="#name-security-considerations" class="section-name selfRef">Security Considerations</a>
       </h2>
 <p id="section-10-1">The Security Considerations in the SD-JWT specification
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> apply to this specification.
+<span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> apply to this specification.
 Additionally, the following security considerations need to be taken into
 account when using SD-JWT VCs:<a href="#section-10-1" class="pilcrow">¶</a></p>
 <div id="server-side-request-forgery">
@@ -3112,7 +3119,7 @@ Verifiers and wallets SHOULD implement explicit checks for issuer authorization 
 <a href="#section-10.7" class="section-number selfRef">10.7. </a><a href="#name-trust-in-type-metadata" class="section-name selfRef">Trust in Type Metadata</a>
         </h3>
 <p id="section-10.7-1">Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.<a href="#section-10.7-1" class="pilcrow">¶</a></p>
-<p id="section-10.7-2">Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable credential types and under what conditions such metadata can be relied upon.<a href="#section-10.7-2" class="pilcrow">¶</a></p>
+<p id="section-10.7-2">Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.<a href="#section-10.7-2" class="pilcrow">¶</a></p>
 <p id="section-10.7-3">Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.<a href="#section-10.7-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -3132,7 +3139,7 @@ Verifiers and wallets SHOULD implement explicit checks for issuer authorization 
 <a href="#section-11" class="section-number selfRef">11. </a><a href="#name-privacy-considerations" class="section-name selfRef">Privacy Considerations</a>
       </h2>
 <p id="section-11-1">The Privacy Considerations in the SD-JWT specification
-<span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span> apply to this specification.
+<span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> apply to this specification.
 Additionally, the following privacy considerations need to be taken into
 account when using SD-JWT VCs.<a href="#section-11-1" class="pilcrow">¶</a></p>
 <div id="unlinkability">
@@ -3140,14 +3147,13 @@ account when using SD-JWT VCs.<a href="#section-11-1" class="pilcrow">¶</a></p>
         <h3 id="name-unlinkability">
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-unlinkability" class="section-name selfRef">Unlinkability</a>
         </h3>
-<p id="section-11.1-1">The Privacy Considerations in Section 10.1 of <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>
-apply especially to the <code>cnf</code> claim.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.1-1">The Privacy Considerations in Section 10.1 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> apply, especially to the <code>cnf</code> claim.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="verifiable-credential-type-identifier">
+<div id="verifiable-digital-credential-type-identifier">
 <section id="section-11.2">
-        <h3 id="name-verifiable-credential-type-i">
-<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-verifiable-credential-type-i" class="section-name selfRef">Verifiable Credential Type Identifier</a>
+        <h3 id="name-verifiable-digital-credential">
+<a href="#section-11.2" class="section-number selfRef">11.2. </a><a href="#name-verifiable-digital-credential" class="section-name selfRef">Verifiable Digital Credential Type Identifier</a>
         </h3>
 <p id="section-11.2-1">Issuers and Holders have to be aware that while this specification supports selective
 disclosure of claims of a given SD-JWT VC, the <code>vct</code> claim is not selectively disclosable.
@@ -3176,11 +3182,11 @@ when the SD-JWT VC is verified. This would allow the malicious Issuer to keep tr
 and how often the SD-JWT VC was used.<a href="#section-11.3-2" class="pilcrow">¶</a></p>
 <p id="section-11.3-3">Verifiers are advised to establish trust in an SD-JWT VC by pinning specific Issuer identifiers
 and should monitor suspicious behavior such as frequent rotation of those identifiers.
-If such behaviour is detected, Verifiers are advised to reject SD-JWT VCs issued by those
-Issuers.<a href="#section-11.3-3" class="pilcrow">¶</a></p>
+If such behavior is detected, Verifiers are advised to reject SD-JWT VCs issued by those
+Issuers and not to retrieve associated metadata.
+Holders are similarly advised to exercise caution with SD-JWT VCs if they contain unexpected or easily correlatable information
+in the Issuer identifier.<a href="#section-11.3-3" class="pilcrow">¶</a></p>
 <p id="section-11.3-4">Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs (<span><a href="https://rfc-editor.org/rfc/rfc7517#section-4.6" class="relref">Section 4.6</a> of [<a href="#RFC7517" class="cite xref">RFC7517</a>]</span>), the jku parameter (<span><a href="https://rfc-editor.org/rfc/rfc7800#section-3.5" class="relref">Section 3.5</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>), and cases where a URL is used in the kid parameter (<span><a href="https://rfc-editor.org/rfc/rfc7800#section-3.4" class="relref">Section 3.4</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span>). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.<a href="#section-11.3-4" class="pilcrow">¶</a></p>
-<p id="section-11.3-5">Holders are advised to reject SD-JWT VCs if they contain easily correlatable information
-in the Issuer identifier.<a href="#section-11.3-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3190,11 +3196,11 @@ in the Issuer identifier.<a href="#section-11.3-5" class="pilcrow">¶</a></p>
       <h2 id="name-relationships-to-other-docu">
 <a href="#section-12" class="section-number selfRef">12. </a><a href="#name-relationships-to-other-docu" class="section-name selfRef">Relationships to Other Documents</a>
       </h2>
-<p id="section-12-1">This specification defines validation and processing rules for verifiable credentials using JSON
-payloads and secured by SD-JWT <span>[<a href="#I-D.ietf-oauth-selective-disclosure-jwt" class="cite xref">I-D.ietf-oauth-selective-disclosure-jwt</a>]</span>. Other specifications exist
+<p id="section-12-1">This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
+payloads and secured by SD-JWT <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 <span>[<a href="#W3C.VCDM" class="cite xref">W3C.VCDM</a>]</span> defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 <span>[<a href="#ISO.18013-5" class="cite xref">ISO.18013-5</a>]</span> defines a representation of verifiable credentials in the mobile document (mdoc)
+ISO/IEC 18013-5:2021 <span>[<a href="#ISO.18013-5" class="cite xref">ISO.18013-5</a>]</span> defines a representation of digital credentials in the mobile document (mdoc)
 format encoded as CBOR and secured using COSE.<a href="#section-12-1" class="pilcrow">¶</a></p>
 <div id="privacy-preserving-retrieval-of-type-metadata">
 <section id="section-12.1">
@@ -3227,7 +3233,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dd class="break"></dd>
 <dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
         <dd>
-<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List (TSL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-14</span>, <time datetime="2025-12-10" class="refDate">10 December 2025</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-14">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-14</a>&gt;</span>. </dd>
+<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List (TSL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-15</span>, <time datetime="2026-01-06" class="refDate">6 January 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-15">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-15</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
@@ -3261,6 +3267,10 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
         <dd>
 <span class="refAuthor">Jones, M.</span>, <span class="refAuthor">Bradley, J.</span>, and <span class="refAuthor">H. Tschofenig</span>, <span class="refTitle">"Proof-of-Possession Key Semantics for JSON Web Tokens (JWTs)"</span>, <span class="seriesInfo">RFC 7800</span>, <span class="seriesInfo">DOI 10.17487/RFC7800</span>, <time datetime="2016-04" class="refDate">April 2016</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc7800">https://www.rfc-editor.org/info/rfc7800</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC9901">[RFC9901]</dt>
+        <dd>
+<span class="refAuthor">Fett, D.</span>, <span class="refAuthor">Yasuda, K.</span>, and <span class="refAuthor">B. Campbell</span>, <span class="refTitle">"Selective Disclosure for JSON Web Tokens"</span>, <span class="seriesInfo">RFC 9901</span>, <span class="seriesInfo">DOI 10.17487/RFC9901</span>, <time datetime="2025-11" class="refDate">November 2025</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9901">https://www.rfc-editor.org/info/rfc9901</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="W3C.CSS-COLOR">[W3C.CSS-COLOR]</dt>
         <dd>
 <span class="refAuthor">Çelik, T.</span>, <span class="refAuthor">Lilley, C.</span>, and <span class="refAuthor">L. D. Baron</span>, <span class="refTitle">"CSS Color Module Level 3"</span>, <time datetime="2022-01-18" class="refDate">18 January 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/css-color-3">https://www.w3.org/TR/css-color-3</a>&gt;</span>. </dd>
@@ -3287,6 +3297,10 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <dt id="ISO.18013-5">[ISO.18013-5]</dt>
         <dd>
 <span class="refAuthor">ISO/IEC</span>, <span class="refTitle">"ISO/IEC 18013-5:2021"</span>, <time datetime="2024-09-01" class="refDate">1 September 2024</time>, <span>&lt;<a href="https://www.iso.org/standard/69084.html">https://www.iso.org/standard/69084.html</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="NIST-BLOG.VDCE">[NIST-BLOG.VDCE]</dt>
+        <dd>
+<span class="refAuthor">Fisher, B.</span> and <span class="refAuthor">R. Galluzzo</span>, <span class="refTitle">"Digital Identities: Getting to Know the Verifiable Digital Credential Ecosystem"</span>, <time datetime="2024-11-13" class="refDate">13 November 2024</time>, <span>&lt;<a href="https://www.nist.gov/blogs/cybersecurity-insights/digital-identities-getting-know-verifiable-digital-credential-ecosystem">https://www.nist.gov/blogs/cybersecurity-insights/digital-identities-getting-know-verifiable-digital-credential-ecosystem</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="OWASP_SSRF">[OWASP_SSRF]</dt>
         <dd>
@@ -3320,7 +3334,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 <ul class="normal">
 <li class="normal" id="appendix-A.1-1.1">Claim Name: "vct"<a href="#appendix-A.1-1.1" class="pilcrow">¶</a>
 </li>
-          <li class="normal" id="appendix-A.1-1.2">Claim Description: Verifiable credential type identifier<a href="#appendix-A.1-1.2" class="pilcrow">¶</a>
+          <li class="normal" id="appendix-A.1-1.2">Claim Description: Verifiable digital Credential Type identifier<a href="#appendix-A.1-1.2" class="pilcrow">¶</a>
 </li>
           <li class="normal" id="appendix-A.1-1.3">Change Controller: IETF<a href="#appendix-A.1-1.3" class="pilcrow">¶</a>
 </li>
@@ -3370,7 +3384,7 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
 </li>
             <li class="compact" id="appendix-A.2.1-2.8">Published specification: [[ this specification ]]<a href="#appendix-A.2.1-2.8" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-A.2.1-2.9">Applications that use this media type: Applications that issue, present, and verify SD-JWT-based verifiable credentials.<a href="#appendix-A.2.1-2.9" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-A.2.1-2.9">Applications that use this media type: Applications that issue, present, and verify SD-JWT-based Verifiable Digital Credentials.<a href="#appendix-A.2.1-2.9" class="pilcrow">¶</a>
 </li>
             <li class="compact" id="appendix-A.2.1-2.10">
               <p id="appendix-A.2.1-2.10.1">Additional information:<a href="#appendix-A.2.1-2.10.1" class="pilcrow">¶</a></p>
@@ -3520,8 +3534,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.iOlNUj6bRoRXo77YZBSJZDdtmUqKnYDLAZOzxxw-vFJ
-qLOEcAT2LVgZzxrk6ArJhINy7tkTi1MYGBnfPU2TTKA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.5TKIpVfh9-6pOawWoEd2jLd1dA4NYGKbZ0Zc-E0VcWc
+BGlBeX2TCcluvq2AB-Qq2IBL8RE0jszB2tqUfoi5J7g~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -4006,8 +4020,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.iOlNUj6bRoRXo77YZBSJZDdtmUqKnYDLAZOzxxw-vFJ
-qLOEcAT2LVgZzxrk6ArJhINy7tkTi1MYGBnfPU2TTKA~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.5TKIpVfh9-6pOawWoEd2jLd1dA4NYGKbZ0Zc-E0VcWc
+BGlBeX2TCcluvq2AB-Qq2IBL8RE0jszB2tqUfoi5J7g~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -4018,9 +4032,9 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3NjU5MDY1MTcsICJzZF9oYXNoIjogIlJnV3UwYnZQT
-EItclZudmVPVFQ4WFBLZEI4QVBfaHpTQ3lVR2ZySkRWR0UifQ.qLhxWK_dkCfK15ZFX-
-RRcDipXuYTd-Id3VuN1GNDEucJDgcbGze7dp-u_rEy6GVmRSu_WcakyDBLhxNekKhB_A
+3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0OTcxMDcsICJzZF9oYXNoIjogIlNLajlfUkFfM
+EhSbU9RQVlweTltWlgzRFRNRGJMTkx4QXpWTGxCM1RmWlUifQ.yeXOEk2ElwRmvHpNgM
+UtVQGhDxaGBjU5vHYQSlsCM6NDtlUUhdT5O8gQkxFRxgFyuW3nyLnrcBCb-Xx4PANcnQ
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
 </div>
@@ -4029,8 +4043,8 @@ RRcDipXuYTd-Id3VuN1GNDEucJDgcbGze7dp-u_rEy6GVmRSu_WcakyDBLhxNekKhB_A
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1765906517,
-  "sd_hash": "RgWu0bvPLB-rVnveOTT8XPKdB8AP_hzSCyUGfrJDVGE"
+  "iat": 1768497107,
+  "sd_hash": "SKj9_RA_0HRmOQAYpy9mZX3DTMDbLNLxAzVLlB3TfZU"
 }
 
 </pre><a href="#appendix-B.1-69" class="pilcrow">¶</a>
@@ -4327,6 +4341,16 @@ for their contributions (some of which substantial) to this draft and to the ini
 <p id="appendix-D-1">-14<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="appendix-D-2.1">State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.2">Add example of a vct value that is versioned (in the text)<a href="#appendix-D-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.3">Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document<a href="#appendix-D-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.4">Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901<a href="#appendix-D-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.5">More consistent use of <code>application/json</code> content type and 200 status code when retrieving metadata<a href="#appendix-D-2.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.6">Editorial improvements based on review feedback of -13<a href="#appendix-D-2.6" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-13<a href="#appendix-D-3" class="pilcrow">¶</a></p>
