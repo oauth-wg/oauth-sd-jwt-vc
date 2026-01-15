@@ -1935,9 +1935,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qfEme
-BnzY1dXug1jtyAJtOpnrDi5CNqgj-7QoB6ZGh-NNBzcpdXUbFwFwKU4VEIVQs1rzjkB4
-KB1bFD5rX0-bQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MTFRW
+9RwYC_004a65_X4z-SihrU5-pQlKWcIa5zcQiAneCH672goNwI3SVFCDZwjVSd9fEayP
+fzqbyGXQrZWgg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -1971,8 +1971,8 @@ the KB-JWT, the <code>cnf</code> claim of the SD-JWT MUST be used.<a href="#sect
 <p id="section-3.4-3">If there are no selectively disclosable claims, there is no need to process the
 <code>_sd</code> claim nor any Disclosures.<a href="#section-3.4-3" class="pilcrow">¶</a></p>
 <p id="section-3.4-4">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
-be checked. It depends on the Verifier policy to reject or accept a presentation
-of a SD-JWT VC based on the status of the Verifiable Digital Credential.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
+be checked. Verifier policy decides whether to reject or accept a presentation of
+a SD-JWT VC based on the status of the Verifiable Digital Credential.<a href="#section-3.4-4" class="pilcrow">¶</a></p>
 <p id="section-3.4-5">Additional validation rules MAY apply, but their use is out of the scope of this
 specification.<a href="#section-3.4-5" class="pilcrow">¶</a></p>
 </section>
@@ -2057,17 +2057,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qfEme
-BnzY1dXug1jtyAJtOpnrDi5CNqgj-7QoB6ZGh-NNBzcpdXUbFwFwKU4VEIVQs1rzjkB4
-KB1bFD5rX0-bQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MTFRW
+9RwYC_004a65_X4z-SihrU5-pQlKWcIa5zcQiAneCH672goNwI3SVFCDZwjVSd9fEayP
+fzqbyGXQrZWgg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0ODE5Nz
-ksICJzZF9oYXNoIjogIlB5WG5HdWZYeGhBUlZ5ejBNUDNwLXE3LTBMY203dnBkS0llS3
-UzeDg0Y3MifQ.rjJoLs--y0ervW58iG_dgnkR88WBPTzucN8fLvXBFkIaRzZDC2XXiqe
-KEjF4mkDLDSqLa-CQlM5EC0QE9n_5wg
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0ODMyNz
+AsICJzZF9oYXNoIjogImdXVGNkdVFBS1R4eG5UOENNaVJwNHpWdWhBUUdTQXJQZUxxa0
+ZEbWFTWG8ifQ.Iu61ZdO0tmF2AnDp-sjhzeFFtE3La6bZVzApprb1fIhA4i3cWdxCaeU
+MbHqU8BmRTgcn-hxl3RXaSXAU53ctTw
 
 </pre><a href="#section-4.3-2" class="pilcrow">¶</a>
 </div>
@@ -2112,8 +2112,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.OaAyNcKXbS0OqqxwU_4uxx1CtXnXXZf_B_r4vTmpV2Vdem
-Fxoogj-mV0zXfwDokYakjiG-2XZ8hhi_o247xQzA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.nD1bymXaYuiqT8HOU8GbJJvjIBvBu1P2U577vsqysxxkHM
+J6k1-fkfTTk-peOWEK3j_deZWDaQ531Co48qLkGA~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2328,7 +2328,7 @@ retrieved from it:<a href="#section-6.1-4" class="pilcrow">¶</a></p>
 </div>
 <p id="section-6.1-6">Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the <code>vct#integrity</code> claim in the SD-JWT VC payload,
-<code>1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=</code>.<a href="#section-6.1-6" class="pilcrow">¶</a></p>
+<code>1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=</code> (see <a href="#document-integrity" class="auto internal xref">Section 7</a> for details).<a href="#section-6.1-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="type-metadata-format">
@@ -2624,7 +2624,7 @@ values being <code>normal</code> and <code>high</code>. This property is OPTIONA
             <h5 id="name-svg-rendering">
 <a href="#section-8.1.2.2" class="section-number selfRef">8.1.2.2. </a><a href="#name-svg-rendering" class="section-name selfRef">SVG Rendering</a>
             </h5>
-<p id="section-8.1.2.2-1">Consuming application MUST preprocess the SVG template by replacing placeholders
+<p id="section-8.1.2.2-1">A consuming application MUST preprocess the SVG template by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
 placeholders MUST be defined in the SVG template using the syntax
 <code>{{svg_id}}</code>, where <code>svg_id</code> is an identifier defined in the claim metadata as
@@ -3147,8 +3147,7 @@ account when using SD-JWT VCs.<a href="#section-11-1" class="pilcrow">¶</a></p>
         <h3 id="name-unlinkability">
 <a href="#section-11.1" class="section-number selfRef">11.1. </a><a href="#name-unlinkability" class="section-name selfRef">Unlinkability</a>
         </h3>
-<p id="section-11.1-1">The Privacy Considerations in Section 10.1 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>
-apply especially to the <code>cnf</code> claim.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
+<p id="section-11.1-1">The Privacy Considerations in Section 10.1 of <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> apply, especially to the <code>cnf</code> claim.<a href="#section-11.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="verifiable-digital-credential-type-identifier">
@@ -3535,8 +3534,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.pm_en-fC0icUYwU3VtVglHgnY0Rq3LkLfV5q4yGkhqy
-VJKD-Cv-1yna8dB8ZnFWovdjhIs8kZMhEU_11QHV7Vg~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.8SOKoYgio5xIwT8znRFZG887cf3LlynmYKsExo8lq_Q
+F1NQOkVVdp3fXAeKvzdKTYsMx5G2_cdVKI_qT8cE2Bw~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -4021,8 +4020,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.pm_en-fC0icUYwU3VtVglHgnY0Rq3LkLfV5q4yGkhqy
-VJKD-Cv-1yna8dB8ZnFWovdjhIs8kZMhEU_11QHV7Vg~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.8SOKoYgio5xIwT8znRFZG887cf3LlynmYKsExo8lq_Q
+F1NQOkVVdp3fXAeKvzdKTYsMx5G2_cdVKI_qT8cE2Bw~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -4033,9 +4032,9 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0ODE5NzksICJzZF9oYXNoIjogIkVwVHFOdWQ1b
-lZudzdMVjQ0XzYzcGpMbVBDeFFPLURrc0wyUVlfeWlIQk0ifQ.X-Y1KVtjgnRSRc0ME-
-s5UlBB9q2OsU0qZP4vLj-K4HzeGuozaC226pTdzizjrzrpuFwmAWws96WvkW-B_v6R1Q
+3ZlcmlmaWVyIiwgImlhdCI6IDE3Njg0ODMyNzAsICJzZF9oYXNoIjogIkJJS2JWRzNPR
+DBkQzd0RUNDYXVheGlvUFN3OERVODF4a0tRSDRBUHJIR3MifQ.PPuAMOrsqAfmJu9kyf
+btc7-mIn-FNUeNskDcUehIoGHO1U2Z8CUnDtX1temRMXU3FYM_faL6VmFkk2XKzn-0bA
 
 </pre><a href="#appendix-B.1-67" class="pilcrow">¶</a>
 </div>
@@ -4044,8 +4043,8 @@ s5UlBB9q2OsU0qZP4vLj-K4HzeGuozaC226pTdzizjrzrpuFwmAWws96WvkW-B_v6R1Q
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1768481979,
-  "sd_hash": "EpTqNud5nVnw7LV44_63pjLmPCxQO-DksL2QY_yiHBM"
+  "iat": 1768483270,
+  "sd_hash": "BIKbVG3OD0dC7tECCauaxioPSw8DU81xkKQH4APrHGs"
 }
 
 </pre><a href="#appendix-B.1-69" class="pilcrow">¶</a>
@@ -4350,6 +4349,8 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-D-2.4">Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901<a href="#appendix-D-2.4" class="pilcrow">¶</a>
 </li>
         <li class="compact" id="appendix-D-2.5">More consistent use of <code>application/json</code> content type and 200 status code when retrieving metadata<a href="#appendix-D-2.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-D-2.6">Editorial improvements based on review feedback of -13<a href="#appendix-D-2.6" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-13<a href="#appendix-D-3" class="pilcrow">¶</a></p>
