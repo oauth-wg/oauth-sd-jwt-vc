@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-15T00:35:15.058682+00:00",
+  "timestamp": "2026-01-18T00:41:52.899717+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -9739,10 +9739,12 @@
       "author": "TimoGlastra",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "pending close"
+      ],
       "body": "If a value within a credential is a `data:` URI, it would be nice if this could be used in the SVG rendering template. This would allow to represent a credential like you would a physical identity card, and place e.g. the portrait and signature in the credential rendering.\n\nCurrently the following text would prevent this from happening:\n> Placeholders MUST only be used in the text content of the SVG template and MUST NOT be used in any other part of the SVG template, e.g., in attributes or comments.\n\nTo render an image within an svg you need to put the value within the `href` attribute.\n\nSince images are already allowed (\"consuming applications MUST ensure that references to external resources (images, etc.) from within the SVG cannot be used to track users or the usage of credentials\"), and you must escape content, i don't see any additional security concerns for this.\n\n",
       "createdAt": "2025-12-10T06:45:34Z",
-      "updatedAt": "2026-01-09T20:32:34Z",
+      "updatedAt": "2026-01-15T17:15:00Z",
       "closedAt": null,
       "comments": [
         {
@@ -9808,31 +9810,41 @@
       "id": "I_kwDOJbVClc7eqdKh",
       "title": "Tim's SD-JWT-VC-13 Review",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/383",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
-      "assignees": [],
+      "assignees": [
+        "bc-pi"
+      ],
       "labels": [],
       "body": "see https://mailarchive.ietf.org/arch/msg/oauth/ySO813MwnLBsHTIm8y8bzG8t7FA/",
       "createdAt": "2025-12-16T17:22:55Z",
-      "updatedAt": "2025-12-16T17:22:55Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-01-15T17:11:27Z",
+      "closedAt": "2026-01-15T17:11:27Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[#387](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/387) and https://mailarchive.ietf.org/arch/msg/oauth/vhtvAR16i1X9UyU_zjqCcTUtH20/ has the work to address Tim's review ",
+          "createdAt": "2026-01-15T13:31:31Z",
+          "updatedAt": "2026-01-15T13:31:31Z"
+        }
+      ]
     },
     {
       "number": 384,
       "id": "I_kwDOJbVClc7esm6a",
       "title": "vct unique per issuer or per VC type?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/384",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "Hi,\n\nis vct unique per issuer or per credential type?\n\nif vct metadata is used, vct resolves to the metadata that contains display information, which contains a logo.\nThis indicates, that vct is unqiue per issuer; e.g., meaning that PID vct for the same data model would be\n  \"vct\": \"urn:eudi:pid:spain:1\" \n  \"vct\": \"urn:eudi:pid:germany:1\" \n  \"vct\": \"urn:eudi:pid:italy:1\" \n  \"vct\": \"urn:eudi:pid:...:1\" \n\nif that's the case, I believe the vct_values in the OID4VP would need to list all the vcts in EU when requesting a PID?\n    \"meta\": {\n        \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\",   \"vct\": \"urn:eudi:pid:germany:1\", ... ]\n\nIf vct is to be unique per vc type, meaning for EU   \"vct\": \"urn:eudi:pid:1\"\nthen display properties cannot be used in the metadata and it's unclear how to communicate them.\n\nThanks for the help!\n",
       "createdAt": "2025-12-16T20:33:44Z",
-      "updatedAt": "2025-12-18T10:27:46Z",
-      "closedAt": null,
+      "updatedAt": "2026-01-15T17:24:54Z",
+      "closedAt": "2026-01-15T17:21:31Z",
       "comments": [
         {
           "author": "awoie",
@@ -9903,6 +9915,20 @@
           "body": "If you want to request by parent \"urn:eudi:pid:1\" it is actually required; should this be clarified? Else \"vct_val\": [ \"vct\": \"urn:eudi:pid:spain:1\", \"vct\": \"urn:eudi:pid:germany:1\", ... ] you need to list all issuers of the VC to request vc by type;\n\nThis is out of scope of SD-JWT VC. This would be more appropriate in OID4VP. Essentially, the verifier would need access to the metadata. The wallet should have that information anyways.\n\nBut how if the metadata is optional? This part creates coupling with the DCQL specification.\nThe document should clarify that vct metadata is required when extensions are used;\n\n> If you want to have logos per issuer, then this information can be provided by the sub-types.\n\nI agree :) but the text should clarify the scenario and the fact that metadata is required when subtypes are used else you cannot query the VC per type; Either the issue is fixed here or is fixed in DCQL.\n",
           "createdAt": "2025-12-18T10:27:46Z",
           "updatedAt": "2025-12-18T10:27:46Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "It implies that the verifier has to have some knowledge of the metadata. I don't think anything has to be added to SD-JWT VC. This belongs to OID4VP. Please create an issue in the OID4VP github repository.",
+          "createdAt": "2026-01-15T17:21:31Z",
+          "updatedAt": "2026-01-15T17:21:31Z"
+        },
+        {
+          "author": "alenhorvat",
+          "authorAssociation": "NONE",
+          "body": "Thank you for acknowledging the issue. This specification is defining the metadata, not the OID4VP. So this specification should solve it.",
+          "createdAt": "2026-01-15T17:24:53Z",
+          "updatedAt": "2026-01-15T17:24:53Z"
         }
       ]
     },
@@ -10018,6 +10044,44 @@
           "body": "It's not defined. We can assume as well that w3c language maps are used for multi-language credentials.",
           "createdAt": "2026-01-08T18:20:54Z",
           "updatedAt": "2026-01-08T18:20:54Z"
+        }
+      ]
+    },
+    {
+      "number": 388,
+      "id": "I_kwDOJbVClc7jwWHF",
+      "title": "No application/mime type defined for SD-JWT Type Metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/388",
+      "state": "CLOSED",
+      "author": "TimoGlastra",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "The SD-JWT itself should use `application/dc+sd-jwt`. and the VC Issuer Metadata should use `application/json`. Should type metadata have a custom mime type, or should it also use `application/json`?\n",
+      "createdAt": "2026-01-16T09:11:33Z",
+      "updatedAt": "2026-01-16T17:30:41Z",
+      "closedAt": "2026-01-16T15:52:20Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "These very recent changes https://github.com/oauth-wg/oauth-sd-jwt-vc/commit/f40791ed5587de0a71538b4b4226ef7bbfbdf15b include clarification that type metadata is also `application/json`. \n\nThere doesn't seem to be compelling reason for more specific media types for the metadata so we've just used `application/json` for both. ",
+          "createdAt": "2026-01-16T15:45:16Z",
+          "updatedAt": "2026-01-16T15:45:16Z"
+        },
+        {
+          "author": "TimoGlastra",
+          "authorAssociation": "NONE",
+          "body": "Okay thank you, sorry i hadn't seen that commit yet.",
+          "createdAt": "2026-01-16T15:52:13Z",
+          "updatedAt": "2026-01-16T15:52:13Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "No worries, that PR was just merged yesterday. ",
+          "createdAt": "2026-01-16T17:30:41Z",
+          "updatedAt": "2026-01-16T17:30:41Z"
         }
       ]
     }
@@ -31261,26 +31325,88 @@
       "id": "PR_kwDOJbVClc69QWL1",
       "title": "Items based on Tim Cappalli's review of -13",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/387",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "",
+      "body": "preview https://drafts.oauth.net/oauth-sd-jwt-vc/tim-13-review/draft-ietf-oauth-sd-jwt-vc.html \r\n\r\nfor #383 and https://mailarchive.ietf.org/arch/msg/oauth/ySO813MwnLBsHTIm8y8bzG8t7FA/ \r\n\r\nhat tip to @timcappalli ",
       "createdAt": "2026-01-14T22:04:14Z",
-      "updatedAt": "2026-01-14T23:40:23Z",
+      "updatedAt": "2026-01-15T17:11:25Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8db83c8d2c9ab04f95addf5fc0c796f5939a95ac",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "tim-13-review",
-      "headRefOid": "5f1f2c1a157d7b60124aace933387a7dbbd7e9a6",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "da1a7bd404d0c7852fd16d1d8b36b5cab15a70d7",
+      "closedAt": "2026-01-15T17:11:25Z",
+      "mergedAt": "2026-01-15T17:11:25Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "f40791ed5587de0a71538b4b4226ef7bbfbdf15b"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7aYZhx",
+          "commit": {
+            "abbreviatedOid": "5f1f2c1"
+          },
+          "author": "timcappalli",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-01-15T03:34:29Z",
+          "updatedAt": "2026-01-15T03:34:29Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7ajS-1",
+          "commit": {
+            "abbreviatedOid": "6935d4b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-15T17:07:52Z",
+          "updatedAt": "2026-01-15T17:07:52Z",
+          "comments": [
+            {
+              "originalPosition": 25,
+              "body": "```suggestion\r\nHolder, who can then present the credentials to Verifiers. Verifiable Digital\r\nCredentials are cryptographically secured statements about a Subject, typically the Holder.\r\n```",
+              "createdAt": "2026-01-15T17:07:52Z",
+              "updatedAt": "2026-01-15T17:07:53Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7ajVHx",
+          "commit": {
+            "abbreviatedOid": "6935d4b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-01-15T17:10:36Z",
+          "updatedAt": "2026-01-15T17:10:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc7ajVIX",
+          "commit": {
+            "abbreviatedOid": "6935d4b"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-01-15T17:10:36Z",
+          "updatedAt": "2026-01-15T17:10:36Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
