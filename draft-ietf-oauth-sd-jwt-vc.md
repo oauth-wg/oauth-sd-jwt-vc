@@ -172,9 +172,8 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or
-Section 8 of [@!RFC9901], where support for the
-JWS JSON Serialization is OPTIONAL.
+Issuers MUST encode an SD-JWT VC using the SD-JWT format defined in Section 4
+or Section 8 of [@!RFC9901], where support for the JWS JSON Serialization is OPTIONAL.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -184,7 +183,7 @@ claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.
 
-The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
+The Issuer MUST include the `typ` header parameter in the SD-JWT. The `typ` value MUST
 use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules defined in this specification. It further
 indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
