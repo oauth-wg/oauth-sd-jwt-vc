@@ -616,9 +616,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qL2Fk
-   we7PdB8DhPfMou_nuONFill1YOPkmHnRqRR4KEDq8egZz1vcJBzSB9XDPfeORIxJVcKW
-   ScbCwdVgt47iA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EacjI
+   50WsBj3zbwju5vvXC02vm3_c82UZnflF5Gj4QgTADP4rfXYESPnLMBWHUd1Wwx-m3Mdn
+   OBDxSJXXQG1jg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -742,17 +742,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qL2Fk
-   we7PdB8DhPfMou_nuONFill1YOPkmHnRqRR4KEDq8egZz1vcJBzSB9XDPfeORIxJVcKW
-   ScbCwdVgt47iA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EacjI
+   50WsBj3zbwju5vvXC02vm3_c82UZnflF5Gj4QgTADP4rfXYESPnLMBWHUd1Wwx-m3Mdn
+   OBDxSJXXQG1jg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMjc3MT
-   UsICJzZF9oYXNoIjogIlBCN3VELXpacExucENrM2NfcmVUQWFQaUh6N1lPVmVIVEVINW
-   FjcTlpLWcifQ.F8IgSlFqAr0W6ryYDv925tP8QdBrLPWW2kiWRzX6iSRsvBxdl0pWyNP
-   mQMc4GWyWNtVJZNL6631EqxLnlwJ4QA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMjkzNT
+   EsICJzZF9oYXNoIjogInJrZ29rc1U2dnRmRU5MOGVsZE5yenJiUjNORVhWR1FnYkgtSX
+   hKUFJrejgifQ.lvNt3TG2pTuc8TDdZaXSOREdMCwC6n8RhGZmkBiPR_HoDm494_7Vwhc
+   dcO-PPEIMIYmqdWVgKcB5ZtjCSnd_FQ
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -798,8 +798,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.XKAPhI1GUSEIdYJFoib0RRELnhMlIuVn9vHLLK7nVxVxy6
-   -60r4zeeImVcE4RIN5U5GPAId5bPMwICUJzWYC_A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.Be1K17zmFl5iL-AdNb2gtyGPKzbYbDj34ePB1xf_j-9Sif
+   JH2LTpKHnuhDZt_dsnz4fve2NFM6TUSeKIikNj6g~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1811,7 +1811,7 @@ Table of Contents
 
    [W3C.SRI]  Akhawe, D., Braun, F., Marier, F., and J. Weinberger,
               "Subresource Integrity", 23 June 2016,
-              <https://www.w3.org/TR/SRI/>.
+              <http://www.w3.org/TR/2016/REC-SRI-20160623/>.
 
 13.2.  Informative References
 
@@ -2014,8 +2014,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.HxG38j1qKo9fUudifXLiJ1X23go8DW0_mg5YKZw8J7U
-   AiSM2mWk8_Duq3-LluVhDta0Qodnfzdntoj7JlFUPlg~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.F-xR8yJqXVFUwlLKWm-5EY7xzCLIhCHQmQGxYaOs4SC
+   O2NtLrcKYWkfnCcz4hJEUN2oMRKT6loslGt93valanQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2397,8 +2397,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.HxG38j1qKo9fUudifXLiJ1X23go8DW0_mg5YKZw8J7U
-   AiSM2mWk8_Duq3-LluVhDta0Qodnfzdntoj7JlFUPlg~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.F-xR8yJqXVFUwlLKWm-5EY7xzCLIhCHQmQGxYaOs4SC
+   O2NtLrcKYWkfnCcz4hJEUN2oMRKT6loslGt93valanQ~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2409,9 +2409,9 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMjc3MTUsICJzZF9oYXNoIjogIjkyS0hlbkFEa
-   HNyWXZSOVN2bzN1bEM0U2NRRXFRZXFfUEdwWTl6Y2MxMmcifQ.diYVhB4CF9QA5rcjZA
-   3IvM6JrWTiC6HG15c12fOcFDF07ugPkWMQ_rXsG4KeaMoDYVerK1dXrdK927t-lE4fUA
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMjkzNTEsICJzZF9oYXNoIjogIi1kd2RPYXpRU
+   ER2VFlCYzk4a0M0N0RxS183a2J1NDBOb1Q3OUZZZE5fWXMifQ.IbIBshY3gKBHYGIOE4
+   h31yzwOq3Qyhz_hBviWaSijkPan0gqYgepkFTvxohteQ1850Yxzi5maafjmJ5V3mGyEA
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2420,8 +2420,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1769027715,
-     "sd_hash": "92KHenADhsrYvR9Svo3ulC4ScQEqQeq_PGpY9zcc12g"
+     "iat": 1769029351,
+     "sd_hash": "-dwdOazQPDvTYBc98kC47DqK_7kbu40NoT79FYdN_Ys"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2704,6 +2704,8 @@ Appendix D.  Document History
    *  Editorial improvements based on review feedback of -13
    *  Expand the example showing the vct claim
    *  Number and label the examples/figures
+   *  Fix reference to Subresource Integrity document to point to W3C
+      Recommendation version
 
    -13
 
