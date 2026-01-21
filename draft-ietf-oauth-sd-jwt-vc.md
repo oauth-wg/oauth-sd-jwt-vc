@@ -645,7 +645,7 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 
 A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT VC type,
 e.g., if the type is not an HTTPS URL or if the Consumer does not have
-access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
+access to the URL. A Consumer needs to trust the registry to provide correct Type Metadata for the type.
 
 The registry MUST provide the Type Metadata in the same format as described in
 (#type-metadata-format).
