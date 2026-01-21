@@ -279,7 +279,7 @@ Table of Contents
 
 3.2.  Data Format
 
-   An SD-JWT VC MUST be encoded using the SD-JWT format defined in
+   Issuers MUST encode an SD-JWT VC using the SD-JWT format defined in
    Section 4 or Section 8 of [RFC9901], where support for the JWS JSON
    Serialization is OPTIONAL.
 
@@ -292,9 +292,9 @@ Table of Contents
    This section defines JWT header parameters for the SD-JWT component
    of the SD-JWT VC.
 
-   The typ header parameter of the SD-JWT MUST be present.  The typ
-   value MUST use dc+sd-jwt.  This indicates that the payload of the SD-
-   JWT contains plain JSON and follows the rules defined in this
+   The Issuer MUST include the typ header parameter in the SD-JWT.  The
+   typ value MUST use dc+sd-jwt.  This indicates that the payload of the
+   SD-JWT contains plain JSON and follows the rules defined in this
    specification.  It further indicates that the SD-JWT is an SD-JWT
    component of an SD-JWT VC.
 
@@ -616,9 +616,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2bXD5
-   PmOyi--qCr4b2-D67sFGoFGRqs75G-0e_EBJCb2vVFvq6bPMNGUlyqyucTFAfUtxwIVP
-   BKaYeUI3_qlvg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._Cod4
+   LzFuu3yVddrP2jWJ_ORf60OboYqhOh6o4IEC36gITmCLNDh1yStKZ6R7KiS7UfaINlTl
+   At5Dka3cMG5Ww~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -742,17 +742,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2bXD5
-   PmOyi--qCr4b2-D67sFGoFGRqs75G-0e_EBJCb2vVFvq6bPMNGUlyqyucTFAfUtxwIVP
-   BKaYeUI3_qlvg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._Cod4
+   LzFuu3yVddrP2jWJ_ORf60OboYqhOh6o4IEC36gITmCLNDh1yStKZ6R7KiS7UfaINlTl
+   At5Dka3cMG5Ww~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMTM0OD
-   QsICJzZF9oYXNoIjogImg1aV9Gd3JPUWU0dEhVY1lUaWhlZmJ6WkpUdDhxVW5MQ3F1dW
-   RxSGZFQU0ifQ.RSqYq1R7Nbyl92T1lggv6t5OKerBg7dk47BLYHUTCICppCmxYurUgzr
-   1vrVvgP00YvvM3-qtcRmEPUsz6i1FGA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMTQxNj
+   MsICJzZF9oYXNoIjogIkJPaTdQQjY3cU1mYjBybWZUQWY3Q1NyS05ibTdkWjNIUFRCZX
+   FLb1lacGsifQ.R5CCwblzkD--6_kq4TzIA4B4-hmcG8gOBAi2ayQoRCGJqvwWioI3SIy
+   JjQ-5bEP5l_1ZCtZ6-PJGn19nJPgLpA
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -798,8 +798,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.3h77pYrt4hF1NV68r4xcRhbVNBYx1Og3K3GRxftpgGz0Cb
-   oSDhcYH_oeEcVARpIkKFUWAF_aJJyIW_MdiaIrcg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.d_dEuHhSJ3j7L3njG_1auOiYzOlKmE1SlEd8LQtVqZAORG
+   6mMzTRuS3FIP2TE0to2dZu-tbf1AwuXBY4lHt2WQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2015,8 +2015,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.ZAsAOAv-0iy80DVBXvghkRkFWeUG0MimIASv54gWhxr
-   4wCxO0QZYlzQbxX_uEOHal_hKzzXcYZBzwsyHZNDx3Q~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.gx7vjBaDyc_oI7ZYWUxtCmdhW2ttwmc8wF_XyvqfKT6
+   7K-rXkt8e4Kzir68rPSJq-QySYh7d1ft_8tkGCe0R9A~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2398,8 +2398,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.ZAsAOAv-0iy80DVBXvghkRkFWeUG0MimIASv54gWhxr
-   4wCxO0QZYlzQbxX_uEOHal_hKzzXcYZBzwsyHZNDx3Q~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.gx7vjBaDyc_oI7ZYWUxtCmdhW2ttwmc8wF_XyvqfKT6
+   7K-rXkt8e4Kzir68rPSJq-QySYh7d1ft_8tkGCe0R9A~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2410,9 +2410,9 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMTM0ODQsICJzZF9oYXNoIjogIk1sWl9zTXRKc
-   zRDck9sck44aHZyMVc2Tl9UdUxKd3k3TG9uYTNjNENiQ0EifQ.Nn5X0iqEbmvpvFHPCa
-   oUJZHoHcq_DE5y1lifVANFI5lvdcT7h-Snvc3JXiBbccYS0gL-dI_6Qy8wdNXwM-Tdug
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkwMTQxNjMsICJzZF9oYXNoIjogIm1wazRldHlmV
+   VVad2NPT3RHOTQyNVpCUC13ZTI4SXpCTmh4MWRGdXRsT00ifQ.9OsKYPzY_I-9n_lrjm
+   E1nXubq-_IwSkU2m1-aLyoX8ieZtGvSRAxI7Hga5_oGRcQ0Whu8joOdohO38Q0x85h9g
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2421,8 +2421,8 @@ B.1.  Example 1: Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1769013484,
-     "sd_hash": "MlZ_sMtJs4CrOlrN8hvr1W6N_TuLJwy7Lona3c4CbCA"
+     "iat": 1769014163,
+     "sd_hash": "mpk4etyfUUZwcOOtG9425ZBP-we28IzBNhx1dFutlOM"
    }
 
                      Figure 26: Key Binding JWT Payload
