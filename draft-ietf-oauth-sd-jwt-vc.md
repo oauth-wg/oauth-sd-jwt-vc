@@ -1251,7 +1251,7 @@ recommendations in (#robust-retrieval) apply.
   </front>
 </reference>
 
-<reference anchor="W3C.SRI" target="https://www.w3.org/TR/SRI/">
+<reference anchor="W3C.SRI" target="http://www.w3.org/TR/2016/REC-SRI-20160623/">
     <front>
         <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
             <organization>
@@ -1719,6 +1719,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Editorial improvements based on review feedback of -13
 * Expand the example showing the vct claim
 * Number and label the examples/figures
+* Fix reference to Subresource Integrity document to point to W3C Recommendation version
 
 -13
 
