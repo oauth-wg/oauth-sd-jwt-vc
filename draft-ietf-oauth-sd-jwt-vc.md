@@ -958,6 +958,8 @@ The objects in the array have the following properties:
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
 
+See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim display metadata.
+
 ## Claim Mandatory Metadata {#claim-mandatory-metadata}
 
 The `mandatory` property is a boolean indicating that, if set to `true`, the
@@ -1416,7 +1418,7 @@ nor the selection of selectively disclosable claims are normative.
 
 Line breaks have been added for readability.
 
-## Example 1: Person Identification Data (PID) Credential {#ExamplePID}
+## Example Person Identification Data (PID) Credential {#ExamplePID}
 
 This example shows how the artifacts defined in this specification could be used
 to represent the identity information of a person from a fictional European
@@ -1461,7 +1463,7 @@ After validation, the Verifier will have the processed SD-JWT payload in (#verif
 <{{examples/03-pid/verified_contents.json}}
 Figure: Processed SD-JWT Payload {#verified-payload3}
 
-## Example 2: Type Metadata {#ExampleTypeMetadata}
+## Example Type Metadata {#ExampleTypeMetadata}
 
 The following example for Type Metadata assumes an SD-JWT VC payload structured as follows in (#example-sd-jwt-vc-payload-for-type-metadata):
 
