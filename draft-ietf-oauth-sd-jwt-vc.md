@@ -980,6 +980,8 @@ disclosable. The following values are defined:
 If omitted, the default value is `allowed`. It is RECOMMENDED to use
 either `always` or `never` to avoid ambiguity.
 
+See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim selective disclosure metadata.
+
 ## Extending Claim Metadata {#claim-metadata-extends}
 
 When an SD-JWT VC type extends another type as described in
