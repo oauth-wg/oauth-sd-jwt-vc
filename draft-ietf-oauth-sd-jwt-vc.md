@@ -49,9 +49,11 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
 
 ## Issuer-Holder-Verifier Model
 
-In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Digital Credentials to a
+In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
 Holder, who can then present the credentials to Verifiers. Verifiable Digital
 Credentials are cryptographically secured statements about a Subject, typically the Holder.
+
+(#abstract-model) depicts the Issuer-Holder-Verifier model.
 
 ~~~ ascii-art
          +------------+
@@ -80,7 +82,7 @@ Credentials are cryptographically secured statements about a Subject, typically 
            +-------------+ |
              +-------------+
 ~~~
-Figure: Issuer-Holder-Verifier Model
+Figure: Abstract Depiction of the Issuer-Holder-Verifier Model {#abstract-model}
 
 Verifiers can check the authenticity of the data in a Verifiable Digital Credential
 and optionally enforce Key Binding, i.e., ask the Holder to prove that they
