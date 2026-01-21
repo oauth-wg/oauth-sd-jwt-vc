@@ -1156,7 +1156,7 @@ confer any implicit authorization to issue credentials of that type or its exten
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
 **Recommendation:**
-Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
+Verifiers and wallets MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
 ## Trust in Type Metadata
 
