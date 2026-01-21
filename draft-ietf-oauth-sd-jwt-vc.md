@@ -1100,7 +1100,7 @@ When defining ecosystem-specific rules for resolution and verification of the pu
 as outlined in (#ism), it is critical that those rules maintain the integrity of the
 relationship between the `iss` value of the SD-JWT, if present, and the public keys of the Issuer.
 
-It MUST be ensured that for any given `iss` value, an attacker cannot influence
+A Verifier MUST ensure that for any given `iss` value, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
 the Verifier use a verification process not intended by the Issuer, allowing the
 attacker to potentially manipulate the verification result to their advantage.
