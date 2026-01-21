@@ -398,8 +398,7 @@ is OPTIONAL.
 
 ## Key Binding JWT
 
-The KB-JWT MAY include additional claims which, when not understood, MUST
-be ignored by the Verifier.
+The KB-JWT MAY include additional claims which, when not understood, the Verifier MUST ignore.
 
 ## Examples {#presentation-examples}
 
