@@ -801,7 +801,7 @@ least the following characters MUST be escaped:
 - `'` as `&apos;`
 
 If the `svg_id` is not present in the claim metadata, the consuming application
-SHOULD reject not render the SVG template. If the `svg_id` is present in the
+SHOULD reject and not render the SVG template. If the `svg_id` is present in the
 claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
 the value is absent.
