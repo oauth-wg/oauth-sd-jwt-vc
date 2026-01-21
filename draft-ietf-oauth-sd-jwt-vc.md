@@ -84,10 +84,11 @@ Credentials are cryptographically secured statements about a Subject, typically 
 ~~~
 Figure: Abstract Depiction of the Issuer-Holder-Verifier Model {#abstract-model}
 
-Verifiers can check the authenticity of the data in a Verifiable Digital Credential
-and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended Holder of the Verifiable Digital Credential, for example, by proving possession of a
-cryptographic key referenced in the credential. This process is further
+Verifiers can check the authenticity of the data in Verifiable Digital Credentials.
+Verifiers can also optionally enforce Key Binding, which requires the Holder to prove
+they are the intended Holder of the Verifiable Digital Credential.
+This proof is typically done by demonstrating possession of a cryptographic
+key referenced in the credential. This process is further
 described in [@!RFC9901].
 
 ## SD-JWT as a Credential Format
@@ -101,9 +102,10 @@ a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
 
-SD-JWT is a superset of JWT as it can also be used when there are no selectively
-disclosable claims and also supports JWS JSON serialization, which is useful for
-long term archiving and multi signatures. However, SD-JWT itself does not define
+SD-JWT is a superset of JWT. It can also be used when there are no selectively
+disclosable claims. Furthermore, SD-JWT supports JWS JSON serialization,
+which is useful for long-term archiving and multi-signatures.
+However, SD-JWT itself does not define
 the claims that must be used within the payload or their semantics.
 
 This specification uses SD-JWT and the well-established JWT content rules and
