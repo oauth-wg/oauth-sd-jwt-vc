@@ -313,7 +313,7 @@ MUST NOT have any Disclosures.
 
 ## Example {#vc-sd-jwt-example}
 
-The following (#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
+(#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
@@ -1254,7 +1254,7 @@ format encoded as CBOR and secured using COSE.
   </front>
 </reference>
 
-<reference anchor="W3C.SRI" target="http://www.w3.org/TR/2016/REC-SRI-20160623/">
+<reference anchor="W3C.SRI" target="https://www.w3.org/TR/2016/REC-SRI-20160623/">
     <front>
         <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
             <organization>
