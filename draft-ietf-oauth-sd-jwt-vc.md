@@ -301,7 +301,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
+Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
 
 An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
@@ -1724,6 +1724,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Number and label the examples/figures
 * Fix reference to Subresource Integrity document to point to W3C Recommendation version
 * Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs
+* Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
 
 -13
 
