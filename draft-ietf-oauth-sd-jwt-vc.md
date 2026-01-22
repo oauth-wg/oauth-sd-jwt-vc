@@ -313,7 +313,7 @@ MUST NOT have any Disclosures.
 
 ## Example {#vc-sd-jwt-example}
 
-The following (#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
+(#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
