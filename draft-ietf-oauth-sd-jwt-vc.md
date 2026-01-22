@@ -1217,16 +1217,6 @@ in the Issuer identifier.
 
 Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([@!RFC7517, section 4.6]), the jku parameter ([@!RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([@!RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
 
-
-# Relationships to Other Documents
-
-This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
-payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
-that define their own verifiable credential formats; for example, W3C Verifiable
-Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE.
-
 ## Privacy-Preserving Retrieval of Type Metadata {#privacy-preserving-retrieval-of-type-metadata}
 
 In (#retrieving-type-metadata), various methods for distributing and retrieving
@@ -1237,6 +1227,15 @@ to track the usage of a credential by observing requests to the Type Metadata UR
 Consumers SHOULD prefer methods for retrieving Type Metadata that do not
 leak information about the usage of a credential to third parties. The
 recommendations in (#robust-retrieval) apply.
+
+# Relationships to Other Documents
+
+This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
+payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
+that define their own verifiable credential formats; for example, W3C Verifiable
+Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
+ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
+format encoded as CBOR and secured using COSE.
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
