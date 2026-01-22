@@ -1255,7 +1255,7 @@ format encoded as CBOR and secured using COSE.
   </front>
 </reference>
 
-<reference anchor="W3C.SRI" target="http://www.w3.org/TR/2016/REC-SRI-20160623/">
+<reference anchor="W3C.SRI" target="https://www.w3.org/TR/2016/REC-SRI-20160623/">
     <front>
         <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
             <organization>
