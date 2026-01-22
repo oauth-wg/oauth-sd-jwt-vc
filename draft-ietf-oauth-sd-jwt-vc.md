@@ -1366,7 +1366,7 @@ format encoded as CBOR and secured using COSE.
 - Claim Description: Verifiable digital Credential Type identifier
 - Change Controller: IETF
 - Specification Document(s): [[ (#type-claim) of this specification ]]
-
+<br/>
 - Claim Name: "vct#integrity"
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
@@ -1725,6 +1725,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Fix reference to Subresource Integrity document to point to W3C Recommendation version
 * Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs
 * Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
+* Add line break between the two things in the JSON Web Token Claims Registration section
 
 -13
 
