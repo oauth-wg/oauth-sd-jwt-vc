@@ -302,7 +302,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as data URIs.
+Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
 
 An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
