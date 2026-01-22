@@ -1723,6 +1723,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Expand the example showing the vct claim
 * Number and label the examples/figures
 * Fix reference to Subresource Integrity document to point to W3C Recommendation version
+* Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs
 
 -13
 
