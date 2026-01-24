@@ -620,7 +620,7 @@ An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
 ## Retrieving Type Metadata {#retrieving-type-metadata}
 
-A consumer retrieving Type Metadata MUST ensure that the `vct` value in the
+A Consumer retrieving Type Metadata MUST ensure that the `vct` value in the
 SD-JWT VC payload is identical to the `vct` value in the reference to the Type
 Metadata (either in the SD-JWT VC itself or in an `extends` property in a Type
 Metadata document).
@@ -1153,12 +1153,11 @@ confer any implicit authorization to issue credentials of that type or its exten
 - **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
-**Recommendation:**
 Verifiers and wallets MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
 ## Trust in Type Metadata
 
-Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
+Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the Consumer. A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
 
 Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.
 
