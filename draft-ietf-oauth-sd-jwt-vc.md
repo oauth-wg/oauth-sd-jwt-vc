@@ -117,8 +117,6 @@ SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
 
-Note: This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
-
 ## Requirements Notation and Conventions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -132,7 +130,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 [@!RFC9901].
 
 Consumer:
-: Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
+: An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Wallets.
 
 Verifiable Digital Credential:
 :  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
@@ -1235,7 +1233,8 @@ payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
 ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE.
+format encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
+
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
