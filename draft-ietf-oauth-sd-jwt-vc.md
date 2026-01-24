@@ -132,6 +132,9 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 Consumer:
 : An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Wallets.
 
+Publisher:
+: An entity that publishes Type Metadata or other auxiliary documents referenced by an SD-JWT VC (for example via a `vct` URI), but that is not necessarily the Issuer of the SD-JWT VC. A Publisher can be a standardization body, community, ecosystem authority, or any other party defining credential types or associated metadata.
+
 Verifiable Digital Credential:
 :  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
 
@@ -1157,11 +1160,11 @@ Verifiers and wallets MUST implement explicit checks for issuer authorization an
 
 ## Trust in Type Metadata
 
-Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the Consumer. A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
+Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the Publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its Publisher and the Consumer. A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the Publisher is recognized as authoritative for the type in question.
 
-Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which Publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.
 
-Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.
+Consumers SHOULD treat with reduced trust any Type Metadata if the Publisher is not accredited or otherwise trusted within the applicable ecosystem.
 
 ## Use of Data URIs for Claim Types
 
