@@ -342,8 +342,8 @@ Examples of what presentations of SD-JWT VCs might look like are provided in (#p
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
 The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
-SD-JWT VC as described in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 7].
-The check in point 2.3 of Section 7.1 of [@!RFC9901],
+SD-JWT VC as described in Section 7 of [@!RFC9901].
+The check in point 2.c of Section 7.1 of [@!RFC9901],
 which validates the Issuer and ensures that the signing key belongs to the Issuer,
 MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
 employing an Issuer Signature Mechanism (defined in (#ism)) that is permitted for the Issuer according to policy.
@@ -472,7 +472,7 @@ Figure: Example HTTP Request for JWT VC Issuer Metadata {#GET1234}
 A successful response MUST use an HTTP `200` status code and return the JWT VC Issuer
 Metadata configuration using the `application/json` content type.
 
-An error response uses the applicable HTTP status code value.
+An error response MUST use the applicable HTTP status code value.
 
 This specification defines the following JWT VC Issuer Metadata configuration
 parameters:
@@ -489,7 +489,7 @@ object containing a valid JWK Set.
 JWT VC Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT VC
 Issuer Metadata, but not both.
 
-It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
+It is RECOMMENDED that the Issuer-signed JWT contains a `kid` JWT header parameter that can
 be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.
 
@@ -535,7 +535,7 @@ Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
 ## JWT VC Issuer Metadata Validation
 
 The `issuer` value returned MUST be identical to the `iss` value of the
-JWT. If these values are not identical, the data contained in the response
+Issuer-signed JWT. If these values are not identical, the data contained in the response
 MUST NOT be used.
 
 # SD-JWT VC Type Metadata {#type-metadata}
@@ -638,7 +638,7 @@ A successful response MUST use an HTTP `200` status code and return a JSON
 object as defined in (#type-metadata-format) using the `application/json` content type.
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
-`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
+`vct#integrity` MUST be an "integrity metadata" string as defined in (#document-integrity).
 
 ### From a Registry {#retrieval-from-registry}
 
