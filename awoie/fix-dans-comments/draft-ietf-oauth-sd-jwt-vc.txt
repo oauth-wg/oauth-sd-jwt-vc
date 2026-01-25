@@ -619,9 +619,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Id2o8
-   ZxBWF4sNmVcDlQtwLkG5uwNyvDJiK4be3LHTjaVviG1SdA35TACXJcF2VA6CWGWCKJzn
-   mJ8Nj0m1CafMw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HMwJJ
+   k12Ux8veawQAQixiSbDj9vvuKwaPua6d6bem7vhVibNbobd3GvM7LTDSiY7PUOl1c4mW
+   UhvLLIwqiTemg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -744,17 +744,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Id2o8
-   ZxBWF4sNmVcDlQtwLkG5uwNyvDJiK4be3LHTjaVviG1SdA35TACXJcF2VA6CWGWCKJzn
-   mJ8Nj0m1CafMw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HMwJJ
+   k12Ux8veawQAQixiSbDj9vvuKwaPua6d6bem7vhVibNbobd3GvM7LTDSiY7PUOl1c4mW
+   UhvLLIwqiTemg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkzNDkwMj
-   MsICJzZF9oYXNoIjogIk9VTnJxeUtSMWhOSHg1N3pSeGdZU21iUllkWWxwTGlib215Yk
-   8xakc1YkUifQ.lXjHsI23kqjauhnjr9ljqTTbWl9BaLwy_cW-ndCzPZrQVIzKq8O_hwF
-   ZT_SIBBW-enEXtoFKXfWVP2fWrR0KmA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkzNTA4MT
+   QsICJzZF9oYXNoIjogIl9mU2llUW1NSkdaRFRMaExoRXBwRnZycVhBQ1VtSUNheDlpZU
+   h4d2gyYkkifQ.0XjzL7CeSEKEB_9G1RVd-J2Kvl0orQIHceoUrQDrG82zvTiWaOU-Min
+   jBujWVycweW2TSQqq7080K3wHZGY9RA
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -800,8 +800,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.chEd7Nk556JE9PUY8Qeg-_niFRBAwcA5Z4DYZKFSUyd6Mh
-   N4QcnJuo-q2VJieRoHHInE2XWDQWKQDJHQaty-uQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9._mloFlC1NsRIMdZFgYb1TEDnB3VoQWqZbfSzDE_Sa1wrsx
+   sLPu6FPxB4IHSfhKpj8is7ZfZoXHeOMzulv47mAA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1272,6 +1272,9 @@ Table of Contents
    type unless that type defines its own display property, in which case
    the original display metadata is ignored.
 
+   Note that this does not affect the display properties in the claim
+   metadata.  Rules for these are defined in Section 9.5.
+
 9.  Claim Metadata
 
    The claims property is an array of objects containing information
@@ -1438,11 +1441,19 @@ Table of Contents
 
    When an SD-JWT VC type extends another type as described in
    Section 6.4, all claim metadata from the extended type MUST be
-   respected and are inherited by the child type.  The child type can
-   extend the claim metadata by adding new claims or properties.  If the
-   child type defines claim metadata with the same path as in the
-   extended type, the child type's object will override the
-   corresponding object from the extended type.
+   respected and are inherited by the child type unless it is overridden
+   by the child type as defined in the following.
+
+   If the child type defines claim metadata with the same path as in the
+   extended type, the child type's properties are combined with those of
+   the extended type, with the child type's properties taking
+   precedence.  Limitations to this rule are defined for sd and
+   mandatory in Section 9.5.1.
+
+   The contents of properties are never merged (e.g., if the base
+   display property contains two locale objects and the extending type
+   contains one, the resulting display property will contain only the
+   one object defined for the child type).
 
    Note: The rule for overriding claim metadata is different from the
    one for display metadata described in Section 8.2.  This ensures that
@@ -2021,8 +2032,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.eodlegqOGcYN8nWqNvf1xXYkJ4qDxJroQQ-0CMEGMKw
-   rkw10JghfiDEg4edGUQF1b8tQhULxdpwhPoIM2rsc_A~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.ZRDjR1KxlVnMF6PVXL_wds5i-ZrKYP1rC7HxqKSjQlH
+   OL0S4uLgX1VLXwFZglJFm2i_mzdFH3IZg9JzredhXQA~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2404,8 +2415,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.eodlegqOGcYN8nWqNvf1xXYkJ4qDxJroQQ-0CMEGMKw
-   rkw10JghfiDEg4edGUQF1b8tQhULxdpwhPoIM2rsc_A~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.ZRDjR1KxlVnMF6PVXL_wds5i-ZrKYP1rC7HxqKSjQlH
+   OL0S4uLgX1VLXwFZglJFm2i_mzdFH3IZg9JzredhXQA~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2416,9 +2427,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkzNDkwMjMsICJzZF9oYXNoIjogImJRRmJHcnpKR
-   HdwaDlyOGxmTTduZlYyRlF3bDlvY3ptMWtDZWtNSDVEUmcifQ.IK9RosZU9nOQsKrfLz
-   d1O64BnzOKZ-_p9HhTBZ4cZqn_vDBnxnpnqxFWAIOkCcJrQzrNdoVLdjAwMnm-bwjEWQ
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkzNTA4MTQsICJzZF9oYXNoIjogInkzZzhwZ2dHb
+   DVVNU5fYy1RSU9ob0hIVk1pQUl5R1BnSXVxd3JjcWxXTGMifQ.yf07xQOByXju243tUw
+   S5bnA7tVC75wZIiuKvTgId-nqeJrkvvNwzp76ytRCwqiUQU0E70Of9ZVJG9oe_ebFfug
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2427,8 +2438,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1769349023,
-     "sd_hash": "bQFbGrzJDwph9r8lfM7nfV2FQwl9oczm1kCekMH5DRg"
+     "iat": 1769350814,
+     "sd_hash": "y3g8pggGl5U5N_c-QIOhoHHVMiAIyGPgIuqwrcqlWLc"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2725,6 +2736,8 @@ Appendix D.  Document History
    *  Clarified that if an integrity property is present for a
       particular claim, the Consumer MUST verify the integrity of the
       retrieved document.
+   *  Fixed the description of the claim metadata extension rules to
+      correctly reflect the intended behavior.
    *  Added a note explaining the difference in overriding rules between
       claim metadata and display metadata when extending types.
 
