@@ -568,18 +568,18 @@ excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following in (#example-with-vct-for-type-metadata) is an example
 of an SD-JWT VC payload, containing a `vct` claim
-with the value `https://betelgeuse.example.com/education_credential`.
+with the value `https://betelgeuse.example.com/education_credential/v1`.
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
   "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 ```
 Figure: Example SD-JWT VC Payload with `vct` Claim {#example-with-vct-for-type-metadata}
 
-Type Metadata for the type `https://betelgeuse.example.com/education_credential`
+Type Metadata for the type `https://betelgeuse.example.com/education_credential/v1`
 can be retrieved using various mechanisms as described in
 (#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
 (#retrieval-from-vct-claim) and the Type Metadata document in (#example-type-metadata-document) is
@@ -587,10 +587,10 @@ retrieved from it:
 
 ```json
 {
-  "vct":"https://betelgeuse.example.com/education_credential",
-  "name":"Betelgeuse Education Credential - Preliminary Version",
-  "description":"This is our development version of the education credential. Don't panic.",
-  "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
+  "vct":"https://betelgeuse.example.com/education_credential/v1",
+  "name":"Betelgeuse Education Credential - First Version",
+  "description":"This is our first version of the education credential. Don't panic.",
+  "extends":"https://galaxy.example.com/galactic-education-credential/v2.6",
   "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
@@ -617,6 +617,8 @@ defined:
 * `claims`: An array of objects containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
 
+Additionally, `extends#integrity` MAY be present as defined in (#document-integrity).
+
 A Type Metadata document MAY contain additional top level or subordinate properties.
 Consumers MUST ignore properties that are not understood.
 
@@ -639,6 +641,7 @@ type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.
 The Type Metadata is retrieved using the HTTP GET method.
 A successful response MUST use an HTTP `200` status code and return a JSON
 object as defined in (#type-metadata-format) using the `application/json` content type.
+An error response MUST use the applicable HTTP status code value.
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
 `vct#integrity` MUST be an "integrity metadata" string as defined in (#document-integrity).
@@ -686,11 +689,12 @@ Type Metadata MAY be accompanied by a respective claim suffixed with
 `#integrity`, in particular:
 
  * `extends` as defined in (#extending-type-metadata), and
- * `uri` as used in two places in (#rendering-metadata).
+ * `uri` as used in three places in (#rendering-metadata).
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. A Consumer of the respective documents MUST verify the
-integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
+[@!W3C.SRI]. If an integrity property is present for a particular claim, the
+Consumer of the respective document MUST verify the integrity of the retrieved
+document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 # Display Metadata {#display-metadata}
 
@@ -873,7 +877,7 @@ respective index in an array is to be selected.
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
   "name": "Arthur Dent",
   "address": {
     "street_address": "42 Market Street",
@@ -992,6 +996,11 @@ respected and are inherited by the child type. The child type can extend the
 claim metadata by adding new claims or properties. If the child type defines
 claim metadata with the same `path` as in the extended type, the child type's
 object will override the corresponding object from the extended type.
+
+Note: The rule for overriding claim metadata is different from the one for display
+metadata described in (#display-metadata-extends). This ensures that Consumers
+can rely on the claim metadata defined in the extended type while still allowing
+display customization for the visual representation of the credential.
 
 ### Limitations for `sd` and `mandatory`
 
@@ -1472,7 +1481,7 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
   "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   "name": "Zaphod Beeblebrox",
   "address": {
@@ -1503,16 +1512,16 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
-  "name": "Betelgeuse Education Credential - Preliminary Version",
-  "description": "This is our development version of the education credential. Don't panic.",
-  "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
+  "name": "Betelgeuse Education Credential - First Version",
+  "description": "This is our first version of the education credential. Don't panic.",
+  "extends": "https://galaxy.example.com/galactic-education-credential/v2.6",
   "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
       "locale": "en-US",
       "name": "Betelgeuse Education Credential",
-      "description": "An education credential for all carbon-based life forms on Betelgeusians",
+      "description": "An education credential for all carbon-based life forms on Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
@@ -1543,6 +1552,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
     {
       "locale": "de-DE",
       "name": "Betelgeuse-Bildungsnachweis",
+      "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
@@ -1578,7 +1588,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
         {
           "locale": "de-DE",
           "label": "Vor- und Nachname",
-          "description": "Der Name des Studenten"
+          "description": "Der Name des/der Studierenden"
         },
         {
           "locale": "en-US",
@@ -1626,7 +1636,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
         {
           "locale": "de-DE",
           "label": "Abschlüsse",
-          "description": "Abschlüsse des Studenten"
+          "description": "Abschlüsse des/der Studierenden"
         },
         {
           "locale": "en-US",
@@ -1728,6 +1738,9 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs
 * Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
 * Add line break between the two things in the JSON Web Token Claims Registration section
+* Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes
+* Clarified that if an integrity property is present for a particular claim, the Consumer MUST verify the integrity of the retrieved document.
+* Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
 
 -13
 
