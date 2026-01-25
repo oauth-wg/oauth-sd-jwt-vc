@@ -839,6 +839,9 @@ When an SD-JWT VC type extends another type as described in
 inheriting type unless that type defines its own `display` property, in which
 case the original display metadata is ignored.
 
+Note that this does not affect the `display` properties in the claim metadata.
+Rules for these are defined in (#claim-metadata-extends).
+
 # Claim Metadata {#claim-metadata}
 
 The `claims` property is an array of objects containing information about
@@ -991,17 +994,25 @@ See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that inclu
 
 When an SD-JWT VC type extends another type as described in
 (#extending-type-metadata), all claim metadata from the extended type MUST be
-respected and are inherited by the child type. The child type can extend the
-claim metadata by adding new claims or properties. If the child type defines
-claim metadata with the same `path` as in the extended type, the child type's
-object will override the corresponding object from the extended type.
+respected and are inherited by the child type unless it is overridden by the
+child type as defined in the following.
+
+If the child type defines claim metadata with the same `path` as in the extended
+type, the child type's properties are combined with those of the extended type,
+with the child type's properties taking precedence. Limitations to this rule are
+defined for `sd` and `mandatory` in (#claim-metadata-extends-limitations).
+
+The contents of properties are never merged (e.g., if the base `display`
+property contains two locale objects and the extending type contains one, the
+resulting `display` property will contain only the one object defined for the
+child type).
 
 Note: The rule for overriding claim metadata is different from the one for display
 metadata described in (#display-metadata-extends). This ensures that Consumers
 can rely on the claim metadata defined in the extended type while still allowing
 display customization for the visual representation of the credential.
 
-### Limitations for `sd` and `mandatory`
+### Limitations for `sd` and `mandatory` {#claim-metadata-extends-limitations}
 
 An extending type can specify an `sd` property for a claim that is marked as
 `allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.
@@ -1739,6 +1750,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Add line break between the two things in the JSON Web Token Claims Registration section
 * Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes
 * Clarified that if an integrity property is present for a particular claim, the Consumer MUST verify the integrity of the retrieved document.
+* Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
 * Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
 
 -13
