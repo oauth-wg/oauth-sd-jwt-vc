@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 28 July 2026                                      Authlete Inc.
+Expires: 29 July 2026                                      Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         24 January 2026
+                                                         25 January 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 28 July 2026.
+   This Internet-Draft will expire on 29 July 2026.
 
 Copyright Notice
 
@@ -619,9 +619,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LZykT
-   gKM0ASD7h89ofeSznedMsNBw_REKDf5AoCNjglJUiB-J-LEyKW8YmrLcQ9DrxMsqhWZ3
-   0vcEgbjzBRMxQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Id2o8
+   ZxBWF4sNmVcDlQtwLkG5uwNyvDJiK4be3LHTjaVviG1SdA35TACXJcF2VA6CWGWCKJzn
+   mJ8Nj0m1CafMw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -744,17 +744,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LZykT
-   gKM0ASD7h89ofeSznedMsNBw_REKDf5AoCNjglJUiB-J-LEyKW8YmrLcQ9DrxMsqhWZ3
-   0vcEgbjzBRMxQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Id2o8
+   ZxBWF4sNmVcDlQtwLkG5uwNyvDJiK4be3LHTjaVviG1SdA35TACXJcF2VA6CWGWCKJzn
+   mJ8Nj0m1CafMw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkyNzc3Mj
-   IsICJzZF9oYXNoIjogIjlKelVvNzhHSFpVeUk4S1p4UTFJWTd2aVdtcmJfLTUwRTRxRT
-   JkYUtjVFUifQ.3zBsSzg40WD9AtNOQxRh617lmoPfNqvc01lHuSXrYew2YAb_uZ6Iv6O
-   GHjyYp-PMgRYI3qnuOKNMPp9lg7MZ3A
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkzNDkwMj
+   MsICJzZF9oYXNoIjogIk9VTnJxeUtSMWhOSHg1N3pSeGdZU21iUllkWWxwTGlib215Yk
+   8xakc1YkUifQ.lXjHsI23kqjauhnjr9ljqTTbWl9BaLwy_cW-ndCzPZrQVIzKq8O_hwF
+   ZT_SIBBW-enEXtoFKXfWVP2fWrR0KmA
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -800,8 +800,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.fs5ptFHG5P3RBtRMCueXzHIqPlC5tn39JaQbokAe-UCo63
-   zyNMzLIZjG8qzOa0YcarEB5DqxpmoUiI5w4ZFHoQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.chEd7Nk556JE9PUY8Qeg-_niFRBAwcA5Z4DYZKFSUyd6Mh
+   N4QcnJuo-q2VJieRoHHInE2XWDQWKQDJHQaty-uQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -976,28 +976,28 @@ Table of Contents
    shows excerpts, the full examples can be found in Appendix B.2.
 
    The following in Figure 15 is an example of an SD-JWT VC payload,
-   containing a vct claim with the value https://betelgeuse.example.com/
-   education_credential.
+   containing a vct claim with the value
+   https://betelgeuse.example.com/education_credential/v1.
 
    {
-     "vct": "https://betelgeuse.example.com/education_credential",
+     "vct": "https://betelgeuse.example.com/education_credential/v1",
      "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
      ...
    }
 
             Figure 15: Example SD-JWT VC Payload with vct Claim
 
-   Type Metadata for the type https://betelgeuse.example.com/
-   education_credential can be retrieved using various mechanisms as
-   described in Section 6.3.  For this example, the vct value is a URL
-   as defined in Section 6.3.1 and the Type Metadata document in
-   Figure 16 is retrieved from it:
+   Type Metadata for the type
+   https://betelgeuse.example.com/education_credential/v1 can be
+   retrieved using various mechanisms as described in Section 6.3.  For
+   this example, the vct value is a URL as defined in Section 6.3.1 and
+   the Type Metadata document in Figure 16 is retrieved from it:
 
    {
-     "vct":"https://betelgeuse.example.com/education_credential",
-     "name":"Betelgeuse Education Credential - Preliminary Version",
-     "description":"This is our development version of the education credential. Don't panic.",
-     "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
+     "vct":"https://betelgeuse.example.com/education_credential/v1",
+     "name":"Betelgeuse Education Credential - First Version",
+     "description":"This is our first version of the education credential. Don't panic.",
+     "extends":"https://galaxy.example.com/galactic-education-credential/v2.6",
      "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
    }
 
@@ -1026,6 +1026,9 @@ Table of Contents
    *  claims: An array of objects containing claim information for the
       type, as described in Section 9.  This property is OPTIONAL.
 
+   Additionally, extends#integrity MAY be present as defined in
+   Section 7.
+
    A Type Metadata document MAY contain additional top level or
    subordinate properties.  Consumers MUST ignore properties that are
    not understood.
@@ -1049,7 +1052,8 @@ Table of Contents
    The Type Metadata is retrieved using the HTTP GET method.  A
    successful response MUST use an HTTP 200 status code and return a
    JSON object as defined in Section 6.2 using the application/json
-   content type.
+   content type.  An error response MUST use the applicable HTTP status
+   code value.
 
    If the claim vct#integrity is present in the SD-JWT VC, its value
    vct#integrity MUST be an "integrity metadata" string as defined in
@@ -1103,12 +1107,13 @@ Table of Contents
    claim suffixed with #integrity, in particular:
 
    *  extends as defined in Section 6.4, and
-   *  uri as used in two places in Section 8.1.
+   *  uri as used in three places in Section 8.1.
 
    The value MUST be an "integrity metadata" string as defined in
-   Section 3 of [W3C.SRI].  A Consumer of the respective documents MUST
-   verify the integrity of the retrieved document as defined in
-   Section 3.3.5 of [W3C.SRI].
+   Section 3 of [W3C.SRI].  If an integrity property is present for a
+   particular claim, the Consumer of the respective document MUST verify
+   the integrity of the retrieved document as defined in Section 3.3.5
+   of [W3C.SRI].
 
 8.  Display Metadata
 
@@ -1307,7 +1312,7 @@ Table of Contents
    Figure 18 shows a non-normative, reduced example of a credential.
 
    {
-     "vct": "https://betelgeuse.example.com/education_credential",
+     "vct": "https://betelgeuse.example.com/education_credential/v1",
      "name": "Arthur Dent",
      "address": {
        "street_address": "42 Market Street",
@@ -1438,6 +1443,12 @@ Table of Contents
    child type defines claim metadata with the same path as in the
    extended type, the child type's object will override the
    corresponding object from the extended type.
+
+   Note: The rule for overriding claim metadata is different from the
+   one for display metadata described in Section 8.2.  This ensures that
+   Consumers can rely on the claim metadata defined in the extended type
+   while still allowing display customization for the visual
+   representation of the credential.
 
 9.5.1.  Limitations for sd and mandatory
 
@@ -2010,8 +2021,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.-YLpPkkQo4g_mEeTstO_EYQf-ddb0k52fUaYCQRgaFn
-   HccmAh1NaX8d9wW6ZrmqRO7_6mRGpnwoyIrosb40KIQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.eodlegqOGcYN8nWqNvf1xXYkJ4qDxJroQQ-0CMEGMKw
+   rkw10JghfiDEg4edGUQF1b8tQhULxdpwhPoIM2rsc_A~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2393,8 +2404,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.-YLpPkkQo4g_mEeTstO_EYQf-ddb0k52fUaYCQRgaFn
-   HccmAh1NaX8d9wW6ZrmqRO7_6mRGpnwoyIrosb40KIQ~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.eodlegqOGcYN8nWqNvf1xXYkJ4qDxJroQQ-0CMEGMKw
+   rkw10JghfiDEg4edGUQF1b8tQhULxdpwhPoIM2rsc_A~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2405,9 +2416,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkyNzc3MjIsICJzZF9oYXNoIjogIjZJZDdsT0xxb
-   lN3ZUxfYjNqa1Q5aXozY1hBcE12QmpCb3VUZ0RVbGEwalUifQ.yhwTve7Pf9uYnACgwq
-   9KmSqMA6syaHv3peUqZG5cdMsj8Ut9SGuclrk37WTf8ir7ZJFW1w6uGWFJKAXG4qlkJQ
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NjkzNDkwMjMsICJzZF9oYXNoIjogImJRRmJHcnpKR
+   HdwaDlyOGxmTTduZlYyRlF3bDlvY3ptMWtDZWtNSDVEUmcifQ.IK9RosZU9nOQsKrfLz
+   d1O64BnzOKZ-_p9HhTBZ4cZqn_vDBnxnpnqxFWAIOkCcJrQzrNdoVLdjAwMnm-bwjEWQ
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2416,8 +2427,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1769277722,
-     "sd_hash": "6Id7lOLqnSweL_b3jkT9iz3cXApMvBjBouTgDUla0jU"
+     "iat": 1769349023,
+     "sd_hash": "bQFbGrzJDwph9r8lfM7nfV2FQwl9oczm1kCekMH5DRg"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2454,7 +2465,7 @@ B.2.  Example Type Metadata
    structured as follows in Figure 28:
 
    {
-     "vct": "https://betelgeuse.example.com/education_credential",
+     "vct": "https://betelgeuse.example.com/education_credential/v1",
      "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
      "name": "Zaphod Beeblebrox",
      "address": {
@@ -2485,16 +2496,16 @@ B.2.  Example Type Metadata
    Figure 29:
 
    {
-     "vct": "https://betelgeuse.example.com/education_credential",
-     "name": "Betelgeuse Education Credential - Preliminary Version",
-     "description": "This is our development version of the education credential. Don't panic.",
-     "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
+     "vct": "https://betelgeuse.example.com/education_credential/v1",
+     "name": "Betelgeuse Education Credential - First Version",
+     "description": "This is our first version of the education credential. Don't panic.",
+     "extends": "https://galaxy.example.com/galactic-education-credential/v2.6",
      "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
      "display": [
        {
          "locale": "en-US",
          "name": "Betelgeuse Education Credential",
-         "description": "An education credential for all carbon-based life forms on Betelgeusians",
+         "description": "An education credential for all carbon-based life forms on Betelgeuse.",
          "rendering": {
            "simple": {
              "logo": {
@@ -2525,6 +2536,7 @@ B.2.  Example Type Metadata
        {
          "locale": "de-DE",
          "name": "Betelgeuse-Bildungsnachweis",
+         "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
          "rendering": {
            "simple": {
              "logo": {
@@ -2560,7 +2572,7 @@ B.2.  Example Type Metadata
            {
              "locale": "de-DE",
              "label": "Vor- und Nachname",
-             "description": "Der Name des Studenten"
+             "description": "Der Name des/der Studierenden"
            },
            {
              "locale": "en-US",
@@ -2608,7 +2620,7 @@ B.2.  Example Type Metadata
            {
              "locale": "de-DE",
              "label": "Abschlüsse",
-             "description": "Abschlüsse des Studenten"
+             "description": "Abschlüsse des/der Studierenden"
            },
            {
              "locale": "en-US",
@@ -2708,6 +2720,13 @@ Appendix D.  Document History
       SHOULD)
    *  Add line break between the two things in the JSON Web Token Claims
       Registration section
+   *  Error responses both for JWT VC Issuer Metadata and Type Metadata
+      retrieval now MUST use appropriate HTTP status codes
+   *  Clarified that if an integrity property is present for a
+      particular claim, the Consumer MUST verify the integrity of the
+      retrieved document.
+   *  Added a note explaining the difference in overriding rules between
+      claim metadata and display metadata when extending types.
 
    -13
 
