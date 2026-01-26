@@ -214,7 +214,7 @@ Name as defined in Section 2 of [@!RFC7515].
 
 A type is associated with rules defining which claims are permitted or required
 to appear in the Unsecured Payload of the SD-JWT VC and whether selective disclosure
-is permitted, required, or prohibited for those claims.
+is permitted, necessary, or prohibited for those claims.
 This specification does not define any `vct` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
