@@ -1646,20 +1646,20 @@ for the type of the SD-JWT VC. The <code>vct</code> value MUST be a Collision-Re
 Name as defined in Section 2 of <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>.<a href="#section-3.2.2.1-1" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.1-2">A type is associated with rules defining which claims are permitted or required
 to appear in the Unsecured Payload of the SD-JWT VC and whether selective disclosure
-is permitted, necessary, or prohibited for those claims.
-This specification does not define any <code>vct</code> values; instead
+is permitted, necessary, or prohibited for those claims.<a href="#section-3.2.2.1-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.1-3">This specification does not define any <code>vct</code> values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
-validating credentials beyond what is defined in this specification).<a href="#section-3.2.2.1-2" class="pilcrow">¶</a></p>
-<p id="section-3.2.2.1-3">For example, a value of <code>https://credentials.example.com/identity_credential</code> can be associated with rules
+validating credentials beyond what is defined in this specification).<a href="#section-3.2.2.1-3" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.1-4">For example, a value of <code>https://credentials.example.com/identity_credential</code> can be associated with rules
 that define that at least the registered JWT claims <code>given_name</code>, <code>family_name</code>, <code>birthdate</code>, and <code>address</code>
 must appear in the Unsecured Payload. Additionally, the registered JWT claims <code>email</code> and <code>phone_number</code>,
 and the private claims <code>is_over_18</code>, <code>is_over_21</code>, and <code>is_over_65</code> may be used.
 The type might also indicate that any of the aforementioned claims can be selectively disclosable.
-The content in <a href="#example-with-vct" class="auto internal xref">Figure 3</a> shows that <code>vct</code> value used to express the example type.<a href="#section-3.2.2.1-3" class="pilcrow">¶</a></p>
+The content in <a href="#example-with-vct" class="auto internal xref">Figure 3</a> shows that <code>vct</code> value used to express the example type.<a href="#section-3.2.2.1-4" class="pilcrow">¶</a></p>
 <span id="name-example-unsecured-payload-w"></span><div id="example-with-vct">
 <figure id="figure-3">
-              <div class="lang-json sourcecode" id="section-3.2.2.1-4.1">
+              <div class="lang-json sourcecode" id="section-3.2.2.1-5.1">
 <pre>{
   "vct": "https://credentials.example.com/identity_credential",
   "given_name": "Russ",
@@ -1688,17 +1688,17 @@ The content in <a href="#example-with-vct" class="auto internal xref">Figure 3</
 <a href="#name-example-unsecured-payload-w" class="selfRef">Example Unsecured Payload with <code>vct</code></a>
               </figcaption></figure>
 </div>
-<p id="section-3.2.2.1-5">The <code>vct</code> value also effectively identifies the version of the credential type definition,
+<p id="section-3.2.2.1-6">The <code>vct</code> value also effectively identifies the version of the credential type definition,
 as it ties a particular instance of a credential to a specific structure, set of semantics, and rules.
 When evolving a credential type without updating the version, changes to the structure or meaning of the associated claims
-need to be made in a way that preserves compatibility with existing implementations.<a href="#section-3.2.2.1-5" class="pilcrow">¶</a></p>
-<p id="section-3.2.2.1-6">If a change alters the meaning of existing content, adds new required claims, removes
+need to be made in a way that preserves compatibility with existing implementations.<a href="#section-3.2.2.1-6" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.1-7">If a change alters the meaning of existing content, adds new required claims, removes
 previously required elements, or otherwise introduces incompatibilities, it is
 generally advisable to treat that as a new version of the credential type and to
 convey it using a new <code>vct</code> value. This allows different versions of a credential
 type to coexist and helps ensure that participants interpret credentials consistently.
 For example, if such a need came about for the hypothetical type <code>urn:eudi:pid:aendgard:1</code>,
-a new version could be defined using a 'vct' of <code>urn:eudi:pid:aendgard:2</code>.<a href="#section-3.2.2.1-6" class="pilcrow">¶</a></p>
+a new version could be defined using a 'vct' of <code>urn:eudi:pid:aendgard:2</code>.<a href="#section-3.2.2.1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claims">
@@ -1761,7 +1761,7 @@ exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-3.2
             </h5>
 <p id="section-3.2.2.3-1">Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> MAY be used.<a href="#section-3.2.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-3.2.2.3-2">Binary data in claims SHOULD be encoded as data URIs as defined in <span>[<a href="#RFC2397" class="cite xref">RFC2397</a>]</span>. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.<a href="#section-3.2.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-3.2.2.3-2">Binary data in claims SHOULD be encoded as data URIs as defined in <span>[<a href="#RFC2397" class="cite xref">RFC2397</a>]</span>. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as data URIs.<a href="#section-3.2.2.3-2" class="pilcrow">¶</a></p>
 <p id="section-3.2.2.3-3">An example of a claim containing binary data encoded as a data URI is shown in <a href="#ExamplePID" class="auto internal xref">Appendix B.1</a>.<a href="#section-3.2.2.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -1986,9 +1986,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vzEub
-PecDuYURa4SW3kZOGuW6gZfFSNPyGYnCB2Pq3R4dSW-tPUzXQ3jOdiv82H-jL65G__xz
-sLKmH7pR8cOeg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8DrLj
+NJTUHiVEPd8xG07yrclxsoNQGG0XWDlRAjw0iTmz25z7tipXD43sC3ToFV8UXeHSXF8m
+jD0MXFy1xnlLg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2113,17 +2113,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vzEub
-PecDuYURa4SW3kZOGuW6gZfFSNPyGYnCB2Pq3R4dSW-tPUzXQ3jOdiv82H-jL65G__xz
-sLKmH7pR8cOeg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8DrLj
+NJTUHiVEPd8xG07yrclxsoNQGG0XWDlRAjw0iTmz25z7tipXD43sC3ToFV8UXeHSXF8m
+jD0MXFy1xnlLg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njk0MzIzMD
-ksICJzZF9oYXNoIjogIlFxZV9DeWQtMGE5b3Niemh5YXZCN0t1OEtYbVhSNlpmajRybz
-Y5RjBsZXMifQ.tg4Id__MSAJrVkgQphTQGewwFGBtePXfC-chhl2kS-kvftOS0fMD9pR
-g8lXvrsjTSLsk-g6RF4j3GbTQ5b1wvA
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njk0MzIzOD
+AsICJzZF9oYXNoIjogIlpJaXhqSFJldHlYLU9wQVBWdlZIZ0NPN3V2UVRjdzFRaUJSMm
+9uLV8tOHcifQ.TWJ-Jahm_j841KPStF4DYD24MEvlRkFJQM8qMZCOKGwIHXn8xPk_T-H
+MDILbhyya2CmPb2WF-ZNj6hVxVxYLPw
 
 </pre>
 </div>
@@ -2180,8 +2180,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.1nYL3GRiCMRp6cVi0Oxi96iOgAMzQVHRqh9RBYKa9SkT7K
-_aQtSIMVlB4SoCEk47Up24MRluNLyWvzek3mKuXg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.aFNWgPOUluoQbrCYWE7KTzEVp_9M1Id7LMjDlI43hQRO4n
+boxUHaFWTaP28nVKjVzZv-egaO5YUC8TB3FKdNLw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3058,7 +3058,7 @@ optional in the extended type to <code>true</code>, but it MUST NOT change a cla
           <h4 id="name-example-for-extending-type-">
 <a href="#section-9.5.2" class="section-number selfRef">9.5.2. </a><a href="#name-example-for-extending-type-" class="section-name selfRef">Example for Extending Type Metadata</a>
           </h4>
-<p id="section-9.5.2-1">Suppose we have a base type metadata document as shown in <a href="#example-base-type-metadata" class="auto internal xref">Figure 19</a>:<a href="#section-9.5.2-1" class="pilcrow">¶</a></p>
+<p id="section-9.5.2-1">The base type metadata document for this example is shown in <a href="#example-base-type-metadata" class="auto internal xref">Figure 19</a>.<a href="#section-9.5.2-1" class="pilcrow">¶</a></p>
 <span id="name-example-base-type-metadata-"></span><div id="example-base-type-metadata">
 <figure id="figure-19">
             <div class="lang-json sourcecode" id="section-9.5.2-2.1">
@@ -3082,7 +3082,7 @@ optional in the extended type to <code>true</code>, but it MUST NOT change a cla
 <a href="#name-example-base-type-metadata-" class="selfRef">Example Base Type Metadata Document</a>
             </figcaption></figure>
 </div>
-<p id="section-9.5.2-3">And a child type metadata document in <a href="#example-child-type-metadata" class="auto internal xref">Figure 20</a> that extends the base type:<a href="#section-9.5.2-3" class="pilcrow">¶</a></p>
+<p id="section-9.5.2-3">The extending type metadata document is shown in <a href="#example-child-type-metadata" class="auto internal xref">Figure 20</a>.<a href="#section-9.5.2-3" class="pilcrow">¶</a></p>
 <span id="name-example-child-type-metadata"></span><div id="example-child-type-metadata">
 <figure id="figure-20">
             <div class="lang-json sourcecode" id="section-9.5.2-4.1">
@@ -3685,8 +3685,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.cPLl2wPrwYMTuHiyMvK3wlYHBHSIPioxuG1NSzi-MTW
-RlkZmusu27tBYQG7epQcpHfjyyOHlqjPMLxbt6tcCOg~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.tngEpOTOxv_Crdhns5u_AgQnqZPX_NBNudbUjcaI-O2
+kZNuJpw4OP92R5x5UKKdMw75N6pLH7Ow1qX4oT-FeNg~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -4183,8 +4183,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.cPLl2wPrwYMTuHiyMvK3wlYHBHSIPioxuG1NSzi-MTW
-RlkZmusu27tBYQG7epQcpHfjyyOHlqjPMLxbt6tcCOg~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.tngEpOTOxv_Crdhns5u_AgQnqZPX_NBNudbUjcaI-O2
+kZNuJpw4OP92R5x5UKKdMw75N6pLH7Ow1qX4oT-FeNg~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -4195,9 +4195,9 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3Njk0MzIzMDksICJzZF9oYXNoIjogIkcyWVpsT0EzS
-05yVUYwU0ppc0N6SVc5WU54Y1FLS0t6cU9vTXRWOEk2NWcifQ.jq46-XznO5U2o8KpRv
-MlQIug8LXTCzKp2BlFC_hEdzW_BwSboa2NfdLjZ7_A1DQPUDhGl2_bYzAAEo6n5YsP2w
+3ZlcmlmaWVyIiwgImlhdCI6IDE3Njk0MzIzODAsICJzZF9oYXNoIjogIklueUJtOUp6X
+zBhMWwxUm4xaVVsWkU5TnVBbFpxWWxLN3FoU2ZwVlVvUFUifQ.MJTJdHVxBYeQ5a7Ffa
+Hx8WCQj0h45YuYLKZLDmIswH95wozVoC8mmvjs3BzJ3qhz_tomyLsSYTY_AqwKs7bJiw
 
 </pre>
 </div>
@@ -4212,8 +4212,8 @@ MlQIug8LXTCzKp2BlFC_hEdzW_BwSboa2NfdLjZ7_A1DQPUDhGl2_bYzAAEo6n5YsP2w
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1769432309,
-  "sd_hash": "G2YZlOA3KNrUF0SJisCzIW9YNxcQKKKzqOoMtV8I65g"
+  "iat": 1769432380,
+  "sd_hash": "InyBm9Jz_0a1l1Rn1iUlZE9NuAlZqYlK7qhSfpVUoPU"
 }
 
 </pre>
