@@ -215,6 +215,7 @@ Name as defined in Section 2 of [@!RFC7515].
 A type is associated with rules defining which claims are permitted or required
 to appear in the Unsecured Payload of the SD-JWT VC and whether selective disclosure
 is permitted, necessary, or prohibited for those claims.
+
 This specification does not define any `vct` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
@@ -301,7 +302,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
+Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as data URIs.
 
 An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
@@ -1004,7 +1005,7 @@ optional in the extended type to `true`, but it MUST NOT change a claim that is
 
 ### Example for Extending Type Metadata
 
-Suppose we have a base type metadata document as shown in (#example-base-type-metadata):
+The base type metadata document for this example is shown in (#example-base-type-metadata).
 
 ```json
 {
@@ -1023,7 +1024,7 @@ Suppose we have a base type metadata document as shown in (#example-base-type-me
 ```
 Figure: Example Base Type Metadata Document {#example-base-type-metadata}
 
-And a child type metadata document in (#example-child-type-metadata) that extends the base type:
+The extending type metadata document is shown in (#example-child-type-metadata).
 
 ```json
 {
