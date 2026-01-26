@@ -117,8 +117,6 @@ SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
 
-Note: This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
-
 ## Requirements Notation and Conventions
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
@@ -132,7 +130,10 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 [@!RFC9901].
 
 Consumer:
-: Applications using the Type Metadata specified in (#type-metadata) are called Consumer. This typically includes Issuers, Verifiers, and Wallets.
+: An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Wallets.
+
+Publisher:
+: An entity that publishes Type Metadata or other auxiliary documents referenced by an SD-JWT VC (for example via a `vct` URI), but that is not necessarily the Issuer of the SD-JWT VC. A Publisher can be a standardization body, community, ecosystem authority, or any other party defining credential types or associated metadata.
 
 Verifiable Digital Credential:
 :  An assertion with claims about a Subject that is cryptographically secured by an Issuer (usually by a digital signature).
@@ -344,8 +345,8 @@ Examples of what presentations of SD-JWT VCs might look like are provided in (#p
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
 The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an
-SD-JWT VC as described in [@!I-D.ietf-oauth-selective-disclosure-jwt, section 7].
-The check in point 2.3 of Section 7.1 of [@!RFC9901],
+SD-JWT VC as described in Section 7 of [@!RFC9901].
+The check in point 2.c of Section 7.1 of [@!RFC9901],
 which validates the Issuer and ensures that the signing key belongs to the Issuer,
 MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
 employing an Issuer Signature Mechanism (defined in (#ism)) that is permitted for the Issuer according to policy.
@@ -474,7 +475,7 @@ Figure: Example HTTP Request for JWT VC Issuer Metadata {#GET1234}
 A successful response MUST use an HTTP `200` status code and return the JWT VC Issuer
 Metadata configuration using the `application/json` content type.
 
-An error response uses the applicable HTTP status code value.
+An error response MUST use the applicable HTTP status code value.
 
 This specification defines the following JWT VC Issuer Metadata configuration
 parameters:
@@ -491,7 +492,7 @@ object containing a valid JWK Set.
 JWT VC Issuer Metadata MUST include either `jwks_uri` or `jwks` in their JWT VC
 Issuer Metadata, but not both.
 
-It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
+It is RECOMMENDED that the Issuer-signed JWT contains a `kid` JWT header parameter that can
 be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.
 
@@ -537,7 +538,7 @@ Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
 ## JWT VC Issuer Metadata Validation
 
 The `issuer` value returned MUST be identical to the `iss` value of the
-JWT. If these values are not identical, the data contained in the response
+Issuer-signed JWT. If these values are not identical, the data contained in the response
 MUST NOT be used.
 
 # SD-JWT VC Type Metadata {#type-metadata}
@@ -567,18 +568,18 @@ excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following in (#example-with-vct-for-type-metadata) is an example
 of an SD-JWT VC payload, containing a `vct` claim
-with the value `https://betelgeuse.example.com/education_credential`.
+with the value `https://betelgeuse.example.com/education_credential/v1`.
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
   "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 ```
 Figure: Example SD-JWT VC Payload with `vct` Claim {#example-with-vct-for-type-metadata}
 
-Type Metadata for the type `https://betelgeuse.example.com/education_credential`
+Type Metadata for the type `https://betelgeuse.example.com/education_credential/v1`
 can be retrieved using various mechanisms as described in
 (#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
 (#retrieval-from-vct-claim) and the Type Metadata document in (#example-type-metadata-document) is
@@ -586,10 +587,10 @@ retrieved from it:
 
 ```json
 {
-  "vct":"https://betelgeuse.example.com/education_credential",
-  "name":"Betelgeuse Education Credential - Preliminary Version",
-  "description":"This is our development version of the education credential. Don't panic.",
-  "extends":"https://galaxy.example.com/galactic-education-credential-0.9",
+  "vct":"https://betelgeuse.example.com/education_credential/v1",
+  "name":"Betelgeuse Education Credential - First Version",
+  "description":"This is our first version of the education credential. Don't panic.",
+  "extends":"https://galaxy.example.com/galactic-education-credential/v2.6",
   "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
@@ -616,6 +617,8 @@ defined:
 * `claims`: An array of objects containing claim information for the type, as described in
   (#claim-metadata). This property is OPTIONAL.
 
+Additionally, `extends#integrity` MAY be present as defined in (#document-integrity).
+
 A Type Metadata document MAY contain additional top level or subordinate properties.
 Consumers MUST ignore properties that are not understood.
 
@@ -623,7 +626,7 @@ An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 
 ## Retrieving Type Metadata {#retrieving-type-metadata}
 
-A consumer retrieving Type Metadata MUST ensure that the `vct` value in the
+A Consumer retrieving Type Metadata MUST ensure that the `vct` value in the
 SD-JWT VC payload is identical to the `vct` value in the reference to the Type
 Metadata (either in the SD-JWT VC itself or in an `extends` property in a Type
 Metadata document).
@@ -638,9 +641,10 @@ type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.
 The Type Metadata is retrieved using the HTTP GET method.
 A successful response MUST use an HTTP `200` status code and return a JSON
 object as defined in (#type-metadata-format) using the `application/json` content type.
+An error response MUST use the applicable HTTP status code value.
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
-`vct#integrity` MUST be an "integrity metadata" string as defined in Section (#document-integrity).
+`vct#integrity` MUST be an "integrity metadata" string as defined in (#document-integrity).
 
 ### From a Registry {#retrieval-from-registry}
 
@@ -685,11 +689,12 @@ Type Metadata MAY be accompanied by a respective claim suffixed with
 `#integrity`, in particular:
 
  * `extends` as defined in (#extending-type-metadata), and
- * `uri` as used in two places in (#rendering-metadata).
+ * `uri` as used in three places in (#rendering-metadata).
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. A Consumer of the respective documents MUST verify the
-integrity of the retrieved document as defined in Section 3.3.5 of [@!W3C.SRI].
+[@!W3C.SRI]. If an integrity property is present for a particular claim, the
+Consumer of the respective document MUST verify the integrity of the retrieved
+document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 # Display Metadata {#display-metadata}
 
@@ -835,6 +840,9 @@ When an SD-JWT VC type extends another type as described in
 inheriting type unless that type defines its own `display` property, in which
 case the original display metadata is ignored.
 
+Note that this does not affect the `display` properties in the claim metadata.
+Rules for these are defined in (#claim-metadata-extends).
+
 # Claim Metadata {#claim-metadata}
 
 The `claims` property is an array of objects containing information about
@@ -872,7 +880,7 @@ respective index in an array is to be selected.
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
   "name": "Arthur Dent",
   "address": {
     "street_address": "42 Market Street",
@@ -987,12 +995,25 @@ See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that inclu
 
 When an SD-JWT VC type extends another type as described in
 (#extending-type-metadata), all claim metadata from the extended type MUST be
-respected and are inherited by the child type. The child type can extend the
-claim metadata by adding new claims or properties. If the child type defines
-claim metadata with the same `path` as in the extended type, the child type's
-object will override the corresponding object from the extended type.
+respected and are inherited by the child type unless it is overridden by the
+child type as defined in the following.
 
-### Limitations for `sd` and `mandatory`
+If the child type defines claim metadata with the same `path` as in the extended
+type, the child type's properties are combined with those of the extended type,
+with the child type's properties taking precedence. Limitations to this rule are
+defined for `sd` and `mandatory` in (#claim-metadata-extends-limitations).
+
+The contents of properties are never merged (e.g., if the base `display`
+property contains two locale objects and the extending type contains one, the
+resulting `display` property will contain only the one object defined for the
+child type).
+
+Note: The rule for overriding claim metadata is different from the one for display
+metadata described in (#display-metadata-extends). This ensures that Consumers
+can rely on the claim metadata defined in the extended type while still allowing
+display customization for the visual representation of the credential.
+
+### Limitations for `sd` and `mandatory` {#claim-metadata-extends-limitations}
 
 An extending type can specify an `sd` property for a claim that is marked as
 `allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.
@@ -1156,16 +1177,15 @@ confer any implicit authorization to issue credentials of that type or its exten
 - **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
-**Recommendation:**
 Verifiers and wallets MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
 ## Trust in Type Metadata
 
-Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its publisher and the consumer. A consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the publisher is recognized as authoritative for the type in question.
+Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the Publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its Publisher and the Consumer. A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the Publisher is recognized as authoritative for the type in question.
 
-Ecosystems SHOULD define governance or accreditation mechanisms that specify which publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.
+Ecosystems SHOULD define governance or accreditation mechanisms that specify which Publishers are authorized to provide Type Metadata for specific verifiable digital credential types and under what conditions such metadata can be relied upon.
 
-Consumers SHOULD treat with reduced trust any Type Metadata if the publisher is not accredited or otherwise trusted within the applicable ecosystem.
+Consumers SHOULD treat with reduced trust any Type Metadata if the Publisher is not accredited or otherwise trusted within the applicable ecosystem.
 
 ## Use of Data URIs for Claim Types
 
@@ -1236,7 +1256,8 @@ payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
 ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE.
+format encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
+
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
@@ -1471,7 +1492,7 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
   "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   "name": "Zaphod Beeblebrox",
   "address": {
@@ -1502,16 +1523,16 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential",
-  "name": "Betelgeuse Education Credential - Preliminary Version",
-  "description": "This is our development version of the education credential. Don't panic.",
-  "extends": "https://galaxy.example.com/galactic-education-credential-0.9",
+  "vct": "https://betelgeuse.example.com/education_credential/v1",
+  "name": "Betelgeuse Education Credential - First Version",
+  "description": "This is our first version of the education credential. Don't panic.",
+  "extends": "https://galaxy.example.com/galactic-education-credential/v2.6",
   "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
       "locale": "en-US",
       "name": "Betelgeuse Education Credential",
-      "description": "An education credential for all carbon-based life forms on Betelgeusians",
+      "description": "An education credential for all carbon-based life forms on Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
@@ -1542,6 +1563,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
     {
       "locale": "de-DE",
       "name": "Betelgeuse-Bildungsnachweis",
+      "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
@@ -1577,7 +1599,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
         {
           "locale": "de-DE",
           "label": "Vor- und Nachname",
-          "description": "Der Name des Studenten"
+          "description": "Der Name des/der Studierenden"
         },
         {
           "locale": "en-US",
@@ -1625,7 +1647,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
         {
           "locale": "de-DE",
           "label": "Abschlüsse",
-          "description": "Abschlüsse des Studenten"
+          "description": "Abschlüsse des/der Studierenden"
         },
         {
           "locale": "en-US",
@@ -1727,6 +1749,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs
 * Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
 * Add line break between the two things in the JSON Web Token Claims Registration section
+* Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes
+* Clarified that if an integrity property is present for a particular claim, the Consumer MUST verify the integrity of the retrieved document.
+* Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
+* Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
 
 -13
 
