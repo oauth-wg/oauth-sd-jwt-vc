@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-01-25T00:42:46.814982+00:00",
+  "timestamp": "2026-01-27T00:40:29.406591+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10128,7 +10128,7 @@
       "id": "I_kwDOJbVClc7esoqO",
       "title": "vct -> semantics, but no sematics",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/385",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "alenhorvat",
       "authorAssociation": "NONE",
       "assignees": [],
@@ -10137,8 +10137,8 @@
       ],
       "body": "_The vct value also effectively identifies the version of the credential type definition, as it ties a particular instance of a credential to a specific structure, set of semantics, and rules._ \n\nThe document doesn't define how to express semantics using vct (metadata)",
       "createdAt": "2025-12-16T20:36:40Z",
-      "updatedAt": "2025-12-18T08:45:21Z",
-      "closedAt": null,
+      "updatedAt": "2026-01-25T14:08:06Z",
+      "closedAt": "2026-01-25T14:08:05Z",
       "comments": [
         {
           "author": "awoie",
@@ -10181,6 +10181,13 @@
           "body": "That's only partially correct as ETSI only defines the envelope, but not the data elements that are defined within a use case;\nSo in most cases there will be 2 sources for structure and semantics: a) ETSI, b) use-cases\n\nBut even in this case, if I look at SD JWT VC, there's no way for me to (easily) identify where the semantics is defined\n\nISO clearly defines rules for the namespaces, so this is not really the same approach as iso mdocs ...\n\nMy question is the same: document states that ecosystem defines semantics, etc, but the specification doesn't define how to discover the information, etc; Same goes for the structure -- nothing in the specification guarantees that the VC I receive is the one that conforms to the vct\n\nYou can close the issue without solving the problem, as usual, but the issue remains :)",
           "createdAt": "2025-12-18T08:45:20Z",
           "updatedAt": "2025-12-18T08:45:20Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> You can close the issue without solving the problem, as usual, but the issue remains :)\n\nClosing the issue without \"solving the problem\" because it is not clear that there is any consensus that there is a problem. ",
+          "createdAt": "2026-01-25T14:08:06Z",
+          "updatedAt": "2026-01-25T14:08:06Z"
         }
       ]
     },
@@ -31613,13 +31620,13 @@
       "labels": [],
       "body": "to address issue #378 which was created based on https://mailarchive.ietf.org/arch/msg/oauth/vbb7k7xGsmX7gL6rWIk__Udonww/ \r\n\r\npreview here https://drafts.oauth.net/oauth-sd-jwt-vc/nats-13-review/draft-ietf-oauth-sd-jwt-vc.html ",
       "createdAt": "2026-01-21T00:56:48Z",
-      "updatedAt": "2026-01-22T20:49:34Z",
+      "updatedAt": "2026-01-26T12:59:17Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f40791ed5587de0a71538b4b4226ef7bbfbdf15b",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "nats-13-review",
-      "headRefOid": "aa1db1e60a7609fb8bd2251960538ccc81c14fab",
+      "headRefOid": "1e5ccc273ca078d06d563d3d9e78bfb022ecc2ed",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -31665,6 +31672,50 @@
               "updatedAt": "2026-01-22T17:13:18Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7cxO9t",
+          "commit": {
+            "abbreviatedOid": "aa1db1e"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-01-25T13:54:19Z",
+          "updatedAt": "2026-01-25T14:21:16Z",
+          "comments": [
+            {
+              "originalPosition": 93,
+              "body": "```suggestion\r\n\r\nThis specification does not define any `vct` values; instead\r\n```",
+              "createdAt": "2026-01-25T13:54:19Z",
+              "updatedAt": "2026-01-25T14:21:16Z"
+            },
+            {
+              "originalPosition": 92,
+              "body": "\"required\" is still a reserved word, how about this?\r\n```suggestion\r\nis permitted, necessary, or prohibited for those claims.\r\n```",
+              "createdAt": "2026-01-25T13:57:49Z",
+              "updatedAt": "2026-01-25T14:21:16Z"
+            },
+            {
+              "originalPosition": 156,
+              "body": "```suggestion\r\nBinary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as data URIs.\r\n```",
+              "createdAt": "2026-01-25T13:58:43Z",
+              "updatedAt": "2026-01-25T14:21:16Z"
+            },
+            {
+              "originalPosition": 402,
+              "body": "```suggestion\r\nThe base type metadata document for this example is shown in (#example-base-type-metadata).\r\n```",
+              "createdAt": "2026-01-25T14:01:26Z",
+              "updatedAt": "2026-01-25T14:21:16Z"
+            },
+            {
+              "originalPosition": 413,
+              "body": "```suggestion\r\nThe extending type metadata document is shown in (#example-child-type-metadata).\r\n```",
+              "createdAt": "2026-01-25T14:01:51Z",
+              "updatedAt": "2026-01-25T14:21:16Z"
+            }
+          ]
         }
       ]
     },
@@ -31678,21 +31729,137 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "## Dan\u2019s review comments \u2014 status & resolution\r\n\r\n### General / Substantive\r\n\r\n- [x] *\"Need to update references from ietf-oauth-selective-disclosure-jwt to RFC 9901\"*\r\n  **OT:** All references were updated.\r\n\r\n- [ ] *\u201cSince one explicit aim of the type metadata is versioning \u2026 does it make sense to put a v1 somewhere in the URI?\u201d*  \r\n  **TBD**\r\n\r\n- [x] **Inconsistent terminology: \u201cConsumer\u201d vs \u201cconsuming application\u201d**  \r\n  **OT:** Accepted. Terminology aligned to consistently use \u201cConsumer\u201d.\r\n\r\n### Section 1.1\r\n\r\n- [x] **Paragraph on verifier authenticity checks and key binding is long and confusing**\r\n  **OT:** Accepted. Split into two sentences; already fixed by Brian in a previous PR.\r\n\r\n- [x] **Note about not using W3C Verifiable Credentials Data Model seems out of place**  \r\n  **OT:** Accepted. Moved to Related Standards section (Section 12).\r\n\r\n### Section 1.4\r\n\r\n- [x] **Definition of Consumer has singular/plural mismatch**  \r\n  **OT:** Accepted. Definition clarified.\r\n\r\n### Section 3.2\r\n\r\n- [ ] **Sections 3.2 and 4.1 appear duplicative**  \r\n  **TBD**\r\n\r\n### Section 3.4\r\n\r\n- [x] **Incorrect reference to point 2.3 of Section 7.1 of SD-JWT**  \r\n  **OT:** Accepted. Correct reference is point **2.c**.\r\n\r\n- [x] *\"I don't see a section 2.3 in the referenced doc.\"*\r\n  **OT:** Root cause resolved by correcting the reference to 2.c.\r\n\r\n### Section 5.1\r\n\r\n- [x] *\"Is there a reason to not follow the OIDC pattern of having the tenant or any other path before the .well-known/jwt-vc-issuer string?\"*\r\n  **OT:** Rejected. Won't fix. Intentional design. SD-JWT VC follows RFC 8414 host-bound `.well-known` semantics. OIDC intentionally deviates from the well-known specification; SD-JWT VC does not and uses the same approach as OAuth in [RFC8414](https://www.rfc-editor.org/rfc/rfc8414.html#section-3.1).\r\n\r\n### Section 5.2\r\n\r\n- [x] **Missing word \u201cstatus\u201d in \u201c200 OK HTTP\u201d**  \r\n  **OT:** Fixed in -13.\r\n\r\n- [x] **Error responses should use MUST for HTTP status codes**  \r\n  **OT:** Rejected. Intentionally not using MUST to improve interoperability in error cases (e.g., reverse proxies returning HTML error pages).\r\n\r\n- [x] **Confusing reference to \u201cJWT\u201d in `kid` recommendation**  \r\n  **OT:** Accepted. Clarified to \u201cIssuer-signed JWT\u201d.\r\n\r\n- [ ] **Issuer value in example does not match `iss` value elsewhere**  \r\n  **TBD**\r\n\r\n### Section 6.2\r\n\r\n- [ ] **Unclear whether `extends#integrity` must be listed explicitly**  \r\n  **TBD**\r\n\r\n### Section 6.3\r\n\r\n- [x] **Do we need to reference RFC 5890 / 3987 for URL comparison?**  \r\n  **OT:** Rejected. No need for these references since comparing `vct` values is a string comparison.\r\n\r\n### Section 6.3.1\r\n\r\n- [x] **Typo: \u201cSection Section 7.\u201d**  \r\n  **OT:** Accepted. Fixed.\r\n\r\n### Section 7\r\n\r\n- [ ] **Incorrect SRI reference to Section 3.3.5**  \r\n  **OT:** Accepted. We need to correct the reference of the SRI specification.\r\n\r\n- [ ] **Integrity verification marked MUST while integrity claim is optional**  \r\n  > You say:\r\n  > \"A Consumer of the respective documents MUST verify the integrity ...\r\n  > \r\n  > but the required claim is marked as optional in 3.2.2.2. Found that\r\n  > confusing. Assume that means that if the X#integrity claim is present you\r\n  > must verify the integrity? Maybe change to\r\n  > \r\n  > When the corresponding integrity claim is present, a Consumer of the\r\n  > respective documents MUST verify the integrity of the retrieved document as\r\n  > defined ...\r\n\r\n  **TBD**\r\n\r\n### Section 8.2\r\n\r\n- [ ] **Display claim treated differently from other metadata**  \r\n  > Why is the display claim treated differently in terms of overriding an\r\n  > extension than any other metadata? any reason to call that out? The general\r\n  > overriding process is mentioned in section 9.5, maybe remove 8.2.\r\n\r\n  **TBD**\r\n\r\n### Section 9\r\n\r\n- [ ] **Claims defined without `svg_id` \u2014 unclear use case** \r\n  > why would you have a claim defined without an svg_id? what is the use case?\r\n  > \r\n  > if you are using a simple rendering method, no claims are displayed. Is\r\n  > this future proofing, in case there's another render method added that\r\n  > isn't an svg? in that case, maybe change it to claim_id so a future method\r\n  > could reference the claim for display? then make it required? Or am I\r\n  > missing some other reason for the claims to be defined in the type metadata?\r\n\r\n  **TBD**\r\n\r\n### Section 9.1\r\n\r\n- [x] **Why define new JSON path framework instead of JSON Pointer / JSONPath?**  \r\n  > why not use jsonpath or jsonpointer (rfc6901) instead of defining a new\r\n  > JSON path processing framework? I guess I worry whenever I see another path\r\n  > processing algorithm defined.\r\n  > \r\n  > But maybe I'm missing the reason not to use a more general purpose solution?\r\n\r\n  **OT:** Rejected. Intentional design decision and justified in section 9.1.2 already.\r\n\r\n### Section 10.6\r\n\r\n- [x] **Prefix \u201cRecommendation:\u201d is unusual**  \r\n  > Having the prefix *Recommendation:* is kinda weird and not common. maybe\r\n  > strike, not sure it adds anything.\r\n\r\n  **OT:** Accepted. Removed prefix.\r\n\r\n### Section 10.7\r\n\r\n- [x] **Introduces term \u201cpublisher\u201d not used elsewhere**  \r\n  > Introduces the term \"publisher\" which is not used anywhere else in the doc.\r\n  > Maybe use issuer?\r\n  **OT:** Accepted. However, publisher is different from the issuer. Terminology was added for publisher.\r\n",
+      "body": "## Dan\u2019s review comments \u2014 status & resolution\r\n\r\n### General / Substantive\r\n\r\n- [x] *\"Need to update references from ietf-oauth-selective-disclosure-jwt to RFC 9901\"*\r\n  **OT:** All references were updated.\r\n\r\n- [x] *\u201cSince one explicit aim of the type metadata is versioning \u2026 does it make sense to put a v1 somewhere in the URI?\u201d*  \r\n  DF: I put a `/v1` in the Betelgeuse example.\r\n\r\n- [x] **Inconsistent terminology: \u201cConsumer\u201d vs \u201cconsuming application\u201d**  \r\n  **OT:** Accepted. Terminology aligned to consistently use \u201cConsumer\u201d.\r\n\r\n### Section 1.1\r\n\r\n- [x] **Paragraph on verifier authenticity checks and key binding is long and confusing**\r\n  **OT:** Accepted. Split into two sentences; already fixed by Brian in a previous PR.\r\n\r\n- [x] **Note about not using W3C Verifiable Credentials Data Model seems out of place**  \r\n  **OT:** Accepted. Moved to Related Standards section (Section 12).\r\n\r\n### Section 1.4\r\n\r\n- [x] **Definition of Consumer has singular/plural mismatch**  \r\n  **OT:** Accepted. Definition clarified.\r\n\r\n### Section 3.2\r\n\r\n- [ ] **Sections 3.2 and 4.1 appear duplicative**  \r\n  **TBD**\r\n\r\n### Section 3.4\r\n\r\n- [x] **Incorrect reference to point 2.3 of Section 7.1 of SD-JWT**  \r\n  **OT:** Accepted. Correct reference is point **2.c**.\r\n\r\n- [x] *\"I don't see a section 2.3 in the referenced doc.\"*\r\n  **OT:** Root cause resolved by correcting the reference to 2.c.\r\n\r\n### Section 5.1\r\n\r\n- [x] *\"Is there a reason to not follow the OIDC pattern of having the tenant or any other path before the .well-known/jwt-vc-issuer string?\"*\r\n  **OT:** Rejected. Won't fix. Intentional design. SD-JWT VC follows RFC 8414 host-bound `.well-known` semantics. OIDC intentionally deviates from the well-known specification; SD-JWT VC does not and uses the same approach as OAuth in [RFC8414](https://www.rfc-editor.org/rfc/rfc8414.html#section-3.1).\r\n\r\n### Section 5.2\r\n\r\n- [x] **Missing word \u201cstatus\u201d in \u201c200 OK HTTP\u201d**  \r\n  **OT:** Fixed in -13.\r\n\r\n- [x] **Error responses should use MUST for HTTP status codes**  \r\n  **DF:** Propose to accept and also to add the same rule for type metadata.\r\n\r\n- [x] **Confusing reference to \u201cJWT\u201d in `kid` recommendation**  \r\n  **OT:** Accepted. Clarified to \u201cIssuer-signed JWT\u201d.\r\n\r\n- [ ] **Issuer value in example does not match `iss` value elsewhere**  \r\n  **TBD**\r\n\r\n### Section 6.2\r\n\r\n- [x] **Unclear whether `extends#integrity` must be listed explicitly**  \r\n  DF: Fixed.\r\n\r\n### Section 6.3\r\n\r\n- [x] **Do we need to reference RFC 5890 / 3987 for URL comparison?**  \r\n  **OT:** Rejected. No need for these references since comparing `vct` values is a string comparison.\r\n\r\n### Section 6.3.1\r\n\r\n- [x] **Typo: \u201cSection Section 7.\u201d**  \r\n  **OT:** Accepted. Fixed.\r\n\r\n### Section 7\r\n\r\n- [x] **Incorrect SRI reference to Section 3.3.5**  \r\n  **OT:** Accepted. We need to correct the reference of the SRI specification.\r\n  **BC:** https://github.com/oauth-wg/oauth-sd-jwt-vc/commit/0f7fce57a53a1ed5244bba14bc4627e2a4d0fa07 should have fixed that\r\n\r\n- [x] **Integrity verification marked MUST while integrity claim is optional**  \r\n  > You say:\r\n  > \"A Consumer of the respective documents MUST verify the integrity ...\r\n  > \r\n  > but the required claim is marked as optional in 3.2.2.2. Found that\r\n  > confusing. Assume that means that if the X#integrity claim is present you\r\n  > must verify the integrity? Maybe change to\r\n  > \r\n  > When the corresponding integrity claim is present, a Consumer of the\r\n  > respective documents MUST verify the integrity of the retrieved document as\r\n  > defined ...\r\n\r\n  DF: This was the originally intended meaning, I'll clarify.\r\n\r\n### Section 8.2\r\n\r\n- [ ] **Display claim treated differently from other metadata**  \r\n  > Why is the display claim treated differently in terms of overriding an\r\n  > extension than any other metadata? any reason to call that out? The general\r\n  > overriding process is mentioned in section 9.5, maybe remove 8.2.\r\n\r\n  DF: This is intentional, I'll add a note to the document.\r\n\r\n### Section 9\r\n\r\n- [ ] **Claims defined without `svg_id` \u2014 unclear use case** \r\n  > why would you have a claim defined without an svg_id? what is the use case?\r\n  > \r\n  > if you are using a simple rendering method, no claims are displayed. Is\r\n  > this future proofing, in case there's another render method added that\r\n  > isn't an svg? in that case, maybe change it to claim_id so a future method\r\n  > could reference the claim for display? then make it required? Or am I\r\n  > missing some other reason for the claims to be defined in the type metadata?\r\n\r\n  DF: I like the idea of renaming this `claim_id`. I don't think we should make it mandatory though. There are cases where you just don't need this.\r\n\r\n### Section 9.1\r\n\r\n- [x] **Why define new JSON path framework instead of JSON Pointer / JSONPath?**  \r\n  > why not use jsonpath or jsonpointer (rfc6901) instead of defining a new\r\n  > JSON path processing framework? I guess I worry whenever I see another path\r\n  > processing algorithm defined.\r\n  > \r\n  > But maybe I'm missing the reason not to use a more general purpose solution?\r\n\r\n  **OT:** Rejected. Intentional design decision and justified in section 9.1.2 already.\r\n\r\n### Section 10.6\r\n\r\n- [x] **Prefix \u201cRecommendation:\u201d is unusual**  \r\n  > Having the prefix *Recommendation:* is kinda weird and not common. maybe\r\n  > strike, not sure it adds anything.\r\n\r\n  **OT:** Accepted. Removed prefix.\r\n\r\n### Section 10.7\r\n\r\n- [x] **Introduces term \u201cpublisher\u201d not used elsewhere**  \r\n  > Introduces the term \"publisher\" which is not used anywhere else in the doc.\r\n  > Maybe use issuer?\r\n\r\n  **OT:** Accepted. However, publisher is different from the issuer. Terminology was added for publisher.\r\n",
       "createdAt": "2026-01-24T18:04:29Z",
-      "updatedAt": "2026-01-24T18:06:23Z",
+      "updatedAt": "2026-01-26T18:36:47Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "nats-13-review",
       "baseRefOid": "aa1db1e60a7609fb8bd2251960538ccc81c14fab",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-dans-comments",
-      "headRefOid": "18f51d85a4897ec0b60888f9e44e7b0b76b7a897",
+      "headRefOid": "a4b6ab1b3d8e29861e69d1a8575445e992cddf81",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
-      "reviews": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Since one explicit aim of the type metadata is versioning and you don't have content type for versioning, does it make sense to put a v1 somewhere in the URI, or whatever else might be used to version the type metadata? (I think Tim mentioned this too.)\r\n\r\nI would have said versioning is more a possibility allowed for by vct'ing rather than an explicit aim of the type metadata. But semantics about semantics... \r\n\r\n@timcappalli  did mention something similar and 01798c9708201a705dd043f3529b17e506b5f666 + 3e4ff2bb3fc77e710f83ba2c788ceaaa49d83269 were done as a result. I am of the opinion that that is enough. \r\n\r\n\r\n",
+          "createdAt": "2026-01-25T13:26:03Z",
+          "updatedAt": "2026-01-26T18:31:44Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Incorrect SRI reference to Section 3.3.5\r\n> OT: Accepted. We need to correct the reference of the SRI specification.\r\n\r\nhttps://github.com/oauth-wg/oauth-sd-jwt-vc/pull/389/changes/0f7fce57a53a1ed5244bba14bc4627e2a4d0fa07 should have fixed that",
+          "createdAt": "2026-01-25T13:28:25Z",
+          "updatedAt": "2026-01-25T13:28:25Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7cx5Lu",
+          "commit": {
+            "abbreviatedOid": "a4b6ab1"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-25T16:51:58Z",
+          "updatedAt": "2026-01-25T16:51:59Z",
+          "comments": [
+            {
+              "originalPosition": 136,
+              "body": "We call it \"respective claim\" above\r\n```suggestion\r\n[@!W3C.SRI]. If an integrity claim is present for a particular claim, the\r\n```",
+              "createdAt": "2026-01-25T16:51:59Z",
+              "updatedAt": "2026-01-25T16:52:00Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7c5IR0",
+          "commit": {
+            "abbreviatedOid": "a4b6ab1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-26T13:07:47Z",
+          "updatedAt": "2026-01-26T13:07:48Z",
+          "comments": [
+            {
+              "originalPosition": 136,
+              "body": "It's only a claim, if it's from the payload region of the JWT.  Otherwise it's just a sparkling JSON property.\n\n",
+              "createdAt": "2026-01-26T13:07:48Z",
+              "updatedAt": "2026-01-26T13:07:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7c5Kqe",
+          "commit": {
+            "abbreviatedOid": "a4b6ab1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-26T13:10:46Z",
+          "updatedAt": "2026-01-26T13:10:47Z",
+          "comments": [
+            {
+              "originalPosition": 284,
+              "body": "per https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/390/changes#r2727542926 \n```suggestion\n* Clarified that if an integrity property is present for a particular claim/property, the Consumer MUST verify the integrity of the retrieved document.\n```",
+              "createdAt": "2026-01-26T13:10:46Z",
+              "updatedAt": "2026-01-26T13:10:47Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7c5RzA",
+          "commit": {
+            "abbreviatedOid": "a4b6ab1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-26T13:18:56Z",
+          "updatedAt": "2026-01-26T13:18:56Z",
+          "comments": [
+            {
+              "originalPosition": 92,
+              "body": "Even thought it's only an example, do we want to suggest or endorse the minor version in vct? With semantic versioning or whatever, a minor would be a not-breaking difference and I don't think you'd then want a whole new vct for that. \n\nI know it was `-0.9` before but `/v2.6` makes it seem even more explicit. Or at least I noticed it more. ",
+              "createdAt": "2026-01-26T13:18:56Z",
+              "updatedAt": "2026-01-26T13:21:12Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7c5ZDJ",
+          "commit": {
+            "abbreviatedOid": "a4b6ab1"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-01-26T13:27:31Z",
+          "updatedAt": "2026-01-26T13:27:31Z",
+          "comments": [
+            {
+              "originalPosition": 92,
+              "body": "And, really, shouldn't it be `/v42` ?",
+              "createdAt": "2026-01-26T13:27:31Z",
+              "updatedAt": "2026-01-26T18:35:40Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
