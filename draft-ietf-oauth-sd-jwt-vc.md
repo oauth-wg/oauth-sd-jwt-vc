@@ -1255,7 +1255,7 @@ This specification defines validation and processing rules for Verifiable Digita
 payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
+ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials with selective disclosure in the mobile document (mdoc)
 format encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
 
 
