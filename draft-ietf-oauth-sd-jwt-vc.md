@@ -1750,7 +1750,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
 * Add line break between the two things in the JSON Web Token Claims Registration section
 * Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes
-* Clarified that if an integrity property is present for a particular claim, the Consumer MUST verify the integrity of the retrieved document.
+* Clarified that if an integrity property is present for a particular claim/property, the Consumer MUST verify the integrity of the retrieved document.
 * Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
 * Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
 
