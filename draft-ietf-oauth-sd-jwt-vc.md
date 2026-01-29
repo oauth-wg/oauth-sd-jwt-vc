@@ -49,9 +49,11 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
 
 ## Issuer-Holder-Verifier Model
 
-In the so-called Issuer-Holder-Verifier Model, Issuers issue so-called Verifiable Digital Credentials to a
+In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
 Holder, who can then present the credentials to Verifiers. Verifiable Digital
 Credentials are cryptographically secured statements about a Subject, typically the Holder.
+
+(#abstract-model) depicts the Issuer-Holder-Verifier model.
 
 ~~~ ascii-art
          +------------+
@@ -80,12 +82,13 @@ Credentials are cryptographically secured statements about a Subject, typically 
            +-------------+ |
              +-------------+
 ~~~
-Figure: Issuer-Holder-Verifier Model
+Figure: Abstract Depiction of the Issuer-Holder-Verifier Model {#abstract-model}
 
-Verifiers can check the authenticity of the data in a Verifiable Digital Credential
-and optionally enforce Key Binding, i.e., ask the Holder to prove that they
-are the intended Holder of the Verifiable Digital Credential, for example, by proving possession of a
-cryptographic key referenced in the credential. This process is further
+Verifiers can check the authenticity of the data in Verifiable Digital Credentials.
+Verifiers can also optionally enforce Key Binding, which requires the Holder to prove
+they are the intended Holder of the Verifiable Digital Credential.
+This proof is typically done by demonstrating possession of a cryptographic
+key referenced in the credential. This process is further
 described in [@!RFC9901].
 
 ## SD-JWT as a Credential Format
@@ -99,9 +102,10 @@ a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
 
-SD-JWT is a superset of JWT as it can also be used when there are no selectively
-disclosable claims and also supports JWS JSON serialization, which is useful for
-long term archiving and multi signatures. However, SD-JWT itself does not define
+SD-JWT is a superset of JWT. It can also be used when there are no selectively
+disclosable claims. Furthermore, SD-JWT supports JWS JSON serialization,
+which is useful for long-term archiving and multi-signatures.
+However, SD-JWT itself does not define
 the claims that must be used within the payload or their semantics.
 
 This specification uses SD-JWT and the well-established JWT content rules and
@@ -168,9 +172,8 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 
 ## Data Format
 
-An SD-JWT VC MUST be encoded using the SD-JWT format defined in Section 4 or
-Section 8 of [@!RFC9901], where support for the
-JWS JSON Serialization is OPTIONAL.
+Issuers MUST encode an SD-JWT VC using the SD-JWT format defined in Section 4
+or Section 8 of [@!RFC9901], where support for the JWS JSON Serialization is OPTIONAL.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
@@ -180,19 +183,20 @@ claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 This section defines JWT header parameters for the SD-JWT component of the
 SD-JWT VC.
 
-The `typ` header parameter of the SD-JWT MUST be present. The `typ` value MUST
+The Issuer MUST include the `typ` header parameter in the SD-JWT. The `typ` value MUST
 use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules defined in this specification. It further
 indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 
-The following is a non-normative example of a decoded SD-JWT header:
+(#decoded-header) is a non-normative example of a decoded SD-JWT header:
 
-```
+```json
 {
   "alg": "ES256",
   "typ": "dc+sd-jwt"
 }
 ```
+Figure: Decoded SD-JWT VC Header {#decoded-header}
 
 Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both `vc+sd-jwt` and `dc+sd-jwt` as the value of the `typ` header for a reasonable transitional period.
 
@@ -208,12 +212,46 @@ case-sensitive string serving as an identifier
 for the type of the SD-JWT VC. The `vct` value MUST be a Collision-Resistant
 Name as defined in Section 2 of [@!RFC7515].
 
-A type is associated with rules defining which claims may or must appear in the
-Unsecured Payload of the SD-JWT VC and whether they may, must, or must not be
-selectively disclosable. This specification does not define any `vct` values; instead
+A type is associated with rules defining which claims are permitted or required
+to appear in the Unsecured Payload of the SD-JWT VC and whether selective disclosure
+is permitted, necessary, or prohibited for those claims.
+
+This specification does not define any `vct` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
 validating credentials beyond what is defined in this specification).
+
+For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules
+that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address`
+must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`,
+and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used.
+The type might also indicate that any of the aforementioned claims can be selectively disclosable.
+The content in (#example-with-vct) shows that `vct` value used to express the example type.
+
+```json
+{
+  "vct": "https://credentials.example.com/identity_credential",
+  "given_name": "Russ",
+  "family_name": "Lasky",
+  "birthdate": "1983-07-29",
+  "address": {
+    "street_address": "285 W Huntington Dr.",
+    "locality": "Arcadia",
+    "region": "CA",
+    "postal_code": "91007"
+  },
+  "email": "sorryfolks@ww.example",
+  "exp": 1777707000,
+  "cnf": {
+    "jwk": {
+      "kty": "EC", "crv": "P-256",
+      "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+      "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+    }
+  }
+}
+```
+Figure: Example Unsecured Payload with `vct` {#example-with-vct}
 
 The `vct` value also effectively identifies the version of the credential type definition,
 as it ties a particular instance of a credential to a specific structure, set of semantics, and rules.
@@ -227,17 +265,6 @@ convey it using a new `vct` value. This allows different versions of a credentia
 type to coexist and helps ensure that participants interpret credentials consistently.
 For example, if such a need came about for the hypothetical type `urn:eudi:pid:aendgard:1`,
 a new version could be defined using a 'vct' of `urn:eudi:pid:aendgard:2`.
-
-The following is a non-normative example of how `vct` is used to express
-a type:
-
-```
-{
-  "vct": "https://credentials.example.com/identity_credential"
-}
-```
-
-For example, a value of `https://credentials.example.com/identity_credential` can be associated with rules that define that at least the registered JWT claims `given_name`, `family_name`, `birthdate`, and `address` must appear in the Unsecured Payload. Additionally, the registered JWT claims `email` and `phone_number`, and the private claims `is_over_18`, `is_over_21`, and `is_over_65` may be used. The type might also indicate that any of the aforementioned claims can be selectively disclosable.
 
 #### Registered JWT Claims {#claims}
 
@@ -275,7 +302,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
+Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as data URIs.
 
 An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
@@ -287,16 +314,18 @@ MUST NOT have any Disclosures.
 
 ## Example {#vc-sd-jwt-example}
 
-The following is a non-normative example of the user data of an unsecured payload of an
+(#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
+Figure: Unsecured Payload {#user-claims1}
 
-The following is a non-normative example of how the unsecured payload of the
-SD-JWT VC above can be used in an SD-JWT where the resulting SD-JWT VC contains
+(#sd-jwt-payload1) below shows how the Unsecured Payload
+above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:
 
 <{{examples/01/sd_jwt_payload.json}}
+Figure: Unsecured Payload {#sd-jwt-payload1}
 
 Note that a `cnf` claim has been added to the SD-JWT payload to express the
 confirmation method of the Key Binding.
@@ -305,9 +334,10 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 
 {{examples/01/disclosures.md}}
 
-The SD-JWT and the Disclosures would then be serialized by the Issuer into the following format for issuance to the Holder:
+The SD-JWT and the Disclosures would then be serialized by the Issuer into the format shown in (#issuance1) below for issuance to the Holder.
 
 <{{examples/01/sd_jwt_issuance.txt}}
+Figure: SD-JWT VC {#issuance1}
 
 Examples of what presentations of SD-JWT VCs might look like are provided in (#presentation-examples).
 
@@ -370,29 +400,32 @@ is OPTIONAL.
 
 ## Key Binding JWT
 
-The KB-JWT MAY include additional claims which, when not understood, MUST
-be ignored by the Verifier.
+The KB-JWT MAY include additional claims which, when not understood, the Verifier MUST ignore.
 
 ## Examples {#presentation-examples}
 
-The following is a non-normative example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
+(#presentation1) below is an example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
 In this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.
 Other claims are not disclosed to the Verifier.
 
 <{{examples/01/sd_jwt_presentation.txt}}
+Figure: Presented SD-JWT+KB {#presentation1}
 
-After validation, the Verifier will have the following processed SD-JWT payload available for further handling:
+After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) below available for further handling.
 
 <{{examples/01/verified_contents.json}}
+Figure: Verified SD-JWT Payload {#verified-payload1}
 
-The following example shows a presentation of a (similar but different) SD-JWT without a
-KB-JWT:
+The example in (#presentation2) below shows a presentation of a (similar but different) SD-JWT without a
+KB-JWT.
 
 <{{examples/02/sd_jwt_presentation.txt}}
+Figure: Presented SD-JWT {#presentation2}
 
-The Verifier will have the following processed SD-JWT payload after validation:
+The Verifier will have the following processed SD-JWT payload shown in (#verified-payload2) after validation.
 
 <{{examples/02/verified_contents.json}}
+Figure: Processed SD-JWT Payload {#verified-payload2}
 
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
@@ -414,25 +447,27 @@ components.
 A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#jwt-vc-issuer-metadata).
 
-The following is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET) below is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
-```
+```http
 GET /.well-known/jwt-vc-issuer HTTP/1.1
 Host: example.com
 ```
+Figure: Example HTTP Request for JWT VC Issuer Metadata {#GET}
 
 If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-The following is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET1234) below is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
 GET /.well-known/jwt-vc-issuer/tenant/1234 HTTP/1.1
 Host: example.com
 ```
+Figure: Example HTTP Request for JWT VC Issuer Metadata {#GET1234}
 
 ## JWT VC Issuer Metadata Response
 
@@ -460,7 +495,7 @@ It is RECOMMENDED that the JWT contains a `kid` JWT header parameter that can
 be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.
 
-The following is a non-normative example of a JWT VC Issuer Metadata configuration
+(#example-metadata-jwks) below is an example of a JWT VC Issuer Metadata configuration
 including `jwks`:
 
 ```
@@ -484,8 +519,9 @@ including `jwks`:
    }
 }
 ```
+Figure: Example Metadata with a JSON Web Key Set {#example-metadata-jwks}
 
-The following is a non-normative example of a JWT VC Issuer Metadata
+(#example-metadata-jwks-uri) below is an example of a JWT VC Issuer Metadata
 configuration including `jwks_uri`:
 
 ```
@@ -494,6 +530,7 @@ configuration including `jwks_uri`:
    "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
 }
 ```
+Figure: Example Metadata with a JSON Web Key Set URI {#example-metadata-jwks-uri}
 
 Additional JWT VC Issuer Metadata configuration parameters MAY also be used.
 
@@ -528,8 +565,9 @@ Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 All examples in this section are non-normative. This section only shows
 excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
-The following is an example of an SD-JWT VC payload, containing a `vct` claim
-with the value `https://betelgeuse.example.com/education_credential`:
+The following in (#example-with-vct-for-type-metadata) is an example
+of an SD-JWT VC payload, containing a `vct` claim
+with the value `https://betelgeuse.example.com/education_credential`.
 
 ```json
 {
@@ -538,11 +576,12 @@ with the value `https://betelgeuse.example.com/education_credential`:
   ...
 }
 ```
+Figure: Example SD-JWT VC Payload with `vct` Claim {#example-with-vct-for-type-metadata}
 
 Type Metadata for the type `https://betelgeuse.example.com/education_credential`
 can be retrieved using various mechanisms as described in
 (#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
-(#retrieval-from-vct-claim) and the following Type Metadata document is
+(#retrieval-from-vct-claim) and the Type Metadata document in (#example-type-metadata-document) is
 retrieved from it:
 
 ```json
@@ -554,7 +593,7 @@ retrieved from it:
   "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
-
+Figure: Example Type Metadata Document {#example-type-metadata-document}
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
@@ -607,7 +646,7 @@ If the claim `vct#integrity` is present in the SD-JWT VC, its value
 
 A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT VC type,
 e.g., if the type is not an HTTPS URL or if the Consumer does not have
-access to the URL. The registry MUST be a trusted registry, i.e., the Consumer MUST trust the registry to provide correct Type Metadata for the type.
+access to the URL. A Consumer needs to trust the registry to provide correct Type Metadata for the type.
 
 The registry MUST provide the Type Metadata in the same format as described in
 (#type-metadata-format).
@@ -763,20 +802,21 @@ least the following characters MUST be escaped:
 - `'` as `&apos;`
 
 If the `svg_id` is not present in the claim metadata, the consuming application
-SHOULD reject not render the SVG template. If the `svg_id` is present in the
+SHOULD reject and not render the SVG template. If the `svg_id` is present in the
 claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
 the value is absent.
 
-The following non-normative example shows a minimal SVG with one placeholder
+The non-normative example below in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
-example in (#ExampleTypeMetadata):
+example in (#ExampleTypeMetadata).
 
 ```svg
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
   <text x="10" y="20">Street address: {{address_street_address}}</text>
 </svg>
 ```
+Figure: Example SVG Template with Placeholder {#example-svg-template}
 
 When rendering the SVG template, the consuming application MUST ensure that
 malicious metadata providers or issuers cannot inject executable code into the SVG
@@ -828,7 +868,7 @@ respective index in an array is to be selected.
 
 ### Example
 
-The following shows a non-normative, reduced example of a credential:
+(#example-credential-for-claim-path) shows a non-normative, reduced example of a credential.
 
 ```json
 {
@@ -852,6 +892,7 @@ The following shows a non-normative, reduced example of a credential:
   "nationalities": ["British", "Betelgeusian"]
 }
 ```
+Figure: Example Credential for Claim Path {#example-credential-for-claim-path}
 
 The following shows examples of `path` values and the respective selected
 claims in the credential above:
@@ -918,6 +959,8 @@ The objects in the array have the following properties:
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
 
+See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim display metadata.
+
 ## Claim Mandatory Metadata {#claim-mandatory-metadata}
 
 The `mandatory` property is a boolean indicating that, if set to `true`, the
@@ -937,6 +980,8 @@ disclosable. The following values are defined:
 
 If omitted, the default value is `allowed`. It is RECOMMENDED to use
 either `always` or `never` to avoid ambiguity.
+
+See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim selective disclosure metadata.
 
 ## Extending Claim Metadata {#claim-metadata-extends}
 
@@ -960,7 +1005,7 @@ optional in the extended type to `true`, but it MUST NOT change a claim that is
 
 ### Example for Extending Type Metadata
 
-Suppose we have a base type metadata document:
+The base type metadata document for this example is shown in (#example-base-type-metadata).
 
 ```json
 {
@@ -977,8 +1022,9 @@ Suppose we have a base type metadata document:
   ]
 }
 ```
+Figure: Example Base Type Metadata Document {#example-base-type-metadata}
 
-And a child type metadata document that extends the base type:
+The extending type metadata document is shown in (#example-child-type-metadata).
 
 ```json
 {
@@ -996,8 +1042,9 @@ And a child type metadata document that extends the base type:
   ]
 }
 ```
+Figure: Example Child Type Metadata Document {#example-child-type-metadata}
 
-In this example, the child type inherits the `name` claim metadata from the base type, but overrides the `address.city` claim metadata with its own definition. It also adds a new claim metadata for `nationalities`. The final effective claim metadata for the child type is:
+In this example, the child type inherits the `name` claim metadata from the base type, but overrides the `address.city` claim metadata with its own definition. It also adds a new claim metadata for `nationalities`. The final effective claim metadata for the child type is shown here in (#effective-claim-metadata-child-type):
 
 ```json
 {
@@ -1017,6 +1064,8 @@ In this example, the child type inherits the `name` claim metadata from the base
   ]
 }
 ```
+Figure: Effective Claim Metadata for Child Type {#effective-claim-metadata-child-type}
+
 
 # Security Considerations {#security-considerations}
 
@@ -1052,7 +1101,7 @@ When defining ecosystem-specific rules for resolution and verification of the pu
 as outlined in (#ism), it is critical that those rules maintain the integrity of the
 relationship between the `iss` value of the SD-JWT, if present, and the public keys of the Issuer.
 
-It MUST be ensured that for any given `iss` value, an attacker cannot influence
+A Verifier MUST ensure that for any given `iss` value, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
 the Verifier use a verification process not intended by the Issuer, allowing the
 attacker to potentially manipulate the verification result to their advantage.
@@ -1108,7 +1157,7 @@ confer any implicit authorization to issue credentials of that type or its exten
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
 **Recommendation:**
-Verifiers and wallets SHOULD implement explicit checks for issuer authorization and SHOULD NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
+Verifiers and wallets MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
 ## Trust in Type Metadata
 
@@ -1169,16 +1218,6 @@ in the Issuer identifier.
 
 Another related concern arises from the use of confirmation methods in the cnf claim that involve retrieving key material from a remote source, especially if that source is controlled by the issuer. This includes, but is not limited to, the use of the x5u parameter in JWKs ([@!RFC7517, section 4.6]), the jku parameter ([@!RFC7800, section 3.5]), and cases where a URL is used in the kid parameter ([@!RFC7800, section 3.4]). Future confirmation methods may also introduce remote retrieval mechanisms. Issuers are advised not to issue SD-JWT VCs with such cnf methods, and Verifiers and Holders are advised not to follow or resolve remote references for key material in the cnf claim. Only confirmation methods that do not require remote retrieval of key material SHOULD be supported.
 
-
-# Relationships to Other Documents
-
-This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
-payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
-that define their own verifiable credential formats; for example, W3C Verifiable
-Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE.
-
 ## Privacy-Preserving Retrieval of Type Metadata {#privacy-preserving-retrieval-of-type-metadata}
 
 In (#retrieving-type-metadata), various methods for distributing and retrieving
@@ -1189,6 +1228,15 @@ to track the usage of a credential by observing requests to the Type Metadata UR
 Consumers SHOULD prefer methods for retrieving Type Metadata that do not
 leak information about the usage of a credential to third parties. The
 recommendations in (#robust-retrieval) apply.
+
+# Relationships to Other Documents
+
+This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
+payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
+that define their own verifiable credential formats; for example, W3C Verifiable
+Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
+ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
+format encoded as CBOR and secured using COSE.
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
@@ -1207,7 +1255,7 @@ recommendations in (#robust-retrieval) apply.
   </front>
 </reference>
 
-<reference anchor="W3C.SRI" target="https://www.w3.org/TR/SRI/">
+<reference anchor="W3C.SRI" target="https://www.w3.org/TR/2016/REC-SRI-20160623/">
     <front>
         <author initials="D." surname="Akhawe" fullname="Devdatta Akhawe">
             <organization>
@@ -1319,7 +1367,7 @@ recommendations in (#robust-retrieval) apply.
 - Claim Description: Verifiable digital Credential Type identifier
 - Change Controller: IETF
 - Specification Document(s): [[ (#type-claim) of this specification ]]
-
+<br/>
 - Claim Name: "vct#integrity"
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
@@ -1372,7 +1420,7 @@ nor the selection of selectively disclosable claims are normative.
 
 Line breaks have been added for readability.
 
-## Example 1: Person Identification Data (PID) Credential {#ExamplePID}
+## Example Person Identification Data (PID) Credential {#ExamplePID}
 
 This example shows how the artifacts defined in this specification could be used
 to represent the identity information of a person from a fictional European
@@ -1383,37 +1431,43 @@ that specification.
 Key Binding is applied
 using the Holder's public key passed in a `cnf` claim in the SD-JWT.
 
-The following data about the citizen comprises the input JWT Claims Set used by the Issuer:
+The information in (#citizen-info) about the citizen comprises the input data used by the Issuer:
 
 <{{examples/03-pid/user_claims.json}}
+Figure: Citizen's Information {#citizen-info}
 
-The following is the issued SD-JWT:
+The following in (#issued-sd-jwt3) is the issued SD-JWT:
 
 <{{examples/03-pid/sd_jwt_issuance.txt}}
+Figure: Issued SD-JWT {#issued-sd-jwt3}
 
-This is the payload of that SD-JWT:
+(#sd-jwt-payload3) is the payload of that SD-JWT:
 
 <{{examples/03-pid/sd_jwt_payload.json}}
+Figure: SD-JWT Payload {#sd-jwt-payload3}
 
 The digests in the SD-JWT payload reference the following Disclosures:
 
 {{examples/03-pid/disclosures.md}}
 
-This shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:
+(#presentation3) shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:
 
 <{{examples/03-pid/sd_jwt_presentation.txt}}
+Figure: Presented SD-JWT+KB {#presentation3}
 
-The following is the payload of a corresponding Key Binding JWT:
+(#kb-jwt-payload3) is the payload of a corresponding Key Binding JWT:
 
 <{{examples/03-pid/kb_jwt_payload.json}}
+Figure: Key Binding JWT Payload {#kb-jwt-payload3}
 
-After validation, the Verifier will have the following processed SD-JWT payload available for further handling:
+After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload3) below available for further handling:
 
 <{{examples/03-pid/verified_contents.json}}
+Figure: Processed SD-JWT Payload {#verified-payload3}
 
-## Example 2: Type Metadata {#ExampleTypeMetadata}
+## Example Type Metadata {#ExampleTypeMetadata}
 
-The following example for Type Metadata assumes an SD-JWT VC payload structured as follows:
+The following example for Type Metadata assumes an SD-JWT VC payload structured as follows in (#example-sd-jwt-vc-payload-for-type-metadata):
 
 ```json
 {
@@ -1442,8 +1496,9 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
   ]
 }
 ```
+Figure: SD-JWT VC Payload {#example-sd-jwt-vc-payload-for-type-metadata}
 
-The Type Metadata for this SD-JWT VC could be defined as follows:
+The Type Metadata for this SD-JWT VC could be defined as follows in (#example-type-metadata):
 
 ```json
 {
@@ -1615,6 +1670,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows:
   ]
 }
 ```
+Figure: Example Type Metadata Document {#example-type-metadata}
 
 Note that in this example, there are four definitions affecting the `degrees` claim:
 
@@ -1643,6 +1699,7 @@ Leif Johansson,
 Michael B. Jones,
 Mike Prorock,
 Mirko Mollik,
+Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
@@ -1664,6 +1721,12 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901
 * More consistent use of `application/json` content type and 200 status code when retrieving metadata
 * Editorial improvements based on review feedback of -13
+* Expand the example showing the vct claim
+* Number and label the examples/figures
+* Fix reference to Subresource Integrity document to point to W3C Recommendation version
+* Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs
+* Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
+* Add line break between the two things in the JSON Web Token Claims Registration section
 
 -13
 
