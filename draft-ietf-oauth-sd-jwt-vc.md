@@ -1741,6 +1741,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
 * Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
 * Merged section section 4 into section 3
+* Replaced the term wallet with holder for consistency reasons
 
 -13
 
