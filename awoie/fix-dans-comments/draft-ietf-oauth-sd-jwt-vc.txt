@@ -231,7 +231,7 @@ Table of Contents
 
    Consumer:  An application using the Type Metadata specified in
       Section 5 is called a Consumer.  This typically includes Issuers,
-      Verifiers, and Wallets.
+      Verifiers, and Holders.
    Publisher:  An entity that publishes Type Metadata or other auxiliary
       documents referenced by an SD-JWT VC (for example via a vct URI),
       but that is not necessarily the Issuer of the SD-JWT VC.  A
@@ -628,9 +628,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E86sK
-   vG5xQJw4gemEdXQRweZter7PTEFEOZ7P7qxmkLvQDZS3fHiTa8BPwJ0W7yFOho-UZTkx
-   V9Y2J-pANXNBg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CNOdw
+   Xt4lhzvsQVTYxuxUr7TfBveGCSjiF7xxh9RX8rRSHWqdVmkNnU-c4kqNvtNxqvfHw7-F
+   _egrWYfECACJQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -666,17 +666,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E86sK
-   vG5xQJw4gemEdXQRweZter7PTEFEOZ7P7qxmkLvQDZS3fHiTa8BPwJ0W7yFOho-UZTkx
-   V9Y2J-pANXNBg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CNOdw
+   Xt4lhzvsQVTYxuxUr7TfBveGCSjiF7xxh9RX8rRSHWqdVmkNnU-c4kqNvtNxqvfHw7-F
+   _egrWYfECACJQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjUyNz
-   AsICJzZF9oYXNoIjogIjFHbnJ3VlZsUmlNaTN5S3ZVbXhIRHd3WkcxSFBLRVB4bzYyZ3
-   VBUEs4ME0ifQ.ESqVugKH4NHn4pCF6cBvT_nAdzWsE4HAKIebMF27Pbk96wnwbsBuUPh
-   JcuXQsaUSbcOc83PUE24PsSylqUMuBw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjU1NT
+   QsICJzZF9oYXNoIjogInZUU2FfWFNDQWl4LTdPUFZJbVFWN0FKSFdPY3N1VEVBSFY2cU
+   9fQS1RMnMifQ.4WrR4OvCy185wgAJE1U6xvSoOmTMBLCEjUVHRDO3zvsg83czRtthlf6
+   t37XyKREr_Q1PiQdBzuJUQch45UUKjQ
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -722,8 +722,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.VY6T2tFyvfQimQ1AHhR-ckw1zbOky_y52oIsX1DqrH8dBl
-   ApMln-wSSmkG3yCG8HpbVf-kgfb8rOQJ-HCMudFA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.Vw_eXNPDIzYML9q9Nw5J_yfCDKdkA42mmdXTl5HhCuWn6y
+   L8mu7HbI9qmMZhRKJZN0Ed3hq_GlW9k9Hj9qoosw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -953,7 +953,7 @@ Table of Contents
       example, a Verifier can check whether a credential contains all
       required claims and whether the claims are selectively
       disclosable.
-   *  Wallets can use the metadata to display the credential in a way
+   *  Holders can use the metadata to display the credential in a way
       that is consistent with the intent of the provider of the Type
       Metadata.
 
@@ -1625,7 +1625,7 @@ Table of Contents
    implicit authorization to issue credentials of that type or its
    extensions.  In particular:
 
-   *  *Issuer Authorization*: Verifiers and wallets MUST NOT assume that
+   *  *Issuer Authorization*: Verifiers and Holders MUST NOT assume that
       any issuer who issues a credential extending a known type is
       authorized to do so.  The mere presence of an extension or
       reference to a recognized type (e.g., a national type urn:de.bla
@@ -1641,7 +1641,7 @@ Table of Contents
       identity, trust status, and any relevant accreditation or registry
       before accepting a credential.
 
-   Verifiers and wallets MUST implement explicit checks for issuer
+   Verifiers and Holders MUST implement explicit checks for issuer
    authorization and MUST NOT rely on type extension as a proxy for
    trust or legitimacy.  Credential acceptance decisions MUST be based
    on both the credential type and the verified authority of the issuer.
@@ -2030,8 +2030,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.1bjJKn2_-Bttlw7q9zAWQ0qx5vsU_A03SBGy_P611qg
-   WfkfzZ-7hjFvD491cLCGva04dHQSscV_Z5IrUtb7Bfg~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.BQ5j0LpZFcapPD_Gs7q0coYgAbF6o2SxeZphJJDS5S0
+   iVmrKpHu2kUZMiNSKBba4bdjjSBao3PnlyJlCnHH15g~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2413,8 +2413,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.1bjJKn2_-Bttlw7q9zAWQ0qx5vsU_A03SBGy_P611qg
-   WfkfzZ-7hjFvD491cLCGva04dHQSscV_Z5IrUtb7Bfg~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.BQ5j0LpZFcapPD_Gs7q0coYgAbF6o2SxeZphJJDS5S0
+   iVmrKpHu2kUZMiNSKBba4bdjjSBao3PnlyJlCnHH15g~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2425,9 +2425,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjUyNzAsICJzZF9oYXNoIjogIllRLXJwZ0wtO
-   V9zMEEyQmVRM1phUWpBY2M4ZjNjTzhxT3A4bzJzalBiU2MifQ.YwKj15c8s8LZUxp4tx
-   p2pQJQwDtbZ56wsbv0orLvogV4DfE9w1kbtP82b4tPyNnREIslkT34abff1x0UbZ4JbQ
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjU1NTQsICJzZF9oYXNoIjogImFKVlRtOHdMd
+   XJZMnBybnVQQlJ2OHNUV1QxVWdPQk42eVQ5WXo0MTUzOEUifQ.cVD4grBW-oqTuU3Et_
+   PTbfLPBtZL6SgbfbEbdqT5Q6ioskgllocpoZ0F45gR88icongpKcDIGOzXSePvOy4kaQ
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2436,8 +2436,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1770125270,
-     "sd_hash": "YQ-rpgL-9_s0A2BeQ3ZaQjAcc8f3cO8qOp8o2sjPbSc"
+     "iat": 1770125554,
+     "sd_hash": "aJVTm8wLurY2prnuPBRv8sTWT1UgOBN6yT9Yz41538E"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2738,6 +2738,7 @@ Appendix D.  Document History
       correctly reflect the intended behavior.
    *  Added a note explaining the difference in overriding rules between
       claim metadata and display metadata when extending types.
+   *  Merged section section 4 into section 3
 
    -13
 
