@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 3 August 2026                                     Authlete Inc.
+Expires: 7 August 2026                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         30 January 2026
+                                                         3 February 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 August 2026.
+   This Internet-Draft will expire on 7 August 2026.
 
 Copyright Notice
 
@@ -77,59 +77,57 @@ Table of Contents
        3.2.1.  JOSE Header
        3.2.2.  JWT Claims Set
      3.3.  Example
+       3.3.1.  Issuance
+       3.3.2.  Presentation
      3.4.  Verification and Processing
      3.5.  Issuer Signature Mechanisms
-   4.  Presenting Verifiable Digital Credentials
-     4.1.  Data Format
-     4.2.  Key Binding JWT
-     4.3.  Examples
-   5.  JWT VC Issuer Metadata
-     5.1.  JWT VC Issuer Metadata Request
-     5.2.  JWT VC Issuer Metadata Response
-     5.3.  JWT VC Issuer Metadata Validation
-   6.  SD-JWT VC Type Metadata
-     6.1.  Type Metadata Example
-     6.2.  Type Metadata Format
-     6.3.  Retrieving Type Metadata
-       6.3.1.  From a URL in the vct Claim
-       6.3.2.  From a Registry
-       6.3.3.  Using a Defined Retrieval Method
-       6.3.4.  From a Local Cache
-     6.4.  Extending Type Metadata
-   7.  Document Integrity
-   8.  Display Metadata
-     8.1.  Rendering Metadata
-       8.1.1.  Rendering Method "simple"
-       8.1.2.  Rendering Method "svg_templates"
-     8.2.  Extending Display Metadata
-   9.  Claim Metadata
-     9.1.  Claim Path
-       9.1.1.  Example
-       9.1.2.  Processing of path
-     9.2.  Claim Display Metadata
-     9.3.  Claim Mandatory Metadata
-     9.4.  Claim Selective Disclosure Metadata
-     9.5.  Extending Claim Metadata
-       9.5.1.  Limitations for sd and mandatory
-       9.5.2.  Example for Extending Type Metadata
-   10. Security Considerations
-     10.1.  Server-Side Request Forgery
-     10.2.  Ecosystem-specific Public Key Verification Methods
-     10.3.  Circular "extends" Dependencies of Types
-     10.4.  Robust Retrieval of Type Metadata
-     10.5.  Risks Associated with Textual Information
-     10.6.  Credential Type Extension and Issuer Authorization
-     10.7.  Trust in Type Metadata
-     10.8.  Use of Data URIs for Claim Types
-   11. Privacy Considerations
-     11.1.  Unlinkability
-     11.2.  Verifiable Digital Credential Type Identifier
-     11.3.  Issuer Phone-Home
-     11.4.  Privacy-Preserving Retrieval of Type Metadata
-   12. Relationships to Other Documents
-   13. References
-     13.1.  Normative References
-     13.2.  Informative References
+   4.  JWT VC Issuer Metadata
+     4.1.  JWT VC Issuer Metadata Request
+     4.2.  JWT VC Issuer Metadata Response
+     4.3.  JWT VC Issuer Metadata Validation
+   5.  SD-JWT VC Type Metadata
+     5.1.  Type Metadata Example
+     5.2.  Type Metadata Format
+     5.3.  Retrieving Type Metadata
+       5.3.1.  From a URL in the vct Claim
+       5.3.2.  From a Registry
+       5.3.3.  Using a Defined Retrieval Method
+       5.3.4.  From a Local Cache
+     5.4.  Extending Type Metadata
+   6.  Document Integrity
+   7.  Display Metadata
+     7.1.  Rendering Metadata
+       7.1.1.  Rendering Method "simple"
+       7.1.2.  Rendering Method "svg_templates"
+     7.2.  Extending Display Metadata
+   8.  Claim Metadata
+     8.1.  Claim Path
+       8.1.1.  Example
+       8.1.2.  Processing of path
+     8.2.  Claim Display Metadata
+     8.3.  Claim Mandatory Metadata
+     8.4.  Claim Selective Disclosure Metadata
+     8.5.  Extending Claim Metadata
+       8.5.1.  Limitations for sd and mandatory
+       8.5.2.  Example for Extending Type Metadata
+   9.  Security Considerations
+     9.1.  Server-Side Request Forgery
+     9.2.  Ecosystem-specific Public Key Verification Methods
+     9.3.  Circular "extends" Dependencies of Types
+     9.4.  Robust Retrieval of Type Metadata
+     9.5.  Risks Associated with Textual Information
+     9.6.  Credential Type Extension and Issuer Authorization
+     9.7.  Trust in Type Metadata
+     9.8.  Use of Data URIs for Claim Types
+   10. Privacy Considerations
+     10.1.  Unlinkability
+     10.2.  Verifiable Digital Credential Type Identifier
+     10.3.  Issuer Phone-Home
+     10.4.  Privacy-Preserving Retrieval of Type Metadata
+   11. Relationships to Other Documents
+   12. References
+     12.1.  Normative References
+     12.2.  Informative References
    Appendix A.  IANA Considerations
      A.1.  JSON Web Token Claims Registration
      A.2.  Media Types Registry
@@ -232,7 +230,7 @@ Table of Contents
    Binding (SD-JWT+KB)" defined by [RFC9901].
 
    Consumer:  An application using the Type Metadata specified in
-      Section 6 is called a Consumer.  This typically includes Issuers,
+      Section 5 is called a Consumer.  This typically includes Issuers,
       Verifiers, and Wallets.
    Publisher:  An entity that publishes Type Metadata or other auxiliary
       documents referenced by an SD-JWT VC (for example via a vct URI),
@@ -289,6 +287,15 @@ Table of Contents
    Note that in some cases, an SD-JWT VC MAY have no selectively
    disclosable claims, and therefore the encoded SD-JWT will not contain
    any Disclosures.
+
+   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an
+   SD-JWT+KB defined in Section 4 or Section 8 of [RFC9901].  By
+   default, the format defined in Section 4 of [RFC9901] is used,
+   whereas support for the JWS JSON Serialization in Section 8 of
+   [RFC9901] is OPTIONAL.
+
+   The KB-JWT MAY include additional claims which, when not understood,
+   the Verifier MUST ignore.
 
 3.2.1.  JOSE Header
 
@@ -421,7 +428,7 @@ Table of Contents
       e.g., https://credentials.example.com/identity_credential, as
       defined in Section 3.2.2.1.
    *  vct#integrity: OPTIONAL.  The hash of the Type Metadata document
-      to provide integrity as defined in Section 7.
+      to provide integrity as defined in Section 6.
    *  status: OPTIONAL.  The information on how to read the status of
       the Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
       more information.  When the status claim is present and using the
@@ -461,6 +468,8 @@ Table of Contents
    It also MUST NOT have any Disclosures.
 
 3.3.  Example
+
+3.3.1.  Issuance
 
    Figure 4 is a non-normative example of the user data of an Unsecured
    Payload of an SD-JWT VC.
@@ -619,9 +628,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CDawP
-   ay5feateQoFJ1E79FCwbkyntaCTUc22YLcmtpOTl3nfcw5lsiNWwGT18Vytw7WsTTNyx
-   PN4A1JAs_W33w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E86sK
+   vG5xQJw4gemEdXQRweZter7PTEFEOZ7P7qxmkLvQDZS3fHiTa8BPwJ0W7yFOho-UZTkx
+   V9Y2J-pANXNBg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -635,8 +644,111 @@ Table of Contents
 
                             Figure 6: SD-JWT VC
 
-   Examples of what presentations of SD-JWT VCs might look like are
-   provided in Section 4.3.
+3.3.2.  Presentation
+
+   Figure 7 below is an example of a presentation of the SD-JWT shown in
+   Section 3.3 including a KB-JWT.  In this presentation, the Holder
+   provides only the Disclosures for the address and is_over_65 claims.
+   Other claims are not disclosed to the Verifier.
+
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
+   Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
+   VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
+   YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
+   ZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO
+   NndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQ
+   WWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJ
+   IiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAi
+   amRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5
+   eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi
+   aHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4
+   cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
+   LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
+   bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
+   QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.E86sK
+   vG5xQJw4gemEdXQRweZter7PTEFEOZ7P7qxmkLvQDZS3fHiTa8BPwJ0W7yFOho-UZTkx
+   V9Y2J-pANXNBg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
+   ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
+   icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
+   yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjUyNz
+   AsICJzZF9oYXNoIjogIjFHbnJ3VlZsUmlNaTN5S3ZVbXhIRHd3WkcxSFBLRVB4bzYyZ3
+   VBUEs4ME0ifQ.ESqVugKH4NHn4pCF6cBvT_nAdzWsE4HAKIebMF27Pbk96wnwbsBuUPh
+   JcuXQsaUSbcOc83PUE24PsSylqUMuBw
+
+                       Figure 7: Presented SD-JWT+KB
+
+   After validation, the Verifier will have the processed SD-JWT payload
+   in Figure 8 below available for further handling.
+
+   {
+     "iss": "https://example.com/issuer",
+     "iat": 1683000000,
+     "exp": 1883000000,
+     "vct": "https://credentials.example.com/identity_credential",
+     "cnf": {
+       "jwk": {
+         "kty": "EC",
+         "crv": "P-256",
+         "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
+         "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
+       }
+     },
+     "is_over_65": true,
+     "address": {
+       "street_address": "123 Main St",
+       "locality": "Anytown",
+       "region": "Anystate",
+       "country": "US"
+     }
+   }
+
+                     Figure 8: Verified SD-JWT Payload
+
+   The example in Figure 9 below shows a presentation of a (similar but
+   different) SD-JWT without a KB-JWT.
+
+   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
+   ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
+   wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
+   idlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs
+   2WmZieXBoRnZ6NUZnbldhLXNONndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmV
+   adTZKdDY5dTVxZWhabzdGN0VQWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEF
+   iUm9jMkpHbEFVQTJCQTRvN2NJIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc
+   1cnREc3JaemZVYW9tTG8iLCAiamRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUN
+   laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
+   5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
+   0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
+   jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
+   hbGciOiAic2hhLTI1NiJ9.VY6T2tFyvfQimQ1AHhR-ckw1zbOky_y52oIsX1DqrH8dBl
+   ApMln-wSSmkG3yCG8HpbVf-kgfb8rOQJ-HCMudFA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
+   IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
+   Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
+   OiAiVVMifV0~
+
+                         Figure 9: Presented SD-JWT
+
+   The Verifier will have the following processed SD-JWT payload shown
+   in Figure 10 after validation.
+
+   {
+     "iss": "https://example.com/issuer",
+     "iat": 1683000000,
+     "exp": 1883000000,
+     "vct": "https://credentials.example.com/identity_credential",
+     "is_over_65": true,
+     "address": {
+       "street_address": "123 Main St",
+       "locality": "Anytown",
+       "region": "Anystate",
+       "country": "US"
+     }
+   }
+
+                    Figure 10: Processed SD-JWT Payload
 
 3.4.  Verification and Processing
 
@@ -683,7 +795,7 @@ Table of Contents
       public key using web-based resolution.  When the value of the iss
       claim of the Issuer-signed JWT is an HTTPS URI, the recipient
       obtains the public key using the keys from JWT VC Issuer Metadata
-      as defined in Section 5.
+      as defined in Section 4.
 
    *  X.509 Certificates: A mechanism to retrieve the Issuer's public
       key using the X.509 certificate chain in the SD-JWT header.  When
@@ -698,137 +810,14 @@ Table of Contents
    methods, separate specifications or ecosystem regulations may define
    additional Issuer Signature Mechanisms may complement or override the
    mechanisms defined above; however, the specifics of such mechanisms
-   are out of scope for this specification.  See Section 10.2 for
-   related security considerations.
+   are out of scope for this specification.  See Section 9.2 for related
+   security considerations.
 
    If a recipient cannot validate that the public verification key
    corresponds the Issuer of the Issuer-signed JWT using a permitted
    Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
 
-4.  Presenting Verifiable Digital Credentials
-
-   This section defines encoding, validation and processing rules for
-   presentations of SD-JWT VCs.
-
-4.1.  Data Format
-
-   A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an
-   SD-JWT+KB.  By default, the format defined in Section 4 of [RFC9901]
-   is used, whereas support for the JWS JSON Serialization in Section 8
-   of [RFC9901] is OPTIONAL.
-
-4.2.  Key Binding JWT
-
-   The KB-JWT MAY include additional claims which, when not understood,
-   the Verifier MUST ignore.
-
-4.3.  Examples
-
-   Figure 7 below is an example of a presentation of the SD-JWT shown in
-   Section 3.3 including a KB-JWT.  In this presentation, the Holder
-   provides only the Disclosures for the address and is_over_65 claims.
-   Other claims are not disclosed to the Verifier.
-
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
-   Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
-   VkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUMwa3k4bVQwcEpyUGlvV1RxMF9k
-   YXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUpidlVIbEVfVkNldUM5dVJFTE9p
-   ZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs2WmZieXBoRnZ6NUZnbldhLXNO
-   NndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmVadTZKdDY5dTVxZWhabzdGN0VQ
-   WWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEFiUm9jMkpHbEFVQTJCQTRvN2NJ
-   IiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc1cnREc3JaemZVYW9tTG8iLCAi
-   amRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUNlaVVRd1k5UXF4SSIsICJqc3U5
-   eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF5UXdMVUs0Il0sICJpc3MiOiAi
-   aHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF0IjogMTY4MzAwMDAwMCwgImV4
-   cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
-   LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
-   bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
-   QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CDawP
-   ay5feateQoFJ1E79FCwbkyntaCTUc22YLcmtpOTl3nfcw5lsiNWwGT18Vytw7WsTTNyx
-   PN4A1JAs_W33w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
-   B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
-   ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
-   icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
-   yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3Njk3MzQ5MD
-   YsICJzZF9oYXNoIjogImd3UVA1bWluMzJzbFY1eWdoelJtSmFLNDk5ZHYzLU85Q1ZfZF
-   ZvUU9ZYlkifQ.I_Z-Nxl5UPNs7fv0WjojKsyFs5xskei-sfD5FpeodmUBvFSqg4juOXH
-   s8D_EF-l9Hpv7NiOzfzqGaddm4wsqYg
-
-                       Figure 7: Presented SD-JWT+KB
-
-   After validation, the Verifier will have the processed SD-JWT payload
-   in Figure 8 below available for further handling.
-
-   {
-     "iss": "https://example.com/issuer",
-     "iat": 1683000000,
-     "exp": 1883000000,
-     "vct": "https://credentials.example.com/identity_credential",
-     "cnf": {
-       "jwk": {
-         "kty": "EC",
-         "crv": "P-256",
-         "x": "TCAER19Zvu3OHF4j4W4vfSVoHIP1ILilDls7vCeGemc",
-         "y": "ZxjiWWbZMQGHVWKVQ4hbSIirsVfuecCE6t4jT9F2HZQ"
-       }
-     },
-     "is_over_65": true,
-     "address": {
-       "street_address": "123 Main St",
-       "locality": "Anytown",
-       "region": "Anystate",
-       "country": "US"
-     }
-   }
-
-                     Figure 8: Verified SD-JWT Payload
-
-   The example in Figure 9 below shows a presentation of a (similar but
-   different) SD-JWT without a KB-JWT.
-
-   eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
-   ySk1PbHlUV00wc2pwdV9wZE9CVkJRMk0xeTNLaHBINTE1blhrcFkiLCAiMnJzakdiYUM
-   wa3k4bVQwcEpyUGlvV1RxMF9kYXcxc1g3NnBvVWxnQ3diSSIsICJFa084ZGhXMGRIRUp
-   idlVIbEVfVkNldUM5dVJFTE9pZUxaaGg3WGJVVHRBIiwgIklsRHpJS2VpWmREd3BxcEs
-   2WmZieXBoRnZ6NUZnbldhLXNONndxUVhDaXciLCAiSnpZakg0c3ZsaUgwUjNQeUVNZmV
-   adTZKdDY5dTVxZWhabzdGN0VQWWxTRSIsICJQb3JGYnBLdVZ1Nnh5bUphZ3ZrRnNGWEF
-   iUm9jMkpHbEFVQTJCQTRvN2NJIiwgIlRHZjRvTGJnd2Q1SlFhSHlLVlFaVTlVZEdFMHc
-   1cnREc3JaemZVYW9tTG8iLCAiamRyVEU4WWNiWTRFaWZ1Z2loaUFlX0JQZWt4SlFaSUN
-   laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
-   5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
-   0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
-   jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.pG1PSySNRL0uECahDZ6zy4qq5KndhYbxU_haqbe2Y2fIaz
-   1f5kGI9xiIpg1s-94vDfZbT42VjA6fMo_kS5QDlg~WyJsa2x4RjVqTVlsR1RQVW92TU5
-   JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
-   IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
-   Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
-   OiAiVVMifV0~
-
-                         Figure 9: Presented SD-JWT
-
-   The Verifier will have the following processed SD-JWT payload shown
-   in Figure 10 after validation.
-
-   {
-     "iss": "https://example.com/issuer",
-     "iat": 1683000000,
-     "exp": 1883000000,
-     "vct": "https://credentials.example.com/identity_credential",
-     "is_over_65": true,
-     "address": {
-       "street_address": "123 Main St",
-       "locality": "Anytown",
-       "region": "Anystate",
-       "country": "US"
-     }
-   }
-
-                    Figure 10: Processed SD-JWT Payload
-
-5.  JWT VC Issuer Metadata
+4.  JWT VC Issuer Metadata
 
    This specification defines the JWT VC Issuer Metadata to retrieve the
    JWT VC Issuer Metadata configuration of the Issuer of the SD-JWT VC.
@@ -843,10 +832,10 @@ Table of Contents
    that contains scheme, host and, optionally, port number and path
    components, but no query or fragment components.
 
-5.1.  JWT VC Issuer Metadata Request
+4.1.  JWT VC Issuer Metadata Request
 
    A JWT VC Issuer Metadata configuration MUST be queried using an HTTP
-   GET request at the path defined in Section 5.
+   GET request at the path defined in Section 4.
 
    Figure 11 below is a non-normative example of an HTTP request for the
    JWT VC Issuer Metadata configuration when iss is set to
@@ -870,7 +859,7 @@ Table of Contents
 
          Figure 12: Example HTTP Request for JWT VC Issuer Metadata
 
-5.2.  JWT VC Issuer Metadata Response
+4.2.  JWT VC Issuer Metadata Response
 
    A successful response MUST use an HTTP 200 status code and return the
    JWT VC Issuer Metadata configuration using the application/json
@@ -937,13 +926,13 @@ Table of Contents
    Additional JWT VC Issuer Metadata configuration parameters MAY also
    be used.
 
-5.3.  JWT VC Issuer Metadata Validation
+4.3.  JWT VC Issuer Metadata Validation
 
    The issuer value returned MUST be identical to the iss value of the
    Issuer-signed JWT.  If these values are not identical, the data
    contained in the response MUST NOT be used.
 
-6.  SD-JWT VC Type Metadata
+5.  SD-JWT VC Type Metadata
 
    An SD-JWT VC type, i.e., the vct value, is associated with Type
    Metadata defining, for example, information about the type and how
@@ -968,9 +957,9 @@ Table of Contents
       that is consistent with the intent of the provider of the Type
       Metadata.
 
-   Type Metadata can be retrieved as described in Section 6.3.
+   Type Metadata can be retrieved as described in Section 5.3.
 
-6.1.  Type Metadata Example
+5.1.  Type Metadata Example
 
    All examples in this section are non-normative.  This section only
    shows excerpts, the full examples can be found in Appendix B.2.
@@ -989,8 +978,8 @@ Table of Contents
 
    Type Metadata for the type
    https://betelgeuse.example.com/education_credential/v1 can be
-   retrieved using various mechanisms as described in Section 6.3.  For
-   this example, the vct value is a URL as defined in Section 6.3.1 and
+   retrieved using various mechanisms as described in Section 5.3.  For
+   this example, the vct value is a URL as defined in Section 5.3.1 and
    the Type Metadata document in Figure 16 is retrieved from it:
 
    {
@@ -1006,9 +995,9 @@ Table of Contents
    Note: The hash of the Type Metadata document shown in the second
    example must be equal to the one in the vct#integrity claim in the
    SD-JWT VC payload, 1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00= (see
-   Section 7 for details).
+   Section 6 for details).
 
-6.2.  Type Metadata Format
+5.2.  Type Metadata Format
 
    The Type Metadata document MUST be a JSON object.  The following
    properties are defined:
@@ -1020,14 +1009,14 @@ Table of Contents
    *  description: OPTIONAL.  A human-readable description for the type,
       intended for developers reading the JSON document.
    *  extends: OPTIONAL.  A URI of another type that this type extends,
-      as described in Section 6.4.
+      as described in Section 5.4.
    *  display: An array of objects containing display information for
-      the type, as described in Section 8.  This property is OPTIONAL.
+      the type, as described in Section 7.  This property is OPTIONAL.
    *  claims: An array of objects containing claim information for the
-      type, as described in Section 9.  This property is OPTIONAL.
+      type, as described in Section 8.  This property is OPTIONAL.
 
    Additionally, extends#integrity MAY be present as defined in
-   Section 7.
+   Section 6.
 
    A Type Metadata document MAY contain additional top level or
    subordinate properties.  Consumers MUST ignore properties that are
@@ -1035,7 +1024,7 @@ Table of Contents
 
    An example of a Type Metadata document is shown in Appendix B.2.
 
-6.3.  Retrieving Type Metadata
+5.3.  Retrieving Type Metadata
 
    A Consumer retrieving Type Metadata MUST ensure that the vct value in
    the SD-JWT VC payload is identical to the vct value in the reference
@@ -1044,22 +1033,22 @@ Table of Contents
 
    The following sections define methods to retrieve Type Metadata.
 
-6.3.1.  From a URL in the vct Claim
+5.3.1.  From a URL in the vct Claim
 
    A URI in the vct claim can be used to express a type.  If the type is
    a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it.
 
    The Type Metadata is retrieved using the HTTP GET method.  A
    successful response MUST use an HTTP 200 status code and return a
-   JSON object as defined in Section 6.2 using the application/json
+   JSON object as defined in Section 5.2 using the application/json
    content type.  An error response MUST use the applicable HTTP status
    code value.
 
    If the claim vct#integrity is present in the SD-JWT VC, its value
    vct#integrity MUST be an "integrity metadata" string as defined in
-   Section 7.
+   Section 6.
 
-6.3.2.  From a Registry
+5.3.2.  From a Registry
 
    A Consumer MAY use a registry to retrieve Type Metadata for a SD-JWT
    VC type, e.g., if the type is not an HTTPS URL or if the Consumer
@@ -1067,25 +1056,25 @@ Table of Contents
    registry to provide correct Type Metadata for the type.
 
    The registry MUST provide the Type Metadata in the same format as
-   described in Section 6.2.
+   described in Section 5.2.
 
-6.3.3.  Using a Defined Retrieval Method
+5.3.3.  Using a Defined Retrieval Method
 
    Ecosystems MAY define additional methods for retrieving Type
    Metadata.  For example, a standardization body or a community MAY
    define a service which has to be used to retrieve Type Metadata based
    on a URN in the vct claim.
 
-6.3.4.  From a Local Cache
+5.3.4.  From a Local Cache
 
    A Consumer MAY cache Type Metadata for a SD-JWT VC type.  If a hash
    for integrity protection is present in the Type Metadata as defined
-   in Section 7, the Consumer MAY assume that the Type Metadata is
+   in Section 6, the Consumer MAY assume that the Type Metadata is
    static and can be cached indefinitely.  Otherwise, the Consumer MUST
    use the Cache-Control header of the HTTP response to determine how
    long the metadata can be cached.
 
-6.4.  Extending Type Metadata
+5.4.  Extending Type Metadata
 
    An SD-JWT VC type can extend another type.  The extended type is
    identified by the URI in the extends property.  Consumers MUST
@@ -1094,20 +1083,20 @@ Table of Contents
 
    The extended type MAY itself extend another type.  This can be used
    to create a chain or hierarchy of types.  The security considerations
-   described in Section 10.3 apply in order to avoid problems with
+   described in Section 9.3 apply in order to avoid problems with
    circular dependencies.
 
    Processing details when extending type metadata are described in
-   Section 8.2 and Section 9.5.
+   Section 7.2 and Section 8.5.
 
-7.  Document Integrity
+6.  Document Integrity
 
    The vct claim in the SD-JWT VC as defined in Section 3.2.2.2 and
    various URIs in the Type Metadata MAY be accompanied by a respective
    claim suffixed with #integrity, in particular:
 
-   *  extends as defined in Section 6.4, and
-   *  uri as used in three places in Section 8.1.
+   *  extends as defined in Section 5.4, and
+   *  uri as used in three places in Section 7.1.
 
    The value MUST be an "integrity metadata" string as defined in
    Section 3 of [W3C.SRI].  If an integrity property is present for a
@@ -1115,7 +1104,7 @@ Table of Contents
    the integrity of the retrieved document as defined in Section 3.3.5
    of [W3C.SRI].
 
-8.  Display Metadata
+7.  Display Metadata
 
    The display property is an array containing display information for
    the type.  The array MUST contain an object for each locale that is
@@ -1131,9 +1120,9 @@ Table of Contents
    *  description: A human-readable description for the type, intended
       for end users.  This property is OPTIONAL.
    *  rendering: An object containing rendering information for the
-      type, as described in Section 8.1.  This property is OPTIONAL.
+      type, as described in Section 7.1.  This property is OPTIONAL.
 
-8.1.  Rendering Metadata
+7.1.  Rendering Metadata
 
    The rendering property is an object containing rendering information
    for the type.  The object MUST contain a property for each rendering
@@ -1141,24 +1130,24 @@ Table of Contents
    rendering method identifier and the property value MUST be an object
    containing the properties defined for the rendering method.
 
-8.1.1.  Rendering Method "simple"
+7.1.1.  Rendering Method "simple"
 
    The simple rendering method is intended for use in applications that
    do not support SVG rendering.  The object contains the following
    properties:
 
    *  logo: An object containing information about the logo to be
-      displayed for the type, as described in Section 8.1.1.1.  This
+      displayed for the type, as described in Section 7.1.1.1.  This
       property is OPTIONAL.
    *  background_image: An object containing information about the
       background image to be displayed for the type, as described in
-      Section 8.1.1.2.  This property is OPTIONAL.
+      Section 7.1.1.2.  This property is OPTIONAL.
    *  background_color: An RGB color value as defined in [W3C.CSS-COLOR]
       for the background of the credential.  This property is OPTIONAL.
    *  text_color: An RGB color value as defined in [W3C.CSS-COLOR] value
       for the text of the credential.  This property is OPTIONAL.
 
-8.1.1.1.  Logo Metadata
+7.1.1.1.  Logo Metadata
 
    The logo property is an object containing information about the logo
    to be displayed for the type.  The object contains the following
@@ -1166,11 +1155,11 @@ Table of Contents
 
    *  uri: A URI pointing to the logo image.  This property is REQUIRED.
    *  uri#integrity: An "integrity metadata" string as described in
-      Section 7.  This property is OPTIONAL.
+      Section 6.  This property is OPTIONAL.
    *  alt_text: A string containing alternative text for the logo image.
       This property is OPTIONAL.
 
-8.1.1.2.  Background Image Metadata
+7.1.1.2.  Background Image Metadata
 
    The background_image property is an object containing information
    about the background image to be displayed for the type.  The object
@@ -1179,9 +1168,9 @@ Table of Contents
    *  uri: A URI pointing to the background image.  This property is
       REQUIRED.
    *  uri#integrity: An "integrity metadata" string as described in
-      Section 7.  This property is OPTIONAL.
+      Section 6.  This property is OPTIONAL.
 
-8.1.2.  Rendering Method "svg_templates"
+7.1.2.  Rendering Method "svg_templates"
 
    The svg_templates rendering method is intended for use in
    applications that support SVG rendering. svg_templates MUST contain
@@ -1192,12 +1181,12 @@ Table of Contents
    *  uri: A URI pointing to the SVG template.  This property is
       REQUIRED.
    *  uri#integrity: An "integrity metadata" string as described in
-      Section 7.  This property is OPTIONAL.
+      Section 6.  This property is OPTIONAL.
    *  properties: An object containing properties for the SVG template,
-      as described in Section 8.1.2.1.  This property is REQUIRED if
+      as described in Section 7.1.2.1.  This property is REQUIRED if
       more than one SVG template is present, otherwise it is OPTIONAL.
 
-8.1.2.1.  SVG Template Properties
+7.1.2.1.  SVG Template Properties
 
    The properties property is an object containing properties for the
    SVG template.  Consuming applications MUST use these properties to
@@ -1216,13 +1205,13 @@ Table of Contents
       with valid values being normal and high.  This property is
       OPTIONAL.
 
-8.1.2.2.  SVG Rendering
+7.1.2.2.  SVG Rendering
 
    A consuming application MUST preprocess the SVG template by replacing
    placeholders in the SVG template with properly escaped values of the
    claims in the credential.  The placeholders MUST be defined in the
    SVG template using the syntax {{svg_id}}, where svg_id is an
-   identifier defined in the claim metadata as described in Section 9.
+   identifier defined in the claim metadata as described in Section 8.
 
    Placeholders MUST only be used in the text content of the SVG
    template and MUST NOT be used in any other part of the SVG template,
@@ -1265,17 +1254,17 @@ Table of Contents
    external resources (images, etc.) from within the SVG cannot be used
    to track users or the usage of credentials.
 
-8.2.  Extending Display Metadata
+7.2.  Extending Display Metadata
 
    When an SD-JWT VC type extends another type as described in
-   Section 6.4, the display metadata remains valid for the inheriting
+   Section 5.4, the display metadata remains valid for the inheriting
    type unless that type defines its own display property, in which case
    the original display metadata is ignored.
 
    Note that this does not affect the display properties in the claim
-   metadata.  Rules for these are defined in Section 9.5.
+   metadata.  Rules for these are defined in Section 8.5.
 
-9.  Claim Metadata
+8.  Claim Metadata
 
    The claims property is an array of objects containing information
    about particular claims for displaying and validating the claims.
@@ -1286,21 +1275,21 @@ Table of Contents
    *  path: An array indicating the claim or claims that are being
       addressed, as described below.  This property is REQUIRED.
    *  display: An array containing display information for the claim or
-      claims that are being addressed, as described in Section 9.2.
+      claims that are being addressed, as described in Section 8.2.
       This property is OPTIONAL.
    *  mandatory: A boolean indicating that the claim must be present in
       the issued credential.  This property is OPTIONAL.  If omitted,
-      the default value is false.  See Section 9.3 for details.
+      the default value is false.  See Section 8.3 for details.
    *  sd: A string indicating whether the claim is selectively
-      disclosable, as described in Section 9.4.  This property is
+      disclosable, as described in Section 8.4.  This property is
       OPTIONAL.
    *  svg_id: A string defining the ID of the claim for reference in the
-      SVG template, as described in Section 8.1.2.2.  The ID MUST be
+      SVG template, as described in Section 7.1.2.2.  The ID MUST be
       unique within the type metadata.  It MUST consist of only
       alphanumeric characters and underscores and MUST NOT start with a
       digit.  This property is OPTIONAL.
 
-9.1.  Claim Path
+8.1.  Claim Path
 
    The path property MUST be a non-empty array of strings, null values,
    or non-negative integers.  It is used to select a particular claim in
@@ -1310,7 +1299,7 @@ Table of Contents
    non-negative integer indicates that the respective index in an array
    is to be selected.
 
-9.1.1.  Example
+8.1.1.  Example
 
    Figure 18 shows a non-normative, reduced example of a credential.
 
@@ -1351,7 +1340,7 @@ Table of Contents
    The example in Appendix B.2 shows how the path can be used to address
    arrays and their elements.
 
-9.1.2.  Processing of path
+8.1.2.  Processing of path
 
    In detail, the array components of path are processed from left to
    right as follows:
@@ -1395,7 +1384,7 @@ Table of Contents
    use case of selecting claims in a credential.  There are also
    security concerns with some implementations.
 
-9.2.  Claim Display Metadata
+8.2.  Claim Display Metadata
 
    The display property is an array containing display information for
    the claim.  The array MUST contain an object for each locale that is
@@ -1414,15 +1403,15 @@ Table of Contents
    See Figure 29 in Appendix B.2 for an example that includes claim
    display metadata.
 
-9.3.  Claim Mandatory Metadata
+8.3.  Claim Mandatory Metadata
 
    The mandatory property is a boolean indicating that, if set to true,
    the claim MUST be included in the credential by the Issuer.  If the
    value is false or omitted, the claim is considered optional for the
    Issuer to include.  A claim that is mandatory can nonetheless be
-   selectively disclosable, as described in Section 9.4.
+   selectively disclosable, as described in Section 8.4.
 
-9.4.  Claim Selective Disclosure Metadata
+8.4.  Claim Selective Disclosure Metadata
 
    The sd property is a string indicating whether the claim is
    selectively disclosable.  The following values are defined:
@@ -1437,10 +1426,10 @@ Table of Contents
    See Figure 29 in Appendix B.2 for an example that includes claim
    selective disclosure metadata.
 
-9.5.  Extending Claim Metadata
+8.5.  Extending Claim Metadata
 
    When an SD-JWT VC type extends another type as described in
-   Section 6.4, all claim metadata from the extended type MUST be
+   Section 5.4, all claim metadata from the extended type MUST be
    respected and are inherited by the child type unless it is overridden
    by the child type as defined in the following.
 
@@ -1448,7 +1437,7 @@ Table of Contents
    extended type, the child type's properties are combined with those of
    the extended type, with the child type's properties taking
    precedence.  Limitations to this rule are defined for sd and
-   mandatory in Section 9.5.1.
+   mandatory in Section 8.5.1.
 
    The contents of properties are never merged (e.g., if the base
    display property contains two locale objects and the extending type
@@ -1456,12 +1445,12 @@ Table of Contents
    one object defined for the child type).
 
    Note: The rule for overriding claim metadata is different from the
-   one for display metadata described in Section 8.2.  This ensures that
+   one for display metadata described in Section 7.2.  This ensures that
    Consumers can rely on the claim metadata defined in the extended type
    while still allowing display customization for the visual
    representation of the credential.
 
-9.5.1.  Limitations for sd and mandatory
+8.5.1.  Limitations for sd and mandatory
 
    An extending type can specify an sd property for a claim that is
    marked as allowed in the extended type (or where sd was omitted),
@@ -1473,7 +1462,7 @@ Table of Contents
    claim that is optional in the extended type to true, but it MUST NOT
    change a claim that is mandatory in the extended type to false.
 
-9.5.2.  Example for Extending Type Metadata
+8.5.2.  Example for Extending Type Metadata
 
    Suppose we have a base type metadata document as shown in Figure 19:
 
@@ -1538,13 +1527,13 @@ Table of Contents
 
              Figure 21: Effective Claim Metadata for Child Type
 
-10.  Security Considerations
+9.  Security Considerations
 
    The Security Considerations in the SD-JWT specification [RFC9901]
    apply to this specification.  Additionally, the following security
    considerations need to be taken into account when using SD-JWT VCs:
 
-10.1.  Server-Side Request Forgery
+9.1.  Server-Side Request Forgery
 
    The JWT VC Issuer Metadata configuration is retrieved from the JWT VC
    Issuer by the Holder or Verifier.  Similar to other metadata
@@ -1568,7 +1557,7 @@ Table of Contents
 
    Additional considerations can be found in [OWASP_SSRF].
 
-10.2.  Ecosystem-specific Public Key Verification Methods
+9.2.  Ecosystem-specific Public Key Verification Methods
 
    When defining ecosystem-specific rules for resolution and
    verification of the public key, as outlined in Section 3.5, it is
@@ -1582,7 +1571,7 @@ Table of Contents
    process not intended by the Issuer, allowing the attacker to
    potentially manipulate the verification result to their advantage.
 
-10.3.  Circular "extends" Dependencies of Types
+9.3.  Circular "extends" Dependencies of Types
 
    A type MUST NOT extend another type that extends (either directly or
    with steps in-between) the first type.  This would result in a
@@ -1592,23 +1581,23 @@ Table of Contents
    Consumers MUST detect such circular dependencies and reject the
    credential.
 
-10.4.  Robust Retrieval of Type Metadata
+9.4.  Robust Retrieval of Type Metadata
 
-   In Section 6.3, various methods for distributing and retrieving
+   In Section 5.3, various methods for distributing and retrieving
    metadata are described.  Methods relying on a network connection may
    fail due to network issues or unavailability of a network connection
    due to offline usage of credentials, temporary server outages, or
    denial-of-service attacks on the metadata server.
 
    Consumers SHOULD therefore implement a local cache as described in
-   Section 6.3.4 if possible.  Such a cache MAY be populated with
+   Section 5.3.4 if possible.  Such a cache MAY be populated with
    metadata before the credential is used.
 
    These measures allow the Consumers to continue to function even if
    the metadata server is temporarily unavailable and avoid privacy
-   issues as described in Section 11.4.
+   issues as described in Section 10.4.
 
-10.5.  Risks Associated with Textual Information
+9.5.  Risks Associated with Textual Information
 
    Some claims in the SD-JWT VC and properties in the Type Metadata,
    e.g., display, allows issuers and providers of metadata to specify
@@ -1628,7 +1617,7 @@ Table of Contents
       interface elements cannot be distorted by overly long text or
       special characters.
 
-10.6.  Credential Type Extension and Issuer Authorization
+9.6.  Credential Type Extension and Issuer Authorization
 
    When processing credentials, it is important to recognize that the
    ability to extend or reference an existing credential type (e.g., a
@@ -1657,7 +1646,7 @@ Table of Contents
    trust or legitimacy.  Credential acceptance decisions MUST be based
    on both the credential type and the verified authority of the issuer.
 
-10.7.  Trust in Type Metadata
+9.7.  Trust in Type Metadata
 
    Type Metadata associated with an SD-JWT VC, e.g., rendering metadata,
    is asserted by the Publisher of the Type Metadata and trust in this
@@ -1675,7 +1664,7 @@ Table of Contents
    Publisher is not accredited or otherwise trusted within the
    applicable ecosystem.
 
-10.8.  Use of Data URIs for Claim Types
+9.8.  Use of Data URIs for Claim Types
 
    The use of data URIs allows embedding of data directly within
    credential payloads.  Implementations SHOULD treat data URIs as
@@ -1688,18 +1677,18 @@ Table of Contents
    dereferencing or interpreting data URIs in ways that could execute or
    render active content, consistent with their overall security model.
 
-11.  Privacy Considerations
+10.  Privacy Considerations
 
    The Privacy Considerations in the SD-JWT specification [RFC9901]
    apply to this specification.  Additionally, the following privacy
    considerations need to be taken into account when using SD-JWT VCs.
 
-11.1.  Unlinkability
+10.1.  Unlinkability
 
    The Privacy Considerations in Section 10.1 of [RFC9901] apply,
    especially to the cnf claim.
 
-11.2.  Verifiable Digital Credential Type Identifier
+10.2.  Verifiable Digital Credential Type Identifier
 
    Issuers and Holders have to be aware that while this specification
    supports selective disclosure of claims of a given SD-JWT VC, the vct
@@ -1716,7 +1705,7 @@ Table of Contents
    Additionally, Holders have to be informed that, besides the actual
    requested claims, the vct information is shared with the Verifier.
 
-11.3.  Issuer Phone-Home
+10.3.  Issuer Phone-Home
 
    A malicious Issuer can choose the Issuer identifier of the SD-JWT VC
    to enable tracking the usage behavior of the Holder if the Issuer
@@ -1753,9 +1742,9 @@ Table of Contents
    in the cnf claim.  Only confirmation methods that do not require
    remote retrieval of key material SHOULD be supported.
 
-11.4.  Privacy-Preserving Retrieval of Type Metadata
+10.4.  Privacy-Preserving Retrieval of Type Metadata
 
-   In Section 6.3, various methods for distributing and retrieving Type
+   In Section 5.3, various methods for distributing and retrieving Type
    Metadata are described.  For methods which rely on a network
    connection to a URL (e.g., provided by an Issuer), the Issuer and
    other third parties may be able to track the usage of a credential by
@@ -1763,9 +1752,9 @@ Table of Contents
 
    Consumers SHOULD prefer methods for retrieving Type Metadata that do
    not leak information about the usage of a credential to third
-   parties.  The recommendations in Section 10.4 apply.
+   parties.  The recommendations in Section 9.4 apply.
 
-12.  Relationships to Other Documents
+11.  Relationships to Other Documents
 
    This specification defines validation and processing rules for
    Verifiable Digital Credentials using JSON payloads and secured by SD-
@@ -1781,9 +1770,9 @@ Table of Contents
    Verifiable Credentials Data Model v1.0, v1.1, or v2.0.  It also does
    not utilize CBOR or COSE.
 
-13.  References
+12.  References
 
-13.1.  Normative References
+12.1.  Normative References
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
@@ -1837,7 +1826,7 @@ Table of Contents
               "Subresource Integrity", 23 June 2016,
               <https://www.w3.org/TR/2016/REC-SRI-20160623/>.
 
-13.2.  Informative References
+12.2.  Informative References
 
    [EUDIW.ARF]
               Commission, E., "The European Digital Identity Wallet
@@ -1902,7 +1891,7 @@ A.1.  JSON Web Token Claims Registration
    *  Claim Name: "vct#integrity"
    *  Claim Description: SD-JWT VC vct claim "integrity metadata" value
    *  Change Controller: IETF
-   *  Specification Document(s): [[ Section 7 of this specification ]]
+   *  Specification Document(s): [[ Section 6 of this specification ]]
 
 A.2.  Media Types Registry
 
@@ -1918,8 +1907,7 @@ A.2.1.  application/dc+sd-jwt
       encoded as a series of base64url-encoded values (some of which may
       be the empty string) separated by period ('.') and tilde ('~')
       characters.
-   *  Security considerations: See Security Considerations in
-      Section 10.
+   *  Security considerations: See Security Considerations in Section 9.
    *  Interoperability considerations: n/a
    *  Published specification: [[ this specification ]]
    *  Applications that use this media type: Applications that issue,
@@ -1938,7 +1926,7 @@ A.2.1.  application/dc+sd-jwt
 
 A.3.  Well-Known URI Registry
 
-   This specification requests the well-known URI defined in Section 5
+   This specification requests the well-known URI defined in Section 4
    in the IANA "Well-Known URIs" registry [IANA.well-known] established
    by [RFC5785].
 
@@ -1946,7 +1934,7 @@ A.3.1.  Registry Contents
 
    *  URI suffix: jwt-vc-issuer
    *  Change controller: IETF
-   *  Specification document: [[ Section 5 of this specification ]]
+   *  Specification document: [[ Section 4 of this specification ]]
    *  Related information: (none)
    *  Status: permanent
 
@@ -2042,8 +2030,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.j9og20Av2nXr7bgh1n7K7mzHMFLUOnf6pS3ZZ-iKF5A
-   uw4gWUdr9cvAToIRsrSCwOUgTInlR_Ztu0VcWkeicAQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.1bjJKn2_-Bttlw7q9zAWQ0qx5vsU_A03SBGy_P611qg
+   WfkfzZ-7hjFvD491cLCGva04dHQSscV_Z5IrUtb7Bfg~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2425,8 +2413,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.j9og20Av2nXr7bgh1n7K7mzHMFLUOnf6pS3ZZ-iKF5A
-   uw4gWUdr9cvAToIRsrSCwOUgTInlR_Ztu0VcWkeicAQ~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.1bjJKn2_-Bttlw7q9zAWQ0qx5vsU_A03SBGy_P611qg
+   WfkfzZ-7hjFvD491cLCGva04dHQSscV_Z5IrUtb7Bfg~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2437,9 +2425,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3Njk3MzQ5MDYsICJzZF9oYXNoIjogImlGVkFaZ1NNS
-   01KVm1ydXJ6SEJ2d3M1dTBzVWtsWVBQU2I1MF9xRVByOXcifQ.MbR8e0j3XQJeWd9lVa
-   1_MM3LasTJ23QlzcG999hYSo-vjPow_f3McadMLPTPDbPVPFfK96fpAXHsSy4F3fe8Mw
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjUyNzAsICJzZF9oYXNoIjogIllRLXJwZ0wtO
+   V9zMEEyQmVRM1phUWpBY2M4ZjNjTzhxT3A4bzJzalBiU2MifQ.YwKj15c8s8LZUxp4tx
+   p2pQJQwDtbZ56wsbv0orLvogV4DfE9w1kbtP82b4tPyNnREIslkT34abff1x0UbZ4JbQ
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2448,8 +2436,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1769734906,
-     "sd_hash": "iFVAZgSMKMJVmrurzHBvws5u0sUklYPPSb50_qEPr9w"
+     "iat": 1770125270,
+     "sd_hash": "YQ-rpgL-9_s0A2BeQ3ZaQjAcc8f3cO8qOp8o2sjPbSc"
    }
 
                      Figure 26: Key Binding JWT Payload
