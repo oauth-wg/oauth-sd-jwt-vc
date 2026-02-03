@@ -130,7 +130,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 [@!RFC9901].
 
 Consumer:
-: An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Wallets.
+: An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Holders.
 
 Publisher:
 : An entity that publishes Type Metadata or other auxiliary documents referenced by an SD-JWT VC (for example via a `vct` URI), but that is not necessarily the Issuer of the SD-JWT VC. A Publisher can be a standardization body, community, ecosystem authority, or any other party defining credential types or associated metadata.
@@ -543,7 +543,7 @@ This section defines Type Metadata that can be associated with a type of an SD-J
    according to the rules of the type. For example, a Verifier can check
    whether a credential contains all required claims and whether the claims
    are selectively disclosable.
- * Wallets can use the metadata to display the credential in a way that is
+ * Holders can use the metadata to display the credential in a way that is
    consistent with the intent of the provider of the Type Metadata.
 
 Type Metadata can be retrieved as described in (#retrieving-type-metadata).
@@ -1160,11 +1160,11 @@ When processing credentials, it is important to recognize that the ability to ex
 an existing credential type (e.g., a well-known identifier such as `urn:ec.eu.x.y.z`) does not
 confer any implicit authorization to issue credentials of that type or its extensions. In particular:
 
-- **Issuer Authorization**: Verifiers and wallets MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type `urn:de.bla` extending a European PID type) does not validate the issuer's authority.
+- **Issuer Authorization**: Verifiers and Holders MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type `urn:de.bla` extending a European PID type) does not validate the issuer's authority.
 - **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
-Verifiers and wallets MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
+Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
 ## Trust in Type Metadata
 
@@ -1740,6 +1740,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Clarified that if an integrity property is present for a particular claim/property, the Consumer MUST verify the integrity of the retrieved document.
 * Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
 * Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
+* Merged section section 4 into section 3
 
 -13
 
