@@ -179,6 +179,10 @@ or Section 8 of [@!RFC9901], where support for the JWS JSON Serialization is OPT
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 
+A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB defined in Section 4 or Section 8 of [@!RFC9901]. By default, the format defined in Section 4 of [@!RFC9901] is used, whereas support for the JWS JSON Serialization in Section 8 of [@!RFC9901] is OPTIONAL.
+
+The KB-JWT MAY include additional claims which, when not understood, the Verifier MUST ignore.
+
 ### JOSE Header
 
 This section defines JWT header parameters for the SD-JWT component of the
@@ -315,6 +319,8 @@ MUST NOT have any Disclosures.
 
 ## Example {#vc-sd-jwt-example}
 
+### Issuance
+
 (#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
@@ -340,7 +346,30 @@ The SD-JWT and the Disclosures would then be serialized by the Issuer into the f
 <{{examples/01/sd_jwt_issuance.txt}}
 Figure: SD-JWT VC {#issuance1}
 
-Examples of what presentations of SD-JWT VCs might look like are provided in (#presentation-examples).
+### Presentation
+
+(#presentation1) below is an example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
+In this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.
+Other claims are not disclosed to the Verifier.
+
+<{{examples/01/sd_jwt_presentation.txt}}
+Figure: Presented SD-JWT+KB {#presentation1}
+
+After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) below available for further handling.
+
+<{{examples/01/verified_contents.json}}
+Figure: Verified SD-JWT Payload {#verified-payload1}
+
+The example in (#presentation2) below shows a presentation of a (similar but different) SD-JWT without a
+KB-JWT.
+
+<{{examples/02/sd_jwt_presentation.txt}}
+Figure: Presented SD-JWT {#presentation2}
+
+The Verifier will have the following processed SD-JWT payload shown in (#verified-payload2) after validation.
+
+<{{examples/02/verified_contents.json}}
+Figure: Processed SD-JWT Payload {#verified-payload2}
 
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
@@ -385,48 +414,6 @@ may define additional Issuer Signature Mechanisms may complement or override the
 See (#ecosystem-verification-rules) for related security considerations.
 
 If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
-
-# Presenting Verifiable Digital Credentials
-
-This section defines encoding, validation and processing rules for presentations
-of SD-JWT VCs.
-
-## Data Format
-
-A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
-By default, the format defined in Section 4 of
-[@!RFC9901] is used, whereas support for the JWS
-JSON Serialization in Section 8 of [@!RFC9901]
-is OPTIONAL.
-
-## Key Binding JWT
-
-The KB-JWT MAY include additional claims which, when not understood, the Verifier MUST ignore.
-
-## Examples {#presentation-examples}
-
-(#presentation1) below is an example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
-In this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.
-Other claims are not disclosed to the Verifier.
-
-<{{examples/01/sd_jwt_presentation.txt}}
-Figure: Presented SD-JWT+KB {#presentation1}
-
-After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) below available for further handling.
-
-<{{examples/01/verified_contents.json}}
-Figure: Verified SD-JWT Payload {#verified-payload1}
-
-The example in (#presentation2) below shows a presentation of a (similar but different) SD-JWT without a
-KB-JWT.
-
-<{{examples/02/sd_jwt_presentation.txt}}
-Figure: Presented SD-JWT {#presentation2}
-
-The Verifier will have the following processed SD-JWT payload shown in (#verified-payload2) after validation.
-
-<{{examples/02/verified_contents.json}}
-Figure: Processed SD-JWT Payload {#verified-payload2}
 
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
