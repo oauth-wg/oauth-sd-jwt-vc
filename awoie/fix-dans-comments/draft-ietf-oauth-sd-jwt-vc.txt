@@ -340,12 +340,14 @@ Table of Contents
 
    A type is associated with rules defining which claims are permitted
    or required to appear in the Unsecured Payload of the SD-JWT VC and
-   whether selective disclosure is permitted, required, or prohibited
-   for those claims.  This specification does not define any vct values;
-   instead it is expected that ecosystems using SD-JWT VCs define such
-   values including the semantics of the respective claims and
-   associated rules (e.g., policies for issuing and validating
-   credentials beyond what is defined in this specification).
+   whether selective disclosure is permitted, necessary, or prohibited
+   for those claims.
+
+   This specification does not define any vct values; instead it is
+   expected that ecosystems using SD-JWT VCs define such values
+   including the semantics of the respective claims and associated rules
+   (e.g., policies for issuing and validating credentials beyond what is
+   defined in this specification).
 
    For example, a value of https://credentials.example.com/
    identity_credential can be associated with rules that define that at
@@ -628,9 +630,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PPqq6
-   m8RSfBd9zNwnVIZxn4ypfVE33Rwo91_rdqqLvxWNOdch6TCbhnLFO_0EigLzJ2IqYG-O
-   dnJbuMbaxTQWw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bxdfE
+   fC7oifY2OGgpGIyM7T_lzUdET4MgFVClZXDFWJyn20R5_7WzhD9T5D1XAURaqSKtMTPo
+   RbpIPsKGKLzxQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -666,17 +668,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PPqq6
-   m8RSfBd9zNwnVIZxn4ypfVE33Rwo91_rdqqLvxWNOdch6TCbhnLFO_0EigLzJ2IqYG-O
-   dnJbuMbaxTQWw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bxdfE
+   fC7oifY2OGgpGIyM7T_lzUdET4MgFVClZXDFWJyn20R5_7WzhD9T5D1XAURaqSKtMTPo
+   RbpIPsKGKLzxQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjY4OD
-   UsICJzZF9oYXNoIjogIkNNaUE0Z1dRaXd6ZEZ4bUNnb2VrZmI5aFFCUHg1VVBqWGZsTT
-   JCc3ByVnMifQ.ebdUbhdNuVqOc6sfL633WjGp6gC54Yv-TG7dB0diGpn4Kia5yx2yJbE
-   IIkz97wv1_71tW4BSa7Df0iyx5cXt_A
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjc1OD
+   AsICJzZF9oYXNoIjogIjJMckliQzExeUVzRXZicmRlY3NKRVpzbFFlSUw5M0dJSHRrVU
+   UxLU00dE0ifQ.Ef6TP1AWowl-5DFV4KvRK6vXBY0FFV9LEg6YEVa2Xm1BzoFyI7wqEWv
+   FHXX0tmlG1RNmEYUWMzkxxPvB9vuscg
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -722,8 +724,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.8fEsrW0eMrAktXjGWwErgk9C4vbC7MUuuph0CtoVc0P7Iy
-   SYLbxX--CQLUJdY0YOBidBjlPy2dMMof31Wahmqw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.3E9fMTOdyf6TBCPT-g8QmG30QegvJHLQoNhhTQpbIfH5Dt
+   8FZv-k0NhmebtSdrUBDpNzZDAMYRixFqkYglpRUA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1464,7 +1466,8 @@ Table of Contents
 
 8.5.2.  Example for Extending Type Metadata
 
-   Suppose we have a base type metadata document as shown in Figure 19:
+   The base type metadata document for this example is shown in
+   Figure 19.
 
    {
      "vct": "https://example.com/base-type-metadata",
@@ -1482,8 +1485,7 @@ Table of Contents
 
                Figure 19: Example Base Type Metadata Document
 
-   And a child type metadata document in Figure 20 that extends the base
-   type:
+   The extending type metadata document is shown in Figure 20.
 
    {
      "vct": "https://example.com/custom-type-metadata",
@@ -2030,8 +2032,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.Nd6yjB9kQTFSyb4dz4QIc9Fmn1H-Ex4HzqgCzXgdZyg
-   VIa5ZN5fKFtCin9MxbpemKHDZ6rXton6zrxWb9PmLvA~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.0mdkWx3VNsdFrysNZqWMbrmeRZEEfPqib2a1eYHPRGU
+   RKPjnri3-_tEdlmIukk5b_-7diexKidOoS8E5em5ZGA~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2413,8 +2415,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.Nd6yjB9kQTFSyb4dz4QIc9Fmn1H-Ex4HzqgCzXgdZyg
-   VIa5ZN5fKFtCin9MxbpemKHDZ6rXton6zrxWb9PmLvA~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.0mdkWx3VNsdFrysNZqWMbrmeRZEEfPqib2a1eYHPRGU
+   RKPjnri3-_tEdlmIukk5b_-7diexKidOoS8E5em5ZGA~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2425,9 +2427,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjY4ODUsICJzZF9oYXNoIjogIk9qZFBYS0VfQ
-   XI5eGJKaE5FcC1CX05CSnFyZjNRS3R5TkpSOEt4LWpPLWMifQ.BmAWyWy7F28Q3z1I1R
-   -GO0EbItR4RGW3dZwwZnQnpeSX3hhuBfgNh2BHhLGEy2yHnEGeDj9EMkKDZ__WAqWgTw
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzAxMjc1ODAsICJzZF9oYXNoIjogIjdDNWdRY0FWe
+   ExCbDFVOGItVWFfTmVJZUV5WjgyUVozdzRuNmhTRTI5cE0ifQ.wGAKmnIG1NkO6iMp8S
+   mGYr3XoDuxtVxv4_XEiqY7n__b-vlVn8X8X38LSMEqwK23nCQ_UCZYeU5yD8jF-7t_jQ
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2436,8 +2438,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1770126885,
-     "sd_hash": "OjdPXKE_Ar9xbJhNEp-B_NBJqrf3QKtyNJR8Kx-jO-c"
+     "iat": 1770127580,
+     "sd_hash": "7C5gQcAVxLBl1U8b-Ua_NeIeEyZ82QZ3w4n6hSE29pM"
    }
 
                      Figure 26: Key Binding JWT Payload
