@@ -181,8 +181,6 @@ claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 
 A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB defined in Section 4 or Section 8 of [@!RFC9901]. By default, the format defined in Section 4 of [@!RFC9901] is used, whereas support for the JWS JSON Serialization in Section 8 of [@!RFC9901] is OPTIONAL.
 
-The KB-JWT MAY include additional claims which, when not understood, the Verifier MUST ignore.
-
 ### JOSE Header
 
 This section defines JWT header parameters for the SD-JWT component of the
