@@ -130,11 +130,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 [@!RFC9901].
 
 Consumer:
-<<<<<<< HEAD
-: An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Wallets.
-=======
 : An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Holders.
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 
 Publisher:
 : An entity that publishes Type Metadata or other auxiliary documents referenced by an SD-JWT VC (for example via a `vct` URI), but that is not necessarily the Issuer of the SD-JWT VC. A Publisher can be a standardization body, community, ecosystem authority, or any other party defining credential types or associated metadata.
@@ -223,12 +219,8 @@ Name as defined in Section 2 of [@!RFC7515].
 
 A type is associated with rules defining which claims are permitted or required
 to appear in the Unsecured Payload of the SD-JWT VC and whether selective disclosure
-<<<<<<< HEAD
-is permitted, required, or prohibited for those claims.
-=======
 is permitted, necessary, or prohibited for those claims.
 
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 This specification does not define any `vct` values; instead
 it is expected that ecosystems using SD-JWT VCs define such values including
 the semantics of the respective claims and associated rules (e.g., policies for issuing and
@@ -327,11 +319,8 @@ MUST NOT have any Disclosures.
 
 ## Example {#vc-sd-jwt-example}
 
-<<<<<<< HEAD
-=======
 ### Issuance
 
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 (#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
@@ -426,51 +415,6 @@ See (#ecosystem-verification-rules) for related security considerations.
 
 If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
 
-<<<<<<< HEAD
-# Presenting Verifiable Digital Credentials
-
-This section defines encoding, validation and processing rules for presentations
-of SD-JWT VCs.
-
-## Data Format
-
-A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB.
-By default, the format defined in Section 4 of
-[@!RFC9901] is used, whereas support for the JWS
-JSON Serialization in Section 8 of [@!RFC9901]
-is OPTIONAL.
-
-## Key Binding JWT
-
-The KB-JWT MAY include additional claims which, when not understood, the Verifier MUST ignore.
-
-## Examples {#presentation-examples}
-
-(#presentation1) below is an example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
-In this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.
-Other claims are not disclosed to the Verifier.
-
-<{{examples/01/sd_jwt_presentation.txt}}
-Figure: Presented SD-JWT+KB {#presentation1}
-
-After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) below available for further handling.
-
-<{{examples/01/verified_contents.json}}
-Figure: Verified SD-JWT Payload {#verified-payload1}
-
-The example in (#presentation2) below shows a presentation of a (similar but different) SD-JWT without a
-KB-JWT.
-
-<{{examples/02/sd_jwt_presentation.txt}}
-Figure: Presented SD-JWT {#presentation2}
-
-The Verifier will have the following processed SD-JWT payload shown in (#verified-payload2) after validation.
-
-<{{examples/02/verified_contents.json}}
-Figure: Processed SD-JWT Payload {#verified-payload2}
-
-=======
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
 This specification defines the JWT VC Issuer Metadata to retrieve the JWT VC
@@ -1069,11 +1013,7 @@ optional in the extended type to `true`, but it MUST NOT change a claim that is
 
 ### Example for Extending Type Metadata
 
-<<<<<<< HEAD
-Suppose we have a base type metadata document as shown in (#example-base-type-metadata):
-=======
 The base type metadata document for this example is shown in (#example-base-type-metadata).
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 
 ```json
 {
@@ -1092,11 +1032,7 @@ The base type metadata document for this example is shown in (#example-base-type
 ```
 Figure: Example Base Type Metadata Document {#example-base-type-metadata}
 
-<<<<<<< HEAD
-And a child type metadata document in (#example-child-type-metadata) that extends the base type:
-=======
 The extending type metadata document is shown in (#example-child-type-metadata).
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 
 ```json
 {
@@ -1228,11 +1164,7 @@ confer any implicit authorization to issue credentials of that type or its exten
 - **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
-<<<<<<< HEAD
-Verifiers and wallets MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
-=======
 Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 
 ## Trust in Type Metadata
 
@@ -1310,13 +1242,8 @@ This specification defines validation and processing rules for Verifiable Digita
 payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
 that define their own verifiable credential formats; for example, W3C Verifiable
 Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-<<<<<<< HEAD
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0.
-=======
 ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials with selective disclosure in the mobile document (mdoc)
 format encoded as CBOR and secured using COSE while [@?I-D.ietf-spice-sd-cwt] also defines a representation of digital credentials with selective disclosure encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0. It also does not utilize CBOR or COSE.
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
@@ -1810,17 +1737,11 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Move RFC 2397 to informative (only mentioned once and behind a SHOULD)
 * Add line break between the two things in the JSON Web Token Claims Registration section
 * Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes
-<<<<<<< HEAD
-* Clarified that if an integrity property is present for a particular claim, the Consumer MUST verify the integrity of the retrieved document.
-* Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
-* Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
-=======
 * Clarified that if an integrity property is present for a particular claim/property, the Consumer MUST verify the integrity of the retrieved document.
 * Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.
 * Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.
 * Merged section section 4 into section 3
 * Replaced the term wallet with holder for consistency reasons
->>>>>>> a4684288666ab2be9693f7c743b6910fc8e66917
 
 -13
 
