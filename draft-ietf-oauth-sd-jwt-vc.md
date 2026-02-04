@@ -555,18 +555,18 @@ excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following in (#example-with-vct-for-type-metadata) is an example
 of an SD-JWT VC payload, containing a `vct` claim
-with the value `https://betelgeuse.example.com/education_credential/v1`.
+with the value `https://betelgeuse.example.com/education_credential/v42`.
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential/v1",
+  "vct": "https://betelgeuse.example.com/education_credential/v42",
   "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   ...
 }
 ```
 Figure: Example SD-JWT VC Payload with `vct` Claim {#example-with-vct-for-type-metadata}
 
-Type Metadata for the type `https://betelgeuse.example.com/education_credential/v1`
+Type Metadata for the type `https://betelgeuse.example.com/education_credential/v42`
 can be retrieved using various mechanisms as described in
 (#retrieving-type-metadata). For this example, the `vct` value is a URL as defined in
 (#retrieval-from-vct-claim) and the Type Metadata document in (#example-type-metadata-document) is
@@ -574,10 +574,10 @@ retrieved from it:
 
 ```json
 {
-  "vct":"https://betelgeuse.example.com/education_credential/v1",
-  "name":"Betelgeuse Education Credential - First Version",
-  "description":"This is our first version of the education credential. Don't panic.",
-  "extends":"https://galaxy.example.com/galactic-education-credential/v2.6",
+  "vct":"https://betelgeuse.example.com/education_credential/v42",
+  "name":"Betelgeuse Education Credential - Version 42",
+  "description":"This is our education credential. Don't panic.",
+  "extends":"https://galaxy.example.com/galactic-education-credential/v2",
   "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
@@ -867,7 +867,7 @@ respective index in an array is to be selected.
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential/v1",
+  "vct": "https://betelgeuse.example.com/education_credential/v42",
   "name": "Arthur Dent",
   "address": {
     "street_address": "42 Market Street",
@@ -1479,7 +1479,7 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential/v1",
+  "vct": "https://betelgeuse.example.com/education_credential/v42",
   "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
   "name": "Zaphod Beeblebrox",
   "address": {
@@ -1510,10 +1510,10 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 
 ```json
 {
-  "vct": "https://betelgeuse.example.com/education_credential/v1",
+  "vct": "https://betelgeuse.example.com/education_credential/v42",
   "name": "Betelgeuse Education Credential - First Version",
   "description": "This is our first version of the education credential. Don't panic.",
-  "extends": "https://galaxy.example.com/galactic-education-credential/v2.6",
+  "extends": "https://galaxy.example.com/galactic-education-credential/v2",
   "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
