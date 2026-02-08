@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-05T00:46:10.265128+00:00",
+  "timestamp": "2026-02-08T00:57:12.771798+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10062,7 +10062,7 @@
       "id": "I_kwDOJbVClc7eqco_",
       "title": "Dan's SD-JWT-VC-13 Review",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/382",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -10071,8 +10071,8 @@
       ],
       "body": "see https://mailarchive.ietf.org/arch/msg/oauth/1ggoWOFf8ZKmKbI8BUo_tAdAp-o/ ",
       "createdAt": "2025-12-16T17:22:10Z",
-      "updatedAt": "2026-01-29T16:10:39Z",
-      "closedAt": null,
+      "updatedAt": "2026-02-05T17:01:05Z",
+      "closedAt": "2026-02-05T17:01:05Z",
       "comments": []
     },
     {
@@ -31833,24 +31833,26 @@
       "id": "PR_kwDOJbVClc6_KDXK",
       "title": "Address Dan's review",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/390",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "## Dan\u2019s review comments \u2014 status & resolution\r\n\r\nfixes #382 \r\n\r\npreview here https://drafts.oauth.net/oauth-sd-jwt-vc/awoie/fix-dans-comments/draft-ietf-oauth-sd-jwt-vc.html\r\n\r\n### General / Substantive\r\n\r\n- [x] *\"Need to update references from ietf-oauth-selective-disclosure-jwt to RFC 9901\"*\r\n  **OT:** All references were updated.\r\n\r\n- [x] *\u201cSince one explicit aim of the type metadata is versioning \u2026 does it make sense to put a v1 somewhere in the URI?\u201d*  \r\n  DF: I put a `/v1` in the Betelgeuse example.\r\n\r\n- [x] **Inconsistent terminology: \u201cConsumer\u201d vs \u201cconsuming application\u201d**  \r\n  **OT:** Accepted. Terminology aligned to consistently use \u201cConsumer\u201d.\r\n\r\n### Section 1.1\r\n\r\n- [x] **Paragraph on verifier authenticity checks and key binding is long and confusing**\r\n  **OT:** Accepted. Split into two sentences; already fixed by Brian in a previous PR.\r\n\r\n- [x] **Note about not using W3C Verifiable Credentials Data Model seems out of place**  \r\n  **OT:** Accepted. Moved to Related Standards section (Section 12).\r\n\r\n### Section 1.4\r\n\r\n- [x] **Definition of Consumer has singular/plural mismatch**  \r\n  **OT:** Accepted. Definition clarified.\r\n\r\n### Section 3.2\r\n\r\n- [x] **Sections 3.2 and 4.1 appear duplicative**  \r\n  **OT:** Accepted. Will merge section 4 into section 3 (incl. the presentation example), and also remove all normative text that just repeats SD-JWT.\r\n\r\n### Section 3.4\r\n\r\n- [x] **Incorrect reference to point 2.3 of Section 7.1 of SD-JWT**  \r\n  **OT:** Accepted. Correct reference is point **2.c**.\r\n\r\n- [x] *\"I don't see a section 2.3 in the referenced doc.\"*\r\n  **OT:** Root cause resolved by correcting the reference to 2.c.\r\n\r\n### Section 5.1\r\n\r\n- [x] *\"Is there a reason to not follow the OIDC pattern of having the tenant or any other path before the .well-known/jwt-vc-issuer string?\"*\r\n  **OT:** Rejected. Won't fix. Intentional design. SD-JWT VC follows RFC 8414 host-bound `.well-known` semantics. OIDC intentionally deviates from the well-known specification; SD-JWT VC does not and uses the same approach as OAuth in [RFC8414](https://www.rfc-editor.org/rfc/rfc8414.html#section-3.1).\r\n\r\n### Section 5.2\r\n\r\n- [x] **Missing word \u201cstatus\u201d in \u201c200 OK HTTP\u201d**  \r\n  **OT:** Fixed in -13.\r\n\r\n- [x] **Error responses should use MUST for HTTP status codes**  \r\n  **DF:** Propose to accept and also to add the same rule for type metadata.\r\n\r\n- [x] **Confusing reference to \u201cJWT\u201d in `kid` recommendation**  \r\n  **OT:** Accepted. Clarified to \u201cIssuer-signed JWT\u201d.\r\n\r\n- [x] **Issuer value in example does not match `iss` value elsewhere**  \r\n  **BC:** they don't need to match \r\n\r\n### Section 6.2\r\n\r\n- [x] **Unclear whether `extends#integrity` must be listed explicitly**  \r\n  DF: Fixed.\r\n\r\n### Section 6.3\r\n\r\n- [x] **Do we need to reference RFC 5890 / 3987 for URL comparison?**  \r\n  **OT:** Rejected. No need for these references since comparing `vct` values is a string comparison.\r\n\r\n### Section 6.3.1\r\n\r\n- [x] **Typo: \u201cSection Section 7.\u201d**  \r\n  **OT:** Accepted. Fixed.\r\n\r\n### Section 7\r\n\r\n- [x] **Incorrect SRI reference to Section 3.3.5**  \r\n  **OT:** Accepted. We need to correct the reference of the SRI specification.\r\n  **BC:** https://github.com/oauth-wg/oauth-sd-jwt-vc/commit/0f7fce57a53a1ed5244bba14bc4627e2a4d0fa07 should have fixed that\r\n\r\n- [x] **Integrity verification marked MUST while integrity claim is optional**  \r\n  > You say:\r\n  > \"A Consumer of the respective documents MUST verify the integrity ...\r\n  > \r\n  > but the required claim is marked as optional in 3.2.2.2. Found that\r\n  > confusing. Assume that means that if the X#integrity claim is present you\r\n  > must verify the integrity? Maybe change to\r\n  > \r\n  > When the corresponding integrity claim is present, a Consumer of the\r\n  > respective documents MUST verify the integrity of the retrieved document as\r\n  > defined ...\r\n\r\n  DF: This was the originally intended meaning, I'll clarify.\r\n\r\n### Section 8.2\r\n\r\n- [x] **Display claim treated differently from other metadata**  \r\n  > Why is the display claim treated differently in terms of overriding an\r\n  > extension than any other metadata? any reason to call that out? The general\r\n  > overriding process is mentioned in section 9.5, maybe remove 8.2.\r\n\r\n  DF: This is intentional, I'll add a note to the document.\r\n\r\n### Section 9\r\n\r\n- [x] **Claims defined without `svg_id` \u2014 unclear use case** \r\n  > why would you have a claim defined without an svg_id? what is the use case?\r\n  > \r\n  > if you are using a simple rendering method, no claims are displayed. Is\r\n  > this future proofing, in case there's another render method added that\r\n  > isn't an svg? in that case, maybe change it to claim_id so a future method\r\n  > could reference the claim for display? then make it required? Or am I\r\n  > missing some other reason for the claims to be defined in the type metadata?\r\n\r\n  DF: I like the idea of renaming this `claim_id`. I don't think we should make it mandatory though. There are cases where you just don't need this.\r\n  OT: Rejected. This would be a normative change without a huge upside. Note that some ETSI specs are referencing SD-JWT VC already.\r\n\r\n### Section 9.1\r\n\r\n- [x] **Why define new JSON path framework instead of JSON Pointer / JSONPath?**  \r\n  > why not use jsonpath or jsonpointer (rfc6901) instead of defining a new\r\n  > JSON path processing framework? I guess I worry whenever I see another path\r\n  > processing algorithm defined.\r\n  > \r\n  > But maybe I'm missing the reason not to use a more general purpose solution?\r\n\r\n  **OT:** Rejected. Intentional design decision and justified in section 9.1.2 already.\r\n\r\n### Section 10.6\r\n\r\n- [x] **Prefix \u201cRecommendation:\u201d is unusual**  \r\n  > Having the prefix *Recommendation:* is kinda weird and not common. maybe\r\n  > strike, not sure it adds anything.\r\n\r\n  **OT:** Accepted. Removed prefix.\r\n\r\n### Section 10.7\r\n\r\n- [x] **Introduces term \u201cpublisher\u201d not used elsewhere**  \r\n  > Introduces the term \"publisher\" which is not used anywhere else in the doc.\r\n  > Maybe use issuer?\r\n\r\n  **OT:** Accepted. However, publisher is different from the issuer. Terminology was added for publisher.\r\n",
       "createdAt": "2026-01-24T18:04:29Z",
-      "updatedAt": "2026-02-04T16:51:19Z",
+      "updatedAt": "2026-02-05T17:01:14Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "e8030ecefa1ef4f2e47c8a945e876d9097938bef",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-dans-comments",
       "headRefOid": "ac6fc0a8d2e79439da98d313b3b31f9e442f7f56",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-02-05T17:01:03Z",
+      "mergedAt": "2026-02-05T17:01:03Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "c267e9e1afa23bb3fe1aa2685b390066ccf3741c"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -31865,6 +31867,13 @@
           "body": "> Incorrect SRI reference to Section 3.3.5\r\n> OT: Accepted. We need to correct the reference of the SRI specification.\r\n\r\nhttps://github.com/oauth-wg/oauth-sd-jwt-vc/pull/389/changes/0f7fce57a53a1ed5244bba14bc4627e2a4d0fa07 should have fixed that",
           "createdAt": "2026-01-25T13:28:25Z",
           "updatedAt": "2026-01-25T13:28:25Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Merged the PR since two approvals.",
+          "createdAt": "2026-02-05T17:01:13Z",
+          "updatedAt": "2026-02-05T17:01:13Z"
         }
       ],
       "reviews": [
@@ -32135,6 +32144,60 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 391,
+      "id": "PR_kwDOJbVClc7BywrV",
+      "title": "Add Dan Moore to Acknowledgements",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/391",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-05T17:56:58Z",
+      "updatedAt": "2026-02-05T17:58:46Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c267e9e1afa23bb3fe1aa2685b390066ccf3741c",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "ack-dan",
+      "headRefOid": "40b594a000d4a2575e702201e279433915652f73",
+      "closedAt": "2026-02-05T17:58:46Z",
+      "mergedAt": "2026-02-05T17:58:46Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "31f324b0e51ced48b6da6196039b96a708c1c57d"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 392,
+      "id": "PR_kwDOJbVClc7BzDEb",
+      "title": "history start for -15",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/392",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-02-05T18:21:43Z",
+      "updatedAt": "2026-02-05T18:21:44Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "31f324b0e51ced48b6da6196039b96a708c1c57d",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "history-15",
+      "headRefOid": "28a9a82a590b3eb9c6d50ba8d0ae938ed559b37b",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
