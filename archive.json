@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-12T00:46:29.641128+00:00",
+  "timestamp": "2026-02-15T00:49:34.291942+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10379,11 +10379,33 @@
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "The TLDR is that I believe the ISO mention/reference in SD-JWT VC should be further contextualized as being in no way an endorsement of the non-transparent, access-restricted standards development process and fee-gated publication model.  Or even just removed.\n\nOpinions, I have them https://mailarchive.ietf.org/arch/msg/spice/4xr2I1IX_A4T_cDxlUUufH5QdIM/ \n\n> [SPICE] Re: CBOR/CWT parts in OAuth Token Status List\n> \n> Brian Campbell <bcampbell@pingidentity.com> Tue, 10 February 2026 01:31 UTC[Show header](https://mailarchive.ietf.org/arch/msg/spice/4xr2I1IX_A4T_cDxlUUufH5QdIM/#)\n> \n> My perspective on non-transparent, access-restricted standards development\n> and fee-gated publication models has not changed since last week\n> https://mailarchive.ietf.org/arch/msg/spice/nYhBMowGdrKeW6BgWqf1t9svRjI/,\n> and I again suggest that there be no references to such specifications at\n> all.\n> \n> I am well aware, by the way, that some work with which I'm closely involved\n> has reference to ISO/IEC 18013-5:2021. RFC9901/SD-JWT mentions it here\n> https://datatracker.ietf.org/doc/html/rfc9901#section-10.1-10\n> <https://datatracker.ietf.org/doc/html/rfc9901#section-10.1-10>but\n> basically just says \"this also exists and has the same limitations\" while\n> SD-JWT VC mentions it here\n> https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-14#section-11\n> but as just one of a list of many credential formats. The context of both\n> feels less like any endorsement of the paywalled ISO document.\n> Although this conversation has me reconsidering some and thinking the\n> mention in SD-JWT VC could be further contextualized as such or even\n> removed.",
+      "body": "The TLDR is that I believe the ISO mention/reference in SD-JWT VC should be further contextualized as being in no way an endorsement of the non-transparent, access-restricted standards development process and fee-gated publication model.  Or even just removed.\n\nOpinions, I have them https://mailarchive.ietf.org/arch/msg/spice/4xr2I1IX_A4T_cDxlUUufH5QdIM/ \n\n> [SPICE] Re: CBOR/CWT parts in OAuth Token Status List\n> \n> Brian Campbell <bcampbell@pingidentity.com> Tue, 10 February 2026 01:31 UTC[Show header](https://mailarchive.ietf.org/arch/msg/spice/4xr2I1IX_A4T_cDxlUUufH5QdIM/#)\n> \n> My perspective on non-transparent, access-restricted standards development\n> and fee-gated publication models has not changed since last week\n> https://mailarchive.ietf.org/arch/msg/spice/nYhBMowGdrKeW6BgWqf1t9svRjI/,\n> and I again suggest that there be no references to such specifications at\n> all.\n> \n> I am well aware, by the way, that some work with which I'm closely involved\n> has reference to ISO/IEC 18013-5:2021. RFC9901/SD-JWT mentions it here\n> https://datatracker.ietf.org/doc/html/rfc9901#section-10.1-10\n> <https://datatracker.ietf.org/doc/html/rfc9901#section-10.1-10>but\n> basically just says \"this also exists and has the same limitations\" while\n> SD-JWT VC mentions it here\n> https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-14#section-11\n> but as just one of a list of many credential formats. The context of both\n> feels less like any endorsement of the paywalled ISO document.\n> Although this conversation has me reconsidering some and thinking the\n> mention in SD-JWT VC could be further contextualized as such or even\n> removed.\n\n\n[Edit Feb 13] to mention that this was mentioned as part of WGLC https://mailarchive.ietf.org/arch/msg/oauth/LwIGmhiYL_Me5Dpg16J9178DEOM/ ",
       "createdAt": "2026-02-10T01:49:42Z",
-      "updatedAt": "2026-02-11T01:10:23Z",
+      "updatedAt": "2026-02-13T19:21:49Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "IMO, I would keep the ISO reference unless there is a clear need to remove it. Personally, I prefer the transparent process in the IETF over that of other organizations, but I have no objection to giving ISO mdocs some attribution, especially since they are well known in the industry.",
+          "createdAt": "2026-02-12T12:52:20Z",
+          "updatedAt": "2026-02-12T12:52:20Z"
+        },
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "What Oliver said. ",
+          "createdAt": "2026-02-12T12:58:38Z",
+          "updatedAt": "2026-02-12T12:58:38Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> IMO, I would keep the ISO reference unless there is a clear need to remove it. Personally, I prefer the transparent process in the IETF over that of other organizations, but I have no objection to giving ISO mdocs some attribution, especially since they are well known in the industry.\n\n\"need\" is obviously subjective but I have a strong objection to organizations with non-inclusive and restrictive participation models that charge money to see the output. I have a clear need to not have an unqualified link to an publisher's product page.",
+          "createdAt": "2026-02-13T17:49:25Z",
+          "updatedAt": "2026-02-13T17:49:25Z"
+        }
+      ]
     }
   ],
   "pulls": [
