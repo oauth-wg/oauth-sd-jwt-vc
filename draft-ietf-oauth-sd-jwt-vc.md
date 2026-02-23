@@ -1236,13 +1236,17 @@ recommendations in (#robust-retrieval) apply.
 
 # Relationships to Other Documents
 
-This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
-payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
-that define their own verifiable credential formats; for example, W3C Verifiable
-Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials with selective disclosure in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE while [@?I-D.ietf-spice-sd-cwt] also defines a representation of digital credentials with selective disclosure encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0. It also does not utilize CBOR or COSE.
+This specification defines validation and processing rules for verifiable digital credentials using JSON
+payloads secured by SD-JWT [@!RFC9901].
 
+Other specifications exist, which define different verifiable credential formats.
+For example, the W3C Verifiable Credentials Data Model v2.0 [@W3C.VCDM] defines a data model for credentials encoded as JSON-LD.
+ISO/IEC 18013-5:2021 [@ISO.18013-5] (referenced for informational purposes only and not to be construed as an endorsement of ISO's
+closed-door standards development practices or pay-to-access publication model) defines a representation of digital
+credentials with selective disclosure in the mobile document (mdoc) format, encoded as CBOR and secured using COSE.
+Similarly, [@?I-D.ietf-spice-sd-cwt] also defines a representation of selectively disclosable digital credentials encoded as CBOR and secured using COSE.
+
+This specification does not utilize the W3C Verifiable Credentials Data Model (v1.0, v1.1, or v2.0), nor does it use CBOR or COSE.
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
@@ -1317,7 +1321,7 @@ format encoded as CBOR and secured using COSE while [@?I-D.ietf-spice-sd-cwt] al
 
 <reference anchor="ISO.18013-5" target="https://www.iso.org/standard/69084.html">
     <front>
-        <title>ISO/IEC 18013-5:2021</title>
+        <title>ISO/IEC 18013-5:2021 Personal identification — ISO-compliant driving licencePart 5: Mobile driving licence (mDL) application</title>
         <date day="1" month="September" year="2024"/>
         <author>
             <organization>ISO/IEC</organization>
@@ -1723,6 +1727,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -15
 
+* somewhat rework the Relationships to Other Documents section including a qualification that references therein are not endorsing closed-door standards development with pay-to-access publication model
 
 -14
 
