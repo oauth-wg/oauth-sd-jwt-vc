@@ -1241,8 +1241,8 @@ payloads secured by SD-JWT [@!RFC9901].
 
 Other specifications that define different verifiable credential formats exist.
 For example, the W3C Verifiable Credentials Data Model v2.0 [@W3C.VCDM] defines a data model for credentials encoded as JSON-LD.
-ISO/IEC 18013-5:2021 [@ISO.18013-5] (referenced for informational purposes only and not to be construed as an endorsement of ISO's
-closed-door standards development practices or pay-to-access publication model) defines a representation of digital
+Here referenced for informational purposes only and not to be construed as an endorsement of ISO's
+closed-door standards development practices or pay-to-access publication model: ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital
 credentials with selective disclosure in the mobile document (mdoc) format, encoded as CBOR and secured using COSE.
 Similarly, [@?I-D.ietf-spice-sd-cwt] also defines a representation of selectively disclosable digital credentials encoded as CBOR and secured using COSE.
 
