@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-15T00:49:34.291942+00:00",
+  "timestamp": "2026-02-24T00:43:22.079785+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -32236,6 +32236,32 @@
       "mergeCommit": {
         "oid": "5f5b36748a997e9b819c558181ab1e3f7abc9166"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 394,
+      "id": "PR_kwDOJbVClc7Fv1hv",
+      "title": "somewhat rework the Relationships to Other Documents section including a qualification that references therein are not endorsing closed-door standards development with pay-to-access publication model",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/394",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "somewhat rework the Relationships to Other Documents section including a qualification that references therein are not endorsing closed-door standards development with pay-to-access publication model",
+      "createdAt": "2026-02-23T20:51:35Z",
+      "updatedAt": "2026-02-23T20:51:35Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "5f5b36748a997e9b819c558181ab1e3f7abc9166",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "isoannoyed",
+      "headRefOid": "3f9683dbb5e05dba64961036473d58bc78b1cd70",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
