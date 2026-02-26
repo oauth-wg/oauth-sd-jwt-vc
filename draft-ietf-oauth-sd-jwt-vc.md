@@ -1234,15 +1234,6 @@ Consumers SHOULD prefer methods for retrieving Type Metadata that do not
 leak information about the usage of a credential to third parties. The
 recommendations in (#robust-retrieval) apply.
 
-# Relationships to Other Documents
-
-This specification defines validation and processing rules for Verifiable Digital Credentials using JSON
-payloads and secured by SD-JWT [@!RFC9901]. Other specifications exist
-that define their own verifiable credential formats; for example, W3C Verifiable
-Credential Data Model (VCDM) 2.0 [@W3C.VCDM] defines a data model for verifiable credentials encoded as JSON-LD, and
-ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital credentials with selective disclosure in the mobile document (mdoc)
-format encoded as CBOR and secured using COSE while [@?I-D.ietf-spice-sd-cwt] also defines a representation of digital credentials with selective disclosure encoded as CBOR and secured using COSE. This specification does not utilize the W3C Verifiable Credentials Data Model v1.0, v1.1, or v2.0. It also does not utilize CBOR or COSE.
-
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
     <front>
@@ -1285,43 +1276,6 @@ format encoded as CBOR and secured using COSE while [@?I-D.ietf-spice-sd-cwt] al
         </author>
         <title>Subresource Integrity</title>
         <date day="23" month="June" year="2016"/>
-    </front>
-</reference>
-
-<reference anchor="W3C.VCDM" target="https://www.w3.org/TR/vc-data-model-2.0/">
-    <front>
-        <author initials="M." surname="Sporny" fullname="Manu Sporny">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Longley" fullname="Dave Longley">
-            <organization>
-                <organizationName>Digital Bazaar</organizationName>
-            </organization>
-        </author>
-        <author initials="D." surname="Chadwick" fullname="David Chadwick">
-            <organization>
-                <organizationName>Crossword Cybersecurity PLC</organizationName>
-            </organization>
-        </author>
-        <author initials="O." surname="Steele" fullname="Orie Steele">
-            <organization>
-                <organizationName>Transmute</organizationName>
-            </organization>
-        </author>
-        <title>Verifiable Credentials Data Model v2.0</title>
-        <date day="10" month="February" year="2024"/>
-    </front>
-</reference>
-
-<reference anchor="ISO.18013-5" target="https://www.iso.org/standard/69084.html">
-    <front>
-        <title>ISO/IEC 18013-5:2021</title>
-        <date day="1" month="September" year="2024"/>
-        <author>
-            <organization>ISO/IEC</organization>
-        </author>
     </front>
 </reference>
 
@@ -1723,6 +1677,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -15
 
+* remove unnecessary Relationships to Other Documents section
 
 -14
 
