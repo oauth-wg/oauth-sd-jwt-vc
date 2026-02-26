@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-02-24T00:43:22.079785+00:00",
+  "timestamp": "2026-02-26T00:43:40.904429+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -32251,19 +32251,72 @@
       "labels": [],
       "body": "somewhat rework the Relationships to Other Documents section including a qualification that references therein are not endorsing closed-door standards development with pay-to-access publication model",
       "createdAt": "2026-02-23T20:51:35Z",
-      "updatedAt": "2026-02-23T20:51:35Z",
+      "updatedAt": "2026-02-24T13:32:09Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "5f5b36748a997e9b819c558181ab1e3f7abc9166",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "isoannoyed",
-      "headRefOid": "3f9683dbb5e05dba64961036473d58bc78b1cd70",
+      "headRefOid": "c8bd632a3d9e77ecc51aa20e93c10b57ad9575b9",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc7lPpYa",
+          "commit": {
+            "abbreviatedOid": "3f9683d"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-02-24T08:48:21Z",
+          "updatedAt": "2026-02-24T08:54:47Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "```suggestion\nOther specifications that define different verifiable credential formats exist.\n```",
+              "createdAt": "2026-02-24T08:48:21Z",
+              "updatedAt": "2026-02-24T08:54:48Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "```suggestion\nHere referenced for informational purposes only and not to be construed as an endorsement of ISO's\nclosed-door standards development practices or pay-to-access publication model: ISO/IEC 18013-5:2021 [@ISO.18013-5] defines a representation of digital\ncredentials with selective disclosure in the mobile document (mdoc) format, encoded as CBOR and secured using COSE.\n```",
+              "createdAt": "2026-02-24T08:51:49Z",
+              "updatedAt": "2026-02-24T08:54:48Z"
+            },
+            {
+              "originalPosition": 17,
+              "body": "Not a big fan of the remark, but to avoid buffer overflows for the readers, we should put it before or after the rest of the sentence.",
+              "createdAt": "2026-02-24T08:53:33Z",
+              "updatedAt": "2026-02-24T08:54:48Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc7lWrRG",
+          "commit": {
+            "abbreviatedOid": "9b9e056"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-02-24T13:30:40Z",
+          "updatedAt": "2026-02-24T13:30:40Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "Was trying to use the parenthetical as a side note qualifying the reference itself. But not married to the structure. ",
+              "createdAt": "2026-02-24T13:30:40Z",
+              "updatedAt": "2026-02-24T13:30:40Z"
+            }
+          ]
+        }
+      ]
     }
   ]
 }
