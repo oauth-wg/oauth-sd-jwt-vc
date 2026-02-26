@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 14 August 2026                                    Authlete Inc.
+Expires: 30 August 2026                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                        10 February 2026
+                                                        26 February 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 August 2026.
+   This Internet-Draft will expire on 30 August 2026.
 
 Copyright Notice
 
@@ -124,10 +124,9 @@ Table of Contents
      10.2.  Verifiable Digital Credential Type Identifier
      10.3.  Issuer Phone-Home
      10.4.  Privacy-Preserving Retrieval of Type Metadata
-   11. Relationships to Other Documents
-   12. References
-     12.1.  Normative References
-     12.2.  Informative References
+   11. References
+     11.1.  Normative References
+     11.2.  Informative References
    Appendix A.  IANA Considerations
      A.1.  JSON Web Token Claims Registration
      A.2.  Media Types Registry
@@ -627,9 +626,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Mg8zC
-   1XlBb1H0IeyrHoZpldnq-AKDMhFmFgRxZdPNMSLJLOLaTY9ctguHBhYCKjRt-aWgoWp-
-   viECuMM0t_RAw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wCuYQ
+   GwRGFqJX-xFte1oYairAUJxIyGygm_YK24lhITvki4vi3uDtGK86-RhRpnHf7PPwVSNl
+   07TywXIAxNpyQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -665,17 +664,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Mg8zC
-   1XlBb1H0IeyrHoZpldnq-AKDMhFmFgRxZdPNMSLJLOLaTY9ctguHBhYCKjRt-aWgoWp-
-   viECuMM0t_RAw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wCuYQ
+   GwRGFqJX-xFte1oYairAUJxIyGygm_YK24lhITvki4vi3uDtGK86-RhRpnHf7PPwVSNl
+   07TywXIAxNpyQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzA3NDMzMz
-   IsICJzZF9oYXNoIjogIlhTSnBoWm81Nk91ZjRaRG5KQkIwUDlpZUdiR3NrZE5TdW9Dcz
-   JvYUhOVnMifQ.4c8i8PlShYU_c6FHv6RLQlhDMswM6qUmI4Mo9B2Y4nNgIypyrDOuFbc
-   qMX4gXzUwKjQyE1azch8XP3A5SO63Nw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzIxMzAzMz
+   gsICJzZF9oYXNoIjogInhCS3JLU2VKRFVfRWRrUm1UeUsycjQySElzRXA1V2Yyd3BEZT
+   dQR1pCYTQifQ.ABe4Xx8G7tpuj_GWe9dE6Vdt5JTXFqqDFK-6rPOagnW6PWSZ-_iUMEN
+   yzNGtIQtdvOOF3edvGQGHpcH_v0Th0Q
 
                        Figure 7: Presented SD-JWT+KB
 
@@ -721,8 +720,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.myQgPlrF4aImLZWtzMIi6LPM_5tqWoK1eeR1T8K2Zn_L98
-   -LbMFBoVfkeaAnkLgmWE_-kxa64Hluot7P-n4XCQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.ectRwGpK43eoD9je5_YaLP-O6AH_Due3tlQ7uaXhjVQRfK
+   BPouPubLkzXcQ2-k0muQW1f6wHw0knW_kF6jW5Og~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1753,32 +1752,16 @@ Table of Contents
    not leak information about the usage of a credential to third
    parties.  The recommendations in Section 9.4 apply.
 
-11.  Relationships to Other Documents
+11.  References
 
-   This specification defines validation and processing rules for
-   Verifiable Digital Credentials using JSON payloads and secured by SD-
-   JWT [RFC9901].  Other specifications exist that define their own
-   verifiable credential formats; for example, W3C Verifiable Credential
-   Data Model (VCDM) 2.0 [W3C.VCDM] defines a data model for verifiable
-   credentials encoded as JSON-LD, and ISO/IEC 18013-5:2021
-   [ISO.18013-5] defines a representation of digital credentials with
-   selective disclosure in the mobile document (mdoc) format encoded as
-   CBOR and secured using COSE while [I-D.ietf-spice-sd-cwt] also
-   defines a representation of digital credentials with selective
-   disclosure encoded as CBOR and secured using COSE.  This
-   specification does not utilize the W3C Verifiable Credentials Data
-   Model v1.0, v1.1, or v2.0.  It also does not utilize CBOR or COSE.
-
-12.  References
-
-12.1.  Normative References
+11.1.  Normative References
 
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
-              oauth-status-list-17, 30 January 2026,
+              oauth-status-list-18, 18 February 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-17>.
+              status-list-18>.
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1825,7 +1808,7 @@ Table of Contents
               "Subresource Integrity", 23 June 2016,
               <https://www.w3.org/TR/2016/REC-SRI-20160623/>.
 
-12.2.  Informative References
+11.2.  Informative References
 
    [EUDIW.ARF]
               Commission, E., "The European Digital Identity Wallet
@@ -1833,20 +1816,9 @@ Table of Contents
               <https://github.com/eu-digital-identity-wallet/eudi-doc-
               architecture-and-reference-framework/releases>.
 
-   [I-D.ietf-spice-sd-cwt]
-              Prorock, M., Steele, O., Birkholz, H., and R. Mahy,
-              "Selective Disclosure CBOR Web Tokens (SD-CWT)", Work in
-              Progress, Internet-Draft, draft-ietf-spice-sd-cwt-06, 13
-              January 2026, <https://datatracker.ietf.org/doc/html/
-              draft-ietf-spice-sd-cwt-06>.
-
    [IANA.well-known]
               IANA, "Well-Known URIs",
               <https://www.iana.org/assignments/well-known-uris>.
-
-   [ISO.18013-5]
-              ISO/IEC, "ISO/IEC 18013-5:2021", 1 September 2024,
-              <https://www.iso.org/standard/69084.html>.
 
    [NIST-BLOG.VDCE]
               Fisher, B. and R. Galluzzo, "Digital Identities: Getting
@@ -1873,10 +1845,6 @@ Table of Contents
               Ed., "JSONPath: Query Expressions for JSON", RFC 9535,
               DOI 10.17487/RFC9535, February 2024,
               <https://www.rfc-editor.org/info/rfc9535>.
-
-   [W3C.VCDM] Sporny, M., Longley, D., Chadwick, D., and O. Steele,
-              "Verifiable Credentials Data Model v2.0", 10 February
-              2024, <https://www.w3.org/TR/vc-data-model-2.0/>.
 
 Appendix A.  IANA Considerations
 
@@ -2029,8 +1997,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.AQFTBUqNtLw9Hz1JvxTesG09NZlj6GMyMyoz3LmJE8r
-   XlJrrwxaNKacP8YtYFX-x7U4XJxuR6loMNGoijVReKQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.pb4GTgTWvN6QasrJO61zpBggr_NdiNEUP-AlcvVzC9g
+   pIsC0jy5-T4Ur61usDEeXi9lQ7X7MtF0hn6em2OqOzA~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2412,8 +2380,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.AQFTBUqNtLw9Hz1JvxTesG09NZlj6GMyMyoz3LmJE8r
-   XlJrrwxaNKacP8YtYFX-x7U4XJxuR6loMNGoijVReKQ~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.pb4GTgTWvN6QasrJO61zpBggr_NdiNEUP-AlcvVzC9g
+   pIsC0jy5-T4Ur61usDEeXi9lQ7X7MtF0hn6em2OqOzA~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2424,9 +2392,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzA3NDMzMzIsICJzZF9oYXNoIjogIjhETVBmSWdmS
-   DRiMlFac2dVVi1kN01kVWZsOWloemNocmhkYTdKRmpfejAifQ.LCJzzyjyHwv83dacF9
-   tmEYzWWTP8qlqr3x1zUnVw8oy1a26vH02pJtKuuJxXOeu5OudkE8pZq4Vz7xSeMms_tg
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzIxMzAzMzgsICJzZF9oYXNoIjogInFLX1M4XzZJO
+   EJlTnhqaUp1RGF4WmdZN0ViUldCOEo4X2p6VnhzN21mZ3cifQ.b-z4p3NxCd3Uz30aNc
+   9cHVsSIhUF2UM7ZuevDaBqsjIYy2eeH6BCrtGc4P6L-HT3CstdfCrajW4RuE1w7foK3w
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2435,8 +2403,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1770743332,
-     "sd_hash": "8DMPfIgfH4b2QZsgUV-d7MdUfl9ihzchrhda7JFj_z0"
+     "iat": 1772130338,
+     "sd_hash": "qK_S8_6I8BeNxjiJuDaxZgY7EbRWB8J8_jzVxs7mfgw"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2707,6 +2675,8 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    -15
+
+   *  remove unnecessary Relationships to Other Documents section
 
    -14
 
