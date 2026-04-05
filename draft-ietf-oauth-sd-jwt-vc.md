@@ -174,7 +174,7 @@ a term that is emerging as a conceptual synonym for "verifiable credential".
 ## Data Format
 
 Issuers MUST encode an SD-JWT VC using the SD-JWT format defined in Section 4
-or Section 8 of [@!RFC9901], where support for the JWS JSON Serialization is OPTIONAL.
+or Section 8 of [@!RFC9901].  By default, the format defined in Section 4 of [@!RFC9901] is used, whereas support for the JWS JSON Serialization in Section 8 of [@!RFC9901] is OPTIONAL.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
