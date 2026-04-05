@@ -323,14 +323,14 @@ MUST NOT have any Disclosures.
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
-Figure: Unsecured Payload {#user-claims1}
+Figure: Unsecured Payload Example {#user-claims1}
 
 (#sd-jwt-payload1) below shows how the Unsecured Payload
 above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:
 
 <{{examples/01/sd_jwt_payload.json}}
-Figure: Unsecured Payload {#sd-jwt-payload1}
+Figure: Unsecured Payload Example {#sd-jwt-payload1}
 
 Note that a `cnf` claim has been added to the SD-JWT payload to express the
 confirmation method of the Key Binding.
@@ -342,7 +342,7 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 The SD-JWT and the Disclosures would then be serialized by the Issuer into the format shown in (#issuance1) below for issuance to the Holder.
 
 <{{examples/01/sd_jwt_issuance.txt}}
-Figure: SD-JWT VC {#issuance1}
+Figure: SD-JWT VC Example {#issuance1}
 
 ### Presentation
 
@@ -351,23 +351,23 @@ In this presentation, the Holder provides only the Disclosures for the `address`
 Other claims are not disclosed to the Verifier.
 
 <{{examples/01/sd_jwt_presentation.txt}}
-Figure: Presented SD-JWT+KB {#presentation1}
+Figure: Presented SD-JWT+KB Example {#presentation1}
 
 After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) below available for further handling.
 
 <{{examples/01/verified_contents.json}}
-Figure: Verified SD-JWT Payload {#verified-payload1}
+Figure: Verified SD-JWT Payload Example {#verified-payload1}
 
 The example in (#presentation2) below shows a presentation of a (similar but different) SD-JWT without a
 KB-JWT.
 
 <{{examples/02/sd_jwt_presentation.txt}}
-Figure: Presented SD-JWT {#presentation2}
+Figure: Presented SD-JWT Example {#presentation2}
 
 The Verifier will have the following processed SD-JWT payload shown in (#verified-payload2) after validation.
 
 <{{examples/02/verified_contents.json}}
-Figure: Processed SD-JWT Payload {#verified-payload2}
+Figure: Processed SD-JWT Payload Example {#verified-payload2}
 
 ## Verification and Processing {#vc-sd-jwt-verification-and-processing}
 
