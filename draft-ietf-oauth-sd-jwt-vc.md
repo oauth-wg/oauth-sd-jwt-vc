@@ -933,9 +933,8 @@ able to identify the claim which is being addressed.
 Note: This specification intentionally does not use JSON Pointer [@?RFC6901] for
 selecting claims, as JSON Pointer requires string parsing and does not support
 wildcard selection of array elements. It does not use JSON Path [@?RFC9535] as
-that introduces a considerable complexity and brings in many features which
-are not needed for the use case of selecting claims in a credential. There are
-also security concerns with some implementations.
+that introduces many features which are not needed for the use case of selecting
+claims in a credential.
 
 ## Claim Display Metadata {#claim-display-metadata}
 
