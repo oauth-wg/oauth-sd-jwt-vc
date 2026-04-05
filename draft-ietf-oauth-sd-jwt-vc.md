@@ -325,7 +325,7 @@ SD-JWT VC.
 <{{examples/01/user_claims.json}}
 Figure: Unsecured Payload {#user-claims1}
 
-(#sd-jwt-payload1) below shows how the Unsecured Payload
+(#sd-jwt-payload1) shows how the Unsecured Payload
 above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:
 
@@ -339,26 +339,26 @@ The following are the Disclosures belonging to the SD-JWT payload above:
 
 {{examples/01/disclosures.md}}
 
-The SD-JWT and the Disclosures would then be serialized by the Issuer into the format shown in (#issuance1) below for issuance to the Holder.
+The SD-JWT and the Disclosures would then be serialized by the Issuer into the format shown in (#issuance1) for issuance to the Holder.
 
 <{{examples/01/sd_jwt_issuance.txt}}
 Figure: SD-JWT VC {#issuance1}
 
 ### Presentation
 
-(#presentation1) below is an example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
+(#presentation1) is an example of a presentation of the SD-JWT shown in (#vc-sd-jwt-example) including a KB-JWT.
 In this presentation, the Holder provides only the Disclosures for the `address` and `is_over_65` claims.
 Other claims are not disclosed to the Verifier.
 
 <{{examples/01/sd_jwt_presentation.txt}}
 Figure: Presented SD-JWT+KB {#presentation1}
 
-After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) below available for further handling.
+After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload1) available for further handling.
 
 <{{examples/01/verified_contents.json}}
 Figure: Verified SD-JWT Payload {#verified-payload1}
 
-The example in (#presentation2) below shows a presentation of a (similar but different) SD-JWT without a
+The example in (#presentation2) shows a presentation of a (similar but different) SD-JWT without a
 KB-JWT.
 
 <{{examples/02/sd_jwt_presentation.txt}}
@@ -433,7 +433,7 @@ components.
 A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#jwt-vc-issuer-metadata).
 
-(#GET) below is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET) is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
 ```http
@@ -446,7 +446,7 @@ If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-(#GET1234) below is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET1234) is a non-normative example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
@@ -481,7 +481,7 @@ It is RECOMMENDED that the Issuer-signed JWT contains a `kid` JWT header paramet
 be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.
 
-(#example-metadata-jwks) below is an example of a JWT VC Issuer Metadata configuration
+(#example-metadata-jwks) is an example of a JWT VC Issuer Metadata configuration
 including `jwks`:
 
 ```
@@ -507,7 +507,7 @@ including `jwks`:
 ```
 Figure: Example Metadata with a JSON Web Key Set {#example-metadata-jwks}
 
-(#example-metadata-jwks-uri) below is an example of a JWT VC Issuer Metadata
+(#example-metadata-jwks-uri) is an example of a JWT VC Issuer Metadata
 configuration including `jwks_uri`:
 
 ```
@@ -797,7 +797,7 @@ claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
 the value is absent.
 
-The non-normative example below in (#example-svg-template) shows a minimal SVG with one placeholder
+The non-normative example in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
 example in (#ExampleTypeMetadata).
 
@@ -1420,7 +1420,7 @@ Figure: Presented SD-JWT+KB {#presentation3}
 <{{examples/03-pid/kb_jwt_payload.json}}
 Figure: Key Binding JWT Payload {#kb-jwt-payload3}
 
-After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload3) below available for further handling:
+After validation, the Verifier will have the processed SD-JWT payload in (#verified-payload3) available for further handling:
 
 <{{examples/03-pid/verified_contents.json}}
 Figure: Processed SD-JWT Payload {#verified-payload3}
