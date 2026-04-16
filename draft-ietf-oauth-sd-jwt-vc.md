@@ -111,7 +111,7 @@ the claims that must be used within the payload or their semantics.
 This specification uses SD-JWT and the well-established JWT content rules and
 extensibility model as basis for representing Verifiable Digital Credentials with JSON
 payloads. These Verifiable Digital Credentials are called SD-JWT VCs. The use of
-selective disclosure in SD-JWT VCs is OPTIONAL.
+selective disclosure in SD-JWT VCs is optional.
 
 SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
