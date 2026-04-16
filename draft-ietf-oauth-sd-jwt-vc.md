@@ -41,7 +41,7 @@ organization="Ping Identity"
 .# Abstract
 
 This specification describes data formats as well as validation and processing
-rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT [@!RFC9901] format.
+rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT format.
 
 {mainmatter}
 
