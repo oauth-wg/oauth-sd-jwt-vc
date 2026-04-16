@@ -830,7 +830,7 @@ Rules for these are defined in (#claim-metadata-extends).
 
 # Claim Metadata {#claim-metadata}
 
-The `claims` property is an array of objects that provides per-claim metadata. Each object identifies which claim or set of claims in the credential is being described (`path`) and can specify how that claim is presented to end users ( `display`), whether it is required to be included by the Issuer (`mandatory`), whether it is selectively disclosable (`sd`), and, for SVG rendering, which placeholder refers to it (`svg_id`).
+The `claims` property is an array of objects that provides per-claim metadata. Each object identifies which claim or set of claims in the credential is being described (`path`) and can specify how that claim is presented to end users (`display`), whether it is required to be included by the Issuer (`mandatory`), whether it is selectively disclosable (`sd`), and, for SVG rendering, which placeholder refers to it (`svg_id`).
 
 The array MAY contain an object for each claim that is supported by the type.
 Each object contains the following properties:
