@@ -1075,7 +1075,7 @@ Figure: Effective Claim Metadata for Child Type {#effective-claim-metadata-child
 
 # Security Considerations {#security-considerations}
 
-The Security Considerations in the SD-JWT specification
+The security considerations in the SD-JWT specification
 [@!RFC9901] apply to this specification.
 Additionally, the following security considerations need to be taken into
 account when using SD-JWT VCs:
@@ -1178,14 +1178,14 @@ The use of data URIs allows embedding of data directly within credential payload
 
 # Privacy Considerations {#privacy-considerations}
 
-The Privacy Considerations in the SD-JWT specification
+The privacy considerations in the SD-JWT specification
 [@!RFC9901] apply to this specification.
 Additionally, the following privacy considerations need to be taken into
 account when using SD-JWT VCs.
 
 ## Unlinkability
 
-The Privacy Considerations in Section 10.1 of [@!RFC9901] apply, especially to the `cnf` claim.
+The privacy considerations in Section 10.1 of [@!RFC9901] apply, especially to the `cnf` claim.
 
 ## Verifiable Digital Credential Type Identifier
 
