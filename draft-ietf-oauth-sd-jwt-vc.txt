@@ -627,9 +627,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UjIeT
-   cPZF3a8rp06LfsrF394eOuVlPCIwm7cYk8wcHtk1ZQNs4RF7N7pLRnHW8YnQNitx_Na3
-   ljirF1yVPkdsg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SZEew
+   Yr4pmwCTWEnMzzJ-Q_j1_zf1Ss9DEgfUlmrJ8W6g8jB_HqvWKaksnB9FKIeiWvpBg7ZK
+   63_rgFwOojLwA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -665,17 +665,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UjIeT
-   cPZF3a8rp06LfsrF394eOuVlPCIwm7cYk8wcHtk1ZQNs4RF7N7pLRnHW8YnQNitx_Na3
-   ljirF1yVPkdsg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SZEew
+   Yr4pmwCTWEnMzzJ-Q_j1_zf1Ss9DEgfUlmrJ8W6g8jB_HqvWKaksnB9FKIeiWvpBg7ZK
+   63_rgFwOojLwA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjYxMT
-   UsICJzZF9oYXNoIjogIjQyajQxUnpoNGFEb2plUWM5VE02aVpWV1RGQlZpaXZEQW9kQk
-   dGbHdQWTgifQ.X4W5cyoCeBrdrT6bWfFROfyj8Sas11lui6gKxGBNFiq2PR3teumO6G2
-   bbciyTAmXL4hCYlPgaa27-ci_Zr1ejw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjc4OT
+   YsICJzZF9oYXNoIjogImdTMDUyZEF4WWM1NGpFaHlJQ1ZGQXJqdm9xc0xDc2VENUNkcW
+   laSTYwWVUifQ.b5vqyoCtKkFCbbHnqaw--NEzaTzuI1CPtGZpGH477_Bchmt7wcAZ3cM
+   X8GJdK-CjqoRmcNk_7x4c0q7bfIBGOg
 
                    Figure 7: Presented SD-JWT+KB Example
 
@@ -721,8 +721,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.tof_7YliZTacPPznv31NmDfk_s0bt-wSGdYiXXgkAhCvnO
-   CLhqS0WjjfMvqFFoMiko591tr3FQSkNFE3FHCwRw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.Z6lmbKKgoDEvVdCrG8CRDxcZZYpZtRfbYz_iC2uKmMPhPS
+   LXPmGLBUVnTGDKxx3bkKSIaSrjMU7BFkpkivSzVA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1265,8 +1265,13 @@ Table of Contents
 
 8.  Claim Metadata
 
-   The claims property is an array of objects containing information
-   about particular claims for displaying and validating the claims.
+   The claims property is an array of objects that provides per-claim
+   metadata.  Each object identifies which claim or set of claims in the
+   credential is being described (path), and can specify how that claim
+   is presented to end users (display), whether it is required to be
+   included by the Issuer (mandatory), whether it is selectively
+   disclosable (sd), and, for SVG rendering, which placeholder refers to
+   it (svg_id).
 
    The array MAY contain an object for each claim that is supported by
    the type.  Each object contains the following properties:
@@ -1998,8 +2003,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.nTMBt9x-VgO0SoWDAcr_SX9ZQuAL1QlEXDg5iJmQI9u
-   wfngI1WDBNxyJp3qNpxrGQMvqD_UXuJOORSEm9Ky_3A~WyIyR0xDNDJzS1F2ZUNmR2Zy
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.PkXbQTaBBZWxz3eNRiDxgMBGGnK6LxA6c0iU2CU3OeU
+   3u742_uAQlR1xSJn3yH1On1x7PcGF5HYqHAPXujPMSQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
    eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
    bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
    Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -2381,8 +2386,8 @@ B.1.  Example Person Identification Data (PID) Credential
    fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
    jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
    pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-   jQ0U2dDRqVDlGMkhaUSJ9fX0.nTMBt9x-VgO0SoWDAcr_SX9ZQuAL1QlEXDg5iJmQI9u
-   wfngI1WDBNxyJp3qNpxrGQMvqD_UXuJOORSEm9Ky_3A~WyJlSzVvNXBIZmd1cFBwbHRq
+   jQ0U2dDRqVDlGMkhaUSJ9fX0.PkXbQTaBBZWxz3eNRiDxgMBGGnK6LxA6c0iU2CU3OeU
+   3u742_uAQlR1xSJn3yH1On1x7PcGF5HYqHAPXujPMSQ~WyJlSzVvNXBIZmd1cFBwbHRq
    MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
    c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
    d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -2393,9 +2398,9 @@ B.1.  Example Person Identification Data (PID) Credential
    HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
    lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
    yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjYxMTUsICJzZF9oYXNoIjogIlczS0VkcUJPU
-   FFxUDdrLU1RRUtGNXp5MG9SUE9jTlVVX2lTV1J2ck52d2cifQ.HwVgIq4ARQaxth6tcS
-   3S5Rzry72rHIvZIgEWIhqGWe-uGezU4vKWkAwfUf2L7vZgJXMaluvwrZhCI9YtHURltQ
+   3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjc4OTYsICJzZF9oYXNoIjogIklqNGtxaXRJd
+   XYxZjFpaG5MN2c2c1FkQktNNTBpTXhJZTRCTWJ3ZTAzNTQifQ.oVDEz0s3fUjxmwUJKN
+   uy_leQU2PzbqNjUKroXWcWs4BLQupsmMzqIUqJ89CMrOgTdxlCgkUqeIsIudeO-ZX83Q
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2404,8 +2409,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1776366115,
-     "sd_hash": "W3KEdqBOPQqP7k-MQEKF5zy0oRPOcNUU_iSWRvrNvwg"
+     "iat": 1776367896,
+     "sd_hash": "Ij4kqitIuv1f1ihnL7g6sQdBKM50iMxIe4BMbwe0354"
    }
 
                      Figure 26: Key Binding JWT Payload
