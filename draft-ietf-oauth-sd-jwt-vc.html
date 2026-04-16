@@ -1787,7 +1787,7 @@ MUST NOT have any Disclosures.<a href="#section-3.2.2.4-1" class="pilcrow">¶</a
           </h4>
 <p id="section-3.3.1-1"><a href="#user-claims1" class="auto internal xref">Figure 4</a> is a non-normative example of the user data of an Unsecured Payload of an
 SD-JWT VC.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
-<span id="name-unsecured-payload"></span><div id="user-claims1">
+<span id="name-unsecured-payload-example"></span><div id="user-claims1">
 <figure id="figure-4">
             <div class="lang-json sourcecode" id="section-3.3.1-2.1">
 <pre>{
@@ -1811,13 +1811,13 @@ SD-JWT VC.<a href="#section-3.3.1-1" class="pilcrow">¶</a></p>
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-unsecured-payload" class="selfRef">Unsecured Payload</a>
+<a href="#name-unsecured-payload-example" class="selfRef">Unsecured Payload Example</a>
             </figcaption></figure>
 </div>
 <p id="section-3.3.1-3"><a href="#sd-jwt-payload1" class="auto internal xref">Figure 5</a> below shows how the Unsecured Payload
 above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:<a href="#section-3.3.1-3" class="pilcrow">¶</a></p>
-<span id="name-unsecured-payload-2"></span><div id="sd-jwt-payload1">
+<span id="name-unsecured-payload-example-2"></span><div id="sd-jwt-payload1">
 <figure id="figure-5">
             <div class="lang-json sourcecode" id="section-3.3.1-4.1">
 <pre>{
@@ -1850,7 +1850,7 @@ only claims about the Subject that are selectively disclosable:<a href="#section
 </pre>
 </div>
 <figcaption><a href="#figure-5" class="selfRef">Figure 5</a>:
-<a href="#name-unsecured-payload-2" class="selfRef">Unsecured Payload</a>
+<a href="#name-unsecured-payload-example-2" class="selfRef">Unsecured Payload Example</a>
             </figcaption></figure>
 </div>
 <p id="section-3.3.1-5">Note that a <code>cnf</code> claim has been added to the SD-JWT payload to express the
@@ -1969,7 +1969,7 @@ confirmation method of the Key Binding.<a href="#section-3.3.1-5" class="pilcrow
 </li>
           </ul>
 <p id="section-3.3.1-25">The SD-JWT and the Disclosures would then be serialized by the Issuer into the format shown in <a href="#issuance1" class="auto internal xref">Figure 6</a> below for issuance to the Holder.<a href="#section-3.3.1-25" class="pilcrow">¶</a></p>
-<span id="name-sd-jwt-vc"></span><div id="issuance1">
+<span id="name-sd-jwt-vc-example"></span><div id="issuance1">
 <figure id="figure-6">
             <div class="lang-txt sourcecode" id="section-3.3.1-26.1">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
@@ -1987,9 +1987,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.pg920
-RdWcDyBmNz89JdR3Dux2rnvZkutLWcavDhHRAqfkqgw8tr0fZAx9n1UijpxuN8cvLKQQ
-AR2SCfvDRisdA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6mG3B
+-Ek6fQ6nwp2EQY2YDwhuJyr4R-lu84GTnysthWnZpabqNYErttBhSDvb7v1DJPXk2l7b
+_LnjJ1wMEgzrg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2004,7 +2004,7 @@ lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-sd-jwt-vc" class="selfRef">SD-JWT VC</a>
+<a href="#name-sd-jwt-vc-example" class="selfRef">SD-JWT VC Example</a>
             </figcaption></figure>
 </div>
 </section>
@@ -2017,7 +2017,7 @@ lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 <p id="section-3.3.2-1"><a href="#presentation1" class="auto internal xref">Figure 7</a> below is an example of a presentation of the SD-JWT shown in <a href="#vc-sd-jwt-example" class="auto internal xref">Section 3.3</a> including a KB-JWT.
 In this presentation, the Holder provides only the Disclosures for the <code>address</code> and <code>is_over_65</code> claims.
 Other claims are not disclosed to the Verifier.<a href="#section-3.3.2-1" class="pilcrow">¶</a></p>
-<span id="name-presented-sd-jwtkb"></span><div id="presentation1">
+<span id="name-presented-sd-jwtkb-example"></span><div id="presentation1">
 <figure id="figure-7">
             <div class="lang-txt sourcecode" id="section-3.3.2-2.1">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
@@ -2035,26 +2035,26 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.pg920
-RdWcDyBmNz89JdR3Dux2rnvZkutLWcavDhHRAqfkqgw8tr0fZAx9n1UijpxuN8cvLKQQ
-AR2SCfvDRisdA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6mG3B
+-Ek6fQ6nwp2EQY2YDwhuJyr4R-lu84GTnysthWnZpabqNYErttBhSDvb7v1DJPXk2l7b
+_LnjJ1wMEgzrg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjUyNT
-csICJzZF9oYXNoIjogInk5eENGOVplbWM0S2hLR3dVa3lXQUNiWktNR1ZQMjc0cVJpNl
-BvZ2pZYjAifQ.jsHuZNitcF1vTopG24c9H1mUD22UYNEklqMUhJ9hLy8xhtHKvz3WKn8
-CW0i_RGyKK_Ypc52bzStY9GYlhfIwwg
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjU4Nj
+ksICJzZF9oYXNoIjogIkkzTC1IV0F1UTV6cUs1Q1p0c3RWTlBPN2dPbUJzeFlfSElhdU
+pTV0QydnMifQ.qlqbAh-y1bWO4N_7dFXB5FG9F05f2HdanotsbLnlhRrm3DNlf-eN81v
+TMnLji-20pAzW_e9X80N83za4E8iEbA
 
 </pre>
 </div>
 <figcaption><a href="#figure-7" class="selfRef">Figure 7</a>:
-<a href="#name-presented-sd-jwtkb" class="selfRef">Presented SD-JWT+KB</a>
+<a href="#name-presented-sd-jwtkb-example" class="selfRef">Presented SD-JWT+KB Example</a>
             </figcaption></figure>
 </div>
 <p id="section-3.3.2-3">After validation, the Verifier will have the processed SD-JWT payload in <a href="#verified-payload1" class="auto internal xref">Figure 8</a> below available for further handling.<a href="#section-3.3.2-3" class="pilcrow">¶</a></p>
-<span id="name-verified-sd-jwt-payload"></span><div id="verified-payload1">
+<span id="name-verified-sd-jwt-payload-exa"></span><div id="verified-payload1">
 <figure id="figure-8">
             <div class="lang-json sourcecode" id="section-3.3.2-4.1">
 <pre>{
@@ -2082,12 +2082,12 @@ CW0i_RGyKK_Ypc52bzStY9GYlhfIwwg
 </pre>
 </div>
 <figcaption><a href="#figure-8" class="selfRef">Figure 8</a>:
-<a href="#name-verified-sd-jwt-payload" class="selfRef">Verified SD-JWT Payload</a>
+<a href="#name-verified-sd-jwt-payload-exa" class="selfRef">Verified SD-JWT Payload Example</a>
             </figcaption></figure>
 </div>
 <p id="section-3.3.2-5">The example in <a href="#presentation2" class="auto internal xref">Figure 9</a> below shows a presentation of a (similar but different) SD-JWT without a
 KB-JWT.<a href="#section-3.3.2-5" class="pilcrow">¶</a></p>
-<span id="name-presented-sd-jwt"></span><div id="presentation2">
+<span id="name-presented-sd-jwt-example"></span><div id="presentation2">
 <figure id="figure-9">
             <div class="lang-txt sourcecode" id="section-3.3.2-6.1">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
@@ -2102,8 +2102,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.J_j3DxeL7_fsNlPFTaPuCjOcXZtGUm90D-_IgdwwXlKT_D
-h0HRXee8JPXAL3R0DRiOwfCppEYVOskT69S8LCBQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.NHyJUaYl8mgHELdBTrly3fTpm-k0Jc3onYq2PA4Treg6gs
+M2NK-NiKIQHaijLjFDVPHzWwJu8nyQcHlWkuScJQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2112,11 +2112,11 @@ OiAiVVMifV0~
 </pre>
 </div>
 <figcaption><a href="#figure-9" class="selfRef">Figure 9</a>:
-<a href="#name-presented-sd-jwt" class="selfRef">Presented SD-JWT</a>
+<a href="#name-presented-sd-jwt-example" class="selfRef">Presented SD-JWT Example</a>
             </figcaption></figure>
 </div>
 <p id="section-3.3.2-7">The Verifier will have the following processed SD-JWT payload shown in <a href="#verified-payload2" class="auto internal xref">Figure 10</a> after validation.<a href="#section-3.3.2-7" class="pilcrow">¶</a></p>
-<span id="name-processed-sd-jwt-payload"></span><div id="verified-payload2">
+<span id="name-processed-sd-jwt-payload-ex"></span><div id="verified-payload2">
 <figure id="figure-10">
             <div class="lang-json sourcecode" id="section-3.3.2-8.1">
 <pre>{
@@ -2136,7 +2136,7 @@ OiAiVVMifV0~
 </pre>
 </div>
 <figcaption><a href="#figure-10" class="selfRef">Figure 10</a>:
-<a href="#name-processed-sd-jwt-payload" class="selfRef">Processed SD-JWT Payload</a>
+<a href="#name-processed-sd-jwt-payload-ex" class="selfRef">Processed SD-JWT Payload Example</a>
             </figcaption></figure>
 </div>
 </section>
@@ -3647,8 +3647,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.tPqxxUp9KWiCb5j_uFV6RzU0MzmhB7OMKxKR5oTXEO9
-U1KZbS-UzfP7hGqVE5tjXEiZLAIQZltR7njSjuBdfgQ~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.8Anbh9_1NvVdkvJ0rIV-VIANAJQQt_jhSu7VJ1X43nd
+WLn4p8_3qyPu4ZmQmHrXYEnj4J2YPbHwH1m8wo4LblA~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -4121,7 +4121,7 @@ pbmdkb20gb2YgXHUwMGM2bmRnYXJkLCBNaW5pc3RyeSBvZiBJbnRlcmlvciJd~WyJvdm
 </li>
         </ul>
 <p id="appendix-B.1-66"><a href="#presentation3" class="auto internal xref">Figure 25</a> shows a presentation of the SD-JWT with a Key Binding JWT that discloses only nationality and the fact that the person is over 18 years old:<a href="#appendix-B.1-66" class="pilcrow">¶</a></p>
-<span id="name-presented-sd-jwtkb-2"></span><div id="presentation3">
+<span id="name-presented-sd-jwtkb"></span><div id="presentation3">
 <figure id="figure-25">
           <div class="lang-txt sourcecode" id="appendix-B.1-67.1">
 <pre>eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
@@ -4145,8 +4145,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.tPqxxUp9KWiCb5j_uFV6RzU0MzmhB7OMKxKR5oTXEO9
-U1KZbS-UzfP7hGqVE5tjXEiZLAIQZltR7njSjuBdfgQ~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.8Anbh9_1NvVdkvJ0rIV-VIANAJQQt_jhSu7VJ1X43nd
+WLn4p8_3qyPu4ZmQmHrXYEnj4J2YPbHwH1m8wo4LblA~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -4157,14 +4157,14 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjUyNTcsICJzZF9oYXNoIjogImREUzR6V2ZEd
-l9XWjVfOTJ1U1RGc01acWJLX2NFSFp2ekVIbkR5UWY1T3cifQ.AYw5wXDuk99cTAtOuh
-AGJqUIfK1tAqHWJ3mdcCvtMJizqoXpLgQH_y0j6sIP8CNPOzUCrgcnhfssHhBOVVfAng
+3ZlcmlmaWVyIiwgImlhdCI6IDE3NzYzNjU4NjksICJzZF9oYXNoIjogIlpaUVVpazR5S
+GNneHdCVjd1a2xpWDJ0STNXcXpRMktQQk8ydkpkRENlR3MifQ.kRDo5HLlJtVvArN465
+Isxcdg_OGbLkco2ZWzj-B5KwYMeKivg25NEWB2tkrFsbw5bzP1AwmKomlR23ZoBdQj-Q
 
 </pre>
 </div>
 <figcaption><a href="#figure-25" class="selfRef">Figure 25</a>:
-<a href="#name-presented-sd-jwtkb-2" class="selfRef">Presented SD-JWT+KB</a>
+<a href="#name-presented-sd-jwtkb" class="selfRef">Presented SD-JWT+KB</a>
           </figcaption></figure>
 </div>
 <p id="appendix-B.1-68"><a href="#kb-jwt-payload3" class="auto internal xref">Figure 26</a> is the payload of a corresponding Key Binding JWT:<a href="#appendix-B.1-68" class="pilcrow">¶</a></p>
@@ -4174,8 +4174,8 @@ AGJqUIfK1tAqHWJ3mdcCvtMJizqoXpLgQH_y0j6sIP8CNPOzUCrgcnhfssHhBOVVfAng
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1776365257,
-  "sd_hash": "dDS4zWfDv_WZ5_92uSTFsMZqbK_cEHZvzEHnDyQf5Ow"
+  "iat": 1776365869,
+  "sd_hash": "ZZQUik4yHcgxwBV7ukliX2tI3WqzQ2KPBO2vJdDCeGs"
 }
 
 </pre>
@@ -4185,7 +4185,7 @@ AGJqUIfK1tAqHWJ3mdcCvtMJizqoXpLgQH_y0j6sIP8CNPOzUCrgcnhfssHhBOVVfAng
           </figcaption></figure>
 </div>
 <p id="appendix-B.1-70">After validation, the Verifier will have the processed SD-JWT payload in <a href="#verified-payload3" class="auto internal xref">Figure 27</a> below available for further handling:<a href="#appendix-B.1-70" class="pilcrow">¶</a></p>
-<span id="name-processed-sd-jwt-payload-2"></span><div id="verified-payload3">
+<span id="name-processed-sd-jwt-payload"></span><div id="verified-payload3">
 <figure id="figure-27">
           <div class="lang-json sourcecode" id="appendix-B.1-71.1">
 <pre>{
@@ -4212,7 +4212,7 @@ AGJqUIfK1tAqHWJ3mdcCvtMJizqoXpLgQH_y0j6sIP8CNPOzUCrgcnhfssHhBOVVfAng
 </pre>
 </div>
 <figcaption><a href="#figure-27" class="selfRef">Figure 27</a>:
-<a href="#name-processed-sd-jwt-payload-2" class="selfRef">Processed SD-JWT Payload</a>
+<a href="#name-processed-sd-jwt-payload" class="selfRef">Processed SD-JWT Payload</a>
           </figcaption></figure>
 </div>
 </section>
