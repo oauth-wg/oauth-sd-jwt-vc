@@ -1654,6 +1654,7 @@ Dan Moore,
 Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
+Hannes Tschofenig,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
@@ -1673,6 +1674,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-16
+
+* shepherd review and resulting changes
 
 -15
 
