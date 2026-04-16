@@ -288,7 +288,7 @@ information.
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `vct#integrity`: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
 * `status`: OPTIONAL. The information on how to read the status of the Verifiable
-Credential. See [@!I-D.ietf-oauth-status-list]
+Credential. See [@?I-D.ietf-oauth-status-list]
  for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
