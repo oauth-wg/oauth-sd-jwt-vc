@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-07T00:52:08.796909+00:00",
+  "timestamp": "2026-04-19T00:58:36.540458+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -32359,103 +32359,199 @@
       "id": "PR_kwDOJbVClc7QCPok",
       "title": "Remove reference to RFC9901 in abstract",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/396",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-05T10:46:13Z",
-      "updatedAt": "2026-04-05T10:46:15Z",
+      "updatedAt": "2026-04-16T18:45:53Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-1",
       "headRefOid": "a91bf35e1eb4c17a9095218af188e82ff253e2a2",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-04-16T18:45:53Z",
+      "mergedAt": "2026-04-16T18:45:53Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "965b4320033d77ed305da488023c5680fa119c0e"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71yLiX",
+          "commit": {
+            "abbreviatedOid": "a91bf35"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T18:45:10Z",
+          "updatedAt": "2026-04-16T18:45:10Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 397,
       "id": "PR_kwDOJbVClc7QCPqa",
       "title": "Update figure captions to include 'Example'",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/397",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-05T10:46:20Z",
-      "updatedAt": "2026-04-05T10:46:23Z",
+      "updatedAt": "2026-04-16T18:57:29Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-5",
       "headRefOid": "d0c9e3cf6cac6da30444ea4d784316d8bff2d3b9",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-04-16T18:57:29Z",
+      "mergedAt": "2026-04-16T18:57:29Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "f5bc3818df608ca64d1378c2ba24ee269bead245"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71yfUD",
+          "commit": {
+            "abbreviatedOid": "d0c9e3c"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T18:56:51Z",
+          "updatedAt": "2026-04-16T18:56:51Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 398,
       "id": "PR_kwDOJbVClc7QCPr1",
       "title": "Improve the intro to the Claim Metadata section",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/398",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-05T10:46:25Z",
-      "updatedAt": "2026-04-05T10:46:28Z",
+      "updatedAt": "2026-04-16T19:31:12Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-6",
-      "headRefOid": "eb77bd6a9a5f310cd5224d79492c10b8dcdaed0a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "591f2dcab803537f76dc433ae35ab16e1bfcda92",
+      "closedAt": "2026-04-16T19:31:12Z",
+      "mergedAt": "2026-04-16T19:31:12Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "54882ed3defe8f6365731482625d964241253693"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71y5cU",
+          "commit": {
+            "abbreviatedOid": "eb77bd6"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-04-16T19:14:58Z",
+          "updatedAt": "2026-04-16T19:14:58Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\nThe `claims` property is an array of objects that provides per-claim metadata. Each object identifies which claim or set of claims in the credential is being described (`path`) and can specify how that claim is presented to end users (`display`), whether it is required to be included by the Issuer (`mandatory`), whether it is selectively disclosable (`sd`), and, for SVG rendering, which placeholder refers to it (`svg_id`).\n```",
+              "createdAt": "2026-04-16T19:14:58Z",
+              "updatedAt": "2026-04-16T19:14:58Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc71y6dn",
+          "commit": {
+            "abbreviatedOid": "351b152"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T19:15:47Z",
+          "updatedAt": "2026-04-16T19:15:47Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc71y_5z",
+          "commit": {
+            "abbreviatedOid": "351b152"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-04-16T19:20:16Z",
+          "updatedAt": "2026-04-16T19:20:17Z",
+          "comments": [
+            {
+              "originalPosition": 6,
+              "body": "```suggestion\nThe `claims` property is an array of objects that provides per-claim metadata. Each object identifies which claim or set of claims in the credential is being described (`path`), and can specify how that claim is presented to end users (`display`), whether it is required to be included by the Issuer (`mandatory`), whether it is selectively disclosable (`sd`), and, for SVG rendering, which placeholder refers to it (`svg_id`).\n```",
+              "createdAt": "2026-04-16T19:20:16Z",
+              "updatedAt": "2026-04-16T19:20:17Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 399,
       "id": "PR_kwDOJbVClc7QCPtL",
       "title": "Refine explanation on claim selection methods",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/399",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "I have tried to improve the reasoning for not using JSON Pointer and JSON Path for claim selection to make the description as unbiased as possible.",
       "createdAt": "2026-04-05T10:46:31Z",
-      "updatedAt": "2026-04-05T10:46:33Z",
+      "updatedAt": "2026-04-17T12:06:01Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-7",
       "headRefOid": "46abf54037d58c86b9fe871af1a8f643e2825025",
-      "closedAt": null,
+      "closedAt": "2026-04-17T12:06:01Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "The current text is not biased and the part about security is not unimportant.",
+          "createdAt": "2026-04-17T12:05:55Z",
+          "updatedAt": "2026-04-17T12:05:55Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -32463,124 +32559,243 @@
       "id": "PR_kwDOJbVClc7QCPul",
       "title": "Fix capitalization in security and privacy considerations",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/400",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-05T10:46:37Z",
-      "updatedAt": "2026-04-05T10:46:39Z",
+      "updatedAt": "2026-04-16T18:58:22Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-8",
       "headRefOid": "62a77b8b1ebfa8c7364d0bf0caaa5dde47e3a98a",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-04-16T18:58:22Z",
+      "mergedAt": "2026-04-16T18:58:22Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "bd6e151383eefca5e088a3cdeb76f9aed30ae170"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71yhJH",
+          "commit": {
+            "abbreviatedOid": "62a77b8"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T18:58:14Z",
+          "updatedAt": "2026-04-16T18:58:14Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 401,
       "id": "PR_kwDOJbVClc7QCPvd",
       "title": "Making the OAuth Status List an Informative Reference",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/401",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-05T10:46:41Z",
-      "updatedAt": "2026-04-05T10:46:42Z",
+      "updatedAt": "2026-04-16T18:59:24Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-9",
       "headRefOid": "56e9d57256eb59958988ee3d820276df15fe5c92",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-04-16T18:59:24Z",
+      "mergedAt": "2026-04-16T18:59:24Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "a0149fad0230c318eb7a19a30abdffeb98f21bbb"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71yiya",
+          "commit": {
+            "abbreviatedOid": "56e9d57"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thank you, I'd overlooked this ",
+          "createdAt": "2026-04-16T18:59:10Z",
+          "updatedAt": "2026-04-16T18:59:10Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 402,
       "id": "PR_kwDOJbVClc7QCPww",
       "title": "Nits",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/402",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "You do not indicate that the figure appears below when referring to its number. Referring to each figure together with its location could also work, but as it stands, the usage is inconsistent.",
       "createdAt": "2026-04-05T10:46:46Z",
-      "updatedAt": "2026-04-05T10:46:47Z",
+      "updatedAt": "2026-04-16T19:01:31Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-2",
       "headRefOid": "15b14f90b00be60bff4fce2e7b4160aecd5a29b8",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-04-16T19:01:31Z",
+      "mergedAt": "2026-04-16T19:01:31Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "d3905780952faa5fa77f6a985b907362787f8e19"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71ylpu",
+          "commit": {
+            "abbreviatedOid": "15b14f9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "ok",
+          "createdAt": "2026-04-16T19:00:51Z",
+          "updatedAt": "2026-04-16T19:00:51Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc71ymhb",
+          "commit": {
+            "abbreviatedOid": "15b14f9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T19:01:24Z",
+          "updatedAt": "2026-04-16T19:01:24Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 403,
       "id": "PR_kwDOJbVClc7QCP0X",
       "title": "Remove normative language introduction",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/403",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-05T10:47:01Z",
-      "updatedAt": "2026-04-05T10:47:02Z",
+      "updatedAt": "2026-04-16T18:47:17Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-3",
       "headRefOid": "6a68b33bf398b905d507d7789d13daf9c0c9f788",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-04-16T18:47:17Z",
+      "mergedAt": "2026-04-16T18:47:17Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "fc05085bb9f77c890895f75d63e29ecd7262a15c"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71yPPz",
+          "commit": {
+            "abbreviatedOid": "6a68b33"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T18:47:09Z",
+          "updatedAt": "2026-04-16T18:47:09Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 404,
       "id": "PR_kwDOJbVClc7QCP23",
       "title": "Clarify SD-JWT VC encoding format requirements",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/404",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "hannestschofenig",
-      "authorAssociation": "NONE",
+      "authorAssociation": "CONTRIBUTOR",
       "assignees": [],
       "labels": [],
       "body": "Aligning the language within the same section",
       "createdAt": "2026-04-05T10:47:10Z",
-      "updatedAt": "2026-04-05T10:47:12Z",
+      "updatedAt": "2026-04-16T18:46:39Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "b2f1ad0314829ed6d4676fb92d6ac8ac7f9c689e",
       "headRepository": "hannestschofenig/oauth-sd-jwt-vc",
       "headRefName": "patch-4",
       "headRefOid": "71b1c31c011fd7e32e5091556f07b1a8b4fd3f50",
+      "closedAt": "2026-04-16T18:46:39Z",
+      "mergedAt": "2026-04-16T18:46:38Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "3d3294e181c14221790f299e7f3c02dbd3b58721"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc71yOHo",
+          "commit": {
+            "abbreviatedOid": "71b1c31"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-04-16T18:46:29Z",
+          "updatedAt": "2026-04-16T18:46:29Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 405,
+      "id": "PR_kwDOJbVClc7TFpoo",
+      "title": "shepherd review edits",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/405",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-16T19:50:37Z",
+      "updatedAt": "2026-04-16T19:50:42Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "54882ed3defe8f6365731482625d964241253693",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "trying-real-hard-to-be-the-shepherd",
+      "headRefOid": "8413ae1d297fd5a9ddd1ba7d0edaec4956fd6377",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
