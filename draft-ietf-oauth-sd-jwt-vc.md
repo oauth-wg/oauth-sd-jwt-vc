@@ -159,10 +159,7 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 ## Media Type
 
 SD-JWT VCs compliant with this specification MUST use the media type
-`application/dc+sd-jwt`.
-
-The base subtype name `dc` is meant to stand for "digital credential", which is
-a term that is emerging as a conceptual synonym for "verifiable credential".
+`application/dc+sd-jwt`, where the base base subtype name `dc` stands for "digital credential".
 
 ## Data Format
 
@@ -194,7 +191,7 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 ```
 Figure: Decoded SD-JWT VC Header {#decoded-header}
 
-Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both `vc+sd-jwt` and `dc+sd-jwt` as the value of the `typ` header for a reasonable transitional period.
+Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period.
 
 ### JWT Claims Set
 
