@@ -181,7 +181,7 @@ use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules defined in this specification. It further
 indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 
-(#decoded-header) is a non-normative example of a decoded SD-JWT header:
+(#decoded-header) is an example of a decoded SD-JWT header:
 
 ```json
 {
@@ -309,7 +309,7 @@ MUST NOT have any Disclosures.
 
 ### Issuance
 
-(#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
+(#user-claims1) is an example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
@@ -423,7 +423,7 @@ components.
 A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#jwt-vc-issuer-metadata).
 
-(#GET) is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
 ```http
@@ -436,7 +436,7 @@ If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-(#GET1234) is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET1234) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
@@ -538,7 +538,7 @@ Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
 ## Type Metadata Example {#type-metadata-example}
 
-All examples in this section are non-normative. This section only shows
+This section only shows
 excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following in (#example-with-vct-for-type-metadata) is an example
@@ -794,7 +794,7 @@ claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
 the value is absent.
 
-The non-normative example in (#example-svg-template) shows a minimal SVG with one placeholder
+The example in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
 example in (#ExampleTypeMetadata).
 
@@ -857,7 +857,7 @@ respective index in an array is to be selected.
 
 ### Example
 
-(#example-credential-for-claim-path) shows a non-normative, reduced example of a credential.
+(#example-credential-for-claim-path) shows a reduced example of a credential.
 
 ```json
 {
