@@ -366,7 +366,7 @@ SD-JWT VC as described in Section 7 of [@!RFC9901].
 The check in point 2.c of Section 7.1 of [@!RFC9901],
 which validates the Issuer and ensures that the signing key belongs to the Issuer,
 MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
-employing an Issuer Signature Mechanism (defined in (#ism)) that is permitted for the Issuer according to policy.
+employing a key discovery and validation mechanism (defined in (#key-stuff)) that is permitted for the Issuer according to policy.
 
 If Key Binding is required (refer to the security considerations in Section 9.5 of [@!RFC9901]), the Verifier MUST verify the KB-JWT
 according to Section 7.3 of [@!RFC9901]. To verify
@@ -382,26 +382,26 @@ a SD-JWT VC based on the status of the Verifiable Digital Credential.
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
 
-## Issuer Signature Mechanisms {#ism}
+## Issuer Verification Key Discovery and Validation {#key-stuff}
 
-An Issuer Signature Mechanism defines how a Verifier determines the appropriate key and associated procedure for
+A key discovery and validation mechanism defines how a Verifier determines the appropriate key and associated procedure for
 verifying the signature of an Issuer-signed JWT.
 This allows for flexibility in supporting different trust anchoring systems and key resolution methods
 without changing the core processing model.
 
 A recipient MUST determine and validate the public verification key for the Issuer-signed JWT using
-a supported Issuer Signature Mechanism that is permitted for the given Issuer according to policy.
-This specification defines the following two Issuer Signature Mechanisms:
+a supported key discovery and validation mechanism that is permitted for the given Issuer according to policy.
+This specification defines the following two mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
 - X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
-may define additional Issuer Signature Mechanisms may complement or override the mechanisms defined above; however, the specifics of such mechanisms are out of scope for this specification.
+may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
 See (#ecosystem-verification-rules) for related security considerations.
 
-If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
+If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.
 
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
@@ -1093,7 +1093,7 @@ Additional considerations can be found in [@OWASP_SSRF].
 ## Ecosystem-specific Public Key Verification Methods {#ecosystem-verification-rules}
 
 When defining ecosystem-specific rules for resolution and verification of the public key,
-as outlined in (#ism), it is critical that those rules maintain the integrity of the
+as outlined in (#key-stuff), it is critical that those rules maintain the integrity of the
 relationship between the `iss` value of the SD-JWT, if present, and the public keys of the Issuer.
 
 A Verifier MUST ensure that for any given `iss` value, an attacker cannot influence
@@ -1668,6 +1668,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -16
 
 * shepherd review and resulting changes
+* use key discovery and validation mechanism instead of Issuer Signature Mechanism
 
 -15
 
