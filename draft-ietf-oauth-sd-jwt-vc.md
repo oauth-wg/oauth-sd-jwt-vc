@@ -657,7 +657,7 @@ chain or hierarchy of types. The security considerations described in
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
 
-# Document Integrity {#document-integrity}
+# Integrity of Referenced Documents {#document-integrity}
 
 The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
 Type Metadata MAY be accompanied by a respective claim suffixed with
