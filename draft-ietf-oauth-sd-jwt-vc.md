@@ -660,7 +660,7 @@ Processing details when extending type metadata are described in
 # Integrity of Referenced Documents {#document-integrity}
 
 The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
-Type Metadata MAY be accompanied by a respective claim suffixed with
+Type Metadata MAY be accompanied by a respective item suffixed with
 `#integrity`, in particular:
 
  * `extends` as defined in (#extending-type-metadata), and
