@@ -659,6 +659,13 @@ Processing details when extending type metadata are described in
 
 # Integrity of Referenced Documents {#document-integrity}
 
+This section defines how integrity can be asserted for documents
+referenced by an SD-JWT VC and its Type Metadata. For references such as
+vct, extends, and uri, a corresponding `#integrity` value can be used to
+identify the expected content of the retrieved document. If such an
+integrity value is present, the Consumer verifies that the retrieved
+document matches it before processing that document.
+
 The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
 Type Metadata MAY be accompanied by a respective item suffixed with
 `#integrity`, in particular:
