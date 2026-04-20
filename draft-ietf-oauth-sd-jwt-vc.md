@@ -152,13 +152,6 @@ Unsecured Payload of an SD-JWT VC:
 of the SD-JWT VC. The Unsecured Payload acts as the input JSON object to issue
 an SD-JWT VC complying to this specification.
 
-# Scope
-
-This specification defines
-
-- a data model and media types for Verifiable Digital Credentials based on SD-JWTs, and
-- validation and processing rules for Verifiers and Holders.
-
 # Verifiable Digital Credentials based on SD-JWT
 
 This section defines encoding, validation and processing rules for SD-JWT VCs.
