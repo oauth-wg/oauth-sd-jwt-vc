@@ -1563,9 +1563,7 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.10" class="
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
         </h3>
 <p id="section-2.1-1">SD-JWT VCs compliant with this specification MUST use the media type
-<code>application/dc+sd-jwt</code>.<a href="#section-2.1-1" class="pilcrow">¶</a></p>
-<p id="section-2.1-2">The base subtype name <code>dc</code> is meant to stand for "digital credential", which is
-a term that is emerging as a conceptual synonym for "verifiable credential".<a href="#section-2.1-2" class="pilcrow">¶</a></p>
+<code>application/dc+sd-jwt</code>, where the base base subtype name <code>dc</code> stands for "digital credential".<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data-format">
@@ -1604,7 +1602,7 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.<a href="#secti
 <a href="#name-decoded-sd-jwt-vc-header" class="selfRef">Decoded SD-JWT VC Header</a>
             </figcaption></figure>
 </div>
-<p id="section-2.2.1-5">Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> as the value of the <code>typ</code> header for a reasonable transitional period.<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
+<p id="section-2.2.1-5">Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period.<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="jwt-claims-set">
@@ -1970,9 +1968,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1uk9k
-iU9FQbjw__Ry7DaCLWQM98aaxlVJ1Po4BruI2xIU8dn0rYdKQJI8CKjXPaa8OMWKIWRV
-IKAGA425P3Ipg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EFnhg
+f5D0Zjc_XIJPTGPlLLoa1bH5cTlvrGV7IBdEevh_wN-KqspxgdIcKp0VQL6d0IfVqe0M
+ItuPzfdV0RqSA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2018,17 +2016,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1uk9k
-iU9FQbjw__Ry7DaCLWQM98aaxlVJ1Po4BruI2xIU8dn0rYdKQJI8CKjXPaa8OMWKIWRV
-IKAGA425P3Ipg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EFnhg
+f5D0Zjc_XIJPTGPlLLoa1bH5cTlvrGV7IBdEevh_wN-KqspxgdIcKp0VQL6d0IfVqe0M
+ItuPzfdV0RqSA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzY3MTYyNj
-ksICJzZF9oYXNoIjogIjhEMGtib29ZUlZSeXNQcjE2Nm5Nd284REJzLXRsXzNDSWluVk
-9VcXhaTk0ifQ.KKAeRrCJS23Qg_cu4Kl-j0LM_R1Ril09mlGgwym9-Di0LcDHKbwQztJ
-rzDSlqeAMZWOSnUdYi8odYK2LPrHB3g
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzY3MTY4Nz
+YsICJzZF9oYXNoIjogImExbF9BZW5HNVF3UC1tYWFUY0JscGVrMFpSRjUtYVFHNC03UT
+ZqQnhxTVkifQ.nQ_anXWJP0LBnDFfaU-eNMRcGdbY9NTsrvkS7M-xPHDAvp8kRQB5803
+2X9S3XTjdA3aEoeeA9WgjbQYx5xx9Qg
 
 </pre>
 </div>
@@ -2085,8 +2083,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.rzTilym9uG-AkgiLbosmAW2J-gPtZxy-4qFWApxxIOTUwC
-BdlDfaLOCcSdt8oUmCrCshnUjAvyPyld3L4ped5g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.wOQZus5qFLnJczZXrms3yFy-DjXyLVvJdX8fo_TIGzQ2cu
+kGFjao53qr7fHaSbKaIBwxbHo8MdIqSC7JSqMiOA~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3629,8 +3627,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.P7_mjgwLbykkkWrdWDjUEhlStIfxZPeXGun0tAuKJT_
-vxjVKpIKeIUp363bSytesyja1NF1iqHBbbuNWa3maTg~WyIyR0xDNDJzS1F2ZUNmR2Zy
+jQ0U2dDRqVDlGMkhaUSJ9fX0.PRnXw_uWx8-4SKiGTQ7_rI0b-47jFGQ1vOOcRr1Pzg0
+wux1LUaDFbIWDrXchwVvI0WJ3smOx01xS1zubUlimmA~WyIyR0xDNDJzS1F2ZUNmR2Zy
 eU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM2dTTklJOEVZ
 bnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3dE0tYTVpVlBH
 Ym9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlSThaV205UW5L
@@ -4127,8 +4125,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXVkaTpwaWQ6YWVuZGdhcmQ6MSIsICJ
 fc2RfYWxnIjogInNoYS0yNTYiLCAiY25mIjogeyJqd2siOiB7Imt0eSI6ICJFQyIsICJ
 jcnYiOiAiUC0yNTYiLCAieCI6ICJUQ0FFUjE5WnZ1M09IRjRqNFc0dmZTVm9ISVAxSUx
 pbERsczd2Q2VHZW1jIiwgInkiOiAiWnhqaVdXYlpNUUdIVldLVlE0aGJTSWlyc1ZmdWV
-jQ0U2dDRqVDlGMkhaUSJ9fX0.P7_mjgwLbykkkWrdWDjUEhlStIfxZPeXGun0tAuKJT_
-vxjVKpIKeIUp363bSytesyja1NF1iqHBbbuNWa3maTg~WyJlSzVvNXBIZmd1cFBwbHRq
+jQ0U2dDRqVDlGMkhaUSJ9fX0.PRnXw_uWx8-4SKiGTQ7_rI0b-47jFGQ1vOOcRr1Pzg0
+wux1LUaDFbIWDrXchwVvI0WJ3smOx01xS1zubUlimmA~WyJlSzVvNXBIZmd1cFBwbHRq
 MXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0RWl5elBSWU9L
 c2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5NVA5MHlKczNF
 d3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM0FtSncyWFo4
@@ -4139,9 +4137,9 @@ Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIiwgIjE4Iiwgd
 HJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaXRpZXMiLCBbI
 lx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImtiK2p3dCJ9.e
 yJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW1wbGUuY29tL
-3ZlcmlmaWVyIiwgImlhdCI6IDE3NzY3MTYyNjksICJzZF9oYXNoIjogIjB3Nkp0TURBc
-042UERQNWRwVzA3Rm5pOWRnSDA3aEtCdWxaeEwyYTdzLUkifQ.XOHiIxEjye_OO3teLq
-Q9jO5ZJ3T1C0ebn_EAz2WLXImShGXFqJhBuJ9G59blKIo-blgstQiR95bNjpmJtjLo1g
+3ZlcmlmaWVyIiwgImlhdCI6IDE3NzY3MTY4NzYsICJzZF9oYXNoIjogImxoUWZ6dHkza
+XBxREhmSnhZRnRyZFBNYkhQN2NQOW1tQjVNaG1kSl9qZlEifQ.Xo3hF1vljJV1A_vDUK
+GCoQkuuRkrUw0gebHKiPFJEBeF1RCxtl3Kn8mrHYL_HkTBVZkX0lWpx2RlAVi7yMrY9w
 
 </pre>
 </div>
@@ -4156,8 +4154,8 @@ Q9jO5ZJ3T1C0ebn_EAz2WLXImShGXFqJhBuJ9G59blKIo-blgstQiR95bNjpmJtjLo1g
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1776716269,
-  "sd_hash": "0w6JtMDAsN6PDP5dpW07Fni9dgH07hKBulZxL2a7s-I"
+  "iat": 1776716876,
+  "sd_hash": "lhQfzty3ipqDHfJxYFtrdPMbHP7cP9mmB5MhmdJ_jfQ"
 }
 
 </pre>
