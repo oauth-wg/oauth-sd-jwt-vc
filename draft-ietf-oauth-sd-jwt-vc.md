@@ -657,28 +657,7 @@ chain or hierarchy of types. The security considerations described in
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
 
-# Integrity of Referenced Documents {#document-integrity}
-
-This section defines how integrity can be asserted for documents
-referenced by an SD-JWT VC and its Type Metadata. For references such as
-vct, extends, and uri, a corresponding `#integrity` value can be used to
-identify the expected content of the retrieved document. If such an
-integrity value is present, the Consumer verifies that the retrieved
-document matches it before processing that document.
-
-The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
-Type Metadata MAY be accompanied by a respective item suffixed with
-`#integrity`, in particular:
-
- * `extends` as defined in (#extending-type-metadata), and
- * `uri` as used in three places in (#rendering-metadata).
-
-The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. If an integrity property is present for a particular claim, the
-Consumer of the respective document MUST verify the integrity of the retrieved
-document as defined in Section 3.3.5 of [@!W3C.SRI].
-
-# Display Metadata {#display-metadata}
+## Display Metadata {#display-metadata}
 
 The `display` property is an array containing display information for the type.
 The array MUST contain an object for each locale that is supported by the
@@ -695,7 +674,7 @@ The objects in the array have the following properties:
 - `rendering`: An object containing rendering information for the type, as
   described in (#rendering-metadata). This property is OPTIONAL.
 
-## Rendering Metadata {#rendering-metadata}
+### Rendering Metadata {#rendering-metadata}
 
 The `rendering` property is an object containing rendering information for the
 type. The object MUST contain a property for each rendering method that is
@@ -703,7 +682,7 @@ supported by the type. The property name MUST be a rendering method identifier
 and the property value MUST be an object containing the properties defined for
 the rendering method.
 
-### Rendering Method "simple" {#rendering-method-simple}
+#### Rendering Method "simple" {#rendering-method-simple}
 
 The `simple` rendering method is intended for use in applications that do not
 support SVG rendering. The object contains the following properties:
@@ -717,7 +696,7 @@ support SVG rendering. The object contains the following properties:
 - `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
   is OPTIONAL.
 
-#### Logo Metadata {#logo-metadata}
+##### Logo Metadata {#logo-metadata}
 
 The `logo` property is an object containing information about the logo to be
 displayed for the type. The object contains the following properties:
@@ -728,7 +707,7 @@ displayed for the type. The object contains the following properties:
 - `alt_text`: A string containing alternative text for the logo image. This
   property is OPTIONAL.
 
-#### Background Image Metadata {#background-image-metadata}
+##### Background Image Metadata {#background-image-metadata}
 
 The `background_image` property is an object containing information about the background image to be
 displayed for the type. The object contains the following properties:
@@ -738,7 +717,7 @@ displayed for the type. The object contains the following properties:
   (#document-integrity). This property is OPTIONAL.
 
 
-### Rendering Method "svg_templates" {#rendering-method-svg}
+#### Rendering Method "svg_templates" {#rendering-method-svg}
 
 The `svg_templates` rendering method is intended for use in applications that
 support SVG rendering. svg_templates MUST contain an array of objects containing
@@ -752,7 +731,7 @@ the following properties:
   described in (#svg-template-properties). This property is REQUIRED if more than
   one SVG template is present, otherwise it is OPTIONAL.
 
-#### SVG Template Properties {#svg-template-properties}
+##### SVG Template Properties {#svg-template-properties}
 
 The `properties` property is an object containing properties for the SVG
 template. Consuming applications MUST use these properties to find the best SVG
@@ -767,7 +746,7 @@ MUST contain at least one of the following properties:
 - `contrast`: The contrast for which the SVG template is optimized, with valid
   values being `normal` and `high`. This property is OPTIONAL.
 
-#### SVG Rendering {#svg-rendering}
+##### SVG Rendering {#svg-rendering}
 
 A consuming application MUST preprocess the SVG template by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
@@ -815,7 +794,7 @@ Furthermore, consuming applications MUST ensure that references to external
 resources (images, etc.) from within the SVG cannot be used to track users or
 the usage of credentials.
 
-## Extending Display Metadata {#display-metadata-extends}
+### Extending Display Metadata {#display-metadata-extends}
 
 When an SD-JWT VC type extends another type as described in
 (#extending-type-metadata), the `display` metadata remains valid for the
@@ -825,7 +804,7 @@ case the original display metadata is ignored.
 Note that this does not affect the `display` properties in the claim metadata.
 Rules for these are defined in (#claim-metadata-extends).
 
-# Claim Metadata {#claim-metadata}
+## Claim Metadata {#claim-metadata}
 
 The `claims` property is an array of objects that provides per-claim metadata. Each object identifies which claim or set of claims in the credential is being described (`path`), and can specify how that claim is presented to end users (`display`), whether it is required to be included by the Issuer (`mandatory`), whether it is selectively disclosable (`sd`), and, for SVG rendering, which placeholder refers to it (`svg_id`).
 
@@ -846,7 +825,7 @@ Each object contains the following properties:
   type metadata. It MUST consist of only alphanumeric characters and underscores
   and MUST NOT start with a digit. This property is OPTIONAL.
 
-## Claim Path {#claim-path}
+### Claim Path {#claim-path}
 
 The `path` property MUST be a non-empty array of strings, `null` values, or
 non-negative integers. It is used to select a particular claim in the credential
@@ -855,7 +834,7 @@ selected, a `null` value indicates that all elements of the currently selected
 array(s) are to be selected, and a non-negative integer indicates that the
 respective index in an array is to be selected.
 
-### Example
+#### Example
 
 (#example-credential-for-claim-path) shows a reduced example of a credential.
 
@@ -896,12 +875,12 @@ claims in the credential above:
 The example in (#ExampleTypeMetadata) shows how the `path` can be used to
 address arrays and their elements.
 
-### Processing of `path`
+#### Processing of `path`
 
 In detail, the array components of `path` are processed from left to right as follows:
 
- 1. Select the root element of the credential, i.e., the top-level JSON object.
- 2. Process the `path` components from left to right:
+1. Select the root element of the credential, i.e., the top-level JSON object.
+2. Process the `path` components from left to right:
     1. If the `path` component is a string, select the element in the respective
        key in the currently selected element(s). If any of the currently
        selected element(s) is not an object, abort processing and return an
@@ -915,8 +894,8 @@ In detail, the array components of `path` are processed from left to right as fo
        currently selected element(s) is not an array, abort processing and
        return an error. If the index does not exist in a selected array, remove
        that array from the selection.
-  3. If the set of elements currently selected is empty, abort processing and
-     return an error.
+3. If the set of elements currently selected is empty, abort processing and
+   return an error.
 
 The result of the processing is the set of elements to which the respective
 claim metadata applies.
@@ -933,7 +912,7 @@ that introduces a considerable complexity and brings in many features which
 are not needed for the use case of selecting claims in a credential. There are
 also security concerns with some implementations.
 
-## Claim Display Metadata {#claim-display-metadata}
+### Claim Display Metadata {#claim-display-metadata}
 
 The `display` property is an array containing display information for the
 claim. The array MUST contain an object for each locale that is supported by
@@ -950,7 +929,7 @@ The objects in the array have the following properties:
 
 See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim display metadata.
 
-## Claim Mandatory Metadata {#claim-mandatory-metadata}
+### Claim Mandatory Metadata {#claim-mandatory-metadata}
 
 The `mandatory` property is a boolean indicating that, if set to `true`, the
 claim MUST be included in the credential by the Issuer. If the value is `false`
@@ -958,7 +937,7 @@ or omitted, the claim is considered optional for the Issuer to include. A claim
 that is `mandatory` can nonetheless be selectively disclosable, as described in
 (#claim-selective-disclosure-metadata).
 
-## Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
+### Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
 
 The `sd` property is a string indicating whether the claim is selectively
 disclosable. The following values are defined:
@@ -972,7 +951,7 @@ either `always` or `never` to avoid ambiguity.
 
 See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim selective disclosure metadata.
 
-## Extending Claim Metadata {#claim-metadata-extends}
+### Extending Claim Metadata {#claim-metadata-extends}
 
 When an SD-JWT VC type extends another type as described in
 (#extending-type-metadata), all claim metadata from the extended type MUST be
@@ -994,7 +973,7 @@ metadata described in (#display-metadata-extends). This ensures that Consumers
 can rely on the claim metadata defined in the extended type while still allowing
 display customization for the visual representation of the credential.
 
-### Limitations for `sd` and `mandatory` {#claim-metadata-extends-limitations}
+#### Limitations for `sd` and `mandatory` {#claim-metadata-extends-limitations}
 
 An extending type can specify an `sd` property for a claim that is marked as
 `allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.
@@ -1005,7 +984,7 @@ Similarly, an extending type can set the `mandatory` property of a claim that is
 optional in the extended type to `true`, but it MUST NOT change a claim that is
 `mandatory` in the extended type to `false`.
 
-### Example for Extending Type Metadata
+#### Example for Extending Type Metadata
 
 The base type metadata document for this example is shown in (#example-base-type-metadata).
 
@@ -1067,6 +1046,28 @@ In this example, the child type inherits the `name` claim metadata from the base
 }
 ```
 Figure: Effective Claim Metadata for Child Type {#effective-claim-metadata-child-type}
+
+
+# Integrity of Referenced Documents {#document-integrity}
+
+This section defines how integrity can be asserted for documents
+referenced by an SD-JWT VC and its Type Metadata. For references such as
+vct, extends, and uri, a corresponding `#integrity` value can be used to
+identify the expected content of the retrieved document. If such an
+integrity value is present, the Consumer verifies that the retrieved
+document matches it before processing that document.
+
+The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
+Type Metadata MAY be accompanied by a respective item suffixed with
+`#integrity`, in particular:
+
+ * `extends` as defined in (#extending-type-metadata), and
+ * `uri` as used in three places in (#rendering-metadata).
+
+The value MUST be an "integrity metadata" string as defined in Section 3 of
+[@!W3C.SRI]. If an integrity property is present for a particular claim, the
+Consumer of the respective document MUST verify the integrity of the retrieved
+document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 
 # Security Considerations {#security-considerations}
@@ -1676,6 +1677,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * shepherd review and resulting changes
 * use key discovery and validation mechanism instead of Issuer Signature Mechanism
+* moved Display Metadata and Claim Metadata to be subsections of SD-JWT VC Type Metadata
 
 -15
 
