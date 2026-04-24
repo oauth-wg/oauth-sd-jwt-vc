@@ -152,13 +152,6 @@ Unsecured Payload of an SD-JWT VC:
 of the SD-JWT VC. The Unsecured Payload acts as the input JSON object to issue
 an SD-JWT VC complying to this specification.
 
-# Scope
-
-This specification defines
-
-- a data model and media types for Verifiable Digital Credentials based on SD-JWTs, and
-- validation and processing rules for Verifiers and Holders.
-
 # Verifiable Digital Credentials based on SD-JWT
 
 This section defines encoding, validation and processing rules for SD-JWT VCs.
@@ -166,10 +159,7 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 ## Media Type
 
 SD-JWT VCs compliant with this specification MUST use the media type
-`application/dc+sd-jwt`.
-
-The base subtype name `dc` is meant to stand for "digital credential", which is
-a term that is emerging as a conceptual synonym for "verifiable credential".
+`application/dc+sd-jwt`, where the base base subtype name `dc` stands for "digital credential".
 
 ## Data Format
 
@@ -191,7 +181,7 @@ use `dc+sd-jwt`. This indicates that the payload of the SD-JWT contains plain
 JSON and follows the rules defined in this specification. It further
 indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 
-(#decoded-header) is a non-normative example of a decoded SD-JWT header:
+(#decoded-header) is an example of a decoded SD-JWT header:
 
 ```json
 {
@@ -201,7 +191,7 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 ```
 Figure: Decoded SD-JWT VC Header {#decoded-header}
 
-Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, it is RECOMMENDED that Verifiers and Holders accept both `vc+sd-jwt` and `dc+sd-jwt` as the value of the `typ` header for a reasonable transitional period.
+Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period.
 
 ### JWT Claims Set
 
@@ -266,8 +256,8 @@ previously required elements, or otherwise introduces incompatibilities, it is
 generally advisable to treat that as a new version of the credential type and to
 convey it using a new `vct` value. This allows different versions of a credential
 type to coexist and helps ensure that participants interpret credentials consistently.
-For example, if such a need came about for the hypothetical type `urn:eudi:pid:aendgard:1`,
-a new version could be defined using a 'vct' of `urn:eudi:pid:aendgard:2`.
+For example, if such a need came about for the hypothetical type `urn:example:eudi:pid:aendgard:1`,
+a new version could be defined using a 'vct' of `urn:example:eudi:pid:aendgard:2`.
 
 #### Registered JWT Claims {#claims}
 
@@ -319,7 +309,7 @@ MUST NOT have any Disclosures.
 
 ### Issuance
 
-(#user-claims1) is a non-normative example of the user data of an Unsecured Payload of an
+(#user-claims1) is an example of the user data of an Unsecured Payload of an
 SD-JWT VC.
 
 <{{examples/01/user_claims.json}}
@@ -376,7 +366,7 @@ SD-JWT VC as described in Section 7 of [@!RFC9901].
 The check in point 2.c of Section 7.1 of [@!RFC9901],
 which validates the Issuer and ensures that the signing key belongs to the Issuer,
 MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT,
-employing an Issuer Signature Mechanism (defined in (#ism)) that is permitted for the Issuer according to policy.
+employing a key discovery and validation mechanism (defined in (#key-stuff)) that is permitted for the Issuer according to policy.
 
 If Key Binding is required (refer to the security considerations in Section 9.5 of [@!RFC9901]), the Verifier MUST verify the KB-JWT
 according to Section 7.3 of [@!RFC9901]. To verify
@@ -392,26 +382,26 @@ a SD-JWT VC based on the status of the Verifiable Digital Credential.
 Additional validation rules MAY apply, but their use is out of the scope of this
 specification.
 
-## Issuer Signature Mechanisms {#ism}
+## Issuer Verification Key Discovery and Validation {#key-stuff}
 
-An Issuer Signature Mechanism defines how a Verifier determines the appropriate key and associated procedure for
+A key discovery and validation mechanism defines how a Verifier determines the appropriate key and associated procedure for
 verifying the signature of an Issuer-signed JWT.
 This allows for flexibility in supporting different trust anchoring systems and key resolution methods
 without changing the core processing model.
 
 A recipient MUST determine and validate the public verification key for the Issuer-signed JWT using
-a supported Issuer Signature Mechanism that is permitted for the given Issuer according to policy.
-This specification defines the following two Issuer Signature Mechanisms:
+a supported key discovery and validation mechanism that is permitted for the given Issuer according to policy.
+This specification defines the following two mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.
+- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
-may define additional Issuer Signature Mechanisms may complement or override the mechanisms defined above; however, the specifics of such mechanisms are out of scope for this specification.
+may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
 See (#ecosystem-verification-rules) for related security considerations.
 
-If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted Issuer Signature Mechanism, the SD-JWT VC MUST be rejected.
+If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.
 
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
@@ -433,7 +423,7 @@ components.
 A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
 at the path defined in (#jwt-vc-issuer-metadata).
 
-(#GET) is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
 ```http
@@ -446,7 +436,7 @@ If the `iss` value contains a path component, any terminating `/` MUST be
 removed before inserting `/.well-known/` and the well-known URI suffix
 between the host component and the path component.
 
-(#GET1234) is a non-normative example of an HTTP request for the JWT VC Issuer
+(#GET1234) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
 ```
@@ -548,7 +538,7 @@ Type Metadata can be retrieved as described in (#retrieving-type-metadata).
 
 ## Type Metadata Example {#type-metadata-example}
 
-All examples in this section are non-normative. This section only shows
+This section only shows
 excerpts, the full examples can be found in (#ExampleTypeMetadata).
 
 The following in (#example-with-vct-for-type-metadata) is an example
@@ -667,21 +657,7 @@ chain or hierarchy of types. The security considerations described in
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
 
-# Document Integrity {#document-integrity}
-
-The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
-Type Metadata MAY be accompanied by a respective claim suffixed with
-`#integrity`, in particular:
-
- * `extends` as defined in (#extending-type-metadata), and
- * `uri` as used in three places in (#rendering-metadata).
-
-The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. If an integrity property is present for a particular claim, the
-Consumer of the respective document MUST verify the integrity of the retrieved
-document as defined in Section 3.3.5 of [@!W3C.SRI].
-
-# Display Metadata {#display-metadata}
+## Display Metadata {#display-metadata}
 
 The `display` property is an array containing display information for the type.
 The array MUST contain an object for each locale that is supported by the
@@ -698,7 +674,7 @@ The objects in the array have the following properties:
 - `rendering`: An object containing rendering information for the type, as
   described in (#rendering-metadata). This property is OPTIONAL.
 
-## Rendering Metadata {#rendering-metadata}
+### Rendering Metadata {#rendering-metadata}
 
 The `rendering` property is an object containing rendering information for the
 type. The object MUST contain a property for each rendering method that is
@@ -706,7 +682,7 @@ supported by the type. The property name MUST be a rendering method identifier
 and the property value MUST be an object containing the properties defined for
 the rendering method.
 
-### Rendering Method "simple" {#rendering-method-simple}
+#### Rendering Method "simple" {#rendering-method-simple}
 
 The `simple` rendering method is intended for use in applications that do not
 support SVG rendering. The object contains the following properties:
@@ -720,7 +696,7 @@ support SVG rendering. The object contains the following properties:
 - `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
   is OPTIONAL.
 
-#### Logo Metadata {#logo-metadata}
+##### Logo Metadata {#logo-metadata}
 
 The `logo` property is an object containing information about the logo to be
 displayed for the type. The object contains the following properties:
@@ -731,7 +707,7 @@ displayed for the type. The object contains the following properties:
 - `alt_text`: A string containing alternative text for the logo image. This
   property is OPTIONAL.
 
-#### Background Image Metadata {#background-image-metadata}
+##### Background Image Metadata {#background-image-metadata}
 
 The `background_image` property is an object containing information about the background image to be
 displayed for the type. The object contains the following properties:
@@ -741,7 +717,7 @@ displayed for the type. The object contains the following properties:
   (#document-integrity). This property is OPTIONAL.
 
 
-### Rendering Method "svg_templates" {#rendering-method-svg}
+#### Rendering Method "svg_templates" {#rendering-method-svg}
 
 The `svg_templates` rendering method is intended for use in applications that
 support SVG rendering. svg_templates MUST contain an array of objects containing
@@ -755,7 +731,7 @@ the following properties:
   described in (#svg-template-properties). This property is REQUIRED if more than
   one SVG template is present, otherwise it is OPTIONAL.
 
-#### SVG Template Properties {#svg-template-properties}
+##### SVG Template Properties {#svg-template-properties}
 
 The `properties` property is an object containing properties for the SVG
 template. Consuming applications MUST use these properties to find the best SVG
@@ -770,7 +746,7 @@ MUST contain at least one of the following properties:
 - `contrast`: The contrast for which the SVG template is optimized, with valid
   values being `normal` and `high`. This property is OPTIONAL.
 
-#### SVG Rendering {#svg-rendering}
+##### SVG Rendering {#svg-rendering}
 
 A consuming application MUST preprocess the SVG template by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
@@ -797,7 +773,7 @@ claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
 the value is absent.
 
-The non-normative example in (#example-svg-template) shows a minimal SVG with one placeholder
+The example in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
 example in (#ExampleTypeMetadata).
 
@@ -818,7 +794,7 @@ Furthermore, consuming applications MUST ensure that references to external
 resources (images, etc.) from within the SVG cannot be used to track users or
 the usage of credentials.
 
-## Extending Display Metadata {#display-metadata-extends}
+### Extending Display Metadata {#display-metadata-extends}
 
 When an SD-JWT VC type extends another type as described in
 (#extending-type-metadata), the `display` metadata remains valid for the
@@ -828,7 +804,7 @@ case the original display metadata is ignored.
 Note that this does not affect the `display` properties in the claim metadata.
 Rules for these are defined in (#claim-metadata-extends).
 
-# Claim Metadata {#claim-metadata}
+## Claim Metadata {#claim-metadata}
 
 The `claims` property is an array of objects that provides per-claim metadata. Each object identifies which claim or set of claims in the credential is being described (`path`), and can specify how that claim is presented to end users (`display`), whether it is required to be included by the Issuer (`mandatory`), whether it is selectively disclosable (`sd`), and, for SVG rendering, which placeholder refers to it (`svg_id`).
 
@@ -849,7 +825,7 @@ Each object contains the following properties:
   type metadata. It MUST consist of only alphanumeric characters and underscores
   and MUST NOT start with a digit. This property is OPTIONAL.
 
-## Claim Path {#claim-path}
+### Claim Path {#claim-path}
 
 The `path` property MUST be a non-empty array of strings, `null` values, or
 non-negative integers. It is used to select a particular claim in the credential
@@ -858,9 +834,9 @@ selected, a `null` value indicates that all elements of the currently selected
 array(s) are to be selected, and a non-negative integer indicates that the
 respective index in an array is to be selected.
 
-### Example
+#### Example
 
-(#example-credential-for-claim-path) shows a non-normative, reduced example of a credential.
+(#example-credential-for-claim-path) shows a reduced example of a credential.
 
 ```json
 {
@@ -899,12 +875,12 @@ claims in the credential above:
 The example in (#ExampleTypeMetadata) shows how the `path` can be used to
 address arrays and their elements.
 
-### Processing of `path`
+#### Processing of `path`
 
 In detail, the array components of `path` are processed from left to right as follows:
 
- 1. Select the root element of the credential, i.e., the top-level JSON object.
- 2. Process the `path` components from left to right:
+1. Select the root element of the credential, i.e., the top-level JSON object.
+2. Process the `path` components from left to right:
     1. If the `path` component is a string, select the element in the respective
        key in the currently selected element(s). If any of the currently
        selected element(s) is not an object, abort processing and return an
@@ -918,8 +894,8 @@ In detail, the array components of `path` are processed from left to right as fo
        currently selected element(s) is not an array, abort processing and
        return an error. If the index does not exist in a selected array, remove
        that array from the selection.
-  3. If the set of elements currently selected is empty, abort processing and
-     return an error.
+3. If the set of elements currently selected is empty, abort processing and
+   return an error.
 
 The result of the processing is the set of elements to which the respective
 claim metadata applies.
@@ -936,7 +912,7 @@ that introduces a considerable complexity and brings in many features which
 are not needed for the use case of selecting claims in a credential. There are
 also security concerns with some implementations.
 
-## Claim Display Metadata {#claim-display-metadata}
+### Claim Display Metadata {#claim-display-metadata}
 
 The `display` property is an array containing display information for the
 claim. The array MUST contain an object for each locale that is supported by
@@ -953,7 +929,7 @@ The objects in the array have the following properties:
 
 See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim display metadata.
 
-## Claim Mandatory Metadata {#claim-mandatory-metadata}
+### Claim Mandatory Metadata {#claim-mandatory-metadata}
 
 The `mandatory` property is a boolean indicating that, if set to `true`, the
 claim MUST be included in the credential by the Issuer. If the value is `false`
@@ -961,7 +937,7 @@ or omitted, the claim is considered optional for the Issuer to include. A claim
 that is `mandatory` can nonetheless be selectively disclosable, as described in
 (#claim-selective-disclosure-metadata).
 
-## Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
+### Claim Selective Disclosure Metadata {#claim-selective-disclosure-metadata}
 
 The `sd` property is a string indicating whether the claim is selectively
 disclosable. The following values are defined:
@@ -975,7 +951,7 @@ either `always` or `never` to avoid ambiguity.
 
 See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim selective disclosure metadata.
 
-## Extending Claim Metadata {#claim-metadata-extends}
+### Extending Claim Metadata {#claim-metadata-extends}
 
 When an SD-JWT VC type extends another type as described in
 (#extending-type-metadata), all claim metadata from the extended type MUST be
@@ -997,7 +973,7 @@ metadata described in (#display-metadata-extends). This ensures that Consumers
 can rely on the claim metadata defined in the extended type while still allowing
 display customization for the visual representation of the credential.
 
-### Limitations for `sd` and `mandatory` {#claim-metadata-extends-limitations}
+#### Limitations for `sd` and `mandatory` {#claim-metadata-extends-limitations}
 
 An extending type can specify an `sd` property for a claim that is marked as
 `allowed` in the extended type (or where `sd` was omitted), changing it to either `always` or `never`.
@@ -1008,7 +984,7 @@ Similarly, an extending type can set the `mandatory` property of a claim that is
 optional in the extended type to `true`, but it MUST NOT change a claim that is
 `mandatory` in the extended type to `false`.
 
-### Example for Extending Type Metadata
+#### Example for Extending Type Metadata
 
 The base type metadata document for this example is shown in (#example-base-type-metadata).
 
@@ -1072,6 +1048,28 @@ In this example, the child type inherits the `name` claim metadata from the base
 Figure: Effective Claim Metadata for Child Type {#effective-claim-metadata-child-type}
 
 
+# Integrity of Referenced Documents {#document-integrity}
+
+This section defines how integrity can be asserted for documents
+referenced by an SD-JWT VC and its Type Metadata. For references such as
+vct, extends, and uri, a corresponding `#integrity` value can be used to
+identify the expected content of the retrieved document. If such an
+integrity value is present, the Consumer verifies that the retrieved
+document matches it before processing that document.
+
+The `vct` claim in the SD-JWT VC as defined in (#claims) and various URIs in the
+Type Metadata MAY be accompanied by a respective item suffixed with
+`#integrity`, in particular:
+
+ * `extends` as defined in (#extending-type-metadata), and
+ * `uri` as used in three places in (#rendering-metadata).
+
+The value MUST be an "integrity metadata" string as defined in Section 3 of
+[@!W3C.SRI]. If an integrity property is present for a particular claim, the
+Consumer of the respective document MUST verify the integrity of the retrieved
+document as defined in Section 3.3.5 of [@!W3C.SRI].
+
+
 # Security Considerations {#security-considerations}
 
 The security considerations in the SD-JWT specification
@@ -1103,7 +1101,7 @@ Additional considerations can be found in [@OWASP_SSRF].
 ## Ecosystem-specific Public Key Verification Methods {#ecosystem-verification-rules}
 
 When defining ecosystem-specific rules for resolution and verification of the public key,
-as outlined in (#ism), it is critical that those rules maintain the integrity of the
+as outlined in (#key-stuff), it is critical that those rules maintain the integrity of the
 relationship between the `iss` value of the SD-JWT, if present, and the public keys of the Issuer.
 
 A Verifier MUST ensure that for any given `iss` value, an attacker cannot influence
@@ -1654,6 +1652,7 @@ Dan Moore,
 Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
+Hannes Tschofenig,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
@@ -1673,6 +1672,12 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-16
+
+* shepherd review and resulting changes
+* use key discovery and validation mechanism instead of Issuer Signature Mechanism
+* moved Display Metadata and Claim Metadata to be subsections of SD-JWT VC Type Metadata
 
 -15
 
