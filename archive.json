@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-23T00:58:23.108278+00:00",
+  "timestamp": "2026-04-26T01:00:59.342868+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -32782,25 +32782,33 @@
       "id": "PR_kwDOJbVClc7TFpoo",
       "title": "shepherd review edits",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/405",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Items from https://mailarchive.ietf.org/arch/msg/oauth/ZaRz6ylO180eZWJTCop7LV4kIS4/ except for \"I think Sections 7 and 8 would fit better as subsections of Section 5\" which I'm gonna try in this separate 'stacked' PR https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/406\r\n\r\npreview of this: https://drafts.oauth.net/oauth-sd-jwt-vc/trying-real-hard-to-be-the-shepherd/draft-ietf-oauth-sd-jwt-vc.html \r\n\r\ncc @hannestschofenig \r\n",
       "createdAt": "2026-04-16T19:50:37Z",
-      "updatedAt": "2026-04-21T11:55:22Z",
+      "updatedAt": "2026-04-24T18:45:08Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "54882ed3defe8f6365731482625d964241253693",
+      "baseRefOid": "e83134826d637fda95ce04c456d3ec3f3071d833",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "trying-real-hard-to-be-the-shepherd",
-      "headRefOid": "aa71d81e6e49960dfea823dda1a09de4b4277f7e",
-      "closedAt": null,
+      "headRefOid": "093af3ae89032f1479b70c295bf8e82fac9608b2",
+      "closedAt": "2026-04-24T18:45:08Z",
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "and it would turn out that I do not know how to use git[hub] ",
+          "createdAt": "2026-04-24T18:44:54Z",
+          "updatedAt": "2026-04-24T18:44:54Z"
+        }
+      ],
       "reviews": []
     },
     {
@@ -32808,20 +32816,62 @@
       "id": "PR_kwDOJbVClc7UHho0",
       "title": "shepherd review edits + Move Display & Claim Metadata to be subsections of SD-JWT VC Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/406",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "see it here https://drafts.oauth.net/oauth-sd-jwt-vc/when-i-lay-my-vengeance-upon-you/draft-ietf-oauth-sd-jwt-vc.html \r\n\r\ncc @hannestschofenig ",
+      "body": "from and for https://mailarchive.ietf.org/arch/msg/oauth/ZaRz6ylO180eZWJTCop7LV4kIS4/ \r\n\r\nsee it here https://drafts.oauth.net/oauth-sd-jwt-vc/when-i-lay-my-vengeance-upon-you/draft-ietf-oauth-sd-jwt-vc.html \r\n\r\ncc @hannestschofenig ",
       "createdAt": "2026-04-20T22:20:44Z",
-      "updatedAt": "2026-04-21T11:36:15Z",
+      "updatedAt": "2026-04-24T18:33:46Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "54882ed3defe8f6365731482625d964241253693",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "when-i-lay-my-vengeance-upon-you",
       "headRefOid": "d80b700f53e1d6f8b8345176e25491a65f0e61b6",
+      "closedAt": "2026-04-24T18:33:46Z",
+      "mergedAt": "2026-04-24T18:33:46Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "e83134826d637fda95ce04c456d3ec3f3071d833"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc74oaH6",
+          "commit": {
+            "abbreviatedOid": "d80b700"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Thanks, Brian!",
+          "createdAt": "2026-04-24T14:46:22Z",
+          "updatedAt": "2026-04-24T14:46:22Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 407,
+      "id": "PR_kwDOJbVClc7VcClL",
+      "title": "Document History now with more 17",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/407",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-04-24T19:00:59Z",
+      "updatedAt": "2026-04-24T19:01:00Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "e83134826d637fda95ce04c456d3ec3f3071d833",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "the-song-by-winger",
+      "headRefOid": "f3b0861aae29718220a5e2e877e1891f5dd89d91",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
