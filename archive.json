@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-04-26T01:00:59.342868+00:00",
+  "timestamp": "2026-05-03T01:06:29.051821+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10406,6 +10406,102 @@
           "updatedAt": "2026-02-13T17:49:25Z"
         }
       ]
+    },
+    {
+      "number": 408,
+      "id": "I_kwDOJbVClc8AAAABBGZEOA",
+      "title": "Define behaviour of the wallet when claims metadata is malformed",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/408",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "I would expect the wallet to reject the credential if the claims metadata is malformed, e.g., `path` malformed. This is especially critical because claims metadata contains metadata for validating the SD-JWT VC, e.g., `mandatory`, `sd`. Any thoughts?",
+      "createdAt": "2026-05-02T11:31:19Z",
+      "updatedAt": "2026-05-02T11:31:19Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 409,
+      "id": "I_kwDOJbVClc8AAAABBGZRsA",
+      "title": "Define behaviour for the wallet if `sd` in claims metadata does not correspond to `_sd` and Disclosures",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/409",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "We should define what happens if the wallet receives an SD-JWT VC when the `sd` claim metadata does not correspond to `_sd`. IMO, the wallet should reject the SD-JWT VC.",
+      "createdAt": "2026-05-02T11:32:48Z",
+      "updatedAt": "2026-05-02T11:32:48Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 410,
+      "id": "I_kwDOJbVClc8AAAABBGZiVg",
+      "title": "Define behaviour when the wallet needs to process the path",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/410",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "At the moment, it is unclear when the claims metadata is processed. I would assume this needs to be done after the SD-JWT VC was issued to the wallet. The wallet would then need to process the path (if metadata and path are present) and reject the SD-JWT VC if processing fails.",
+      "createdAt": "2026-05-02T11:34:34Z",
+      "updatedAt": "2026-05-02T11:34:34Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 411,
+      "id": "I_kwDOJbVClc8AAAABBGaUqw",
+      "title": "Define behaviour when wallet needs to resolve/process type metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/411",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Because type metadata contains validation information required by the wallet to make a decision on whether or not the SD-JWT VC is malformed and hence should be rejected, we need to define when type metadata processing is needed.\n\nCurrently, there is no clear indication for the wallet IF and WHERE type metadata is available. For example, the presence of a HTTPS-based `vct` value may not automatically indicate that type metadata is available and hence should be processed.\n\nFor other URI schemes than HTTPS, it is not clear when type metadata is available.\n\nAdditionally, we may want to require the following:\n- if `vct` is a HTTPS-based URI, and type metadata processing is required, then type metadata MUST be resolvable via well-known but resolution could still be a MAY if one of the other options are used.\n- add to the \"verification and processing\" section that type metadata validation is required if type metadata processing is required.\n\nBecause the producer of type metadata might not be the same as the issuer of the credential, the only option is to encode this information into the `vct` value itself which would be a breaking change. At a minimum we should say something that if the ecosystem provides a rulebook where type metadata is defined, the wallet needs to process and validate the type \nmetadata.\n\nAdditionally, we should also say that after type metadata was retrieved, type metadata needs to be validated by the wallet and if an error occurred, credentials must be rejected. This is mostly relevant for HTTPS-based retrieval.",
+      "createdAt": "2026-05-02T11:41:42Z",
+      "updatedAt": "2026-05-02T12:13:16Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 412,
+      "id": "I_kwDOJbVClc8AAAABBGdmCg",
+      "title": "Editorial: move vct#integrity definition from 5.3.1 to 5.3",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/412",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "The `vct#integrity` type metadata is currently defined in 5.3.1, but it applies to all retrieval mechanisms. The following text should be moved to 5.3 instead:\n> If the claim vct#integrity is present in the SD-JWT VC, its value vct#integrity MUST be an \"integrity metadata\" string as defined in [Section 6](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#document-integrity).",
+      "createdAt": "2026-05-02T12:09:14Z",
+      "updatedAt": "2026-05-02T12:09:14Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 413,
+      "id": "I_kwDOJbVClc8AAAABBGuI6g",
+      "title": "Editorial: clarify how path processing relates to claim metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/413",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "In the path processing section, the following is currently defined:\n> The result of the processing is the set of elements to which the respective claim metadata applies.\n\nFor example, this means that if a `mandatory: true` claim was not found, the set of elements does not contain the `mandatory: true` claim. Hence, claim metadata does not apply to the respective mandatory claim. This seems a bit confusing.\n\nIt is clear what the spec intends to do, but the definition in path processing and/or the claim metadata needs to be refined. ",
+      "createdAt": "2026-05-02T14:09:35Z",
+      "updatedAt": "2026-05-02T14:09:35Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
