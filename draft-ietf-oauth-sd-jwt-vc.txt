@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 26 October 2026                                   Authlete Inc.
+Expires: 9 November 2026                                   Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                           24 April 2026
+                                                              8 May 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 26 October 2026.
+   This Internet-Draft will expire on 9 November 2026.
 
 Copyright Notice
 
@@ -608,9 +608,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.G8gRf
-   HZJWVPh3jghV9uClPr-BCs02Fyv2tLo8ZDzxvDgDai64oNMeOCFKYLwO5J2ssGTGGC6o
-   Oq4bA7B4BhbYg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.t2lLk
+   XePcbVjyOR3nytW4WxQj5UgxSIopZVDTYQAKEzAEVt6dUIEY37D5giBrm1Gvbdmbi1-T
+   9OBD1qk-FO0rQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -646,17 +646,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.G8gRf
-   HZJWVPh3jghV9uClPr-BCs02Fyv2tLo8ZDzxvDgDai64oNMeOCFKYLwO5J2ssGTGGC6o
-   Oq4bA7B4BhbYg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.t2lLk
+   XePcbVjyOR3nytW4WxQj5UgxSIopZVDTYQAKEzAEVt6dUIEY37D5giBrm1Gvbdmbi1-T
+   9OBD1qk-FO0rQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzcwNTU2ND
-   gsICJzZF9oYXNoIjogImkwczRJQ1ZQczQ4QWhxSUowekg0c2lDT0ozeWRzMTVlS21PeU
-   thSi1uUVUifQ.rN4Y73r9zr5CwiES7E_TRq4wwCzm80USuYfsiGrWsqwk3WYw_wAlAFC
-   nw37UHDR8EjKBe9M0R3DiziPu6I_SVQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzgyNDI0OT
+   gsICJzZF9oYXNoIjogIkFRUHhkVUhVNXE4Y1NVS0FYbHVqUlBBTTZkWVREVVdQRTJiWm
+   cxR1doT00ifQ.RIF1EjmDIcBVgOscOIrndMsbXgsput8X3j8qKdMH88-Dt9ShsqKUb5k
+   1tEUIZvIohWIUFZbMCuVknOmq_-nRXA
 
                    Figure 7: Presented SD-JWT+KB Example
 
@@ -702,8 +702,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.PJX54cMPXfW1GBsCUreg4Y0qBPibs-5Hrf2LsE_M4H9C1g
-   kZdZ9PmnkHii9JilGSQ_bRsF4K9wxSnHjloN595w~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.EVyXiJnuuxMrFXlqNMMi4UqV2bJEJwJTE1XESWrJn3y4Ri
+   TXExmoj0gjXxlTFRC_ZWGloQRBILO4AiVbqPWayQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1804,9 +1804,9 @@ Table of Contents
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
-              oauth-status-list-19, 20 March 2026,
+              oauth-status-list-20, 20 April 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-19>.
+              status-list-20>.
 
    [IANA.well-known]
               IANA, "Well-Known URIs",
@@ -1989,8 +1989,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HqFJIDIVMr3xcbWHv_HeK3MivJiSqBNj
-   L_upukrwszXU7aVVZn1NBVGfabjd4L71xKOOoAwG9RAKRD8S0rxi0g~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eOXjfl8ojWiKwv5MhyEszGOJmVhlN6f0
+   yszNjdi9n8czL9ZuQZyXptbSdQ-_C385jwejaWlbMkyvnEbTAqugOQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2372,8 +2372,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HqFJIDIVMr3xcbWHv_HeK3MivJiSqBNj
-   L_upukrwszXU7aVVZn1NBVGfabjd4L71xKOOoAwG9RAKRD8S0rxi0g~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eOXjfl8ojWiKwv5MhyEszGOJmVhlN6f0
+   yszNjdi9n8czL9ZuQZyXptbSdQ-_C385jwejaWlbMkyvnEbTAqugOQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2384,10 +2384,10 @@ B.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzcwNTU2NDgsICJzZF9oYXNoIjogIl
-   k0Rzd1QlBZRlBXRjV1M3ItbGI4S0ItUW9PZWtLNU14NlBlQ0dKNFBiNGsifQ.Fit38T5
-   4G_g3vkC7AG8JpyxqC7HVRQaoXrztvQ3KUe7iN7VfopIzZtQiko5MgfuNTtcWTB7H7wt
-   TLeMyGnC0gQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzgyNDI0OTgsICJzZF9oYXNoIjogIk
+   9ETUxnS0xwQUdQWktKLWdfRWNYeFg2UEM4NmFHSGl3VWdNZW1vWUJxcHMifQ.LUHiRYQ
+   qDelG6on4YUyE4cnbkrH_zxtVlbegH2u9bk_dnC9u8iKOrNT3x4reNQu6fDm5aMxfHeZ
+   jRZBl3T2tYg
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2396,8 +2396,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1777055648,
-     "sd_hash": "Y4G7uBPYFPWF5u3r-lb8KB-QoOekK5Mx6PeCGJ4Pb4k"
+     "iat": 1778242498,
+     "sd_hash": "ODMLgKLpAGPZKJ-g_EcXxX6PC86aGHiwUgMemoYBqps"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2666,6 +2666,8 @@ Appendix C.  Acknowledgements
    to the initial set of implementations.
 
 Appendix D.  Document History
+
+   -17
 
    -16
 
