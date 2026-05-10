@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-03T01:06:29.051821+00:00",
+  "timestamp": "2026-05-10T01:08:07.771620+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10000,12 +10000,10 @@
       "author": "TimoGlastra",
       "authorAssociation": "NONE",
       "assignees": [],
-      "labels": [
-        "pending close"
-      ],
+      "labels": [],
       "body": "If a value within a credential is a `data:` URI, it would be nice if this could be used in the SVG rendering template. This would allow to represent a credential like you would a physical identity card, and place e.g. the portrait and signature in the credential rendering.\n\nCurrently the following text would prevent this from happening:\n> Placeholders MUST only be used in the text content of the SVG template and MUST NOT be used in any other part of the SVG template, e.g., in attributes or comments.\n\nTo render an image within an svg you need to put the value within the `href` attribute.\n\nSince images are already allowed (\"consuming applications MUST ensure that references to external resources (images, etc.) from within the SVG cannot be used to track users or the usage of credentials\"), and you must escape content, i don't see any additional security concerns for this.\n\n",
       "createdAt": "2025-12-10T06:45:34Z",
-      "updatedAt": "2026-01-29T17:04:58Z",
+      "updatedAt": "2026-05-08T12:16:24Z",
       "closedAt": "2026-01-29T17:04:58Z",
       "comments": [
         {
@@ -10419,9 +10417,17 @@
       "labels": [],
       "body": "I would expect the wallet to reject the credential if the claims metadata is malformed, e.g., `path` malformed. This is especially critical because claims metadata contains metadata for validating the SD-JWT VC, e.g., `mandatory`, `sd`. Any thoughts?",
       "createdAt": "2026-05-02T11:31:19Z",
-      "updatedAt": "2026-05-02T11:31:19Z",
+      "updatedAt": "2026-05-08T14:17:45Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Totally agree. \n\nIn case, that the wallet has to resolve the type definition (including parent definitions)  from the issued credential, it should reject the credential in case that this resolution fails:\n- Due to network failure\n- Due to malformed or non-complying type definition\n- Failed to resolve a parent definition.\n\nI think that for this reason, wallet ecosystems should be encouraged to use local caches (of definitions), populated by the type definitions of the use cases supported, before the issuance takes place.",
+          "createdAt": "2026-05-08T14:17:45Z",
+          "updatedAt": "2026-05-08T14:17:45Z"
+        }
+      ]
     },
     {
       "number": 409,
@@ -10435,9 +10441,17 @@
       "labels": [],
       "body": "We should define what happens if the wallet receives an SD-JWT VC when the `sd` claim metadata does not correspond to `_sd`. IMO, the wallet should reject the SD-JWT VC.",
       "createdAt": "2026-05-02T11:32:48Z",
-      "updatedAt": "2026-05-02T11:32:48Z",
+      "updatedAt": "2026-05-08T14:10:24Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @awoie \n\nIn general, I totally agree.\n\nI would say the same is true for `mandatory`. Wallet should reject an sd-jwt-vc that doesn't include an attributed marked as `mandatory` regardless its sd value.\n\nWith regards to `sd` my only concern is the value `allowed`, which makes impossible for the wallet to really check it (both options \"never\" and \"always\" are valid)",
+          "createdAt": "2026-05-08T14:10:24Z",
+          "updatedAt": "2026-05-08T14:10:24Z"
+        }
+      ]
     },
     {
       "number": 410,
@@ -10451,9 +10465,17 @@
       "labels": [],
       "body": "At the moment, it is unclear when the claims metadata is processed. I would assume this needs to be done after the SD-JWT VC was issued to the wallet. The wallet would then need to process the path (if metadata and path are present) and reject the SD-JWT VC if processing fails.",
       "createdAt": "2026-05-02T11:34:34Z",
-      "updatedAt": "2026-05-02T11:34:34Z",
+      "updatedAt": "2026-05-08T14:02:01Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Hi @awoie \n\nCan you please clarify what do you mean by \"when the claims metadata is processed\"?\n\nAssuming that wallet already is aware -somehow -  of the underlying type definition then, I consider two critical points : \n- Right after issuance, the wallet should validate, in addition to the verification of the issuer's signature, that the issued credential \"complies\" with the type definition\n- While processing a presentation, wallet should check that the DCQL corresponds to the type definition.\n\n\n",
+          "createdAt": "2026-05-08T14:02:00Z",
+          "updatedAt": "2026-05-08T14:02:00Z"
+        }
+      ]
     },
     {
       "number": 411,
@@ -10467,9 +10489,17 @@
       "labels": [],
       "body": "Because type metadata contains validation information required by the wallet to make a decision on whether or not the SD-JWT VC is malformed and hence should be rejected, we need to define when type metadata processing is needed.\n\nCurrently, there is no clear indication for the wallet IF and WHERE type metadata is available. For example, the presence of a HTTPS-based `vct` value may not automatically indicate that type metadata is available and hence should be processed.\n\nFor other URI schemes than HTTPS, it is not clear when type metadata is available.\n\nAdditionally, we may want to require the following:\n- if `vct` is a HTTPS-based URI, and type metadata processing is required, then type metadata MUST be resolvable via well-known but resolution could still be a MAY if one of the other options are used.\n- add to the \"verification and processing\" section that type metadata validation is required if type metadata processing is required.\n\nBecause the producer of type metadata might not be the same as the issuer of the credential, the only option is to encode this information into the `vct` value itself which would be a breaking change. At a minimum we should say something that if the ecosystem provides a rulebook where type metadata is defined, the wallet needs to process and validate the type \nmetadata.\n\nAdditionally, we should also say that after type metadata was retrieved, type metadata needs to be validated by the wallet and if an error occurred, credentials must be rejected. This is mostly relevant for HTTPS-based retrieval.",
       "createdAt": "2026-05-02T11:41:42Z",
-      "updatedAt": "2026-05-02T12:13:16Z",
+      "updatedAt": "2026-05-08T13:51:50Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "babisRoutis",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "> Because type metadata contains validation information required by the wallet to make a decision on whether or not the SD-JWT VC is malformed and hence should be rejected, we need to define when type metadata processing is needed.\n\n\nDear @awoie \n\nIs there a case where type metadata are not needed?\n\nIn the absence of a type definition\n- The verifier cannot produce DCQL without taking the into account the sd behavior of the attestation.\n- A wallet cannot validate or even process a DCQL, to produce a presentation.\n- The verifier cannot safely verify if the  presented sd-jwt-vc meets the DCQL\n- A rulebook has to describe the sd properties of the attestation in a textual non-formal way, leaving open room  for different interpretations.\n\nPersonally, I  remain convinced that the type definitions must always be available. \n\nPS: Apologies if my question sounds  irrelevant to the main points of the present issue.",
+          "createdAt": "2026-05-08T13:51:50Z",
+          "updatedAt": "2026-05-08T13:51:50Z"
+        }
+      ]
     },
     {
       "number": 412,
@@ -32954,24 +32984,26 @@
       "id": "PR_kwDOJbVClc7VcClL",
       "title": "Document History now with more 17",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/407",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-04-24T19:00:59Z",
-      "updatedAt": "2026-04-24T19:01:00Z",
+      "updatedAt": "2026-05-08T12:14:30Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "e83134826d637fda95ce04c456d3ec3f3071d833",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "the-song-by-winger",
       "headRefOid": "f3b0861aae29718220a5e2e877e1891f5dd89d91",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-05-08T12:14:29Z",
+      "mergedAt": "2026-05-08T12:14:29Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da"
+      },
       "comments": [],
       "reviews": []
     }
