@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-05-10T01:08:07.771620+00:00",
+  "timestamp": "2026-06-09T01:09:46.578970+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10530,6 +10530,22 @@
       "body": "In the path processing section, the following is currently defined:\n> The result of the processing is the set of elements to which the respective claim metadata applies.\n\nFor example, this means that if a `mandatory: true` claim was not found, the set of elements does not contain the `mandatory: true` claim. Hence, claim metadata does not apply to the respective mandatory claim. This seems a bit confusing.\n\nIt is clear what the spec intends to do, but the definition in path processing and/or the claim metadata needs to be refined. ",
       "createdAt": "2026-05-02T14:09:35Z",
       "updatedAt": "2026-05-02T14:09:35Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 414,
+      "id": "I_kwDOJbVClc8AAAABEp8upg",
+      "title": "what does \"Type Metadata MAY be retrieved\" mean?",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/414",
+      "state": "OPEN",
+      "author": "jogu",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4.3.1-1 says:\n\n> A URI in the vct claim can be used to express a type. If the type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it\n\nI'm not sure the 'MAY' is clear. I think the general English reading would be \"if vct contains a https URI then type metadata must be retrievable from it, but it's up to the consumer whether they retrieve it or not\".\n\n(The alternative reading would be that trying to retrieve type metadata may or may not work, but I assume the point of picking a https vct instead of a urn would be so that type data can be retrieved.)\n\nI'd probably suggest clarifying the spec text to make the intent clearer.\n\nOverlaps a little with https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/411#issue-4368798891\n",
+      "createdAt": "2026-06-07T12:53:48Z",
+      "updatedAt": "2026-06-07T12:54:56Z",
       "closedAt": null,
       "comments": []
     }
