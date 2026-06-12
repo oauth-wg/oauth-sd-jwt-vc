@@ -609,9 +609,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qBh6b
-   zuYft8bR5JOTbARh2AikakiHD5rvAiuZDyen-l8bAOp4yMgI8sZaZw5oK9Xy3IedWTdL
-   QM0t4l2eVb6gg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wsAFs
+   Axs8VSAH1aLfXFVOMeueS0AFMtVlheTezxikEo2k8V9yUyUkYTZzZ0ZxSR04HLERizri
+   ns1aIS8ELi3gw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -647,17 +647,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qBh6b
-   zuYft8bR5JOTbARh2AikakiHD5rvAiuZDyen-l8bAOp4yMgI8sZaZw5oK9Xy3IedWTdL
-   QM0t4l2eVb6gg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wsAFs
+   Axs8VSAH1aLfXFVOMeueS0AFMtVlheTezxikEo2k8V9yUyUkYTZzZ0ZxSR04HLERizri
+   ns1aIS8ELi3gw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODEyNzI5Nz
-   QsICJzZF9oYXNoIjogImxBYVVOTFVYMmZKeWRjS2tkTmUtRDI3eEtDdnBjVnVJQ1lXeF
-   pNSFhsdmMifQ.5ciQknCfV5_C8LIV7TuGi27Fg6IZhav_tVMXROZhZ8LALhToyIMRO5g
-   Mnfx5FA9yRAVZFxz4ZDOefiWZnnGJSw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODEyNzMzMT
+   gsICJzZF9oYXNoIjogInFOcHluckhPMkNJUmdBVC02Qml6Q1lIYklTR0ZadEdSMGZoSn
+   oycWotZkkifQ.eNFS-K8xb8qLDXXyYTizT5pQAXKtjIT3fEb-a_aqCqJaRIqMUYjpGRk
+   XOAxjDYBH_PJ6QeF6KIuTGhfM4CWaFg
 
                    Figure 7: Presented SD-JWT+KB Example
 
@@ -703,8 +703,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.zTQ2A4eN_z-hsH5wSU2dS912jmC6ugQsYfYWx__EHN0bm3
-   dizfSpully2FO3bwtRrTzLuGzpDW7X4UR6zDNNfQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.PsOHmvOULrlMCYTrs-1QqqWxDSLUDzBW6jysJ-sxE4SCuT
+   izUJlkDakps_9DxzQyo6QNTixRnxjMmAC4mLNdLQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1280,12 +1280,13 @@ Table of Contents
 
    *  Processing a path results in an error as defined in Section 4.6.1.
    *  The Holder or Verifier can determine that a claim addressed by a
-      path with mandatory set to true was not included in the issued
-      credential (see Section 4.6.3).
-   *  A claim selected by a path does not match its sd value: always
-      requires the claim to be selectively disclosable at that path,
-      never requires it not to be selectively disclosable at that path,
-      and allowed permits either representation.
+      claim metadata object with mandatory set to true was not included
+      in the issued credential (see Section 4.6.3).
+   *  A claim selected by a claim metadata object's path does not match
+      its sd value: always requires the claim to be selectively
+      disclosable at that path, never requires it not to be selectively
+      disclosable at that path, and allowed permits either
+      representation.
 
    Whether a mandatory claim was included can be determined by a Holder
    that has all Disclosures by evaluating the path against the complete
@@ -1299,9 +1300,10 @@ Table of Contents
       represented as a Disclosure for an object property or array
       element in the SD-JWT; it is not selectively disclosable solely
       because one of its ancestors is.
-   *  Array indices in a path refer to positions in the array as issued,
-      counting non-disclosed array elements, which are absent from the
-      processed SD-JWT payload (see Section 4.6.1).
+   *  Non-negative integer and null components of a path are evaluated
+      against the array as issued, counting non-disclosed array
+      elements, which are absent from the processed SD-JWT payload (see
+      Section 4.6.1).
    *  If a path selects a non-disclosed array element, that element was
       included in the issued credential and is selectively disclosable;
       its contents are unknown, so any deeper path components select no
@@ -2065,8 +2067,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.N6I1TlvofIsIZg4rvCoj9sZHqbXR_DMn
-   jrs5HkhKUeQEGu_MBbxqxamp7gp0ESW-Y5DJfzwAWOv2eJjgrkSs3g~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.skTCpMNYCtcOQGYvXczv5KlF4tDCoB_s
+   opoVonRA3zj9WL94CSkwbq4lLxXp19Z1GBWP51gaEFK6NlkYK6kdtA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2448,8 +2450,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.N6I1TlvofIsIZg4rvCoj9sZHqbXR_DMn
-   jrs5HkhKUeQEGu_MBbxqxamp7gp0ESW-Y5DJfzwAWOv2eJjgrkSs3g~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.skTCpMNYCtcOQGYvXczv5KlF4tDCoB_s
+   opoVonRA3zj9WL94CSkwbq4lLxXp19Z1GBWP51gaEFK6NlkYK6kdtA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2460,10 +2462,10 @@ B.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODEyNzI5NzQsICJzZF9oYXNoIjogIn
-   FiYk9aZ04zLU9mQ09WY2dYcXZ2WGI4QUR6eEVNWTNDOXBvWkhyUmlSWWcifQ.080BAkn
-   _bkkoq6EuECm39T0mH8tQJqGxkbxIy8wc23V_n7AaFwuZSNnkBBoyzX_trYMdjvsST98
-   aFiubG4RGqg
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODEyNzMzMTgsICJzZF9oYXNoIjogIm
+   5jRGZtdUY5Mmx4UDJxVXVGTnMyd19wM1ZMd1ZVcGQwX0tXcEU0VjlkN3MifQ.OjB3dxw
+   uVjTl1dCYM3pIBLtQXnr-WgB-Uqt8OzuDr8wNEUZpo1ng9Nuc67CZdYxig2NYCJebx2v
+   I4jfYa3-OZw
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2472,8 +2474,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1781272974,
-     "sd_hash": "qbbOZgN3-OfCOVcgXqvvXb8ADzxEMY3C9poZHrRiRYg"
+     "iat": 1781273318,
+     "sd_hash": "ncDfmuF92lxP2qUuFNs2w_p3VLwVUpd0_KWpE4V9d7s"
    }
 
                      Figure 26: Key Binding JWT Payload
