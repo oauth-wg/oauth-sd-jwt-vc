@@ -836,8 +836,8 @@ When a Holder or Verifier processes claim metadata for an SD-JWT VC, it MUST val
 Claim metadata validation fails if any of the following applies:
 
 * Processing a `path` results in an error as defined in (#claim-path).
-* The Holder or Verifier can determine that a claim addressed by a `path` with `mandatory` set to `true` was not included in the issued credential (see (#claim-mandatory-metadata)).
-* A claim selected by a `path` does not match its `sd` value: `always` requires the claim to be selectively disclosable at that path, `never` requires it not to be selectively disclosable at that path, and `allowed` permits either representation.
+* The Holder or Verifier can determine that a claim addressed by a claim metadata object with `mandatory` set to `true` was not included in the issued credential (see (#claim-mandatory-metadata)).
+* A claim selected by a claim metadata object's `path` does not match its `sd` value: `always` requires the claim to be selectively disclosable at that path, `never` requires it not to be selectively disclosable at that path, and `allowed` permits either representation.
 
 Whether a mandatory claim was included can be determined by a Holder that has all Disclosures by evaluating the `path` against the complete Unsecured Payload.
 A Verifier MUST NOT treat absence of a selectively disclosable claim from a presentation as evidence that the Issuer failed to include a mandatory claim.
@@ -845,7 +845,7 @@ A Verifier MUST NOT treat absence of a selectively disclosable claim from a pres
 When evaluating a `path` for this validation, the following applies:
 
 * A claim is selectively disclosable at a path if it is directly represented as a Disclosure for an object property or array element in the SD-JWT; it is not selectively disclosable solely because one of its ancestors is.
-* Array indices in a `path` refer to positions in the array as issued, counting non-disclosed array elements, which are absent from the processed SD-JWT payload (see (#claim-path)).
+* Non-negative integer and `null` components of a `path` are evaluated against the array as issued, counting non-disclosed array elements, which are absent from the processed SD-JWT payload (see (#claim-path)).
 * If a `path` selects a non-disclosed array element, that element was included in the issued credential and is selectively disclosable; its contents are unknown, so any deeper `path` components select no claims.
 
 Performing this validation requires the Holder or Verifier to retain sufficient information during SD-JWT processing, including the positions of non-disclosed array elements.
