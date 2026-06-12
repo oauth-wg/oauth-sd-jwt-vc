@@ -837,7 +837,7 @@ Claim metadata validation fails if any of the following applies:
 
 * Processing a `path` results in an error as defined in (#claim-path).
 * The Holder or Verifier can determine that a claim addressed by a claim metadata object with `mandatory` set to `true` was not included in the issued credential (see (#claim-mandatory-metadata)).
-* A claim selected by a claim metadata object's `path` does not match its `sd` value: `always` requires the claim to be selectively disclosable at that path, `never` requires it not to be selectively disclosable at that path, and `allowed` permits either representation.
+* A claim selected by a claim metadata object's `path` is not selectively disclosable as required by its `sd` value (see (#claim-selective-disclosure-metadata)).
 
 Whether a mandatory claim was included can be determined by a Holder that has all Disclosures by evaluating the `path` against the complete Unsecured Payload.
 A Verifier MUST NOT treat absence of a selectively disclosable claim from a presentation as evidence that the Issuer failed to include a mandatory claim.
@@ -845,10 +845,10 @@ A Verifier MUST NOT treat absence of a selectively disclosable claim from a pres
 When evaluating a `path` for this validation, the following applies:
 
 * A claim is selectively disclosable at a path if it is directly represented as a Disclosure for an object property or array element in the SD-JWT; it is not selectively disclosable solely because one of its ancestors is.
-* Non-negative integer and `null` components of a `path` are evaluated against the array as issued, counting non-disclosed array elements, which are absent from the processed SD-JWT payload (see (#claim-path)).
-* If a `path` selects a non-disclosed array element, that element was included in the issued credential and is selectively disclosable; its contents are unknown, so any deeper `path` components select no claims.
+* Non-negative integer and `null` components of a `path` are evaluated against the array as issued, counting array elements that are not disclosed and are therefore absent from the processed SD-JWT payload (see (#claim-path)).
+* If a `path` selects an array element that is not disclosed, that element was included in the issued credential and is selectively disclosable; its contents are unknown, so any deeper `path` components select no claims.
 
-Performing this validation requires the Holder or Verifier to retain sufficient information during SD-JWT processing, including the positions of non-disclosed array elements.
+Performing this validation requires the Holder or Verifier to retain sufficient information during SD-JWT processing, including the positions of array elements that are not disclosed.
 See (#processing-type-metadata) for the consequences of claim metadata processing and validation failures.
 
 ### Claim Path {#claim-path}
@@ -1714,7 +1714,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Clarified when optional Type Metadata processing occurs and how ecosystem rules can require it, in a new Processing Type Metadata section.
 * Require rejection when processed claim metadata is malformed or when `mandatory` or `sd` claim metadata does not match the credential.
-* Clarified claim metadata validation for presentations: a Verifier must not treat absence of a selectively disclosable claim as a missing mandatory claim, and array positions in `path` account for non-disclosed array elements.
+* Clarified claim metadata validation for presentations: a Verifier must not treat absence of a selectively disclosable claim as a missing mandatory claim, and array positions in `path` account for array elements that are not disclosed.
 * Moved the `vct#integrity` requirement to the general Type Metadata retrieval section.
 * `path` processing yields an empty set instead of an error when no claims are selected.
 * Updated the referenced document integrity wording.
