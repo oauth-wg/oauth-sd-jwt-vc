@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-09T01:09:46.578970+00:00",
+  "timestamp": "2026-06-14T01:21:15.485317+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33020,6 +33020,58 @@
       "mergeCommit": {
         "oid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 415,
+      "id": "PR_kwDOJbVClc7lzO5s",
+      "title": "Superseded by #416",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/415",
+      "state": "CLOSED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-06-12T14:36:56Z",
+      "updatedAt": "2026-06-12T16:40:43Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/clarify-various",
+      "headRefOid": "71f04b001efc0ebb6b3784b87c9870e935b36ace",
+      "closedAt": "2026-06-12T15:03:18Z",
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 416,
+      "id": "PR_kwDOJbVClc7l0JJy",
+      "title": "Fixes #408, #409, #410, #411, #412, #413",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/416",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Fixes #408, #409, #410, #411, #412, #413\r\n",
+      "createdAt": "2026-06-12T15:15:15Z",
+      "updatedAt": "2026-06-12T16:38:15Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/fix-various-issues",
+      "headRefOid": "fb7a0c946e4b6fef2c2fce7d18cf04cce4cf7f1d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
