@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-14T01:21:15.485317+00:00",
+  "timestamp": "2026-06-25T01:11:16.309518+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10545,9 +10545,31 @@
       "labels": [],
       "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4.3.1-1 says:\n\n> A URI in the vct claim can be used to express a type. If the type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it\n\nI'm not sure the 'MAY' is clear. I think the general English reading would be \"if vct contains a https URI then type metadata must be retrievable from it, but it's up to the consumer whether they retrieve it or not\".\n\n(The alternative reading would be that trying to retrieve type metadata may or may not work, but I assume the point of picking a https vct instead of a urn would be so that type data can be retrieved.)\n\nI'd probably suggest clarifying the spec text to make the intent clearer.\n\nOverlaps a little with https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/411#issue-4368798891\n",
       "createdAt": "2026-06-07T12:53:48Z",
-      "updatedAt": "2026-06-07T12:54:56Z",
+      "updatedAt": "2026-06-24T19:51:03Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "surepgold9",
+          "authorAssociation": "NONE",
+          "body": "If app that has email login to my phone, and I don't have access to the app email can I receive OTP going to that email ",
+          "createdAt": "2026-06-24T02:25:16Z",
+          "updatedAt": "2026-06-24T02:25:16Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> If app that has email login to my phone, and I don't have access to the app email can I receive OTP going to that email\n\nwhat the fuck @surepgold9? ",
+          "createdAt": "2026-06-24T19:48:54Z",
+          "updatedAt": "2026-06-24T19:48:54Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I think it's closer to that general English reading but maybe more in between like \"if vct contains a https URI then type metadata might be retrievable from it, and it's up to the consumer whether they retrieve it or not\"",
+          "createdAt": "2026-06-24T19:51:03Z",
+          "updatedAt": "2026-06-24T19:51:03Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -33061,7 +33083,7 @@
       "labels": [],
       "body": "Fixes #408, #409, #410, #411, #412, #413\r\n",
       "createdAt": "2026-06-12T15:15:15Z",
-      "updatedAt": "2026-06-12T16:38:15Z",
+      "updatedAt": "2026-06-24T19:46:36Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da",
@@ -33073,7 +33095,21 @@
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABEB40BA",
+          "commit": {
+            "abbreviatedOid": "fb7a0c9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thanks @awoie ",
+          "createdAt": "2026-06-24T19:46:36Z",
+          "updatedAt": "2026-06-24T19:46:36Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
