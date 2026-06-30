@@ -102,7 +102,7 @@ a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
 
-SD-JWT is a superset of JWT. It can also be used when there are no selectively
+SD-JWT builds on JWT/JWS. It can also be used when there are no selectively
 disclosable claims. Furthermore, SD-JWT supports JWS JSON serialization,
 which is useful for long-term archiving and multi-signatures.
 However, SD-JWT itself does not define
