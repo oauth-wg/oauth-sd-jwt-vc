@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 9 November 2026                                   Authlete Inc.
+Expires: 3 January 2027                                    Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                              8 May 2026
+                                                             2 July 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 November 2026.
+   This Internet-Draft will expire on 3 January 2027.
 
 Copyright Notice
 
@@ -102,6 +102,7 @@ Table of Contents
        4.6.3.  Claim Mandatory Metadata
        4.6.4.  Claim Selective Disclosure Metadata
        4.6.5.  Extending Claim Metadata
+     4.7.  Processing Type Metadata
    5.  Integrity of Referenced Documents
    6.  Security Considerations
      6.1.  Server-Side Request Forgery
@@ -191,7 +192,7 @@ Table of Contents
    an SD-JWT document, a Holder can decide which claims to release
    (within bounds defined by the Issuer).
 
-   SD-JWT is a superset of JWT.  It can also be used when there are no
+   SD-JWT builds on JWT/JWS.  It can also be used when there are no
    selectively disclosable claims.  Furthermore, SD-JWT supports JWS
    JSON serialization, which is useful for long-term archiving and
    multi-signatures.  However, SD-JWT itself does not define the claims
@@ -203,7 +204,7 @@ Table of Contents
    Credentials are called SD-JWT VCs.  The use of selective disclosure
    in SD-JWT VCs is optional.
 
-   SD-JWTs VC can contain claims that are registered in "JSON Web Token
+   SD-JWT VCs can contain claims that are registered in "JSON Web Token
    Claims" registry as defined in [RFC7519], as well as public and
    private claims.
 
@@ -256,7 +257,7 @@ Table of Contents
 2.1.  Media Type
 
    SD-JWT VCs compliant with this specification MUST use the media type
-   application/dc+sd-jwt, where the base base subtype name dc stands for
+   application/dc+sd-jwt, where the base subtype name dc stands for
    "digital credential".
 
 2.2.  Data Format
@@ -608,9 +609,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.t2lLk
-   XePcbVjyOR3nytW4WxQj5UgxSIopZVDTYQAKEzAEVt6dUIEY37D5giBrm1Gvbdmbi1-T
-   9OBD1qk-FO0rQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bnWZT
+   88nWQkAjWlveqYNKLY2beQmVko-6jkJTpDCThrUT3pxOaTTCUXNtVkTjNfZtSk4FUJGw
+   kpfclZzwhC_zw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -646,17 +647,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.t2lLk
-   XePcbVjyOR3nytW4WxQj5UgxSIopZVDTYQAKEzAEVt6dUIEY37D5giBrm1Gvbdmbi1-T
-   9OBD1qk-FO0rQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bnWZT
+   88nWQkAjWlveqYNKLY2beQmVko-6jkJTpDCThrUT3pxOaTTCUXNtVkTjNfZtSk4FUJGw
+   kpfclZzwhC_zw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzgyNDI0OT
-   gsICJzZF9oYXNoIjogIkFRUHhkVUhVNXE4Y1NVS0FYbHVqUlBBTTZkWVREVVdQRTJiWm
-   cxR1doT00ifQ.RIF1EjmDIcBVgOscOIrndMsbXgsput8X3j8qKdMH88-Dt9ShsqKUb5k
-   1tEUIZvIohWIUFZbMCuVknOmq_-nRXA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODI5ODc3Mz
+   csICJzZF9oYXNoIjogInhvUXAwRXFkYktpZmFLRnhrQnlLZi04TzY2d2N2UktKZzBHeV
+   g4NDlpbEUifQ.IvAMqmUwOElHhBKh5woDbyuxA7hwRUdRGT0lZKhQpvefTSw8mfYbMOu
+   1nrHfxwpyTIBnwSPKxbnBB6etKO5sbg
 
                    Figure 7: Presented SD-JWT+KB Example
 
@@ -702,8 +703,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.EVyXiJnuuxMrFXlqNMMi4UqV2bJEJwJTE1XESWrJn3y4Ri
-   TXExmoj0gjXxlTFRC_ZWGloQRBILO4AiVbqPWayQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.oKvU2Dg1BnRqvDpPWcY_J0w13DbsGA3IuQH9RGF3KAM5HB
+   Q1nHD9-nChXqgWWk67mtsSkL97kyZn2Kl6QY83AQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -745,6 +746,11 @@ Table of Contents
    Section 9.5 of [RFC9901]), the Verifier MUST verify the KB-JWT
    according to Section 7.3 of [RFC9901].  To verify the KB-JWT, the cnf
    claim of the SD-JWT MUST be used.
+
+   After the processed SD-JWT payload is available to the recipient, a
+   Holder or Verifier MAY process Type Metadata as described in
+   Section 4.7.  If Type Metadata is processed, the rules defined in
+   Section 4.7 apply and can require the SD-JWT VC to be rejected.
 
    If there are no selectively disclosable claims, there is no need to
    process the _sd claim nor any Disclosures.
@@ -793,8 +799,9 @@ Table of Contents
    for related security considerations.
 
    If a recipient cannot validate that the public verification key
-   corresponds the Issuer of the Issuer-signed JWT using a permitted key
-   discovery and validation mechanism, the SD-JWT VC MUST be rejected.
+   corresponds to the Issuer of the Issuer-signed JWT using a permitted
+   key discovery and validation mechanism, the SD-JWT VC MUST be
+   rejected.
 
 3.  JWT VC Issuer Metadata
 
@@ -936,6 +943,9 @@ Table of Contents
       Metadata.
 
    Type Metadata can be retrieved as described in Section 4.3.
+   Ecosystems can define rules for a vct value that specify whether Type
+   Metadata is to be processed and which Type Metadata retrieval methods
+   Consumers are expected to support.
 
 4.1.  Type Metadata Example
 
@@ -1009,6 +1019,9 @@ Table of Contents
    to the Type Metadata (either in the SD-JWT VC itself or in an extends
    property in a Type Metadata document).
 
+   If the claim vct#integrity is present in the SD-JWT VC, its value
+   MUST be an "integrity metadata" string as defined in Section 5.
+
    The following sections define methods to retrieve Type Metadata.
 
 4.3.1.  From a URL in the vct Claim
@@ -1021,10 +1034,6 @@ Table of Contents
    JSON object as defined in Section 4.2 using the application/json
    content type.  An error response MUST use the applicable HTTP status
    code value.
-
-   If the claim vct#integrity is present in the SD-JWT VC, its value
-   vct#integrity MUST be an "integrity metadata" string as defined in
-   Section 5.
 
 4.3.2.  From a Registry
 
@@ -1046,7 +1055,7 @@ Table of Contents
 4.3.4.  From a Local Cache
 
    A Consumer MAY cache Type Metadata for a SD-JWT VC type.  If a hash
-   for integrity protection is present in the Type Metadata as defined
+   for integrity protection is present for the Type Metadata as defined
    in Section 5, the Consumer MAY assume that the Type Metadata is
    static and can be cached indefinitely.  Otherwise, the Consumer MUST
    use the Cache-Control header of the HTTP response to determine how
@@ -1257,6 +1266,53 @@ Table of Contents
       alphanumeric characters and underscores and MUST NOT start with a
       digit.  This property is OPTIONAL.
 
+   When a Consumer processes Type Metadata for an SD-JWT VC, the claims
+   property and each claim metadata object MUST conform to the structure
+   defined in this section and its subsections; otherwise, claim
+   metadata processing fails.  Properties that are not understood are
+   ignored as defined in Section 4.2.
+
+   When a Holder or Verifier processes claim metadata for an SD-JWT VC,
+   it MUST validate the processed SD-JWT payload against the claim
+   metadata in the Type Metadata after applying any extensions as
+   described in Section 4.6.5.  Claim metadata validation fails if any
+   of the following applies:
+
+   *  Processing a path results in an error as defined in Section 4.6.1.
+   *  The Holder or Verifier can determine that a claim addressed by a
+      claim metadata object with mandatory set to true was not included
+      in the issued credential (see Section 4.6.3).
+   *  A claim selected by a claim metadata object's path is not
+      selectively disclosable as required by its sd value (see
+      Section 4.6.4).
+
+   Whether a mandatory claim was included can be determined by a Holder
+   that has all Disclosures by evaluating the path against the complete
+   Unsecured Payload.  A Verifier MUST NOT treat absence of a
+   selectively disclosable claim from a presentation as evidence that
+   the Issuer failed to include a mandatory claim.
+
+   When evaluating a path for this validation, the following applies:
+
+   *  A claim is selectively disclosable at a path if it is directly
+      represented as a Disclosure for an object property or array
+      element in the SD-JWT; it is not selectively disclosable solely
+      because one of its ancestors is.
+   *  Non-negative integer and null components of a path are evaluated
+      against the array as issued, counting array elements that are not
+      disclosed and are therefore absent from the processed SD-JWT
+      payload (see Section 4.6.1).
+   *  If a path selects an array element that is not disclosed, that
+      element was included in the issued credential and is selectively
+      disclosable; its contents are unknown, so any deeper path
+      components select no claims.
+
+   Performing this validation requires the Holder or Verifier to retain
+   sufficient information during SD-JWT processing, including the
+   positions of array elements that are not disclosed.  See Section 4.7
+   for the consequences of claim metadata processing and validation
+   failures.
+
 4.6.1.  Claim Path
 
    The path property MUST be a non-empty array of strings, null values,
@@ -1320,7 +1376,7 @@ Table of Contents
            respective key in the currently selected element(s).  If any
            of the currently selected element(s) is not an object, abort
            processing and return an error.  If the key does not exist in
-           any element currently selected, remove that element from the
+           an element currently selected, remove that element from the
            selection.
        2.  If the path component is null, select all elements of the
            currently selected array(s).  If any of the currently
@@ -1332,8 +1388,8 @@ Table of Contents
            an array, abort processing and return an error.  If the index
            does not exist in a selected array, remove that array from
            the selection.
-   3.  If the set of elements currently selected is empty, abort
-       processing and return an error.
+   3.  If the set of elements currently selected is empty, the result of
+       processing is the empty set.
 
    The result of the processing is the set of elements to which the
    respective claim metadata applies.
@@ -1495,6 +1551,27 @@ Table of Contents
 
              Figure 21: Effective Claim Metadata for Child Type
 
+4.7.  Processing Type Metadata
+
+   This specification does not require every Holder or Verifier to
+   process Type Metadata; whether Type Metadata is processed is
+   determined by the Holder's or Verifier's policy and, where
+   applicable, ecosystem rules.  A Holder or Verifier typically
+   processes Type Metadata after the processed SD-JWT payload is
+   available, as described in Section 2.4.
+
+   If Type Metadata is processed, it MUST be fully processed, including
+   any extended types (see Section 4.4), before its contents are used
+   for validation, display, rendering, or acceptance decisions.  If the
+   Type Metadata after applying any extensions contains claim metadata,
+   the Holder or Verifier MUST process and validate the claim metadata
+   as defined in Section 4.6.  If claim metadata processing or
+   validation fails, the SD-JWT VC MUST be rejected.
+
+   If Type Metadata processing is required by policy or ecosystem rules
+   and the Holder or Verifier cannot retrieve or process the applicable
+   Type Metadata, the SD-JWT VC MUST be rejected.
+
 5.  Integrity of Referenced Documents
 
    This section defines how integrity can be asserted for documents
@@ -1513,9 +1590,9 @@ Table of Contents
 
    The value MUST be an "integrity metadata" string as defined in
    Section 3 of [W3C.SRI].  If an integrity property is present for a
-   particular claim, the Consumer of the respective document MUST verify
-   the integrity of the retrieved document as defined in Section 3.3.5
-   of [W3C.SRI].
+   claim or metadata property, the Consumer of the referenced document
+   MUST verify the integrity of the retrieved document as defined in
+   Section 3.3.5 of [W3C.SRI].
 
 6.  Security Considerations
 
@@ -1590,7 +1667,7 @@ Table of Contents
 6.5.  Risks Associated with Textual Information
 
    Some claims in the SD-JWT VC and properties in the Type Metadata,
-   e.g., display, allows issuers and providers of metadata to specify
+   e.g., display, allow issuers and providers of metadata to specify
    human-readable information.  These can contain arbitrary textual
    information that may be displayed to end users and developers.  As
    such, any consuming application MUST ensure that maliciously crafted
@@ -1804,9 +1881,9 @@ Table of Contents
    [I-D.ietf-oauth-status-list]
               Looker, T., Bastian, P., and C. Bormann, "Token Status
               List (TSL)", Work in Progress, Internet-Draft, draft-ietf-
-              oauth-status-list-20, 20 April 2026,
+              oauth-status-list-21, 21 June 2026,
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
-              status-list-20>.
+              status-list-21>.
 
    [IANA.well-known]
               IANA, "Well-Known URIs",
@@ -1989,8 +2066,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eOXjfl8ojWiKwv5MhyEszGOJmVhlN6f0
-   yszNjdi9n8czL9ZuQZyXptbSdQ-_C385jwejaWlbMkyvnEbTAqugOQ~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.9G-TFzcf2vElLPMb8Te8Jn3ybLHnR0EX
+   2Zqne8MRi_P3z9iZajc2ydtDsD4-7xTn6EBFRyiCPhRsEA7zxpUsOw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2372,8 +2449,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eOXjfl8ojWiKwv5MhyEszGOJmVhlN6f0
-   yszNjdi9n8czL9ZuQZyXptbSdQ-_C385jwejaWlbMkyvnEbTAqugOQ~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.9G-TFzcf2vElLPMb8Te8Jn3ybLHnR0EX
+   2Zqne8MRi_P3z9iZajc2ydtDsD4-7xTn6EBFRyiCPhRsEA7zxpUsOw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2384,10 +2461,10 @@ B.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3NzgyNDI0OTgsICJzZF9oYXNoIjogIk
-   9ETUxnS0xwQUdQWktKLWdfRWNYeFg2UEM4NmFHSGl3VWdNZW1vWUJxcHMifQ.LUHiRYQ
-   qDelG6on4YUyE4cnbkrH_zxtVlbegH2u9bk_dnC9u8iKOrNT3x4reNQu6fDm5aMxfHeZ
-   jRZBl3T2tYg
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODI5ODc3MzcsICJzZF9oYXNoIjogIn
+   Z5elhBMVBYWGNoWVZOb3JYWG56eVhSc3dBZkUzQjJaMUc0YlJLaHYyU0UifQ.7GWI5tc
+   PXXUB-EkJ-bi8ZjOg9-YJG3DpM4d326T-y7VYnnYpPpTcOuPaGwApO-srbZqW1njg9pH
+   Vrih91tNVeg
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2396,8 +2473,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1778242498,
-     "sd_hash": "ODMLgKLpAGPZKJ-g_EcXxX6PC86aGHiwUgMemoYBqps"
+     "iat": 1782987737,
+     "sd_hash": "vyzXA1PXXchYVNorXXnzyXRswAfE3B2Z1G4bRKhv2SE"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2668,6 +2745,22 @@ Appendix C.  Acknowledgements
 Appendix D.  Document History
 
    -17
+
+   *  Clarified when optional Type Metadata processing occurs and how
+      ecosystem rules can require it, in a new Processing Type Metadata
+      section.
+   *  Require rejection when processed claim metadata is malformed or
+      when mandatory or sd claim metadata does not match the credential.
+   *  Clarified claim metadata validation for presentations: a Verifier
+      must not treat absence of a selectively disclosable claim as a
+      missing mandatory claim, and array positions in path account for
+      array elements that are not disclosed.
+   *  Moved the vct#integrity requirement to the general Type Metadata
+      retrieval section.
+   *  path processing yields an empty set instead of an error when no
+      claims are selected.
+   *  Updated the referenced document integrity wording.
+   *  Editorial fixes.
 
    -16
 
