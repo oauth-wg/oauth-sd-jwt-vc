@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-06-25T01:11:16.309518+00:00",
+  "timestamp": "2026-07-02T01:11:55.348857+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10568,6 +10568,58 @@
           "body": "I think it's closer to that general English reading but maybe more in between like \"if vct contains a https URI then type metadata might be retrievable from it, and it's up to the consumer whether they retrieve it or not\"",
           "createdAt": "2026-06-24T19:51:03Z",
           "updatedAt": "2026-06-24T19:51:03Z"
+        }
+      ]
+    },
+    {
+      "number": 417,
+      "id": "I_kwDOJbVClc8AAAABHMUjsw",
+      "title": "SD-JWT is not only a superset of JWT",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/417",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "This is already implied by the specification, we should need to make clear that \"SD-JWT builds on JWT/JWS\".",
+      "createdAt": "2026-06-30T14:26:05Z",
+      "updatedAt": "2026-06-30T18:38:22Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@awoie, so that a Holder and a Verifier MUST process all extensions specified in the crit (critical) header parameter, right?\n\nhttps://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11",
+          "createdAt": "2026-06-30T14:50:16Z",
+          "updatedAt": "2026-06-30T14:50:32Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [@awoie](https://github.com/awoie), so that a Holder and a Verifier MUST process all extensions specified in the crit (critical) header parameter, right?\n> \n> https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.11\n\nThat's the case regardless of this issue or anything done for it or not. ",
+          "createdAt": "2026-06-30T15:30:26Z",
+          "updatedAt": "2026-06-30T15:30:26Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "@bc-pi,\n\n> That's the case regardless of this issue or anything done for it or not.\n\nNow, if I may, I have one follow-up question. Should the Type Metadata documents announce extensions (which MUST be processed) in the crit claim as well?\n\nAs of now, https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/416 includes this text regarding properties in the Type Metadata documents\n\n> Properties that are not understood are ignored as defined in (#type-metadata-format).",
+          "createdAt": "2026-06-30T18:10:04Z",
+          "updatedAt": "2026-06-30T18:10:04Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> [@bc-pi](https://github.com/bc-pi),\n> \n> > That's the case regardless of this issue or anything done for it or not.\n> \n> Now, if I may, I have one follow-up question. Should the Type Metadata documents announce extensions (which MUST be processed) in the crit claim as well?\n\nFrom my perspective, no, crit is a header not a claim. But Type Metadata documents don't have headers or claims. \n\n",
+          "createdAt": "2026-06-30T18:22:51Z",
+          "updatedAt": "2026-06-30T18:22:51Z"
+        },
+        {
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Of course, crit is a header, but still... should Type Metadata documents announce these extensions through their properties?\n\nIt could be one of those weird / edge use cases, but technically, an Issuer can issue two Credentials \"linked\" to the same Type Metadata documents, but with one difference - Credential_1 doesn't include a crit header, and Credential_2 does... implying that a Holder and  Verifier MUST process some extensions say \"extensionA\" and \"extensionB\".",
+          "createdAt": "2026-06-30T18:38:22Z",
+          "updatedAt": "2026-06-30T18:38:22Z"
         }
       ]
     }
@@ -33074,27 +33126,35 @@
     {
       "number": 416,
       "id": "PR_kwDOJbVClc7l0JJy",
-      "title": "Fixes #408, #409, #410, #411, #412, #413",
+      "title": "Fixes #408, #409, #410, #411, #412, #413, #417",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/416",
       "state": "OPEN",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
-      "body": "Fixes #408, #409, #410, #411, #412, #413\r\n",
+      "body": "Fixes #408, #409, #410, #411, #412, #413, #417\r\n",
       "createdAt": "2026-06-12T15:15:15Z",
-      "updatedAt": "2026-06-24T19:46:36Z",
+      "updatedAt": "2026-06-30T20:14:24Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-various-issues",
-      "headRefOid": "fb7a0c946e4b6fef2c2fce7d18cf04cce4cf7f1d",
+      "headRefOid": "abac43a87b1857b326ae9d1a80e89506cacaf878",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
-      "comments": [],
+      "comments": [
+        {
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "body": "Thank you!",
+          "createdAt": "2026-06-30T14:13:04Z",
+          "updatedAt": "2026-06-30T14:13:04Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc8AAAABEB40BA",
@@ -33108,6 +33168,59 @@
           "createdAt": "2026-06-24T19:46:36Z",
           "updatedAt": "2026-06-24T19:46:36Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABEj-I1w",
+          "commit": {
+            "abbreviatedOid": "fb7a0c9"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-06-30T14:12:52Z",
+          "updatedAt": "2026-06-30T14:12:52Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABEl7JWA",
+          "commit": {
+            "abbreviatedOid": "abac43a"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-06-30T18:44:27Z",
+          "updatedAt": "2026-06-30T18:44:27Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "`\"crit\":[\"b64\"]` and a detached payload is not supported, right?\n\nhttps://datatracker.ietf.org/doc/html/rfc7797",
+              "createdAt": "2026-06-30T18:44:27Z",
+              "updatedAt": "2026-06-30T18:44:27Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABEmgesw",
+          "commit": {
+            "abbreviatedOid": "abac43a"
+          },
+          "author": "adeinega",
+          "authorAssociation": "CONTRIBUTOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-06-30T20:14:24Z",
+          "updatedAt": "2026-06-30T20:14:24Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "```suggestion\nEcosystems can establish rules for the vct value to determine whether Type Metadata should be processed and which retrieval methods consumers must support.\n```",
+              "createdAt": "2026-06-30T20:14:24Z",
+              "updatedAt": "2026-06-30T20:14:24Z"
+            }
+          ]
         }
       ]
     }
