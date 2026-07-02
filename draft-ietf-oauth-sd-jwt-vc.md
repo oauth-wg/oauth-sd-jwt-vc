@@ -102,7 +102,7 @@ a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
 
-SD-JWT is a superset of JWT. It can also be used when there are no selectively
+SD-JWT builds on JWT/JWS. It can also be used when there are no selectively
 disclosable claims. Furthermore, SD-JWT supports JWS JSON serialization,
 which is useful for long-term archiving and multi-signatures.
 However, SD-JWT itself does not define
@@ -113,7 +113,7 @@ extensibility model as basis for representing Verifiable Digital Credentials wit
 payloads. These Verifiable Digital Credentials are called SD-JWT VCs. The use of
 selective disclosure in SD-JWT VCs is optional.
 
-SD-JWTs VC can contain claims that are registered in "JSON Web Token Claims"
+SD-JWT VCs can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
 
@@ -159,7 +159,7 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 ## Media Type
 
 SD-JWT VCs compliant with this specification MUST use the media type
-`application/dc+sd-jwt`, where the base base subtype name `dc` stands for "digital credential".
+`application/dc+sd-jwt`, where the base subtype name `dc` stands for "digital credential".
 
 ## Data Format
 
@@ -372,6 +372,9 @@ If Key Binding is required (refer to the security considerations in Section 9.5 
 according to Section 7.3 of [@!RFC9901]. To verify
 the KB-JWT, the `cnf` claim of the SD-JWT MUST be used.
 
+After the processed SD-JWT payload is available to the recipient, a Holder or Verifier MAY process Type Metadata as described in (#processing-type-metadata).
+If Type Metadata is processed, the rules defined in (#processing-type-metadata) apply and can require the SD-JWT VC to be rejected.
+
 If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
@@ -401,7 +404,7 @@ To enable different trust anchoring systems or key resolution methods, separate 
 may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
 See (#ecosystem-verification-rules) for related security considerations.
 
-If a recipient cannot validate that the public verification key corresponds the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.
+If a recipient cannot validate that the public verification key corresponds to the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.
 
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
@@ -535,6 +538,7 @@ This section defines Type Metadata that can be associated with a type of an SD-J
    consistent with the intent of the provider of the Type Metadata.
 
 Type Metadata can be retrieved as described in (#retrieving-type-metadata).
+Ecosystems can define rules for a `vct` value that specify whether Type Metadata is to be processed and which Type Metadata retrieval methods Consumers are expected to support.
 
 ## Type Metadata Example {#type-metadata-example}
 
@@ -606,6 +610,9 @@ SD-JWT VC payload is identical to the `vct` value in the reference to the Type
 Metadata (either in the SD-JWT VC itself or in an `extends` property in a Type
 Metadata document).
 
+If the claim `vct#integrity` is present in the SD-JWT VC, its value
+MUST be an "integrity metadata" string as defined in (#document-integrity).
+
 The following sections define methods to retrieve Type Metadata.
 
 ### From a URL in the `vct` Claim {#retrieval-from-vct-claim}
@@ -617,9 +624,6 @@ The Type Metadata is retrieved using the HTTP GET method.
 A successful response MUST use an HTTP `200` status code and return a JSON
 object as defined in (#type-metadata-format) using the `application/json` content type.
 An error response MUST use the applicable HTTP status code value.
-
-If the claim `vct#integrity` is present in the SD-JWT VC, its value
-`vct#integrity` MUST be an "integrity metadata" string as defined in (#document-integrity).
 
 ### From a Registry {#retrieval-from-registry}
 
@@ -639,7 +643,7 @@ retrieve Type Metadata based on a URN in the `vct` claim.
 ### From a Local Cache {#retrieval-from-local-cache}
 
 A Consumer MAY cache Type Metadata for a SD-JWT VC type. If a hash for integrity
-protection is present in the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
+protection is present for the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
 indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
 header of the HTTP response to determine how long the metadata can be cached.
 
@@ -825,6 +829,28 @@ Each object contains the following properties:
   type metadata. It MUST consist of only alphanumeric characters and underscores
   and MUST NOT start with a digit. This property is OPTIONAL.
 
+When a Consumer processes Type Metadata for an SD-JWT VC, the `claims` property and each claim metadata object MUST conform to the structure defined in this section and its subsections; otherwise, claim metadata processing fails.
+Properties that are not understood are ignored as defined in (#type-metadata-format).
+
+When a Holder or Verifier processes claim metadata for an SD-JWT VC, it MUST validate the processed SD-JWT payload against the claim metadata in the Type Metadata after applying any extensions as described in (#claim-metadata-extends).
+Claim metadata validation fails if any of the following applies:
+
+* Processing a `path` results in an error as defined in (#claim-path).
+* The Holder or Verifier can determine that a claim addressed by a claim metadata object with `mandatory` set to `true` was not included in the issued credential (see (#claim-mandatory-metadata)).
+* A claim selected by a claim metadata object's `path` is not selectively disclosable as required by its `sd` value (see (#claim-selective-disclosure-metadata)).
+
+Whether a mandatory claim was included can be determined by a Holder that has all Disclosures by evaluating the `path` against the complete Unsecured Payload.
+A Verifier MUST NOT treat absence of a selectively disclosable claim from a presentation as evidence that the Issuer failed to include a mandatory claim.
+
+When evaluating a `path` for this validation, the following applies:
+
+* A claim is selectively disclosable at a path if it is directly represented as a Disclosure for an object property or array element in the SD-JWT; it is not selectively disclosable solely because one of its ancestors is.
+* Non-negative integer and `null` components of a `path` are evaluated against the array as issued, counting array elements that are not disclosed and are therefore absent from the processed SD-JWT payload (see (#claim-path)).
+* If a `path` selects an array element that is not disclosed, that element was included in the issued credential and is selectively disclosable; its contents are unknown, so any deeper `path` components select no claims.
+
+Performing this validation requires the Holder or Verifier to retain sufficient information during SD-JWT processing, including the positions of array elements that are not disclosed.
+See (#processing-type-metadata) for the consequences of claim metadata processing and validation failures.
+
 ### Claim Path {#claim-path}
 
 The `path` property MUST be a non-empty array of strings, `null` values, or
@@ -884,7 +910,7 @@ In detail, the array components of `path` are processed from left to right as fo
     1. If the `path` component is a string, select the element in the respective
        key in the currently selected element(s). If any of the currently
        selected element(s) is not an object, abort processing and return an
-       error. If the key does not exist in any element currently selected,
+       error. If the key does not exist in an element currently selected,
        remove that element from the selection.
     2. If the `path` component is `null`, select all elements of the currently
        selected array(s). If any of the currently selected element(s) is not an
@@ -894,8 +920,8 @@ In detail, the array components of `path` are processed from left to right as fo
        currently selected element(s) is not an array, abort processing and
        return an error. If the index does not exist in a selected array, remove
        that array from the selection.
-3. If the set of elements currently selected is empty, abort processing and
-   return an error.
+3. If the set of elements currently selected is empty, the result of processing
+   is the empty set.
 
 The result of the processing is the set of elements to which the respective
 claim metadata applies.
@@ -1047,6 +1073,17 @@ In this example, the child type inherits the `name` claim metadata from the base
 ```
 Figure: Effective Claim Metadata for Child Type {#effective-claim-metadata-child-type}
 
+## Processing Type Metadata {#processing-type-metadata}
+
+This specification does not require every Holder or Verifier to process Type Metadata; whether Type Metadata is processed is determined by the Holder's or Verifier's policy and, where applicable, ecosystem rules.
+A Holder or Verifier typically processes Type Metadata after the processed SD-JWT payload is available, as described in (#vc-sd-jwt-verification-and-processing).
+
+If Type Metadata is processed, it MUST be fully processed, including any extended types (see (#extending-type-metadata)), before its contents are used for validation, display, rendering, or acceptance decisions.
+If the Type Metadata after applying any extensions contains claim metadata, the Holder or Verifier MUST process and validate the claim metadata as defined in (#claim-metadata).
+If claim metadata processing or validation fails, the SD-JWT VC MUST be rejected.
+
+If Type Metadata processing is required by policy or ecosystem rules and the Holder or Verifier cannot retrieve or process the applicable Type Metadata, the SD-JWT VC MUST be rejected.
+
 
 # Integrity of Referenced Documents {#document-integrity}
 
@@ -1065,8 +1102,8 @@ Type Metadata MAY be accompanied by a respective item suffixed with
  * `uri` as used in three places in (#rendering-metadata).
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. If an integrity property is present for a particular claim, the
-Consumer of the respective document MUST verify the integrity of the retrieved
+[@!W3C.SRI]. If an integrity property is present for a claim or metadata property, the
+Consumer of the referenced document MUST verify the integrity of the retrieved
 document as defined in Section 3.3.5 of [@!W3C.SRI].
 
 
@@ -1136,7 +1173,7 @@ described in (#privacy-preserving-retrieval-of-type-metadata).
 
 ## Risks Associated with Textual Information {#risks-textual-information}
 
-Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., `display`, allows issuers and providers of metadata to
+Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., `display`, allow issuers and providers of metadata to
 specify human-readable information. These can contain arbitrary textual information that
 may be displayed to end users and developers. As such, any consuming application MUST ensure that maliciously
 crafted information cannot be used to compromise the security of the application
@@ -1675,6 +1712,13 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -17
 
+* Clarified when optional Type Metadata processing occurs and how ecosystem rules can require it, in a new Processing Type Metadata section.
+* Require rejection when processed claim metadata is malformed or when `mandatory` or `sd` claim metadata does not match the credential.
+* Clarified claim metadata validation for presentations: a Verifier must not treat absence of a selectively disclosable claim as a missing mandatory claim, and array positions in `path` account for array elements that are not disclosed.
+* Moved the `vct#integrity` requirement to the general Type Metadata retrieval section.
+* `path` processing yields an empty set instead of an error when no claims are selected.
+* Updated the referenced document integrity wording.
+* Editorial fixes.
 
 -16
 
