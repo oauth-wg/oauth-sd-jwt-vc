@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-02T01:11:55.348857+00:00",
+  "timestamp": "2026-07-05T01:00:20.167726+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10410,15 +10410,15 @@
       "id": "I_kwDOJbVClc8AAAABBGZEOA",
       "title": "Define behaviour of the wallet when claims metadata is malformed",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/408",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "I would expect the wallet to reject the credential if the claims metadata is malformed, e.g., `path` malformed. This is especially critical because claims metadata contains metadata for validating the SD-JWT VC, e.g., `mandatory`, `sd`. Any thoughts?",
       "createdAt": "2026-05-02T11:31:19Z",
-      "updatedAt": "2026-05-08T14:17:45Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-02T10:21:54Z",
+      "closedAt": "2026-07-02T10:21:54Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -10434,15 +10434,15 @@
       "id": "I_kwDOJbVClc8AAAABBGZRsA",
       "title": "Define behaviour for the wallet if `sd` in claims metadata does not correspond to `_sd` and Disclosures",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/409",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "We should define what happens if the wallet receives an SD-JWT VC when the `sd` claim metadata does not correspond to `_sd`. IMO, the wallet should reject the SD-JWT VC.",
       "createdAt": "2026-05-02T11:32:48Z",
-      "updatedAt": "2026-05-08T14:10:24Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-02T10:23:20Z",
+      "closedAt": "2026-07-02T10:23:19Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -10450,6 +10450,13 @@
           "body": "Hi @awoie \n\nIn general, I totally agree.\n\nI would say the same is true for `mandatory`. Wallet should reject an sd-jwt-vc that doesn't include an attributed marked as `mandatory` regardless its sd value.\n\nWith regards to `sd` my only concern is the value `allowed`, which makes impossible for the wallet to really check it (both options \"never\" and \"always\" are valid)",
           "createdAt": "2026-05-08T14:10:24Z",
           "updatedAt": "2026-05-08T14:10:24Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by #416 ",
+          "createdAt": "2026-07-02T10:23:19Z",
+          "updatedAt": "2026-07-02T10:23:19Z"
         }
       ]
     },
@@ -10458,15 +10465,15 @@
       "id": "I_kwDOJbVClc8AAAABBGZiVg",
       "title": "Define behaviour when the wallet needs to process the path",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/410",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "At the moment, it is unclear when the claims metadata is processed. I would assume this needs to be done after the SD-JWT VC was issued to the wallet. The wallet would then need to process the path (if metadata and path are present) and reject the SD-JWT VC if processing fails.",
       "createdAt": "2026-05-02T11:34:34Z",
-      "updatedAt": "2026-05-08T14:02:01Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-02T10:23:11Z",
+      "closedAt": "2026-07-02T10:23:11Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -10474,6 +10481,13 @@
           "body": "Hi @awoie \n\nCan you please clarify what do you mean by \"when the claims metadata is processed\"?\n\nAssuming that wallet already is aware -somehow -  of the underlying type definition then, I consider two critical points : \n- Right after issuance, the wallet should validate, in addition to the verification of the issuer's signature, that the issued credential \"complies\" with the type definition\n- While processing a presentation, wallet should check that the DCQL corresponds to the type definition.\n\n\n",
           "createdAt": "2026-05-08T14:02:00Z",
           "updatedAt": "2026-05-08T14:02:00Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by #416 ",
+          "createdAt": "2026-07-02T10:23:11Z",
+          "updatedAt": "2026-07-02T10:23:11Z"
         }
       ]
     },
@@ -10482,15 +10496,15 @@
       "id": "I_kwDOJbVClc8AAAABBGaUqw",
       "title": "Define behaviour when wallet needs to resolve/process type metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/411",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Because type metadata contains validation information required by the wallet to make a decision on whether or not the SD-JWT VC is malformed and hence should be rejected, we need to define when type metadata processing is needed.\n\nCurrently, there is no clear indication for the wallet IF and WHERE type metadata is available. For example, the presence of a HTTPS-based `vct` value may not automatically indicate that type metadata is available and hence should be processed.\n\nFor other URI schemes than HTTPS, it is not clear when type metadata is available.\n\nAdditionally, we may want to require the following:\n- if `vct` is a HTTPS-based URI, and type metadata processing is required, then type metadata MUST be resolvable via well-known but resolution could still be a MAY if one of the other options are used.\n- add to the \"verification and processing\" section that type metadata validation is required if type metadata processing is required.\n\nBecause the producer of type metadata might not be the same as the issuer of the credential, the only option is to encode this information into the `vct` value itself which would be a breaking change. At a minimum we should say something that if the ecosystem provides a rulebook where type metadata is defined, the wallet needs to process and validate the type \nmetadata.\n\nAdditionally, we should also say that after type metadata was retrieved, type metadata needs to be validated by the wallet and if an error occurred, credentials must be rejected. This is mostly relevant for HTTPS-based retrieval.",
       "createdAt": "2026-05-02T11:41:42Z",
-      "updatedAt": "2026-05-08T13:51:50Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-02T10:23:04Z",
+      "closedAt": "2026-07-02T10:23:04Z",
       "comments": [
         {
           "author": "babisRoutis",
@@ -10498,6 +10512,13 @@
           "body": "> Because type metadata contains validation information required by the wallet to make a decision on whether or not the SD-JWT VC is malformed and hence should be rejected, we need to define when type metadata processing is needed.\n\n\nDear @awoie \n\nIs there a case where type metadata are not needed?\n\nIn the absence of a type definition\n- The verifier cannot produce DCQL without taking the into account the sd behavior of the attestation.\n- A wallet cannot validate or even process a DCQL, to produce a presentation.\n- The verifier cannot safely verify if the  presented sd-jwt-vc meets the DCQL\n- A rulebook has to describe the sd properties of the attestation in a textual non-formal way, leaving open room  for different interpretations.\n\nPersonally, I  remain convinced that the type definitions must always be available. \n\nPS: Apologies if my question sounds  irrelevant to the main points of the present issue.",
           "createdAt": "2026-05-08T13:51:50Z",
           "updatedAt": "2026-05-08T13:51:50Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by #416 ",
+          "createdAt": "2026-07-02T10:23:04Z",
+          "updatedAt": "2026-07-02T10:23:04Z"
         }
       ]
     },
@@ -10506,32 +10527,48 @@
       "id": "I_kwDOJbVClc8AAAABBGdmCg",
       "title": "Editorial: move vct#integrity definition from 5.3.1 to 5.3",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/412",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "The `vct#integrity` type metadata is currently defined in 5.3.1, but it applies to all retrieval mechanisms. The following text should be moved to 5.3 instead:\n> If the claim vct#integrity is present in the SD-JWT VC, its value vct#integrity MUST be an \"integrity metadata\" string as defined in [Section 6](https://www.ietf.org/archive/id/draft-ietf-oauth-sd-jwt-vc-15.html#document-integrity).",
       "createdAt": "2026-05-02T12:09:14Z",
-      "updatedAt": "2026-05-02T12:09:14Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-07-02T10:22:55Z",
+      "closedAt": "2026-07-02T10:22:55Z",
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by #416 ",
+          "createdAt": "2026-07-02T10:22:55Z",
+          "updatedAt": "2026-07-02T10:22:55Z"
+        }
+      ]
     },
     {
       "number": 413,
       "id": "I_kwDOJbVClc8AAAABBGuI6g",
       "title": "Editorial: clarify how path processing relates to claim metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/413",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "In the path processing section, the following is currently defined:\n> The result of the processing is the set of elements to which the respective claim metadata applies.\n\nFor example, this means that if a `mandatory: true` claim was not found, the set of elements does not contain the `mandatory: true` claim. Hence, claim metadata does not apply to the respective mandatory claim. This seems a bit confusing.\n\nIt is clear what the spec intends to do, but the definition in path processing and/or the claim metadata needs to be refined. ",
       "createdAt": "2026-05-02T14:09:35Z",
-      "updatedAt": "2026-05-02T14:09:35Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-07-02T10:22:48Z",
+      "closedAt": "2026-07-02T10:22:48Z",
+      "comments": [
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Addressed by #416 ",
+          "createdAt": "2026-07-02T10:22:48Z",
+          "updatedAt": "2026-07-02T10:22:48Z"
+        }
+      ]
     },
     {
       "number": 414,
@@ -10576,15 +10613,15 @@
       "id": "I_kwDOJbVClc8AAAABHMUjsw",
       "title": "SD-JWT is not only a superset of JWT",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/417",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "This is already implied by the specification, we should need to make clear that \"SD-JWT builds on JWT/JWS\".",
       "createdAt": "2026-06-30T14:26:05Z",
-      "updatedAt": "2026-06-30T18:38:22Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-02T10:22:21Z",
+      "closedAt": "2026-07-02T10:22:21Z",
       "comments": [
         {
           "author": "adeinega",
@@ -10620,6 +10657,13 @@
           "body": "Of course, crit is a header, but still... should Type Metadata documents announce these extensions through their properties?\n\nIt could be one of those weird / edge use cases, but technically, an Issuer can issue two Credentials \"linked\" to the same Type Metadata documents, but with one difference - Credential_1 doesn't include a crit header, and Credential_2 does... implying that a Holder and  Verifier MUST process some extensions say \"extensionA\" and \"extensionB\".",
           "createdAt": "2026-06-30T18:38:22Z",
           "updatedAt": "2026-06-30T18:38:22Z"
+        },
+        {
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Of course, crit is a header, but still... should Type Metadata documents announce these extensions through their properties?\n> \n> It could be one of those weird / edge use cases, but technically, an Issuer can issue two Credentials \"linked\" to the same Type Metadata documents, but with one difference - Credential_1 doesn't include a crit header, and Credential_2 does... implying that a Holder and Verifier MUST process some extensions say \"extensionA\" and \"extensionB\".\n\nThis goes beyond this issue which just aimed to fix a minor editorial issue. PR #416 got merged.",
+          "createdAt": "2026-07-02T10:22:21Z",
+          "updatedAt": "2026-07-02T10:22:21Z"
         }
       ]
     }
@@ -33128,24 +33172,26 @@
       "id": "PR_kwDOJbVClc7l0JJy",
       "title": "Fixes #408, #409, #410, #411, #412, #413, #417",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/416",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "Fixes #408, #409, #410, #411, #412, #413, #417\r\n",
       "createdAt": "2026-06-12T15:15:15Z",
-      "updatedAt": "2026-06-30T20:14:24Z",
+      "updatedAt": "2026-07-02T10:21:53Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "eb1554757edb6bbd6ba3f9a89853e4442faff9da",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "awoie/fix-various-issues",
       "headRefOid": "abac43a87b1857b326ae9d1a80e89506cacaf878",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-07-02T10:21:53Z",
+      "mergedAt": "2026-07-02T10:21:53Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "ef1a5fae7be3cfaf9049c48f74dff35a51c11b6f"
+      },
       "comments": [
         {
           "author": "danielfett",
@@ -33219,6 +33265,46 @@
               "body": "```suggestion\nEcosystems can establish rules for the vct value to determine whether Type Metadata should be processed and which retrieval methods consumers must support.\n```",
               "createdAt": "2026-06-30T20:14:24Z",
               "updatedAt": "2026-06-30T20:14:24Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABEysHgA",
+          "commit": {
+            "abbreviatedOid": "abac43a"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-07-02T10:19:35Z",
+          "updatedAt": "2026-07-02T10:19:35Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "Answer was already provided by @bc-pi in https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/417#issuecomment-4845240302. The intention here was to just fix a minor editorial issue.",
+              "createdAt": "2026-07-02T10:19:35Z",
+              "updatedAt": "2026-07-02T10:19:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABEys8mw",
+          "commit": {
+            "abbreviatedOid": "abac43a"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-07-02T10:21:14Z",
+          "updatedAt": "2026-07-02T10:21:15Z",
+          "comments": [
+            {
+              "originalPosition": 50,
+              "body": "I don't think the proposed language changes anything in the proposed text. Of course, they can decide themselves whether or not they must/should/may process it and what retrieval methods must/should/may be supported. Additionally, it also removes a rather important reference to the corresponding section.",
+              "createdAt": "2026-07-02T10:21:14Z",
+              "updatedAt": "2026-07-02T10:21:15Z"
             }
           ]
         }
