@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-05T01:00:20.167726+00:00",
+  "timestamp": "2026-07-07T00:58:15.825910+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10575,15 +10575,15 @@
       "id": "I_kwDOJbVClc8AAAABEp8upg",
       "title": "what does \"Type Metadata MAY be retrieved\" mean?",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/414",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "jogu",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "https://drafts.oauth.net/oauth-sd-jwt-vc/draft-ietf-oauth-sd-jwt-vc.html#section-4.3.1-1 says:\n\n> A URI in the vct claim can be used to express a type. If the type is a URL using the HTTPS scheme, Type Metadata MAY be retrieved from it\n\nI'm not sure the 'MAY' is clear. I think the general English reading would be \"if vct contains a https URI then type metadata must be retrievable from it, but it's up to the consumer whether they retrieve it or not\".\n\n(The alternative reading would be that trying to retrieve type metadata may or may not work, but I assume the point of picking a https vct instead of a urn would be so that type data can be retrieved.)\n\nI'd probably suggest clarifying the spec text to make the intent clearer.\n\nOverlaps a little with https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/411#issue-4368798891\n",
       "createdAt": "2026-06-07T12:53:48Z",
-      "updatedAt": "2026-06-24T19:51:03Z",
-      "closedAt": null,
+      "updatedAt": "2026-07-06T13:47:45Z",
+      "closedAt": "2026-07-06T13:47:45Z",
       "comments": [
         {
           "author": "surepgold9",
@@ -10605,6 +10605,13 @@
           "body": "I think it's closer to that general English reading but maybe more in between like \"if vct contains a https URI then type metadata might be retrievable from it, and it's up to the consumer whether they retrieve it or not\"",
           "createdAt": "2026-06-24T19:51:03Z",
           "updatedAt": "2026-06-24T19:51:03Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "#414 has an attempt at some changes to that sentence ",
+          "createdAt": "2026-07-06T11:05:28Z",
+          "updatedAt": "2026-07-06T11:05:28Z"
         }
       ]
     },
@@ -33307,6 +33314,61 @@
               "updatedAt": "2026-07-02T10:21:15Z"
             }
           ]
+        }
+      ]
+    },
+    {
+      "number": 418,
+      "id": "PR_kwDOJbVClc7uT5e5",
+      "title": "Type Metadata retrieval words that might be less unclear",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/418",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-07-06T11:04:25Z",
+      "updatedAt": "2026-07-06T13:47:44Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ef1a5fae7be3cfaf9049c48f74dff35a51c11b6f",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "vcthttpsurl",
+      "headRefOid": "ff1018dcc9b8d5c03d17553eb19139541d7e3ea7",
+      "closedAt": "2026-07-06T13:47:44Z",
+      "mergedAt": "2026-07-06T13:47:44Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "ccc9724e57460f56e08e6cabdbd3c530c857e50a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABFEhcbQ",
+          "commit": {
+            "abbreviatedOid": "ff1018d"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-07-06T11:08:20Z",
+          "updatedAt": "2026-07-06T11:08:20Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABFFozQA",
+          "commit": {
+            "abbreviatedOid": "ff1018d"
+          },
+          "author": "Sakurann",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-07-06T13:44:18Z",
+          "updatedAt": "2026-07-06T13:44:18Z",
+          "comments": []
         }
       ]
     }
