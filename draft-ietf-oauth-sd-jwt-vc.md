@@ -570,7 +570,8 @@ retrieved from it:
   "name":"Betelgeuse Education Credential - Version 42",
   "description":"This is our education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential/v2",
-  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
+  "extends#integrity":
+    "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
 Figure: Example Type Metadata Document {#example-type-metadata-document}
@@ -1499,14 +1500,18 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
   "name": "Betelgeuse Education Credential - First Version",
-  "description": "This is our first version of the education credential. Don't panic.",
-  "extends": "https://galaxy.example.com/galactic-education-credential/v2",
-  "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
+  "description":
+    "This is our first version of the education credential. Don't panic.",
+  "extends":
+    "https://galaxy.example.com/galactic-education-credential/v2",
+  "extends#integrity":
+    "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
       "locale": "en-US",
       "name": "Betelgeuse Education Credential",
-      "description": "An education credential for all carbon-based life forms on Betelgeuse.",
+      "description":
+        "Education credential for all carbon-based life forms on Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
@@ -1515,7 +1520,8 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
             "alt_text": "Betelgeuse Ministry of Education logo"
           },
           "background_image": {
-            "uri": "https://betelgeuse.example.com/public/credential-background.png",
+            "uri":
+              "https://betelgeuse.example.com/public/credential-background.png",
             "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
           },
           "background_color": "#12107c",
@@ -1546,7 +1552,8 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
           },
           "background_image": {
-            "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
+            "uri":
+              "https://betelgeuse.example.com/public/credential-background-de.png",
             "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
           },
           "background_color": "#12107c",
