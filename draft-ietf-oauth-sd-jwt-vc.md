@@ -1352,8 +1352,6 @@ recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
-{backmatter}
-
 # IANA Considerations
 
 ## JSON Web Token Claims Registration
@@ -1406,6 +1404,8 @@ by [@!RFC8615].
 * Specification document: [[ (#jwt-vc-issuer-metadata) of this specification ]]
 * Related information: (none)
 * Status: permanent
+
+{backmatter}
 
 # Examples
 
