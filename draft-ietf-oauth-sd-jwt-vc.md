@@ -1730,6 +1730,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-18
+
+* Update obsoleted reference, move IANA Considerations, fix long lines, other nits
+
 -17
 
 * Clarified when optional Type Metadata processing occurs and how ecosystem rules can require it, in a new Processing Type Metadata section.
