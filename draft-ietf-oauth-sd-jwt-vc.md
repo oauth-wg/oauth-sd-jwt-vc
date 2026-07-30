@@ -1516,21 +1516,25 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
         "simple": {
           "logo": {
             "uri": "https://betelgeuse.example.com/public/education-logo.png",
-            "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+            "uri#integrity":
+              "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Betelgeuse Ministry of Education logo"
           },
           "background_image": {
             "uri":
-              "https://betelgeuse.example.com/public/credential-background.png",
-            "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
+              "https://betelgeuse.example.com/public/cred-background.png",
+            "uri#integrity":
+              "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
         },
         "svg_templates": [
           {
-            "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-            "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+            "uri":
+              "https://betelgeuse.example.com/public/credential-english.svg",
+            "uri#integrity":
+              "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
             "properties": {
               "orientation": "landscape",
               "color_scheme": "light",
@@ -1543,26 +1547,32 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
     {
       "locale": "de-DE",
       "name": "Betelgeuse-Bildungsnachweis",
-      "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
+      "description":
+       "Ldungsnachweis für kohlenstoffbasierten Lebensformen auf Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
-            "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-            "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+            "uri":
+              "https://betelgeuse.example.com/public/education-logo-de.png",
+            "uri#integrity":
+              "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
           },
           "background_image": {
             "uri":
-              "https://betelgeuse.example.com/public/credential-background-de.png",
-            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
+              "https://betelgeuse.example.com/public/cred-background-de.png",
+            "uri#integrity":
+              "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
         },
         "svg_templates": [
           {
-            "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-            "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+            "uri":
+              "https://betelgeuse.example.com/public/credential-german.svg",
+            "uri#integrity":
+              "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
             "properties": {
               "orientation": "landscape",
               "color_scheme": "light",
