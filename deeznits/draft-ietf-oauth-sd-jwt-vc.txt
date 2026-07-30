@@ -609,9 +609,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3O86Q
-   prJHW4jHJGeBKe35xDT5KywHrWDdUIUUJxSnI6qp0OPZ7G88yOtshbOYZ5yBKCko3Zrb
-   6c0xz_IZtUsaw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qS_MX
+   D2Qs7DYft6dOnKJTuKLw62VPGy3o3i5nSp8nkbi2PqNCmHsBuQkTLXigBl6pBXTW8l94
+   Dav2g6x1NfcmA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -647,17 +647,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3O86Q
-   prJHW4jHJGeBKe35xDT5KywHrWDdUIUUJxSnI6qp0OPZ7G88yOtshbOYZ5yBKCko3Zrb
-   6c0xz_IZtUsaw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qS_MX
+   D2Qs7DYft6dOnKJTuKLw62VPGy3o3i5nSp8nkbi2PqNCmHsBuQkTLXigBl6pBXTW8l94
+   Dav2g6x1NfcmA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU0NDExMD
-   IsICJzZF9oYXNoIjogIks4U2Q5RTFXYzhJTUtPZGNaVTU5N1BJYkFhVVF0OHFEME9XYl
-   dHeVFMNWMifQ.FfpS7rrFZoMvqbUIAsS_jvGyQNA9D3sdOqmRKFFubh7nUtaePfXC6Gm
-   U0gnB2CrY28Npq_8kS6QzjdGLvWrowQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU0NDMwOT
+   MsICJzZF9oYXNoIjogIndUb1pDa0M2ei0tNWZjQVJkd2hwY196T2ZRSWlqREhFek14bD
+   J6VTViaFEifQ.Izl7Wfqy8xXkHVD9LD0_e8vLPlaPsdiQKJaep0TVS3wTKuSSbB5RYh1
+   vUYOg8k6M28MN_-1iWHTEWOsMqjhGbA
 
                    Figure 7: Presented SD-JWT+KB Example
 
@@ -703,8 +703,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.fNZcFSOOkrk9w42IFvxlXqN7TyTBvT_cgzaUnd9AaPSK22
-   70yW6wFFUIrpRvC4pZgoLKo4NAnvXTa1lRotElSw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.SgOQORb3fga_ixU8eRuuWroFPgGQ9-BROHKgPsbr2GcUXp
+   jTnWZYox4OcxXclmuWeoumRdOE2wqLXVeay4wg0w~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2068,8 +2068,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.s_gNdJZpaTnOTLuCWtWE8gwrL381-Yot
-   IyoArW1q9vsCtJVVmKWWAZ864bqJWnDpoFC0KGMC-U_10HuMohstJA~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eX1UaPb3l4qOa-F4fmUCyb8aYZy0CAaO
+   _WIOTAoB2-Jx0boMF2txpqRS9qj2C1xn3DZ3mNA7qfS6DTYXRsnFSA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2451,8 +2451,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.s_gNdJZpaTnOTLuCWtWE8gwrL381-Yot
-   IyoArW1q9vsCtJVVmKWWAZ864bqJWnDpoFC0KGMC-U_10HuMohstJA~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eX1UaPb3l4qOa-F4fmUCyb8aYZy0CAaO
+   _WIOTAoB2-Jx0boMF2txpqRS9qj2C1xn3DZ3mNA7qfS6DTYXRsnFSA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2463,10 +2463,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU0NDExMDIsICJzZF9oYXNoIjogIj
-   hLU1U1VWZXZDJhWGdjMFpIajdObXVvTmI4Z0lOSFFmMEhZM2Z5TklpZEUifQ.bdbrXun
-   5BggiKWbVMgMbyiDRBFFkOFAwgAVjuM1rv6BGfN-g827dwOeIE1xc7jjPaXtsCHjmbf-
-   vDGOQxiQTuA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU0NDMwOTMsICJzZF9oYXNoIjogIn
+   ZNMS1CMGxWRW9tNGNOei1KSjlrSld5cW1Xdi1rR2FfOWdSaTlHZ2pBZ0kifQ.XEHd5zs
+   CuwgMV2nH1rMU9ZX7LruBshcG8SlLUkc--dO0wq46pPw96qNfHp81f5MNN8My1SScuDa
+   5uj-Op0Zr5A
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2475,8 +2475,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1785441102,
-     "sd_hash": "8KSU5UfWd2aXgc0ZHj7NmuoNb8gINHQf0HY3fyNIidE"
+     "iat": 1785443093,
+     "sd_hash": "vM1-B0lVEom4cNz-JJ9kJWyqmWv-kGa_9gRi9GgjAgI"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2562,21 +2562,25 @@ A.2.  Example Type Metadata
            "simple": {
              "logo": {
                "uri": "https://betelgeuse.example.com/public/education-logo.png",
-               "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+               "uri#integrity":
+                 "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Betelgeuse Ministry of Education logo"
              },
              "background_image": {
                "uri":
-                 "https://betelgeuse.example.com/public/credential-background.png",
-               "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
+                 "https://betelgeuse.example.com/public/cred-background.png",
+               "uri#integrity":
+                 "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
            },
            "svg_templates": [
              {
-               "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-               "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+               "uri":
+                 "https://betelgeuse.example.com/public/credential-english.svg",
+               "uri#integrity":
+                 "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
                "properties": {
                  "orientation": "landscape",
                  "color_scheme": "light",
@@ -2589,26 +2593,32 @@ A.2.  Example Type Metadata
        {
          "locale": "de-DE",
          "name": "Betelgeuse-Bildungsnachweis",
-         "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
+         "description":
+          "Ldungsnachweis für kohlenstoffbasierten Lebensformen auf Betelgeuse.",
          "rendering": {
            "simple": {
              "logo": {
-               "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-               "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+               "uri":
+                 "https://betelgeuse.example.com/public/education-logo-de.png",
+               "uri#integrity":
+                 "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
              },
              "background_image": {
                "uri":
-                 "https://betelgeuse.example.com/public/credential-background-de.png",
-               "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
+                 "https://betelgeuse.example.com/public/cred-background-de.png",
+               "uri#integrity":
+                 "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
            },
            "svg_templates": [
              {
-               "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-               "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+               "uri":
+                 "https://betelgeuse.example.com/public/credential-german.svg",
+               "uri#integrity":
+                 "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
                "properties": {
                  "orientation": "landscape",
                  "color_scheme": "light",
