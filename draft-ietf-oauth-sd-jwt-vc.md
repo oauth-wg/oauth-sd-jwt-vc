@@ -1823,7 +1823,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 * Use SD-JWT KB in place of SD-JWT with Key Binding JWT
 * Editorial changes
-* Document reasons for not using JSON Pointer or JSON Path (Issue #267)
+* Document reasons for not using JSON Pointer or JSON Path (Issue 267)
 * Clarify that private claim names MAY be used
 * Update PID Example
 * Fix section numbering in a few SD-JWT references
