@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-07T00:58:15.825910+00:00",
+  "timestamp": "2026-07-30T00:44:37.696815+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33371,6 +33371,32 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 419,
+      "id": "PR_kwDOJbVClc74QYtC",
+      "title": "idnits stuff",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-07-30T00:03:05Z",
+      "updatedAt": "2026-07-30T00:10:29Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "ccc9724e57460f56e08e6cabdbd3c530c857e50a",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "deeznits",
+      "headRefOid": "fc73519f54fe8690a93652962099b52834b96011",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
