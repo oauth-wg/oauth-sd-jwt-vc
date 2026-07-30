@@ -429,7 +429,7 @@ at the path defined in (#jwt-vc-issuer-metadata).
 (#GET) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
-```http
+```http-message
 GET /.well-known/jwt-vc-issuer HTTP/1.1
 Host: example.com
 ```
@@ -442,7 +442,7 @@ between the host component and the path component.
 (#GET1234) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
-```
+```http-message
 GET /.well-known/jwt-vc-issuer/tenant/1234 HTTP/1.1
 Host: example.com
 ```
@@ -477,7 +477,7 @@ in the JWT VC Issuer Metadata.
 (#example-metadata-jwks) is an example of a JWT VC Issuer Metadata configuration
 including `jwks`:
 
-```
+```json
 {
    "issuer":"https://example.com",
    "jwks":{
@@ -503,7 +503,7 @@ Figure: Example Metadata with a JSON Web Key Set {#example-metadata-jwks}
 (#example-metadata-jwks-uri) is an example of a JWT VC Issuer Metadata
 configuration including `jwks_uri`:
 
-```
+```json
 {
    "issuer":"https://example.com",
    "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
@@ -784,7 +784,7 @@ The example in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
 example in (#ExampleTypeMetadata).
 
-```svg
+```xml
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
   <text x="10" y="20">Street address: {{address_street_address}}</text>
 </svg>
