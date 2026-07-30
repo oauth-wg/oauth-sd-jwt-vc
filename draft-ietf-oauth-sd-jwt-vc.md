@@ -1396,8 +1396,8 @@ The Internet media type for an SD-JWT VC is `application/dc+sd-jwt`.
 ## Well-Known URI Registry
 
 This specification requests the well-known URI defined in (#jwt-vc-issuer-metadata)
-in the IANA "Well-Known URIs" registry [@IANA.well-known] established
-by [@!RFC5785].
+in the IANA "Well-Known URIs" registry [@IANA.well-known] as described in
+by [@!RFC8615].
 
 ### Registry Contents
 
