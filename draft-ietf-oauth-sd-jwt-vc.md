@@ -266,7 +266,9 @@ non-empty array of case-sensitive strings, each identifying a type that the type
 of the SD-JWT VC inherits from, whether directly or transitively. Each value
 MUST be a Collision-Resistant Name as defined in Section 2 of [@!RFC7515], as
 required for `vct` values in (#type-claim). The array MUST NOT contain the value
-of the `vct` claim of the SD-JWT VC.
+of the `vct` claim of the SD-JWT VC. The order of the values in the array is
+not significant and does not convey any information about the inheritance
+hierarchy.
 
 The `inherits` claim makes the inheritance relationships of the credential's
 type available to a Consumer without requiring Type Metadata resolution, which
