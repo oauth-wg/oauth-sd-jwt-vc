@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-07-30T00:44:37.696815+00:00",
+  "timestamp": "2026-08-02T00:52:00.054152+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33384,19 +33384,33 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-07-30T00:03:05Z",
-      "updatedAt": "2026-07-30T00:10:29Z",
+      "updatedAt": "2026-07-31T08:00:54Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "ccc9724e57460f56e08e6cabdbd3c530c857e50a",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "deeznits",
-      "headRefOid": "fc73519f54fe8690a93652962099b52834b96011",
+      "headRefOid": "a0130bf46796057daecd5f7eccc3aaeec5dfc8ec",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABH6_e7A",
+          "commit": {
+            "abbreviatedOid": "a0130bf"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Thank you!",
+          "createdAt": "2026-07-31T08:00:54Z",
+          "updatedAt": "2026-07-31T08:00:54Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
