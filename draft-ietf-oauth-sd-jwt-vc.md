@@ -1258,6 +1258,13 @@ confer any implicit authorization to issue credentials of that type or its exten
 
 Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
+The same considerations apply to inheritance relationships asserted via the `inherits`
+claim defined in (#inherits-claim). These relationships are asserted by the Issuer and,
+for types without Type Metadata, cannot be corroborated by an `extends` relationship.
+Verifiers and Holders therefore MUST NOT treat the presence of a type in the `inherits`
+claim as evidence that the Issuer is authorized to issue credentials of, or derived
+from, that type.
+
 ## Trust in Type Metadata
 
 Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the Publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its Publisher and the Consumer. A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the Publisher is recognized as authoritative for the type in question.
