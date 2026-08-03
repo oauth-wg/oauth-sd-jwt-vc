@@ -259,54 +259,59 @@ type to coexist and helps ensure that participants interpret credentials consist
 For example, if such a need came about for the hypothetical type `urn:example:eudi:pid:aendgard:1`,
 a new version could be defined using a 'vct' of `urn:example:eudi:pid:aendgard:2`.
 
-#### Verifiable Digital Credential Type Inheritance - `inherits` Claim {#inherits-claim}
+#### Other Credential Types - `other_vct_values` Claim {#other-vct-values-claim}
 
-This specification defines the new JWT claim `inherits`. Its value MUST be a
-non-empty array of case-sensitive strings, each identifying a type that the type
-of the SD-JWT VC inherits from, whether directly or transitively. Each value
+This specification defines the new JWT claim `other_vct_values`. Its value MUST be a
+non-empty array of case-sensitive strings, each identifying an additional type
+of the SD-JWT VC. Each value
 MUST be a Collision-Resistant Name as defined in Section 2 of [@!RFC7515], as
 required for `vct` values in (#type-claim). The array MUST NOT contain the value
 of the `vct` claim of the SD-JWT VC. The order of the values in the array is
-not significant and does not convey any information about the inheritance
-hierarchy.
+not significant and does not convey any information about the relationships
+between the types.
 
-The `inherits` claim makes the inheritance relationships of the credential's
-type available to a Consumer without requiring Type Metadata resolution, which
-is optional and might not be possible in all situations (e.g., when the
-Consumer is offline or the Type Metadata document is unavailable). This is
-particularly useful in issuance and presentation protocols, where a Consumer
+An SD-JWT VC containing the `other_vct_values` claim is a Verifiable Digital
+Credential of the type identified by the `vct` claim and, additionally, of each
+of the types identified by the values in the `other_vct_values` claim. Holders
+and Verifiers can treat the SD-JWT VC as a credential of any of these types. This is
+typically used when the type identified by the `vct` claim is derived from a
+more general type, which is then included in the `other_vct_values` claim.
+
+The `other_vct_values` claim is particularly useful in issuance and presentation protocols,
+where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects. For example, a Verifier requesting a credential of the hypothetical
 type `urn:example:eudi:pid` that receives an SD-JWT VC with a `vct` value of
-`urn:example:eudi:pid:aendgard:1` can determine from an `inherits` value of
-`["urn:example:eudi:pid"]` that the received credential is of a type derived
-from the requested type.
+`urn:example:eudi:pid:aendgard:1` can determine from an `other_vct_values` value of
+`["urn:example:eudi:pid"]` that the received credential is also of the
+requested type.
 
-The content in (#example-with-inherits) shows an excerpt of an Unsecured
-Payload using the `inherits` claim to express this example.
+The content in (#example-with-other-vct-values) shows an excerpt of an Unsecured
+Payload using the `other_vct_values` claim to express this example.
 
 ```json
 {
   "vct": "urn:example:eudi:pid:aendgard:1",
-  "inherits": [
+  "other_vct_values": [
     "urn:example:eudi:pid"
   ]
 }
 ```
-Figure: Example Unsecured Payload excerpt with `inherits` {#example-with-inherits}
+Figure: Example Unsecured Payload excerpt with `other_vct_values` {#example-with-other-vct-values}
 
-Whether and how a Consumer uses the `inherits` claim when matching types is
+Whether and how a Holder or Verifier uses the `other_vct_values` claim when matching types is
 subject to the rules of the issuance or presentation protocol and the ecosystem
-in which the SD-JWT VC is used. Note that the `inherits` claim is asserted by
+in which the SD-JWT VC is used. Note that the `other_vct_values` claim is asserted by
 the Issuer and, like the `vct` claim, is only as trustworthy as the Issuer
 itself.
 
-If Type Metadata for the type of the SD-JWT VC extends other types using the
-`extends` property, the `inherits` claim, if present, MUST contain the `vct`
-values of all extended types as described in (#extending-type-metadata). The
-`inherits` claim MAY contain additional types for which no Type Metadata
-exists, as inheritance relationships between types can be defined by ecosystems
-independently of Type Metadata.
+The `other_vct_values` claim is independent of Type Metadata (#type-metadata)
+and, in particular, orthogonal to the `extends` property: the claim can be used
+whether or not Type Metadata exists for any of the listed types, and the listed
+types are not required to be related to the type of the SD-JWT VC through the
+`extends` property. The interaction between the `other_vct_values` claim and
+Type Metadata using the `extends` property is described in
+(#extending-type-metadata).
 
 #### Registered JWT Claims {#claims}
 
@@ -326,8 +331,8 @@ information.
 * `vct`: REQUIRED. The type of the Verifiable Digital Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `vct#integrity`: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
-* `inherits`: OPTIONAL. An array of types that the type of the Verifiable Digital Credential
-inherits from, as defined in (#inherits-claim).
+* `other_vct_values`: OPTIONAL. An array of additional types of the Verifiable Digital
+Credential, as defined in (#other-vct-values-claim).
 * `status`: OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@?I-D.ietf-oauth-status-list]
  for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
@@ -710,13 +715,15 @@ The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 (#circular-extends) apply in order to avoid problems with circular dependencies.
 
-If the SD-JWT VC contains the `inherits` claim defined in (#inherits-claim),
-the claim MUST contain the `vct` value of every type that the type of the
-SD-JWT VC extends, whether directly or transitively, i.e., all types in the
-chain or hierarchy of types established via the `extends` property. A Consumer
-processing Type Metadata for an SD-JWT VC that contains the `inherits` claim
-MUST verify that the `vct` value of every extended type is contained in the
-`inherits` claim and MUST reject the SD-JWT VC otherwise.
+The `extends` property and the `other_vct_values` claim defined in
+(#other-vct-values-claim) are orthogonal mechanisms, and Type Metadata does not
+add any requirements to the content of the `other_vct_values` claim. However,
+if Type Metadata exists both for the type in the `vct` claim and for a type
+listed in the `other_vct_values` claim, the type of the SD-JWT VC SHOULD
+extend the listed type, whether directly or transitively. A Consumer
+processing Type Metadata MAY use the types established via the `extends`
+property in addition to those in the `other_vct_values` claim when matching
+types.
 
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
@@ -1258,10 +1265,10 @@ confer any implicit authorization to issue credentials of that type or its exten
 
 Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
-The same considerations apply to inheritance relationships asserted via the `inherits`
-claim defined in (#inherits-claim). These relationships are asserted by the Issuer and,
+The same considerations apply to the additional types asserted via the `other_vct_values`
+claim defined in (#other-vct-values-claim). These types are asserted by the Issuer and,
 for types without Type Metadata, cannot be corroborated by an `extends` relationship.
-Verifiers and Holders therefore MUST NOT treat the presence of a type in the `inherits`
+Verifiers and Holders therefore MUST NOT treat the presence of a type in the `other_vct_values`
 claim as evidence that the Issuer is authorized to issue credentials of, or derived
 from, that type.
 
@@ -1302,9 +1309,9 @@ about the Holder, e.g., country of residency or citizenship.
 Additionally, Holders have to be informed that, besides the actual requested claims, the
 `vct` information is shared with the Verifier.
 
-The same considerations apply to the `inherits` claim, which is also not
-selectively disclosable and reveals the inheritance relationships of the
-credential's type.
+The same considerations apply to the `other_vct_values` claim, which is also not
+selectively disclosable and reveals the additional types of the
+credential.
 
 ## Issuer Phone-Home
 
@@ -1438,10 +1445,10 @@ recommendations in (#robust-retrieval) apply.
 - Change Controller: IETF
 - Specification Document(s): [[ (#document-integrity) of this specification ]]
 <br/>
-- Claim Name: "inherits"
-- Claim Description: Verifiable digital credential types that the type of the credential inherits from
+- Claim Name: "other_vct_values"
+- Claim Description: Additional types of the verifiable digital credential
 - Change Controller: IETF
-- Specification Document(s): [[ (#inherits-claim) of this specification ]]
+- Specification Document(s): [[ (#other-vct-values-claim) of this specification ]]
 
 ## Media Types Registry
 
@@ -1788,7 +1795,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -18
 
-* Added the optional `inherits` claim, conveying the types that the credential's type inherits from.
+* Added the optional `other_vct_values` claim, conveying additional types of the credential.
 
 -17
 
