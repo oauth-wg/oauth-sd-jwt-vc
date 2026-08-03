@@ -1322,7 +1322,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
                 <p id="section-toc.1-1.7.2.1.1"><a href="#section-7.1" class="auto internal xref">7.1</a>.  <a href="#name-unlinkability" class="internal xref">Unlinkability</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.2">
-                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-verifiable-digital-credential-" class="internal xref">Verifiable Digital Credential Type Identifier</a></p>
+                <p id="section-toc.1-1.7.2.2.1"><a href="#section-7.2" class="auto internal xref">7.2</a>.  <a href="#name-verifiable-digital-credential" class="internal xref">Verifiable Digital Credential Type Identifier</a></p>
 </li>
               <li class="compact toc ulBare ulEmpty" id="section-toc.1-1.7.2.3">
                 <p id="section-toc.1-1.7.2.3.1"><a href="#section-7.3" class="auto internal xref">7.3</a>.  <a href="#name-issuer-phone-home" class="internal xref">Issuer Phone-Home</a></p>
@@ -1653,38 +1653,41 @@ For example, if such a need came about for the hypothetical type <code>urn:examp
 a new version could be defined using a 'vct' of <code>urn:example:eudi:pid:aendgard:2</code>.<a href="#section-2.2.2.1-7" class="pilcrow">¶</a></p>
 </section>
 </div>
-<div id="inherits-claim">
+<div id="other-vct-values-claim">
 <section id="section-2.2.2.2">
-            <h5 id="name-verifiable-digital-credential">
-<a href="#section-2.2.2.2" class="section-number selfRef">2.2.2.2. </a><a href="#name-verifiable-digital-credential" class="section-name selfRef">Verifiable Digital Credential Type Inheritance - <code>inherits</code> Claim</a>
+            <h5 id="name-other-credential-types-othe">
+<a href="#section-2.2.2.2" class="section-number selfRef">2.2.2.2. </a><a href="#name-other-credential-types-othe" class="section-name selfRef">Other Credential Types - <code>other_vct_values</code> Claim</a>
             </h5>
-<p id="section-2.2.2.2-1">This specification defines the new JWT claim <code>inherits</code>. Its value MUST be a
-non-empty array of case-sensitive strings, each identifying a type that the type
-of the SD-JWT VC inherits from, whether directly or transitively. Each value
+<p id="section-2.2.2.2-1">This specification defines the new JWT claim <code>other_vct_values</code>. Its value MUST be a
+non-empty array of case-sensitive strings, each identifying an additional type
+of the SD-JWT VC. Each value
 MUST be a Collision-Resistant Name as defined in Section 2 of <span>[<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>, as
 required for <code>vct</code> values in <a href="#type-claim" class="auto internal xref">Section 2.2.2.1</a>. The array MUST NOT contain the value
 of the <code>vct</code> claim of the SD-JWT VC. The order of the values in the array is
-not significant and does not convey any information about the inheritance
-hierarchy.<a href="#section-2.2.2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-2">The <code>inherits</code> claim makes the inheritance relationships of the credential's
-type available to a Consumer without requiring Type Metadata resolution, which
-is optional and might not be possible in all situations (e.g., when the
-Consumer is offline or the Type Metadata document is unavailable). This is
-particularly useful in issuance and presentation protocols, where a Consumer
+not significant and does not convey any information about the relationships
+between the types.<a href="#section-2.2.2.2-1" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-2">An SD-JWT VC containing the <code>other_vct_values</code> claim is a Verifiable Digital
+Credential of the type identified by the <code>vct</code> claim and, additionally, of each
+of the types identified by the values in the <code>other_vct_values</code> claim. Holders
+and Verifiers can treat the SD-JWT VC as a credential of any of these types. This is
+typically used when the type identified by the <code>vct</code> claim is derived from a
+more general type, which is then included in the <code>other_vct_values</code> claim.<a href="#section-2.2.2.2-2" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-3">The <code>other_vct_values</code> claim is particularly useful in issuance and presentation protocols,
+where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects. For example, a Verifier requesting a credential of the hypothetical
 type <code>urn:example:eudi:pid</code> that receives an SD-JWT VC with a <code>vct</code> value of
-<code>urn:example:eudi:pid:aendgard:1</code> can determine from an <code>inherits</code> value of
-<code>["urn:example:eudi:pid"]</code> that the received credential is of a type derived
-from the requested type.<a href="#section-2.2.2.2-2" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-3">The content in <a href="#example-with-inherits" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
-Payload using the <code>inherits</code> claim to express this example.<a href="#section-2.2.2.2-3" class="pilcrow">¶</a></p>
-<span id="name-example-unsecured-payload-e"></span><div id="example-with-inherits">
+<code>urn:example:eudi:pid:aendgard:1</code> can determine from an <code>other_vct_values</code> value of
+<code>["urn:example:eudi:pid"]</code> that the received credential is also of the
+requested type.<a href="#section-2.2.2.2-3" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-4">The content in <a href="#example-with-other-vct-values" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
+Payload using the <code>other_vct_values</code> claim to express this example.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<span id="name-example-unsecured-payload-e"></span><div id="example-with-other-vct-values">
 <figure id="figure-4">
-              <div class="lang-json sourcecode" id="section-2.2.2.2-4.1">
+              <div class="lang-json sourcecode" id="section-2.2.2.2-5.1">
 <pre>{
   "vct": "urn:example:eudi:pid:aendgard:1",
-  "inherits": [
+  "other_vct_values": [
     "urn:example:eudi:pid"
   ]
 }
@@ -1692,20 +1695,21 @@ Payload using the <code>inherits</code> claim to express this example.<a href="#
 </pre>
 </div>
 <figcaption><a href="#figure-4" class="selfRef">Figure 4</a>:
-<a href="#name-example-unsecured-payload-e" class="selfRef">Example Unsecured Payload excerpt with <code>inherits</code></a>
+<a href="#name-example-unsecured-payload-e" class="selfRef">Example Unsecured Payload excerpt with <code>other_vct_values</code></a>
               </figcaption></figure>
 </div>
-<p id="section-2.2.2.2-5">Whether and how a Consumer uses the <code>inherits</code> claim when matching types is
+<p id="section-2.2.2.2-6">Whether and how a Holder or Verifier uses the <code>other_vct_values</code> claim when matching types is
 subject to the rules of the issuance or presentation protocol and the ecosystem
-in which the SD-JWT VC is used. Note that the <code>inherits</code> claim is asserted by
+in which the SD-JWT VC is used. Note that the <code>other_vct_values</code> claim is asserted by
 the Issuer and, like the <code>vct</code> claim, is only as trustworthy as the Issuer
-itself.<a href="#section-2.2.2.2-5" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-6">If Type Metadata for the type of the SD-JWT VC extends other types using the
-<code>extends</code> property, the <code>inherits</code> claim, if present, MUST contain the <code>vct</code>
-values of all extended types as described in <a href="#extending-type-metadata" class="auto internal xref">Section 4.4</a>. The
-<code>inherits</code> claim MAY contain additional types for which no Type Metadata
-exists, as inheritance relationships between types can be defined by ecosystems
-independently of Type Metadata.<a href="#section-2.2.2.2-6" class="pilcrow">¶</a></p>
+itself.<a href="#section-2.2.2.2-6" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-7">The <code>other_vct_values</code> claim is independent of Type Metadata <a href="#type-metadata" class="auto internal xref">Section 4</a>
+and, in particular, orthogonal to the <code>extends</code> property: the claim can be used
+whether or not Type Metadata exists for any of the listed types, and the listed
+types are not required to be related to the type of the SD-JWT VC through the
+<code>extends</code> property. The interaction between the <code>other_vct_values</code> claim and
+Type Metadata using the <code>extends</code> property is described in
+<a href="#extending-type-metadata" class="auto internal xref">Section 4.4</a>.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claims">
@@ -1741,8 +1745,8 @@ information.<a href="#section-2.2.2.3-3.3" class="pilcrow">¶</a>
                 <code>vct#integrity</code>: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in <a href="#document-integrity" class="auto internal xref">Section 5</a>.<a href="#section-2.2.2.3-3.6" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-2.2.2.3-3.7">
-                <code>inherits</code>: OPTIONAL. An array of types that the type of the Verifiable Digital Credential
-inherits from, as defined in <a href="#inherits-claim" class="auto internal xref">Section 2.2.2.2</a>.<a href="#section-2.2.2.3-3.7" class="pilcrow">¶</a>
+                <code>other_vct_values</code>: OPTIONAL. An array of additional types of the Verifiable Digital
+Credential, as defined in <a href="#other-vct-values-claim" class="auto internal xref">Section 2.2.2.2</a>.<a href="#section-2.2.2.3-3.7" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-2.2.2.3-3.8">
                 <code>status</code>: OPTIONAL. The information on how to read the status of the Verifiable
@@ -2002,9 +2006,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dl2XU
-XJ6qtVw7zH7-5mO-aVtNJEkmv7_Z1pRW9RnjeRbULQ9x1hKQXlaJRlu9cO0aymLZRZmD
-j0spcjbQHXHrw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.7liSw
+dsMjwvu2VN-SZZAdTtN-O2NzsZqexvBNAZ7DajMQfrVhvkzYsuRGQ-wFyutXlactl5aR
+Nh4F6te-COC_Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2050,17 +2054,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.dl2XU
-XJ6qtVw7zH7-5mO-aVtNJEkmv7_Z1pRW9RnjeRbULQ9x1hKQXlaJRlu9cO0aymLZRZmD
-j0spcjbQHXHrw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.7liSw
+dsMjwvu2VN-SZZAdTtN-O2NzsZqexvBNAZ7DajMQfrVhvkzYsuRGQ-wFyutXlactl5aR
+Nh4F6te-COC_Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3MzkzMD
-EsICJzZF9oYXNoIjogIno4UU5teGtDajVmcDJRSnJTcXFObVI3UnZ1cExVRHNCNXZIbz
-Bac2tDbmcifQ.59-7g1zgeVHTa8MajMf0JEpq-DmsDvAsedd3QscP5rZK8UR0v6fy4pO
-VYI4T-bEFgn14tyPWNg0a2oV434Yzjw
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3NjAwOT
+gsICJzZF9oYXNoIjogIjYxOVVLbV9rWTYzMTloZVA1SnFZekN1bjVfT0dmbW9YYTZZdn
+V5d0hNWWMifQ.lcxhAIZpKoXUU04TLvhWWmf6VUxVVCyc0geM9pfGsWnVooc3NpAriU_
+sibiXgPqDueqzhJasEsSRnu5B1ImU8A
 
 </pre>
 </div>
@@ -2117,8 +2121,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.qXmFr_rEZOblrTT2ARLgG3bCtqdhC1UrpaBDCsISs9DbUb
-5yFeH5c0ej7NLAkQ3JIqJaqcFspAguAOth1Tvang~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.SE44Nn--JwMLlwzmb4QswHDyMSMs8LW792b4Jb35LK-p1z
+CP-ZBCnc1pDOcynIG-AB2zGTYLOWH04qQkbFcwnA~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2548,13 +2552,15 @@ type.<a href="#section-4.4-1" class="pilcrow">¶</a></p>
 <p id="section-4.4-2">The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 <a href="#circular-extends" class="auto internal xref">Section 6.3</a> apply in order to avoid problems with circular dependencies.<a href="#section-4.4-2" class="pilcrow">¶</a></p>
-<p id="section-4.4-3">If the SD-JWT VC contains the <code>inherits</code> claim defined in <a href="#inherits-claim" class="auto internal xref">Section 2.2.2.2</a>,
-the claim MUST contain the <code>vct</code> value of every type that the type of the
-SD-JWT VC extends, whether directly or transitively, i.e., all types in the
-chain or hierarchy of types established via the <code>extends</code> property. A Consumer
-processing Type Metadata for an SD-JWT VC that contains the <code>inherits</code> claim
-MUST verify that the <code>vct</code> value of every extended type is contained in the
-<code>inherits</code> claim and MUST reject the SD-JWT VC otherwise.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
+<p id="section-4.4-3">The <code>extends</code> property and the <code>other_vct_values</code> claim defined in
+<a href="#other-vct-values-claim" class="auto internal xref">Section 2.2.2.2</a> are orthogonal mechanisms, and Type Metadata does not
+add any requirements to the content of the <code>other_vct_values</code> claim. However,
+if Type Metadata exists both for the type in the <code>vct</code> claim and for a type
+listed in the <code>other_vct_values</code> claim, the type of the SD-JWT VC SHOULD
+extend the listed type, whether directly or transitively. A Consumer
+processing Type Metadata MAY use the types established via the <code>extends</code>
+property in addition to those in the <code>other_vct_values</code> claim when matching
+types.<a href="#section-4.4-3" class="pilcrow">¶</a></p>
 <p id="section-4.4-4">Processing details when extending type metadata are described in
 <a href="#display-metadata-extends" class="auto internal xref">Section 4.5.2</a> and <a href="#claim-metadata-extends" class="auto internal xref">Section 4.6.5</a>.<a href="#section-4.4-4" class="pilcrow">¶</a></p>
 </section>
@@ -3314,10 +3320,10 @@ confer any implicit authorization to issue credentials of that type or its exten
 </li>
         </ul>
 <p id="section-6.6-3">Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.<a href="#section-6.6-3" class="pilcrow">¶</a></p>
-<p id="section-6.6-4">The same considerations apply to inheritance relationships asserted via the <code>inherits</code>
-claim defined in <a href="#inherits-claim" class="auto internal xref">Section 2.2.2.2</a>. These relationships are asserted by the Issuer and,
+<p id="section-6.6-4">The same considerations apply to the additional types asserted via the <code>other_vct_values</code>
+claim defined in <a href="#other-vct-values-claim" class="auto internal xref">Section 2.2.2.2</a>. These types are asserted by the Issuer and,
 for types without Type Metadata, cannot be corroborated by an <code>extends</code> relationship.
-Verifiers and Holders therefore MUST NOT treat the presence of a type in the <code>inherits</code>
+Verifiers and Holders therefore MUST NOT treat the presence of a type in the <code>other_vct_values</code>
 claim as evidence that the Issuer is authorized to issue credentials of, or derived
 from, that type.<a href="#section-6.6-4" class="pilcrow">¶</a></p>
 </section>
@@ -3361,8 +3367,8 @@ account when using SD-JWT VCs.<a href="#section-7-1" class="pilcrow">¶</a></p>
 </div>
 <div id="verifiable-digital-credential-type-identifier">
 <section id="section-7.2">
-        <h3 id="name-verifiable-digital-credential-">
-<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-verifiable-digital-credential-" class="section-name selfRef">Verifiable Digital Credential Type Identifier</a>
+        <h3 id="name-verifiable-digital-credential">
+<a href="#section-7.2" class="section-number selfRef">7.2. </a><a href="#name-verifiable-digital-credential" class="section-name selfRef">Verifiable Digital Credential Type Identifier</a>
         </h3>
 <p id="section-7.2-1">Issuers and Holders have to be aware that while this specification supports selective
 disclosure of claims of a given SD-JWT VC, the <code>vct</code> claim is not selectively disclosable.
@@ -3373,9 +3379,9 @@ might consider using a <code>vct</code> value that does not allow third-parties 
 about the Holder, e.g., country of residency or citizenship.<a href="#section-7.2-2" class="pilcrow">¶</a></p>
 <p id="section-7.2-3">Additionally, Holders have to be informed that, besides the actual requested claims, the
 <code>vct</code> information is shared with the Verifier.<a href="#section-7.2-3" class="pilcrow">¶</a></p>
-<p id="section-7.2-4">The same considerations apply to the <code>inherits</code> claim, which is also not
-selectively disclosable and reveals the inheritance relationships of the
-credential's type.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
+<p id="section-7.2-4">The same considerations apply to the <code>other_vct_values</code> claim, which is also not
+selectively disclosable and reveals the additional types of the
+credential.<a href="#section-7.2-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="issuer-phone-home">
@@ -3537,13 +3543,13 @@ recommendations in <a href="#robust-retrieval" class="auto internal xref">Sectio
           <li class="compact" id="appendix-A.1-1.8">Specification Document(s): [[ <a href="#document-integrity" class="auto internal xref">Section 5</a> of this specification ]]
 <br><a href="#appendix-A.1-1.8" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="appendix-A.1-1.9">Claim Name: "inherits"<a href="#appendix-A.1-1.9" class="pilcrow">¶</a>
+          <li class="compact" id="appendix-A.1-1.9">Claim Name: "other_vct_values"<a href="#appendix-A.1-1.9" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="appendix-A.1-1.10">Claim Description: Verifiable digital credential types that the type of the credential inherits from<a href="#appendix-A.1-1.10" class="pilcrow">¶</a>
+          <li class="compact" id="appendix-A.1-1.10">Claim Description: Additional types of the verifiable digital credential<a href="#appendix-A.1-1.10" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="appendix-A.1-1.11">Change Controller: IETF<a href="#appendix-A.1-1.11" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="appendix-A.1-1.12">Specification Document(s): [[ <a href="#inherits-claim" class="auto internal xref">Section 2.2.2.2</a> of this specification ]]<a href="#appendix-A.1-1.12" class="pilcrow">¶</a>
+          <li class="compact" id="appendix-A.1-1.12">Specification Document(s): [[ <a href="#other-vct-values-claim" class="auto internal xref">Section 2.2.2.2</a> of this specification ]]<a href="#appendix-A.1-1.12" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -3734,8 +3740,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.JxcZAjeKsRw7Cx_HaCM8cFYtotPf4bl2
-Ypt8UvquLklQxnSbqQwUnS3sQ7zLJgLO0Bm0YPaxa-ft4GZZtZsNtw~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.-5gFwGSUk_q7Oatf45QH-LOMRA4lN5tS
+1H-Bz7IDzE_0XoqJesgoMRo9RCU2kQVBxsL6aTXu2V5UCrY346m0nA~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4232,8 +4238,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.JxcZAjeKsRw7Cx_HaCM8cFYtotPf4bl2
-Ypt8UvquLklQxnSbqQwUnS3sQ7zLJgLO0Bm0YPaxa-ft4GZZtZsNtw~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.-5gFwGSUk_q7Oatf45QH-LOMRA4lN5tS
+1H-Bz7IDzE_0XoqJesgoMRo9RCU2kQVBxsL6aTXu2V5UCrY346m0nA~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4244,10 +4250,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3MzkzMDEsICJzZF9oYXNoIjogIn
-VBRG5ndkJsd1gyMF9VVGhDWUU5WnlKZi1uMHItUDZsZ0FWaVl0ZXV3U0UifQ.2AfXAR5
-lgLryQx6ep9bKmArdd-KujrGRVQyvCmTI1GRm9U6J6zlWFnPyUYFSavsWMGfa0qN-ETx
-LJ3QPgdA3Mw
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3NjAwOTgsICJzZF9oYXNoIjogIm
+NSejhpaGI4bkR4WVB6eVZtVTJUTWZmMl8tM09xZVlEUTJXbEJJY1lVQjAifQ.hI-7OQM
+Hji-ZHdfnB6Wt4PCPO_83YgJ7EvlHhrV43J7ZbjGjO6vHquyBtVU3Sr6lxfiAC2Nrqqm
+vVd-DpLvaSQ
 
 </pre>
 </div>
@@ -4262,8 +4268,8 @@ LJ3QPgdA3Mw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1785739301,
-  "sd_hash": "uADngvBlwX20_UThCYE9ZyJf-n0r-P6lgAViYteuwSE"
+  "iat": 1785760098,
+  "sd_hash": "cRz8ihb8nDxYPzyVmU2TMff2_-3OqeYDQ2WlBIcYUB0"
 }
 
 </pre>
@@ -4585,7 +4591,7 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-D-1">-18<a href="#appendix-D-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-D-2.1">Added the optional <code>inherits</code> claim, conveying the types that the credential's type inherits from.<a href="#appendix-D-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-D-2.1">Added the optional <code>other_vct_values</code> claim, conveying additional types of the credential.<a href="#appendix-D-2.1" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-D-3">-17<a href="#appendix-D-3" class="pilcrow">¶</a></p>
