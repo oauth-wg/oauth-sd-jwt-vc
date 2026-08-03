@@ -379,7 +379,59 @@ Table of Contents
    hypothetical type urn:example:eudi:pid:aendgard:1, a new version
    could be defined using a 'vct' of urn:example:eudi:pid:aendgard:2.
 
-2.2.2.2.  Registered JWT Claims
+2.2.2.2.  Other Credential Types - aka_vcts Claim
+
+   This specification defines the new JWT claim aka_vcts.  Its value
+   MUST be a non-empty array of case-sensitive strings, each identifying
+   an additional type of the SD-JWT VC.  Each value MUST be a Collision-
+   Resistant Name as defined in Section 2 of [RFC7515], as required for
+   vct values in Section 2.2.2.1.  The array MUST NOT contain the value
+   of the vct claim of the SD-JWT VC.  The order of the values in the
+   array is not significant and does not convey any information about
+   the relationships between the types.
+
+   An SD-JWT VC containing the aka_vcts claim is a Verifiable Digital
+   Credential of the type identified by the vct claim and, additionally,
+   of each of the types identified by the values in the aka_vcts claim.
+   Holders and Verifiers can treat the SD-JWT VC as a credential of any
+   of these types.  This is typically used when the type identified by
+   the vct claim is derived from a more general type, which is then
+   included in the aka_vcts claim.
+
+   The aka_vcts claim is particularly useful in issuance and
+   presentation protocols, where the receiving party (a Holder during
+   issuance or a Verifier during presentation) matches the type of a
+   received SD-JWT VC against the type it requested or expects.  For
+   example, a Verifier requesting a credential of the hypothetical type
+   urn:example:eudi:pid that receives an SD-JWT VC with a vct value of
+   urn:example:eudi:pid:aendgard:1 can determine from an aka_vcts value
+   of ["urn:example:eudi:pid"] that the received credential is also of
+   the requested type.
+
+   The content in Figure 4 shows an excerpt of an Unsecured Payload
+   using the aka_vcts claim to express this example.
+
+   {
+     "vct": "urn:example:eudi:pid:aendgard:1",
+     "aka_vcts": [
+       "urn:example:eudi:pid"
+     ]
+   }
+
+         Figure 4: Example Unsecured Payload excerpt with aka_vcts
+
+   Note that the aka_vcts claim is asserted by the Issuer and, like the
+   vct claim, is only as trustworthy as the Issuer itself.
+
+   The aka_vcts claim is independent of Type Metadata Section 4 and, in
+   particular, orthogonal to the extends property: the claim can be used
+   whether or not Type Metadata exists for any of the listed types, and
+   the listed types are not required to be related to the type of the
+   SD-JWT VC through the extends property.  The interaction between the
+   aka_vcts claim and Type Metadata using the extends property is
+   described in Section 4.4.
+
+2.2.2.3.  Registered JWT Claims
 
    SD-JWT VCs MAY use any claim registered in the "JSON Web Token
    Claims" registry as defined in [RFC7519].
@@ -410,6 +462,8 @@ Table of Contents
       defined in Section 2.2.2.1.
    *  vct#integrity: OPTIONAL.  The hash of the Type Metadata document
       to provide integrity as defined in Section 5.
+   *  aka_vcts: OPTIONAL.  An array of additional types of the
+      Verifiable Digital Credential, as defined in Section 2.2.2.2.
    *  status: OPTIONAL.  The information on how to read the status of
       the Verifiable Credential.  See [I-D.ietf-oauth-status-list] for
       more information.  When the status claim is present and using the
@@ -427,7 +481,7 @@ Table of Contents
    *  iat: OPTIONAL.  The time of issuance of the Verifiable Digital
       Credential.  See [RFC7519] for more information.
 
-2.2.2.3.  Public and Private JWT claims
+2.2.2.4.  Public and Private JWT claims
 
    Additionally, any public and private claims as defined in Sections
    4.2 and 4.3 of [RFC7519] MAY be used.
@@ -442,7 +496,7 @@ Table of Contents
    An example of a claim containing binary data encoded as a data URI is
    shown in Appendix A.1.
 
-2.2.2.4.  SD-JWT VC without Selectively Disclosable Claims
+2.2.2.5.  SD-JWT VC without Selectively Disclosable Claims
 
    An SD-JWT VC MAY have no selectively disclosable claims.  In that
    case, the SD-JWT VC MUST NOT contain the _sd claim in the JWT body.
@@ -452,7 +506,7 @@ Table of Contents
 
 2.3.1.  Issuance
 
-   Figure 4 is an example of the user data of an Unsecured Payload of an
+   Figure 5 is an example of the user data of an Unsecured Payload of an
    SD-JWT VC.
 
    {
@@ -473,9 +527,9 @@ Table of Contents
      "is_over_65": true
    }
 
-                    Figure 4: Unsecured Payload Example
+                    Figure 5: Unsecured Payload Example
 
-   Figure 5 shows how the Unsecured Payload above can be used in an SD-
+   Figure 6 shows how the Unsecured Payload above can be used in an SD-
    JWT where the resulting SD-JWT VC contains only claims about the
    Subject that are selectively disclosable:
 
@@ -506,7 +560,7 @@ Table of Contents
      }
    }
 
-                    Figure 5: Unsecured Payload Example
+                    Figure 6: Unsecured Payload Example
 
    Note that a cnf claim has been added to the SD-JWT payload to express
    the confirmation method of the Key Binding.
@@ -592,7 +646,7 @@ Table of Contents
    *  Contents: ["lklxF5jMYlGTPUovMNIvCA", "is_over_65", true]
 
    The SD-JWT and the Disclosures would then be serialized by the Issuer
-   into the format shown in Figure 6 for issuance to the Holder.
+   into the format shown in Figure 7 for issuance to the Holder.
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCIsICJraWQiOiAiZG9jLXNp
    Z25lci0wNS0yNS0yMDIyIn0.eyJfc2QiOiBbIjA5dktySk1PbHlUV00wc2pwdV9wZE9C
@@ -609,9 +663,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LJDj3
-   rINFr2z0HnfPZJb86np6OjfgFJLTMvXevR46Gpxha93CHlzVy58OPg7osXMmSJMIhvN6
-   L5wXHPAP23mnA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vAZjE
+   emWrRyQ1FGWEQi0IgZK1aC-qbSFHE1WzoFFc_4Jt7ND-61-41UgQdgxZV5tOAlNIdELM
+   61BOCWvXivGvw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -623,11 +677,11 @@ Table of Contents
    B0cnVlXQ~WyJHMDJOU3JRZmpGWFE3SW8wOXN5YWpBIiwgImlzX292ZXJfMjEiLCB0cnV
    lXQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~
 
-                        Figure 6: SD-JWT VC Example
+                        Figure 7: SD-JWT VC Example
 
 2.3.2.  Presentation
 
-   Figure 7 is an example of a presentation of the SD-JWT shown in
+   Figure 8 is an example of a presentation of the SD-JWT shown in
    Section 2.3 including a KB-JWT.  In this presentation, the Holder
    provides only the Disclosures for the address and is_over_65 claims.
    Other claims are not disclosed to the Verifier.
@@ -647,22 +701,22 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LJDj3
-   rINFr2z0HnfPZJb86np6OjfgFJLTMvXevR46Gpxha93CHlzVy58OPg7osXMmSJMIhvN6
-   L5wXHPAP23mnA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vAZjE
+   emWrRyQ1FGWEQi0IgZK1aC-qbSFHE1WzoFFc_4Jt7ND-61-41UgQdgxZV5tOAlNIdELM
+   61BOCWvXivGvw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3ODE0Nz
-   MsICJzZF9oYXNoIjogImFyYVhSbWt4QlBrem9ocVJENDRjRy1fQ21kNWhSbjg2RktRdW
-   lDUTFrVFEifQ.wwN5QoHA7ImRyFM9iUNIN0aPZxtqnOpvWfYDuGJcPi0FNfV6ddDRiqx
-   cYg-A2BCm99yhMXmlCaBFdRbWem9jdg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3ODQ5Mz
+   ksICJzZF9oYXNoIjogIngtYzlrNkJ6dndRdkNybzFXajVnYklFbkdPQV8tQktsSjhPLV
+   lmVUtKbEkifQ.PukhMAO0BgBLVVCEkVux3LUPZSWzYhM3hQBJLnmUaGYgUwSuoF9tn4Z
+   vjFvrC7waGZfHwbpW5Z6IEWI479M-fQ
 
-                   Figure 7: Presented SD-JWT+KB Example
+                   Figure 8: Presented SD-JWT+KB Example
 
    After validation, the Verifier will have the processed SD-JWT payload
-   in Figure 8 available for further handling.
+   in Figure 9 available for further handling.
 
    {
      "iss": "https://example.com/issuer",
@@ -686,9 +740,9 @@ Table of Contents
      }
    }
 
-                 Figure 8: Verified SD-JWT Payload Example
+                 Figure 9: Verified SD-JWT Payload Example
 
-   The example in Figure 9 shows a presentation of a (similar but
+   The example in Figure 10 shows a presentation of a (similar but
    different) SD-JWT without a KB-JWT.
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjA5dkt
@@ -703,17 +757,17 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.8BJkjb8-y0BthCJ1CQOGf7Og3ktQfTigc1BZJTC9JzKfdY
-   22aEP9TmKk4amz3pyYtFJtDPZB8NoSKqLo4WhNAQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.Ao7-Y8kno-YWPuplRUUb20uGlCv9SLYvUY_s5Hp7ZcV8d_
+   2P3PkCDjJXQVIyROrZzHzy6LDaxAaCn7SHGym25w~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
    OiAiVVMifV0~
 
-                     Figure 9: Presented SD-JWT Example
+                    Figure 10: Presented SD-JWT Example
 
    The Verifier will have the following processed SD-JWT payload shown
-   in Figure 10 after validation.
+   in Figure 11 after validation.
 
    {
      "iss": "https://example.com/issuer",
@@ -729,7 +783,7 @@ Table of Contents
      }
    }
 
-                Figure 10: Processed SD-JWT Payload Example
+                Figure 11: Processed SD-JWT Payload Example
 
 2.4.  Verification and Processing
 
@@ -823,26 +877,26 @@ Table of Contents
    A JWT VC Issuer Metadata configuration MUST be queried using an HTTP
    GET request at the path defined in Section 3.
 
-   Figure 11 is an example of an HTTP request for the JWT VC Issuer
+   Figure 12 is an example of an HTTP request for the JWT VC Issuer
    Metadata configuration when iss is set to https://example.com:
 
    GET /.well-known/jwt-vc-issuer HTTP/1.1
    Host: example.com
 
-         Figure 11: Example HTTP Request for JWT VC Issuer Metadata
+         Figure 12: Example HTTP Request for JWT VC Issuer Metadata
 
    If the iss value contains a path component, any terminating / MUST be
    removed before inserting /.well-known/ and the well-known URI suffix
    between the host component and the path component.
 
-   Figure 12 is an example of an HTTP request for the JWT VC Issuer
+   Figure 13 is an example of an HTTP request for the JWT VC Issuer
    Metadata configuration when iss is set to https://example.com/
    tenant/1234:
 
    GET /.well-known/jwt-vc-issuer/tenant/1234 HTTP/1.1
    Host: example.com
 
-         Figure 12: Example HTTP Request for JWT VC Issuer Metadata
+         Figure 13: Example HTTP Request for JWT VC Issuer Metadata
 
 3.2.  JWT VC Issuer Metadata Response
 
@@ -873,7 +927,7 @@ Table of Contents
    JWK Set included by value or referenced in the JWT VC Issuer
    Metadata.
 
-   Figure 13 is an example of a JWT VC Issuer Metadata configuration
+   Figure 14 is an example of a JWT VC Issuer Metadata configuration
    including jwks:
 
    {
@@ -896,9 +950,9 @@ Table of Contents
       }
    }
 
-            Figure 13: Example Metadata with a JSON Web Key Set
+            Figure 14: Example Metadata with a JSON Web Key Set
 
-   Figure 14 is an example of a JWT VC Issuer Metadata configuration
+   Figure 15 is an example of a JWT VC Issuer Metadata configuration
    including jwks_uri:
 
    {
@@ -906,7 +960,7 @@ Table of Contents
       "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
    }
 
-          Figure 14: Example Metadata with a JSON Web Key Set URI
+          Figure 15: Example Metadata with a JSON Web Key Set URI
 
    Additional JWT VC Issuer Metadata configuration parameters MAY also
    be used.
@@ -952,7 +1006,7 @@ Table of Contents
    This section only shows excerpts, the full examples can be found in
    Appendix A.2.
 
-   The following in Figure 15 is an example of an SD-JWT VC payload,
+   The following in Figure 16 is an example of an SD-JWT VC payload,
    containing a vct claim with the value
    https://betelgeuse.example.com/education_credential/v42.
 
@@ -963,13 +1017,13 @@ Table of Contents
      ...
    }
 
-            Figure 15: Example SD-JWT VC Payload with vct Claim
+            Figure 16: Example SD-JWT VC Payload with vct Claim
 
    Type Metadata for the type
    https://betelgeuse.example.com/education_credential/v42 can be
    retrieved using various mechanisms as described in Section 4.3.  For
    this example, the vct value is a URL as defined in Section 4.3.1 and
-   the Type Metadata document in Figure 16 is retrieved from it:
+   the Type Metadata document in Figure 17 is retrieved from it:
 
    {
      "vct":"https://betelgeuse.example.com/education_credential/v42",
@@ -980,7 +1034,7 @@ Table of Contents
        "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
    }
 
-                 Figure 16: Example Type Metadata Document
+                 Figure 17: Example Type Metadata Document
 
    Note: The hash of the Type Metadata document shown in the second
    example must be equal to the one in the vct#integrity claim in the
@@ -1076,6 +1130,16 @@ Table of Contents
    to create a chain or hierarchy of types.  The security considerations
    described in Section 6.3 apply in order to avoid problems with
    circular dependencies.
+
+   The extends property and the aka_vcts claim defined in
+   Section 2.2.2.2 are orthogonal mechanisms, and Type Metadata does not
+   add any requirements to the content of the aka_vcts claim.  However,
+   if Type Metadata exists both for the type in the vct claim and for a
+   type listed in the aka_vcts claim, the type of the SD-JWT VC SHOULD
+   extend the listed type, whether directly or transitively.  A Consumer
+   processing Type Metadata MAY use the types established via the
+   extends property in addition to those in the aka_vcts claim when
+   matching types.
 
    Processing details when extending type metadata are described in
    Section 4.5.2 and Section 4.6.5.
@@ -1209,7 +1273,7 @@ Table of Contents
    in the credential, the placeholder MUST be replaced with an empty
    string or a string appropriate to indicate that the value is absent.
 
-   The example in Figure 17 shows a minimal SVG with one placeholder
+   The example in Figure 18 shows a minimal SVG with one placeholder
    using the svg_id value address_street_address which is defined in the
    example in Appendix A.2.
 
@@ -1217,7 +1281,7 @@ Table of Contents
      <text x="10" y="20">Street address: {{address_street_address}}</text>
    </svg>
 
-              Figure 17: Example SVG Template with Placeholder
+              Figure 18: Example SVG Template with Placeholder
 
    When rendering the SVG template, the consuming application MUST
    ensure that malicious metadata providers or issuers cannot inject
@@ -1329,7 +1393,7 @@ Table of Contents
 
 4.6.1.1.  Example
 
-   Figure 18 shows a reduced example of a credential.
+   Figure 19 shows a reduced example of a credential.
 
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
@@ -1352,7 +1416,7 @@ Table of Contents
      "nationalities": ["British", "Betelgeusian"]
    }
 
-                Figure 18: Example Credential for Claim Path
+                Figure 19: Example Credential for Claim Path
 
    The following shows examples of path values and the respective
    selected claims in the credential above:
@@ -1428,7 +1492,7 @@ Table of Contents
    *  description: A human-readable description for the claim, intended
       for end users.  This property is OPTIONAL.
 
-   See Figure 29 in Appendix A.2 for an example that includes claim
+   See Figure 30 in Appendix A.2 for an example that includes claim
    display metadata.
 
 4.6.3.  Claim Mandatory Metadata
@@ -1451,7 +1515,7 @@ Table of Contents
    If omitted, the default value is allowed.  It is RECOMMENDED to use
    either always or never to avoid ambiguity.
 
-   See Figure 29 in Appendix A.2 for an example that includes claim
+   See Figure 30 in Appendix A.2 for an example that includes claim
    selective disclosure metadata.
 
 4.6.5.  Extending Claim Metadata
@@ -1493,7 +1557,7 @@ Table of Contents
 4.6.5.2.  Example for Extending Type Metadata
 
    The base type metadata document for this example is shown in
-   Figure 19.
+   Figure 20.
 
    {
      "vct": "https://example.com/base-type-metadata",
@@ -1509,9 +1573,9 @@ Table of Contents
      ]
    }
 
-               Figure 19: Example Base Type Metadata Document
+               Figure 20: Example Base Type Metadata Document
 
-   The extending type metadata document is shown in Figure 20.
+   The extending type metadata document is shown in Figure 21.
 
    {
      "vct": "https://example.com/custom-type-metadata",
@@ -1528,13 +1592,13 @@ Table of Contents
      ]
    }
 
-              Figure 20: Example Child Type Metadata Document
+              Figure 21: Example Child Type Metadata Document
 
    In this example, the child type inherits the name claim metadata from
    the base type, but overrides the address.city claim metadata with its
    own definition.  It also adds a new claim metadata for nationalities.
    The final effective claim metadata for the child type is shown here
-   in Figure 21:
+   in Figure 22:
 
    {
      "claims": [
@@ -1553,7 +1617,7 @@ Table of Contents
      ]
    }
 
-             Figure 21: Effective Claim Metadata for Child Type
+             Figure 22: Effective Claim Metadata for Child Type
 
 4.7.  Processing Type Metadata
 
@@ -1585,7 +1649,7 @@ Table of Contents
    If such an integrity value is present, the Consumer verifies that the
    retrieved document matches it before processing that document.
 
-   The vct claim in the SD-JWT VC as defined in Section 2.2.2.2 and
+   The vct claim in the SD-JWT VC as defined in Section 2.2.2.3 and
    various URIs in the Type Metadata MAY be accompanied by a respective
    item suffixed with #integrity, in particular:
 
@@ -1717,6 +1781,14 @@ Table of Contents
    trust or legitimacy.  Credential acceptance decisions MUST be based
    on both the credential type and the verified authority of the issuer.
 
+   The same considerations apply to the additional types asserted via
+   the aka_vcts claim defined in Section 2.2.2.2.  These types are
+   asserted by the Issuer and, for types without Type Metadata, cannot
+   be corroborated by an extends relationship.  Verifiers and Holders
+   therefore MUST NOT treat the presence of a type in the aka_vcts claim
+   as evidence that the Issuer is authorized to issue credentials of, or
+   derived from, that type.
+
 6.7.  Trust in Type Metadata
 
    Type Metadata associated with an SD-JWT VC, e.g., rendering metadata,
@@ -1775,6 +1847,10 @@ Table of Contents
 
    Additionally, Holders have to be informed that, besides the actual
    requested claims, the vct information is shared with the Verifier.
+
+   The same considerations apply to the aka_vcts claim, which is also
+   not selectively disclosable and reveals the additional types of the
+   credential.
 
 7.3.  Issuer Phone-Home
 
@@ -1838,6 +1914,12 @@ Table of Contents
    *  Claim Description: SD-JWT VC vct claim "integrity metadata" value
    *  Change Controller: IETF
    *  Specification Document(s): [[ Section 5 of this specification ]]
+   *  Claim Name: "aka_vcts"
+   *  Claim Description: Additional types of the verifiable digital
+      credential
+   *  Change Controller: IETF
+   *  Specification Document(s): [[ Section 2.2.2.2 of this
+      specification ]]
 
 8.2.  Media Types Registry
 
@@ -1998,7 +2080,7 @@ A.1.  Example Person Identification Data (PID) Credential
    Key Binding is applied using the Holder's public key passed in a cnf
    claim in the SD-JWT.
 
-   The information in Figure 22 about the citizen comprises the input
+   The information in Figure 23 about the citizen comprises the input
    data used by the Issuer:
 
    {
@@ -2044,9 +2126,9 @@ A.1.  Example Person Identification Data (PID) Credential
      "issuing_country": "ÆG"
    }
 
-                      Figure 22: Citizen's Information
+                      Figure 23: Citizen's Information
 
-   The following in Figure 23 is the issued SD-JWT:
+   The following in Figure 24 is the issued SD-JWT:
 
    eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImRjK3NkLWp3dCJ9.eyJfc2QiOiBbIjJyMDA
    5ZHp2SHVWcldyUlhUNWtKTW1IbnFFSEhuV2UwTUxWWnc4UEFUQjgiLCAiM05kREpZUnd
@@ -2069,8 +2151,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MGIJnGZLFVdymLXeKx2B0Zo2vngzBQAj
-   rlRDdtSrbBC-SwNbxdhUQ3nKvwU9ipRlemK2Jk2EcIz4DcYVLolDjg~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.lERAXFcVNYCWFQxo0kJnZidVQo_bu2ZU
+   9Xo3Wh6ewXY313nRdfSTxsPVEAue8yrTPiBPMPT-N9FwsucoJOJRpQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2119,9 +2201,9 @@ A.1.  Example Person Identification Data (PID) Credential
    ciJd~WyJvdm9WMXJraF9BTm04NjFxVUFBMkF3IiwgImlzc3VpbmdfY291bnRyeSIsICJ
    cdTAwYzZHIl0~
 
-                          Figure 23: Issued SD-JWT
+                          Figure 24: Issued SD-JWT
 
-   Figure 24 is the payload of that SD-JWT:
+   Figure 25 is the payload of that SD-JWT:
 
    {
      "_sd": [
@@ -2157,7 +2239,7 @@ A.1.  Example Person Identification Data (PID) Credential
      }
    }
 
-                         Figure 24: SD-JWT Payload
+                         Figure 25: SD-JWT Payload
 
    The digests in the SD-JWT payload reference the following
    Disclosures:
@@ -2427,7 +2509,7 @@ A.1.  Example Person Identification Data (PID) Credential
       ICJcdTAwYzZHIl0
    *  Contents: ["ovoV1rkh_ANm861qUAA2Aw", "issuing_country", "\u00c6G"]
 
-   Figure 25 shows a presentation of the SD-JWT with a Key Binding JWT
+   Figure 26 shows a presentation of the SD-JWT with a Key Binding JWT
    that discloses only nationality and the fact that the person is over
    18 years old:
 
@@ -2452,8 +2534,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MGIJnGZLFVdymLXeKx2B0Zo2vngzBQAj
-   rlRDdtSrbBC-SwNbxdhUQ3nKvwU9ipRlemK2Jk2EcIz4DcYVLolDjg~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.lERAXFcVNYCWFQxo0kJnZidVQo_bu2ZU
+   9Xo3Wh6ewXY313nRdfSTxsPVEAue8yrTPiBPMPT-N9FwsucoJOJRpQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2464,26 +2546,26 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3ODE0NzMsICJzZF9oYXNoIjogIl
-   FfWHZ5eWQxMHdkRkZJel9RMFZzMDh5b0x2Wi01R2F6Y2w2a05ZeVVZX3MifQ.WKinhZa
-   WJ8bmyMdSH34pJI8ZaGm9OY-LpnwnYBIRY4vIMEnYpfU4bfkrE68jKjiCFsIhjybudhz
-   Ri9ANIEu2nA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3ODQ5MzksICJzZF9oYXNoIjogIm
+   tlZ3ozeDVtbUxxX3NMS2hMQWFCNkpFS2N3YWZPVk9fcDJQMkZIMTFUazQifQ.lhCVphI
+   udIcpsfDVwpP0znsnr5zp_2344AOSMXkcr3zPH7CpasmhkM87vphe9eCj7sWcVna7sI2
+   C9KXhihS-yw
 
-                       Figure 25: Presented SD-JWT+KB
+                       Figure 26: Presented SD-JWT+KB
 
-   Figure 26 is the payload of a corresponding Key Binding JWT:
+   Figure 27 is the payload of a corresponding Key Binding JWT:
 
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1785781473,
-     "sd_hash": "Q_Xvyyd10wdFFIz_Q0Vs08yoLvZ-5Gazcl6kNYyUY_s"
+     "iat": 1785784939,
+     "sd_hash": "kegz3x5mmLq_sLKhLAaB6JEKcwafOVO_p2P2FH11Tk4"
    }
 
-                     Figure 26: Key Binding JWT Payload
+                     Figure 27: Key Binding JWT Payload
 
    After validation, the Verifier will have the processed SD-JWT payload
-   in Figure 27 available for further handling:
+   in Figure 28 available for further handling:
 
    {
      "iss": "https://pid-issuer.aendgard.example",
@@ -2506,12 +2588,12 @@ A.1.  Example Person Identification Data (PID) Credential
      ]
    }
 
-                    Figure 27: Processed SD-JWT Payload
+                    Figure 28: Processed SD-JWT Payload
 
 A.2.  Example Type Metadata
 
    The following example for Type Metadata assumes an SD-JWT VC payload
-   structured as follows in Figure 28:
+   structured as follows in Figure 29:
 
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
@@ -2540,10 +2622,10 @@ A.2.  Example Type Metadata
      ]
    }
 
-                        Figure 28: SD-JWT VC Payload
+                        Figure 29: SD-JWT VC Payload
 
    The Type Metadata for this SD-JWT VC could be defined as follows in
-   Figure 29:
+   Figure 30:
 
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
@@ -2731,7 +2813,7 @@ A.2.  Example Type Metadata
      ]
    }
 
-                 Figure 29: Example Type Metadata Document
+                 Figure 30: Example Type Metadata Document
 
    Note that in this example, there are four definitions affecting the
    degrees claim:
@@ -2766,6 +2848,8 @@ Appendix C.  Document History
 
    -18
 
+   *  Added the optional aka_vcts claim, conveying additional types of
+      the credential.
    *  Update obsoleted reference, move IANA Considerations, fix long
       lines, other nits
 
