@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 7 January 2027                                    Authlete Inc.
+Expires: 4 February 2027                                   Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                             6 July 2026
+                                                           3 August 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 7 January 2027.
+   This Internet-Draft will expire on 4 February 2027.
 
 Copyright Notice
 
@@ -118,20 +118,20 @@ Table of Contents
      7.2.  Verifiable Digital Credential Type Identifier
      7.3.  Issuer Phone-Home
      7.4.  Privacy-Preserving Retrieval of Type Metadata
-   8.  References
-     8.1.  Normative References
-     8.2.  Informative References
-   Appendix A.  IANA Considerations
-     A.1.  JSON Web Token Claims Registration
-     A.2.  Media Types Registry
-       A.2.1.  application/dc+sd-jwt
-     A.3.  Well-Known URI Registry
-       A.3.1.  Registry Contents
-   Appendix B.  Examples
-     B.1.  Example Person Identification Data (PID) Credential
-     B.2.  Example Type Metadata
-   Appendix C.  Acknowledgements
-   Appendix D.  Document History
+   8.  IANA Considerations
+     8.1.  JSON Web Token Claims Registration
+     8.2.  Media Types Registry
+       8.2.1.  application/dc+sd-jwt
+     8.3.  Well-Known URI Registry
+       8.3.1.  Registry Contents
+   9.  References
+     9.1.  Normative References
+     9.2.  Informative References
+   Appendix A.  Examples
+     A.1.  Example Person Identification Data (PID) Credential
+     A.2.  Example Type Metadata
+   Appendix B.  Acknowledgements
+   Appendix C.  Document History
    Authors' Addresses
 
 1.  Introduction
@@ -440,7 +440,7 @@ Table of Contents
    do not need to be encoded as such.
 
    An example of a claim containing binary data encoded as a data URI is
-   shown in Appendix B.1.
+   shown in Appendix A.1.
 
 2.2.2.4.  SD-JWT VC without Selectively Disclosable Claims
 
@@ -609,9 +609,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Dginv
-   aXhNIYtKZcS4wSBz5o6d7K_96Rl7JxIMblku11NiQ4jH8pw9RdX6chNgJdcLM2_m7jid
-   yIHXcAHeITnYg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LJDj3
+   rINFr2z0HnfPZJb86np6OjfgFJLTMvXevR46Gpxha93CHlzVy58OPg7osXMmSJMIhvN6
+   L5wXHPAP23mnA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -647,17 +647,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Dginv
-   aXhNIYtKZcS4wSBz5o6d7K_96Rl7JxIMblku11NiQ4jH8pw9RdX6chNgJdcLM2_m7jid
-   yIHXcAHeITnYg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LJDj3
+   rINFr2z0HnfPZJb86np6OjfgFJLTMvXevR46Gpxha93CHlzVy58OPg7osXMmSJMIhvN6
+   L5wXHPAP23mnA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODMzNDU2OD
-   MsICJzZF9oYXNoIjogInZoTUVqQnh3bV9WUGNrVkF2ZXhhZ1ZKdWxEak96VGtsQThYUE
-   M1emk0aEEifQ.RXJhoWasdHQwaY10LeN4GSOkXt6PAupjH-oSq9035gSoLcHDKfSXeny
-   ypV2eSVfWSU6PgvbPnmOJDsbIXO_IoQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3ODE0Nz
+   MsICJzZF9oYXNoIjogImFyYVhSbWt4QlBrem9ocVJENDRjRy1fQ21kNWhSbjg2RktRdW
+   lDUTFrVFEifQ.wwN5QoHA7ImRyFM9iUNIN0aPZxtqnOpvWfYDuGJcPi0FNfV6ddDRiqx
+   cYg-A2BCm99yhMXmlCaBFdRbWem9jdg
 
                    Figure 7: Presented SD-JWT+KB Example
 
@@ -703,8 +703,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.LDx-1Gj2McEuVG9_xyooe2q96Z1e6FTsCsE1yBuP9gcTH_
-   DS7sFAHwo9w4GI1iQxqJs44G-ver8kkoWItA_Z4Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.8BJkjb8-y0BthCJ1CQOGf7Og3ktQfTigc1BZJTC9JzKfdY
+   22aEP9TmKk4amz3pyYtFJtDPZB8NoSKqLo4WhNAQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -950,7 +950,7 @@ Table of Contents
 4.1.  Type Metadata Example
 
    This section only shows excerpts, the full examples can be found in
-   Appendix B.2.
+   Appendix A.2.
 
    The following in Figure 15 is an example of an SD-JWT VC payload,
    containing a vct claim with the value
@@ -958,7 +958,8 @@ Table of Contents
 
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
-     "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+     "vct#integrity":
+       "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
      ...
    }
 
@@ -975,14 +976,15 @@ Table of Contents
      "name":"Betelgeuse Education Credential - Version 42",
      "description":"This is our education credential. Don't panic.",
      "extends":"https://galaxy.example.com/galactic-education-credential/v2",
-     "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
+     "extends#integrity":
+       "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
    }
 
                  Figure 16: Example Type Metadata Document
 
    Note: The hash of the Type Metadata document shown in the second
    example must be equal to the one in the vct#integrity claim in the
-   SD-JWT VC payload, 1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00= (see
+   SD-JWT VC payload, vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8= (see
    Section 5 for details).
 
 4.2.  Type Metadata Format
@@ -1010,7 +1012,7 @@ Table of Contents
    subordinate properties.  Consumers MUST ignore properties that are
    not understood.
 
-   An example of a Type Metadata document is shown in Appendix B.2.
+   An example of a Type Metadata document is shown in Appendix A.2.
 
 4.3.  Retrieving Type Metadata
 
@@ -1209,7 +1211,7 @@ Table of Contents
 
    The example in Figure 17 shows a minimal SVG with one placeholder
    using the svg_id value address_street_address which is defined in the
-   example in Appendix B.2.
+   example in Appendix A.2.
 
    <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
      <text x="10" y="20">Street address: {{address_street_address}}</text>
@@ -1363,7 +1365,7 @@ Table of Contents
    *  ["degrees", null, "type"]: All type claims in the degrees array
       are selected.
 
-   The example in Appendix B.2 shows how the path can be used to address
+   The example in Appendix A.2 shows how the path can be used to address
    arrays and their elements.
 
 4.6.1.2.  Processing of path
@@ -1426,7 +1428,7 @@ Table of Contents
    *  description: A human-readable description for the claim, intended
       for end users.  This property is OPTIONAL.
 
-   See Figure 29 in Appendix B.2 for an example that includes claim
+   See Figure 29 in Appendix A.2 for an example that includes claim
    display metadata.
 
 4.6.3.  Claim Mandatory Metadata
@@ -1449,7 +1451,7 @@ Table of Contents
    If omitted, the default value is allowed.  It is RECOMMENDED to use
    either always or never to avoid ambiguity.
 
-   See Figure 29 in Appendix B.2 for an example that includes claim
+   See Figure 29 in Appendix A.2 for an example that includes claim
    selective disclosure metadata.
 
 4.6.5.  Extending Claim Metadata
@@ -1823,9 +1825,68 @@ Table of Contents
    not leak information about the usage of a credential to third
    parties.  The recommendations in Section 6.4 apply.
 
-8.  References
+8.  IANA Considerations
 
-8.1.  Normative References
+8.1.  JSON Web Token Claims Registration
+
+   *  Claim Name: "vct"
+   *  Claim Description: Verifiable digital Credential Type identifier
+   *  Change Controller: IETF
+   *  Specification Document(s): [[ Section 2.2.2.1 of this
+      specification ]]
+   *  Claim Name: "vct#integrity"
+   *  Claim Description: SD-JWT VC vct claim "integrity metadata" value
+   *  Change Controller: IETF
+   *  Specification Document(s): [[ Section 5 of this specification ]]
+
+8.2.  Media Types Registry
+
+8.2.1.  application/dc+sd-jwt
+
+   The Internet media type for an SD-JWT VC is application/dc+sd-jwt.
+
+   *  Type name: application
+   *  Subtype name: dc+sd-jwt
+   *  Required parameters: n/a
+   *  Optional parameters: n/a
+   *  Encoding considerations: 8-bit code points; SD-JWT VC values are
+      encoded as a series of base64url-encoded values (some of which may
+      be the empty string) separated by period ('.') and tilde ('~')
+      characters.
+   *  Security considerations: See Security Considerations in Section 6.
+   *  Interoperability considerations: n/a
+   *  Published specification: [[ this specification ]]
+   *  Applications that use this media type: Applications that issue,
+      present, and verify SD-JWT-based Verifiable Digital Credentials.
+   *  Additional information:
+      -  Magic number(s): n/a
+      -  File extension(s): n/a
+      -  Macintosh file type code(s): n/a
+   *  Person & email address to contact for further information: Oliver
+      Terbu oliver.terbu@mattr.global (mailto:oliver.terbu@mattr.global)
+   *  Intended usage: COMMON
+   *  Restrictions on usage: none
+   *  Author: Oliver Terbu oliver.terbu@mattr.global
+      (mailto:oliver.terbu@mattr.global)
+   *  Change controller: IETF
+
+8.3.  Well-Known URI Registry
+
+   This specification requests the well-known URI defined in Section 3
+   in the IANA "Well-Known URIs" registry [IANA.well-known] as described
+   in by [RFC8615].
+
+8.3.1.  Registry Contents
+
+   *  URI suffix: jwt-vc-issuer
+   *  Change controller: IETF
+   *  Specification document: [[ Section 3 of this specification ]]
+   *  Related information: (none)
+   *  Status: permanent
+
+9.  References
+
+9.1.  Normative References
 
    [RFC2119]  Bradner, S., "Key words for use in RFCs to Indicate
               Requirement Levels", BCP 14, RFC 2119,
@@ -1835,11 +1896,6 @@ Table of Contents
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <https://www.rfc-editor.org/info/rfc5646>.
-
-   [RFC5785]  Nottingham, M. and E. Hammer-Lahav, "Defining Well-Known
-              Uniform Resource Identifiers (URIs)", RFC 5785,
-              DOI 10.17487/RFC5785, April 2010,
-              <https://www.rfc-editor.org/info/rfc5785>.
 
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
@@ -1858,6 +1914,10 @@ Table of Contents
               RFC 7800, DOI 10.17487/RFC7800, April 2016,
               <https://www.rfc-editor.org/info/rfc7800>.
 
+   [RFC8615]  Nottingham, M., "Well-Known Uniform Resource Identifiers
+              (URIs)", RFC 8615, DOI 10.17487/RFC8615, May 2019,
+              <https://www.rfc-editor.org/info/rfc8615>.
+
    [RFC9901]  Fett, D., Yasuda, K., and B. Campbell, "Selective
               Disclosure for JSON Web Tokens", RFC 9901,
               DOI 10.17487/RFC9901, November 2025,
@@ -1872,7 +1932,7 @@ Table of Contents
               "Subresource Integrity", 23 June 2016,
               <https://www.w3.org/TR/2016/REC-SRI-20160623/>.
 
-8.2.  Informative References
+9.2.  Informative References
 
    [EUDIW.ARF]
               Commission, E., "The European Digital Identity Wallet
@@ -1917,66 +1977,7 @@ Table of Contents
               DOI 10.17487/RFC9535, February 2024,
               <https://www.rfc-editor.org/info/rfc9535>.
 
-Appendix A.  IANA Considerations
-
-A.1.  JSON Web Token Claims Registration
-
-   *  Claim Name: "vct"
-   *  Claim Description: Verifiable digital Credential Type identifier
-   *  Change Controller: IETF
-   *  Specification Document(s): [[ Section 2.2.2.1 of this
-      specification ]]
-   *  Claim Name: "vct#integrity"
-   *  Claim Description: SD-JWT VC vct claim "integrity metadata" value
-   *  Change Controller: IETF
-   *  Specification Document(s): [[ Section 5 of this specification ]]
-
-A.2.  Media Types Registry
-
-A.2.1.  application/dc+sd-jwt
-
-   The Internet media type for an SD-JWT VC is application/dc+sd-jwt.
-
-   *  Type name: application
-   *  Subtype name: dc+sd-jwt
-   *  Required parameters: n/a
-   *  Optional parameters: n/a
-   *  Encoding considerations: 8-bit code points; SD-JWT VC values are
-      encoded as a series of base64url-encoded values (some of which may
-      be the empty string) separated by period ('.') and tilde ('~')
-      characters.
-   *  Security considerations: See Security Considerations in Section 6.
-   *  Interoperability considerations: n/a
-   *  Published specification: [[ this specification ]]
-   *  Applications that use this media type: Applications that issue,
-      present, and verify SD-JWT-based Verifiable Digital Credentials.
-   *  Additional information:
-      -  Magic number(s): n/a
-      -  File extension(s): n/a
-      -  Macintosh file type code(s): n/a
-   *  Person & email address to contact for further information: Oliver
-      Terbu oliver.terbu@mattr.global (mailto:oliver.terbu@mattr.global)
-   *  Intended usage: COMMON
-   *  Restrictions on usage: none
-   *  Author: Oliver Terbu oliver.terbu@mattr.global
-      (mailto:oliver.terbu@mattr.global)
-   *  Change controller: IETF
-
-A.3.  Well-Known URI Registry
-
-   This specification requests the well-known URI defined in Section 3
-   in the IANA "Well-Known URIs" registry [IANA.well-known] established
-   by [RFC5785].
-
-A.3.1.  Registry Contents
-
-   *  URI suffix: jwt-vc-issuer
-   *  Change controller: IETF
-   *  Specification document: [[ Section 3 of this specification ]]
-   *  Related information: (none)
-   *  Status: permanent
-
-Appendix B.  Examples
+Appendix A.  Examples
 
    Important: The following examples are not normative and provided for
    illustrative purposes only.  In particular, neither the structure of
@@ -1985,7 +1986,7 @@ Appendix B.  Examples
 
    Line breaks have been added for readability.
 
-B.1.  Example Person Identification Data (PID) Credential
+A.1.  Example Person Identification Data (PID) Credential
 
    This example shows how the artifacts defined in this specification
    could be used to represent the identity information of a person from
@@ -2068,8 +2069,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.7_9T1vJMmvdNwGOzc_PQFFsPs00P-Jrk
-   lhJAOgbKIC7OZ4G48XnE3fvaQ0AlvxU7Nj3czjKxHfOhwPSiubtrjQ~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MGIJnGZLFVdymLXeKx2B0Zo2vngzBQAj
+   rlRDdtSrbBC-SwNbxdhUQ3nKvwU9ipRlemK2Jk2EcIz4DcYVLolDjg~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2451,8 +2452,8 @@ B.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.7_9T1vJMmvdNwGOzc_PQFFsPs00P-Jrk
-   lhJAOgbKIC7OZ4G48XnE3fvaQ0AlvxU7Nj3czjKxHfOhwPSiubtrjQ~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.MGIJnGZLFVdymLXeKx2B0Zo2vngzBQAj
+   rlRDdtSrbBC-SwNbxdhUQ3nKvwU9ipRlemK2Jk2EcIz4DcYVLolDjg~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2463,10 +2464,10 @@ B.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODMzNDU2ODMsICJzZF9oYXNoIjogIl
-   pyeEdVeVNsSkE5WG1ob1k4Q1V2bTZ4ZXg1Y2N0MFFUUmZEM3RzVzlNZzQifQ.zk2dLXa
-   Sk4jrS_j3Vpp30rQWbY_uBaCU9__3dboz2R5-sjDGEQUxNKajGRTqOLeeQVSjFfOuQoW
-   dehqhwa18UQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODU3ODE0NzMsICJzZF9oYXNoIjogIl
+   FfWHZ5eWQxMHdkRkZJel9RMFZzMDh5b0x2Wi01R2F6Y2w2a05ZeVVZX3MifQ.WKinhZa
+   WJ8bmyMdSH34pJI8ZaGm9OY-LpnwnYBIRY4vIMEnYpfU4bfkrE68jKjiCFsIhjybudhz
+   Ri9ANIEu2nA
 
                        Figure 25: Presented SD-JWT+KB
 
@@ -2475,8 +2476,8 @@ B.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1783345683,
-     "sd_hash": "ZrxGUySlJA9XmhoY8CUvm6xex5cct0QTRfD3tsW9Mg4"
+     "iat": 1785781473,
+     "sd_hash": "Q_Xvyyd10wdFFIz_Q0Vs08yoLvZ-5Gazcl6kNYyUY_s"
    }
 
                      Figure 26: Key Binding JWT Payload
@@ -2507,14 +2508,15 @@ B.1.  Example Person Identification Data (PID) Credential
 
                     Figure 27: Processed SD-JWT Payload
 
-B.2.  Example Type Metadata
+A.2.  Example Type Metadata
 
    The following example for Type Metadata assumes an SD-JWT VC payload
    structured as follows in Figure 28:
 
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
-     "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+     "vct#integrity":
+       "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
      "name": "Zaphod Beeblebrox",
      "address": {
        "street_address": "42 Galaxy Way",
@@ -2546,32 +2548,41 @@ B.2.  Example Type Metadata
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
      "name": "Betelgeuse Education Credential - First Version",
-     "description": "This is our first version of the education credential. Don't panic.",
-     "extends": "https://galaxy.example.com/galactic-education-credential/v2",
-     "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
+     "description":
+       "This is our first version of the education credential. Don't panic.",
+     "extends":
+       "https://galaxy.example.com/galactic-education-credential/v2",
+     "extends#integrity":
+       "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
      "display": [
        {
          "locale": "en-US",
          "name": "Betelgeuse Education Credential",
-         "description": "An education credential for all carbon-based life forms on Betelgeuse.",
+         "description":
+           "Education credential for all carbon-based life forms on Betelgeuse.",
          "rendering": {
            "simple": {
              "logo": {
                "uri": "https://betelgeuse.example.com/public/education-logo.png",
-               "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+               "uri#integrity":
+                 "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Betelgeuse Ministry of Education logo"
              },
              "background_image": {
-               "uri": "https://betelgeuse.example.com/public/credential-background.png",
-               "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
+               "uri":
+                 "https://betelgeuse.example.com/public/cred-background.png",
+               "uri#integrity":
+                 "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
            },
            "svg_templates": [
              {
-               "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-               "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+               "uri":
+                 "https://betelgeuse.example.com/public/credential-english.svg",
+               "uri#integrity":
+                 "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
                "properties": {
                  "orientation": "landscape",
                  "color_scheme": "light",
@@ -2584,25 +2595,32 @@ B.2.  Example Type Metadata
        {
          "locale": "de-DE",
          "name": "Betelgeuse-Bildungsnachweis",
-         "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
+         "description":
+          "Ldungsnachweis für kohlenstoffbasierten Lebensformen auf Betelgeuse.",
          "rendering": {
            "simple": {
              "logo": {
-               "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-               "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+               "uri":
+                 "https://betelgeuse.example.com/public/education-logo-de.png",
+               "uri#integrity":
+                 "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
                "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
              },
              "background_image": {
-               "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
-               "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
+               "uri":
+                 "https://betelgeuse.example.com/public/cred-background-de.png",
+               "uri#integrity":
+                 "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
              },
              "background_color": "#12107c",
              "text_color": "#FFFFFF"
            },
            "svg_templates": [
              {
-               "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-               "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+               "uri":
+                 "https://betelgeuse.example.com/public/credential-german.svg",
+               "uri#integrity":
+                 "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
                "properties": {
                  "orientation": "landscape",
                  "color_scheme": "light",
@@ -2732,7 +2750,7 @@ B.2.  Example Type Metadata
    4.  The date_awarded property of each degree object is marked as sd:
        always, meaning it can be selectively disclosed.
 
-Appendix C.  Acknowledgements
+Appendix B.  Acknowledgements
 
    We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
    Andrii Deinega, Annabelle Kennedy, Babis Routis, Christian Bormann,
@@ -2744,7 +2762,12 @@ Appendix C.  Acknowledgements
    for their contributions (some of which substantial) to this draft and
    to the initial set of implementations.
 
-Appendix D.  Document History
+Appendix C.  Document History
+
+   -18
+
+   *  Update obsoleted reference, move IANA Considerations, fix long
+      lines, other nits
 
    -17
 
@@ -2877,7 +2900,7 @@ Appendix D.  Document History
       the employed Issuer Signature Mechanism has to be one that is
       permitted for the Issuer according to policy.  Be more clear that
       one permitted Issuer Signature Mechanism is sufficient.
-   *  Fix [...]#integrity claim values in examples (Subresource
+   *  Fix "[...]#integrity" claim values in examples (Subresource
       Integrity uses regular base64 encoding and some were wrong length)
 
    -09
@@ -2885,7 +2908,7 @@ Appendix D.  Document History
    *  Use SD-JWT KB in place of SD-JWT with Key Binding JWT
    *  Editorial changes
    *  Document reasons for not using JSON Pointer or JSON Path (Issue
-      #267)
+      267)
    *  Clarify that private claim names MAY be used
    *  Update PID Example
    *  Fix section numbering in a few SD-JWT references
