@@ -259,6 +259,58 @@ type to coexist and helps ensure that participants interpret credentials consist
 For example, if such a need came about for the hypothetical type `urn:example:eudi:pid:aendgard:1`,
 a new version could be defined using a 'vct' of `urn:example:eudi:pid:aendgard:2`.
 
+#### Other Credential Types - `aka_vcts` Claim {#aka-vcts-claim}
+
+This specification defines the new JWT claim `aka_vcts`. Its value MUST be a
+non-empty array of case-sensitive strings, each identifying an additional type
+of the SD-JWT VC. Each value
+MUST be a Collision-Resistant Name as defined in Section 2 of [@!RFC7515], as
+required for `vct` values in (#type-claim). The array MUST NOT contain the value
+of the `vct` claim of the SD-JWT VC. The order of the values in the array is
+not significant and does not convey any information about the relationships
+between the types.
+
+An SD-JWT VC containing the `aka_vcts` claim is a Verifiable Digital
+Credential of the type identified by the `vct` claim and, additionally, of each
+of the types identified by the values in the `aka_vcts` claim. Holders
+and Verifiers can treat the SD-JWT VC as a credential of any of these types. This is
+typically used when the type identified by the `vct` claim is derived from a
+more general type, which is then included in the `aka_vcts` claim.
+
+The `aka_vcts` claim is particularly useful in issuance and presentation protocols,
+where the receiving party (a Holder during issuance or a Verifier during presentation)
+matches the type of a received SD-JWT VC against the type it requested or
+expects. For example, a Verifier requesting a credential of the hypothetical
+type `urn:example:eudi:pid` that receives an SD-JWT VC with a `vct` value of
+`urn:example:eudi:pid:aendgard:1` can determine from an `aka_vcts` value of
+`["urn:example:eudi:pid"]` that the received credential is also of the
+requested type.
+
+The content in (#example-with-aka-vcts) shows an excerpt of an Unsecured
+Payload using the `aka_vcts` claim to express this example.
+
+```json
+{
+  "vct": "urn:example:eudi:pid:aendgard:1",
+  "aka_vcts": [
+    "urn:example:eudi:pid"
+  ]
+}
+```
+Figure: Example Unsecured Payload excerpt with `aka_vcts` {#example-with-aka-vcts}
+
+Note that the `aka_vcts` claim is asserted by
+the Issuer and, like the `vct` claim, is only as trustworthy as the Issuer
+itself.
+
+The `aka_vcts` claim is independent of Type Metadata (#type-metadata)
+and, in particular, orthogonal to the `extends` property: the claim can be used
+whether or not Type Metadata exists for any of the listed types, and the listed
+types are not required to be related to the type of the SD-JWT VC through the
+`extends` property. The interaction between the `aka_vcts` claim and
+Type Metadata using the `extends` property is described in
+(#extending-type-metadata).
+
 #### Registered JWT Claims {#claims}
 
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
@@ -277,6 +329,8 @@ information.
 * `vct`: REQUIRED. The type of the Verifiable Digital Credential, e.g.,
 `https://credentials.example.com/identity_credential`, as defined in (#type-claim).
 * `vct#integrity`: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
+* `aka_vcts`: OPTIONAL. An array of additional types of the Verifiable Digital
+Credential, as defined in (#aka-vcts-claim).
 * `status`: OPTIONAL. The information on how to read the status of the Verifiable
 Credential. See [@?I-D.ietf-oauth-status-list]
  for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
@@ -660,6 +714,16 @@ type.
 The extended type MAY itself extend another type. This can be used to create a
 chain or hierarchy of types. The security considerations described in
 (#circular-extends) apply in order to avoid problems with circular dependencies.
+
+The `extends` property and the `aka_vcts` claim defined in
+(#aka-vcts-claim) are orthogonal mechanisms, and Type Metadata does not
+add any requirements to the content of the `aka_vcts` claim. However,
+if Type Metadata exists both for the type in the `vct` claim and for a type
+listed in the `aka_vcts` claim, the type of the SD-JWT VC SHOULD
+extend the listed type, whether directly or transitively. A Consumer
+processing Type Metadata MAY use the types established via the `extends`
+property in addition to those in the `aka_vcts` claim when matching
+types.
 
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
@@ -1201,6 +1265,13 @@ confer any implicit authorization to issue credentials of that type or its exten
 
 Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
+The same considerations apply to the additional types asserted via the `aka_vcts`
+claim defined in (#aka-vcts-claim). These types are asserted by the Issuer and,
+for types without Type Metadata, cannot be corroborated by an `extends` relationship.
+Verifiers and Holders therefore MUST NOT treat the presence of a type in the `aka_vcts`
+claim as evidence that the Issuer is authorized to issue credentials of, or derived
+from, that type.
+
 ## Trust in Type Metadata
 
 Type Metadata associated with an SD-JWT VC, e.g., rendering metadata, is asserted by the Publisher of the Type Metadata and trust in this metadata depends on the trust relationship between its Publisher and the Consumer. A Consumer MUST NOT assume that Type Metadata is accurate or meaningful unless the Publisher is recognized as authoritative for the type in question.
@@ -1237,6 +1308,10 @@ about the Holder, e.g., country of residency or citizenship.
 
 Additionally, Holders have to be informed that, besides the actual requested claims, the
 `vct` information is shared with the Verifier.
+
+The same considerations apply to the `aka_vcts` claim, which is also not
+selectively disclosable and reveals the additional types of the
+credential.
 
 ## Issuer Phone-Home
 
@@ -1367,6 +1442,11 @@ recommendations in (#robust-retrieval) apply.
 - Claim Description: SD-JWT VC vct claim "integrity metadata" value
 - Change Controller: IETF
 - Specification Document(s): [[ (#document-integrity) of this specification ]]
+<br/>
+- Claim Name: "aka_vcts"
+- Claim Description: Additional types of the verifiable digital credential
+- Change Controller: IETF
+- Specification Document(s): [[ (#aka-vcts-claim) of this specification ]]
 
 ## Media Types Registry
 
@@ -1732,6 +1812,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -18
 
+* Added the optional `aka_vcts` claim, conveying additional types of the credential.
 * Update obsoleted reference, move IANA Considerations, fix long lines, other nits
 
 -17
