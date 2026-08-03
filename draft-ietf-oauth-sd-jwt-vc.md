@@ -483,7 +483,7 @@ at the path defined in (#jwt-vc-issuer-metadata).
 (#GET) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
 
-```http
+```http-message
 GET /.well-known/jwt-vc-issuer HTTP/1.1
 Host: example.com
 ```
@@ -496,7 +496,7 @@ between the host component and the path component.
 (#GET1234) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com/tenant/1234`:
 
-```
+```http-message
 GET /.well-known/jwt-vc-issuer/tenant/1234 HTTP/1.1
 Host: example.com
 ```
@@ -531,7 +531,7 @@ in the JWT VC Issuer Metadata.
 (#example-metadata-jwks) is an example of a JWT VC Issuer Metadata configuration
 including `jwks`:
 
-```
+```json
 {
    "issuer":"https://example.com",
    "jwks":{
@@ -557,7 +557,7 @@ Figure: Example Metadata with a JSON Web Key Set {#example-metadata-jwks}
 (#example-metadata-jwks-uri) is an example of a JWT VC Issuer Metadata
 configuration including `jwks_uri`:
 
-```
+```json
 {
    "issuer":"https://example.com",
    "jwks_uri":"https://jwt-vc-issuer.example.com/my_public_keys.jwks"
@@ -606,7 +606,8 @@ with the value `https://betelgeuse.example.com/education_credential/v42`.
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
-  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+  "vct#integrity":
+    "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
   ...
 }
 ```
@@ -624,14 +625,15 @@ retrieved from it:
   "name":"Betelgeuse Education Credential - Version 42",
   "description":"This is our education credential. Don't panic.",
   "extends":"https://galaxy.example.com/galactic-education-credential/v2",
-  "extends#integrity":"sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
+  "extends#integrity":
+    "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU="
 }
 ```
 Figure: Example Type Metadata Document {#example-type-metadata-document}
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=` (see (#document-integrity) for details).
+`vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=` (see (#document-integrity) for details).
 
 ## Type Metadata Format {#type-metadata-format}
 
@@ -846,7 +848,7 @@ The example in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
 example in (#ExampleTypeMetadata).
 
-```svg
+```xml
 <svg xmlns="http://www.w3.org/2000/svg" width="100" height="100">
   <text x="10" y="20">Street address: {{address_street_address}}</text>
 </svg>
@@ -1427,8 +1429,6 @@ recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
-{backmatter}
-
 # IANA Considerations
 
 ## JSON Web Token Claims Registration
@@ -1476,8 +1476,8 @@ The Internet media type for an SD-JWT VC is `application/dc+sd-jwt`.
 ## Well-Known URI Registry
 
 This specification requests the well-known URI defined in (#jwt-vc-issuer-metadata)
-in the IANA "Well-Known URIs" registry [@IANA.well-known] established
-by [@!RFC5785].
+in the IANA "Well-Known URIs" registry [@IANA.well-known] as described in
+by [@!RFC8615].
 
 ### Registry Contents
 
@@ -1486,6 +1486,8 @@ by [@!RFC5785].
 * Specification document: [[ (#jwt-vc-issuer-metadata) of this specification ]]
 * Related information: (none)
 * Status: permanent
+
+{backmatter}
 
 # Examples
 
@@ -1547,7 +1549,8 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
-  "vct#integrity": "sha256-1odmyxoVQCuQx8SAym8rWHXba41fM/Iv/V1H8VHGN00=",
+  "vct#integrity":
+    "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
   "name": "Zaphod Beeblebrox",
   "address": {
     "street_address": "42 Galaxy Way",
@@ -1579,32 +1582,41 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
   "name": "Betelgeuse Education Credential - First Version",
-  "description": "This is our first version of the education credential. Don't panic.",
-  "extends": "https://galaxy.example.com/galactic-education-credential/v2",
-  "extends#integrity": "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
+  "description":
+    "This is our first version of the education credential. Don't panic.",
+  "extends":
+    "https://galaxy.example.com/galactic-education-credential/v2",
+  "extends#integrity":
+    "sha256-ilOUJsTultOwLfz7QUcFALaRa3BP/jelX1ds04kB9yU=",
   "display": [
     {
       "locale": "en-US",
       "name": "Betelgeuse Education Credential",
-      "description": "An education credential for all carbon-based life forms on Betelgeuse.",
+      "description":
+        "Education credential for all carbon-based life forms on Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
             "uri": "https://betelgeuse.example.com/public/education-logo.png",
-            "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+            "uri#integrity":
+              "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Betelgeuse Ministry of Education logo"
           },
           "background_image": {
-            "uri": "https://betelgeuse.example.com/public/credential-background.png",
-            "uri#integrity": "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
+            "uri":
+              "https://betelgeuse.example.com/public/cred-background.png",
+            "uri#integrity":
+              "sha256-5sBT7mMLylHLWrrS/qQ8aHpRAxoraWVmWX6eUVMlrrA="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
         },
         "svg_templates": [
           {
-            "uri": "https://betelgeuse.example.com/public/credential-english.svg",
-            "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+            "uri":
+              "https://betelgeuse.example.com/public/credential-english.svg",
+            "uri#integrity":
+              "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
             "properties": {
               "orientation": "landscape",
               "color_scheme": "light",
@@ -1617,25 +1629,32 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
     {
       "locale": "de-DE",
       "name": "Betelgeuse-Bildungsnachweis",
-      "description": "Ein Bildungsnachweis für alle kohlenstoffbasierten Lebensformen auf Betelgeuse.",
+      "description":
+       "Ldungsnachweis für kohlenstoffbasierten Lebensformen auf Betelgeuse.",
       "rendering": {
         "simple": {
           "logo": {
-            "uri": "https://betelgeuse.example.com/public/education-logo-de.png",
-            "uri#integrity": "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
+            "uri":
+              "https://betelgeuse.example.com/public/education-logo-de.png",
+            "uri#integrity":
+              "sha256-LmXfh+9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1U=",
             "alt_text": "Logo des Betelgeusischen Bildungsministeriums"
           },
           "background_image": {
-            "uri": "https://betelgeuse.example.com/public/credential-background-de.png",
-            "uri#integrity": "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
+            "uri":
+              "https://betelgeuse.example.com/public/cred-background-de.png",
+            "uri#integrity":
+              "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
         },
         "svg_templates": [
           {
-            "uri": "https://betelgeuse.example.com/public/credential-german.svg",
-            "uri#integrity": "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
+            "uri":
+              "https://betelgeuse.example.com/public/credential-german.svg",
+            "uri#integrity":
+              "sha256-I4JcBGO7UfrkOBrsV7ytNJAfGuKLQh+e+Z31mc7iAb4=",
             "properties": {
               "orientation": "landscape",
               "color_scheme": "light",
@@ -1794,6 +1813,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -18
 
 * Added the optional `aka_vcts` claim, conveying additional types of the credential.
+* Update obsoleted reference, move IANA Considerations, fix long lines, other nits
 
 -17
 
@@ -1878,13 +1898,13 @@ for their contributions (some of which substantial) to this draft and to the ini
 -10
 
 * Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.
-* Fix `[...]#integrity` claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)
+* Fix "[...]#integrity" claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)
 
 -09
 
 * Use SD-JWT KB in place of SD-JWT with Key Binding JWT
 * Editorial changes
-* Document reasons for not using JSON Pointer or JSON Path (Issue #267)
+* Document reasons for not using JSON Pointer or JSON Path (Issue 267)
 * Clarify that private claim names MAY be used
 * Update PID Example
 * Fix section numbering in a few SD-JWT references
