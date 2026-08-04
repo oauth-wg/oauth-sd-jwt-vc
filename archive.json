@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-02T00:52:00.054152+00:00",
+  "timestamp": "2026-08-04T00:49:17.247413+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33377,24 +33377,26 @@
       "id": "PR_kwDOJbVClc74QYtC",
       "title": "idnits stuff",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-07-30T00:03:05Z",
-      "updatedAt": "2026-07-31T08:00:54Z",
+      "updatedAt": "2026-08-03T18:23:58Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "ccc9724e57460f56e08e6cabdbd3c530c857e50a",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "deeznits",
       "headRefOid": "a0130bf46796057daecd5f7eccc3aaeec5dfc8ec",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-08-03T18:23:58Z",
+      "mergedAt": "2026-08-03T18:23:58Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "a8e8b966a58365be330b78d4c6f09eaf30930776"
+      },
       "comments": [],
       "reviews": [
         {
@@ -33408,6 +33410,87 @@
           "body": "Thank you!",
           "createdAt": "2026-07-31T08:00:54Z",
           "updatedAt": "2026-07-31T08:00:54Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABILnCGg",
+          "commit": {
+            "abbreviatedOid": "a0130bf"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-03T12:31:50Z",
+          "updatedAt": "2026-08-03T12:31:50Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 420,
+      "id": "PR_kwDOJbVClc75ub-r",
+      "title": "feat: add optional claim for other vcts based on implementer's feedback",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/420",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "During the discussion at the IETF meeting, feedback was raised that type inheritance information is currently only available via Type Metadata (extends). However, Type Metadata resolution is optional and may not always be possible (e.g., offline scenarios, unavailable metadata documents).\r\n\r\nThis is a problem in issuance and presentation protocols: a Verifier typically matches the vct value of a received credential against the type it requested. For example, if a Verifier requests urn:example:eudi:pid but receives a credential with vct: urn:example:eudi:pid:aendgard:1, the match fails unless the Verifier can resolve Type Metadata and walk the extends chain, which it cannot rely on.\r\n\r\nThis PR defines a new optional aka_vcts claim in the SD-JWT VC payload: a string array of additional vct values identifying types of the credential. A credential containing the claim is of the type in vct and, additionally, of each of the types in aka_vcts, and Holders and Verifiers can treat it as a credential of any of these types, typically used when the vct type is derived from a more general type. The claim must not be selectively disclosable, analogous to vct.\r\n\r\nThe claim is orthogonal to Type Metadata and extends: it works without any Type Metadata, and Type Metadata adds no requirements to the claim's content. Conversely, where Type Metadata exists for both the vct type and a listed type, the vct type SHOULD extend the listed type, and Consumers processing Type Metadata may use the extends chain in addition to the claim when matching types.\r\n\r\n*updates* Based on implementer feedback: renamed inherits to aka_vcts to reflect that the claim conveys additional type identifiers rather than an inheritance hierarchy, made it explicit that the claim is orthogonal to extends, moved the extends interaction to the Type Metadata section, and relaxed the metadata/claim consistency from MUST to SHOULD (now pointing at Type Metadata design rather than claim content).",
+      "createdAt": "2026-08-02T20:06:50Z",
+      "updatedAt": "2026-08-03T19:21:56Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "a8e8b966a58365be330b78d4c6f09eaf30930776",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "awoie/add-inhertis-from",
+      "headRefOid": "ccdf3430be23ef7f47ee8088e11f2f0aa9c539c1",
+      "closedAt": "2026-08-03T19:21:56Z",
+      "mergedAt": "2026-08-03T19:21:56Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "69e50ea623367c212c12c680e35e256b640b5f6b"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABIHjr2Q",
+          "commit": {
+            "abbreviatedOid": "9a8762b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-02T21:40:57Z",
+          "updatedAt": "2026-08-02T21:40:57Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABIIswNQ",
+          "commit": {
+            "abbreviatedOid": "9a8762b"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-03T05:14:25Z",
+          "updatedAt": "2026-08-03T05:14:25Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABIMyopw",
+          "commit": {
+            "abbreviatedOid": "d889423"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-03T14:36:34Z",
+          "updatedAt": "2026-08-03T14:36:34Z",
           "comments": []
         }
       ]
