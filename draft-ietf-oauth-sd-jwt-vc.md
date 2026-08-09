@@ -1810,6 +1810,10 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 # Document History
 
+-19
+
+
+
 -18
 
 * Added the optional `aka_vcts` claim, conveying additional types of the credential.
