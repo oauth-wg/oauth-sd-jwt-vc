@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-09T00:29:36.441904+00:00",
+  "timestamp": "2026-08-11T00:28:41.564952+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33500,24 +33500,26 @@
       "id": "PR_kwDOJbVClc77vQrU",
       "title": "-19 placeholder to doc history",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/421",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-06T19:29:50Z",
-      "updatedAt": "2026-08-06T19:29:51Z",
+      "updatedAt": "2026-08-09T12:29:09Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "69e50ea623367c212c12c680e35e256b640b5f6b",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "bc-pi-patch-19",
       "headRefOid": "994dac8457ec8a44c658620342708f1137b494f4",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-08-09T12:29:09Z",
+      "mergedAt": "2026-08-09T12:29:09Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "ebcf26fe962a69bc4737a4faacf83287871b3818"
+      },
       "comments": [],
       "reviews": []
     }
