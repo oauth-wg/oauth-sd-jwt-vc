@@ -317,7 +317,7 @@ Type Metadata using the `extends` property is described in
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
 
-The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:
+The following registered JWT claims, including any of their sub-claims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:
 
 * `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Digital Credential
     when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
@@ -1897,6 +1897,7 @@ Annabelle Kennedy,
 Babis Routis,
 Christian Bormann,
 Dan Moore,
+Deb Cooley,
 Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
@@ -1904,6 +1905,7 @@ Hannes Tschofenig,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
+Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
 Mirko Mollik,
@@ -1934,6 +1936,9 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Added a complete HTTP response example for JWT VC Issuer Metadata
   * Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components
   * Note privacy implications of retrieving rendering resources
+* Address AD review:
+  * Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
+  *
 
 -18
 
