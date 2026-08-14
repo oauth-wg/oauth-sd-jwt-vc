@@ -1584,7 +1584,6 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.<a href="#secti
 <a href="#name-decoded-sd-jwt-vc-header" class="selfRef">Decoded SD-JWT VC Header</a>
             </figcaption></figure>
 </div>
-<p id="section-2.2.1-5">Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period.<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="jwt-claims-set">
@@ -2011,9 +2010,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KaKRO
-DDdoh8vDSBeb6W_NykOql3doVqMOVfhPIJ4kKcsZB6vNnssr4mII8VeTRZVCz69IYA9o
-e7-A6ezBQYefQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LuHlZ
+A23fSpslAraANRVNPIsPCBGeYabWvPpo_rGlor_-Z82A0_1esNpsa486EFJ13lTYXjIF
+mYeBmQ0jMtZIQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2059,17 +2058,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KaKRO
-DDdoh8vDSBeb6W_NykOql3doVqMOVfhPIJ4kKcsZB6vNnssr4mII8VeTRZVCz69IYA9o
-e7-A6ezBQYefQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LuHlZ
+A23fSpslAraANRVNPIsPCBGeYabWvPpo_rGlor_-Z82A0_1esNpsa486EFJ13lTYXjIF
+mYeBmQ0jMtZIQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDA5MT
-MsICJzZF9oYXNoIjogImdGQnNIX0gxd2tHWjFEZ0gzMkZZbjBVN3dQZUJjYnpNSlhqTD
-FjRXU2bDQifQ.RQr-2Pdgj1P-l1hKmc_5-njfGJmXYrwWq2mI58ASRbxKa96rysAiyvD
-AmzMTYuRGi8FC5O30m2Coztker6RGWg
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDM0ND
+ksICJzZF9oYXNoIjogIkxScXQ4aXhjWVBmVmd4U2g1dzltaHk1RVlBX3JJaWZOY2cya3
+V1OVRmVGMifQ.OZfJ5CXuKcu_g0BAR2h8jQjJ55JP-opvzNt9JC4LT3NMecOFj1NVWKR
+c5j1mZY2T2V9eeSJqFoJTNehs506e6A
 
 </pre>
 </div>
@@ -2126,8 +2125,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.taqEYbHH0cGGNZiAcMK2T04xlBl0lSRaZ9BEvAq-do_v4d
-B6MV22o-6QaFLm9Ii4OjszTJLORD_BzcO2cqpolw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.BtVTq3s9GKq4wD4XCQcOZBMr4sNytUeQ2TwyxsbiwvwyDn
+fDoYl8zaXY9mPt-OYueUHLQbaOWWhpV9hrwXh3JQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3882,8 +3881,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gEf5stuLplSKDWEXXRjCN1VwmtlxJ-jB
-PYlkemAYAM5vRvkulj0hxMBZSzoGe-m7edSSxOewpMCVZzR2J_ii_A~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.200c8tGm6Lv8S60EqFfx3lXrYR5hLEAT
+7yEI-6M21B8vl6JIm17PB9VKFuccjmTYVL7MK9xizRF2Dtk0WLZ8jg~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4380,8 +4379,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gEf5stuLplSKDWEXXRjCN1VwmtlxJ-jB
-PYlkemAYAM5vRvkulj0hxMBZSzoGe-m7edSSxOewpMCVZzR2J_ii_A~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.200c8tGm6Lv8S60EqFfx3lXrYR5hLEAT
+7yEI-6M21B8vl6JIm17PB9VKFuccjmTYVL7MK9xizRF2Dtk0WLZ8jg~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4392,10 +4391,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDA5MTMsICJzZF9oYXNoIjogIm
-haczhhNmlpZ3lDVldZdTQ0WlNEVkhDVzVLX2ZBT21SV1Z5SkxjM1hwdjgifQ.vXPmz9F
-yiOFJ2n_x2oJPpLKMLB8ZUmtrXl7axarJek3lQfUMRT5CXVacs2hGvgK3MW6gQ-itbg-
-bipDzbkxa9A
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDM0NDksICJzZF9oYXNoIjogIk
+lrbE02ckladTFnNVJLQ0hQQTNINDJEMFZEdWl3R0FPVXJtTDY0RzlVdlUifQ.JEgNYz8
+Tf9Zue2ZaCUTDoH1pkQ7_i3tX8XgZ5_SO9bDHQYVTGVDn2BYZ5UIiLUkjM2cfBgIXjIc
+FzfkLCO4Z5A
 
 </pre>
 </div>
@@ -4410,8 +4409,8 @@ bipDzbkxa9A
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1786740913,
-  "sd_hash": "hZs8a6iigyCVWYu44ZSDVHCW5K_fAOmRWVyJLc3Xpv8"
+  "iat": 1786743449,
+  "sd_hash": "IklM6rIZu1g5RKCHPA3H42D0VDuiwGAOUrmL64G9UvU"
 }
 
 </pre>
@@ -4780,8 +4779,9 @@ for their contributions (some of which substantial) to this draft and to the ini
         <li class="compact" id="appendix-C-2.2">
           <p id="appendix-C-2.2.1">Address AD review:<a href="#appendix-C-2.2.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-2.2.2.1">Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
-*<a href="#appendix-C-2.2.2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-2.2.2.1">Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable<a href="#appendix-C-2.2.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-2.2.2.2">Remove: "Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period."<a href="#appendix-C-2.2.2.2" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
