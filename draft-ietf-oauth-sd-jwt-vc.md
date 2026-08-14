@@ -192,8 +192,6 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 ```
 Figure: Decoded SD-JWT VC Header {#decoded-header}
 
-Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period.
-
 ### JWT Claims Set
 
 This section defines the claims that can be included in the payload of
@@ -1938,7 +1936,8 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Note privacy implications of retrieving rendering resources
 * Address AD review:
   * Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
-  *
+  * Remove: "Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period."
+
 
 -18
 
