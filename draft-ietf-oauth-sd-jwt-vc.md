@@ -192,7 +192,7 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 ```
 Figure: Decoded SD-JWT VC Header {#decoded-header}
 
-Note that drafts of this specification used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024, when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. To facilitate a minimally disruptive transition, recipients MAY, as a matter of local policy, additionally accept `vc+sd-jwt` as the value of the `typ` header for SD-JWT VCs issued under those drafts. Since the `vc` media type name has been assigned to a different format, such a policy risks accepting credentials of that other format.
+Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period.
 
 ### JWT Claims Set
 
@@ -1932,7 +1932,6 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Generalize the SSRF considerations to all dereferenced URLs, including redirect targets, and define internal resources with reference to RFC 6890
   * Recommend nosniff and Content-Security-Policy response header fields when serving documents and rendering resources
   * Added a complete HTTP response example for JWT VC Issuer Metadata
-  * Clarify the transitional acceptance of the legacy vc+sd-jwt typ value as a matter of local policy
   * Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components
   * Note privacy implications of retrieving rendering resources
 
