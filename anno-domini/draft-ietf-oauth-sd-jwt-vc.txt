@@ -660,9 +660,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.YT0AN
-   yn6We1pxvkhnVGAff3XpE8vNjiy48PnGzmxi918Q1y30V6uyfCTPfCF74NoWV6SxMVVh
-   tPOvd9i5EcA0A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ueIM4
+   chWEpm7mcSoeIZvmhSb2pNhH0tnjy5XzTFZjy0li7vLkNZJGTOOtVnV2awXhuMlEB93Q
+   7G995R2FI50VQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -698,17 +698,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.YT0AN
-   yn6We1pxvkhnVGAff3XpE8vNjiy48PnGzmxi918Q1y30V6uyfCTPfCF74NoWV6SxMVVh
-   tPOvd9i5EcA0A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ueIM4
+   chWEpm7mcSoeIZvmhSb2pNhH0tnjy5XzTFZjy0li7vLkNZJGTOOtVnV2awXhuMlEB93Q
+   7G995R2FI50VQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDM4ND
-   YsICJzZF9oYXNoIjogIlFINEtfV0dyS0ZrZUtGWDNKRUlPWDhMYnNTLXM1T21DYkNodU
-   tKb0RxdzgifQ.S2wCy502tnQA618I_ubde7g51Ps5hA6i5U_4SXYip3vWna5g3fwrtBq
-   DcDxBNqIyfB1okM8YccEQTMCZrFjCqQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDU1OT
+   gsICJzZF9oYXNoIjogInRITVlPR09QdWRzMXBpRk5xNmRad0E0aVBzRzY0UExlMFhlek
+   tOeE8zek0ifQ.jmRTqqq6J-OV64MlVRKBxFwUy2Kkrlj5qrVgheHiEA6pxpgBhBXzbcG
+   w1jfX0t-hzidwX2UutJa4prubLFnF8g
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -754,8 +754,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.ZlLvEmPnsDa-QI_WCaQZlpMWPpGEuX_XFm7jPNUn1jhhuV
-   fVZYIZCkpQ9vdvauH-iJ-qt_D9Ugqk2xkNs-q7hA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.HuyvUVrHAdLeQCWNfWD7kFcQU-XPUJZbJWK40rrw4H1yMT
+   6-vVGcmZPKxQu7l4SwyWDZ7DzL1Sfaay5dQM7WxQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1203,9 +1203,10 @@ Table of Contents
 5.5.  Display Metadata
 
    The display property is an array containing display information for
-   the type.  The array MUST contain an object for each locale that is
-   supported by the type.  The consuming application MUST use the
-   language tag it considers most appropriate for the user.
+   the type.  The array contains an object for each locale that is
+   supported by the type.  The consuming application uses the object
+   containing the language tag it considers most appropriate for the
+   user.
 
    The objects in the array have the following properties:
 
@@ -2292,8 +2293,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.t05DRfjrsXxdyKEXJqiD4JPFrN7nCyWa
-   vHGMqohLomR9rXBWsFal6ht_PoDt2ddP6wOrnuWOr_OkPzf9i-zkyw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.m_JielOueNkhllg-e6G9iLzEALEK_9IU
+   9plOVSWNCBbtZHRkDAWqC8IC4ikyv26knwe4bi5vJERYFQVd9vOGJQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2675,8 +2676,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.t05DRfjrsXxdyKEXJqiD4JPFrN7nCyWa
-   vHGMqohLomR9rXBWsFal6ht_PoDt2ddP6wOrnuWOr_OkPzf9i-zkyw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.m_JielOueNkhllg-e6G9iLzEALEK_9IU
+   9plOVSWNCBbtZHRkDAWqC8IC4ikyv26knwe4bi5vJERYFQVd9vOGJQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2687,10 +2688,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDM4NDYsICJzZF9oYXNoIjogIk
-   RiZG80U0loVC12MHctSXl5QXZIakJBZVlqOW8tNTZnd2JmYU9Nazk0QlkifQ.E40RHC1
-   1-aVFNs95qVUR4V-dSesmtz-z3AbA1SDBxFQh9s6f0cSyYM_hj9fScpGkTc7CXm0XDk3
-   z4mvUrmcFPQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDU1OTgsICJzZF9oYXNoIjogIm
+   NHQV9RZVNiTVo2U3lqeUp3b3lTV1RoTmRnd0ZsQTl2OGFWOU9DRERSWHcifQ.S9YzLTx
+   SXGc1XMuGcgTCHO53Zadk3UVS0DQcltW5Cwv6VI9O7inPlMrPS2NdJz0AnVh6dLWxsAa
+   J5ffPG5VpDQ
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2699,8 +2700,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1786743846,
-     "sd_hash": "Dbdo4SIhT-v0w-IyyAvHjBAeYj9o-56gwbfaOMk94BY"
+     "iat": 1786745598,
+     "sd_hash": "cGA_QeSbMZ6SyjyJwoySWThNdgwFlA9v8aV9OCDDRXw"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3031,6 +3032,8 @@ Appendix C.  Document History
          minimally disruptive transition, both vc+sd-jwt and dc+sd-jwt
          should be accepted as the value of the typ header for a
          reasonable transitional period."
+      -  Not use big 2119 langue in the first paragraph of the Display
+         Metadata section
 
    -18
 
