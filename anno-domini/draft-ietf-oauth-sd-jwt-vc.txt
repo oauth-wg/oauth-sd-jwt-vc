@@ -397,9 +397,13 @@ Table of Contents
    The aka_vcts claim is particularly useful in issuance and
    presentation protocols, where the receiving party (a Holder during
    issuance or a Verifier during presentation) matches the type of a
-   received SD-JWT VC against the type it requested or expects.  For
-   example, a Verifier requesting a credential of the hypothetical type
-   urn:example:eudi:pid that receives an SD-JWT VC with a vct value of
+   received SD-JWT VC against the type it requested or expects.  While
+   relationships between credential types can be expressed through the
+   extends property in Type Metadata, Type Metadata is optional and may
+   not be available, so issuance and presentation protocols cannot
+   always rely on it for type matching.  For example, a Verifier
+   requesting a credential of the hypothetical type urn:example:eudi:pid
+   that receives an SD-JWT VC with a vct value of
    urn:example:eudi:pid:aendgard:1 can determine from an aka_vcts value
    of ["urn:example:eudi:pid"] that the received credential is also of
    the requested type.
@@ -660,9 +664,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ueIM4
-   chWEpm7mcSoeIZvmhSb2pNhH0tnjy5XzTFZjy0li7vLkNZJGTOOtVnV2awXhuMlEB93Q
-   7G995R2FI50VQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.nQQFY
+   GYuVD-X5-W_wkAuKxjkQmuotY8n0JV9Hg3FzS9gheiCxhFtRCAczou3PD9uVxNdMcwg0
+   SMaqBC4MTuDnA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -698,17 +702,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ueIM4
-   chWEpm7mcSoeIZvmhSb2pNhH0tnjy5XzTFZjy0li7vLkNZJGTOOtVnV2awXhuMlEB93Q
-   7G995R2FI50VQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.nQQFY
+   GYuVD-X5-W_wkAuKxjkQmuotY8n0JV9Hg3FzS9gheiCxhFtRCAczou3PD9uVxNdMcwg0
+   SMaqBC4MTuDnA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDU1OT
-   gsICJzZF9oYXNoIjogInRITVlPR09QdWRzMXBpRk5xNmRad0E0aVBzRzY0UExlMFhlek
-   tOeE8zek0ifQ.jmRTqqq6J-OV64MlVRKBxFwUy2Kkrlj5qrVgheHiEA6pxpgBhBXzbcG
-   w1jfX0t-hzidwX2UutJa4prubLFnF8g
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDczMT
+   YsICJzZF9oYXNoIjogIlRJdG1FNHBKT0ZxMF9RQnJwUF9aMjZmbXdHMzNhR3ZrQ0ZKZF
+   9qVDl0QUUifQ.1KeH4-eekVd6bBfZSIn2IJAxod3mulHTIFdFDnC-uv4VXHSjyXnbh8_
+   NrbP41Y_AJf3gkX0jATFSY6e_eL1PbQ
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -754,8 +758,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.HuyvUVrHAdLeQCWNfWD7kFcQU-XPUJZbJWK40rrw4H1yMT
-   6-vVGcmZPKxQu7l4SwyWDZ7DzL1Sfaay5dQM7WxQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.kM1ZJeL_bI6X219go9dBi_8zyxjh0H1kvri5nhcuhiUw81
+   WpP4pEzbSbYVE3_UVGLbYlrWORqoSnQXHezJcUoQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2019,6 +2023,10 @@ Table of Contents
 
 9.1.  JSON Web Token Claims Registration
 
+   This specification requests registration of the following Claims in
+   the IANA "JSON Web Token Claims" registry [IANA.JWT] established by
+   [RFC7519].
+
    *  Claim Name: "vct"
    *  Claim Description: Verifiable digital Credential Type identifier
    *  Change Controller: IETF
@@ -2039,7 +2047,8 @@ Table of Contents
 
 9.2.1.  application/dc+sd-jwt
 
-   The Internet media type for an SD-JWT VC is application/dc+sd-jwt.
+   This section requests registration of the application/dc+sd-jwt media
+   type in the "Media Types" registry [IANA.MediaTypes].
 
    *  Type name: application
    *  Subtype name: dc+sd-jwt
@@ -2171,6 +2180,13 @@ Table of Contents
               <https://datatracker.ietf.org/doc/html/draft-ietf-oauth-
               status-list-21>.
 
+   [IANA.JWT] IANA, "JSON Web Token Claims",
+              <https://www.iana.org/assignments/jwt>.
+
+   [IANA.MediaTypes]
+              IANA, "Media Types", <https://www.iana.org/assignments/
+              media-types/media-types.xhtml>.
+
    [IANA.well-known]
               IANA, "Well-Known URIs",
               <https://www.iana.org/assignments/well-known-uris>.
@@ -2293,8 +2309,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.m_JielOueNkhllg-e6G9iLzEALEK_9IU
-   9plOVSWNCBbtZHRkDAWqC8IC4ikyv26knwe4bi5vJERYFQVd9vOGJQ~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1fIZt1PUeM-fUQsX36m2ZlVMUv_t0RN4
+   8MSiJSa-vheAsS3iB2xkolRQCsoN7ZRte2Hc8_fQMVXS9OiNcwiOoQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2676,8 +2692,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.m_JielOueNkhllg-e6G9iLzEALEK_9IU
-   9plOVSWNCBbtZHRkDAWqC8IC4ikyv26knwe4bi5vJERYFQVd9vOGJQ~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1fIZt1PUeM-fUQsX36m2ZlVMUv_t0RN4
+   8MSiJSa-vheAsS3iB2xkolRQCsoN7ZRte2Hc8_fQMVXS9OiNcwiOoQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2688,10 +2704,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDU1OTgsICJzZF9oYXNoIjogIm
-   NHQV9RZVNiTVo2U3lqeUp3b3lTV1RoTmRnd0ZsQTl2OGFWOU9DRERSWHcifQ.S9YzLTx
-   SXGc1XMuGcgTCHO53Zadk3UVS0DQcltW5Cwv6VI9O7inPlMrPS2NdJz0AnVh6dLWxsAa
-   J5ffPG5VpDQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODY3NDczMTYsICJzZF9oYXNoIjogIm
+   ZrMzNzSHVuNFZhcjdhQjkydGdlUWxCY2o2MEpjX0VjVWcxZ0MxblktZTQifQ.NOUj_rl
+   FskTeE06r1bdFkZZzx1R9Fpo6sxiYeJ1SZHnoPtIXCmxnnLGFxBn29H-iOATA2tYRYVE
+   SEpE1Rmjk7A
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2700,8 +2716,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1786745598,
-     "sd_hash": "cGA_QeSbMZ6SyjyJwoySWThNdgwFlA9v8aV9OCDDRXw"
+     "iat": 1786747316,
+     "sd_hash": "fk33sHun4Var7aB92tgeQlBcj60Jc_EcUg1gC1nY-e4"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3034,6 +3050,9 @@ Appendix C.  Document History
          reasonable transitional period."
       -  Not use big 2119 langue in the first paragraph of the Display
          Metadata section
+      -  Add a bit more explanation about aka_vcts
+      -  Add refs with URLs for the IANA registries for media types and
+         JWT claims
 
    -18
 
