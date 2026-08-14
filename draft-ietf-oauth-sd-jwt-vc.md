@@ -232,7 +232,7 @@ The content in (#example-with-vct) shows that `vct` value used to express the ex
     "region": "CA",
     "postal_code": "91007"
   },
-  "email": "sorryfolks@ww.example",
+  "email": "sorryfolks@parksclosed.example",
   "exp": 1777707000,
   "cnf": {
     "jwk": {
