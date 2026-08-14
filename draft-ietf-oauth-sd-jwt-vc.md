@@ -121,7 +121,8 @@ private claims.
 
 The key words "MUST", "MUST NOT", "REQUIRED", "SHALL", "SHALL NOT", "SHOULD",
 "SHOULD NOT", "RECOMMENDED", "NOT RECOMMENDED", "MAY", and "OPTIONAL" in this
-document are to be interpreted as described in RFC 2119 [@!RFC2119].
+document are to be interpreted as described in BCP 14 [@!RFC2119] [@!RFC8174]
+when, and only when, they appear in all capitals, as shown here.
 
 ## Terms and Definitions
 
@@ -130,7 +131,7 @@ This specification uses the terms "Holder", "Issuer", "Verifier", "Disclosure", 
 [@!RFC9901].
 
 Consumer:
-: An application using the Type Metadata specified in (#type-metadata) is called a Consumer. This typically includes Issuers, Verifiers, and Holders.
+: An application retrieving and processing documents and resources defined in this specification, in particular the Type Metadata specified in (#type-metadata). This typically includes Issuers, Verifiers, and Holders.
 
 Publisher:
 : An entity that publishes Type Metadata or other auxiliary documents referenced by an SD-JWT VC (for example via a `vct` URI), but that is not necessarily the Issuer of the SD-JWT VC. A Publisher can be a standardization body, community, ecosystem authority, or any other party defining credential types or associated metadata.
@@ -191,7 +192,7 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 ```
 Figure: Decoded SD-JWT VC Header {#decoded-header}
 
-Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period.
+Note that drafts of this specification used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024, when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. To facilitate a minimally disruptive transition, recipients MAY, as a matter of local policy, additionally accept `vc+sd-jwt` as the value of the `typ` header for SD-JWT VCs issued under those drafts. Since the `vc` media type name has been assigned to a different format, such a policy risks accepting credentials of that other format.
 
 ### JWT Claims Set
 
@@ -349,7 +350,7 @@ exist between `sub` and `cnf` claims.
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
 [@!RFC7519] MAY be used.
 
-Binary data in claims SHOULD be encoded as data URIs as defined in [@?RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
+Binary data in claims SHOULD be encoded as data URIs as defined in [@!RFC2397]. Exceptions can be made when data formats are used that already define a text encoding suitable for use in JSON or where an established text encoding is commonly used. For example, images would make use of data URIs, whereas hash digests in base64 encoding do not need to be encoded as such.
 
 An example of a claim containing binary data encoded as a data URI is shown in (#ExamplePID).
 
@@ -460,6 +461,50 @@ See (#ecosystem-verification-rules) for related security considerations.
 
 If a recipient cannot validate that the public verification key corresponds to the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.
 
+# Retrieving Documents and Resources via HTTP {#http-retrieval}
+
+This specification defines several documents and resources that a Consumer
+retrieves via HTTP URLs: the JWT VC Issuer Metadata configuration and the JWK
+Set referenced by `jwks_uri` (#jwt-vc-issuer-metadata), Type Metadata documents
+referenced by `vct` claims and `extends` properties
+(#retrieving-type-metadata), and rendering resources such as logos, background
+images, and SVG templates (#rendering-metadata). The requirements in this
+section apply to every such retrieval.
+
+HTTP requests and responses used with this specification are governed by HTTP
+semantics [@!RFC9110] and HTTP caching [@!RFC9111]. A document or resource is
+retrieved by sending an HTTP `GET` request to its URL. A successful response
+carries a representation of the requested document or resource as its content;
+the expected media type of that representation is defined in the section
+defining the respective document or resource. A Consumer MUST NOT use the
+content of an error response (a response with a 4xx or 5xx status code) in
+place of the requested document or resource.
+
+All URLs dereferenced according to this specification MUST use the HTTPS
+scheme. As an exception, the rendering resource URIs defined in
+(#rendering-metadata) MAY alternatively be `data:` URIs [@!RFC2397], which
+embed the resource and do not involve any retrieval.
+
+A server MAY respond to a request with an HTTP redirect (a 3xx status code, see
+Section 15.4 of [@!RFC9110]). Consumers MAY follow redirects. A Consumer that
+follows redirects MUST limit the number of redirects followed for a single
+retrieval, MUST NOT follow redirects to URLs not using the HTTPS scheme, and
+MUST apply the URL validation described in (#ssrf) to every URL it connects
+to, i.e., to the originally dereferenced URL as well as to every redirect
+target.
+
+Consumers MUST perform each retrieval in a time-bound and size-bound manner to
+prevent resource exhaustion and denial-of-service attacks, and MUST validate
+that the response content conforms to the format defined for the respective
+document or resource before processing it.
+
+Unless a document can be cached indefinitely based on integrity metadata as
+described in (#retrieval-from-local-cache), the freshness and reuse of
+retrieved documents and resources is governed by the HTTP caching model
+[@!RFC9111]. Issuers and Publishers SHOULD include an explicit freshness
+lifetime (e.g., a `Cache-Control: max-age` response directive) in their
+responses.
+
 # JWT VC Issuer Metadata {#jwt-vc-issuer-metadata}
 
 This specification defines the JWT VC Issuer Metadata to retrieve the JWT VC
@@ -472,13 +517,14 @@ configuration available at the location formed by inserting the well-known strin
 `/.well-known/jwt-vc-issuer` between the host component and the path
 component (if any) of the `iss` claim value in the JWT. The `iss` MUST
 be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
-optionally, port number and path components, but no query or fragment
-components.
+optionally, port number and path components as defined in [@!RFC3986], but no
+query or fragment components.
 
 ## JWT VC Issuer Metadata Request
 
 A JWT VC Issuer Metadata configuration MUST be queried using an HTTP `GET` request
-at the path defined in (#jwt-vc-issuer-metadata).
+at the path defined in (#jwt-vc-issuer-metadata), following the rules defined in
+(#http-retrieval).
 
 (#GET) is an example of an HTTP request for the JWT VC Issuer
 Metadata configuration when `iss` is set to `https://example.com`:
@@ -504,10 +550,9 @@ Figure: Example HTTP Request for JWT VC Issuer Metadata {#GET1234}
 
 ## JWT VC Issuer Metadata Response
 
-A successful response MUST use an HTTP `200` status code and return the JWT VC Issuer
-Metadata configuration using the `application/json` content type.
-
-An error response MUST use the applicable HTTP status code value.
+A successful response carries a representation of the JWT VC Issuer Metadata
+configuration as its content, using the `application/json` media type. The
+general requirements for HTTP retrieval defined in (#http-retrieval) apply.
 
 This specification defines the following JWT VC Issuer Metadata configuration
 parameters:
@@ -516,7 +561,9 @@ parameters:
 value in the JWT.
 * `jwks_uri`: OPTIONAL. URL string referencing the Issuer's JSON Web Key (JWK) Set
 [@!RFC7517] document which contains the Issuer's public keys. The value of
-this field MUST point to a valid JWK Set document.
+this field MUST point to a valid JWK Set document. The JWK Set document is
+retrieved as described in (#http-retrieval); its format and further processing
+are defined in [@!RFC7517].
 * `jwks`: OPTIONAL. Issuer's JSON Web Key Set [@!RFC7517] document value, which
 contains the Issuer's public keys. The value of this field MUST be a JSON
 object containing a valid JWK Set.
@@ -528,10 +575,14 @@ It is RECOMMENDED that the Issuer-signed JWT contains a `kid` JWT header paramet
 be used to look up the public key in the JWK Set included by value or referenced
 in the JWT VC Issuer Metadata.
 
-(#example-metadata-jwks) is an example of a JWT VC Issuer Metadata configuration
-including `jwks`:
+(#example-metadata-jwks) is an example of an HTTP response carrying a JWT VC
+Issuer Metadata configuration including `jwks`:
 
-```json
+```http-message
+HTTP/1.1 200 OK
+Content-Type: application/json
+Cache-Control: max-age=3600
+
 {
    "issuer":"https://example.com",
    "jwks":{
@@ -552,7 +603,7 @@ including `jwks`:
    }
 }
 ```
-Figure: Example Metadata with a JSON Web Key Set {#example-metadata-jwks}
+Figure: Example HTTP Response with Metadata including a JSON Web Key Set {#example-metadata-jwks}
 
 (#example-metadata-jwks-uri) is an example of a JWT VC Issuer Metadata
 configuration including `jwks_uri`:
@@ -677,10 +728,10 @@ A URI in the `vct` claim can be used to express a type. If the
 type is a URL using the HTTPS scheme, Type Metadata might be retrievable from that URL, and
 it is at the consumer's discretion whether to attempt retrieve Type Metadata from the URL.
 
-The Type Metadata is retrieved using the HTTP GET method.
-A successful response MUST use an HTTP `200` status code and return a JSON
-object as defined in (#type-metadata-format) using the `application/json` content type.
-An error response MUST use the applicable HTTP status code value.
+The Type Metadata is retrieved from that URL using an HTTP `GET` request,
+following the rules defined in (#http-retrieval). A successful response
+carries a JSON object as defined in (#type-metadata-format) as its content,
+using the `application/json` media type.
 
 ### From a Registry {#retrieval-from-registry}
 
@@ -699,10 +750,17 @@ retrieve Type Metadata based on a URN in the `vct` claim.
 
 ### From a Local Cache {#retrieval-from-local-cache}
 
-A Consumer MAY cache Type Metadata for a SD-JWT VC type. If a hash for integrity
-protection is present for the Type Metadata as defined in (#document-integrity), the Consumer MAY assume that the Type Metadata is static and can be cached
-indefinitely. Otherwise, the Consumer MUST use the `Cache-Control`
-header of the HTTP response to determine how long the metadata can be cached.
+A Consumer MAY cache Type Metadata for an SD-JWT VC type. If a hash for integrity
+protection is present for the Type Metadata as defined in (#document-integrity),
+the Consumer MAY assume that the Type Metadata is static and cache it
+indefinitely, keyed by the integrity metadata value. Because the integrity
+metadata uniquely identifies the content of the document, such a cache MAY be
+used regardless of any caching directives (such as `no-store`) in the HTTP
+response. Otherwise, the Consumer MUST determine how long the Type Metadata can
+be cached and reused according to the HTTP caching model defined in [@!RFC9111].
+Publishers SHOULD therefore include an explicit freshness lifetime (e.g., a
+`Cache-Control: max-age` response directive) in Type Metadata responses, as
+described in (#http-retrieval).
 
 ## Extending Type Metadata {#extending-type-metadata}
 
@@ -752,6 +810,14 @@ type. The object MUST contain a property for each rendering method that is
 supported by the type. The property name MUST be a rendering method identifier
 and the property value MUST be an object containing the properties defined for
 the rendering method.
+
+The `uri` properties defined for the rendering methods below MUST be either
+HTTPS URLs or `data:` URIs [@!RFC2397]. A resource referenced by an HTTPS URL,
+including an SVG template, is retrieved as described in (#http-retrieval); the
+requirements defined there, including those on redirects, time and size
+bounds, and URL validation, apply to these retrievals. Logo and background
+images are expected to be served with an appropriate image media type
+(e.g., `image/png`), and SVG templates with the `image/svg+xml` media type.
 
 #### Rendering Method "simple" {#rendering-method-simple}
 
@@ -1169,9 +1235,30 @@ Type Metadata MAY be accompanied by a respective item suffixed with
  * `uri` as used in three places in (#rendering-metadata).
 
 The value MUST be an "integrity metadata" string as defined in Section 3 of
-[@!W3C.SRI]. If an integrity property is present for a claim or metadata property, the
+[@!W3C.SRI]. This specification uses [@!W3C.SRI] only for the syntax of that
+string and the identification of the hash algorithms; the verification
+procedure is defined in the following.
+
+If an integrity property is present for a claim or metadata property, the
 Consumer of the referenced document MUST verify the integrity of the retrieved
-document as defined in Section 3.3.5 of [@!W3C.SRI].
+document as follows: The Consumer computes the digest of the octets of the
+retrieved document using the hash algorithm identified in the integrity
+metadata and compares the result, after base64 decoding, octet-for-octet with
+the digest value carried in the integrity metadata. If the integrity metadata
+contains multiple hash expressions, the Consumer MUST use the hash expressions
+with the strongest hash algorithm it supports; verification succeeds if the
+computed digest matches the digest value of any of those hash expressions.
+If verification fails, or if the Consumer supports none of the hash algorithms
+used in the integrity metadata, the retrieved document MUST be rejected and
+MUST NOT be processed further.
+
+Note that the verification procedure above is defined independently of the
+response verification algorithm in [@!W3C.SRI]. That algorithm is specified in
+terms of browser Fetch responses and makes integrity validation contingent on
+the response being same-origin or CORS-eligible, which does not apply to the
+retrieval mechanisms defined in this specification. Consequently, servers are
+not required to support CORS for the referenced documents, and Consumers MUST
+NOT make the verification result dependent on CORS response header fields.
 
 
 # Security Considerations {#security-considerations}
@@ -1181,26 +1268,47 @@ The security considerations in the SD-JWT specification
 Additionally, the following security considerations need to be taken into
 account when using SD-JWT VCs:
 
-## Server-Side Request Forgery
+## Server-Side Request Forgery {#ssrf}
 
-The JWT VC Issuer Metadata configuration is retrieved from the JWT VC Issuer by the
-Holder or Verifier. Similar to other metadata endpoints, the URL for the
-retrieval MUST be considered an untrusted value and could be a vector for
-Server-Side Request Forgery (SSRF) attacks.
+The URLs dereferenced according to this specification, e.g., for the JWT VC
+Issuer Metadata configuration, the JWK Set referenced by `jwks_uri`, Type
+Metadata, and rendering resources, are derived from untrusted input such as the
+`iss` and `vct` claim values of a received SD-JWT VC. Similar to other metadata
+endpoints, these URLs MUST be considered untrusted values and could be a vector
+for Server-Side Request Forgery (SSRF) attacks.
 
-Before making a request to the JWT VC Issuer Metadata endpoint, the Holder or
-Verifier MUST validate the URL to ensure that it is a valid HTTPS URL and that
-it does not point to internal resources. This requires, in particular, ensuring
-that the host part of the URL does not address an internal service (by IP
-address or an internal host name) and that, if an external DNS name is used, the
-resolved DNS name does not point to an internal IPv4 or IPv6 address.
+Before making a request to any of these URLs, including every redirect target
+as described in (#http-retrieval), the Consumer MUST validate the URL to
+ensure that it is a valid HTTPS URL and that it does not point to internal
+resources. Internal resources include, in particular, hosts with addresses
+from the IANA Special-Purpose Address Registries [@!RFC6890] that are not
+globally reachable (such as loopback, link-local, and private-use address
+ranges) as well as hosts that are only reachable from within the Consumer's
+network. Validation requires ensuring that the host part of the URL does not
+address an internal service (by IP address or an internal host name) and that,
+if an external DNS name is used, the resolved DNS name does not point to an
+internal IP address.
 
-When retrieving the metadata, the Holder or Verifier MUST ensure that the
-request is made in a time-bound and size-bound manner to prevent denial of
-service attacks. The Holder or Verifier MUST also ensure that the response is a
-valid JWT VC Issuer Metadata configuration document before processing it.
+The requirements in (#http-retrieval) to perform each retrieval in a
+time-bound and size-bound manner and to validate the response content before
+processing it also serve to limit the impact of SSRF and denial-of-service
+attacks.
 
 Additional considerations can be found in [@OWASP_SSRF].
+
+## Serving Documents and Rendering Resources {#serving-documents}
+
+The documents and resources defined in this specification are served over
+HTTPS and therefore also remain reachable by web browsers and other clients
+that do not implement this specification. To limit the risk of these documents
+and resources being misinterpreted or used as active content in such contexts
+(see Section 4.13 of [@?RFC9205]), Issuers and Publishers SHOULD include an
+`X-Content-Type-Options: nosniff` response header field to prevent clients
+from interpreting a response as a different media type than declared, and
+SHOULD include a restrictive `Content-Security-Policy` response header field
+(e.g., `default-src 'none'`) so that content such as SVG templates is not
+granted access to active content capabilities when opened directly in a
+browser.
 
 ## Ecosystem-specific Public Key Verification Methods {#ecosystem-verification-rules}
 
@@ -1341,10 +1449,13 @@ In (#retrieving-type-metadata), various methods for distributing and retrieving
 Type Metadata are described. For methods which rely on a network connection to a
 URL (e.g., provided by an Issuer), the Issuer and other third parties may be able
 to track the usage of a credential by observing requests to the Type Metadata URL.
+The same applies to the retrieval of rendering resources such as logos,
+background images, and SVG templates referenced from Type Metadata as
+described in (#rendering-metadata).
 
-Consumers SHOULD prefer methods for retrieving Type Metadata that do not
-leak information about the usage of a credential to third parties. The
-recommendations in (#robust-retrieval) apply.
+Consumers SHOULD prefer methods for retrieving Type Metadata and the resources
+it references that do not leak information about the usage of a credential to
+third parties. The recommendations in (#robust-retrieval) apply.
 
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
@@ -1812,7 +1923,18 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -19
 
-
+* Address HTTP Directorate review:
+  * Added a general section on retrieving documents and resources via HTTP, covering HTTP/caching semantics (RFC 9110, RFC 9111), redirect handling, scheme requirements, and time-bound/size-bound retrieval for all URLs dereferenced per this specification
+  * Describe successful metadata responses in terms of their content and media type instead of pinning the HTTP 200 status code
+  * Base the caching rules on the HTTP caching model of RFC 9111, recommend explicit freshness lifetimes, and clarify that integrity-keyed indefinite caching is independent of response caching directives
+  * Define the integrity verification procedure directly in this specification, using W3C SRI only for the syntax of the integrity metadata string and hash algorithm identification, and clarify that CORS is not required
+  * Constrain rendering resource URIs to HTTPS URLs or data: URIs and apply the general retrieval and SSRF requirements to them and to the JWK Set referenced by jwks_uri
+  * Generalize the SSRF considerations to all dereferenced URLs, including redirect targets, and define internal resources with reference to RFC 6890
+  * Recommend nosniff and Content-Security-Policy response header fields when serving documents and rendering resources
+  * Added a complete HTTP response example for JWT VC Issuer Metadata
+  * Clarify the transitional acceptance of the legacy vc+sd-jwt typ value as a matter of local policy
+  * Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components
+  * Note privacy implications of retrieving rendering resources
 
 -18
 
