@@ -486,7 +486,7 @@ scheme. As an exception, the rendering resource URIs defined in
 embed the resource and do not involve any retrieval.
 
 A server can respond to a request with an HTTP redirect (a 3xx status code, see
-Section 15.4 of [@!RFC9110]). Consumers SHOULD follow redirects. A Consumer that
+Section 15.4 of [@!RFC9110]). A Consumer that
 follows redirects MUST limit the number of redirects followed for a single
 retrieval, MUST NOT follow redirects to URLs not using the HTTPS scheme, and
 MUST apply the URL validation described in (#ssrf) to every URL it connects
