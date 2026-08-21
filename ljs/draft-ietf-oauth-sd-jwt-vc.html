@@ -1583,7 +1583,6 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.<a href="#secti
 <a href="#name-decoded-sd-jwt-vc-header" class="selfRef">Decoded SD-JWT VC Header</a>
             </figcaption></figure>
 </div>
-<p id="section-2.2.1-5">Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period.<a href="#section-2.2.1-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="jwt-claims-set">
@@ -1629,7 +1628,7 @@ The content in <a href="#example-with-vct" class="auto internal xref">Figure 3</
     "region": "CA",
     "postal_code": "91007"
   },
-  "email": "sorryfolks@ww.example",
+  "email": "sorryfolks@parksclosed.example",
   "exp": 1777707000,
   "cnf": {
     "jwk": {
@@ -1681,7 +1680,11 @@ more general type, which is then included in the <code>aka_vcts</code> claim.<a 
 <p id="section-2.2.2.2-3">The <code>aka_vcts</code> claim is particularly useful in issuance and presentation protocols,
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
-expects. For example, a Verifier requesting a credential of the hypothetical
+expects.
+While relationships between credential types can be expressed through the extends
+property in Type Metadata, Type Metadata is optional and may not be available,
+so issuance and presentation protocols cannot always rely on it for type matching.
+For example, a Verifier requesting a credential of the hypothetical
 type <code>urn:example:eudi:pid</code> that receives an SD-JWT VC with a <code>vct</code> value of
 <code>urn:example:eudi:pid:aendgard:1</code> can determine from an <code>aka_vcts</code> value of
 <code>["urn:example:eudi:pid"]</code> that the received credential is also of the
@@ -1723,7 +1726,7 @@ Type Metadata using the <code>extends</code> property is described in
             </h5>
 <p id="section-2.2.2.3-1">SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-2.2.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.3-2">The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:<a href="#section-2.2.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.3-2">The following registered JWT claims, including any of their sub-claims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:<a href="#section-2.2.2.3-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-2.2.2.3-3.1">
                 <code>iss</code>: OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Digital Credential
@@ -2010,9 +2013,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KukwL
-5ng6cRm4kXUJFrBoyxacoigcfmYnV3fFty09qPD3NcOotz67yP1Hn3_w-_hg5u0S-X2-
-qBXLHMWDO7LfQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8IS_u
+eDFln6AcstL9SmWfAPiaCVIWGfvQ45yz78463pbAmAMGMOdmSkza86cOyl4hG-3eWa6B
+T-GigwWcyPtNQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2058,17 +2061,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.KukwL
-5ng6cRm4kXUJFrBoyxacoigcfmYnV3fFty09qPD3NcOotz67yP1Hn3_w-_hg5u0S-X2-
-qBXLHMWDO7LfQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8IS_u
+eDFln6AcstL9SmWfAPiaCVIWGfvQ45yz78463pbAmAMGMOdmSkza86cOyl4hG-3eWa6B
+T-GigwWcyPtNQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMjUyNT
-EsICJzZF9oYXNoIjogIl8xQUpYUmtmT2tlM24wcmtFYk1waU04V2xGNVRSM0N3NWJhUE
-1xODF4S1EifQ.VCnyEpjcBzZSuMJ0yncfTHsqqfu4ghY5Nldxxonp3L17rAIrnmpAJ34
-bUuAQW_1zggxUcHW7eFjetKjOWlAPWw
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMzc0Mz
+EsICJzZF9oYXNoIjogImpXTWtjTWJJN2V6WWJFUDZ6OGR3U1A0NWJlbmNxVU9GZVV1Mk
+FFeXRqaVUifQ.pnh8kVwMqSKgwnMgcJmlZ-SsGOJ82ODsRqZLeDXi46fsKPYiSfZLrlj
+zXJJ77rp7xVPBFXJOl08y0G9tK87TPQ
 
 </pre>
 </div>
@@ -2125,8 +2128,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.VdUXa9iH8yY5p4YiHftyjkF5_iN1exa1F4GYIaVobz5vZd
-3EbrbEZj3HbYDe8RkDmoxM0q03bRZVHpNgbiGMBA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.JzylDqzbIunlJQg7Tan76bUEPqvrBWCI3lhbjzO1frjUuf
+Ejk4lJe2h8w2DhTFR7Kz1H_lGBu5qkgOhpCfTm6w~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2243,8 +2246,8 @@ place of the requested document or resource.<a href="#section-3-2" class="pilcro
 scheme. As an exception, the rendering resource URIs defined in
 <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a> MAY alternatively be <code>data:</code> URIs <span>[<a href="#RFC2397" class="cite xref">RFC2397</a>]</span>, which
 embed the resource and do not involve any retrieval.<a href="#section-3-3" class="pilcrow">¶</a></p>
-<p id="section-3-4">A server MAY respond to a request with an HTTP redirect (a 3xx status code, see
-Section 15.4 of <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>). Consumers MAY follow redirects. A Consumer that
+<p id="section-3-4">A server can respond to a request with an HTTP redirect (a 3xx status code, see
+Section 15.4 of <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span>). A Consumer that
 follows redirects MUST limit the number of redirects followed for a single
 retrieval, MUST NOT follow redirects to URLs not using the HTTPS scheme, and
 MUST apply the URL validation described in <a href="#ssrf" class="auto internal xref">Section 7.1</a> to every URL it connects
@@ -2634,8 +2637,8 @@ types.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
 <a href="#section-5.5" class="section-number selfRef">5.5. </a><a href="#name-display-metadata" class="section-name selfRef">Display Metadata</a>
         </h3>
 <p id="section-5.5-1">The <code>display</code> property is an array containing display information for the type.
-The array MUST contain an object for each locale that is supported by the
-type. The consuming application MUST use the language tag it considers most
+The array contains an object for each locale that is supported by the
+type. The consuming application uses the object containing the language tag it considers most
 appropriate for the user.<a href="#section-5.5-1" class="pilcrow">¶</a></p>
 <p id="section-5.5-2">The objects in the array have the following properties:<a href="#section-5.5-2" class="pilcrow">¶</a></p>
 <ul class="compact">
@@ -3550,32 +3553,34 @@ third parties. The recommendations in <a href="#robust-retrieval" class="auto in
         <h3 id="name-json-web-token-claims-regis">
 <a href="#section-9.1" class="section-number selfRef">9.1. </a><a href="#name-json-web-token-claims-regis" class="section-name selfRef">JSON Web Token Claims Registration</a>
         </h3>
+<p id="section-9.1-1">This specification requests registration of the following Claims in the
+IANA "JSON Web Token Claims" registry <span>[<a href="#IANA.JWT" class="cite xref">IANA.JWT</a>]</span> established by <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-9.1-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-9.1-1.1">Claim Name: "vct"<a href="#section-9.1-1.1" class="pilcrow">¶</a>
+<li class="compact" id="section-9.1-2.1">Claim Name: "vct"<a href="#section-9.1-2.1" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.2">Claim Description: Verifiable digital Credential Type identifier<a href="#section-9.1-1.2" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.2">Claim Description: Verifiable digital Credential Type identifier<a href="#section-9.1-2.2" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.3">Change Controller: IETF<a href="#section-9.1-1.3" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.3">Change Controller: IETF<a href="#section-9.1-2.3" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.4">Specification Document(s): [[ <a href="#type-claim" class="auto internal xref">Section 2.2.2.1</a> of this specification ]]
-<br><a href="#section-9.1-1.4" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.4">Specification Document(s): [[ <a href="#type-claim" class="auto internal xref">Section 2.2.2.1</a> of this specification ]]
+<br><a href="#section-9.1-2.4" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.5">Claim Name: "vct#integrity"<a href="#section-9.1-1.5" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.5">Claim Name: "vct#integrity"<a href="#section-9.1-2.5" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.6">Claim Description: SD-JWT VC vct claim "integrity metadata" value<a href="#section-9.1-1.6" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.6">Claim Description: SD-JWT VC vct claim "integrity metadata" value<a href="#section-9.1-2.6" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.7">Change Controller: IETF<a href="#section-9.1-1.7" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.7">Change Controller: IETF<a href="#section-9.1-2.7" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.8">Specification Document(s): [[ <a href="#document-integrity" class="auto internal xref">Section 6</a> of this specification ]]
-<br><a href="#section-9.1-1.8" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.8">Specification Document(s): [[ <a href="#document-integrity" class="auto internal xref">Section 6</a> of this specification ]]
+<br><a href="#section-9.1-2.8" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.9">Claim Name: "aka_vcts"<a href="#section-9.1-1.9" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.9">Claim Name: "aka_vcts"<a href="#section-9.1-2.9" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.10">Claim Description: Additional types of the verifiable digital credential<a href="#section-9.1-1.10" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.10">Claim Description: Additional types of the verifiable digital credential<a href="#section-9.1-2.10" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.11">Change Controller: IETF<a href="#section-9.1-1.11" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.11">Change Controller: IETF<a href="#section-9.1-2.11" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.1-1.12">Specification Document(s): [[ <a href="#aka-vcts-claim" class="auto internal xref">Section 2.2.2.2</a> of this specification ]]<a href="#section-9.1-1.12" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.1-2.12">Specification Document(s): [[ <a href="#aka-vcts-claim" class="auto internal xref">Section 2.2.2.2</a> of this specification ]]<a href="#section-9.1-2.12" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -3590,7 +3595,8 @@ third parties. The recommendations in <a href="#robust-retrieval" class="auto in
           <h4 id="name-application-dcsd-jwt">
 <a href="#section-9.2.1" class="section-number selfRef">9.2.1. </a><a href="#name-application-dcsd-jwt" class="section-name selfRef">application/dc+sd-jwt</a>
           </h4>
-<p id="section-9.2.1-1">The Internet media type for an SD-JWT VC is <code>application/dc+sd-jwt</code>.<a href="#section-9.2.1-1" class="pilcrow">¶</a></p>
+<p id="section-9.2.1-1">This section requests registration of the <code>application/dc+sd-jwt</code> media type in
+the "Media Types" registry <span>[<a href="#IANA.MediaTypes" class="cite xref">IANA.MediaTypes</a>]</span>.<a href="#section-9.2.1-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-9.2.1-2.1">Type name: <code>application</code><a href="#section-9.2.1-2.1" class="pilcrow">¶</a>
 </li>
@@ -3755,6 +3761,14 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
         <dd>
 <span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List (TSL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-21</span>, <time datetime="2026-06-21" class="refDate">21 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-21">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-21</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="IANA.JWT">[IANA.JWT]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"JSON Web Token Claims"</span>, <span>&lt;<a href="https://www.iana.org/assignments/jwt">https://www.iana.org/assignments/jwt</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IANA.MediaTypes">[IANA.MediaTypes]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"Media Types"</span>, <span>&lt;<a href="https://www.iana.org/assignments/media-types/media-types.xhtml">https://www.iana.org/assignments/media-types/media-types.xhtml</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="IANA.well-known">[IANA.well-known]</dt>
         <dd>
 <span class="refAuthor">IANA</span>, <span class="refTitle">"Well-Known URIs"</span>, <span>&lt;<a href="https://www.iana.org/assignments/well-known-uris">https://www.iana.org/assignments/well-known-uris</a>&gt;</span>. </dd>
@@ -3881,8 +3895,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.DFchOcUBuR1sNtn5ZLd6Dj7Y0C_Dw-Bt
-vbb6tC5msA3wigd9AiYvP93pzqyfVmohLlc0mIp-o2vrd_m29alc8g~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.i0WRpil-Cjr-LTnBz26Ta1LL8p89M_v3
+rLmzZt90o_KJUAI77JFTmv5ujgCVb8axQTJJiQX103GiEq_Dy3uo8A~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4379,8 +4393,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.DFchOcUBuR1sNtn5ZLd6Dj7Y0C_Dw-Bt
-vbb6tC5msA3wigd9AiYvP93pzqyfVmohLlc0mIp-o2vrd_m29alc8g~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.i0WRpil-Cjr-LTnBz26Ta1LL8p89M_v3
+rLmzZt90o_KJUAI77JFTmv5ujgCVb8axQTJJiQX103GiEq_Dy3uo8A~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4391,10 +4405,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMjUyNTEsICJzZF9oYXNoIjogIj
-F5WWF5QmtKVjdRd3laNkJQRnhXMTF0clZHQ1hnc0Z6R1F4aUNhTXdpOFUifQ.b73Hwck
-mBKVv0eWUe_aoDuglb69-qM3_gSPiGNZfuLJX8Wbynlimlk55MtzhcpBkypa-SqdVLKp
-QbHmfWlKo-w
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMzc0MzEsICJzZF9oYXNoIjogIm
+pIRWNaMEkwVDdRV3dBbUtBUlV5SmRkSHF5ZmRrS000T2ZlQkRnYW54SVUifQ.cUlU1MT
+JSmQ2P8jymTp1KTWHa9Czx4WmC3QbEWSXWutZd-ntiwK9kdJKC0y3xc0cgAiupKNTfOD
+5rnyDzgGSdw
 
 </pre>
 </div>
@@ -4409,8 +4423,8 @@ QbHmfWlKo-w
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1787325251,
-  "sd_hash": "1yYayBkJV7QwyZ6BPFxW11trVGCXgsFzGQxiCaMwi8U"
+  "iat": 1787337431,
+  "sd_hash": "jHEcZ0I0T7QWwAmKARUyJddHqyfdkKM4OfeBDganxIU"
 }
 
 </pre>
@@ -4719,6 +4733,7 @@ Annabelle Kennedy,
 Babis Routis,
 Christian Bormann,
 Dan Moore,
+Deb Cooley,
 Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
@@ -4726,6 +4741,7 @@ Hannes Tschofenig,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
+Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
 Mirko Mollik,
@@ -4775,6 +4791,21 @@ for their contributions (some of which substantial) to this draft and to the ini
           </ul>
 </li>
         <li class="compact" id="appendix-C-2.2">Be more explicit about JWS JSON serialization being not explicitly defined for SD-JWT VCs<a href="#appendix-C-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.3">
+          <p id="appendix-C-2.3.1">Address AD review:<a href="#appendix-C-2.3.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-2.3.2.1">Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable<a href="#appendix-C-2.3.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-2.3.2.2">Remove: "Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period."<a href="#appendix-C-2.3.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-2.3.2.3">Not use big 2119 language in the first paragraph of the Display Metadata section<a href="#appendix-C-2.3.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-2.3.2.4">Add a bit more explanation about aka_vcts<a href="#appendix-C-2.3.2.4" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-2.3.2.5">Add refs with URLs for the IANA registries for media types and JWT claims<a href="#appendix-C-2.3.2.5" class="pilcrow">¶</a>
+</li>
+          </ul>
 </li>
       </ul>
 <p id="appendix-C-3">-18<a href="#appendix-C-3" class="pilcrow">¶</a></p>
