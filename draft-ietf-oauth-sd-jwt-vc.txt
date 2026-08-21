@@ -664,9 +664,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PQHy1
-   9zjsvh9Upn0x6XU2c5C_Z3pWQrhfG6JkVVycqp2eac3qUMyUZ-qIREgU7vquInPGkm58
-   bjWtP98ne_Nhg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4q72_
+   B-1jq-uQRe1e9DAghCFTqmD29Z6qnhMXKA1Jrd___-D_6-GDUITS40EZAF1GVbBzaJtC
+   ae3fr5d6A7teQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -702,17 +702,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.PQHy1
-   9zjsvh9Upn0x6XU2c5C_Z3pWQrhfG6JkVVycqp2eac3qUMyUZ-qIREgU7vquInPGkm58
-   bjWtP98ne_Nhg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4q72_
+   B-1jq-uQRe1e9DAghCFTqmD29Z6qnhMXKA1Jrd___-D_6-GDUITS40EZAF1GVbBzaJtC
+   ae3fr5d6A7teQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMjU3Nz
-   gsICJzZF9oYXNoIjogInpTTlFDLTlLZkpmSm1NclcwN0JxNTdlTUY2MlNxVXRuYWhFbE
-   dpNzI5V1EifQ.A3IR5Vn7OlNp2HtUo1kzWoVrT8IHLr6rAUU35bwAa4TpqnHbv6Hx9SH
-   -LuKO6WTH3gCeKqo472051SBlPWFbGw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMjU4OD
+   EsICJzZF9oYXNoIjogIi1zb0x1b3Fhb1IxeU5ZVno3azBZNFh1V3lRaFZFck5vZURxaE
+   xkanN5dzgifQ.eHDNt7RXGsS8XGiq5iIu1N0KmoccpzMpBTDvq34gcHq7XESQ5vN3kXF
+   49cAUTTS2nq-DRaX9tROhJEM97jg3XQ
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -758,8 +758,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.w3JxjbCndH9xYtwZLtXNaWA3kck6LdTLr4snwCiVOHbnwF
-   WshN1k1oLKYfISo-GUN0qZfPBzcrzZhRm9p5mo9g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.RJ_OMpLyxfXFdyfGB-eObhI8M-s6yUtRqBbQK9_-xh2wG1
+   aJfe_ZNr43JyA2jqKVjLfslZ6oEwXjaYJn8SgkdA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -883,14 +883,13 @@ Table of Contents
    in Section 5.5.1 MAY alternatively be data: URIs [RFC2397], which
    embed the resource and do not involve any retrieval.
 
-   A server MAY respond to a request with an HTTP redirect (a 3xx status
-   code, see Section 15.4 of [RFC9110]).  Consumers MAY follow
-   redirects.  A Consumer that follows redirects MUST limit the number
-   of redirects followed for a single retrieval, MUST NOT follow
-   redirects to URLs not using the HTTPS scheme, and MUST apply the URL
-   validation described in Section 7.1 to every URL it connects to,
-   i.e., to the originally dereferenced URL as well as to every redirect
-   target.
+   A server can respond to a request with an HTTP redirect (a 3xx status
+   code, see Section 15.4 of [RFC9110]).  A Consumer that follows
+   redirects MUST limit the number of redirects followed for a single
+   retrieval, MUST NOT follow redirects to URLs not using the HTTPS
+   scheme, and MUST apply the URL validation described in Section 7.1 to
+   every URL it connects to, i.e., to the originally dereferenced URL as
+   well as to every redirect target.
 
    Consumers MUST perform each retrieval in a time-bound and size-bound
    manner to prevent resource exhaustion and denial-of-service attacks,
@@ -2309,8 +2308,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UMnoaz4026R-waz-72sFXFL5UXSDnOAC
-   G84CLz_mjtiJ_dOQ7D_pZ66yGwS-A2PFuclWvlZKTGXX5qMFN42wEA~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6KUWLOqjf6Lti1eR6tmRqGtcbYnM-mko
+   opJnDVQ8-PbVomhDGnNzZh8VYnJ2npflqTMReIY980l9LvBKwAhpWw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2692,8 +2691,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UMnoaz4026R-waz-72sFXFL5UXSDnOAC
-   G84CLz_mjtiJ_dOQ7D_pZ66yGwS-A2PFuclWvlZKTGXX5qMFN42wEA~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6KUWLOqjf6Lti1eR6tmRqGtcbYnM-mko
+   opJnDVQ8-PbVomhDGnNzZh8VYnJ2npflqTMReIY980l9LvBKwAhpWw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2704,10 +2703,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMjU3NzgsICJzZF9oYXNoIjogIm
-   lqa0RCcEVuaE5xMjQ4RjlhU3RETG5ZNVNaOTZMRW1hZTdwTHh2SDA4TDAifQ.-Za3wr_
-   Ro3LRFnP4QnAxN56A3ejpN4mzukglk4SnySqQLFZMG4fvqyWIASvIy232c2TozT3JUmS
-   FqAEiqw122w
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODczMjU4ODEsICJzZF9oYXNoIjogIn
+   RFMVBBR0lSMzB3WGNxTHFKbjlqOFp2R1g3WFVmVmVXVHRfWXhqMXN2b00ifQ.69VIigY
+   2mY_KfhbeASslKbPfAG2yVC5lZ3OcJN3txXl4Q8Y7QbT5_fF9RJ_DOqb7RqJRyGXjhe1
+   W81dvEGLU7Q
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2716,8 +2715,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1787325778,
-     "sd_hash": "ijkDBpEnhNq248F9aStDLnY5SZ96LEmae7pLxvH08L0"
+     "iat": 1787325881,
+     "sd_hash": "tE1PAGIR30wXcqLqJn9j8ZvGX7XUfVeWTt_Yxj1svoM"
    }
 
                      Figure 27: Key Binding JWT Payload
