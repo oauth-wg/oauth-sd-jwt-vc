@@ -192,8 +192,6 @@ indicates that the SD-JWT is an SD-JWT component of an SD-JWT VC.
 ```
 Figure: Decoded SD-JWT VC Header {#decoded-header}
 
-Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period.
-
 ### JWT Claims Set
 
 This section defines the claims that can be included in the payload of
@@ -234,7 +232,7 @@ The content in (#example-with-vct) shows that `vct` value used to express the ex
     "region": "CA",
     "postal_code": "91007"
   },
-  "email": "sorryfolks@ww.example",
+  "email": "sorryfolks@parksclosed.example",
   "exp": 1777707000,
   "cnf": {
     "jwk": {
@@ -281,7 +279,11 @@ more general type, which is then included in the `aka_vcts` claim.
 The `aka_vcts` claim is particularly useful in issuance and presentation protocols,
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
-expects. For example, a Verifier requesting a credential of the hypothetical
+expects.
+While relationships between credential types can be expressed through the extends
+property in Type Metadata, Type Metadata is optional and may not be available,
+so issuance and presentation protocols cannot always rely on it for type matching.
+For example, a Verifier requesting a credential of the hypothetical
 type `urn:example:eudi:pid` that receives an SD-JWT VC with a `vct` value of
 `urn:example:eudi:pid:aendgard:1` can determine from an `aka_vcts` value of
 `["urn:example:eudi:pid"]` that the received credential is also of the
@@ -317,7 +319,7 @@ Type Metadata using the `extends` property is described in
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
 
-The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MUST NOT be included in the Disclosures, i.e., cannot be selectively disclosed:
+The following registered JWT claims, including any of their sub-claims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:
 
 * `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Digital Credential
     when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
@@ -789,8 +791,8 @@ Processing details when extending type metadata are described in
 ## Display Metadata {#display-metadata}
 
 The `display` property is an array containing display information for the type.
-The array MUST contain an object for each locale that is supported by the
-type. The consuming application MUST use the language tag it considers most
+The array contains an object for each locale that is supported by the
+type. The consuming application uses the object containing the language tag it considers most
 appropriate for the user.
 
 The objects in the array have the following properties:
@@ -1540,9 +1542,26 @@ third parties. The recommendations in (#robust-retrieval) apply.
     </front>
 </reference>
 
+<reference anchor="IANA.MediaTypes" target="https://www.iana.org/assignments/media-types/media-types.xhtml">
+  <front>
+    <author fullname="IANA"></author>
+    <title>Media Types</title>
+  </front>
+</reference>
+
+<reference anchor="IANA.JWT" target="https://www.iana.org/assignments/jwt">
+ <front>
+  <title>JSON Web Token Claims</title>
+  <author><organization>IANA</organization></author>
+</front>
+</reference>
+
 # IANA Considerations
 
 ## JSON Web Token Claims Registration
+
+This specification requests registration of the following Claims in the
+IANA "JSON Web Token Claims" registry [@IANA.JWT] established by [@!RFC7519].
 
 - Claim Name: "vct"
 - Claim Description: Verifiable digital Credential Type identifier
@@ -1563,7 +1582,8 @@ third parties. The recommendations in (#robust-retrieval) apply.
 
 ### application/dc+sd-jwt {#media-type}
 
-The Internet media type for an SD-JWT VC is `application/dc+sd-jwt`.
+This section requests registration of the `application/dc+sd-jwt` media type in
+the "Media Types" registry [@IANA.MediaTypes].
 
 * Type name: `application`
 * Subtype name: `dc+sd-jwt`
@@ -1897,6 +1917,7 @@ Annabelle Kennedy,
 Babis Routis,
 Christian Bormann,
 Dan Moore,
+Deb Cooley,
 Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
@@ -1904,6 +1925,7 @@ Hannes Tschofenig,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
+Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
 Mirko Mollik,
@@ -1934,6 +1956,12 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Added a complete HTTP response example for JWT VC Issuer Metadata
   * Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components
   * Note privacy implications of retrieving rendering resources
+* Address AD review:
+  * Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
+  * Remove: "Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period."
+  * Not use big 2119 language in the first paragraph of the Display Metadata section
+  * Add a bit more explanation about aka_vcts
+  * Add refs with URLs for the IANA registries for media types and JWT claims
 
 -18
 
