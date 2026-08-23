@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-16T00:22:06.885229+00:00",
+  "timestamp": "2026-08-23T00:22:32.769880+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33670,24 +33670,26 @@
       "id": "PR_kwDOJbVClc7_Sw3p",
       "title": "addressing AD comments",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/423",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-14T20:55:27Z",
-      "updatedAt": "2026-08-15T11:55:53Z",
+      "updatedAt": "2026-08-21T15:22:39Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "460a79e41c0dd5831d5f8d4bc934097f212fd7c4",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "anno-domini",
       "headRefOid": "6b1ca8dce192351d8295b3575975363437e35324",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-08-21T15:22:39Z",
+      "mergedAt": "2026-08-21T15:22:39Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "5e32ca6cf2869d7a50ca6a876d8bc6c90551237d"
+      },
       "comments": [],
       "reviews": [
         {
@@ -33737,26 +33739,89 @@
       "id": "PR_kwDOJbVClc7_eV-u",
       "title": " mnot had a couple small comments",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/424",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "mnot had a couple small comments on #422 ",
       "createdAt": "2026-08-15T12:07:18Z",
-      "updatedAt": "2026-08-15T12:07:20Z",
+      "updatedAt": "2026-08-21T15:24:23Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "460a79e41c0dd5831d5f8d4bc934097f212fd7c4",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "httpdirdeux",
-      "headRefOid": "b6c1f0d06502ed9b1c5c00080a4bebd33abe1865",
+      "headRefOid": "343abff2453015d029e05cbc2e8c836e4594a749",
+      "closedAt": "2026-08-21T15:24:23Z",
+      "mergedAt": "2026-08-21T15:24:23Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "f50f0a4e0f41f88b7f6c435c888ca490ffe3f142"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABKbcNqw",
+          "commit": {
+            "abbreviatedOid": "b6c1f0d"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-08-21T15:23:29Z",
+          "updatedAt": "2026-08-21T15:23:30Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\nSection 15.4 of [@!RFC9110]). A Consumer that\n```",
+              "createdAt": "2026-08-21T15:23:29Z",
+              "updatedAt": "2026-08-21T15:23:30Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 425,
+      "id": "PR_kwDOJbVClc8AAAABAkR9QQ",
+      "title": "try to be more explicit about JWS JSON serialization being not explicitly defined ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/425",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-21T15:14:49Z",
+      "updatedAt": "2026-08-21T19:48:27Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "f50f0a4e0f41f88b7f6c435c888ca490ffe3f142",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "ljs",
+      "headRefOid": "d1702a3de4f73cf53606a931cc4c58ad105cb748",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABKdZDnA",
+          "commit": {
+            "abbreviatedOid": "d1702a3"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-21T19:48:27Z",
+          "updatedAt": "2026-08-21T19:48:27Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
