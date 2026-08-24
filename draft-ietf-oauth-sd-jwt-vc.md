@@ -103,8 +103,7 @@ JWTs: For an SD-JWT document, a Holder can decide which claims to release (withi
 bounds defined by the Issuer).
 
 SD-JWT builds on JWT/JWS. It can also be used when there are no selectively
-disclosable claims. Furthermore, SD-JWT supports JWS JSON serialization,
-which is useful for long-term archiving and multi-signatures.
+disclosable claims.
 However, SD-JWT itself does not define
 the claims that must be used within the payload or their semantics.
 
@@ -164,13 +163,12 @@ SD-JWT VCs compliant with this specification MUST use the media type
 
 ## Data Format
 
-Issuers MUST encode an SD-JWT VC using the SD-JWT format defined in Section 4
-or Section 8 of [@!RFC9901].  By default, the format defined in Section 4 of [@!RFC9901] is used, whereas support for the JWS JSON Serialization in Section 8 of [@!RFC9901] is OPTIONAL.
+SD-JWT VC uses the SD-JWT format defined in [@!RFC9901, section 4].
+Use of the JWS JSON Serialization per [@!RFC9901, section 8] for SD-JWT VC is not precluded
+but the specific details are beyond the scope of this specification.
 
 Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
-
-A presentation of an SD-JWT VC MUST be encoded as an SD-JWT or as an SD-JWT+KB defined in Section 4 or Section 8 of [@!RFC9901]. By default, the format defined in Section 4 of [@!RFC9901] is used, whereas support for the JWS JSON Serialization in Section 8 of [@!RFC9901] is OPTIONAL.
 
 ### JOSE Header
 
@@ -1956,6 +1954,7 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Added a complete HTTP response example for JWT VC Issuer Metadata
   * Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components
   * Note privacy implications of retrieving rendering resources
+* Be more explicit about JWS JSON serialization being not explicitly defined for SD-JWT VCs
 * Address AD review:
   * Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
   * Remove: "Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period."
