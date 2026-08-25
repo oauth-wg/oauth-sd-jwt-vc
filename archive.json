@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-23T00:22:32.769880+00:00",
+  "timestamp": "2026-08-25T00:21:12.922282+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33677,7 +33677,7 @@
       "labels": [],
       "body": "",
       "createdAt": "2026-08-14T20:55:27Z",
-      "updatedAt": "2026-08-21T15:22:39Z",
+      "updatedAt": "2026-08-24T23:24:04Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "460a79e41c0dd5831d5f8d4bc934097f212fd7c4",
@@ -33690,7 +33690,22 @@
       "mergeCommit": {
         "oid": "5e32ca6cf2869d7a50ca6a876d8bc6c90551237d"
       },
-      "comments": [],
+      "comments": [
+        {
+          "author": "debcooley",
+          "authorAssociation": "NONE",
+          "body": "What you have done looks good...  a couple of comments:  \r\n\r\n1.  I'm not a fan of this personally, but in the IETF, MUST is BCP14 language used when interoperability is at stake.  And both MUST and must are normative.  In the end, it gives us some flexibility to use lower case in places where there are normative requirements, but they are not interoperability concerns.  I don't think there are specific things that need to be changed in this draft, but it is an extra tool in the toolbox, if you need it.  \r\n\r\n2.  missed, I think:  Section 6:  Either put a link to the SVG security information somewhere in Section 6, or list those recommendations in Section 6 with a link to it from Section 4.5.1.2.2.",
+          "createdAt": "2026-08-24T15:48:47Z",
+          "updatedAt": "2026-08-24T15:48:47Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "number 2 there was definitely a miss on my part that #426 tries to correct ",
+          "createdAt": "2026-08-24T23:24:04Z",
+          "updatedAt": "2026-08-24T23:24:04Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc8AAAABJqCicA",
@@ -33788,24 +33803,26 @@
       "id": "PR_kwDOJbVClc8AAAABAkR9QQ",
       "title": "try to be more explicit about JWS JSON serialization being not explicitly defined ",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/425",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-08-21T15:14:49Z",
-      "updatedAt": "2026-08-21T19:48:27Z",
+      "updatedAt": "2026-08-24T22:22:25Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "f50f0a4e0f41f88b7f6c435c888ca490ffe3f142",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "ljs",
       "headRefOid": "d1702a3de4f73cf53606a931cc4c58ad105cb748",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-08-24T22:22:25Z",
+      "mergedAt": "2026-08-24T22:22:25Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "3611342cb7c35a140abcc1c383239ef34c94a526"
+      },
       "comments": [],
       "reviews": [
         {
@@ -33820,8 +33837,47 @@
           "createdAt": "2026-08-21T19:48:27Z",
           "updatedAt": "2026-08-21T19:48:27Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABKqXLZQ",
+          "commit": {
+            "abbreviatedOid": "d1702a3"
+          },
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-08-24T17:02:47Z",
+          "updatedAt": "2026-08-24T17:02:47Z",
+          "comments": []
         }
       ]
+    },
+    {
+      "number": 426,
+      "id": "PR_kwDOJbVClc8AAAABA3hMyw",
+      "title": "SVG template rendering security considerations moved to security considerations",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/426",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/oauth/HByvfHI8KWy-clH1729wBpiXLpI/",
+      "createdAt": "2026-08-24T23:22:40Z",
+      "updatedAt": "2026-08-24T23:24:48Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "3611342cb7c35a140abcc1c383239ef34c94a526",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "svg-sec",
+      "headRefOid": "d60cf665b7df869fb5a5e3467b79a82c2f391bbb",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
