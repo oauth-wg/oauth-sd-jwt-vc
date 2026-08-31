@@ -658,9 +658,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._ZZEV
-   CeofB68-OruxKFuWuefJ8epmMneXHtn1OYC5dvSyOHHNeAGTrChdrcsCKp7cq-s4lJag
-   5Gss3FOYzezvg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kI4o5
+   kCQyKeWdd8wiBMRHUErXVpsqOxqu3FTaBCRuArbPONDtj-_-oAvn2hhOAdzJjChuHs3l
+   rpOr5_33_GaGA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -696,17 +696,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._ZZEV
-   CeofB68-OruxKFuWuefJ8epmMneXHtn1OYC5dvSyOHHNeAGTrChdrcsCKp7cq-s4lJag
-   5Gss3FOYzezvg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kI4o5
+   kCQyKeWdd8wiBMRHUErXVpsqOxqu3FTaBCRuArbPONDtj-_-oAvn2hhOAdzJjChuHs3l
+   rpOr5_33_GaGA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODgyMDkxOD
-   gsICJzZF9oYXNoIjogInBaMTE2REVTZmYyVG9XUnNUVXlTTEF1eGpWRlF5VGliN1c5c2
-   ltNTE0aWMifQ.wo82Fs1tgPk4DJHjb11lm9EUL3IksRtwACLIDvTX1pDMSHiuE365pmw
-   8KG6q8xdYMA5dUNdNB2tSbf_0Tjav8Q
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODgyMDk4Mj
+   AsICJzZF9oYXNoIjogIjNRRUpBS1NQbUNtZzROZ2l0VWdxVWJ1eG5LQmw0clRLX19CYX
+   hzWGZWQk0ifQ.XFgy_LlKB9_igBigy5M-C-xYZaOIa2LvY4LpvZUXmxi7jWINVXUs3Q0
+   9pz_1Vx5BQs9uX6scDfnYcpIUf_V3vA
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -752,8 +752,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.MYge8jMn9NV8hxaXoTAraLktEi9-gLi62IMSaUxS7PfeDN
-   GKFqhaCpGQ3kvciUBm7JsBbn_H7gS5SSkQrLJSdg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.YwOrMCD7tiqWEweeFAjZ_xTl9nTiziPQS4_XqaUUOjEXrn
+   wp632TOaPWhFp7XHDUhNdz6yOROBYoPn-sy5ciyg~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2307,8 +2307,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8tA0wP1DVNi8F77_otGMVMFafiyp05Fu
-   gLhTFQmEL4JsBdCNT0BUvyKLxh4j9w_cw1b06DZ0PPDmZeITxBroZQ~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3sEc7jyt-SySO_c93CQwtIk3HSwKlXnA
+   yzbBtVVQT5yn6CnMUoDGC91O-8m4mRo-QJE2a8Jgd3POFfaI52JADg~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2690,8 +2690,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.8tA0wP1DVNi8F77_otGMVMFafiyp05Fu
-   gLhTFQmEL4JsBdCNT0BUvyKLxh4j9w_cw1b06DZ0PPDmZeITxBroZQ~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3sEc7jyt-SySO_c93CQwtIk3HSwKlXnA
+   yzbBtVVQT5yn6CnMUoDGC91O-8m4mRo-QJE2a8Jgd3POFfaI52JADg~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2702,10 +2702,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODgyMDkxODgsICJzZF9oYXNoIjogIk
-   V4U2ZmVnlUVUg0blplVjBjZjhHbnBCMkNJSDlGM2VNaUZndDBkMGlDczQifQ.jQzPp6k
-   wZXgoXQLedkQlfXQzAEoiaJWI01WPRtEUAgwwHjjflZQFl-DNQqA9Wnzoalll7KehvZ5
-   iKdIVuYkD3w
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODgyMDk4MjAsICJzZF9oYXNoIjogIl
+   hZV2hMWV9UdjRKb3Z5X2lVR3FMa0FSWDgxUzBLWHBNVFBCbHNJMHVFUkkifQ.yoOD1C5
+   VXQRtyhvkFM4zakD612vgiNIbuMxpInbAxgtVDsgFS1MeCEV2Gkji5lI5ApgnHVjxL5N
+   2VcGE-ZaoHA
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2714,8 +2714,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1788209188,
-     "sd_hash": "ExSffVyTUH4nZeV0cf8GnpB2CIH9F3eMiFgt0d0iCs4"
+     "iat": 1788209820,
+     "sd_hash": "XYWhLY_Tv4Jovy_iUGqLkARX81S0KXpMTPBlsI0uERI"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3053,6 +3053,8 @@ Appendix C.  Document History
       -  Add a bit more explanation about aka_vcts
       -  Add refs with URLs for the IANA registries for media types and
          JWT claims
+      -  Move SVG template rendering security stuff into a new security
+         considerations subsection
 
    -18
 
