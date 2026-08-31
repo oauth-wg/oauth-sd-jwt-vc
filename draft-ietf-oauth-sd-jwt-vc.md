@@ -1965,6 +1965,7 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Not use big 2119 language in the first paragraph of the Display Metadata section
   * Add a bit more explanation about aka_vcts
   * Add refs with URLs for the IANA registries for media types and JWT claims
+  * Move SVG template rendering security stuff into a new security considerations subsection
 
 -18
 
