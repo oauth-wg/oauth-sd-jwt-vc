@@ -921,15 +921,7 @@ example in (#ExampleTypeMetadata).
 ```
 Figure: Example SVG Template with Placeholder {#example-svg-template}
 
-When rendering the SVG template, the consuming application MUST ensure that
-malicious metadata providers or issuers cannot inject executable code into the SVG
-template and thereby compromise the security of the consuming application. The
-consuming application MUST NOT execute any code in the SVG template. If code
-execution cannot be prevented reliably, the SVG display MUST be sandboxed.
-
-Furthermore, consuming applications MUST ensure that references to external
-resources (images, etc.) from within the SVG cannot be used to track users or
-the usage of credentials.
+See (#svg-rendering-sec) for SVG template rendering security considerations.
 
 ### Extending Display Metadata {#display-metadata-extends}
 
@@ -1391,6 +1383,18 @@ Consumers SHOULD treat with reduced trust any Type Metadata if the Publisher is 
 ## Use of Data URIs for Claim Types
 
 The use of data URIs allows embedding of data directly within credential payloads. Implementations SHOULD treat data URIs as untrusted input at the processing and rendering layer and apply appropriate validation and handling. Failure to properly escape, sanitize or constrain their use can lead to security issues such as unintended code execution, resource exhaustion, or misuse of embedded content. Implementations SHOULD restrict the set of accepted media types, enforce reasonable size and content limits, and avoid dereferencing or interpreting data URIs in ways that could execute or render active content, consistent with their overall security model.
+
+## SVG Rendering {#svg-rendering-sec}
+
+When rendering an SVG template as described in (#svg-rendering), a consuming application MUST ensure that
+malicious metadata providers or issuers cannot inject executable code into the SVG
+template and thereby compromise the security of the consuming application. The
+consuming application MUST NOT execute any code in the SVG template. If code
+execution cannot be prevented reliably, the SVG display MUST be sandboxed.
+
+Furthermore, consuming applications MUST ensure that references to external
+resources (images, etc.) from within the SVG cannot be used to track users or
+the usage of credentials.
 
 # Privacy Considerations {#privacy-considerations}
 
