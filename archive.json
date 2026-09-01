@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-08-25T00:21:12.922282+00:00",
+  "timestamp": "2026-09-01T01:01:40.325675+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33858,24 +33858,54 @@
       "id": "PR_kwDOJbVClc8AAAABA3hMyw",
       "title": "SVG template rendering security considerations moved to security considerations",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/426",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "https://mailarchive.ietf.org/arch/msg/oauth/HByvfHI8KWy-clH1729wBpiXLpI/",
       "createdAt": "2026-08-24T23:22:40Z",
-      "updatedAt": "2026-08-24T23:24:48Z",
+      "updatedAt": "2026-08-31T20:46:11Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "3611342cb7c35a140abcc1c383239ef34c94a526",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "svg-sec",
       "headRefOid": "d60cf665b7df869fb5a5e3467b79a82c2f391bbb",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-08-31T20:46:11Z",
+      "mergedAt": "2026-08-31T20:46:11Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "0ed157f3d8357914e114a92a8a46978e1f0052ab"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 427,
+      "id": "PR_kwDOJbVClc8AAAABBqEW8w",
+      "title": "history for SVG template rendering security stuff move",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/427",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-08-31T20:54:08Z",
+      "updatedAt": "2026-08-31T20:56:36Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "0ed157f3d8357914e114a92a8a46978e1f0052ab",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "forgotten-history",
+      "headRefOid": "b2dc07a18a0e7e44801321abea75cc3d607fe4e7",
+      "closedAt": "2026-08-31T20:56:34Z",
+      "mergedAt": "2026-08-31T20:56:34Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "aa2f9713659fc593b4361874f0667255b0ead8ae"
+      },
       "comments": [],
       "reviews": []
     }
