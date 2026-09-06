@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-01T01:01:40.325675+00:00",
+  "timestamp": "2026-09-06T00:57:00.577137+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33907,6 +33907,40 @@
         "oid": "aa2f9713659fc593b4361874f0667255b0ead8ae"
       },
       "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 428,
+      "id": "PR_kwDOJbVClc8AAAABCQH1sA",
+      "title": "Fix a couple of example hash values",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/428",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-09-04T19:51:45Z",
+      "updatedAt": "2026-09-04T20:59:02Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "aa2f9713659fc593b4361874f0667255b0ead8ae",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "twenty-etc",
+      "headRefOid": "a89d6316f1d9472f5b52efb2d7bc476f512cc17d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "part of an email exchange from Antun and me:\r\n \r\n>     6. Example integrity values\r\n> \r\n>     I reproduced two example problems in the published -19 artifacts.\r\n> \r\n>     First, the Figure 17 Type Metadata JSON is 349 UTF-8 bytes without a final LF\r\n>     and hashes with SHA-256 to:\r\n> \r\n>         mtyXVdokmtSix97ZVctF1wk95oi9VhNqWuPx6dPqQ0A=\r\n> \r\n>     With one final LF, it is 350 bytes and hashes to:\r\n> \r\n>         5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=\r\n> \r\n>     The stated value:\r\n> \r\n>         vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=\r\n> \r\n>     instead matches the materially different 5,003-byte Appendix A.2 Type\r\n>     Metadata document with a final LF. The figure and appendix documents have\r\n>     different content, so the Figure 17 association is not executable as written.\r\n\r\n\r\nI think I messed this up in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419 but as mentioned in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419/changes/2e2b42cb0cdcc9c7ece201e4ed5691cd7789a897 I don't think it was correct before that either. Regardless, the `5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=` one should probably be used in sec 5.1.\r\n\r\n\r\n \r\n\r\n> \r\n>     Second, the German background_image value:\r\n> \r\n>         9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh=\r\n> \r\n>     has 43 characters and fails strict Base64 decoding. Artificially adding\r\n>     padding yields only 31 bytes, so it cannot encode a SHA-256 result. Correcting\r\n>     that value requires the actual referenced PNG bytes.\r\n\r\n\r\nI'm pretty sure there are no actual referenced PNG bytes, and I think this is just mistakenly one character too short.  ",
+          "createdAt": "2026-09-04T20:56:40Z",
+          "updatedAt": "2026-09-04T20:59:02Z"
+        }
+      ],
       "reviews": []
     }
   ]
