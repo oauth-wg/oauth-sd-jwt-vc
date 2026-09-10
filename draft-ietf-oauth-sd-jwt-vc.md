@@ -345,6 +345,11 @@ exist between `sub` and `cnf` claims.
 * `iat`: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
       [@!RFC7519] for more information.
 
+Note that [@!RFC7800, section 3] has a somewhat misguided requirement that either
+the `sub` or `iss` be present in the JWT.
+This specification explicitly overrides that requirement, as there are valid and
+legitimate uses of key-bound SD-JWT VCs without either of those claims.
+
 #### Public and Private JWT claims
 
 Additionally, any public and private claims as defined in Sections 4.2 and 4.3 of
@@ -1948,6 +1953,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -20
 
+* Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply
 * Fix a couple of example hash values
 
 -19
