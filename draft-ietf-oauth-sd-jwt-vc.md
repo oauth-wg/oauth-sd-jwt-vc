@@ -713,9 +713,9 @@ An example of a Type Metadata document is shown in (#ExampleTypeMetadata).
 ## Retrieving Type Metadata {#retrieving-type-metadata}
 
 A Consumer retrieving Type Metadata MUST ensure that the `vct` value in the
-SD-JWT VC payload is identical to the `vct` value in the reference to the Type
-Metadata (either in the SD-JWT VC itself or in an `extends` property in a Type
-Metadata document).
+retrieved document is identical to the reference used to retrieve it. For
+the initial document, that reference is the SD-JWT VC's `vct` claim value. For a
+parent document, that reference is the immediate child's `extends` property value.
 
 If the claim `vct#integrity` is present in the SD-JWT VC, its value
 MUST be an "integrity metadata" string as defined in (#document-integrity).
@@ -1949,6 +1949,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -20
 
 * Fix a couple of example hash values
+* Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata
 
 -19
 
