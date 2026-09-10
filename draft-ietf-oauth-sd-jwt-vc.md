@@ -658,7 +658,7 @@ with the value `https://betelgeuse.example.com/education_credential/v42`.
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
   "vct#integrity":
-    "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
+    "sha256-5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=",
   ...
 }
 ```
@@ -684,7 +684,7 @@ Figure: Example Type Metadata Document {#example-type-metadata-document}
 
 Note: The hash of the Type Metadata document shown in the second example must be equal
 to the one in the `vct#integrity` claim in the SD-JWT VC payload,
-`vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=` (see (#document-integrity) for details).
+`5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=` (see (#document-integrity) for details).
 
 ## Type Metadata Format {#type-metadata-format}
 
@@ -1777,7 +1777,7 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
             "uri":
               "https://betelgeuse.example.com/public/cred-background-de.png",
             "uri#integrity":
-              "sha256-9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh="
+              "sha256-9c/mAd0G1WaZOkU+lJNN/dACk3L+PmjZ5t0W5caxXfh="
           },
           "background_color": "#12107c",
           "text_color": "#FFFFFF"
@@ -1916,6 +1916,7 @@ Alen Horvat,
 Andres Uribe,
 Andrii Deinega,
 Annabelle Kennedy,
+Antun Jurkovic,
 Babis Routis,
 Christian Bormann,
 Dan Moore,
@@ -1944,6 +1945,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-20
+
+* Fix a couple of example hash values
 
 -19
 
