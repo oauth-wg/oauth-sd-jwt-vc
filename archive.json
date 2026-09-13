@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-06T00:57:00.577137+00:00",
+  "timestamp": "2026-09-13T00:56:31.685148+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -33914,20 +33914,96 @@
       "id": "PR_kwDOJbVClc8AAAABCQH1sA",
       "title": "Fix a couple of example hash values",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/428",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "",
       "createdAt": "2026-09-04T19:51:45Z",
-      "updatedAt": "2026-09-04T20:59:02Z",
+      "updatedAt": "2026-09-10T19:35:44Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "aa2f9713659fc593b4361874f0667255b0ead8ae",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "twenty-etc",
       "headRefOid": "a89d6316f1d9472f5b52efb2d7bc476f512cc17d",
+      "closedAt": "2026-09-10T19:21:09Z",
+      "mergedAt": "2026-09-10T19:21:09Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "part of an email exchange from Antun and me:\r\n \r\n>     6. Example integrity values\r\n> \r\n>     I reproduced two example problems in the published -19 artifacts.\r\n> \r\n>     First, the Figure 17 Type Metadata JSON is 349 UTF-8 bytes without a final LF\r\n>     and hashes with SHA-256 to:\r\n> \r\n>         mtyXVdokmtSix97ZVctF1wk95oi9VhNqWuPx6dPqQ0A=\r\n> \r\n>     With one final LF, it is 350 bytes and hashes to:\r\n> \r\n>         5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=\r\n> \r\n>     The stated value:\r\n> \r\n>         vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=\r\n> \r\n>     instead matches the materially different 5,003-byte Appendix A.2 Type\r\n>     Metadata document with a final LF. The figure and appendix documents have\r\n>     different content, so the Figure 17 association is not executable as written.\r\n\r\n\r\nI think I messed this up in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419 but as mentioned in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419/changes/2e2b42cb0cdcc9c7ece201e4ed5691cd7789a897 I don't think it was correct before that either. Regardless, the `5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=` one should probably be used in sec 5.1.\r\n\r\n\r\n \r\n\r\n> \r\n>     Second, the German background_image value:\r\n> \r\n>         9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh=\r\n> \r\n>     has 43 characters and fails strict Base64 decoding. Artificially adding\r\n>     padding yields only 31 bytes, so it cannot encode a SHA-256 result. Correcting\r\n>     that value requires the actual referenced PNG bytes.\r\n\r\n\r\nI'm pretty sure there are no actual referenced PNG bytes, and I think this is just mistakenly one character too short.  ",
+          "createdAt": "2026-09-04T20:56:40Z",
+          "updatedAt": "2026-09-04T20:59:02Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Thank you, Brian. This is very helpful, and thank you for preparing PR #428:\r\n> \r\n> https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/428\r\n> \r\n> The proposed Figure 17 value is the SHA-256 result I obtained for the shown\r\n> Type Metadata document with its final line feed. The replacement\r\n> background_image value is also syntactically valid Base64 representing 32\r\n> octets. Without the referenced PNG bytes, I can confirm its syntax but not its\r\n> association with particular image content, which may be sufficient if the\r\n> value is intended only as illustrative data.",
+          "createdAt": "2026-09-10T19:20:21Z",
+          "updatedAt": "2026-09-10T19:20:21Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I hope it's\u00a0sufficient because, as mentioned previously, there is no\u00a0actual\u00a0image content.\u00a0\r\nAnyway, I did merge #428. Thanks for catching those issues.\u00a0",
+          "createdAt": "2026-09-10T19:35:33Z",
+          "updatedAt": "2026-09-10T19:35:44Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 429,
+      "id": "PR_kwDOJbVClc8AAAABDC9bXg",
+      "title": "Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/429",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "\r\n    On the remaining points:\r\n\r\n    1. Type Metadata identity\r\n\r\n    Your reading matches the interpretation I was trying to express. My\r\n    concern is specifically that the current sentence names the vct value in the\r\n    SD-JWT VC payload and the vct value in the reference as its two operands. In\r\n    the recursive case, those are C and P. It does not name the vct property in the\r\n    document returned for reference P.\r\n\r\n    If Daniel confirms the intended processing, wording along these lines would\r\n    resolve my concern:\r\n\r\n    For each retrieved Type Metadata document, the Consumer ensures that the vct\r\n    value in that document is identical to the reference used to retrieve it. For\r\n    the initial document, that reference is the SD-JWT VC's vct value. For a\r\n    parent document, that reference is the immediate child's extends value.\r\n\r\n\r\nThank you, that text works pretty nicely, I think. I've massaged it just a bit in this PR #429",
+      "createdAt": "2026-09-10T19:44:03Z",
+      "updatedAt": "2026-09-11T17:30:09Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "tmi",
+      "headRefOid": "0bd4a3866af67c38dff19daeff19b31b3ddd6615",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 430,
+      "id": "PR_kwDOJbVClc8AAAABDDPEwQ",
+      "title": "Note that the somewhat misguided RFC7800 requirement doesn't apply here",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/430",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply",
+      "createdAt": "2026-09-10T20:22:09Z",
+      "updatedAt": "2026-09-10T20:44:07Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "what-the-cnf",
+      "headRefOid": "0a6f0bb62e1dc822ff283efd3b6be950f95668dc",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -33936,9 +34012,50 @@
         {
           "author": "bc-pi",
           "authorAssociation": "COLLABORATOR",
-          "body": "part of an email exchange from Antun and me:\r\n \r\n>     6. Example integrity values\r\n> \r\n>     I reproduced two example problems in the published -19 artifacts.\r\n> \r\n>     First, the Figure 17 Type Metadata JSON is 349 UTF-8 bytes without a final LF\r\n>     and hashes with SHA-256 to:\r\n> \r\n>         mtyXVdokmtSix97ZVctF1wk95oi9VhNqWuPx6dPqQ0A=\r\n> \r\n>     With one final LF, it is 350 bytes and hashes to:\r\n> \r\n>         5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=\r\n> \r\n>     The stated value:\r\n> \r\n>         vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=\r\n> \r\n>     instead matches the materially different 5,003-byte Appendix A.2 Type\r\n>     Metadata document with a final LF. The figure and appendix documents have\r\n>     different content, so the Figure 17 association is not executable as written.\r\n\r\n\r\nI think I messed this up in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419 but as mentioned in https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/419/changes/2e2b42cb0cdcc9c7ece201e4ed5691cd7789a897 I don't think it was correct before that either. Regardless, the `5qAmRHgxiSHIPqS+mLzrVKVWliOBm955Oj86pMrc5g4=` one should probably be used in sec 5.1.\r\n\r\n\r\n \r\n\r\n> \r\n>     Second, the German background_image value:\r\n> \r\n>         9cLlJNXN+TsMk+PmKjZ5t0WRL5ca/xGgX3c1ULmXfh=\r\n> \r\n>     has 43 characters and fails strict Base64 decoding. Artificially adding\r\n>     padding yields only 31 bytes, so it cannot encode a SHA-256 result. Correcting\r\n>     that value requires the actual referenced PNG bytes.\r\n\r\n\r\nI'm pretty sure there are no actual referenced PNG bytes, and I think this is just mistakenly one character too short.  ",
-          "createdAt": "2026-09-04T20:56:40Z",
-          "updatedAt": "2026-09-04T20:59:02Z"
+          "body": "> 2. RFC 7800 and cnf\r\n> \r\n> An explicit, SD-JWT-VC-scoped statement that the RFC 7800 Section 3 sub-or-iss\r\n> requirement does not apply would resolve the conformance concern for me. I am\r\n> not attached to requiring sub or iss if this specification intentionally uses\r\n> its own issuer-identification and Holder key-binding model. The important part\r\n> is making that departure explicit rather than leaving two applicable\r\n> requirements in conflict.\r\n> \r\n\r\nRight, I get it. I'm just a little worried that it's something no one has noticed before and by saying something about it in this draft people will suddenly have opinions about it. But somewhat reluctantly:\u00a0https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/430",
+          "createdAt": "2026-09-10T20:42:41Z",
+          "updatedAt": "2026-09-10T20:42:41Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "but first was:\r\n\r\n    2. A cnf-bearing JWT can omit both claims required by RFC 7800\r\n\r\n    RFC 7800 Section 3 says that at least one of sub and iss must be present in the\r\n    JWT containing cnf.\r\n\r\n    In SD-JWT VC -19:\r\n\r\n    - iss is optional;\r\n    - sub is optional and may be selectively disclosed; and\r\n    - cnf is required when cryptographic Key Binding is supported and is defined\r\n      by reference to RFC 7800.\r\n\r\n    Consequently, the Issuer-signed JWT can contain cnf while containing neither a\r\n    directly present iss nor a directly present sub. Figure 3 illustrates such a\r\n    combination. Revealing a selectively disclosed sub later does not put that\r\n    claim into the JWT that contains cnf, and an X.509 certificate subject is not\r\n    an iss or sub JWT claim.\r\n\r\n    The narrow correction appears to be requiring a directly present iss or sub in\r\n    every Issuer-signed JWT containing cnf. If the intent is instead to profile or\r\n    override RFC 7800, I think the specification needs to say so and define the\r\n    replacement presenter-identification rule explicitly.\r\n\r\n\r\nI must admit that I'd forgotten about that little gem in RFC 7800. I'd like to say it's because it's a rather silly requirement that doesn't really make sense. But actually, I just forgot. It is a rather silly requirement that doesn't really make sense though. I suppose this document could state that it overrides that part of RFC 7800. I'm not super excited about calling attention to it though. \r\n ",
+          "createdAt": "2026-09-10T20:44:07Z",
+          "updatedAt": "2026-09-10T20:44:07Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 431,
+      "id": "PR_kwDOJbVClc8AAAABDLgDvA",
+      "title": "What's in a name? That which we call a rose by any other name would smell as sweet",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/431",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "> P.S. Thank you also for including me in the acknowledgements.\r\n> Could you use \u201cAntun Jurkovikj\u201d, which is the spelling I use in Datatracker? \r\n> My Gmail display name uses \u201cJurkovic\u201d.",
+      "createdAt": "2026-09-11T17:38:29Z",
+      "updatedAt": "2026-09-11T21:35:24Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "Jurkovic-Jurkovikj-JFC",
+      "headRefOid": "0d78016f4aa36ee5c08f3ecc1a10b6946f4d3f9d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "credit to William Shakespeare for the title but I don't think he has a datatracker account or github handle ",
+          "createdAt": "2026-09-11T17:45:32Z",
+          "updatedAt": "2026-09-11T21:35:24Z"
         }
       ],
       "reviews": []
