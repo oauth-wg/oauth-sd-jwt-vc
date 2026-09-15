@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-13T00:56:31.685148+00:00",
+  "timestamp": "2026-09-15T00:52:07.046123+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -79,7 +79,7 @@
       "color": "3B153E"
     },
     {
-      "name": "wg-04",
+      "name": "last-call@ietf.org",
       "description": "",
       "color": "525FF7"
     },
@@ -33918,10 +33918,12 @@
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
       "body": "",
       "createdAt": "2026-09-04T19:51:45Z",
-      "updatedAt": "2026-09-10T19:35:44Z",
+      "updatedAt": "2026-09-13T12:55:29Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "aa2f9713659fc593b4361874f0667255b0ead8ae",
@@ -33968,10 +33970,12 @@
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
       "body": "\r\n    On the remaining points:\r\n\r\n    1. Type Metadata identity\r\n\r\n    Your reading matches the interpretation I was trying to express. My\r\n    concern is specifically that the current sentence names the vct value in the\r\n    SD-JWT VC payload and the vct value in the reference as its two operands. In\r\n    the recursive case, those are C and P. It does not name the vct property in the\r\n    document returned for reference P.\r\n\r\n    If Daniel confirms the intended processing, wording along these lines would\r\n    resolve my concern:\r\n\r\n    For each retrieved Type Metadata document, the Consumer ensures that the vct\r\n    value in that document is identical to the reference used to retrieve it. For\r\n    the initial document, that reference is the SD-JWT VC's vct value. For a\r\n    parent document, that reference is the immediate child's extends value.\r\n\r\n\r\nThank you, that text works pretty nicely, I think. I've massaged it just a bit in this PR #429",
       "createdAt": "2026-09-10T19:44:03Z",
-      "updatedAt": "2026-09-11T17:30:09Z",
+      "updatedAt": "2026-09-13T12:57:10Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
@@ -33994,10 +33998,12 @@
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
       "body": "Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply",
       "createdAt": "2026-09-10T20:22:09Z",
-      "updatedAt": "2026-09-10T20:44:07Z",
+      "updatedAt": "2026-09-13T12:56:57Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
@@ -34035,10 +34041,12 @@
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
-      "labels": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
       "body": "> P.S. Thank you also for including me in the acknowledgements.\r\n> Could you use \u201cAntun Jurkovikj\u201d, which is the spelling I use in Datatracker? \r\n> My Gmail display name uses \u201cJurkovic\u201d.",
       "createdAt": "2026-09-11T17:38:29Z",
-      "updatedAt": "2026-09-11T21:35:24Z",
+      "updatedAt": "2026-09-13T12:56:45Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
@@ -34058,6 +34066,34 @@
           "updatedAt": "2026-09-11T21:35:24Z"
         }
       ],
+      "reviews": []
+    },
+    {
+      "number": 432,
+      "id": "PR_kwDOJbVClc8AAAABDVZJKw",
+      "title": "the sub is not always the holder",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/432",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
+      "body": "add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject\r\n\r\nsee https://mailarchive.ietf.org/arch/msg/last-call/tMRknxLNWkw4q5AaO96byYxW-3M/",
+      "createdAt": "2026-09-13T12:44:24Z",
+      "updatedAt": "2026-09-13T12:56:14Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "hold-my-sub",
+      "headRefOid": "164b18cec9718ea3a1e22a758a8fe78ee59c7f51",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
       "reviews": []
     }
   ]
