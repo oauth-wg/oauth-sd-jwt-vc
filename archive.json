@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-15T00:52:07.046123+00:00",
+  "timestamp": "2026-09-17T00:50:54.401897+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10673,6 +10673,62 @@
           "updatedAt": "2026-07-02T10:22:21Z"
         }
       ]
+    },
+    {
+      "number": 433,
+      "id": "I_kwDOJbVClc8AAAABRVHBVQ",
+      "title": "Section 2.5: relationship between `iss` and the x5c end-entity certificate is unspecified",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/433",
+      "state": "OPEN",
+      "author": "Nas2020",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well rather than let it go unrecorded. Apologies if it reaches you twice.\n\nI maintain a relying-party verifier listed by the OpenID Foundation as certified on 11 September 2026 to the OID4VP-1.0+HAIP-1.0 Verifier `sd_jwt_vc direct_post.jwt` and `iso_mdl direct_post.jwt` profiles. The points below came out of verifying live PIDs from the European Commission's EUDI Wallet reference deployment.\n\n### The evidence\n\nA PID captured from the EC reference wallet on 5 September 2026:\n\n```\nheader: {\"alg\":\"ES256\",\"typ\":\"dc+sd-jwt\",\"x5c\":[<one certificate>]}\niss:    \"https://backend.issuer.eudiw.dev\"\nvct:    \"urn:eudi:pid:1\"\n```\n\nThe `x5c` array has exactly one entry. That certificate's subject is `CN=PID DS - 002, O=EUDI Wallet Reference Implementation, C=UT`, and **it has no subjectAltName extension**. The extensions present are basicConstraints, authorityKeyIdentifier, authorityInfoAccess, certificatePolicies, extendedKeyUsage, cRLDistributionPoints, subjectKeyIdentifier, keyUsage and qcStatements.\n\nSo `iss` is an HTTPS URI that appears nowhere in the certificate.\n\n### The problem\n\nSection 2.2.2.3 says `iss` \"explicitly indicates the Issuer of the Verifiable Digital Credential when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an x5c header)\". I read that as: with `x5c` present, `iss` is redundant and carries no weight.\n\nSection 7.3 pushes the other way. It says it is \"critical that those rules maintain the integrity of the relationship between the iss value of the SD-JWT, if present, and the public keys of the Issuer.\" That reads as: `iss` still means something, even alongside `x5c`.\n\nSection 2.5 says nothing about the case where both are present, which is the shape of every EU reference credential I have seen.\n\nThis is not theoretical. Credo (credo-ts) v0.7.0 `SdJwtVcService.assertValidX5cJwtIssuer` requires `iss` to match a SAN-URI entry in the end-entity certificate, or its domain to match a SAN-DNS entry, and rejects the credential otherwise. Against the EC reference issuer that rejects everything, because there is no SAN to match. We carry a local patch to relax it. Someone reading the same text has clearly reached the opposite conclusion from mine.\n\n### Suggested resolution\n\nOne sentence in Section 2.5, whichever reflects working group intent. Either:\n\n> \"When the x5c parameter is present, the iss claim is not used for key discovery and MUST NOT be required to correspond to any name in the end-entity certificate.\"\n\nor a statement of whatever matching rule is intended. I do not mind which. I would like the document to pick one.\n",
+      "createdAt": "2026-09-15T05:31:08Z",
+      "updatedAt": "2026-09-15T22:13:09Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "paulbastian",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I support this, see similar discussion on WIA: https://github.com/openid/OpenID4VC-HAIP/issues/352\n\nEdit: as I see this, iss is already optional, but it should be discouraged. ",
+          "createdAt": "2026-09-15T21:25:15Z",
+          "updatedAt": "2026-09-15T22:13:09Z"
+        }
+      ]
+    },
+    {
+      "number": 434,
+      "id": "I_kwDOJbVClc8AAAABRVHHNQ",
+      "title": "Section 2.5: no precedence rule when both key discovery mechanisms apply",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/434",
+      "state": "OPEN",
+      "author": "Nas2020",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well. Apologies if it reaches you twice. Context and the credential this refers to are in the companion issue on `iss` and `x5c`.\n\n### The problem\n\nSection 7.3 says:\n\n> \"A Verifier MUST ensure that for any given iss value, an attacker cannot influence the type of verification process used.\"\n\nI agree with the requirement. My problem is that Section 2.5 gives me no way to satisfy it for the two mechanisms this document itself defines.\n\nThe EU reference credential triggers both at once: `iss` is an HTTPS URI, and `x5c` is present. Section 2.5 lists the two without precedence, and the rejection rule at the end of 2.5 is satisfied by \"a permitted key discovery and validation mechanism\" \u2014 any one of them.\n\nThey are not equivalent. Under `x5c` I end up at a key whose certificate chains to an anchor I already hold, which in the EU case was put on a trusted list by a third party. Under JWT VC Issuer Metadata I end up at whatever key is served at the `iss` URL, and `iss` is a value the credential asserts about itself. Anyone can mint a credential, point `iss` at a domain they control, publish a key there and pass. I dropped the metadata path from my verifier for that reason.\n\nSection 2.4's \"permitted for the Issuer according to policy\" is the hook for making that choice, and I used it. But a verifier built from this document with no policy layer will accept both, which is the situation 7.3 says must not arise.\n\n### Suggested resolution\n\nSay in Section 2.5 that when `x5c` is present the recipient MUST use the `x5c` mechanism and MUST NOT fall back to JWT VC Issuer Metadata for the same credential.\n\nIf the working group would rather leave it to policy, then say that the choice MUST be fixed by policy per Issuer and MUST NOT be driven by what the credential presents.\n",
+      "createdAt": "2026-09-15T05:31:22Z",
+      "updatedAt": "2026-09-15T05:31:22Z",
+      "closedAt": null,
+      "comments": []
+    },
+    {
+      "number": 435,
+      "id": "I_kwDOJbVClc8AAAABRVHM-w",
+      "title": "Section 2.5: \"validates the X.509 certificate chain accordingly\" names no trust anchor and no RFC 5280",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/435",
+      "state": "OPEN",
+      "author": "Nas2020",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well. Apologies if it reaches you twice. Context and the credential this refers to are in the companion issue on `iss` and `x5c`.\n\n### The problem\n\nSection 2.5 says the recipient \"validates the X.509 certificate chain accordingly\". The document does not say what that means, and **there is no reference to RFC 5280 anywhere in it**. \"Trust anchoring systems\" appears twice in 2.5, but nothing requires the recipient to hold a trust anchor.\n\nRead literally, checking that the certificates in `x5c` are internally consistent satisfies \"validates the chain\". That establishes nothing, because the credential supplied those certificates.\n\nAgain not theoretical: the EU reference credential ships one certificate. There is no chain in it. Everything above the end-entity certificate has to come from my own configuration, and if I hold no applicable anchor the right answer is to refuse.\n\n### Suggested resolution\n\nAfter \"validates the X.509 certificate chain accordingly\", add:\n\n> \"Chain validation is performed as described in [RFC5280] and MUST terminate at a trust anchor that the recipient obtained out of band and that is permitted for the Issuer according to policy. Certificates conveyed in the x5c parameter MUST NOT be treated as trust anchors. A recipient with no applicable trust anchor MUST reject the SD-JWT VC.\"\n",
+      "createdAt": "2026-09-15T05:31:36Z",
+      "updatedAt": "2026-09-15T05:31:36Z",
+      "closedAt": null,
+      "comments": []
     }
   ],
   "pulls": [
