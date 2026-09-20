@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-17T00:50:54.401897+00:00",
+  "timestamp": "2026-09-20T00:56:18.829850+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10686,7 +10686,7 @@
       "labels": [],
       "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well rather than let it go unrecorded. Apologies if it reaches you twice.\n\nI maintain a relying-party verifier listed by the OpenID Foundation as certified on 11 September 2026 to the OID4VP-1.0+HAIP-1.0 Verifier `sd_jwt_vc direct_post.jwt` and `iso_mdl direct_post.jwt` profiles. The points below came out of verifying live PIDs from the European Commission's EUDI Wallet reference deployment.\n\n### The evidence\n\nA PID captured from the EC reference wallet on 5 September 2026:\n\n```\nheader: {\"alg\":\"ES256\",\"typ\":\"dc+sd-jwt\",\"x5c\":[<one certificate>]}\niss:    \"https://backend.issuer.eudiw.dev\"\nvct:    \"urn:eudi:pid:1\"\n```\n\nThe `x5c` array has exactly one entry. That certificate's subject is `CN=PID DS - 002, O=EUDI Wallet Reference Implementation, C=UT`, and **it has no subjectAltName extension**. The extensions present are basicConstraints, authorityKeyIdentifier, authorityInfoAccess, certificatePolicies, extendedKeyUsage, cRLDistributionPoints, subjectKeyIdentifier, keyUsage and qcStatements.\n\nSo `iss` is an HTTPS URI that appears nowhere in the certificate.\n\n### The problem\n\nSection 2.2.2.3 says `iss` \"explicitly indicates the Issuer of the Verifiable Digital Credential when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an x5c header)\". I read that as: with `x5c` present, `iss` is redundant and carries no weight.\n\nSection 7.3 pushes the other way. It says it is \"critical that those rules maintain the integrity of the relationship between the iss value of the SD-JWT, if present, and the public keys of the Issuer.\" That reads as: `iss` still means something, even alongside `x5c`.\n\nSection 2.5 says nothing about the case where both are present, which is the shape of every EU reference credential I have seen.\n\nThis is not theoretical. Credo (credo-ts) v0.7.0 `SdJwtVcService.assertValidX5cJwtIssuer` requires `iss` to match a SAN-URI entry in the end-entity certificate, or its domain to match a SAN-DNS entry, and rejects the credential otherwise. Against the EC reference issuer that rejects everything, because there is no SAN to match. We carry a local patch to relax it. Someone reading the same text has clearly reached the opposite conclusion from mine.\n\n### Suggested resolution\n\nOne sentence in Section 2.5, whichever reflects working group intent. Either:\n\n> \"When the x5c parameter is present, the iss claim is not used for key discovery and MUST NOT be required to correspond to any name in the end-entity certificate.\"\n\nor a statement of whatever matching rule is intended. I do not mind which. I would like the document to pick one.\n",
       "createdAt": "2026-09-15T05:31:08Z",
-      "updatedAt": "2026-09-15T22:13:09Z",
+      "updatedAt": "2026-09-18T15:25:45Z",
       "closedAt": null,
       "comments": [
         {
@@ -10695,6 +10695,13 @@
           "body": "I support this, see similar discussion on WIA: https://github.com/openid/OpenID4VC-HAIP/issues/352\n\nEdit: as I see this, iss is already optional, but it should be discouraged. ",
           "createdAt": "2026-09-15T21:25:15Z",
           "updatedAt": "2026-09-15T22:13:09Z"
+        },
+        {
+          "author": "Nas2020",
+          "authorAssociation": "NONE",
+          "body": "> I support this, see similar discussion on WIA: [openid/OpenID4VC-HAIP#352](https://github.com/openid/OpenID4VC-HAIP/issues/352)\n> \n> Edit: as I see this, iss is already optional, but it should be discouraged.\n\nThanks @paulbastian, yes, iss is optional today. The gap is narrower than presence: when iss is present alongside x5c, Section 2.5 does not say whether the two must correspond. Optionality does not reach that case, because in every EU credential I have handled iss is present.\nFor precision on the example above: the leaf in that single-element x5c is CN=PID DS - 002, O=EUDI Wallet Reference Implementation, C=UT, and it carries no subjectAltName extension at all \u2014 confirmed with openssl. So there is nothing for a SAN-matching rule to match, and the credential is rejected by a library that is, on one reading, doing what the spec implies.",
+          "createdAt": "2026-09-18T15:25:45Z",
+          "updatedAt": "2026-09-18T15:25:45Z"
         }
       ]
     },
