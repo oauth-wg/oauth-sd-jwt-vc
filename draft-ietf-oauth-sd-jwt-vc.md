@@ -1416,7 +1416,7 @@ In certain situations this could lead to unwanted leakage of additional context 
 In general, Issuers are advised to choose `vct` values following data minimization principles.
 For example, government Issuers issuing an SD-JWT VC to their citizens to enable them to prove their age,
 might consider using a `vct` value that does not allow third-parties to infer additional personal information
-about the Holder, e.g., country of residency or citizenship.
+about the Holder or the Subject, e.g., country of residency or citizenship.
 
 Additionally, Holders have to be informed that, besides the actual requested claims, the
 `vct` information is shared with the Verifier.
@@ -1912,6 +1912,7 @@ Note that in this example, there are four definitions affecting the `degrees` cl
 
 We would like to thank
 Aaron Parecki,
+Albertus Geldenhuys,
 Alen Horvat,
 Andres Uribe,
 Andrii Deinega,
@@ -1949,6 +1950,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -20
 
 * Fix a couple of example hash values
+* add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject
 
 -19
 
