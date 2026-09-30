@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 14 March 2027                                     Authlete Inc.
+Expires: 3 April 2027                                      Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                       10 September 2026
+                                                       30 September 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 14 March 2027.
+   This Internet-Draft will expire on 3 April 2027.
 
 Copyright Notice
 
@@ -664,9 +664,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.y_Jou
-   V9XiyKeBnD94bwBdKEsnjsB-7p6-zG3C8oTRCS1MGL-e7-cXPwoI7CR8QDcHstuyQgrO
-   f4Dpasot25wuQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eklSg
+   XdFl4f-0g0PWKicbLVpVnNj_Vm44LJiiStOZ617lEBWbDQI6fG7_A50pyl5hYMZ_hVln
+   _mLMugn9YAagw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -702,17 +702,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.y_Jou
-   V9XiyKeBnD94bwBdKEsnjsB-7p6-zG3C8oTRCS1MGL-e7-cXPwoI7CR8QDcHstuyQgrO
-   f4Dpasot25wuQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eklSg
+   XdFl4f-0g0PWKicbLVpVnNj_Vm44LJiiStOZ617lEBWbDQI6fG7_A50pyl5hYMZ_hVln
+   _mLMugn9YAagw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODkwNzE2OT
-   csICJzZF9oYXNoIjogIjdhMlJHdFJCX09DS2FSN1VoeE1qMy1PT0ZwaXItbUx4Y1A5dV
-   psT2t2YkkifQ.h2tHRTyqZn6SsygeZpSmm5rWYMKddHjCM1cWNWI7m1nigR45-5l3g5i
-   E2I49kNDmPmkXwl_TuCBTmINpw1XMwg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTA3ODQxMj
+   EsICJzZF9oYXNoIjogInY5ZlpfV2tqSnVGS2UydmJTbzV6cDhOc21QTFY4RmphT2pEen
+   ZzMGlLQlkifQ.umymcGWY5ijokTCeYIvUlmwaACZ3VED1lAF7QP573sT--3jf6rVTDjG
+   CQWsTetKM7sikJEYBbS76jQP44fL9aw
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -758,8 +758,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.lay7EguOiFxRNvHxqwbYm55F1x6JOTnC1l6UkbRsM1KVir
-   AzbD-TP0VQCvNkR_rQ0O3HtFyjE2aPu08ypGe1Dw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.SScNKkYnaLrqK_7YNO8HsFqRx6oVkYrtEnEFHutCljj8Lv
+   cNvWg18N41rf7clBuNyg2YuvQh0no9rzETqB7LtA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1960,8 +1960,8 @@ Table of Contents
    minimization principles.  For example, government Issuers issuing an
    SD-JWT VC to their citizens to enable them to prove their age, might
    consider using a vct value that does not allow third-parties to infer
-   additional personal information about the Holder, e.g., country of
-   residency or citizenship.
+   additional personal information about the Holder or the Subject,
+   e.g., country of residency or citizenship.
 
    Additionally, Holders have to be informed that, besides the actual
    requested claims, the vct information is shared with the Verifier.
@@ -2313,8 +2313,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZlLnSrmLdrQ893i6T5u6dp7BndbWkts6
-   YLxiNzauzWvARD4yoBE-OBjufBkCAt3ZNoEjK2IeKZdJX6AchlbCgw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wuJt7ChxAFLUs2J-xSEXTJvy8ipA5wFw
+   4D2FgXe8I1Bqw5QFuJwTwJzLp0rkqATqK_rckp7lMS8qqTKG7FjULw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2696,8 +2696,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ZlLnSrmLdrQ893i6T5u6dp7BndbWkts6
-   YLxiNzauzWvARD4yoBE-OBjufBkCAt3ZNoEjK2IeKZdJX6AchlbCgw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wuJt7ChxAFLUs2J-xSEXTJvy8ipA5wFw
+   4D2FgXe8I1Bqw5QFuJwTwJzLp0rkqATqK_rckp7lMS8qqTKG7FjULw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2708,10 +2708,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODkwNzE2OTcsICJzZF9oYXNoIjogIm
-   NrcWJ2dWtqemh1UUhMcmlQdU85TzVuU1I3dE9EMUZEaEdEdU9zd0x4NDgifQ.p94USUa
-   448JejRsLaQ0s4DUrqp0UT1npsYM9162318Q0poRFy7bBIEsMZXvWTiVGp96d_E8Retk
-   amMayMbdhVA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTA3ODQxMjEsICJzZF9oYXNoIjogIm
+   JLOWpoU1hWTS1veV9CWEhpNWNJMEhsX0dxYlZ3WnRIaGxBVHg2Uk85c3cifQ.YM0zRit
+   kNpV2O03dslJbKnx4Wj1TO61LwN1yvIWdbZrSMW7qxI_O5Xok3eET34Own96hmU3GrqX
+   DyJupPffIJw
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2720,8 +2720,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1789071697,
-     "sd_hash": "ckqbvukjzhuQHLriPuO9O5nSR7tOD1FDhGDuOswLx48"
+     "iat": 1790784121,
+     "sd_hash": "bK9jhSXVM-oy_BXHi5cI0Hl_GqbVwZtHhlATx6RO9sw"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -2996,16 +2996,16 @@ A.2.  Example Type Metadata
 
 Appendix B.  Acknowledgements
 
-   We would like to thank Aaron Parecki, Alen Horvat, Andres Uribe,
-   Andrii Deinega, Annabelle Kennedy, Antun Jurkovic, Babis Routis,
-   Christian Bormann, Dan Moore, Deb Cooley, Denis Pinkas, George J
-   Padayatti, Giuseppe De Marco, Hannes Tschofenig, Lukas J Han, Lukasz
-   Jaromin, Leif Johansson, Mark Nottingham, Michael B.  Jones, Mike
-   Prorock, Mirko Mollik, Nat Sakimura, Orie Steele, Paul Bastian, Pavel
-   Zarecky, Stefan Charsley, Tim Cappalli, Timo Glastra, Torsten
-   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
-   contributions (some of which substantial) to this draft and to the
-   initial set of implementations.
+   We would like to thank Aaron Parecki, Albertus Geldenhuys, Alen
+   Horvat, Andres Uribe, Andrii Deinega, Annabelle Kennedy, Antun
+   Jurkovikj, Babis Routis, Christian Bormann, Dan Moore, Deb Cooley,
+   Denis Pinkas, George J Padayatti, Giuseppe De Marco, Hannes
+   Tschofenig, Lukas J Han, Lukasz Jaromin, Leif Johansson, Mark
+   Nottingham, Michael B.  Jones, Mike Prorock, Mirko Mollik, Nat
+   Sakimura, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan Charsley,
+   Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias Looker, and
+   Kristina Yasuda for their contributions (some of which substantial)
+   to this draft and to the initial set of implementations.
 
 Appendix C.  Document History
 
@@ -3014,6 +3014,9 @@ Appendix C.  Document History
    *  Note that the somewhat misguided RFC7800 requirement that either
       sub or iss be present in the JWT doesn't apply
    *  Fix a couple of example hash values
+   *  add 'or the Subject' to a sentence in Verifiable Digital
+      Credential Type Identifier section to better reflect that the
+      holder need not be the subject
 
    -19
 
