@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-09-20T00:56:18.829850+00:00",
+  "timestamp": "2026-10-01T01:03:52.100074+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -34029,7 +34029,7 @@
       "id": "PR_kwDOJbVClc8AAAABDC9bXg",
       "title": "Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/429",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -34038,17 +34038,19 @@
       ],
       "body": "\r\n    On the remaining points:\r\n\r\n    1. Type Metadata identity\r\n\r\n    Your reading matches the interpretation I was trying to express. My\r\n    concern is specifically that the current sentence names the vct value in the\r\n    SD-JWT VC payload and the vct value in the reference as its two operands. In\r\n    the recursive case, those are C and P. It does not name the vct property in the\r\n    document returned for reference P.\r\n\r\n    If Daniel confirms the intended processing, wording along these lines would\r\n    resolve my concern:\r\n\r\n    For each retrieved Type Metadata document, the Consumer ensures that the vct\r\n    value in that document is identical to the reference used to retrieve it. For\r\n    the initial document, that reference is the SD-JWT VC's vct value. For a\r\n    parent document, that reference is the immediate child's extends value.\r\n\r\n\r\nThank you, that text works pretty nicely, I think. I've massaged it just a bit in this PR #429",
       "createdAt": "2026-09-10T19:44:03Z",
-      "updatedAt": "2026-09-13T12:57:10Z",
+      "updatedAt": "2026-09-30T17:56:21Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
+      "baseRefOid": "0803ccc5e9a790aed85869d29c3945a9f1193ef3",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "tmi",
-      "headRefOid": "0bd4a3866af67c38dff19daeff19b31b3ddd6615",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "158dde74471be1cda6087640b29fcfb89595e901",
+      "closedAt": "2026-09-30T17:56:21Z",
+      "mergedAt": "2026-09-30T17:56:21Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "6a72f20d9384e6a475f42511541143e334972d14"
+      },
       "comments": [],
       "reviews": []
     },
@@ -34057,7 +34059,7 @@
       "id": "PR_kwDOJbVClc8AAAABDDPEwQ",
       "title": "Note that the somewhat misguided RFC7800 requirement doesn't apply here",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/430",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -34066,17 +34068,19 @@
       ],
       "body": "Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply",
       "createdAt": "2026-09-10T20:22:09Z",
-      "updatedAt": "2026-09-13T12:56:57Z",
+      "updatedAt": "2026-09-30T17:56:56Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
+      "baseRefOid": "0803ccc5e9a790aed85869d29c3945a9f1193ef3",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "what-the-cnf",
-      "headRefOid": "0a6f0bb62e1dc822ff283efd3b6be950f95668dc",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "44a689ef37ed42170903d07dd94f9bf9fd591101",
+      "closedAt": "2026-09-30T17:56:56Z",
+      "mergedAt": "2026-09-30T17:56:56Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -34091,16 +34095,64 @@
           "body": "but first was:\r\n\r\n    2. A cnf-bearing JWT can omit both claims required by RFC 7800\r\n\r\n    RFC 7800 Section 3 says that at least one of sub and iss must be present in the\r\n    JWT containing cnf.\r\n\r\n    In SD-JWT VC -19:\r\n\r\n    - iss is optional;\r\n    - sub is optional and may be selectively disclosed; and\r\n    - cnf is required when cryptographic Key Binding is supported and is defined\r\n      by reference to RFC 7800.\r\n\r\n    Consequently, the Issuer-signed JWT can contain cnf while containing neither a\r\n    directly present iss nor a directly present sub. Figure 3 illustrates such a\r\n    combination. Revealing a selectively disclosed sub later does not put that\r\n    claim into the JWT that contains cnf, and an X.509 certificate subject is not\r\n    an iss or sub JWT claim.\r\n\r\n    The narrow correction appears to be requiring a directly present iss or sub in\r\n    every Issuer-signed JWT containing cnf. If the intent is instead to profile or\r\n    override RFC 7800, I think the specification needs to say so and define the\r\n    replacement presenter-identification rule explicitly.\r\n\r\n\r\nI must admit that I'd forgotten about that little gem in RFC 7800. I'd like to say it's because it's a rather silly requirement that doesn't really make sense. But actually, I just forgot. It is a rather silly requirement that doesn't really make sense though. I suppose this document could state that it overrides that part of RFC 7800. I'm not super excited about calling attention to it though. \r\n ",
           "createdAt": "2026-09-10T20:44:07Z",
           "updatedAt": "2026-09-10T20:44:07Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "I prefer to keep it",
+          "createdAt": "2026-09-30T16:11:20Z",
+          "updatedAt": "2026-09-30T16:11:20Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "which is part of the reason, two weeks ago, I wrote word there and the history and the title of this issue ",
+          "createdAt": "2026-09-30T16:53:45Z",
+          "updatedAt": "2026-09-30T16:53:45Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABP7xpNA",
+          "commit": {
+            "abbreviatedOid": "0a6f0bb"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-09-30T09:26:56Z",
+          "updatedAt": "2026-09-30T09:26:56Z",
+          "comments": [
+            {
+              "originalPosition": 7,
+              "body": "```suggestion\r\nNote that [@!RFC7800, section 3], requires that a JWT containing a `cnf` claim also contain either the `sub` or `iss` claim. This specification explicitly overrides that requirement, as there are valid and\r\nlegitimate uses of key-bound SD-JWT VCs without either of those claims.\r\n```",
+              "createdAt": "2026-09-30T09:26:56Z",
+              "updatedAt": "2026-09-30T09:26:57Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABP7yFqg",
+          "commit": {
+            "abbreviatedOid": "0a6f0bb"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "CHANGES_REQUESTED",
+          "body": "I think we should avoid \"misguided\" although I don't disagree.",
+          "createdAt": "2026-09-30T09:27:35Z",
+          "updatedAt": "2026-09-30T09:27:35Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 431,
       "id": "PR_kwDOJbVClc8AAAABDLgDvA",
       "title": "What's in a name? That which we call a rose by any other name would smell as sweet",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/431",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -34109,17 +34161,19 @@
       ],
       "body": "> P.S. Thank you also for including me in the acknowledgements.\r\n> Could you use \u201cAntun Jurkovikj\u201d, which is the spelling I use in Datatracker? \r\n> My Gmail display name uses \u201cJurkovic\u201d.",
       "createdAt": "2026-09-11T17:38:29Z",
-      "updatedAt": "2026-09-13T12:56:45Z",
+      "updatedAt": "2026-09-30T16:01:12Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "Jurkovic-Jurkovikj-JFC",
       "headRefOid": "0d78016f4aa36ee5c08f3ecc1a10b6946f4d3f9d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-09-30T16:01:11Z",
+      "mergedAt": "2026-09-30T16:01:11Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "0803ccc5e9a790aed85869d29c3945a9f1193ef3"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -34129,14 +34183,28 @@
           "updatedAt": "2026-09-11T21:35:24Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABP7taqg",
+          "commit": {
+            "abbreviatedOid": "0d78016"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-09-30T09:20:54Z",
+          "updatedAt": "2026-09-30T09:20:54Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 432,
       "id": "PR_kwDOJbVClc8AAAABDVZJKw",
       "title": "the sub is not always the holder",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/432",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
@@ -34145,19 +34213,35 @@
       ],
       "body": "add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject\r\n\r\nsee https://mailarchive.ietf.org/arch/msg/last-call/tMRknxLNWkw4q5AaO96byYxW-3M/",
       "createdAt": "2026-09-13T12:44:24Z",
-      "updatedAt": "2026-09-13T12:56:14Z",
+      "updatedAt": "2026-09-30T16:00:43Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "c964d728456ea1b1ab99bdea6b3fb3896106cc20",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "hold-my-sub",
       "headRefOid": "164b18cec9718ea3a1e22a758a8fe78ee59c7f51",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-09-30T16:00:43Z",
+      "mergedAt": "2026-09-30T16:00:43Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "b6457a8ac78c9fae85739ed47aa0c48cd9c4adf0"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABP7s4gA",
+          "commit": {
+            "abbreviatedOid": "164b18c"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm",
+          "createdAt": "2026-09-30T09:20:12Z",
+          "updatedAt": "2026-09-30T09:20:12Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
