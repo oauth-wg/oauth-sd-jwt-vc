@@ -458,7 +458,7 @@ This specification defines the following two mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.
+- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter, the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. If the `iss` claim is also present, there is no requirement that its value directly correspond to a subject name in the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
@@ -1938,6 +1938,7 @@ Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
 Mirko Mollik,
+Nas Til,
 Nat Sakimura,
 Orie Steele,
 Paul Bastian,
@@ -1958,6 +1959,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Fix a couple of example hash values
 * Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata
 * add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject
+* state that when both the `iss` claim and `x5c` header are present, there is no requirement they directly correspond
 
 -19
 
