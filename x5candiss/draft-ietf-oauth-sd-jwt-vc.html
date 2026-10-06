@@ -12,25 +12,25 @@
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT format. 
     " name="description">
-<meta content="xml2rfc 3.34.0" name="generator">
+<meta content="xml2rfc 3.34.1" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.0
-    Python 3.14.7
-    ConfigArgParse 1.7.5
+  xml2rfc 3.34.1
+    Python 3.14.8
+    ConfigArgParse 1.8.0
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.11.7
+    platformdirs 4.12.2
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.8.3
+    wcwidth 0.9.1
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1046,11 +1046,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">September 2026</td>
+<td class="right">October 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 8 March 2027</td>
+<td class="center">Expires 9 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-09-04" class="published">4 September 2026</time>
+<time datetime="2026-10-06" class="published">6 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-03-08">8 March 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-09">9 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1122,7 +1122,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 8 March 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 9 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1777,6 +1777,10 @@ exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-2.2
   <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-2.2.2.3-5.2" class="pilcrow">¶</a>
 </li>
             </ul>
+<p id="section-2.2.2.3-6">Note that <span><a href="https://rfc-editor.org/rfc/rfc7800#section-3" class="relref">Section 3</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> has a somewhat misguided requirement that either
+the <code>sub</code> or <code>iss</code> be present in the JWT.
+This specification explicitly overrides that requirement, as there are valid and
+legitimate uses of key-bound SD-JWT VCs without either of those claims.<a href="#section-2.2.2.3-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="public-and-private-jwt-claims">
@@ -2016,9 +2020,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.cN_i6
-Y0-LmkU8SzxiMjQ1w0Gkm1e9n7xTpNVnDrdgH3PmdYTpG7xuv6HE81aX-Z4_svYvsoHq
-3CRrKkCYiXZHA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.WhUmc
+MxRm87NX5iTKdU10a8FDAAylx2inecXwhrjz6YHTRiFjHC9gnMCTcNmb0eIjAInqwoCr
+nsoQf4XFCBtpA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2064,17 +2068,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.cN_i6
-Y0-LmkU8SzxiMjQ1w0Gkm1e9n7xTpNVnDrdgH3PmdYTpG7xuv6HE81aX-Z4_svYvsoHq
-3CRrKkCYiXZHA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.WhUmc
+MxRm87NX5iTKdU10a8FDAAylx2inecXwhrjz6YHTRiFjHC9gnMCTcNmb0eIjAInqwoCr
+nsoQf4XFCBtpA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODg1NTE0OD
-ksICJzZF9oYXNoIjogIjNhZWQybWgyaVlOOERIVk82TUlqSVVPT1ZQczdIWGxtMEhzeX
-dBTW0weHcifQ.6lxdpXeB-2KeCuqZm59l4Lng_kcof63b2q0wsE5qi7Gx8XnGOT4MC9Z
-kOmxM9H5hwGEs7EnW4Ql6v9ZBkeNJXg
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTEzMjUwNT
+UsICJzZF9oYXNoIjogIlFhZ3BweGJhLW1YcHNoX1Z2am1GeFdzdklYWkw3VXJFQ1BLQW
+p5MDlHV0UifQ.Q46nB0X6O-3og1gnXFglZwxS-ayaJVqihGqQuOX3XTw3AyVrQusegsL
+5It22DGZVqu0zj3bi99i7WF2vZODCHQ
 
 </pre>
 </div>
@@ -2131,8 +2135,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.OwiOQsxwrTwgDJl05p8U4jeJMaCfQ8lLy3Jx0oCtmnP_Lh
-bkrkJv7RoHQaBwrLIYsUIyJHH_d8yhbOkIJDwPKQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.VKiJNsB_p6f26nTvhO5NmmnhP6cVt_84JotciidzT-YMtb
+_pj9cpy4zEkoaYloym2o5_NOLn1R0wela27JrWZQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2214,7 +2218,7 @@ This specification defines the following two mechanisms:<a href="#section-2.5-2"
             <p id="section-2.5-3.1.1">JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the <code>iss</code> claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 4</a>.<a href="#section-2.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-3.2">
-            <p id="section-2.5-3.2.1">Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.<a href="#section-2.5-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-3.2.1">Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. If the <code>iss</code> claim is also present, there is no requirement that its value directly correspond to a subject name in the end-entity certificate.<a href="#section-2.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
 <p id="section-2.5-4">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
@@ -2547,9 +2551,9 @@ Consumers MUST ignore properties that are not understood.<a href="#section-5.2-4
 <a href="#section-5.3" class="section-number selfRef">5.3. </a><a href="#name-retrieving-type-metadata" class="section-name selfRef">Retrieving Type Metadata</a>
         </h3>
 <p id="section-5.3-1">A Consumer retrieving Type Metadata MUST ensure that the <code>vct</code> value in the
-SD-JWT VC payload is identical to the <code>vct</code> value in the reference to the Type
-Metadata (either in the SD-JWT VC itself or in an <code>extends</code> property in a Type
-Metadata document).<a href="#section-5.3-1" class="pilcrow">¶</a></p>
+retrieved document is identical to the reference used to retrieve it. For
+the initial document, that reference is the SD-JWT VC's <code>vct</code> claim value. For a
+parent document, that reference is the immediate child's <code>extends</code> property value.<a href="#section-5.3-1" class="pilcrow">¶</a></p>
 <p id="section-5.3-2">If the claim <code>vct#integrity</code> is present in the SD-JWT VC, its value
 MUST be an "integrity metadata" string as defined in <a href="#document-integrity" class="auto internal xref">Section 6</a>.<a href="#section-5.3-2" class="pilcrow">¶</a></p>
 <p id="section-5.3-3">The following sections define methods to retrieve Type Metadata.<a href="#section-5.3-3" class="pilcrow">¶</a></p>
@@ -3504,7 +3508,7 @@ In certain situations this could lead to unwanted leakage of additional context 
 <p id="section-8.2-2">In general, Issuers are advised to choose <code>vct</code> values following data minimization principles.
 For example, government Issuers issuing an SD-JWT VC to their citizens to enable them to prove their age,
 might consider using a <code>vct</code> value that does not allow third-parties to infer additional personal information
-about the Holder, e.g., country of residency or citizenship.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
+about the Holder or the Subject, e.g., country of residency or citizenship.<a href="#section-8.2-2" class="pilcrow">¶</a></p>
 <p id="section-8.2-3">Additionally, Holders have to be informed that, besides the actual requested claims, the
 <code>vct</code> information is shared with the Verifier.<a href="#section-8.2-3" class="pilcrow">¶</a></p>
 <p id="section-8.2-4">The same considerations apply to the <code>aka_vcts</code> claim, which is also not
@@ -3906,8 +3910,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.J755_hl30lhWbM9h9swI9IoDQ8GinBWS
-3SmwdMuS20vyBrUOu2Omhb5-kiua3I2Nznk9w4O6AmVUv00416ecIA~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.tIvI5OgQ3lDyEvny7RZY3dxUV5uxlxs5
+6ENAnZ3M6yL6ApUZ1H3VMFiE5zutNKCtHjJ_2flFQ3hc4d8oIkUYRw~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4404,8 +4408,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.J755_hl30lhWbM9h9swI9IoDQ8GinBWS
-3SmwdMuS20vyBrUOu2Omhb5-kiua3I2Nznk9w4O6AmVUv00416ecIA~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.tIvI5OgQ3lDyEvny7RZY3dxUV5uxlxs5
+6ENAnZ3M6yL6ApUZ1H3VMFiE5zutNKCtHjJ_2flFQ3hc4d8oIkUYRw~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4416,10 +4420,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODg1NTE0ODksICJzZF9oYXNoIjogIm
-lrUjBKSTl6WjZVMENhSkZ2RHVKMHJObm45SDZiaFVuU1k1MzVKNnFQV28ifQ.nYANjrg
-ilS0z4Bo52gPpGxUAXEuGcUNGXuz1dM7WAvP4yasXRMD41G8K0XpWvV3dkIyG7iDxgtc
-DyU3c_Uc8Bg
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTEzMjUwNTUsICJzZF9oYXNoIjogIm
+Z1cEZvQXZnNnUtYjZYTmg5eFZrZFd1eVNiX2VKZm1mcllnckFfb2ZYcmcifQ.t1NjO2q
+x-feSsYg7Vr8MNzfPHhpP5ng0OaORvVWXaGVKjLR_d44mU44DrCdZqu1Yitmtltb7QBl
+UAzX9Of5o_g
 
 </pre>
 </div>
@@ -4434,8 +4438,8 @@ DyU3c_Uc8Bg
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1788551489,
-  "sd_hash": "ikR0JI9zZ6U0CaJFvDuJ0rNnn9H6bhUnSY535J6qPWo"
+  "iat": 1791325055,
+  "sd_hash": "fupFoAvg6u-b6XNh9xVkdWuySb_eJfmfrYgrA_ofXrg"
 }
 
 </pre>
@@ -4737,11 +4741,12 @@ DyU3c_Uc8Bg
       </h2>
 <p id="appendix-B-1">We would like to thank
 Aaron Parecki,
+Albertus Geldenhuys,
 Alen Horvat,
 Andres Uribe,
 Andrii Deinega,
 Annabelle Kennedy,
-Antun Jurkovic,
+Antun Jurkovikj,
 Babis Routis,
 Christian Bormann,
 Dan Moore,
@@ -4757,6 +4762,7 @@ Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
 Mirko Mollik,
+Nas Til,
 Nat Sakimura,
 Orie Steele,
 Paul Bastian,
@@ -4777,7 +4783,15 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-C-1">-20<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-2.1">Fix a couple of example hash values<a href="#appendix-C-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-2.1">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-2.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.2">Fix a couple of example hash values<a href="#appendix-C-2.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.3">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-2.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.4">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-2.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.5">state that when both the <code>iss</code> claim and <code>x5c</code> header are present, there is no requirement they directly correspond<a href="#appendix-C-2.5" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-C-3">-19<a href="#appendix-C-3" class="pilcrow">¶</a></p>
