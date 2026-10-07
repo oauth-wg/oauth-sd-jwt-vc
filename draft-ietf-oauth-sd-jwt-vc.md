@@ -1958,7 +1958,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Fix a couple of example hash values
 * Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata
 * add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject
-* clarify that x5c is from RFC7515 and has to validated against a policy-permitted trust anchor
+* clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor
 
 -19
 
