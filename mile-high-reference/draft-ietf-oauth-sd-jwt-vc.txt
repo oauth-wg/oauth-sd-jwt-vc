@@ -664,9 +664,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LrgRs
-   3fTRYQ582a2L-uFLVWZ-cE78Mkry3OJkjs8mEGlZuHyNiVT6vYbthrsktsDisHDMpJwY
-   _xnftkqO1aGjQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UQhqC
+   aHfPozSrWeblU9dW9HVRSeAwGBWdRI1pNF27YNXAIZjnZS6_LXxC_krjHEPUU5bss1xj
+   2OzCC0aFGaWKQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -702,17 +702,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.LrgRs
-   3fTRYQ582a2L-uFLVWZ-cE78Mkry3OJkjs8mEGlZuHyNiVT6vYbthrsktsDisHDMpJwY
-   _xnftkqO1aGjQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.UQhqC
+   aHfPozSrWeblU9dW9HVRSeAwGBWdRI1pNF27YNXAIZjnZS6_LXxC_krjHEPUU5bss1xj
+   2OzCC0aFGaWKQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE0MDU2NT
-   csICJzZF9oYXNoIjogIjJWaGVLeThYdGQ3ekR6N3lLdUVjRnFBR05LRml2NDNxLXpyNW
-   FsVXBiS2cifQ.nc6efgpyl5us5stdmBJj9af-fIs3lu3W1uWPL2CZf3LpUwxAWiJ9cey
-   rV0z8BERWqtb5ow0ByXGih0aRdUE3qQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE0MDk2NT
+   gsICJzZF9oYXNoIjogIll3ZWE2VEFnM2ttZVppbmZ2N1JCUjlNcTFGYkI1MmVpWV95Wl
+   dSX1ZYSGMifQ.DzZRvqQ5xlA_9qCbLAvL1G4fUFmBZflK0M3dngQbyMVifmZfesjmOCg
+   hdOU-TquWDuhrHBHfJor_caUuAjYpRw
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -758,8 +758,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.N_DmWBYyoCEKp5VQW-C-cN9saoKyTLWFQd0PBPONzRuMNv
-   RZBIE6RYUAMBGzgDToDJWzyv9OQnWTEJ_4cPsLYg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.k_sXwLInoZzwEwpqHzG2QRVYUOAN7Hr0MPZCeikNIcAR0H
+   pDwPBewWWajfr8g6lLbQdNS6o8TwWoHKcFM1BQsw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2315,8 +2315,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p7HpTQSzzRYxFsbtP20NHWS8fMXNPAd7
-   PG5ctpgJCQZG5s6mhPI2e0ZiKQlQGNavSqNoGBtF-TylLMbEXIjQjQ~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4DpYAS41YvBNmTOWJFYWMSdGF7Y4P4-G
+   V3QaBemZS0d8Pkfj1oiklnEnWOoSlh6XoP1o96Ou4BYy3CMmWWFilA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2698,8 +2698,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p7HpTQSzzRYxFsbtP20NHWS8fMXNPAd7
-   PG5ctpgJCQZG5s6mhPI2e0ZiKQlQGNavSqNoGBtF-TylLMbEXIjQjQ~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4DpYAS41YvBNmTOWJFYWMSdGF7Y4P4-G
+   V3QaBemZS0d8Pkfj1oiklnEnWOoSlh6XoP1o96Ou4BYy3CMmWWFilA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2710,10 +2710,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE0MDU2NTcsICJzZF9oYXNoIjogIm
-   paVHgxbGNCZTJURjZLdzNvNDcySkc3MGk1TlpaempwRGh1WXIyR1lZSmcifQ.n9dk811
-   UcZHB4YKt4_KBlHxBg-aFkaUlwLIeupVgr544k_VZzUbzosl1z6NmJ_aGj0wDh9Jw-MD
-   xkI8tydFwWA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE0MDk2NTgsICJzZF9oYXNoIjogIn
+   Q3OW9KWjFpbld2SHBNcW0zLThvUlJ2azdIbTRDVjNQYXR6aGFvT1I0c00ifQ.p4YMdZt
+   Ou3b6rLBPFmANRsS4LCJZwOUKirLmnS0et75yW__xG4Anh4jm8i75sIILi3opPkBGbuB
+   5DOtsoDWXrg
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2722,8 +2722,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1791405657,
-     "sd_hash": "jZTx1lcBe2TF6Kw3o472JG70i5NZZzjpDhuYr2GYYJg"
+     "iat": 1791409658,
+     "sd_hash": "t79oJZ1inWvHpMqm3-8oRRvk7Hm4CV3PatzhaoOR4sM"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3021,7 +3021,7 @@ Appendix C.  Document History
    *  add 'or the Subject' to a sentence in Verifiable Digital
       Credential Type Identifier section to better reflect that the
       holder need not be the subject
-   *  clarify that x5c is from RFC7515 and has to validated against a
+   *  clarify that x5c is from RFC7515 and has to be validated against a
       policy-permitted trust anchor
 
    -19
