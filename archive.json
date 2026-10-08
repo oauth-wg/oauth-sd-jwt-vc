@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-01T01:03:52.100074+00:00",
+  "timestamp": "2026-10-08T00:56:14.028791+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10686,7 +10686,7 @@
       "labels": [],
       "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well rather than let it go unrecorded. Apologies if it reaches you twice.\n\nI maintain a relying-party verifier listed by the OpenID Foundation as certified on 11 September 2026 to the OID4VP-1.0+HAIP-1.0 Verifier `sd_jwt_vc direct_post.jwt` and `iso_mdl direct_post.jwt` profiles. The points below came out of verifying live PIDs from the European Commission's EUDI Wallet reference deployment.\n\n### The evidence\n\nA PID captured from the EC reference wallet on 5 September 2026:\n\n```\nheader: {\"alg\":\"ES256\",\"typ\":\"dc+sd-jwt\",\"x5c\":[<one certificate>]}\niss:    \"https://backend.issuer.eudiw.dev\"\nvct:    \"urn:eudi:pid:1\"\n```\n\nThe `x5c` array has exactly one entry. That certificate's subject is `CN=PID DS - 002, O=EUDI Wallet Reference Implementation, C=UT`, and **it has no subjectAltName extension**. The extensions present are basicConstraints, authorityKeyIdentifier, authorityInfoAccess, certificatePolicies, extendedKeyUsage, cRLDistributionPoints, subjectKeyIdentifier, keyUsage and qcStatements.\n\nSo `iss` is an HTTPS URI that appears nowhere in the certificate.\n\n### The problem\n\nSection 2.2.2.3 says `iss` \"explicitly indicates the Issuer of the Verifiable Digital Credential when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an x5c header)\". I read that as: with `x5c` present, `iss` is redundant and carries no weight.\n\nSection 7.3 pushes the other way. It says it is \"critical that those rules maintain the integrity of the relationship between the iss value of the SD-JWT, if present, and the public keys of the Issuer.\" That reads as: `iss` still means something, even alongside `x5c`.\n\nSection 2.5 says nothing about the case where both are present, which is the shape of every EU reference credential I have seen.\n\nThis is not theoretical. Credo (credo-ts) v0.7.0 `SdJwtVcService.assertValidX5cJwtIssuer` requires `iss` to match a SAN-URI entry in the end-entity certificate, or its domain to match a SAN-DNS entry, and rejects the credential otherwise. Against the EC reference issuer that rejects everything, because there is no SAN to match. We carry a local patch to relax it. Someone reading the same text has clearly reached the opposite conclusion from mine.\n\n### Suggested resolution\n\nOne sentence in Section 2.5, whichever reflects working group intent. Either:\n\n> \"When the x5c parameter is present, the iss claim is not used for key discovery and MUST NOT be required to correspond to any name in the end-entity certificate.\"\n\nor a statement of whatever matching rule is intended. I do not mind which. I would like the document to pick one.\n",
       "createdAt": "2026-09-15T05:31:08Z",
-      "updatedAt": "2026-09-18T15:25:45Z",
+      "updatedAt": "2026-10-06T22:19:29Z",
       "closedAt": null,
       "comments": [
         {
@@ -10702,6 +10702,13 @@
           "body": "> I support this, see similar discussion on WIA: [openid/OpenID4VC-HAIP#352](https://github.com/openid/OpenID4VC-HAIP/issues/352)\n> \n> Edit: as I see this, iss is already optional, but it should be discouraged.\n\nThanks @paulbastian, yes, iss is optional today. The gap is narrower than presence: when iss is present alongside x5c, Section 2.5 does not say whether the two must correspond. Optionality does not reach that case, because in every EU credential I have handled iss is present.\nFor precision on the example above: the leaf in that single-element x5c is CN=PID DS - 002, O=EUDI Wallet Reference Implementation, C=UT, and it carries no subjectAltName extension at all \u2014 confirmed with openssl. So there is nothing for a SAN-matching rule to match, and the credential is rejected by a library that is, on one reading, doing what the spec implies.",
           "createdAt": "2026-09-18T15:25:45Z",
           "updatedAt": "2026-09-18T15:25:45Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Please see proposed text addition in #436",
+          "createdAt": "2026-10-06T22:19:29Z",
+          "updatedAt": "2026-10-06T22:19:29Z"
         }
       ]
     },
@@ -10710,16 +10717,31 @@
       "id": "I_kwDOJbVClc8AAAABRVHHNQ",
       "title": "Section 2.5: no precedence rule when both key discovery mechanisms apply",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/434",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Nas2020",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well. Apologies if it reaches you twice. Context and the credential this refers to are in the companion issue on `iss` and `x5c`.\n\n### The problem\n\nSection 7.3 says:\n\n> \"A Verifier MUST ensure that for any given iss value, an attacker cannot influence the type of verification process used.\"\n\nI agree with the requirement. My problem is that Section 2.5 gives me no way to satisfy it for the two mechanisms this document itself defines.\n\nThe EU reference credential triggers both at once: `iss` is an HTTPS URI, and `x5c` is present. Section 2.5 lists the two without precedence, and the rejection rule at the end of 2.5 is satisfied by \"a permitted key discovery and validation mechanism\" \u2014 any one of them.\n\nThey are not equivalent. Under `x5c` I end up at a key whose certificate chains to an anchor I already hold, which in the EU case was put on a trusted list by a third party. Under JWT VC Issuer Metadata I end up at whatever key is served at the `iss` URL, and `iss` is a value the credential asserts about itself. Anyone can mint a credential, point `iss` at a domain they control, publish a key there and pass. I dropped the metadata path from my verifier for that reason.\n\nSection 2.4's \"permitted for the Issuer according to policy\" is the hook for making that choice, and I used it. But a verifier built from this document with no policy layer will accept both, which is the situation 7.3 says must not arise.\n\n### Suggested resolution\n\nSay in Section 2.5 that when `x5c` is present the recipient MUST use the `x5c` mechanism and MUST NOT fall back to JWT VC Issuer Metadata for the same credential.\n\nIf the working group would rather leave it to policy, then say that the choice MUST be fixed by policy per Issuer and MUST NOT be driven by what the credential presents.\n",
       "createdAt": "2026-09-15T05:31:22Z",
-      "updatedAt": "2026-09-15T05:31:22Z",
-      "closedAt": null,
-      "comments": []
+      "updatedAt": "2026-10-07T19:12:08Z",
+      "closedAt": "2026-10-07T19:12:07Z",
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "From https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/434#issue-5457954613 above:\n> If the working group would rather leave it to policy, then say that the choice MUST be fixed by policy per Issuer and MUST NOT be driven by what the credential presents.\n\nThis is effectively what the current draft intends to say, for example in https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#section-2.4-1 :\n\n> [2.4. ](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#section-2.4)[Verification and Processing](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#name-verification-and-processing)\n> \n> The recipient (Holder or Verifier) of an SD-JWT VC MUST process and verify an SD-JWT VC as described in Section 7 of [[RFC9901](https://www.rfc-editor.org/info/rfc9901)]. The check in point 2.c of Section 7.1 of [[RFC9901](https://www.rfc-editor.org/info/rfc9901)], which validates the Issuer and ensures that the signing key belongs to the Issuer, MUST be satisfied by determining and validating the public verification key used to verify the Issuer-signed JWT, employing a key discovery and validation mechanism (defined in [Section 2.5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#key-stuff)) that is permitted for the Issuer according to policy.\n\nand https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#section-2.5-2\n\n> ... A recipient MUST determine and validate the public verification key for the Issuer-signed JWT using a supported key discovery and validation mechanism that is permitted for the given Issuer according to policy. ...\n\nand https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#section-7.3 as you mentioned: \n\n>  [7.3. ](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#section-7.3)[Ecosystem-specific Public Key Verification Methods](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#name-ecosystem-specific-public-k)\n>\n> When defining ecosystem-specific rules for resolution and verification of the public key, as outlined in [Section 2.5](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#key-stuff), it is critical that those rules maintain the integrity of the relationship between the iss value of the SD-JWT, if present, and the public keys of the Issuer.\n>\n> A Verifier MUST ensure that for any given iss value, an attacker cannot influence the type of verification process used. Otherwise, an attacker could attempt to make the Verifier use a verification process not intended by the Issuer, allowing the attacker to potentially manipulate the verification result to their advantage.\n\nSo I believe the text of draft -19 already states that.",
+          "createdAt": "2026-10-06T21:28:43Z",
+          "updatedAt": "2026-10-06T21:28:43Z"
+        },
+        {
+          "author": "Nas2020",
+          "authorAssociation": "NONE",
+          "body": "Thanks. Agreed: read together, 2.4, 2.5 and 7.3 already require the mechanism to be fixed by policy for each Issuer, not chosen by what the credential presents, and a verifier with no such policy isn't following 2.4. That covers what I was asking for.",
+          "createdAt": "2026-10-07T00:13:22Z",
+          "updatedAt": "2026-10-07T00:13:22Z"
+        }
+      ]
     },
     {
       "number": 435,
@@ -10733,9 +10755,45 @@
       "labels": [],
       "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well. Apologies if it reaches you twice. Context and the credential this refers to are in the companion issue on `iss` and `x5c`.\n\n### The problem\n\nSection 2.5 says the recipient \"validates the X.509 certificate chain accordingly\". The document does not say what that means, and **there is no reference to RFC 5280 anywhere in it**. \"Trust anchoring systems\" appears twice in 2.5, but nothing requires the recipient to hold a trust anchor.\n\nRead literally, checking that the certificates in `x5c` are internally consistent satisfies \"validates the chain\". That establishes nothing, because the credential supplied those certificates.\n\nAgain not theoretical: the EU reference credential ships one certificate. There is no chain in it. Everything above the end-entity certificate has to come from my own configuration, and if I hold no applicable anchor the right answer is to refuse.\n\n### Suggested resolution\n\nAfter \"validates the X.509 certificate chain accordingly\", add:\n\n> \"Chain validation is performed as described in [RFC5280] and MUST terminate at a trust anchor that the recipient obtained out of band and that is permitted for the Issuer according to policy. Certificates conveyed in the x5c parameter MUST NOT be treated as trust anchors. A recipient with no applicable trust anchor MUST reject the SD-JWT VC.\"\n",
       "createdAt": "2026-09-15T05:31:36Z",
-      "updatedAt": "2026-09-15T05:31:36Z",
+      "updatedAt": "2026-10-07T21:31:56Z",
       "closedAt": null,
-      "comments": []
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "There is a [normative reference](https://datatracker.ietf.org/doc/html/draft-ietf-oauth-sd-jwt-vc-19#name-normative-references) to RFC 7515 where the \"x5c\" header is defined **has a reference to RFC 5280 somewhere in it**. \n\nhttps://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6\n> **[4.1.6](https://datatracker.ietf.org/doc/html/rfc7515#section-4.1.6).  \"x5c\" (X.509 Certificate Chain) Header Parameter**\n> \n>    The \"x5c\" (X.509 certificate chain) Header Parameter contains the\n>    X.509 public key certificate or certificate chain [[RFC5280](https://datatracker.ietf.org/doc/html/rfc5280)]\n>    corresponding to the key used to digitally sign the JWS.  The\n>    certificate or certificate chain is represented as a JSON array of\n> \n> \n> \n> Jones, et al.                Standards Track                   [Page 11]\n> \n> [RFC 7515](https://datatracker.ietf.org/doc/html/rfc7515)                JSON Web Signature (JWS)                May 2015\n> \n> \n>    certificate value strings.  Each string in the array is a\n>    base64-encoded ([Section 4 of [RFC4648]](https://datatracker.ietf.org/doc/html/rfc4648#section-4) -- not base64url-encoded) DER\n>    [[ITU.X690.2008](https://datatracker.ietf.org/doc/html/rfc7515#ref-ITU.X690.2008)] PKIX certificate value.  The certificate containing\n>    the public key corresponding to the key used to digitally sign the\n>    JWS MUST be the first certificate.  This MAY be followed by\n>    additional certificates, with each subsequent certificate being the\n>    one used to certify the previous one.  The recipient MUST validate\n>    the certificate chain according to [RFC 5280](https://datatracker.ietf.org/doc/html/rfc5280) [[RFC5280](https://datatracker.ietf.org/doc/html/rfc5280)] and consider\n>    the certificate or certificate chain to be invalid if any validation\n>    failure occurs.  Use of this Header Parameter is OPTIONAL.\n",
+          "createdAt": "2026-10-07T19:02:32Z",
+          "updatedAt": "2026-10-07T19:03:03Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Read literally, checking that the certificates in x5c are internally consistent satisfies \"validates the chain\". \n\nThat would be an incorrect reading, literal or otherwise.",
+          "createdAt": "2026-10-07T19:04:43Z",
+          "updatedAt": "2026-10-07T20:51:23Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "> Again not theoretical: the EU reference credential ships one certificate. \n\nMaybe pedantic but a credential does not ship a certificate. ",
+          "createdAt": "2026-10-07T19:09:34Z",
+          "updatedAt": "2026-10-07T19:09:34Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Despite some admitted frustration at the content and tone of this, I am somewhat sympathetic to the underlying issue (as I perceive it anyway). #437 has some proposed changes as such. Please take a look and validate accordingly.",
+          "createdAt": "2026-10-07T20:46:47Z",
+          "updatedAt": "2026-10-07T20:46:47Z"
+        },
+        {
+          "author": "Nas2020",
+          "authorAssociation": "NONE",
+          "body": "Thanks Brian, and point taken. RFC 7515 4.1.6 already carries the MUST to validate the chain per RFC 5280, and 5280 then makes the anchor an out-of-band input, so the requirement was there by reference. I should have followed that hop before writing that it was missing, and sorry the issue read harsher than I meant. It came out of our own first implementation.\n\nWhat #437 adds is what I was actually missing in the text: that \"accordingly\" means the RFC 7515 validation, and that the anchor is the one the recipient's policy permits for the Issuer, not anything the credential carries. That resolves this for me. That resolves this for me; happy for it to close with the PR.",
+          "createdAt": "2026-10-07T21:31:56Z",
+          "updatedAt": "2026-10-07T21:31:56Z"
+        }
+      ]
     }
   ],
   "pulls": [
@@ -34242,6 +34300,105 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 436,
+      "id": "PR_kwDOJbVClc8AAAABHAhB8w",
+      "title": "state that when both the `iss` claim and `x5c` header are present, there is no requirement they directly correspond",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/436",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #433",
+      "createdAt": "2026-10-06T22:18:12Z",
+      "updatedAt": "2026-10-06T22:18:28Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "x5candiss",
+      "headRefOid": "62ac81dee61fe1b9fadc28644c236e0367e38b62",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 437,
+      "id": "PR_kwDOJbVClc8AAAABHM4CeA",
+      "title": " clarify that x5c is from RFC7515 and has validate against a policy-permitted trust anchor",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/437",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for #435",
+      "createdAt": "2026-10-07T20:41:45Z",
+      "updatedAt": "2026-10-07T21:47:15Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "mile-high-reference",
+      "headRefOid": "e2c2382bfe7a427065204abac36670e662d6fd0d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABRMWqEw",
+          "commit": {
+            "abbreviatedOid": "c61da15"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-07T21:46:59Z",
+          "updatedAt": "2026-10-07T21:46:59Z",
+          "comments": [
+            {
+              "originalPosition": 13,
+              "body": "```suggestion\n* clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor\n```",
+              "createdAt": "2026-10-07T21:46:59Z",
+              "updatedAt": "2026-10-07T21:46:59Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 438,
+      "id": "PR_kwDOJbVClc8AAAABHNTsJA",
+      "title": "remove a few superfluous subsection headings from the IANA Considerations",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/438",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for consistency per https://mailarchive.ietf.org/arch/msg/jwt-reg-review/793fl_zNXo2zCfajzzU_QfZJER4/ but in the other direction ",
+      "createdAt": "2026-10-07T21:26:28Z",
+      "updatedAt": "2026-10-07T21:26:29Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "remove-a-few-superfluous-section-headings",
+      "headRefOid": "35cc22c207003f8dc304ff7797f294861e55edda",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
