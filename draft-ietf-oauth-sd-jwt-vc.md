@@ -1585,9 +1585,7 @@ IANA "JSON Web Token Claims" registry [@IANA.JWT] established by [@!RFC7519].
 - Change Controller: IETF
 - Specification Document(s): [[ (#aka-vcts-claim) of this specification ]]
 
-## Media Types Registry
-
-### application/dc+sd-jwt {#media-type}
+## Media Type Registration
 
 This section requests registration of the `application/dc+sd-jwt` media type in
 the "Media Types" registry [@IANA.MediaTypes].
@@ -1611,13 +1609,11 @@ the "Media Types" registry [@IANA.MediaTypes].
 * Author: Oliver Terbu <oliver.terbu@mattr.global>
 * Change controller: IETF
 
-## Well-Known URI Registry
+## Well-Known URI Registration
 
 This specification requests the well-known URI defined in (#jwt-vc-issuer-metadata)
 in the IANA "Well-Known URIs" registry [@IANA.well-known] as described in
 by [@!RFC8615].
-
-### Registry Contents
 
 * URI suffix: jwt-vc-issuer
 * Change controller: IETF
@@ -1959,6 +1955,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata
 * add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject
 * clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor
+* remove a few superfluous subsection headings from the IANA Considerations
 
 -19
 
