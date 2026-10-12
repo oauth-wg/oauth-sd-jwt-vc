@@ -662,9 +662,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HQ3wG
-   M7hv9X0RnDR5E9EquHE7Di7eoY3O06cD5P8Y6umr25ac2dWZ--XZUYqOviTsNG9sglnv
-   sxq-ExAwy1DbA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1pdnW
+   ex40jBYpx2tTn-O43aZzWMpfV6gDfu2Lw5XksK9HxVTwnhxTGoVB4bEg0uMfKI-fZKR1
+   Oifxnyy7gA2uw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -700,17 +700,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.HQ3wG
-   M7hv9X0RnDR5E9EquHE7Di7eoY3O06cD5P8Y6umr25ac2dWZ--XZUYqOviTsNG9sglnv
-   sxq-ExAwy1DbA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1pdnW
+   ex40jBYpx2tTn-O43aZzWMpfV6gDfu2Lw5XksK9HxVTwnhxTGoVB4bEg0uMfKI-fZKR1
+   Oifxnyy7gA2uw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDEzMz
-   MsICJzZF9oYXNoIjogIjdON0FubTRvZ083Z1hzOXlLUHZZNHRhMTdFYkh5ajNsamFaY0
-   luVFpUQncifQ.gsG-hc2Gp2P7_g8by0DZ_EU_hdM-h99knUaBvenQYNaN9jww6nWDtsS
-   P5XkiFkvGRmUBgL8gZy7exbx69njvBw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDI1OD
+   MsICJzZF9oYXNoIjogIkcxUHRNTmJLNG03cDJleDZuOXBIY2p6OVFsdkkxZGYwR2YxaT
+   lGTE5UOEEifQ.9Dp9sSSiZH7nCXN0nPjoZHDFsRQOfLTBqkcKV4759rLVdQcEbzrNioy
+   1ulrQJ-T6MujyJNlYZJgzs9PqemDVHA
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -756,8 +756,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.t393G0Tqt59wzZsb6pv25PG1KIpnk8SMPr69BXrDRQSqtW
-   HOtldpzSvuT3MadYoXo6c3G5LCzt1qljN6rCCsuw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.Hnh-NF-dnYLGl1_H8QSprZGE-EQ6D1nZ3CIziuOMdYa7HA
+   g5jX-0MQczopNMKvzdu1nqIB6jQ7cjw7-PU2NEnw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -838,13 +838,15 @@ Table of Contents
    *  Inline X.509 Certificates: A mechanism to retrieve the Issuer's
       public key using the X.509 certificate chain in the SD-JWT header.
       When the protected header of the Issuer-signed JWT contains the
-      x5c parameter, the recipient uses the public key from the end-
-      entity certificate of the certificates from that x5c parameter and
-      validates the X.509 certificate chain accordingly.  In this case,
-      the Issuer of the Verifiable Digital Credential is the subject of
-      the end-entity certificate.  If the iss claim is also present,
-      there is no requirement that its value directly correspond to a
-      subject name in the end-entity certificate.
+      x5c parameter (Section 4.1.6 of [RFC7515]), the recipient uses the
+      public key from the end-entity certificate of the certificates
+      from that x5c header parameter and validates the X.509 certificate
+      chain accordingly against a trust anchor permitted for the Issuer
+      according to policy.  In this case, the Issuer of the Verifiable
+      Digital Credential is the subject of the end-entity certificate.
+      If the iss claim is also present, there is no requirement that its
+      value directly correspond to a subject name in the end-entity
+      certificate.
 
    To enable different trust anchoring systems or key resolution
    methods, separate specifications or ecosystem regulations may define
@@ -2117,10 +2119,6 @@ Table of Contents
               RFC 6890, DOI 10.17487/RFC6890, April 2013,
               <https://www.rfc-editor.org/info/rfc6890>.
 
-   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
-              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <https://www.rfc-editor.org/info/rfc7515>.
-
    [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
               DOI 10.17487/RFC7517, May 2015,
               <https://www.rfc-editor.org/info/rfc7517>.
@@ -2208,6 +2206,10 @@ Table of Contents
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
               DOI 10.17487/RFC6901, April 2013,
               <https://www.rfc-editor.org/info/rfc6901>.
+
+   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
+              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
+              2015, <https://www.rfc-editor.org/info/rfc7515>.
 
    [RFC9205]  Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
@@ -2310,8 +2312,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.mOXZC72OyJS7oZwYKMR2rT4uS6846MNQ
-   NWNPvofsnq9pI3s7QaZjI54Tka-hnFisHqsepB3zz6JLddPq8MxvOg~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eYNTPO7BdqAS-CqTnj8XCAS9nt71KTfN
+   _tp_33yJZeTxzbNiijtUyBzx8n34TtsRyS7lBUq7xJ04XTZbNqj3ng~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2693,8 +2695,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.mOXZC72OyJS7oZwYKMR2rT4uS6846MNQ
-   NWNPvofsnq9pI3s7QaZjI54Tka-hnFisHqsepB3zz6JLddPq8MxvOg~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eYNTPO7BdqAS-CqTnj8XCAS9nt71KTfN
+   _tp_33yJZeTxzbNiijtUyBzx8n34TtsRyS7lBUq7xJ04XTZbNqj3ng~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2705,10 +2707,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDEzMzMsICJzZF9oYXNoIjogIk
-   IxSUFVZzMxaEROclgyMGE0UXEtV0FUdXBRR202MmJVUkhFekx5c3J0TTQifQ.Z0Jf7-Q
-   BSJbC6NU6AKymmjv36GhWyhafoGvonw_iKrvOYk2hkEaLV1I3VuI63U95f80pdMkKd1s
-   yyzWeZ3Igrw
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDI1ODMsICJzZF9oYXNoIjogIk
+   hwUWxVbHhZZThtUWxMcEFsRUplaXI3SFVhYTI4WmZTYk83RlphY00wc1UifQ.tTABjLz
+   teM0Psxb0j7Cr3Kuwv5fm_ADVnDnxeLmrB1VGRNer2oSOVi9cqosVbvTXK5bjymyhKzp
+   Rlk9rPivvWg
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2717,8 +2719,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1791841333,
-     "sd_hash": "B1IAUg31hDNrX20a4Qq-WATupQGm62bURHEzLysrtM4"
+     "iat": 1791842583,
+     "sd_hash": "HpQlUlxYe8mQlLpAlEJeir7HUaa28ZfSbO7FZacM0sU"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3018,6 +3020,8 @@ Appendix C.  Document History
       holder need not be the subject
    *  state that when both the iss claim and x5c header are present,
       there is no requirement they directly correspond
+   *  clarify that x5c is from RFC7515 and has to be validated against a
+      policy-permitted trust anchor
    *  remove a few superfluous subsection headings from the IANA
       Considerations
 
