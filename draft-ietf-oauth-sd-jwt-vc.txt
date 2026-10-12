@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 3 April 2027                                      Authlete Inc.
+Expires: 15 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                       30 September 2026
+                                                         12 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 3 April 2027.
+   This Internet-Draft will expire on 15 April 2027.
 
 Copyright Notice
 
@@ -123,10 +123,8 @@ Table of Contents
      8.4.  Privacy-Preserving Retrieval of Type Metadata
    9.  IANA Considerations
      9.1.  JSON Web Token Claims Registration
-     9.2.  Media Types Registry
-       9.2.1.  application/dc+sd-jwt
-     9.3.  Well-Known URI Registry
-       9.3.1.  Registry Contents
+     9.2.  Media Type Registration
+     9.3.  Well-Known URI Registration
    10. References
      10.1.  Normative References
      10.2.  Informative References
@@ -664,9 +662,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ccsDM
-   KvuhneRBU30UDpjXUq1IKuG-V2a-L4pQFNLPHvl71fZcG1hWd-rrtMUJyzHQj6G8VMvV
-   fibjwFAecvXqg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.o3dRf
+   9xVM6KjFD6Fok-EKQ1HKxN561UnX8bMWaieAiKxwWY3l8Zsa9-FEXH3BMtIHPZJcyAm1
+   0-8hR6ZUsn6PQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -702,17 +700,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.ccsDM
-   KvuhneRBU30UDpjXUq1IKuG-V2a-L4pQFNLPHvl71fZcG1hWd-rrtMUJyzHQj6G8VMvV
-   fibjwFAecvXqg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.o3dRf
+   9xVM6KjFD6Fok-EKQ1HKxN561UnX8bMWaieAiKxwWY3l8Zsa9-FEXH3BMtIHPZJcyAm1
+   0-8hR6ZUsn6PQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTA3OTEwMz
-   gsICJzZF9oYXNoIjogInZwb0VlU2xGanREdVJZMV8wS1lNT1hTUmRGeVl0ejR5Z1lmZ3
-   gybF9yQzgifQ.vYJzva-aNbZMA7kQldBmw5QlMVWK_Ur7LWbBB6SPBwjszXc7-U9GdnB
-   rgtwf3PVRATLoXeKrTX5Oo1KN9u1NWg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDEyNT
+   ksICJzZF9oYXNoIjogInVoeDAtMDloX2lZNHVrT1ZBbDR5S1NydkJOdjRJU3I3QUxuaj
+   FURDhQTFkifQ.gHwrMrSxc_7vqqB5gWITts2OtJSY0fUDoke5eNxmYZXYQURQ3joTv3b
+   fT_rQraOYur-qI7s5M4AK7LBPDR9TmA
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -758,8 +756,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.7u4cZDJlgJXeH9dIk8m9Iiypdh_LAbs7VEJID3FuD14tsk
-   QZ3M8HtAasdeVIRBu_JJbedVhIpWE1-y94HWt89A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.L6C55GdZeBlrqJSMoKa5Kr2sorb6l2r2XStJe3boOBrgAN
+   XS5CYvGmXUgZ2g3ifacASuC7NG3ST6Hv-L5PMeNw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2048,9 +2046,7 @@ Table of Contents
    *  Specification Document(s): [[ Section 2.2.2.2 of this
       specification ]]
 
-9.2.  Media Types Registry
-
-9.2.1.  application/dc+sd-jwt
+9.2.  Media Type Registration
 
    This section requests registration of the application/dc+sd-jwt media
    type in the "Media Types" registry [IANA.MediaTypes].
@@ -2080,13 +2076,11 @@ Table of Contents
       (mailto:oliver.terbu@mattr.global)
    *  Change controller: IETF
 
-9.3.  Well-Known URI Registry
+9.3.  Well-Known URI Registration
 
    This specification requests the well-known URI defined in Section 4
    in the IANA "Well-Known URIs" registry [IANA.well-known] as described
    in by [RFC8615].
-
-9.3.1.  Registry Contents
 
    *  URI suffix: jwt-vc-issuer
    *  Change controller: IETF
@@ -2314,8 +2308,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0CHXPYmds_nsvDScA0NT2cPGUiccK4GZ
-   St2UADrNpCDwmG_07e3AsFBlY0j6JpK_Hbcn-KaIJ8P3PYSrCPQIHg~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GK2lkIy9XevTLOcOzZUy-xDQw1t-EnR6
+   QMyyIMjPVNIQn_-NGq9VFG3vMON3o00UOu6BFoWGZlC2SRk3M755zg~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2697,8 +2691,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0CHXPYmds_nsvDScA0NT2cPGUiccK4GZ
-   St2UADrNpCDwmG_07e3AsFBlY0j6JpK_Hbcn-KaIJ8P3PYSrCPQIHg~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GK2lkIy9XevTLOcOzZUy-xDQw1t-EnR6
+   QMyyIMjPVNIQn_-NGq9VFG3vMON3o00UOu6BFoWGZlC2SRk3M755zg~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2709,10 +2703,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTA3OTEwMzgsICJzZF9oYXNoIjogIm
-   Q4UW5LZENZdmVla1hmYmk0blNzWDBwcEhZeDQwT3lRQTVxQkFXbzhOYzgifQ.cl172j8
-   kZcN4RT37UGEtUX1byW6Dzyv3H4XBJZ9xjSZFnMakDX-13VnnSjbLNyedL-C8FVLjGqp
-   hlE3ewCSXIw
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDEyNTksICJzZF9oYXNoIjogIj
+   ZHVlZMYUFTWF9IbE5qY3dhaHJGQ1NFeVZ0LW16VjhCNWlha194WWVUVU0ifQ.SySP8i9
+   9H3XijN49Ub9ePswnPg5XIHNsRF5N26WrbwJ1mUh_Hv2yEVEgbclzYISCF_G4YBM4KGv
+   hUCN12NIA4g
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2721,8 +2715,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1790791038,
-     "sd_hash": "d8QnKdCYveekXfbi4nSsX0ppHYx40OyQA5qBAWo8Nc8"
+     "iat": 1791841259,
+     "sd_hash": "6GVVLaASX_HlNjcwahrFCSEyVt-mzV8B5iak_xYeTUM"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3020,6 +3014,8 @@ Appendix C.  Document History
    *  add 'or the Subject' to a sentence in Verifiable Digital
       Credential Type Identifier section to better reflect that the
       holder need not be the subject
+   *  remove a few superfluous subsection headings from the IANA
+      Considerations
 
    -19
 
