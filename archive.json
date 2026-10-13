@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-08T00:56:14.028791+00:00",
+  "timestamp": "2026-10-13T00:59:02.569833+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10748,15 +10748,15 @@
       "id": "I_kwDOJbVClc8AAAABRVHM-w",
       "title": "Section 2.5: \"validates the X.509 certificate chain accordingly\" names no trust anchor and no RFC 5280",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/435",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Nas2020",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well. Apologies if it reaches you twice. Context and the credential this refers to are in the companion issue on `iss` and `x5c`.\n\n### The problem\n\nSection 2.5 says the recipient \"validates the X.509 certificate chain accordingly\". The document does not say what that means, and **there is no reference to RFC 5280 anywhere in it**. \"Trust anchoring systems\" appears twice in 2.5, but nothing requires the recipient to hold a trust anchor.\n\nRead literally, checking that the certificates in `x5c` are internally consistent satisfies \"validates the chain\". That establishes nothing, because the credential supplied those certificates.\n\nAgain not theoretical: the EU reference credential ships one certificate. There is no chain in it. Everything above the end-entity certificate has to come from my own configuration, and if I hold no applicable anchor the right answer is to refuse.\n\n### Suggested resolution\n\nAfter \"validates the X.509 certificate chain accordingly\", add:\n\n> \"Chain validation is performed as described in [RFC5280] and MUST terminate at a trust anchor that the recipient obtained out of band and that is permitted for the Issuer according to policy. Certificates conveyed in the x5c parameter MUST NOT be treated as trust anchors. A recipient with no applicable trust anchor MUST reject the SD-JWT VC.\"\n",
       "createdAt": "2026-09-15T05:31:36Z",
-      "updatedAt": "2026-10-07T21:31:56Z",
-      "closedAt": null,
+      "updatedAt": "2026-10-12T21:42:24Z",
+      "closedAt": "2026-10-12T21:42:24Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -34313,43 +34313,59 @@
       "labels": [],
       "body": "for #433",
       "createdAt": "2026-10-06T22:18:12Z",
-      "updatedAt": "2026-10-06T22:18:28Z",
+      "updatedAt": "2026-10-12T22:02:45Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5",
+      "baseRefOid": "da6e921b7aa099f12285b77f4cda91659b3e279e",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "x5candiss",
-      "headRefOid": "62ac81dee61fe1b9fadc28644c236e0367e38b62",
+      "headRefOid": "5d66744088a9ac731b8b8d755d2b34a14ebb6eb5",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
       "mergeCommit": null,
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABR48zgg",
+          "commit": {
+            "abbreviatedOid": "62ac81d"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thank you",
+          "createdAt": "2026-10-12T20:15:16Z",
+          "updatedAt": "2026-10-12T20:15:16Z",
+          "comments": []
+        }
+      ]
     },
     {
       "number": 437,
       "id": "PR_kwDOJbVClc8AAAABHM4CeA",
       "title": " clarify that x5c is from RFC7515 and has validate against a policy-permitted trust anchor",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/437",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #435",
       "createdAt": "2026-10-07T20:41:45Z",
-      "updatedAt": "2026-10-07T21:47:15Z",
+      "updatedAt": "2026-10-12T21:42:23Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5",
+      "baseRefOid": "a59659b8ee4e19b3c7d5a4ff33213613a3a55eec",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "mile-high-reference",
-      "headRefOid": "e2c2382bfe7a427065204abac36670e662d6fd0d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "100010bc556332c23a582344277c736445677595",
+      "closedAt": "2026-10-12T21:42:23Z",
+      "mergedAt": "2026-10-12T21:42:23Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "da6e921b7aa099f12285b77f4cda91659b3e279e"
+      },
       "comments": [],
       "reviews": [
         {
@@ -34371,6 +34387,19 @@
               "updatedAt": "2026-10-07T21:46:59Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABR48nTQ",
+          "commit": {
+            "abbreviatedOid": "e2c2382"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "suggest to merge this before #436 ",
+          "createdAt": "2026-10-12T20:14:53Z",
+          "updatedAt": "2026-10-12T20:14:53Z",
+          "comments": []
         }
       ]
     },
@@ -34379,26 +34408,42 @@
       "id": "PR_kwDOJbVClc8AAAABHNTsJA",
       "title": "remove a few superfluous subsection headings from the IANA Considerations",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/438",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for consistency per https://mailarchive.ietf.org/arch/msg/jwt-reg-review/793fl_zNXo2zCfajzzU_QfZJER4/ but in the other direction ",
       "createdAt": "2026-10-07T21:26:28Z",
-      "updatedAt": "2026-10-07T21:26:29Z",
+      "updatedAt": "2026-10-12T21:40:39Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "8eb3109d4fcdba538c6d14e33c479beff56b13c5",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "remove-a-few-superfluous-section-headings",
       "headRefOid": "35cc22c207003f8dc304ff7797f294861e55edda",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-10-12T21:40:39Z",
+      "mergedAt": "2026-10-12T21:40:39Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "a59659b8ee4e19b3c7d5a4ff33213613a3a55eec"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABR489-Q",
+          "commit": {
+            "abbreviatedOid": "35cc22c"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "lgtm",
+          "createdAt": "2026-10-12T20:15:36Z",
+          "updatedAt": "2026-10-12T20:15:36Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
