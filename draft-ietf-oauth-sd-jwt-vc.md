@@ -840,7 +840,7 @@ images are expected to be served with an appropriate image media type
 #### Rendering Method "simple" {#rendering-method-simple}
 
 The `simple` rendering method is intended for use in applications that do not
-support SVG rendering. The object contains the following properties:
+support SVG rendering. The object contains at least one of the following properties:
 
 - `logo`: An object containing information about the logo to be displayed for
   the type, as described in (#logo-metadata). This property is OPTIONAL.
@@ -892,7 +892,7 @@ The `properties` property is an object containing properties for the SVG
 template. Consuming applications MUST use these properties to find the best SVG
 template available for display to the user based on the display properties
 (landscape/portrait) and user preferences (color scheme, contrast). The object
-MUST contain at least one of the following properties:
+contains at least one of the following properties:
 
 - `orientation`: The orientation for which the SVG template is optimized, with
   valid values being `portrait` and `landscape`. This property is OPTIONAL.
@@ -1950,6 +1950,7 @@ Leif Johansson,
 Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
+Ionuț Mihalcea,
 Mirko Mollik,
 Nas Til,
 Nat Sakimura,
@@ -1978,6 +1979,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 * clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor
 * Address ARTART review: an `svg_id` is not used with a `path` that can select more than one value, and the template is not rendered if it does
 * remove a few superfluous subsection headings from the IANA Considerations
+* Secdir review items:
+  * align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
 
 -19
 
