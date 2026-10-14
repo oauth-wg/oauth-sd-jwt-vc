@@ -112,6 +112,14 @@ extensibility model as basis for representing Verifiable Digital Credentials wit
 payloads. These Verifiable Digital Credentials are called SD-JWT VCs. The use of
 selective disclosure in SD-JWT VCs is optional.
 
+An SD-JWT VC is verifiable through the Issuer's signature and, when Key Binding is
+used, through the Holder's proof of possession of the key referenced in the `cnf`
+claim. What the credential means, that is, the semantics of its claims, is identified
+by its type, which is conveyed in the `vct` claim (#type-claim). Type Metadata
+(#type-metadata) can be retrieved for a type and describes it to Consumers, including
+how the credential and its claims are displayed. The `aka_vcts` claim
+(#aka-vcts-claim) lists further types that the credential also has.
+
 SD-JWT VCs can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
 private claims.
@@ -1951,6 +1959,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -20
 
 * Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply
+* Address ARTART review: explain in the introduction how verifiability, the `vct` claim, Type Metadata and `aka_vcts` relate
 * Fix a couple of example hash values
 * Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata
 * add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject
