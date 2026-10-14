@@ -158,8 +158,8 @@ This section defines encoding, validation and processing rules for SD-JWT VCs.
 
 ## Media Type
 
-SD-JWT VCs compliant with this specification MUST use the media type
-`application/dc+sd-jwt`, where the base subtype name `dc` stands for "digital credential".
+Where a media type is used to identify an SD-JWT VC compliant with this specification,
+it MUST be `application/dc+sd-jwt`, where the base subtype name `dc` stands for "digital credential".
 
 ## Data Format
 
@@ -311,6 +311,11 @@ types are not required to be related to the type of the SD-JWT VC through the
 `extends` property. The interaction between the `aka_vcts` claim and
 Type Metadata using the `extends` property is described in
 (#extending-type-metadata).
+
+Because the values of the `aka_vcts` claim are not used to retrieve Type Metadata,
+there is no `aka_vcts#integrity` counterpart to the `vct#integrity` claim; the integrity of
+Type Metadata reached via the `extends` property is covered by `extends#integrity` as
+described in (#document-integrity).
 
 #### Registered JWT Claims {#claims}
 
@@ -1920,6 +1925,7 @@ Andrii Deinega,
 Annabelle Kennedy,
 Antun Jurkovikj,
 Babis Routis,
+Christian Amsüss,
 Christian Bormann,
 Dan Moore,
 Deb Cooley,
@@ -1950,6 +1956,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -20
 
+* Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no `aka_vcts#integrity`
 * Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply
 * Fix a couple of example hash values
 * Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata
