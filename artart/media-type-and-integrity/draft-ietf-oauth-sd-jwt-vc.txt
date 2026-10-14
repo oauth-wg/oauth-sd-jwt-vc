@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 17 March 2027                                     Authlete Inc.
+Expires: 17 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                       13 September 2026
+                                                         14 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 March 2027.
+   This Internet-Draft will expire on 17 April 2027.
 
 Copyright Notice
 
@@ -123,10 +123,8 @@ Table of Contents
      8.4.  Privacy-Preserving Retrieval of Type Metadata
    9.  IANA Considerations
      9.1.  JSON Web Token Claims Registration
-     9.2.  Media Types Registry
-       9.2.1.  application/dc+sd-jwt
-     9.3.  Well-Known URI Registry
-       9.3.1.  Registry Contents
+     9.2.  Media Type Registration
+     9.3.  Well-Known URI Registration
    10. References
      10.1.  Normative References
      10.2.  Informative References
@@ -260,9 +258,9 @@ Table of Contents
 
 2.1.  Media Type
 
-   SD-JWT VCs compliant with this specification MUST use the media type
-   application/dc+sd-jwt, where the base subtype name dc stands for
-   "digital credential".
+   Where a media type is used to identify an SD-JWT VC compliant with
+   this specification, it MUST be application/dc+sd-jwt, where the base
+   subtype name dc stands for "digital credential".
 
 2.2.  Data Format
 
@@ -425,6 +423,12 @@ Table of Contents
    aka_vcts claim and Type Metadata using the extends property is
    described in Section 5.4.
 
+   Because the values of the aka_vcts claim are not used to retrieve
+   Type Metadata, there is no aka_vcts#integrity counterpart to the
+   vct#integrity claim; the integrity of Type Metadata reached via the
+   extends property is covered by extends#integrity as described in
+   Section 6.
+
 2.2.2.3.  Registered JWT Claims
 
    SD-JWT VCs MAY use any claim registered in the "JSON Web Token
@@ -475,6 +479,12 @@ Table of Contents
       binding to exist between sub and cnf claims.
    *  iat: OPTIONAL.  The time of issuance of the Verifiable Digital
       Credential.  See [RFC7519] for more information.
+
+   Note that Section 3 of [RFC7800] has a somewhat misguided requirement
+   that either the sub or iss be present in the JWT.  This specification
+   explicitly overrides that requirement, as there are valid and
+   legitimate uses of key-bound SD-JWT VCs without either of those
+   claims.
 
 2.2.2.4.  Public and Private JWT claims
 
@@ -658,9 +668,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.fWjtF
-   ri83imPsTHbDsJdUEt4zKBFkEgOav7MV3AcmCL1pEBvWuiMYhAuslMI2md3bHbhaLYhn
-   3ZTFxX8K-RW-g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.grZ_6
+   GyaEPofa7KjDfApcEV7L2EotaA9aEnEFJy6BS9ZLeiY1z9ndR2h5VfXrPAnW66XWU2oB
+   CNE1jTHf7i78Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -696,17 +706,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.fWjtF
-   ri83imPsTHbDsJdUEt4zKBFkEgOav7MV3AcmCL1pEBvWuiMYhAuslMI2md3bHbhaLYhn
-   3ZTFxX8K-RW-g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.grZ_6
+   GyaEPofa7KjDfApcEV7L2EotaA9aEnEFJy6BS9ZLeiY1z9ndR2h5VfXrPAnW66XWU2oB
+   CNE1jTHf7i78Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODkzMDM0MT
-   MsICJzZF9oYXNoIjogIkJiZUhucGJvWXNwMjI0X0FOLVF6OHViejkxN1FqdTBSTTMtUE
-   5kQmVwSWcifQ.L7z4BM0hhj3kCeVTjXHnOegq1W6fkPQLPPcwAr4XnH60mjieFBwUELc
-   1b6Dk4ojpguVN7nBYZyHMuEPCg1SHGg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMDE5MT
+   gsICJzZF9oYXNoIjogIm9nTFpxSG9qQlZwMmpJeTBjeHNtbVZWYkY0ZEQtcmZ0UDhfX0
+   s5UHJBdlkifQ.GleyfcWK71pTkfCiW_4Z_gi27OH4XNA-T7DWfIms7O_viHSNRsm9Ezc
+   p7nIaKMOGRF5wj5x2xQt7vB6I_7-Dwg
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -752,8 +762,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.b_ageQHjDiF3bSlBzvkut1RF73BCUcfcgF30loz1OT_8jM
-   WckZzQDj4BGe0-cBopUSMxPZnIYDH4abL19jvX6A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.q8Q8PCtUFePoAK9YAebnMn628k9xuFJknJnWmm5I5CFSRK
+   _Cu4PcAj-v5pGlJgEIgBsjfzQCjOD1pWn8uQUlgQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -834,11 +844,12 @@ Table of Contents
    *  Inline X.509 Certificates: A mechanism to retrieve the Issuer's
       public key using the X.509 certificate chain in the SD-JWT header.
       When the protected header of the Issuer-signed JWT contains the
-      x5c parameter, the recipient uses the public key from the end-
-      entity certificate of the certificates from that x5c parameter and
-      validates the X.509 certificate chain accordingly.  In this case,
-      the Issuer of the Verifiable Digital Credential is the subject of
-      the end-entity certificate.
+      x5c parameter (Section 4.1.6 of [RFC7515]), the recipient uses the
+      public key from the end-entity certificate of the certificates
+      from that x5c header parameter and validates the X.509 certificate
+      chain accordingly against a trust anchor permitted for the Issuer
+      according to policy.  In this case, the Issuer of the Verifiable
+      Digital Credential is the subject of the end-entity certificate.
 
    To enable different trust anchoring systems or key resolution
    methods, separate specifications or ecosystem regulations may define
@@ -1119,9 +1130,10 @@ Table of Contents
 5.3.  Retrieving Type Metadata
 
    A Consumer retrieving Type Metadata MUST ensure that the vct value in
-   the SD-JWT VC payload is identical to the vct value in the reference
-   to the Type Metadata (either in the SD-JWT VC itself or in an extends
-   property in a Type Metadata document).
+   the retrieved document is identical to the reference used to retrieve
+   it.  For the initial document, that reference is the SD-JWT VC's vct
+   claim value.  For a parent document, that reference is the immediate
+   child's extends property value.
 
    If the claim vct#integrity is present in the SD-JWT VC, its value
    MUST be an "integrity metadata" string as defined in Section 6.
@@ -2041,9 +2053,7 @@ Table of Contents
    *  Specification Document(s): [[ Section 2.2.2.2 of this
       specification ]]
 
-9.2.  Media Types Registry
-
-9.2.1.  application/dc+sd-jwt
+9.2.  Media Type Registration
 
    This section requests registration of the application/dc+sd-jwt media
    type in the "Media Types" registry [IANA.MediaTypes].
@@ -2073,13 +2083,11 @@ Table of Contents
       (mailto:oliver.terbu@mattr.global)
    *  Change controller: IETF
 
-9.3.  Well-Known URI Registry
+9.3.  Well-Known URI Registration
 
    This specification requests the well-known URI defined in Section 4
    in the IANA "Well-Known URIs" registry [IANA.well-known] as described
    in by [RFC8615].
-
-9.3.1.  Registry Contents
 
    *  URI suffix: jwt-vc-issuer
    *  Change controller: IETF
@@ -2113,10 +2121,6 @@ Table of Contents
               "Special-Purpose IP Address Registries", BCP 153,
               RFC 6890, DOI 10.17487/RFC6890, April 2013,
               <https://www.rfc-editor.org/info/rfc6890>.
-
-   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
-              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
-              2015, <https://www.rfc-editor.org/info/rfc7515>.
 
    [RFC7517]  Jones, M., "JSON Web Key (JWK)", RFC 7517,
               DOI 10.17487/RFC7517, May 2015,
@@ -2205,6 +2209,10 @@ Table of Contents
               "JavaScript Object Notation (JSON) Pointer", RFC 6901,
               DOI 10.17487/RFC6901, April 2013,
               <https://www.rfc-editor.org/info/rfc6901>.
+
+   [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
+              Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
+              2015, <https://www.rfc-editor.org/info/rfc7515>.
 
    [RFC9205]  Nottingham, M., "Building Protocols with HTTP", BCP 56,
               RFC 9205, DOI 10.17487/RFC9205, June 2022,
@@ -2307,8 +2315,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.09qYc6zI8dFM_H1tpoW_cs6e23Z8fkDv
-   hfxMTSEXhIeL5Bb0rMjyjH5S6025GtDfDqFjqhSnwBttTERGzMegug~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.JHVr4etzr91BOmaOUt-LS3jO40qQhN0b
+   bukAqLGx31rEofFVXWoIwKvVXK_ii1vK_2KlRdlTK--bV1dWXCKiQw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2690,8 +2698,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.09qYc6zI8dFM_H1tpoW_cs6e23Z8fkDv
-   hfxMTSEXhIeL5Bb0rMjyjH5S6025GtDfDqFjqhSnwBttTERGzMegug~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.JHVr4etzr91BOmaOUt-LS3jO40qQhN0b
+   bukAqLGx31rEofFVXWoIwKvVXK_ii1vK_2KlRdlTK--bV1dWXCKiQw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2702,10 +2710,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3ODkzMDM0MTMsICJzZF9oYXNoIjogIk
-   xXM1FvQUVGeWk4dHZrcG5IOXRWcUhtWUpsM2l1cFh2dFljMVlMYTJKZ0EifQ.iTgdXpk
-   zLeNXsixDF3SK21FWcJuFKf9wF4vmF-1gySxjVzL4A-GXYP9Kigkrq6MYECzvjsmuxnO
-   AU1ouKr2ENg
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMDE5MTgsICJzZF9oYXNoIjogIj
+   NNUGIyUjhLLTYyb1VKaEt3UzE1OTl6UWU0RDRlYkE4bldpdlU0SGNmbHMifQ.iDFpNlg
+   8Wrzg0sdOMdxZpKBj6-S2z8_DtTUXttm84C5lNT4Oaulsqf1gBGx3zCYnYWMxmvdIaWU
+   JpsdoQGMAdw
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2714,8 +2722,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1789303413,
-     "sd_hash": "LW3QoAEFyi8tvkpnH9tVqHmYJl3iupXvtYc1YLa2JgA"
+     "iat": 1792001918,
+     "sd_hash": "3MPb2R8K-62oUJhKwS1599zQe4D4ebA8nWivU4Hcfls"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -2992,23 +3000,34 @@ Appendix B.  Acknowledgements
 
    We would like to thank Aaron Parecki, Albertus Geldenhuys, Alen
    Horvat, Andres Uribe, Andrii Deinega, Annabelle Kennedy, Antun
-   Jurkovic, Babis Routis, Christian Bormann, Dan Moore, Deb Cooley,
-   Denis Pinkas, George J Padayatti, Giuseppe De Marco, Hannes
-   Tschofenig, Lukas J Han, Lukasz Jaromin, Leif Johansson, Mark
-   Nottingham, Michael B.  Jones, Mike Prorock, Mirko Mollik, Nat
-   Sakimura, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan Charsley,
-   Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias Looker, and
-   Kristina Yasuda for their contributions (some of which substantial)
-   to this draft and to the initial set of implementations.
+   Jurkovikj, Babis Routis, Christian Amsüss, Christian Bormann, Dan
+   Moore, Deb Cooley, Denis Pinkas, George J Padayatti, Giuseppe De
+   Marco, Hannes Tschofenig, Lukas J Han, Lukasz Jaromin, Leif
+   Johansson, Mark Nottingham, Michael B.  Jones, Mike Prorock, Mirko
+   Mollik, Nat Sakimura, Orie Steele, Paul Bastian, Pavel Zarecky,
+   Stefan Charsley, Tim Cappalli, Timo Glastra, Torsten Lodderstedt,
+   Tobias Looker, and Kristina Yasuda for their contributions (some of
+   which substantial) to this draft and to the initial set of
+   implementations.
 
 Appendix C.  Document History
 
    -20
 
+   *  Address ARTART review: scope the media type requirement to where a
+      media type is used and explain why there is no aka_vcts#integrity
+   *  Note that the somewhat misguided RFC7800 requirement that either
+      sub or iss be present in the JWT doesn't apply
    *  Fix a couple of example hash values
+   *  Type Metadata identity: attempt to clarify value checking on
+      retrieval of Type Metadata
    *  add 'or the Subject' to a sentence in Verifiable Digital
       Credential Type Identifier section to better reflect that the
       holder need not be the subject
+   *  clarify that x5c is from RFC7515 and has to be validated against a
+      policy-permitted trust anchor
+   *  remove a few superfluous subsection headings from the IANA
+      Considerations
 
    -19
 
