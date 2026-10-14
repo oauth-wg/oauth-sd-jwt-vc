@@ -926,7 +926,8 @@ If the `svg_id` is not present in the claim metadata, the consuming application
 SHOULD reject and not render the SVG template. If the `svg_id` is present in the
 claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
-the value is absent.
+the value is absent. If the `path` of the claim metadata object selects more than
+one value, the consuming application SHOULD reject and not render the SVG template.
 
 The example in (#example-svg-template) shows a minimal SVG with one placeholder
 using the `svg_id` value `address_street_address` which is defined in the
@@ -970,7 +971,9 @@ Each object contains the following properties:
 - `svg_id`: A string defining the ID of the claim for reference in the SVG
   template, as described in (#svg-rendering). The ID MUST be unique within the
   type metadata. It MUST consist of only alphanumeric characters and underscores
-  and MUST NOT start with a digit. This property is OPTIONAL.
+  and MUST NOT start with a digit. It MUST NOT be used in a claim metadata object
+  whose `path` contains a `null` component, since such a `path` can select more than
+  one value. This property is OPTIONAL.
 
 When a Consumer processes Type Metadata for an SD-JWT VC, the `claims` property and each claim metadata object MUST conform to the structure defined in this section and its subsections; otherwise, claim metadata processing fails.
 Properties that are not understood are ignored as defined in (#type-metadata-format).
@@ -1973,6 +1976,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject
 * state that when both the `iss` claim and `x5c` header are present, there is no requirement they directly correspond
 * clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor
+* Address ARTART review: an `svg_id` is not used with a `path` that can select more than one value, and the template is not rendered if it does
 * remove a few superfluous subsection headings from the IANA Considerations
 
 -19
