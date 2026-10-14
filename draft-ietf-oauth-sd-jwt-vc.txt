@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 15 April 2027                                     Authlete Inc.
+Expires: 17 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         12 October 2026
+                                                         14 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 15 April 2027.
+   This Internet-Draft will expire on 17 April 2027.
 
 Copyright Notice
 
@@ -662,9 +662,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eFQ7s
-   33yROUk0t7ETXLg41ICZnJlwnCKRAvW1Vjio2BOF6QbY2O7GPnwF_tbdQRvnkNi3vJME
-   6PPn2vVoZ3q8Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bGlQO
+   5ckbrgTUWHbzJbqHVpAEGTON-OJRS0D_JQPdve5oe6EzgzcsDXAQOX7JVWaHBBs_Q0a1
+   -WuzNI7XAf94A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -700,17 +700,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eFQ7s
-   33yROUk0t7ETXLg41ICZnJlwnCKRAvW1Vjio2BOF6QbY2O7GPnwF_tbdQRvnkNi3vJME
-   6PPn2vVoZ3q8Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bGlQO
+   5ckbrgTUWHbzJbqHVpAEGTON-OJRS0D_JQPdve5oe6EzgzcsDXAQOX7JVWaHBBs_Q0a1
+   -WuzNI7XAf94A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDEzNj
-   IsICJzZF9oYXNoIjogInRGNkNrMS1ERnBjeFBHRmx0ajlSWGpzTDMweHhEMnkybnBlVV
-   BydFItaFEifQ.6XQUSZqis87Lh1WUUYKEhpQj2Zg_oY1ZpUDDYCeZg8vrK981g8BSuwt
-   k9aezGJFb0RUBURhIjjE6C95gOFQwFw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTAyND
+   AsICJzZF9oYXNoIjogIlBrQWRyN29CMUpyZzg1OVJ4NjZ2cTk2WkJ5Z09BOU5hREotSX
+   hCWXFJMHMifQ.pxLiy9KcwnVygUDDGsEMhLlL9swhMEEbfggQURO2y57uCWm7WqVloeP
+   YzTCEV3sYD-PjBd_9BWUn5L8mnnSnPQ
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -756,8 +756,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.p4-_T8KmzM2VX_Bnh53LHDozSSiXqMU-Dpse4j0IdSLeUt
-   SBIBqloTUGYxZX-ijUZURRy80LnvVKWwO4X3ku9Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.Z6u1ix3C2MVXshyG9G5AJbHRH-G85HN5pFWKf-7gxFBSPG
+   O12vnzRYRDsrWRdrdpdlkkDhAFGuPRxho0T_xFPg~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -844,6 +844,9 @@ Table of Contents
       chain accordingly against a trust anchor permitted for the Issuer
       according to policy.  In this case, the Issuer of the Verifiable
       Digital Credential is the subject of the end-entity certificate.
+      If the iss claim is also present, there is no requirement that its
+      value directly correspond to a subject name in the end-entity
+      certificate.
 
    To enable different trust anchoring systems or key resolution
    methods, separate specifications or ecosystem regulations may define
@@ -2309,8 +2312,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.69e2u7KJSneC2v4UJZAIi8tnpPhIVFDs
-   ACudaM9ctUiFWo8Il-p7Ap1B1evPDKvOH981zSujW7eEuvpei8boDw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.moLeyBNUGN69gg4zQK2cIzHcypK9L_H-
+   PcPSZ6HmIKlakdnijVROunrWqbJbVumQmkqdggt-HSkdeCYxjeNxLg~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2692,8 +2695,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.69e2u7KJSneC2v4UJZAIi8tnpPhIVFDs
-   ACudaM9ctUiFWo8Il-p7Ap1B1evPDKvOH981zSujW7eEuvpei8boDw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.moLeyBNUGN69gg4zQK2cIzHcypK9L_H-
+   PcPSZ6HmIKlakdnijVROunrWqbJbVumQmkqdggt-HSkdeCYxjeNxLg~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2704,10 +2707,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE4NDEzNjIsICJzZF9oYXNoIjogIj
-   VIVVo0NnVibU9pd1pJR3Fja2hyaHR0WkV5R0VfcWMtcURYZ1c4ZjFabzQifQ.Vg6curY
-   3uwLiXn-raY0K1ijsZjGBwO2_e-yQ4Jl9pR_rTyxldgyVtAUaDmXar79RrNPDJPNUluY
-   R3aBxaaX0zw
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTAyNDAsICJzZF9oYXNoIjogIm
+   JWYjd4Q1ZZMUU5ZUZpdmp6WHNUcTdRejl6WnF6TERDU0ExY05XZ2FaRmMifQ.vfaLKwz
+   yjjb__2SCwrf1BRPkVndotuGRlG9QhiAd5U4qf7I47D2WPG5PwlDMRyLMnx39UVQ9VSr
+   -28ucTLZHbw
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2716,8 +2719,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1791841362,
-     "sd_hash": "5HUZ46ubmOiwZIGqckhrhttZEyGE_qc-qDXgW8f1Zo4"
+     "iat": 1792010240,
+     "sd_hash": "bVb7xCVY1E9eFivjzXsTq7Qz9zZqzLDCSA1cNWgaZFc"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -2997,11 +3000,11 @@ Appendix B.  Acknowledgements
    Jurkovikj, Babis Routis, Christian Bormann, Dan Moore, Deb Cooley,
    Denis Pinkas, George J Padayatti, Giuseppe De Marco, Hannes
    Tschofenig, Lukas J Han, Lukasz Jaromin, Leif Johansson, Mark
-   Nottingham, Michael B.  Jones, Mike Prorock, Mirko Mollik, Nat
-   Sakimura, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan Charsley,
-   Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias Looker, and
-   Kristina Yasuda for their contributions (some of which substantial)
-   to this draft and to the initial set of implementations.
+   Nottingham, Michael B.  Jones, Mike Prorock, Mirko Mollik, Nas Til,
+   Nat Sakimura, Orie Steele, Paul Bastian, Pavel Zarecky, Stefan
+   Charsley, Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias
+   Looker, and Kristina Yasuda for their contributions (some of which
+   substantial) to this draft and to the initial set of implementations.
 
 Appendix C.  Document History
 
@@ -3015,6 +3018,8 @@ Appendix C.  Document History
    *  add 'or the Subject' to a sentence in Verifiable Digital
       Credential Type Identifier section to better reflect that the
       holder need not be the subject
+   *  state that when both the iss claim and x5c header are present,
+      there is no requirement they directly correspond
    *  clarify that x5c is from RFC7515 and has to be validated against a
       policy-permitted trust anchor
    *  remove a few superfluous subsection headings from the IANA
