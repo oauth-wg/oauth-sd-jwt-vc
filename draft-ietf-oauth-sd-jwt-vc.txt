@@ -204,6 +204,15 @@ Table of Contents
    Credentials are called SD-JWT VCs.  The use of selective disclosure
    in SD-JWT VCs is optional.
 
+   An SD-JWT VC is verifiable through the Issuer's signature and, when
+   Key Binding is used, through the Holder's proof of possession of the
+   key referenced in the cnf claim.  What the credential means, that is,
+   the semantics of its claims, is identified by its type, which is
+   conveyed in the vct claim Section 2.2.2.1.  Type Metadata Section 5
+   can be retrieved for a type and describes it to Consumers, including
+   how the credential and its claims are displayed.  The aka_vcts claim
+   Section 2.2.2.2 lists further types that the credential also has.
+
    SD-JWT VCs can contain claims that are registered in "JSON Web Token
    Claims" registry as defined in [RFC7519], as well as public and
    private claims.
@@ -668,9 +677,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1tavx
-   NgsIRLRP85LDv4V23RiUqt2fPbWoV5qD3OghGKCP0KwL31yXRJKE_666spLMfWa9iKLf
-   KynhhbfBWPuGA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p0SWD
+   Jir54QsHPvvFwnIV-ZaNn805OPA7oLE_wELpWCQr0ha-i_wg59-XjiM1fszW1Lgz3JZc
+   NUicwhgOrfUQw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -706,17 +715,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.1tavx
-   NgsIRLRP85LDv4V23RiUqt2fPbWoV5qD3OghGKCP0KwL31yXRJKE_666spLMfWa9iKLf
-   KynhhbfBWPuGA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p0SWD
+   Jir54QsHPvvFwnIV-ZaNn805OPA7oLE_wELpWCQr0ha-i_wg59-XjiM1fszW1Lgz3JZc
+   NUicwhgOrfUQw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTA5OT
-   ksICJzZF9oYXNoIjogInNxYzY0QWwwNEdObWVpQ0NZME94dXlPUGctdHpsYThlQTBsZy
-   1iVERmdE0ifQ.mdHPr_6gQ57ssX7lhlcrKKjTU-vNQ_INAjFEor6dRThwmHklvNYEEYL
-   naJCQI51EKOybJYjh1Q4rzKUQjFQvuA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwND
+   csICJzZF9oYXNoIjogIlp0TS1zcC1XaDZPbWR2aElOX0pwcHp2QVpWNlBqUDFTSGxSU1
+   VNb0ZsVnMifQ.Virb9MJNowOXtWjZpB_3bUZbH5fPu_-6RXchcNpA9tgz6svglceStkS
+   3nchsUlSdc7fIMFiNnEzDIZJvMyiDmw
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -762,8 +771,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9._sdlEasHH2-d5hAFetiT_b1SoOnusgctqyzGfKVIQ1u7fE
-   fhK10QkHYM8xXfTopNW6D_XLkZut_FlPzudFHxtA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.QA9GTBpBD4UFJQ0VrolGS-xhBgZZSsbLZp_MCqZn2hpcOL
+   cSESDLO9sMaXkdt8Ac2mU1tXKGwEj1Zd7m0jxI5w~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2318,8 +2327,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.TWRFhPs4_cjIn3yhnZG0JadpwZHLJfYM
-   w1RPKd6YyLKO0FJ4skU9eVLyWbIek6H3KY8LRWqsIZauwEcpyPm5Aw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SahkwvbLsfUrmiJTouKZ7d4cOIm2I0ZM
+   BVCOIChy2fFTU8eaBHKjYJZWqUDCYadh8n-haS_L9MorfJogSHWFOA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2701,8 +2710,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.TWRFhPs4_cjIn3yhnZG0JadpwZHLJfYM
-   w1RPKd6YyLKO0FJ4skU9eVLyWbIek6H3KY8LRWqsIZauwEcpyPm5Aw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SahkwvbLsfUrmiJTouKZ7d4cOIm2I0ZM
+   BVCOIChy2fFTU8eaBHKjYJZWqUDCYadh8n-haS_L9MorfJogSHWFOA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2713,10 +2722,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTA5OTksICJzZF9oYXNoIjogIm
-   RoV0U2V3g3MGNHWDZ5ejJhVEx0MTlWZlcyT2VvcXdwcmZNWF8xbFU1SlEifQ.i0UINNB
-   fVIxPUwOAXz1FFqokw4NvvQfX7liLk-4wKcRteo4Q7umuE-tr_FnDlmrH4NSbfwvTD2L
-   oK2h7vQS3BQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwNDcsICJzZF9oYXNoIjogIn
+   VQNXVyT0x2eVZqY1c4UHpZd3plRkNmMTlyTlJfYm5OT2lFQ09ubDB1SHMifQ.9rO-iuM
+   sYiXPdJyirW5L56Es8kbpmUDwm06HjooajtEYlzip_HMYC52fgiMEeNG5xPNCV7qvZQX
+   8BtotYEGXXQ
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2725,8 +2734,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792010999,
-     "sd_hash": "dhWE6Wx70cGX6yz2aTLt19VfW2OeoqwprfMX_1lU5JQ"
+     "iat": 1792011047,
+     "sd_hash": "uP5urOLvyVjcW8PzYwzeFCf19rNR_bnNOiECOnl0uHs"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3021,6 +3030,8 @@ Appendix C.  Document History
       media type is used and explain why there is no aka_vcts#integrity
    *  Note that the somewhat misguided RFC7800 requirement that either
       sub or iss be present in the JWT doesn't apply
+   *  Address ARTART review: explain in the introduction how
+      verifiability, the vct claim, Type Metadata and aka_vcts relate
    *  Fix a couple of example hash values
    *  Type Metadata identity: attempt to clarify value checking on
       retrieval of Type Metadata
