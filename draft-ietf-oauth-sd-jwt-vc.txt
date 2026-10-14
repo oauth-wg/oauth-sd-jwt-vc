@@ -677,9 +677,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p0SWD
-   Jir54QsHPvvFwnIV-ZaNn805OPA7oLE_wELpWCQr0ha-i_wg59-XjiM1fszW1Lgz3JZc
-   NUicwhgOrfUQw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qKnXe
+   2RaTKw6EH31q6J0JNwVWkcfcSbkOwUhIhj3o9Q1qDA5k239cIsnaMZLAw8I-Obsdi4ZC
+   8yxfEtIV3X1Ew~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -715,17 +715,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.p0SWD
-   Jir54QsHPvvFwnIV-ZaNn805OPA7oLE_wELpWCQr0ha-i_wg59-XjiM1fszW1Lgz3JZc
-   NUicwhgOrfUQw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qKnXe
+   2RaTKw6EH31q6J0JNwVWkcfcSbkOwUhIhj3o9Q1qDA5k239cIsnaMZLAw8I-Obsdi4ZC
+   8yxfEtIV3X1Ew~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwND
-   csICJzZF9oYXNoIjogIlp0TS1zcC1XaDZPbWR2aElOX0pwcHp2QVpWNlBqUDFTSGxSU1
-   VNb0ZsVnMifQ.Virb9MJNowOXtWjZpB_3bUZbH5fPu_-6RXchcNpA9tgz6svglceStkS
-   3nchsUlSdc7fIMFiNnEzDIZJvMyiDmw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwNj
+   AsICJzZF9oYXNoIjogIk1SdVk3aXJla29Gem9PTnE4YTFUcGZEbGV0ZXpISVNqRmpPbj
+   FvM0d4b28ifQ.mQx6QYxgeg34buTqhzfGkDQq0Z3aX_GG0dW4uPfj0BIyVjBSxAuNbHo
+   ghgfZycSoDoHha1mX6wPtAgihQGb6Fg
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -771,8 +771,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.QA9GTBpBD4UFJQ0VrolGS-xhBgZZSsbLZp_MCqZn2hpcOL
-   cSESDLO9sMaXkdt8Ac2mU1tXKGwEj1Zd7m0jxI5w~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.1ar8IhAJaZ8JnbPGD2dx-6c8PzGQUUafDJdsjRD1FwRna2
+   CICwhANOQfXi5RPkP_iH8hOHFh5-2WJg8VsMJUcA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1359,6 +1359,9 @@ Table of Contents
    svg_id is present in the claim metadata, but the claim is not present
    in the credential, the placeholder MUST be replaced with an empty
    string or a string appropriate to indicate that the value is absent.
+   If the path of the claim metadata object selects more than one value,
+   the consuming application SHOULD reject and not render the SVG
+   template.
 
    The example in Figure 18 shows a minimal SVG with one placeholder
    using the svg_id value address_street_address which is defined in the
@@ -1410,7 +1413,9 @@ Table of Contents
       SVG template, as described in Section 5.5.1.2.2.  The ID MUST be
       unique within the type metadata.  It MUST consist of only
       alphanumeric characters and underscores and MUST NOT start with a
-      digit.  This property is OPTIONAL.
+      digit.  It MUST NOT be used in a claim metadata object whose path
+      contains a null component, since such a path can select more than
+      one value.  This property is OPTIONAL.
 
    When a Consumer processes Type Metadata for an SD-JWT VC, the claims
    property and each claim metadata object MUST conform to the structure
@@ -2327,8 +2332,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SahkwvbLsfUrmiJTouKZ7d4cOIm2I0ZM
-   BVCOIChy2fFTU8eaBHKjYJZWqUDCYadh8n-haS_L9MorfJogSHWFOA~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._BXJa_i71DSX9LW1cRtWrcMxkBkhxJx0
+   0Zo4jTt23Pa0HLvS04k_6CgVAGqASt40fy2IZUz9MXe9zNfiQDsonA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2710,8 +2715,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.SahkwvbLsfUrmiJTouKZ7d4cOIm2I0ZM
-   BVCOIChy2fFTU8eaBHKjYJZWqUDCYadh8n-haS_L9MorfJogSHWFOA~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._BXJa_i71DSX9LW1cRtWrcMxkBkhxJx0
+   0Zo4jTt23Pa0HLvS04k_6CgVAGqASt40fy2IZUz9MXe9zNfiQDsonA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2722,10 +2727,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwNDcsICJzZF9oYXNoIjogIn
-   VQNXVyT0x2eVZqY1c4UHpZd3plRkNmMTlyTlJfYm5OT2lFQ09ubDB1SHMifQ.9rO-iuM
-   sYiXPdJyirW5L56Es8kbpmUDwm06HjooajtEYlzip_HMYC52fgiMEeNG5xPNCV7qvZQX
-   8BtotYEGXXQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwNjAsICJzZF9oYXNoIjogIl
+   NPdFBBVHd3Q3FnY0N3blJveFMxWHdWMTBXZ2RVbjVsS2NkSDVSNk5qcWsifQ.3LwpOdv
+   sTr0sXU7wj_k9QtcDpq0z4dzNm_Or2Qi9yBLiU_6Suot3UnhCR8ul-IaKY1iEKbtLY4i
+   O_svqCgmxoA
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2734,8 +2739,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792011047,
-     "sd_hash": "uP5urOLvyVjcW8PzYwzeFCf19rNR_bnNOiECOnl0uHs"
+     "iat": 1792011060,
+     "sd_hash": "SOtPATwwCqgcCwnRoxS1XwV10WgdUn5lKcdH5R6Njqk"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3042,6 +3047,9 @@ Appendix C.  Document History
       there is no requirement they directly correspond
    *  clarify that x5c is from RFC7515 and has to be validated against a
       policy-permitted trust anchor
+   *  Address ARTART review: an svg_id is not used with a path that can
+      select more than one value, and the template is not rendered if it
+      does
    *  remove a few superfluous subsection headings from the IANA
       Considerations
 
