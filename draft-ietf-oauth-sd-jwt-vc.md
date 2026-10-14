@@ -913,8 +913,9 @@ Placeholders MUST only be used in the text content of the SVG template and MUST 
 be used in any other part of the SVG template, e.g., in attributes or comments.
 
 A consuming application MUST ensure that all special characters in the claim
-values are properly escaped before inserting them into the SVG template. At
-least the following characters MUST be escaped:
+values are properly escaped before inserting them into the SVG template.
+If invalid XML characters are present in the claim values, the consuming application
+SHOULD reject and not render the SVG template. At least the following characters MUST be escaped:
 
 - `&` as `&amp;`
 - `<` as `&lt;`
@@ -1981,6 +1982,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * remove a few superfluous subsection headings from the IANA Considerations
 * Secdir review items:
   * align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
+  * say not to render and SVG template when invalid XML characters are present in the claim values
 
 -19
 
