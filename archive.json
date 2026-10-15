@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-13T00:59:02.569833+00:00",
+  "timestamp": "2026-10-15T00:46:05.045013+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10679,15 +10679,15 @@
       "id": "I_kwDOJbVClc8AAAABRVHBVQ",
       "title": "Section 2.5: relationship between `iss` and the x5c end-entity certificate is unspecified",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/433",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "Nas2020",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "I sent this to `last-call@ietf.org` during IETF Last Call on draft-19, but it has not appeared in the archive, so I am filing it here as well rather than let it go unrecorded. Apologies if it reaches you twice.\n\nI maintain a relying-party verifier listed by the OpenID Foundation as certified on 11 September 2026 to the OID4VP-1.0+HAIP-1.0 Verifier `sd_jwt_vc direct_post.jwt` and `iso_mdl direct_post.jwt` profiles. The points below came out of verifying live PIDs from the European Commission's EUDI Wallet reference deployment.\n\n### The evidence\n\nA PID captured from the EC reference wallet on 5 September 2026:\n\n```\nheader: {\"alg\":\"ES256\",\"typ\":\"dc+sd-jwt\",\"x5c\":[<one certificate>]}\niss:    \"https://backend.issuer.eudiw.dev\"\nvct:    \"urn:eudi:pid:1\"\n```\n\nThe `x5c` array has exactly one entry. That certificate's subject is `CN=PID DS - 002, O=EUDI Wallet Reference Implementation, C=UT`, and **it has no subjectAltName extension**. The extensions present are basicConstraints, authorityKeyIdentifier, authorityInfoAccess, certificatePolicies, extendedKeyUsage, cRLDistributionPoints, subjectKeyIdentifier, keyUsage and qcStatements.\n\nSo `iss` is an HTTPS URI that appears nowhere in the certificate.\n\n### The problem\n\nSection 2.2.2.3 says `iss` \"explicitly indicates the Issuer of the Verifiable Digital Credential when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an x5c header)\". I read that as: with `x5c` present, `iss` is redundant and carries no weight.\n\nSection 7.3 pushes the other way. It says it is \"critical that those rules maintain the integrity of the relationship between the iss value of the SD-JWT, if present, and the public keys of the Issuer.\" That reads as: `iss` still means something, even alongside `x5c`.\n\nSection 2.5 says nothing about the case where both are present, which is the shape of every EU reference credential I have seen.\n\nThis is not theoretical. Credo (credo-ts) v0.7.0 `SdJwtVcService.assertValidX5cJwtIssuer` requires `iss` to match a SAN-URI entry in the end-entity certificate, or its domain to match a SAN-DNS entry, and rejects the credential otherwise. Against the EC reference issuer that rejects everything, because there is no SAN to match. We carry a local patch to relax it. Someone reading the same text has clearly reached the opposite conclusion from mine.\n\n### Suggested resolution\n\nOne sentence in Section 2.5, whichever reflects working group intent. Either:\n\n> \"When the x5c parameter is present, the iss claim is not used for key discovery and MUST NOT be required to correspond to any name in the end-entity certificate.\"\n\nor a statement of whatever matching rule is intended. I do not mind which. I would like the document to pick one.\n",
       "createdAt": "2026-09-15T05:31:08Z",
-      "updatedAt": "2026-10-06T22:19:29Z",
-      "closedAt": null,
+      "updatedAt": "2026-10-14T20:36:53Z",
+      "closedAt": "2026-10-14T20:36:53Z",
       "comments": [
         {
           "author": "paulbastian",
@@ -34306,25 +34306,35 @@
       "id": "PR_kwDOJbVClc8AAAABHAhB8w",
       "title": "state that when both the `iss` claim and `x5c` header are present, there is no requirement they directly correspond",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/436",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "for #433",
       "createdAt": "2026-10-06T22:18:12Z",
-      "updatedAt": "2026-10-12T22:02:45Z",
+      "updatedAt": "2026-10-14T20:36:52Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "da6e921b7aa099f12285b77f4cda91659b3e279e",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "x5candiss",
       "headRefOid": "5d66744088a9ac731b8b8d755d2b34a14ebb6eb5",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
-      "comments": [],
+      "closedAt": "2026-10-14T20:36:52Z",
+      "mergedAt": "2026-10-14T20:36:52Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "df119296b2bb14a110971d7f0c8612293b028dfa"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "meant to merge this the other day but github hung for a while and I lost track of what I was doing ",
+          "createdAt": "2026-10-14T20:36:47Z",
+          "updatedAt": "2026-10-14T20:36:47Z"
+        }
+      ],
       "reviews": [
         {
           "id": "PRR_kwDOJbVClc8AAAABR48zgg",
@@ -34441,6 +34451,138 @@
           "body": "lgtm",
           "createdAt": "2026-10-12T20:15:36Z",
           "updatedAt": "2026-10-12T20:15:36Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 439,
+      "id": "PR_kwDOJbVClc8AAAABIdMisg",
+      "title": "scope the media type requirement to where a media type is used and say why there is no aka_vcts#integrity",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/439",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
+      "body": "for the ARTART review https://mailarchive.ietf.org/arch/msg/last-call/jSAdduCF7VnGuje61KODlcU6650/\r\n\r\n> ad 2.1: Are SD-JWT VCs intended to exclusively be used in places where a media\r\n> type is assigned? Or should the paragraph start with \"Where media types are\r\n> used, \u2026\"?\r\n\r\n> ad 2.2.2.3: Why can only the vct have a vct#integrity, but the aka_vct not?\r\n\r\nAlso adds the reviewer to the acknowledgements.\r\n",
+      "createdAt": "2026-10-14T18:19:01Z",
+      "updatedAt": "2026-10-14T20:49:40Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "da6e921b7aa099f12285b77f4cda91659b3e279e",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "artart/media-type-and-integrity",
+      "headRefOid": "c928fc943b8ba1b6d57addc66467eeeb0eb80fed",
+      "closedAt": "2026-10-14T20:49:40Z",
+      "mergedAt": "2026-10-14T20:49:40Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "35b49fed6e0a002d982bb07fa7d83166f4813cd6"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABSUgRcA",
+          "commit": {
+            "abbreviatedOid": "c928fc9"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "thank you ",
+          "createdAt": "2026-10-14T20:45:35Z",
+          "updatedAt": "2026-10-14T20:45:35Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 440,
+      "id": "PR_kwDOJbVClc8AAAABIdSQUw",
+      "title": "explain in the intro how verifiability, vct, Type Metadata and aka_vcts relate",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/440",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
+      "body": "for the ARTART review https://mailarchive.ietf.org/arch/msg/last-call/jSAdduCF7VnGuje61KODlcU6650/\n\n> ad 1: From the introduction (also the later text), it is not clear to me how\n> being a *verifiable* credential (which AIU is about being a signed JWT and\n> containing a cnf of which possession can be proven) is related to the vct\n> (which is about explaining to a user what a credential means and how to make\n> informed decisions about selective disclosure).\n",
+      "createdAt": "2026-10-14T18:26:06Z",
+      "updatedAt": "2026-10-14T20:50:21Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "da6e921b7aa099f12285b77f4cda91659b3e279e",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "artart/what-makes-it-verifiable",
+      "headRefOid": "42a2878ec79f6ff7273c9c8d88e0fc647e77caf6",
+      "closedAt": "2026-10-14T20:50:21Z",
+      "mergedAt": "2026-10-14T20:50:21Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "48df8b81e1e82f453d095a2f29aa9001db72aea7"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABSUhMiQ",
+          "commit": {
+            "abbreviatedOid": "42a2878"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-14T20:46:41Z",
+          "updatedAt": "2026-10-14T20:46:41Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 441,
+      "id": "PR_kwDOJbVClc8AAAABIdiq0Q",
+      "title": "an svg_id can't be used with a path that selects multiple values",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/441",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
+      "body": "for the ARTART review https://mailarchive.ietf.org/arch/msg/last-call/jSAdduCF7VnGuje61KODlcU6650/\n\n> ad 5.6: What happens to SVG processing when path selects multiple elements?\n\nA `path` can only select more than one value through a `null` component, so an `svg_id` must not be used with such a path; if a path selects several values anyway, the template is not rendered.\n\nArray elements can still be rendered individually by giving each index its own claim metadata object and `svg_id`, e.g. `[\"nationalities\", 0]` and `[\"nationalities\", 1]`.\n\nThis deliberately leaves rendering of a whole array undefined rather than defining it now. A later specification can add a mechanism for that, for example value-based placeholders for enumerated values such as driving privileges, without conflicting with this rule, which only concerns the existing `svg_id` plus `path` combination. Type Metadata explicitly allows additional properties that Consumers ignore when not understood (section on the Type Metadata format), so such an extension needs no change here.\n",
+      "createdAt": "2026-10-14T18:47:05Z",
+      "updatedAt": "2026-10-14T20:50:40Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "da6e921b7aa099f12285b77f4cda91659b3e279e",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "artart/one-value-per-svg-id",
+      "headRefOid": "2ba9313544db763f510e90e81e6574dec3856fa1",
+      "closedAt": "2026-10-14T20:50:40Z",
+      "mergedAt": "2026-10-14T20:50:40Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "63e52ee6318355d74b610c107c6032b30620d0a9"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABSUiVEA",
+          "commit": {
+            "abbreviatedOid": "2ba9313"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-14T20:48:17Z",
+          "updatedAt": "2026-10-14T20:48:17Z",
           "comments": []
         }
       ]
