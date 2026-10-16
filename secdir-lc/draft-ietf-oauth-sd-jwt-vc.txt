@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 17 April 2027                                     Authlete Inc.
+Expires: 19 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         14 October 2026
+                                                         16 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 17 April 2027.
+   This Internet-Draft will expire on 19 April 2027.
 
 Copyright Notice
 
@@ -677,9 +677,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gQEB7
-   -xhyu9cLRKrccqH_yxqffhRpZqCHw7wPHgG-qVi2AjMZAO2K4WrV-FCsCPM7uuF80SjB
-   EFr7GWqF7LRZQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RPZCN
+   XvpwO6go_S72Bl1JWQ42UaKCXMhptj2KkOvAuUrxPjnbl1a_rw49X2OVEU6TLGSmet_Y
+   YBJqAP-iMsKDA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -715,17 +715,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gQEB7
-   -xhyu9cLRKrccqH_yxqffhRpZqCHw7wPHgG-qVi2AjMZAO2K4WrV-FCsCPM7uuF80SjB
-   EFr7GWqF7LRZQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.RPZCN
+   XvpwO6go_S72Bl1JWQ42UaKCXMhptj2KkOvAuUrxPjnbl1a_rw49X2OVEU6TLGSmet_Y
+   YBJqAP-iMsKDA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTQyMT
-   YsICJzZF9oYXNoIjogIjRnUUtyNnlhS1pqMHdjV0QtaW9CM3BETTdlSHdFUWxqQnlmYl
-   BQdE15TWsifQ.KoDjHt_ChR8_JiJr5_cvC_TLOWr58UpAlD1XnvsnO7TVaH-Bze0xPfx
-   xpicregacsMy5x0DLnHB43yxcOdAjPg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIxNTMxMj
+   csICJzZF9oYXNoIjogIl92Ti1MNG1Id1daMUh5MXR4eXVQNzhfLVh4cmRGZVNKT0FzWT
+   lXX0ZOaWsifQ.1VQzqKvHlbYJUaol2CF9vyAylz8jpyyZJpBz8vnOI8FgBf9NWzPrK0X
+   vdmZVBzJbn8RTVIYnZR4gB0mrLXd6Kg
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -771,8 +771,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.MgPGn8TCKgtwrrVn3BCDHQHnukx03oeQFFPET_c99CiYGP
-   eQ5uBhXrbZBdDWDv08dRw4MA3LgAJ6TM59NnzpMw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.qNbD6qqdI4HgBSwtAuN0vVaSHaC1VPfJ5BkcVP98IHvI_O
+   klbtrt-4aSJ69v_zVMIsGIpGHufKcU-DcWmFjB4A~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1959,9 +1959,10 @@ Table of Contents
    If code execution cannot be prevented reliably, the SVG display MUST
    be sandboxed.
 
-   Furthermore, consuming applications MUST ensure that references to
-   external resources (images, etc.) from within the SVG cannot be used
-   to track users or the usage of credentials.
+   Furthermore, similar to retrieval of other metadata resources as
+   discussed in Section 8.4, consuming applications need to ensure that
+   references to external resources (images, etc.) from within the SVG
+   cannot be used to track users or the usage of credentials.
 
 8.  Privacy Considerations
 
@@ -2045,8 +2046,10 @@ Table of Contents
 
    Consumers SHOULD prefer methods for retrieving Type Metadata and the
    resources it references that do not leak information about the usage
-   of a credential to third parties.  The recommendations in Section 7.5
-   apply.
+   of a credential to third parties.  The caching recommendations in
+   Section 7.5 apply and potentially identifying information about the
+   Holder or Consumer should not be included in any request to retrieve
+   such resources (e.g., in HTTP headers).
 
 9.  IANA Considerations
 
@@ -2334,8 +2337,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.l1GzbL-NqN5zmBk7Gv3LAPkwhdh4fKIJ
-   V1zklq_3uXeeIQANFkzVHQnUalH-XneQgkoZDDHNfmqHpxVulsSUdw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.XrjLYQhyyZul5SmAtUI5ajPS_D_zqoHB
+   TnEvA_L-8gXPox8_VAVRiFbf-n2jhP6BN_iYc9iVWgDIgpFkA2PvLA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2717,8 +2720,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.l1GzbL-NqN5zmBk7Gv3LAPkwhdh4fKIJ
-   V1zklq_3uXeeIQANFkzVHQnUalH-XneQgkoZDDHNfmqHpxVulsSUdw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.XrjLYQhyyZul5SmAtUI5ajPS_D_zqoHB
+   TnEvA_L-8gXPox8_VAVRiFbf-n2jhP6BN_iYc9iVWgDIgpFkA2PvLA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2729,10 +2732,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTQyMTYsICJzZF9oYXNoIjogIm
-   RlWFFmZzlYYWFWcUZ3YlY4QUtqM2VNUkRVdXBuLUhWanBRU1lMTHJ0TjgifQ.3yJZMcz
-   5YYpOou70jw2GJi3kPsPm9KEMDAXiACcYELqS88LcW5m5C4lXmHD9UUCsn8z62SR2zeK
-   bkD4f3teaGQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIxNTMxMjcsICJzZF9oYXNoIjogIl
+   RHMFg4cVFCdDlrU251UFJXWUtsRjM5RF9zZVZLRG01S3A3bmw5T2djdnMifQ.dLy9jF3
+   _RE9P3YH7V_WIpFwrvCvEvR4LniYJLlKSW51_2KBaaBRcNqjV1L6YLouQwQL4C_CMtKY
+   1ln_1d3S85Q
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2741,8 +2744,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792014216,
-     "sd_hash": "deXQfg9XaaVqFwbV8AKj3eMRDUupn-HVjpQSYLLrtN8"
+     "iat": 1792153127,
+     "sd_hash": "TG0X8qQBt9kSnuPRWYKlF39D_seVKDm5Kp7nl9Ogcvs"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3058,6 +3061,9 @@ Appendix C.  Document History
       -  align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
       -  say not to render and SVG template when invalid XML characters
          are present in the claim values
+      -  add a ref to the privacy text in the Section 7.10 in the
+         security considerations section to the related privacy
+         considerations Section 8.4
 
    -19
 
