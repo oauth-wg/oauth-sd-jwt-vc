@@ -744,7 +744,7 @@ The following sections define methods to retrieve Type Metadata.
 
 A URI in the `vct` claim can be used to express a type. If the
 type is a URL using the HTTPS scheme, Type Metadata might be retrievable from that URL, and
-it is at the consumer's discretion whether to attempt retrieve Type Metadata from the URL.
+it is at the consumer's discretion whether to attempt to retrieve Type Metadata from the URL.
 
 The Type Metadata is retrieved from that URL using an HTTP `GET` request,
 following the rules defined in (#http-retrieval). A successful response
