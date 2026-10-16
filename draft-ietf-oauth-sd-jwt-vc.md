@@ -1414,7 +1414,9 @@ template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.
 
-Furthermore, consuming applications MUST ensure that references to external
+Furthermore, similar to retrieval of other metadata resources as
+discussed in (#privacy-preserving-retrieval-of-type-metadata),
+consuming applications need to ensure that references to external
 resources (images, etc.) from within the SVG cannot be used to track users or
 the usage of credentials.
 
@@ -1481,7 +1483,9 @@ described in (#rendering-metadata).
 
 Consumers SHOULD prefer methods for retrieving Type Metadata and the resources
 it references that do not leak information about the usage of a credential to
-third parties. The recommendations in (#robust-retrieval) apply.
+third parties. The caching recommendations in (#robust-retrieval) apply and
+potentially identifying information about the Holder or Consumer should not
+be included in any request to retrieve such resources (e.g., in HTTP headers).
 
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
@@ -1983,6 +1987,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 * Secdir review items:
   * align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
   * say not to render and SVG template when invalid XML characters are present in the claim values
+  * add a ref to the privacy text in the (#svg-rendering-sec) in the security considerations section to the related privacy considerations (#privacy-preserving-retrieval-of-type-metadata)
 
 -19
 
