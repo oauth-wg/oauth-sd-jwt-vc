@@ -286,6 +286,8 @@ The `aka_vcts` claim is particularly useful in issuance and presentation protoco
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
+For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
+of a type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
 so issuance and presentation protocols cannot always rely on it for type matching.
@@ -294,6 +296,9 @@ type `urn:example:eudi:pid` that receives an SD-JWT VC with a `vct` value of
 `urn:example:eudi:pid:aendgard:1` can determine from an `aka_vcts` value of
 `["urn:example:eudi:pid"]` that the received credential is also of the
 requested type.
+
+When the type in `vct` is derived from, extends, or is otherwise meant to be accepted
+as one or more general types, the Issuer SHOULD list those types in `aka_vcts`.
 
 The content in (#example-with-aka-vcts) shows an excerpt of an Unsecured
 Payload using the `aka_vcts` claim to express this example.
@@ -1956,6 +1961,7 @@ Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
 Tim Cappalli,
 Timo Glastra,
@@ -1968,6 +1974,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -20
 
+* say that anytime the `vct` type is derived from, extends, or is otherwise meant to be accepted as one or more general types, the Issuer should list them all in `aka_vcts`
+  and Holders/Verifiers should consider them all when matching
 * Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no `aka_vcts#integrity`
 * Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply
 * Address ARTART review: explain in the introduction how verifiability, the `vct` claim, Type Metadata and `aka_vcts` relate
