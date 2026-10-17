@@ -1073,8 +1073,9 @@ In detail, the array components of `path` are processed from left to right as fo
 The result of the processing is the set of elements to which the respective
 claim metadata applies.
 
-The `path` property MUST point to the respective claim as if all
-selectively disclosable claims were disclosed to a Verifier. That means that a
+The `path` property MUST point to the respective claim as if the payload was
+complete and conformant to the Type Metadata with all selectively disclosable
+claims disclosed. That means that a
 consuming application which does not have access to all disclosures may not be
 able to identify the claim which is being addressed.
 
@@ -1988,8 +1989,10 @@ for their contributions (some of which substantial) to this draft and to the ini
   * align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
   * say not to render and SVG template when invalid XML characters are present in the claim values
   * add a ref to the privacy text in the (#svg-rendering-sec) in the security considerations section to the related privacy considerations (#privacy-preserving-retrieval-of-type-metadata)
+  * try to qualify a bit more that the `path` points to a claim in a fully disclosed payload that's conformant with the type metadata
 
 -19
+
 
 * Address HTTP Directorate review:
   * Added a general section on retrieving documents and resources via HTTP, covering HTTP/caching semantics (RFC 9110, RFC 9111), redirect handling, scheme requirements, and time-bound/size-bound retrieval for all URLs dereferenced per this specification
