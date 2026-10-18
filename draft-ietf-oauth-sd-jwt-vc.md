@@ -287,7 +287,7 @@ where the receiving party (a Holder during issuance or a Verifier during present
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
 For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
-of a type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
+of a given type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
 so issuance and presentation protocols cannot always rely on it for type matching.
