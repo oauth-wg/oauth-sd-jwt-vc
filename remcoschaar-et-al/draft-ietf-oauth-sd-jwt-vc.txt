@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 19 April 2027                                     Authlete Inc.
+Expires: 21 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         16 October 2026
+                                                         18 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 19 April 2027.
+   This Internet-Draft will expire on 21 April 2027.
 
 Copyright Notice
 
@@ -400,16 +400,16 @@ Table of Contents
    issuance or a Verifier during presentation) matches the type of a
    received SD-JWT VC against the type it requested or expects.  For the
    purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT
-   VC as being of a type, if that type is the vct value or one of the
-   values of the aka_vcts array.  While relationships between credential
-   types can be expressed through the extends property in Type Metadata,
-   Type Metadata is optional and may not be available, so issuance and
-   presentation protocols cannot always rely on it for type matching.
-   For example, a Verifier requesting a credential of the hypothetical
-   type urn:example:eudi:pid that receives an SD-JWT VC with a vct value
-   of urn:example:eudi:pid:aendgard:1 can determine from an aka_vcts
-   value of ["urn:example:eudi:pid"] that the received credential is
-   also of the requested type.
+   VC as being of a given type, if that type is the vct value or one of
+   the values of the aka_vcts array.  While relationships between
+   credential types can be expressed through the extends property in
+   Type Metadata, Type Metadata is optional and may not be available, so
+   issuance and presentation protocols cannot always rely on it for type
+   matching.  For example, a Verifier requesting a credential of the
+   hypothetical type urn:example:eudi:pid that receives an SD-JWT VC
+   with a vct value of urn:example:eudi:pid:aendgard:1 can determine
+   from an aka_vcts value of ["urn:example:eudi:pid"] that the received
+   credential is also of the requested type.
 
    When the type in vct is derived from, extends, or is otherwise meant
    to be accepted as one or more general types, the Issuer SHOULD list
@@ -683,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EPtaI
-   MLaY7DJ4iy3bRULw3zfp6Y-G0otLAnpIjmG1v-JsFeFWDneNvegPsJMpjQM06blmnDT0
-   OiFT8GLdbzeiQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.X9pNm
+   PYGIvcm_tvhaPIi2WKTGBWhGsCCSX3lcr236LJUEUUCW_d3O6h3ePW4ndsD7_3rENwJw
+   EKDBsL69b151Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -721,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.EPtaI
-   MLaY7DJ4iy3bRULw3zfp6Y-G0otLAnpIjmG1v-JsFeFWDneNvegPsJMpjQM06blmnDT0
-   OiFT8GLdbzeiQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.X9pNm
+   PYGIvcm_tvhaPIi2WKTGBWhGsCCSX3lcr236LJUEUUCW_d3O6h3ePW4ndsD7_3rENwJw
+   EKDBsL69b151Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIxNzgzNz
-   UsICJzZF9oYXNoIjogIkhFRTR6V3BfVEd2NnRQWVQyakpYNTJ4aWJZOHJ1c3ByTDlIMW
-   JMTXE4eDQifQ.gYXKmtsQCqLSmKxXjRoUiqe8cHqdZ3RRxo5kT58opGmOYG1Bo3SWH_D
-   TZtw37F5M7afktIO1b707XeVksAMvpg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIzNjU4ND
+   IsICJzZF9oYXNoIjogIjdhLWVKS2VBSUZIcjViQ08tWmRmRHExbkxuMXZkaF80OGpfck
+   RBVHBWMXcifQ.qQBUXnEuZS6VoPsA6wVvMm1JH1fyJeDS0-LPaKWPijnknzJBwQqdH4l
+   S8fhT46Txp7DPwr-d8HudwEdWUAUgig
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -777,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.AeIgwk5B7n2bVVbrXBcOvTlS2n5NbRNPPgDaut7_Lm6zlP
-   U70pfcu8kvHRYJ5qTgF1v2U0MobCjh099CkfJWUw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.R9xpnGsp1ZyQqe1Iyu8CX_sr1zXdjSwtiROBkY4P_D_kgv
+   mj-1Pwhdl5Ua1Q8CyyBrya-0AHgwX2QjjNtNI58g~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2338,8 +2338,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.nk7VKFhZft0n-uql9GoQ6HlNeHVu5C08
-   O6Kk16FNOMYqihklMfPpc8VdA6-HR6GaCN7OxmIuTquP5k_hmqKZ3g~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.39L5NfLACIb_00aCnc264RW7CM8ek2_D
+   Gz96kTd05qeNTrfRw4H03Yh2VH5HleQ-sOv2o6gknAMVW4IaB4RE_A~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2721,8 +2721,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.nk7VKFhZft0n-uql9GoQ6HlNeHVu5C08
-   O6Kk16FNOMYqihklMfPpc8VdA6-HR6GaCN7OxmIuTquP5k_hmqKZ3g~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.39L5NfLACIb_00aCnc264RW7CM8ek2_D
+   Gz96kTd05qeNTrfRw4H03Yh2VH5HleQ-sOv2o6gknAMVW4IaB4RE_A~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2733,10 +2733,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIxNzgzNzUsICJzZF9oYXNoIjogIk
-   gzQUFHS2JpMjgyOUVZWm5fU0M2OEZ5N0REdEF5bG9lZTlWelRoQzFtWncifQ.3ICj8MK
-   VJlljKXll2WA2CPxwL6aeGIEEDpLUfVpxO9Ke8LWhKg27iDq9fyjuspoM0V7F-Da82XH
-   k3DqGeZVWFQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIzNjU4NDIsICJzZF9oYXNoIjogIl
+   pGc19QNktPV0FNZ1NubFNDTXdLcVhHM09UMWs1YTFqdnRDd2paWWY3RVkifQ.IkSETXn
+   g9Ntor0S2QecZbUznS2UtmZ4K70Yr9dTLaW2TL_2CYwJLEsBxXx10RZJighoFceP_sDE
+   HfBgSMywcGA
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2745,8 +2745,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792178375,
-     "sd_hash": "H3AAGKbi2829EYZn_SC68Fy7DDtAyloee9VzThC1mZw"
+     "iat": 1792365842,
+     "sd_hash": "ZFs_P6KOWAMgSnlSCMwKqXG3OT1k5a1jvtCwjZYf7EY"
    }
 
                      Figure 27: Key Binding JWT Payload
