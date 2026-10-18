@@ -818,8 +818,21 @@ The objects in the array have the following properties:
   property is REQUIRED.
 - `description`: A human-readable description for the type, intended for end
   users. This property is OPTIONAL.
+- `dir`: The base text direction of the human-readable string values in this object,
+  such as `name` and `description`, and in nested objects, such as the `alt_text` of a
+  logo in the rendering metadata, as one of the strings `ltr`, `rtl`, or `auto`. `ltr`
+  and `rtl` set the paragraph direction for the Unicode Bidirectional Algorithm
+  [@UAX9]; `auto` means that the direction is determined from the first strong
+  character of each value. If absent, `auto` applies. This property is OPTIONAL.
 - `rendering`: An object containing rendering information for the type, as
   described in (#rendering-metadata). This property is OPTIONAL.
+
+The human-readable string values in a display object and its nested objects are
+Unicode strings whose display direction follows from the Unicode Bidirectional
+Algorithm [@UAX9]. Where the default resolution is not the intended one, Issuers
+can set the `dir` property or include the Unicode directional formatting
+characters in the value. The
+language tag in `locale` can include a script subtag ([@!RFC5646, section 2.2.3]).
 
 ### Rendering Metadata {#rendering-metadata}
 
@@ -1098,6 +1111,12 @@ The objects in the array have the following properties:
   property is REQUIRED.
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
+- `dir`: The base text direction of the human-readable string values in this object,
+  such as `label` and `description`, and in nested objects, with the same values and
+  semantics as the `dir` property in (#display-metadata). This property is OPTIONAL.
+
+The considerations on the display direction of human-readable string values in
+(#display-metadata) apply to claim display objects as well.
 
 See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim display metadata.
 
@@ -1497,6 +1516,13 @@ third parties. The recommendations in (#robust-retrieval) apply.
   <front>
     <author fullname="OWASP"></author>
     <title>Server Side Request Forgery Prevention Cheat Sheet</title>
+  </front>
+</reference>
+
+<reference anchor="UAX9" target="https://www.unicode.org/reports/tr9/">
+  <front>
+    <title>Unicode Standard Annex #9: Unicode Bidirectional Algorithm</title>
+    <author><organization>Unicode Consortium</organization></author>
   </front>
 </reference>
 
@@ -1978,6 +2004,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 * clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor
 * Address ARTART review: an `svg_id` is not used with a `path` that can select more than one value, and the template is not rendered if it does
 * remove a few superfluous subsection headings from the IANA Considerations
+* Address ARTART review: note how the display direction of human-readable strings is determined
+* Address ARTART review: add an optional `dir` property for the base text direction of display strings
 
 -19
 
