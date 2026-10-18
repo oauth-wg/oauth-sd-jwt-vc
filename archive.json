@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-15T00:46:05.045013+00:00",
+  "timestamp": "2026-10-18T00:52:24.165304+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10792,6 +10792,30 @@
           "body": "Thanks Brian, and point taken. RFC 7515 4.1.6 already carries the MUST to validate the chain per RFC 5280, and 5280 then makes the anchor an out-of-band input, so the requirement was there by reference. I should have followed that hop before writing that it was missing, and sorry the issue read harsher than I meant. It came out of our own first implementation.\n\nWhat #437 adds is what I was actually missing in the text: that \"accordingly\" means the RFC 7515 validation, and that the anchor is the one the recipient's policy permits for the Issuer, not anything the credential carries. That resolves this for me. That resolves this for me; happy for it to close with the PR.",
           "createdAt": "2026-10-07T21:31:56Z",
           "updatedAt": "2026-10-07T21:31:56Z"
+        }
+      ]
+    },
+    {
+      "number": 442,
+      "id": "I_kwDOJbVClc8AAAABXYrZtQ",
+      "title": "Type matching requirements and interoperability",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/442",
+      "state": "OPEN",
+      "author": "remcoschaar",
+      "authorAssociation": "NONE",
+      "assignees": [],
+      "labels": [],
+      "body": "This issue is raised on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, and was agreed at its meeting on 14 October 2026.\n\nThe second edition of ISO/IEC 18013-5, currently being drafted, carries SD-JWT VCs in its presentation flows and defers to this specification for what a credential of a given type is. In those flows a Verifier often asks for a generic type, for example a PID type, and receives a credential whose `vct` is a more specialized type. Today a Verifier can learn that the specific type is also of the requested type in several ways, by resolving Type Metadata and walk the `extends` chain, by the Issuer including the `aka_vcts` claim, or by out-of-band knowledge of the type hierarchy, but all of them are optional, and the first is not possible in offline deployments in all cases. Implementations will not be interoperable as a result.\n\nThe draft already has the mechanism, the `aka_vcts` claim, but as a purely optional claim nobody can rely on it. We suggest two changes in -20:\n\n- Issuers: when the type in `vct` is derived from, `extends`, or is meant to be accepted as one or more general types, the Issuer SHOULD list those types in `aka_vcts`.\n- Holders and Verifiers: a Holder or Verifier SHOULD treat an SD-JWT VC as being of a requested type if that type is the `vct` value or one of the `aka_vcts` values, without requiring Type Metadata. Types reached via `extends` remain an addition for credentials that lack `aka_vcts`.\n\n\nWe are aware that the draft has completed IETF Last Call. The problem surfaced while drafting the second edition of ISO/IEC 18013-5, after the Last Call text was published. We raise it now because the change is small and introduces no new mechanism, only two SHOULDs on a claim the draft already defines, and because it cannot be addressed outside this specification.\n\nWG10 suggests the above approach, but as 18013-5 second edition will reference SD-JWT VC, we are open to and supportive of alternative solutions. WG10 suggests to have more pronounced (i.e. REQUIRED/SHALL or RECOMMENDED/SHOULD) text on how to handle `vct` matching in case of inheritance or equivalence, in the interest of interoperability between issuer, holder and verifier implementations within and across ecosystems.\n",
+      "createdAt": "2026-10-15T10:22:29Z",
+      "updatedAt": "2026-10-16T19:20:24Z",
+      "closedAt": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "PR https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/444 has been prepared for this",
+          "createdAt": "2026-10-16T19:20:23Z",
+          "updatedAt": "2026-10-16T19:20:23Z"
         }
       ]
     }
@@ -34586,6 +34610,73 @@
           "comments": []
         }
       ]
+    },
+    {
+      "number": 443,
+      "id": "PR_kwDOJbVClc8AAAABIsiQcQ",
+      "title": "Secdir last call review updates",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/443",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "updates aimed at addressing things from [[Last-Call] draft-ietf-oauth-sd-jwt-vc-19 ietf last call Secdir review ](https://mailarchive.ietf.org/arch/msg/last-call/D0TY8D9hXbjM0nsv-lqITd4K-6o/)",
+      "createdAt": "2026-10-15T19:12:42Z",
+      "updatedAt": "2026-10-17T20:01:42Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "63e52ee6318355d74b610c107c6032b30620d0a9",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "secdir-lc",
+      "headRefOid": "ac9ca45e2a084d1708757eed1f4ced46106d3017",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "Response sent https://mailarchive.ietf.org/arch/msg/last-call/aUk7Dt0H4VzRv8CTcKU7fMvEm8M/ based on changes to this point. The path selection is still outstanding. And the reply does ask for prospective suggestions on a few other items. ",
+          "createdAt": "2026-10-16T15:19:32Z",
+          "updatedAt": "2026-10-16T15:19:32Z"
+        },
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "[ac9ca45](https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/443/commits/ac9ca45e2a084d1708757eed1f4ced46106d3017) tries to address the path thing ",
+          "createdAt": "2026-10-17T20:00:42Z",
+          "updatedAt": "2026-10-17T20:00:42Z"
+        }
+      ],
+      "reviews": []
+    },
+    {
+      "number": 444,
+      "id": "PR_kwDOJbVClc8AAAABI6fseQ",
+      "title": "a little more on aka_vcts ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/444",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "to fix #442",
+      "createdAt": "2026-10-16T19:19:22Z",
+      "updatedAt": "2026-10-16T19:19:23Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "63e52ee6318355d74b610c107c6032b30620d0a9",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "remcoschaar-et-al",
+      "headRefOid": "ae14a4d749f3f5175f60525b72130d88d4edfc7e",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": []
     }
   ]
 }
