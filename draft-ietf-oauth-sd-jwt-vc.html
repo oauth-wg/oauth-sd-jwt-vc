@@ -26,11 +26,11 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.12.2
+    platformdirs 4.13.4
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.9.1
+    wcwidth 0.9.2
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1050,7 +1050,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 17 April 2027</td>
+<td class="center">Expires 22 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-10-14" class="published">14 October 2026</time>
+<time datetime="2026-10-19" class="published">19 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-17">17 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-22">22 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1122,7 +1122,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 17 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1681,6 +1681,8 @@ more general type, which is then included in the <code>aka_vcts</code> claim.<a 
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
+For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
+of a given type, if that type is the <code>vct</code> value or one of the values of the <code>aka_vcts</code> array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
 so issuance and presentation protocols cannot always rely on it for type matching.
@@ -1689,11 +1691,13 @@ type <code>urn:example:eudi:pid</code> that receives an SD-JWT VC with a <code>v
 <code>urn:example:eudi:pid:aendgard:1</code> can determine from an <code>aka_vcts</code> value of
 <code>["urn:example:eudi:pid"]</code> that the received credential is also of the
 requested type.<a href="#section-2.2.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-4">The content in <a href="#example-with-aka-vcts" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
-Payload using the <code>aka_vcts</code> claim to express this example.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-4">When the type in <code>vct</code> is derived from, extends, or is otherwise meant to be accepted
+as one or more general types, the Issuer SHOULD list those types in <code>aka_vcts</code>.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-5">The content in <a href="#example-with-aka-vcts" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
+Payload using the <code>aka_vcts</code> claim to express this example.<a href="#section-2.2.2.2-5" class="pilcrow">¶</a></p>
 <span id="name-example-unsecured-payload-e"></span><div id="example-with-aka-vcts">
 <figure id="figure-4">
-              <div class="lang-json sourcecode" id="section-2.2.2.2-5.1">
+              <div class="lang-json sourcecode" id="section-2.2.2.2-6.1">
 <pre>{
   "vct": "urn:example:eudi:pid:aendgard:1",
   "aka_vcts": [
@@ -1707,20 +1711,20 @@ Payload using the <code>aka_vcts</code> claim to express this example.<a href="#
 <a href="#name-example-unsecured-payload-e" class="selfRef">Example Unsecured Payload excerpt with <code>aka_vcts</code></a>
               </figcaption></figure>
 </div>
-<p id="section-2.2.2.2-6">Note that the <code>aka_vcts</code> claim is asserted by
+<p id="section-2.2.2.2-7">Note that the <code>aka_vcts</code> claim is asserted by
 the Issuer and, like the <code>vct</code> claim, is only as trustworthy as the Issuer
-itself.<a href="#section-2.2.2.2-6" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-7">The <code>aka_vcts</code> claim is independent of Type Metadata <a href="#type-metadata" class="auto internal xref">Section 5</a>
+itself.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-8">The <code>aka_vcts</code> claim is independent of Type Metadata <a href="#type-metadata" class="auto internal xref">Section 5</a>
 and, in particular, orthogonal to the <code>extends</code> property: the claim can be used
 whether or not Type Metadata exists for any of the listed types, and the listed
 types are not required to be related to the type of the SD-JWT VC through the
 <code>extends</code> property. The interaction between the <code>aka_vcts</code> claim and
 Type Metadata using the <code>extends</code> property is described in
-<a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-8">Because the values of the <code>aka_vcts</code> claim are not used to retrieve Type Metadata,
+<a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>.<a href="#section-2.2.2.2-8" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-9">Because the values of the <code>aka_vcts</code> claim are not used to retrieve Type Metadata,
 there is no <code>aka_vcts#integrity</code> counterpart to the <code>vct#integrity</code> claim; the integrity of
 Type Metadata reached via the <code>extends</code> property is covered by <code>extends#integrity</code> as
-described in <a href="#document-integrity" class="auto internal xref">Section 6</a>.<a href="#section-2.2.2.2-8" class="pilcrow">¶</a></p>
+described in <a href="#document-integrity" class="auto internal xref">Section 6</a>.<a href="#section-2.2.2.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claims">
@@ -2021,9 +2025,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qKnXe
-2RaTKw6EH31q6J0JNwVWkcfcSbkOwUhIhj3o9Q1qDA5k239cIsnaMZLAw8I-Obsdi4ZC
-8yxfEtIV3X1Ew~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Kqt23
+YkB2hB3Hq1X0PMWmCZULqdPxofDvSnOjwGb-nSGdciwR1LXjHDmCnZeEqHtfjf14swQp
+LYSw7TOWj_-3A~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2069,17 +2073,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qKnXe
-2RaTKw6EH31q6J0JNwVWkcfcSbkOwUhIhj3o9Q1qDA5k239cIsnaMZLAw8I-Obsdi4ZC
-8yxfEtIV3X1Ew~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Kqt23
+YkB2hB3Hq1X0PMWmCZULqdPxofDvSnOjwGb-nSGdciwR1LXjHDmCnZeEqHtfjf14swQp
+LYSw7TOWj_-3A~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwNj
-AsICJzZF9oYXNoIjogIk1SdVk3aXJla29Gem9PTnE4YTFUcGZEbGV0ZXpISVNqRmpPbj
-FvM0d4b28ifQ.mQx6QYxgeg34buTqhzfGkDQq0Z3aX_GG0dW4uPfj0BIyVjBSxAuNbHo
-ghgfZycSoDoHha1mX6wPtAgihQGb6Fg
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcwND
+IsICJzZF9oYXNoIjogIlNFbFlKbVc3RjRVamU4aXdJbGRSVmp3cGppbjBCeGNkc191Sk
+hlczZkOVUifQ.CRBTSgjwcfYTDLOVD-mzYZI_-yWOrYgl5cibje55sdoD8REyTIKGhf3
+Zj8mjaf4ulbAyDFd5VPyzpiDQdaAYiw
 
 </pre>
 </div>
@@ -2136,8 +2140,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.1ar8IhAJaZ8JnbPGD2dx-6c8PzGQUUafDJdsjRD1FwRna2
-CICwhANOQfXi5RPkP_iH8hOHFh5-2WJg8VsMJUcA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.79vIq0o0K1O96_lcSabMpQsMrQfPaiB_2rfX46dWphczRr
+oEfe0HqoUknBkb7AkYQjLHOJ5U2sxaqTrAr-uomw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3900,8 +3904,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._BXJa_i71DSX9LW1cRtWrcMxkBkhxJx0
-0Zo4jTt23Pa0HLvS04k_6CgVAGqASt40fy2IZUz9MXe9zNfiQDsonA~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eS_uRzZxo9ksrlc722DO5yBTm9JYj2KG
+1EFm4g6f5FY_xyoldq_ugW66ouQKRRLJoSlwZ9iW_px8zpuYe6z8VA~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4398,8 +4402,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._BXJa_i71DSX9LW1cRtWrcMxkBkhxJx0
-0Zo4jTt23Pa0HLvS04k_6CgVAGqASt40fy2IZUz9MXe9zNfiQDsonA~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.eS_uRzZxo9ksrlc722DO5yBTm9JYj2KG
+1EFm4g6f5FY_xyoldq_ugW66ouQKRRLJoSlwZ9iW_px8zpuYe6z8VA~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4410,10 +4414,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIwMTEwNjAsICJzZF9oYXNoIjogIl
-NPdFBBVHd3Q3FnY0N3blJveFMxWHdWMTBXZ2RVbjVsS2NkSDVSNk5qcWsifQ.3LwpOdv
-sTr0sXU7wj_k9QtcDpq0z4dzNm_Or2Qi9yBLiU_6Suot3UnhCR8ul-IaKY1iEKbtLY4i
-O_svqCgmxoA
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcwNDIsICJzZF9oYXNoIjogIl
+RBYk45TGs0bldRNFc5SS1mM09YV1pfMnRBNGt1bzk2VTZFR0pNdlJ2WTgifQ.ua_XL_W
+QR936iTN24ffQkkpwxtRKoDB44eN1qJ2QrhfoRrhYoyKO7mkfZNBL74rZQyUC1m1D4Up
+8jgN0lu_3Kg
 
 </pre>
 </div>
@@ -4428,8 +4432,8 @@ O_svqCgmxoA
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1792011060,
-  "sd_hash": "SOtPATwwCqgcCwnRoxS1XwV10WgdUn5lKcdH5R6Njqk"
+  "iat": 1792417042,
+  "sd_hash": "TAbN9Lk4nWQ4W9I-f3OXWZ_2tA4kuo96U6EGJMvRvY8"
 }
 
 </pre>
@@ -4758,6 +4762,7 @@ Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
 Tim Cappalli,
 Timo Glastra,
@@ -4774,25 +4779,28 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-C-1">-20<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-2.1">Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no <code>aka_vcts#integrity</code><a href="#appendix-C-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-2.1">say that anytime the <code>vct</code> type is derived from, extends, or is otherwise meant to be accepted as one or more general types, the Issuer should list them all in <code>aka_vcts</code>
+and Holders/Verifiers should consider them all when matching<a href="#appendix-C-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.2">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-2.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.2">Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no <code>aka_vcts#integrity</code><a href="#appendix-C-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.3">Address ARTART review: explain in the introduction how verifiability, the <code>vct</code> claim, Type Metadata and <code>aka_vcts</code> relate<a href="#appendix-C-2.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.3">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.4">Fix a couple of example hash values<a href="#appendix-C-2.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.4">Address ARTART review: explain in the introduction how verifiability, the <code>vct</code> claim, Type Metadata and <code>aka_vcts</code> relate<a href="#appendix-C-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.5">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-2.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.5">Fix a couple of example hash values<a href="#appendix-C-2.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.6">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-2.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.6">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-2.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.7">state that when both the <code>iss</code> claim and <code>x5c</code> header are present, there is no requirement they directly correspond<a href="#appendix-C-2.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.7">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-2.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.8">clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor<a href="#appendix-C-2.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.8">state that when both the <code>iss</code> claim and <code>x5c</code> header are present, there is no requirement they directly correspond<a href="#appendix-C-2.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.9">Address ARTART review: an <code>svg_id</code> is not used with a <code>path</code> that can select more than one value, and the template is not rendered if it does<a href="#appendix-C-2.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.9">clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor<a href="#appendix-C-2.9" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.10">remove a few superfluous subsection headings from the IANA Considerations<a href="#appendix-C-2.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.10">Address ARTART review: an <code>svg_id</code> is not used with a <code>path</code> that can select more than one value, and the template is not rendered if it does<a href="#appendix-C-2.10" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.11">remove a few superfluous subsection headings from the IANA Considerations<a href="#appendix-C-2.11" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-C-3">-19<a href="#appendix-C-3" class="pilcrow">¶</a></p>
