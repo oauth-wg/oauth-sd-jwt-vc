@@ -26,11 +26,11 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.12.2
+    platformdirs 4.13.4
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.9.1
+    wcwidth 0.9.2
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1050,7 +1050,7 @@ svg {
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 20 April 2027</td>
+<td class="center">Expires 22 April 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1063,12 +1063,12 @@ svg {
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-10-17" class="published">17 October 2026</time>
+<time datetime="2026-10-19" class="published">19 October 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-20">20 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-04-22">22 April 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1122,7 +1122,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 20 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 22 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1681,6 +1681,8 @@ more general type, which is then included in the <code>aka_vcts</code> claim.<a 
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
+For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
+of a given type, if that type is the <code>vct</code> value or one of the values of the <code>aka_vcts</code> array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
 so issuance and presentation protocols cannot always rely on it for type matching.
@@ -1689,11 +1691,13 @@ type <code>urn:example:eudi:pid</code> that receives an SD-JWT VC with a <code>v
 <code>urn:example:eudi:pid:aendgard:1</code> can determine from an <code>aka_vcts</code> value of
 <code>["urn:example:eudi:pid"]</code> that the received credential is also of the
 requested type.<a href="#section-2.2.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-4">The content in <a href="#example-with-aka-vcts" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
-Payload using the <code>aka_vcts</code> claim to express this example.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-4">When the type in <code>vct</code> is derived from, extends, or is otherwise meant to be accepted
+as one or more general types, the Issuer SHOULD list those types in <code>aka_vcts</code>.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-5">The content in <a href="#example-with-aka-vcts" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
+Payload using the <code>aka_vcts</code> claim to express this example.<a href="#section-2.2.2.2-5" class="pilcrow">¶</a></p>
 <span id="name-example-unsecured-payload-e"></span><div id="example-with-aka-vcts">
 <figure id="figure-4">
-              <div class="lang-json sourcecode" id="section-2.2.2.2-5.1">
+              <div class="lang-json sourcecode" id="section-2.2.2.2-6.1">
 <pre>{
   "vct": "urn:example:eudi:pid:aendgard:1",
   "aka_vcts": [
@@ -1707,20 +1711,20 @@ Payload using the <code>aka_vcts</code> claim to express this example.<a href="#
 <a href="#name-example-unsecured-payload-e" class="selfRef">Example Unsecured Payload excerpt with <code>aka_vcts</code></a>
               </figcaption></figure>
 </div>
-<p id="section-2.2.2.2-6">Note that the <code>aka_vcts</code> claim is asserted by
+<p id="section-2.2.2.2-7">Note that the <code>aka_vcts</code> claim is asserted by
 the Issuer and, like the <code>vct</code> claim, is only as trustworthy as the Issuer
-itself.<a href="#section-2.2.2.2-6" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-7">The <code>aka_vcts</code> claim is independent of Type Metadata <a href="#type-metadata" class="auto internal xref">Section 5</a>
+itself.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-8">The <code>aka_vcts</code> claim is independent of Type Metadata <a href="#type-metadata" class="auto internal xref">Section 5</a>
 and, in particular, orthogonal to the <code>extends</code> property: the claim can be used
 whether or not Type Metadata exists for any of the listed types, and the listed
 types are not required to be related to the type of the SD-JWT VC through the
 <code>extends</code> property. The interaction between the <code>aka_vcts</code> claim and
 Type Metadata using the <code>extends</code> property is described in
-<a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-8">Because the values of the <code>aka_vcts</code> claim are not used to retrieve Type Metadata,
+<a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>.<a href="#section-2.2.2.2-8" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-9">Because the values of the <code>aka_vcts</code> claim are not used to retrieve Type Metadata,
 there is no <code>aka_vcts#integrity</code> counterpart to the <code>vct#integrity</code> claim; the integrity of
 Type Metadata reached via the <code>extends</code> property is covered by <code>extends#integrity</code> as
-described in <a href="#document-integrity" class="auto internal xref">Section 6</a>.<a href="#section-2.2.2.2-8" class="pilcrow">¶</a></p>
+described in <a href="#document-integrity" class="auto internal xref">Section 6</a>.<a href="#section-2.2.2.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claims">
@@ -2021,9 +2025,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GW9PB
-UkQBrVDA05LZgrDCwTJBiopt0ksyj3FFI15wV85Kudtw_h-PbqZ9KrbLZojqVm10YV4T
-QlFIiVJ21Hs7w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Dnh-q
+Upm-NOYh6BFy1EhcEZ8fw-GT6oDpNzlDdsYNsdG-jkmpbT9TmBIPA1fDXX0m4UVvdF7t
+vRJ1Nk2OvwtoQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2069,17 +2073,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GW9PB
-UkQBrVDA05LZgrDCwTJBiopt0ksyj3FFI15wV85Kudtw_h-PbqZ9KrbLZojqVm10YV4T
-QlFIiVJ21Hs7w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Dnh-q
+Upm-NOYh6BFy1EhcEZ8fw-GT6oDpNzlDdsYNsdG-jkmpbT9TmBIPA1fDXX0m4UVvdF7t
+vRJ1Nk2OvwtoQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIyNjcxOT
-IsICJzZF9oYXNoIjogIndZMnpBNV9JaWN3aDE2Y1M3SVNlMVV6OUFnQlNiTWtib2stNT
-BVV0VQX3cifQ.YMRQMWhY2vKYy1SFEXoxgnzwq-IjZ5K9rfVBKMAekoTS0DBrxe_NFjZ
-0JNtNP5FozucYLvAijZgntX3RjGaczQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcxOD
+csICJzZF9oYXNoIjogIko1c1BYTHpDUmRQcE12NjdDaHVCTVc3NTlnSlBVX3dzMXRwLU
+libl93ZlEifQ.WLljIMghAzfL9fZfeCXTkxDSwpX1H3UYEJ9exSYvmNHzO0AjkIp-7OE
+sjl4HIVzkzM1Onw07tCtI3yishDfrmg
 
 </pre>
 </div>
@@ -2136,8 +2140,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.4PwYGaUMBnI4FAb43i9wGK4JmG4TtTULQUzpencGnKHGjB
-e8WQicI56N5Fj67TMEHYtRALRv4zccsaEJ94hB_A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.maHP9l582W0wfVGm0R82s2-NH-L68R4cXeXl-tCF13I5ze
+Eebzr3uxhu8Edr4gAlWrT7J-QQzmLsc8w9Ean7Xw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2662,10 +2666,24 @@ property is REQUIRED.<a href="#section-5.5-3.2" class="pilcrow">¶</a>
 users. This property is OPTIONAL.<a href="#section-5.5-3.3" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-5.5-3.4">
+            <code>dir</code>: The base text direction of the human-readable string values in this object,
+such as <code>name</code> and <code>description</code>, and in nested objects, such as the <code>alt_text</code> of a
+logo in the rendering metadata, as one of the strings <code>ltr</code>, <code>rtl</code>, or <code>auto</code>. <code>ltr</code>
+and <code>rtl</code> set the paragraph direction for the Unicode Bidirectional Algorithm
+<span>[<a href="#UAX9" class="cite xref">UAX9</a>]</span>; <code>auto</code> means that the direction is determined from the first strong
+character of each value. If absent, <code>auto</code> applies. This property is OPTIONAL.<a href="#section-5.5-3.4" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-5.5-3.5">
             <code>rendering</code>: An object containing rendering information for the type, as
-described in <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>. This property is OPTIONAL.<a href="#section-5.5-3.4" class="pilcrow">¶</a>
+described in <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>. This property is OPTIONAL.<a href="#section-5.5-3.5" class="pilcrow">¶</a>
 </li>
         </ul>
+<p id="section-5.5-4">The human-readable string values in a display object and its nested objects are
+Unicode strings whose display direction follows from the Unicode Bidirectional
+Algorithm <span>[<a href="#UAX9" class="cite xref">UAX9</a>]</span>. Where the default resolution is not the intended one, Issuers
+can set the <code>dir</code> property or include the Unicode directional formatting
+characters in the value. The
+language tag in <code>locale</code> can include a script subtag (<span><a href="https://rfc-editor.org/rfc/rfc5646#section-2.2.3" class="relref">Section 2.2.3</a> of [<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>).<a href="#section-5.5-4" class="pilcrow">¶</a></p>
 <div id="rendering-metadata">
 <section id="section-5.5.1">
           <h4 id="name-rendering-metadata">
@@ -3078,8 +3096,15 @@ property is REQUIRED.<a href="#section-5.6.2-3.2" class="pilcrow">¶</a>
               <code>description</code>: A human-readable description for the claim, intended for end
 users. This property is OPTIONAL.<a href="#section-5.6.2-3.3" class="pilcrow">¶</a>
 </li>
+            <li class="compact" id="section-5.6.2-3.4">
+              <code>dir</code>: The base text direction of the human-readable string values in this object,
+such as <code>label</code> and <code>description</code>, and in nested objects, with the same values and
+semantics as the <code>dir</code> property in <a href="#display-metadata" class="auto internal xref">Section 5.5</a>. This property is OPTIONAL.<a href="#section-5.6.2-3.4" class="pilcrow">¶</a>
+</li>
           </ul>
-<p id="section-5.6.2-4">See <a href="#example-type-metadata" class="auto internal xref">Figure 30</a> in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix A.2</a> for an example that includes claim display metadata.<a href="#section-5.6.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.6.2-4">The considerations on the display direction of human-readable string values in
+<a href="#display-metadata" class="auto internal xref">Section 5.5</a> apply to claim display objects as well.<a href="#section-5.6.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.6.2-5">See <a href="#example-type-metadata" class="auto internal xref">Figure 30</a> in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix A.2</a> for an example that includes claim display metadata.<a href="#section-5.6.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claim-mandatory-metadata">
@@ -3801,8 +3826,12 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
 <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <span class="seriesInfo">DOI 10.17487/RFC9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9205">https://www.rfc-editor.org/info/rfc9205</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9535">[RFC9535]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Gössner, S., Ed.</span>, <span class="refAuthor">Normington, G., Ed.</span>, and <span class="refAuthor">C. Bormann, Ed.</span>, <span class="refTitle">"JSONPath: Query Expressions for JSON"</span>, <span class="seriesInfo">RFC 9535</span>, <span class="seriesInfo">DOI 10.17487/RFC9535</span>, <time datetime="2024-02" class="refDate">February 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9535">https://www.rfc-editor.org/info/rfc9535</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="UAX9">[UAX9]</dt>
+      <dd>
+<span class="refAuthor">Unicode Consortium</span>, <span class="refTitle">"Unicode Standard Annex #9: Unicode Bidirectional Algorithm"</span>, <span>&lt;<a href="https://www.unicode.org/reports/tr9/">https://www.unicode.org/reports/tr9/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -3906,8 +3935,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.q4ncyaCzM4mOAAh59pKPtY233-3rrZxs
-6Zqwuc1MuFsJ7tpu3rrj3YZoNnt974XrL-MfWhraLuLASuosJH-VYQ~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hw1z8g77mFfBT46sqv96tEJZDlr_COty
+htlJIEgpwwOF0lvBszxjXZWhF8w8umxThLYQjTNDJ6Ep-zlZLwAagQ~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4404,8 +4433,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.q4ncyaCzM4mOAAh59pKPtY233-3rrZxs
-6Zqwuc1MuFsJ7tpu3rrj3YZoNnt974XrL-MfWhraLuLASuosJH-VYQ~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hw1z8g77mFfBT46sqv96tEJZDlr_COty
+htlJIEgpwwOF0lvBszxjXZWhF8w8umxThLYQjTNDJ6Ep-zlZLwAagQ~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4416,10 +4445,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIyNjcxOTIsICJzZF9oYXNoIjogIm
-l3azQ0VzJBbzdhcEpFM3ZleURpZ2RKRTR0YVNyWGN5N05Qa3BTd2FLamcifQ.2_oJrFn
-ofyumkg3Yf5ybjKSxHerWh-mTGGzZRxs9N7CCjQdHQhQhfyFT1dQeG3CmaaRzqFAI8yt
-PaZWOWMQ6qw
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcxODcsICJzZF9oYXNoIjogIl
+FRWU5XS3RoRXEzRVduWTJfVy1PUE5CU18wQ0IzcXNHc2dKWWJnMnZoU3MifQ.pxttdKv
+n46qIQg4Ozjeb-nDpoiujeGRJ0EFWEeUzeO_A1Jmd2iH_vSr9OvAwBfQhFasR4OJQTEi
+iwsGRcUOrkQ
 
 </pre>
 </div>
@@ -4434,8 +4463,8 @@ PaZWOWMQ6qw
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1792267192,
-  "sd_hash": "iwk44W2Ao7apJE3veyDigdJE4taSrXcy7NPkpSwaKjg"
+  "iat": 1792417187,
+  "sd_hash": "QQYNWKthEq3EWnY2_W-OPNBS_0CB3qsGsgJYbg2vhSs"
 }
 
 </pre>
@@ -4765,6 +4794,7 @@ Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
 Tim Cappalli,
 Timo Glastra,
@@ -4781,38 +4811,45 @@ for their contributions (some of which substantial) to this draft and to the ini
       </h2>
 <p id="appendix-C-1">-20<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-2.1">Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no <code>aka_vcts#integrity</code><a href="#appendix-C-2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-2.1">say that anytime the <code>vct</code> type is derived from, extends, or is otherwise meant to be accepted as one or more general types, the Issuer should list them all in <code>aka_vcts</code>
+and Holders/Verifiers should consider them all when matching<a href="#appendix-C-2.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.2">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-2.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.2">Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no <code>aka_vcts#integrity</code><a href="#appendix-C-2.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.3">Address ARTART review: explain in the introduction how verifiability, the <code>vct</code> claim, Type Metadata and <code>aka_vcts</code> relate<a href="#appendix-C-2.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.3">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-2.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.4">Fix a couple of example hash values<a href="#appendix-C-2.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.4">Address ARTART review: explain in the introduction how verifiability, the <code>vct</code> claim, Type Metadata and <code>aka_vcts</code> relate<a href="#appendix-C-2.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.5">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-2.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.5">Fix a couple of example hash values<a href="#appendix-C-2.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.6">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-2.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.6">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-2.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.7">state that when both the <code>iss</code> claim and <code>x5c</code> header are present, there is no requirement they directly correspond<a href="#appendix-C-2.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.7">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-2.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.8">clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor<a href="#appendix-C-2.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.8">state that when both the <code>iss</code> claim and <code>x5c</code> header are present, there is no requirement they directly correspond<a href="#appendix-C-2.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.9">Address ARTART review: an <code>svg_id</code> is not used with a <code>path</code> that can select more than one value, and the template is not rendered if it does<a href="#appendix-C-2.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.9">clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor<a href="#appendix-C-2.9" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.10">remove a few superfluous subsection headings from the IANA Considerations<a href="#appendix-C-2.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-2.10">Address ARTART review: an <code>svg_id</code> is not used with a <code>path</code> that can select more than one value, and the template is not rendered if it does<a href="#appendix-C-2.10" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-2.11">
-          <p id="appendix-C-2.11.1">Secdir review items:<a href="#appendix-C-2.11.1" class="pilcrow">¶</a></p>
+        <li class="compact" id="appendix-C-2.11">remove a few superfluous subsection headings from the IANA Considerations<a href="#appendix-C-2.11" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.12">
+          <p id="appendix-C-2.12.1">Secdir review items:<a href="#appendix-C-2.12.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-2.11.2.1">align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1<a href="#appendix-C-2.11.2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-2.12.2.1">align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1<a href="#appendix-C-2.12.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-2.11.2.2">say not to render and SVG template when invalid XML characters are present in the claim values<a href="#appendix-C-2.11.2.2" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-2.12.2.2">say not to render and SVG template when invalid XML characters are present in the claim values<a href="#appendix-C-2.12.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-2.11.2.3">add a ref to the privacy text in the <a href="#svg-rendering-sec" class="auto internal xref">Section 7.10</a> in the security considerations section to the related privacy considerations <a href="#privacy-preserving-retrieval-of-type-metadata" class="auto internal xref">Section 8.4</a><a href="#appendix-C-2.11.2.3" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-2.12.2.3">add a ref to the privacy text in the <a href="#svg-rendering-sec" class="auto internal xref">Section 7.10</a> in the security considerations section to the related privacy considerations <a href="#privacy-preserving-retrieval-of-type-metadata" class="auto internal xref">Section 8.4</a><a href="#appendix-C-2.12.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-2.11.2.4">try to qualify a bit more that the <code>path</code> points to a claim in a fully disclosed payload that's conformant with the type metadata<a href="#appendix-C-2.11.2.4" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-2.12.2.4">try to qualify a bit more that the <code>path</code> points to a claim in a fully disclosed payload that's conformant with the type metadata<a href="#appendix-C-2.12.2.4" class="pilcrow">¶</a>
 </li>
           </ul>
+</li>
+        <li class="compact" id="appendix-C-2.13">Address ARTART review: note how the display direction of human-readable strings is determined<a href="#appendix-C-2.13" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-2.14">Address ARTART review: add an optional <code>dir</code> property for the base text direction of display strings<a href="#appendix-C-2.14" class="pilcrow">¶</a>
 </li>
       </ul>
 <p id="appendix-C-3">-19<a href="#appendix-C-3" class="pilcrow">¶</a></p>

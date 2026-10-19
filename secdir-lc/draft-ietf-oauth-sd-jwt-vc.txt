@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 20 April 2027                                     Authlete Inc.
+Expires: 22 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         17 October 2026
+                                                         19 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 20 April 2027.
+   This Internet-Draft will expire on 22 April 2027.
 
 Copyright Notice
 
@@ -398,16 +398,22 @@ Table of Contents
    The aka_vcts claim is particularly useful in issuance and
    presentation protocols, where the receiving party (a Holder during
    issuance or a Verifier during presentation) matches the type of a
-   received SD-JWT VC against the type it requested or expects.  While
-   relationships between credential types can be expressed through the
-   extends property in Type Metadata, Type Metadata is optional and may
-   not be available, so issuance and presentation protocols cannot
-   always rely on it for type matching.  For example, a Verifier
-   requesting a credential of the hypothetical type urn:example:eudi:pid
-   that receives an SD-JWT VC with a vct value of
-   urn:example:eudi:pid:aendgard:1 can determine from an aka_vcts value
-   of ["urn:example:eudi:pid"] that the received credential is also of
-   the requested type.
+   received SD-JWT VC against the type it requested or expects.  For the
+   purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT
+   VC as being of a given type, if that type is the vct value or one of
+   the values of the aka_vcts array.  While relationships between
+   credential types can be expressed through the extends property in
+   Type Metadata, Type Metadata is optional and may not be available, so
+   issuance and presentation protocols cannot always rely on it for type
+   matching.  For example, a Verifier requesting a credential of the
+   hypothetical type urn:example:eudi:pid that receives an SD-JWT VC
+   with a vct value of urn:example:eudi:pid:aendgard:1 can determine
+   from an aka_vcts value of ["urn:example:eudi:pid"] that the received
+   credential is also of the requested type.
+
+   When the type in vct is derived from, extends, or is otherwise meant
+   to be accepted as one or more general types, the Issuer SHOULD list
+   those types in aka_vcts.
 
    The content in Figure 4 shows an excerpt of an Unsecured Payload
    using the aka_vcts claim to express this example.
@@ -677,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GW9PB
-   UkQBrVDA05LZgrDCwTJBiopt0ksyj3FFI15wV85Kudtw_h-PbqZ9KrbLZojqVm10YV4T
-   QlFIiVJ21Hs7w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Dnh-q
+   Upm-NOYh6BFy1EhcEZ8fw-GT6oDpNzlDdsYNsdG-jkmpbT9TmBIPA1fDXX0m4UVvdF7t
+   vRJ1Nk2OvwtoQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -715,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.GW9PB
-   UkQBrVDA05LZgrDCwTJBiopt0ksyj3FFI15wV85Kudtw_h-PbqZ9KrbLZojqVm10YV4T
-   QlFIiVJ21Hs7w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Dnh-q
+   Upm-NOYh6BFy1EhcEZ8fw-GT6oDpNzlDdsYNsdG-jkmpbT9TmBIPA1fDXX0m4UVvdF7t
+   vRJ1Nk2OvwtoQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIyNjcxOT
-   IsICJzZF9oYXNoIjogIndZMnpBNV9JaWN3aDE2Y1M3SVNlMVV6OUFnQlNiTWtib2stNT
-   BVV0VQX3cifQ.YMRQMWhY2vKYy1SFEXoxgnzwq-IjZ5K9rfVBKMAekoTS0DBrxe_NFjZ
-   0JNtNP5FozucYLvAijZgntX3RjGaczQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcxOD
+   csICJzZF9oYXNoIjogIko1c1BYTHpDUmRQcE12NjdDaHVCTVc3NTlnSlBVX3dzMXRwLU
+   libl93ZlEifQ.WLljIMghAzfL9fZfeCXTkxDSwpX1H3UYEJ9exSYvmNHzO0AjkIp-7OE
+   sjl4HIVzkzM1Onw07tCtI3yishDfrmg
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -771,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.4PwYGaUMBnI4FAb43i9wGK4JmG4TtTULQUzpencGnKHGjB
-   e8WQicI56N5Fj67TMEHYtRALRv4zccsaEJ94hB_A~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.maHP9l582W0wfVGm0R82s2-NH-L68R4cXeXl-tCF13I5ze
+   Eebzr3uxhu8Edr4gAlWrT7J-QQzmLsc8w9Ean7Xw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1237,8 +1243,24 @@ Table of Contents
       This property is REQUIRED.
    *  description: A human-readable description for the type, intended
       for end users.  This property is OPTIONAL.
+   *  dir: The base text direction of the human-readable string values
+      in this object, such as name and description, and in nested
+      objects, such as the alt_text of a logo in the rendering metadata,
+      as one of the strings ltr, rtl, or auto. ltr and rtl set the
+      paragraph direction for the Unicode Bidirectional Algorithm
+      [UAX9]; auto means that the direction is determined from the first
+      strong character of each value.  If absent, auto applies.  This
+      property is OPTIONAL.
    *  rendering: An object containing rendering information for the
       type, as described in Section 5.5.1.  This property is OPTIONAL.
+
+   The human-readable string values in a display object and its nested
+   objects are Unicode strings whose display direction follows from the
+   Unicode Bidirectional Algorithm [UAX9].  Where the default resolution
+   is not the intended one, Issuers can set the dir property or include
+   the Unicode directional formatting characters in the value.  The
+   language tag in locale can include a script subtag (Section 2.2.3 of
+   [RFC5646]).
 
 5.5.1.  Rendering Metadata
 
@@ -1576,6 +1598,13 @@ Table of Contents
       users.  This property is REQUIRED.
    *  description: A human-readable description for the claim, intended
       for end users.  This property is OPTIONAL.
+   *  dir: The base text direction of the human-readable string values
+      in this object, such as label and description, and in nested
+      objects, with the same values and semantics as the dir property in
+      Section 5.5.  This property is OPTIONAL.
+
+   The considerations on the display direction of human-readable string
+   values in Section 5.5 apply to claim display objects as well.
 
    See Figure 30 in Appendix A.2 for an example that includes claim
    display metadata.
@@ -2245,6 +2274,10 @@ Table of Contents
               DOI 10.17487/RFC9535, February 2024,
               <https://www.rfc-editor.org/info/rfc9535>.
 
+   [UAX9]     Unicode Consortium, "Unicode Standard Annex #9: Unicode
+              Bidirectional Algorithm",
+              <https://www.unicode.org/reports/tr9/>.
+
 Appendix A.  Examples
 
    Important: The following examples are not normative and provided for
@@ -2337,8 +2370,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.q4ncyaCzM4mOAAh59pKPtY233-3rrZxs
-   6Zqwuc1MuFsJ7tpu3rrj3YZoNnt974XrL-MfWhraLuLASuosJH-VYQ~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hw1z8g77mFfBT46sqv96tEJZDlr_COty
+   htlJIEgpwwOF0lvBszxjXZWhF8w8umxThLYQjTNDJ6Ep-zlZLwAagQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2720,8 +2753,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.q4ncyaCzM4mOAAh59pKPtY233-3rrZxs
-   6Zqwuc1MuFsJ7tpu3rrj3YZoNnt974XrL-MfWhraLuLASuosJH-VYQ~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.hw1z8g77mFfBT46sqv96tEJZDlr_COty
+   htlJIEgpwwOF0lvBszxjXZWhF8w8umxThLYQjTNDJ6Ep-zlZLwAagQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2732,10 +2765,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTIyNjcxOTIsICJzZF9oYXNoIjogIm
-   l3azQ0VzJBbzdhcEpFM3ZleURpZ2RKRTR0YVNyWGN5N05Qa3BTd2FLamcifQ.2_oJrFn
-   ofyumkg3Yf5ybjKSxHerWh-mTGGzZRxs9N7CCjQdHQhQhfyFT1dQeG3CmaaRzqFAI8yt
-   PaZWOWMQ6qw
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcxODcsICJzZF9oYXNoIjogIl
+   FRWU5XS3RoRXEzRVduWTJfVy1PUE5CU18wQ0IzcXNHc2dKWWJnMnZoU3MifQ.pxttdKv
+   n46qIQg4Ozjeb-nDpoiujeGRJ0EFWEeUzeO_A1Jmd2iH_vSr9OvAwBfQhFasR4OJQTEi
+   iwsGRcUOrkQ
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2744,8 +2777,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792267192,
-     "sd_hash": "iwk44W2Ao7apJE3veyDigdJE4taSrXcy7NPkpSwaKjg"
+     "iat": 1792417187,
+     "sd_hash": "QQYNWKthEq3EWnY2_W-OPNBS_0CB3qsGsgJYbg2vhSs"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3027,8 +3060,11 @@ Appendix B.  Acknowledgements
    Marco, Hannes Tschofenig, Lukas J Han, Lukasz Jaromin, Leif
    Johansson, Mark Nottingham, Michael B.  Jones, Mike Prorock, Ionuț
    Mihalcea, Mirko Mollik, Nas Til, Nat Sakimura, Orie Steele, Paul
-   Bastian, Pavel Zarecky, Stefan Charsley, Tim Cappalli, Timo Glastra,
-   Torsten Lodderstedt, Tobias Looker, and Kristina Yasuda for their
+   Bastian, Pavel Zarecky, remcoschaar (GitHub user on behalf of ISO/IEC
+   JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and
+   ISO/IEC 23220 series, as was agreed at its meeting on 14 October
+   2026), Stefan Charsley, Tim Cappalli, Timo Glastra, Torsten
+   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
    contributions (some of which substantial) to this draft and to the
    initial set of implementations.
 
@@ -3036,6 +3072,10 @@ Appendix C.  Document History
 
    -20
 
+   *  say that anytime the vct type is derived from, extends, or is
+      otherwise meant to be accepted as one or more general types, the
+      Issuer should list them all in aka_vcts and Holders/Verifiers
+      should consider them all when matching
    *  Address ARTART review: scope the media type requirement to where a
       media type is used and explain why there is no aka_vcts#integrity
    *  Note that the somewhat misguided RFC7800 requirement that either
@@ -3067,6 +3107,10 @@ Appendix C.  Document History
       -  try to qualify a bit more that the path points to a claim in a
          fully disclosed payload that's conformant with the type
          metadata
+   *  Address ARTART review: note how the display direction of human-
+      readable strings is determined
+   *  Address ARTART review: add an optional dir property for the base
+      text direction of display strings
 
    -19
 
