@@ -286,6 +286,8 @@ The `aka_vcts` claim is particularly useful in issuance and presentation protoco
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
+For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
+of a given type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
 so issuance and presentation protocols cannot always rely on it for type matching.
@@ -294,6 +296,9 @@ type `urn:example:eudi:pid` that receives an SD-JWT VC with a `vct` value of
 `urn:example:eudi:pid:aendgard:1` can determine from an `aka_vcts` value of
 `["urn:example:eudi:pid"]` that the received credential is also of the
 requested type.
+
+When the type in `vct` is derived from, extends, or is otherwise meant to be accepted
+as one or more general types, the Issuer SHOULD list those types in `aka_vcts`.
 
 The content in (#example-with-aka-vcts) shows an excerpt of an Unsecured
 Payload using the `aka_vcts` claim to express this example.
@@ -818,8 +823,21 @@ The objects in the array have the following properties:
   property is REQUIRED.
 - `description`: A human-readable description for the type, intended for end
   users. This property is OPTIONAL.
+- `dir`: The base text direction of the human-readable string values in this object,
+  such as `name` and `description`, and in nested objects, such as the `alt_text` of a
+  logo in the rendering metadata, as one of the strings `ltr`, `rtl`, or `auto`. `ltr`
+  and `rtl` set the paragraph direction for the Unicode Bidirectional Algorithm
+  [@UAX9]; `auto` means that the direction is determined from the first strong
+  character of each value. If absent, `auto` applies. This property is OPTIONAL.
 - `rendering`: An object containing rendering information for the type, as
   described in (#rendering-metadata). This property is OPTIONAL.
+
+The human-readable string values in a display object and its nested objects are
+Unicode strings whose display direction follows from the Unicode Bidirectional
+Algorithm [@UAX9]. Where the default resolution is not the intended one, Issuers
+can set the `dir` property or include the Unicode directional formatting
+characters in the value. The
+language tag in `locale` can include a script subtag ([@!RFC5646, section 2.2.3]).
 
 ### Rendering Metadata {#rendering-metadata}
 
@@ -1100,6 +1118,12 @@ The objects in the array have the following properties:
   property is REQUIRED.
 - `description`: A human-readable description for the claim, intended for end
   users. This property is OPTIONAL.
+- `dir`: The base text direction of the human-readable string values in this object,
+  such as `label` and `description`, and in nested objects, with the same values and
+  semantics as the `dir` property in (#display-metadata). This property is OPTIONAL.
+
+The considerations on the display direction of human-readable string values in
+(#display-metadata) apply to claim display objects as well.
 
 See (#example-type-metadata) in (#ExampleTypeMetadata) for an example that includes claim display metadata.
 
@@ -1503,6 +1527,13 @@ be included in any request to retrieve such resources (e.g., in HTTP headers).
   <front>
     <author fullname="OWASP"></author>
     <title>Server Side Request Forgery Prevention Cheat Sheet</title>
+  </front>
+</reference>
+
+<reference anchor="UAX9" target="https://www.unicode.org/reports/tr9/">
+  <front>
+    <title>Unicode Standard Annex #9: Unicode Bidirectional Algorithm</title>
+    <author><organization>Unicode Consortium</organization></author>
   </front>
 </reference>
 
@@ -1963,6 +1994,7 @@ Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
 Tim Cappalli,
 Timo Glastra,
@@ -1975,6 +2007,8 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -20
 
+* say that anytime the `vct` type is derived from, extends, or is otherwise meant to be accepted as one or more general types, the Issuer should list them all in `aka_vcts`
+  and Holders/Verifiers should consider them all when matching
 * Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no `aka_vcts#integrity`
 * Note that the somewhat misguided RFC7800 requirement that either `sub` or `iss` be present in the JWT doesn't apply
 * Address ARTART review: explain in the introduction how verifiability, the `vct` claim, Type Metadata and `aka_vcts` relate
@@ -1990,6 +2024,8 @@ for their contributions (some of which substantial) to this draft and to the ini
   * say not to render and SVG template when invalid XML characters are present in the claim values
   * add a ref to the privacy text in the (#svg-rendering-sec) in the security considerations section to the related privacy considerations (#privacy-preserving-retrieval-of-type-metadata)
   * try to qualify a bit more that the `path` points to a claim in a fully disclosed payload that's conformant with the type metadata
+* Address ARTART review: note how the display direction of human-readable strings is determined
+* Address ARTART review: add an optional `dir` property for the base text direction of display strings
 
 -19
 
