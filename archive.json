@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-18T00:52:24.165304+00:00",
+  "timestamp": "2026-10-20T00:47:57.081742+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -10800,15 +10800,15 @@
       "id": "I_kwDOJbVClc8AAAABXYrZtQ",
       "title": "Type matching requirements and interoperability",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/issues/442",
-      "state": "OPEN",
+      "state": "CLOSED",
       "author": "remcoschaar",
       "authorAssociation": "NONE",
       "assignees": [],
       "labels": [],
       "body": "This issue is raised on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, and was agreed at its meeting on 14 October 2026.\n\nThe second edition of ISO/IEC 18013-5, currently being drafted, carries SD-JWT VCs in its presentation flows and defers to this specification for what a credential of a given type is. In those flows a Verifier often asks for a generic type, for example a PID type, and receives a credential whose `vct` is a more specialized type. Today a Verifier can learn that the specific type is also of the requested type in several ways, by resolving Type Metadata and walk the `extends` chain, by the Issuer including the `aka_vcts` claim, or by out-of-band knowledge of the type hierarchy, but all of them are optional, and the first is not possible in offline deployments in all cases. Implementations will not be interoperable as a result.\n\nThe draft already has the mechanism, the `aka_vcts` claim, but as a purely optional claim nobody can rely on it. We suggest two changes in -20:\n\n- Issuers: when the type in `vct` is derived from, `extends`, or is meant to be accepted as one or more general types, the Issuer SHOULD list those types in `aka_vcts`.\n- Holders and Verifiers: a Holder or Verifier SHOULD treat an SD-JWT VC as being of a requested type if that type is the `vct` value or one of the `aka_vcts` values, without requiring Type Metadata. Types reached via `extends` remain an addition for credentials that lack `aka_vcts`.\n\n\nWe are aware that the draft has completed IETF Last Call. The problem surfaced while drafting the second edition of ISO/IEC 18013-5, after the Last Call text was published. We raise it now because the change is small and introduces no new mechanism, only two SHOULDs on a claim the draft already defines, and because it cannot be addressed outside this specification.\n\nWG10 suggests the above approach, but as 18013-5 second edition will reference SD-JWT VC, we are open to and supportive of alternative solutions. WG10 suggests to have more pronounced (i.e. REQUIRED/SHALL or RECOMMENDED/SHOULD) text on how to handle `vct` matching in case of inheritance or equivalence, in the interest of interoperability between issuer, holder and verifier implementations within and across ecosystems.\n",
       "createdAt": "2026-10-15T10:22:29Z",
-      "updatedAt": "2026-10-16T19:20:24Z",
-      "closedAt": null,
+      "updatedAt": "2026-10-19T14:48:20Z",
+      "closedAt": "2026-10-19T13:37:02Z",
       "comments": [
         {
           "author": "bc-pi",
@@ -10816,6 +10816,13 @@
           "body": "PR https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/444 has been prepared for this",
           "createdAt": "2026-10-16T19:20:23Z",
           "updatedAt": "2026-10-16T19:20:23Z"
+        },
+        {
+          "author": "remcoschaar",
+          "authorAssociation": "NONE",
+          "body": "Thanks,\n\nThe above PR clarifies the preferred handling of inheritance and equivalence, much appreciated.\n\nOn behalf of ISO/IEC JTC1/SC17/WG10,\nRemco Schaar",
+          "createdAt": "2026-10-19T14:48:19Z",
+          "updatedAt": "2026-10-19T14:48:19Z"
         }
       ]
     }
@@ -34623,13 +34630,13 @@
       "labels": [],
       "body": "updates aimed at addressing things from [[Last-Call] draft-ietf-oauth-sd-jwt-vc-19 ietf last call Secdir review ](https://mailarchive.ietf.org/arch/msg/last-call/D0TY8D9hXbjM0nsv-lqITd4K-6o/)",
       "createdAt": "2026-10-15T19:12:42Z",
-      "updatedAt": "2026-10-17T20:01:42Z",
+      "updatedAt": "2026-10-19T15:22:43Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
-      "baseRefOid": "63e52ee6318355d74b610c107c6032b30620d0a9",
+      "baseRefOid": "bf41e4c81455e9b6223f76cf753271249e1f1b3a",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "secdir-lc",
-      "headRefOid": "ac9ca45e2a084d1708757eed1f4ced46106d3017",
+      "headRefOid": "980739b4b90203d065163c62dbba50ddbd7cbf40",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -34650,33 +34657,246 @@
           "updatedAt": "2026-10-17T20:00:42Z"
         }
       ],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABS5vNOg",
+          "commit": {
+            "abbreviatedOid": "ac9ca45"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM. Read through the five commits: the \"at least one of\" alignment, not rendering on invalid XML characters, the pointer to the privacy considerations, the typo, and the path clarification all match what was said in the reply. Thanks for taking SecDir.",
+          "createdAt": "2026-10-18T14:44:58Z",
+          "updatedAt": "2026-10-18T14:44:58Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABS58uyg",
+          "commit": {
+            "abbreviatedOid": "ac9ca45"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-18T15:32:35Z",
+          "updatedAt": "2026-10-18T15:32:35Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "Ionut's question was whether \"mandatory\" means every element or at least one, and whether missing intermediate keys count. This pins it to the traversal rules: with mandatory, nothing may drop out of the selection, so it is \"every element\", and a missing intermediate key means the claim is absent. Empty arrays stay allowed. Take or leave.\r\n```suggestion\r\nThe `path` property MUST point to the respective claim as if the payload was\r\ncomplete and conformant to the Type Metadata with all selectively disclosable\r\nclaims disclosed. For a claim metadata object with `mandatory` set to `true` (see\r\n(#claim-mandatory-metadata)), processing the `path` against such a complete payload\r\nMUST NOT remove any element from the selection in step 2 above; that is, every\r\nobject traversed contains the respective key and every array traversed contains the\r\nrespective index. A missing intermediate key or index therefore means that a\r\nmandatory claim is absent. A `null` component applied to an empty array selects\r\nnothing without violating this requirement. That means that a\r\n```",
+              "createdAt": "2026-10-18T15:32:35Z",
+              "updatedAt": "2026-10-18T15:32:50Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABTCVpHA",
+          "commit": {
+            "abbreviatedOid": "ac9ca45"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-19T13:46:30Z",
+          "updatedAt": "2026-10-19T13:46:30Z",
+          "comments": [
+            {
+              "originalPosition": 47,
+              "body": "I had AI write something similar too but didn't love it. Like is `mandatory` really the only property for which this should apply? What about `sd` with` never`? I'm not sure. Yours is a little better that what I had though so why not?",
+              "createdAt": "2026-10-19T13:46:30Z",
+              "updatedAt": "2026-10-19T13:46:30Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABTDk29A",
+          "commit": {
+            "abbreviatedOid": "11458ca"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-19T15:20:20Z",
+          "updatedAt": "2026-10-19T15:20:20Z",
+          "comments": [
+            {
+              "originalPosition": 49,
+              "body": "```suggestion\nclaims disclosed. For a claim metadata object with `mandatory` set to `true` (see\n(#claim-mandatory-metadata)) or an `sd` property set to `never` (see (#claim-selective-disclosure-metadata)), processing the `path` against such a complete payload\nMUST NOT remove any element from the selection in step 2 above; that is, every\n```",
+              "createdAt": "2026-10-19T15:20:20Z",
+              "updatedAt": "2026-10-19T15:20:20Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABTDmaOg",
+          "commit": {
+            "abbreviatedOid": "6fe3228"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-19T15:22:17Z",
+          "updatedAt": "2026-10-19T15:22:18Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "```suggestion\n(#claim-mandatory-metadata)) or `sd` set to `never` (see (#claim-selective-disclosure-metadata)), processing the `path` against such a complete payload\n```",
+              "createdAt": "2026-10-19T15:22:18Z",
+              "updatedAt": "2026-10-19T15:22:18Z"
+            }
+          ]
+        }
+      ]
     },
     {
       "number": 444,
       "id": "PR_kwDOJbVClc8AAAABI6fseQ",
       "title": "a little more on aka_vcts ",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/444",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "to fix #442",
       "createdAt": "2026-10-16T19:19:22Z",
-      "updatedAt": "2026-10-16T19:19:23Z",
+      "updatedAt": "2026-10-19T13:37:00Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "63e52ee6318355d74b610c107c6032b30620d0a9",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "remcoschaar-et-al",
-      "headRefOid": "ae14a4d749f3f5175f60525b72130d88d4edfc7e",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "8f09c2fdbc8b6a8e65c73ee21c44b8a49a68a05a",
+      "closedAt": "2026-10-19T13:37:00Z",
+      "mergedAt": "2026-10-19T13:37:00Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "a918aa2dae884561192b01578c6ac348729a7bc5"
+      },
       "comments": [],
-      "reviews": []
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABS5wLQg",
+          "commit": {
+            "abbreviatedOid": "ae14a4d"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "LGTM, thanks for picking this up so quickly. Two optional wording suggestions inline.",
+          "createdAt": "2026-10-18T14:47:00Z",
+          "updatedAt": "2026-10-18T14:51:35Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "```suggestion\r\nRemco Schaar (on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),\r\n```",
+              "createdAt": "2026-10-18T14:47:00Z",
+              "updatedAt": "2026-10-18T14:52:13Z"
+            },
+            {
+              "originalPosition": 5,
+              "body": "```suggestion\r\nof a given type, if that type is the `vct` value or one of the values of the `aka_vcts` array.\r\n```",
+              "createdAt": "2026-10-18T14:51:09Z",
+              "updatedAt": "2026-10-18T14:51:35Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABS57Axw",
+          "commit": {
+            "abbreviatedOid": "ae14a4d"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-18T15:23:37Z",
+          "updatedAt": "2026-10-18T15:23:37Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABS7-x8Q",
+          "commit": {
+            "abbreviatedOid": "ae14a4d"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-19T00:24:51Z",
+          "updatedAt": "2026-10-19T00:24:51Z",
+          "comments": [
+            {
+              "originalPosition": 23,
+              "body": "If Remco wanted their name used, they could perhaps be bothered to actually put a name on the profile or somewhere in the communications. ",
+              "createdAt": "2026-10-19T00:24:51Z",
+              "updatedAt": "2026-10-19T00:24:51Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 445,
+      "id": "PR_kwDOJbVClc8AAAABJKjBoQ",
+      "title": "add an optional dir property for the base text direction of display strings",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/445",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [
+        "last-call@ietf.org"
+      ],
+      "body": "for the ARTART review https://mailarchive.ietf.org/arch/msg/last-call/jSAdduCF7VnGuje61KODlcU6650/\n\n> ad 5.5 (also 6.2): name and description are human readable. As it should be,\n> they have a language tag, but lack writing direction information (rtl).\n> Previous IETF specifications of the recent years (as opposed to the older\n> RFC5646) cater for bidirectional text, for example\n> <https://www.rfc-editor.org/rfc/rfc9290.html#name-language-tagged-strings>.\n\nTwo things: a note that display direction follows the Unicode Bidirectional Algorithm and that `locale` may carry a script subtag, and an OPTIONAL `dir` property (`ltr`, `rtl`, `auto`; default `auto`) on the display objects in 5.5 (one `dir` per display object, covering the strings in it and in its nested rendering metadata) and the claim display objects in 5.6.2, which is the explicit direction metadata that recent specifications carry (RFC 9290, Web App Manifest, JSON-LD 1.1). Additive and ignorable by Consumers that don't know it. (6.2 is read as 5.6.2.)\n",
+      "createdAt": "2026-10-18T14:42:26Z",
+      "updatedAt": "2026-10-19T13:37:48Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "63e52ee6318355d74b610c107c6032b30620d0a9",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "artart/which-way-is-up",
+      "headRefOid": "53acf78efe54e3d108a350c533c17e7919102db1",
+      "closedAt": "2026-10-19T13:37:48Z",
+      "mergedAt": "2026-10-19T13:37:48Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "bf41e4c81455e9b6223f76cf753271249e1f1b3a"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABS56x6g",
+          "commit": {
+            "abbreviatedOid": "53acf78"
+          },
+          "author": "OR13",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-18T15:22:25Z",
+          "updatedAt": "2026-10-18T15:22:25Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABTCNFRg",
+          "commit": {
+            "abbreviatedOid": "53acf78"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-19T13:35:25Z",
+          "updatedAt": "2026-10-19T13:35:25Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
