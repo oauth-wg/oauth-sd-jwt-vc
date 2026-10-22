@@ -749,7 +749,7 @@ The following sections define methods to retrieve Type Metadata.
 
 A URI in the `vct` claim can be used to express a type. If the
 type is a URL using the HTTPS scheme, Type Metadata might be retrievable from that URL, and
-it is at the consumer's discretion whether to attempt retrieve Type Metadata from the URL.
+it is at the consumer's discretion whether to attempt to retrieve Type Metadata from the URL.
 
 The Type Metadata is retrieved from that URL using an HTTP `GET` request,
 following the rules defined in (#http-retrieval). A successful response
@@ -858,7 +858,7 @@ images are expected to be served with an appropriate image media type
 #### Rendering Method "simple" {#rendering-method-simple}
 
 The `simple` rendering method is intended for use in applications that do not
-support SVG rendering. The object contains the following properties:
+support SVG rendering. The object contains at least one of the following properties:
 
 - `logo`: An object containing information about the logo to be displayed for
   the type, as described in (#logo-metadata). This property is OPTIONAL.
@@ -910,7 +910,7 @@ The `properties` property is an object containing properties for the SVG
 template. Consuming applications MUST use these properties to find the best SVG
 template available for display to the user based on the display properties
 (landscape/portrait) and user preferences (color scheme, contrast). The object
-MUST contain at least one of the following properties:
+contains at least one of the following properties:
 
 - `orientation`: The orientation for which the SVG template is optimized, with
   valid values being `portrait` and `landscape`. This property is OPTIONAL.
@@ -931,8 +931,9 @@ Placeholders MUST only be used in the text content of the SVG template and MUST 
 be used in any other part of the SVG template, e.g., in attributes or comments.
 
 A consuming application MUST ensure that all special characters in the claim
-values are properly escaped before inserting them into the SVG template. At
-least the following characters MUST be escaped:
+values are properly escaped before inserting them into the SVG template.
+If invalid XML characters are present in the claim values, the consuming application
+SHOULD reject and not render the SVG template. At least the following characters MUST be escaped:
 
 - `&` as `&amp;`
 - `<` as `&lt;`
@@ -1090,8 +1091,15 @@ In detail, the array components of `path` are processed from left to right as fo
 The result of the processing is the set of elements to which the respective
 claim metadata applies.
 
-The `path` property MUST point to the respective claim as if all
-selectively disclosable claims were disclosed to a Verifier. That means that a
+The `path` property MUST point to the respective claim as if the payload was
+complete and conformant to the Type Metadata with all selectively disclosable
+claims disclosed. For a claim metadata object with `mandatory` set to `true` (see
+(#claim-mandatory-metadata)) or `sd` set to `never` (see (#claim-selective-disclosure-metadata)), processing the `path` against such a complete payload
+MUST NOT remove any element from the selection in step 2 above; that is, every
+object traversed contains the respective key and every array traversed contains the
+respective index. A missing intermediate key or index therefore means that a
+mandatory claim is absent. A `null` component applied to an empty array selects
+nothing without violating this requirement. That means that a
 consuming application which does not have access to all disclosures may not be
 able to identify the claim which is being addressed.
 
@@ -1316,8 +1324,9 @@ for Server-Side Request Forgery (SSRF) attacks.
 
 Before making a request to any of these URLs, including every redirect target
 as described in (#http-retrieval), the Consumer MUST validate the URL to
-ensure that it is a valid HTTPS URL and that it does not point to internal
-resources. Internal resources include, in particular, hosts with addresses
+ensure that it is a valid HTTPS URL and that it does not point to resources
+an issuer cannot access (e.g., resources internal to the Consumer).
+Such resources include, in particular, hosts with addresses
 from the IANA Special-Purpose Address Registries [@!RFC6890] that are not
 globally reachable (such as loopback, link-local, and private-use address
 ranges) as well as hosts that are only reachable from within the Consumer's
@@ -1437,7 +1446,9 @@ template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.
 
-Furthermore, consuming applications MUST ensure that references to external
+Furthermore, similar to retrieval of other metadata resources as
+discussed in (#privacy-preserving-retrieval-of-type-metadata),
+consuming applications need to ensure that references to external
 resources (images, etc.) from within the SVG cannot be used to track users or
 the usage of credentials.
 
@@ -1504,7 +1515,9 @@ described in (#rendering-metadata).
 
 Consumers SHOULD prefer methods for retrieving Type Metadata and the resources
 it references that do not leak information about the usage of a credential to
-third parties. The recommendations in (#robust-retrieval) apply.
+third parties. The caching recommendations in (#robust-retrieval) apply and
+potentially identifying information about the Holder or Consumer should not
+be included in any request to retrieve such resources (e.g., in HTTP headers).
 
 
 <reference anchor="IANA.well-known" target="https://www.iana.org/assignments/well-known-uris">
@@ -1981,6 +1994,7 @@ Leif Johansson,
 Mark Nottingham,
 Michael B. Jones,
 Mike Prorock,
+Ionuț Mihalcea,
 Mirko Mollik,
 Nas Til,
 Nat Sakimura,
@@ -2012,10 +2026,16 @@ for their contributions (some of which substantial) to this draft and to the ini
 * clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor
 * Address ARTART review: an `svg_id` is not used with a `path` that can select more than one value, and the template is not rendered if it does
 * remove a few superfluous subsection headings from the IANA Considerations
+* Secdir review items:
+  * align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
+  * say not to render and SVG template when invalid XML characters are present in the claim values
+  * add a ref to the privacy text in the (#svg-rendering-sec) in the security considerations section to the related privacy considerations (#privacy-preserving-retrieval-of-type-metadata)
+  * try to qualify a bit more that the `path` points to a claim in a fully disclosed payload that's conformant with the type metadata
 * Address ARTART review: note how the display direction of human-readable strings is determined
 * Address ARTART review: add an optional `dir` property for the base text direction of display strings
 
 -19
+
 
 * Address HTTP Directorate review:
   * Added a general section on retrieving documents and resources via HTTP, covering HTTP/caching semantics (RFC 9110, RFC 9111), redirect handling, scheme requirements, and time-bound/size-bound retrieval for all URLs dereferenced per this specification
