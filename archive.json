@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-20T00:47:57.081742+00:00",
+  "timestamp": "2026-10-22T00:47:15.356142+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -34630,7 +34630,7 @@
       "labels": [],
       "body": "updates aimed at addressing things from [[Last-Call] draft-ietf-oauth-sd-jwt-vc-19 ietf last call Secdir review ](https://mailarchive.ietf.org/arch/msg/last-call/D0TY8D9hXbjM0nsv-lqITd4K-6o/)",
       "createdAt": "2026-10-15T19:12:42Z",
-      "updatedAt": "2026-10-19T15:22:43Z",
+      "updatedAt": "2026-10-20T11:05:50Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "bf41e4c81455e9b6223f76cf753271249e1f1b3a",
