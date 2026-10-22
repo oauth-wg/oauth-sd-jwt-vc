@@ -1324,8 +1324,9 @@ for Server-Side Request Forgery (SSRF) attacks.
 
 Before making a request to any of these URLs, including every redirect target
 as described in (#http-retrieval), the Consumer MUST validate the URL to
-ensure that it is a valid HTTPS URL and that it does not point to internal
-resources. Internal resources include, in particular, hosts with addresses
+ensure that it is a valid HTTPS URL and that it does not point to resources
+an issuer cannot access (e.g., resources internal to the Consumer).
+Such resources include, in particular, hosts with addresses
 from the IANA Special-Purpose Address Registries [@!RFC6890] that are not
 globally reachable (such as loopback, link-local, and private-use address
 ranges) as well as hosts that are only reachable from within the Consumer's
