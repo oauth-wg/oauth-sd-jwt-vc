@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 22 April 2027                                     Authlete Inc.
+Expires: 25 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         19 October 2026
+                                                         22 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2027.
+   This Internet-Draft will expire on 25 April 2027.
 
 Copyright Notice
 
@@ -683,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kpnDh
-   MOYU9b3Yw4OzhE3nDn5piIiJ8XGxC3izGRVMAdVyxRi6WMWVgD6Dt-7T8YbTxr7yaUML
-   VjOj1NIQV-Y_w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.YwduZ
+   WJNYIkeuGAtoCE_-3LP-0IM0Wm6Ynfr-N2k4KBS4yaFMd9UB_-vG5Ky9593bVQOHrcKm
+   EJqTWHmy22Usg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -721,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kpnDh
-   MOYU9b3Yw4OzhE3nDn5piIiJ8XGxC3izGRVMAdVyxRi6WMWVgD6Dt-7T8YbTxr7yaUML
-   VjOj1NIQV-Y_w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.YwduZ
+   WJNYIkeuGAtoCE_-3LP-0IM0Wm6Ynfr-N2k4KBS4yaFMd9UB_-vG5Ky9593bVQOHrcKm
+   EJqTWHmy22Usg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MjM0MD
-   YsICJzZF9oYXNoIjogIkU3OXB1Q19RYmkzRldlQy1CYkRWT3hrMkctRE0zVHlfT0EwTU
-   VEWVdlUXcifQ.h_Kwv_kLc5vcrtjddRxaD9Q6mqblKA3iMUpcfffvsH7N0StvW8t2XvB
-   FAkNq56nSmT2qck1WCR7RnuSZlJBBuQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI3MDMwOD
+   IsICJzZF9oYXNoIjogIld0eUN5Y0RoXzMtZ0VCdkQxLXVpYnktQmpxTkwxLTh1VkNIem
+   dQckdGblEifQ.hOecAW01tQmSEKw-LtqxcUhN6oKPsey9bYZ1-ih-c0-P-KHU_nn2wEI
+   1Q-BEqe1io-uX39oyr89N4pOXOCY-mw
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -777,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.50Fvb0JznMyKXgNCGtIODKChr_G_dYTZvo5VGmJGoV1p_y
-   S_owBNakobljJP3_LMr68Le128uAAAKV67POitVA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.wSjKAu993BLBEoj62K4c8EciXKG2BNzzvCs9euhtCH7x_u
+   zaCzZgd_CPjn4fmxjUjAFqvh53gpgMFBnZhsx35Q~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1826,15 +1826,16 @@ Table of Contents
    Before making a request to any of these URLs, including every
    redirect target as described in Section 3, the Consumer MUST validate
    the URL to ensure that it is a valid HTTPS URL and that it does not
-   point to internal resources.  Internal resources include, in
-   particular, hosts with addresses from the IANA Special-Purpose
-   Address Registries [RFC6890] that are not globally reachable (such as
-   loopback, link-local, and private-use address ranges) as well as
-   hosts that are only reachable from within the Consumer's network.
-   Validation requires ensuring that the host part of the URL does not
-   address an internal service (by IP address or an internal host name)
-   and that, if an external DNS name is used, the resolved DNS name does
-   not point to an internal IP address.
+   point to resources an issuer cannot access (e.g., resources internal
+   to the Consumer).  Such resources include, in particular, hosts with
+   addresses from the IANA Special-Purpose Address Registries [RFC6890]
+   that are not globally reachable (such as loopback, link-local, and
+   private-use address ranges) as well as hosts that are only reachable
+   from within the Consumer's network.  Validation requires ensuring
+   that the host part of the URL does not address an internal service
+   (by IP address or an internal host name) and that, if an external DNS
+   name is used, the resolved DNS name does not point to an internal IP
+   address.
 
    The requirements in Section 3 to perform each retrieval in a time-
    bound and size-bound manner and to validate the response content
@@ -2378,8 +2379,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.cjDv5nXvL3fSa2l0cRxJIi6nGdDfEuRV
-   J4ag6QpTgYHHhXeDEyv0hGBF1PBuWv4-0zsIEy93VaaaRv5b6Ij8_w~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.WD1L-xwkTZ06AvaWaH-yB3rRViO6YU7W
+   2iq-UnS4y7GjFm475Nlcm7YvNiokkxzuFfK3fvtnZ98csaS4XhPCzA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2761,8 +2762,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.cjDv5nXvL3fSa2l0cRxJIi6nGdDfEuRV
-   J4ag6QpTgYHHhXeDEyv0hGBF1PBuWv4-0zsIEy93VaaaRv5b6Ij8_w~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.WD1L-xwkTZ06AvaWaH-yB3rRViO6YU7W
+   2iq-UnS4y7GjFm475Nlcm7YvNiokkxzuFfK3fvtnZ98csaS4XhPCzA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2773,10 +2774,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MjM0MDYsICJzZF9oYXNoIjogIl
-   ZMOVhwVF9jVnYzU0VTZWdJNUc3b0JFTGk3a1MxUkRFYklFSFo2RnFxZzgifQ.Cr08jqM
-   0dGAtg0aQECqCVB_W7GX98QxtY_y3rWN6vgX9v4C95TIAwZlqYsNxufsz_OavPxQpTkI
-   YOac60pOKng
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI3MDMwODIsICJzZF9oYXNoIjogIm
+   JHWkVYX2Y5LTY4c1QxWThrZmZWQ0Y5bTBlZG1Nc2VCb2lCcjVoMW1NVHcifQ.N5ypR35
+   xD9VETTIiUUZJANMi5HZInIZXo-taGtvB2mYigGOEyZqDdLk87spRKZvnVe7lhPg5T6w
+   jxMqUlxc4Vw
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2785,8 +2786,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792423406,
-     "sd_hash": "VL9XpT_cVv3SESegI5G7oBELi7kS1RDEbIEHZ6Fqqg8"
+     "iat": 1792703082,
+     "sd_hash": "bGZEX_f9-68sT1Y8kffVCF9m0edmMseBoiBr5h1mMTw"
    }
 
                      Figure 27: Key Binding JWT Payload
