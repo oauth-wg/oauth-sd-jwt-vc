@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-22T00:47:15.356142+00:00",
+  "timestamp": "2026-10-25T00:51:38.963280+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -34630,13 +34630,13 @@
       "labels": [],
       "body": "updates aimed at addressing things from [[Last-Call] draft-ietf-oauth-sd-jwt-vc-19 ietf last call Secdir review ](https://mailarchive.ietf.org/arch/msg/last-call/D0TY8D9hXbjM0nsv-lqITd4K-6o/)",
       "createdAt": "2026-10-15T19:12:42Z",
-      "updatedAt": "2026-10-20T11:05:50Z",
+      "updatedAt": "2026-10-23T21:56:40Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "bf41e4c81455e9b6223f76cf753271249e1f1b3a",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "secdir-lc",
-      "headRefOid": "980739b4b90203d065163c62dbba50ddbd7cbf40",
+      "headRefOid": "f18983572aa191b5b2e3da60fc25e9ce8df5f856",
       "closedAt": null,
       "mergedAt": null,
       "mergedBy": null,
@@ -34750,6 +34750,32 @@
               "updatedAt": "2026-10-19T15:22:18Z"
             }
           ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABT8dY3A",
+          "commit": {
+            "abbreviatedOid": "f189835"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "Thank you!",
+          "createdAt": "2026-10-23T19:26:36Z",
+          "updatedAt": "2026-10-23T19:26:36Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABT91wdQ",
+          "commit": {
+            "abbreviatedOid": "f189835"
+          },
+          "author": "ionut-arm",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "LGTM, thank you! I'll leave it to you whether you want to include the DNS rebinding change.",
+          "createdAt": "2026-10-23T21:56:40Z",
+          "updatedAt": "2026-10-23T21:56:40Z",
+          "comments": []
         }
       ]
     },
