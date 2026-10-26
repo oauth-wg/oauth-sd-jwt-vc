@@ -541,7 +541,9 @@ configuration available at the location formed by inserting the well-known strin
 component (if any) of the `iss` claim value in the JWT. The `iss` MUST
 be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components as defined in [@!RFC3986], but no
-query or fragment components.
+query or fragment components. The path component, if present, MUST NOT contain
+any dot-segments (i.e., the discrete path segments "`.`" and "`..`" described
+in [@!RFC3986, section 3.3]).
 
 ## JWT VC Issuer Metadata Request
 
@@ -2031,6 +2033,7 @@ for their contributions (some of which substantial) to this draft and to the ini
   * say not to render and SVG template when invalid XML characters are present in the claim values
   * add a ref to the privacy text in the (#svg-rendering-sec) in the security considerations section to the related privacy considerations (#privacy-preserving-retrieval-of-type-metadata)
   * try to qualify a bit more that the `path` points to a claim in a fully disclosed payload that's conformant with the type metadata
+  * explicitly prohibit dot-segments in the path component, if present, of HTTPS URL based issuer identifiers used in Issuer Metadata retrieval
 * Address ARTART review: note how the display direction of human-readable strings is determined
 * Address ARTART review: add an optional `dir` property for the base text direction of display strings
 
