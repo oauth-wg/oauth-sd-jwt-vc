@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 22 April 2027                                     Authlete Inc.
+Expires: 29 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         19 October 2026
+                                                         26 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 22 April 2027.
+   This Internet-Draft will expire on 29 April 2027.
 
 Copyright Notice
 
@@ -683,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6Aqti
-   8P66Z-BmlPE_u7NHHymTBpJ0LoEYzpFHtpMC-VIIO-fDCOn1OZd3GkqZAITPLAjhHZxK
-   psMKirpD4YuzQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C2yEk
+   HgELcDfq7fjDRsBXmatDWzgVXhS_tEqMD6C9ncpP5_rf6N2KKsu6Q4AqqWnxYy7-eDPD
+   edXIXq2TSomaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -721,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.6Aqti
-   8P66Z-BmlPE_u7NHHymTBpJ0LoEYzpFHtpMC-VIIO-fDCOn1OZd3GkqZAITPLAjhHZxK
-   psMKirpD4YuzQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C2yEk
+   HgELcDfq7fjDRsBXmatDWzgVXhS_tEqMD6C9ncpP5_rf6N2KKsu6Q4AqqWnxYy7-eDPD
+   edXIXq2TSomaQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcwOT
-   QsICJzZF9oYXNoIjogInpHNUV5TUVHdnRvNEVqQkVHUVFjUU1Da1BaZC0yWFVPdi1hT0
-   01VlprVzQifQ.hVsMQEWvtKLh_oHM5fxsDgu74SnkPvuiBrI-L9jFdB9M2Ll7N7fx2gZ
-   n1DwLyBCzI6UjuubUNR1ZqpkHyHPKqg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMwNTgxMz
+   AsICJzZF9oYXNoIjogInRDcUU4bnBxdklQSklDYXJyV2tQQkZJLWNQbFZMVV9XUmlsZW
+   1NQjZncncifQ.RT-SNpsJzyVLflk9Dyct9W1nRi0Fux2onCDaJPFDx2gya_QNvccA4lC
+   tsq5NrSXv124jNDCgkmMN4tur83Ccew
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -777,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.MsfX4ZmjzfCweRwuodacD4gSC5Bwr8zD6tagGTq-UZwARD
-   B4QKpAU1_ZZLp7tbJydA5iTSXSixWgDdzUvqelBw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.9AwSYo6RoxFlP0LWUMXiIrWuj9_0f_W9twalEl1YELcHBx
+   NA4HTafBkPGYK1c_McO-_XEsiWNDsEyHa44mBYaw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -940,7 +940,9 @@ Table of Contents
    the JWT.  The iss MUST be a case-sensitive URL using the HTTPS scheme
    that contains scheme, host and, optionally, port number and path
    components as defined in [RFC3986], but no query or fragment
-   components.
+   components.  The path component, if present, MUST NOT contain any
+   dot-segments (i.e., the discrete path segments "." and ".." described
+   in Section 3.3 of [RFC3986]).
 
 4.1.  JWT VC Issuer Metadata Request
 
@@ -1163,7 +1165,7 @@ Table of Contents
    A URI in the vct claim can be used to express a type.  If the type is
    a URL using the HTTPS scheme, Type Metadata might be retrievable from
    that URL, and it is at the consumer's discretion whether to attempt
-   retrieve Type Metadata from the URL.
+   to retrieve Type Metadata from the URL.
 
    The Type Metadata is retrieved from that URL using an HTTP GET
    request, following the rules defined in Section 3.  A successful
@@ -1282,8 +1284,8 @@ Table of Contents
 5.5.1.1.  Rendering Method "simple"
 
    The simple rendering method is intended for use in applications that
-   do not support SVG rendering.  The object contains the following
-   properties:
+   do not support SVG rendering.  The object contains at least one of
+   the following properties:
 
    *  logo: An object containing information about the logo to be
       displayed for the type, as described in Section 5.5.1.1.1.  This
@@ -1341,8 +1343,8 @@ Table of Contents
    SVG template.  Consuming applications MUST use these properties to
    find the best SVG template available for display to the user based on
    the display properties (landscape/portrait) and user preferences
-   (color scheme, contrast).  The object MUST contain at least one of
-   the following properties:
+   (color scheme, contrast).  The object contains at least one of the
+   following properties:
 
    *  orientation: The orientation for which the SVG template is
       optimized, with valid values being portrait and landscape.  This
@@ -1368,6 +1370,8 @@ Table of Contents
 
    A consuming application MUST ensure that all special characters in
    the claim values are properly escaped before inserting them into the
+   SVG template.  If invalid XML characters are present in the claim
+   values, the consuming application SHOULD reject and not render the
    SVG template.  At least the following characters MUST be escaped:
 
    *  & as &amp;
@@ -1567,10 +1571,18 @@ Table of Contents
    The result of the processing is the set of elements to which the
    respective claim metadata applies.
 
-   The path property MUST point to the respective claim as if all
-   selectively disclosable claims were disclosed to a Verifier.  That
-   means that a consuming application which does not have access to all
-   disclosures may not be able to identify the claim which is being
+   The path property MUST point to the respective claim as if the
+   payload was complete and conformant to the Type Metadata with all
+   selectively disclosable claims disclosed.  For a claim metadata
+   object with mandatory set to true (see Section 5.6.3), processing the
+   path against such a complete payload MUST NOT remove any element from
+   the selection in step 2 above; that is, every object traversed
+   contains the respective key and every array traversed contains the
+   respective index.  A missing intermediate key or index therefore
+   means that a mandatory claim is absent.  A null component applied to
+   an empty array selects nothing without violating this requirement.
+   That means that a consuming application which does not have access to
+   all disclosures may not be able to identify the claim which is being
    addressed.
 
    Note: This specification intentionally does not use JSON Pointer
@@ -1816,15 +1828,16 @@ Table of Contents
    Before making a request to any of these URLs, including every
    redirect target as described in Section 3, the Consumer MUST validate
    the URL to ensure that it is a valid HTTPS URL and that it does not
-   point to internal resources.  Internal resources include, in
-   particular, hosts with addresses from the IANA Special-Purpose
-   Address Registries [RFC6890] that are not globally reachable (such as
-   loopback, link-local, and private-use address ranges) as well as
-   hosts that are only reachable from within the Consumer's network.
-   Validation requires ensuring that the host part of the URL does not
-   address an internal service (by IP address or an internal host name)
-   and that, if an external DNS name is used, the resolved DNS name does
-   not point to an internal IP address.
+   point to resources an issuer cannot access (e.g., resources internal
+   to the Consumer).  Such resources include, in particular, hosts with
+   addresses from the IANA Special-Purpose Address Registries [RFC6890]
+   that are not globally reachable (such as loopback, link-local, and
+   private-use address ranges) as well as hosts that are only reachable
+   from within the Consumer's network.  Validation requires ensuring
+   that the host part of the URL does not address an internal service
+   (by IP address or an internal host name) and that, if an external DNS
+   name is used, the resolved DNS name does not point to an internal IP
+   address.
 
    The requirements in Section 3 to perform each retrieval in a time-
    bound and size-bound manner and to validate the response content
@@ -1986,9 +1999,10 @@ Table of Contents
    If code execution cannot be prevented reliably, the SVG display MUST
    be sandboxed.
 
-   Furthermore, consuming applications MUST ensure that references to
-   external resources (images, etc.) from within the SVG cannot be used
-   to track users or the usage of credentials.
+   Furthermore, similar to retrieval of other metadata resources as
+   discussed in Section 8.4, consuming applications need to ensure that
+   references to external resources (images, etc.) from within the SVG
+   cannot be used to track users or the usage of credentials.
 
 8.  Privacy Considerations
 
@@ -2072,8 +2086,10 @@ Table of Contents
 
    Consumers SHOULD prefer methods for retrieving Type Metadata and the
    resources it references that do not leak information about the usage
-   of a credential to third parties.  The recommendations in Section 7.5
-   apply.
+   of a credential to third parties.  The caching recommendations in
+   Section 7.5 apply and potentially identifying information about the
+   Holder or Consumer should not be included in any request to retrieve
+   such resources (e.g., in HTTP headers).
 
 9.  IANA Considerations
 
@@ -2365,8 +2381,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Pax5mpB6PasOv07b6570YuvBR3w8fGT_
-   moYJNSiPAtQQ__qzGSTAGnLmJoL6VkgImpg2okwDyyi367K4K6oUsw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vCslmlBhhqwlagJ-du7wJzI0GpJQVKP5
+   F5VD7aut9OK3fCEwPg0qFNC2LROoZisH8wGlcqrWrXQ7aNKhnVu9ow~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2748,8 +2764,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Pax5mpB6PasOv07b6570YuvBR3w8fGT_
-   moYJNSiPAtQQ__qzGSTAGnLmJoL6VkgImpg2okwDyyi367K4K6oUsw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vCslmlBhhqwlagJ-du7wJzI0GpJQVKP5
+   F5VD7aut9OK3fCEwPg0qFNC2LROoZisH8wGlcqrWrXQ7aNKhnVu9ow~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2760,10 +2776,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTI0MTcwOTQsICJzZF9oYXNoIjogIm
-   pUei0wWThVLTRSRnR5Rmc1bVNlVjVubnJhaktnamJNdlFDZDc2NkplWUkifQ.5LL3QKm
-   9BJfIFRsUBVMdiwQd7vzgoJIC0OQ67oRC-kqaEOhwR3E1jzKNNC-18tIch2hMQ3m1VZL
-   DzrlmpPFEhg
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMwNTgxMzAsICJzZF9oYXNoIjogIn
+   UxNkw1eVZFN0Z3eFY0eDVCaFlmZXVEYWR1bW53Q1FpbnpEaXlGd0dnWG8ifQ.4xSEMd9
+   OctjhBHb5cIalg2A-SrS33qlXPPLXnLO-uqc4gyuEPzSNX7DqZT1Gn3Iepla9kGljAL-
+   XbOo4Kt7VLw
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2772,8 +2788,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1792417094,
-     "sd_hash": "jTz-0Y8U-4RFtyFg5mSeV5nnrajKgjbMvQCd766JeYI"
+     "iat": 1793058130,
+     "sd_hash": "u16L5yVE7FwxV4x5BhYfeuDadumnwCQinzDiyFwGgXo"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3053,14 +3069,15 @@ Appendix B.  Acknowledgements
    Jurkovikj, Babis Routis, Christian Amsüss, Christian Bormann, Dan
    Moore, Deb Cooley, Denis Pinkas, George J Padayatti, Giuseppe De
    Marco, Hannes Tschofenig, Lukas J Han, Lukasz Jaromin, Leif
-   Johansson, Mark Nottingham, Michael B.  Jones, Mike Prorock, Mirko
-   Mollik, Nas Til, Nat Sakimura, Orie Steele, Paul Bastian, Pavel
-   Zarecky, remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG
-   10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220
-   series, as was agreed at its meeting on 14 October 2026), Stefan
-   Charsley, Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias
-   Looker, and Kristina Yasuda for their contributions (some of which
-   substantial) to this draft and to the initial set of implementations.
+   Johansson, Mark Nottingham, Michael B.  Jones, Mike Prorock, Ionuț
+   Mihalcea, Mirko Mollik, Nas Til, Nat Sakimura, Orie Steele, Paul
+   Bastian, Pavel Zarecky, remcoschaar (GitHub user on behalf of ISO/IEC
+   JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and
+   ISO/IEC 23220 series, as was agreed at its meeting on 14 October
+   2026), Stefan Charsley, Tim Cappalli, Timo Glastra, Torsten
+   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
+   contributions (some of which substantial) to this draft and to the
+   initial set of implementations.
 
 Appendix C.  Document History
 
@@ -3091,6 +3108,19 @@ Appendix C.  Document History
       does
    *  remove a few superfluous subsection headings from the IANA
       Considerations
+   *  Secdir review items:
+      -  align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1
+      -  say not to render and SVG template when invalid XML characters
+         are present in the claim values
+      -  add a ref to the privacy text in the Section 7.10 in the
+         security considerations section to the related privacy
+         considerations Section 8.4
+      -  try to qualify a bit more that the path points to a claim in a
+         fully disclosed payload that's conformant with the type
+         metadata
+      -  explicitly prohibit dot-segments in the path component, if
+         present, of HTTPS URL based issuer identifiers used in Issuer
+         Metadata retrieval
    *  Address ARTART review: note how the display direction of human-
       readable strings is determined
    *  Address ARTART review: add an optional dir property for the base
