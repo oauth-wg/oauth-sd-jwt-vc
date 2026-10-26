@@ -1094,7 +1094,7 @@ claim metadata applies.
 The `path` property MUST point to the respective claim as if the payload was
 complete and conformant to the Type Metadata with all selectively disclosable
 claims disclosed. For a claim metadata object with `mandatory` set to `true` (see
-(#claim-mandatory-metadata)) or `sd` set to `never` (see (#claim-selective-disclosure-metadata)), processing the `path` against such a complete payload
+(#claim-mandatory-metadata)), processing the `path` against such a complete payload
 MUST NOT remove any element from the selection in step 2 above; that is, every
 object traversed contains the respective key and every array traversed contains the
 respective index. A missing intermediate key or index therefore means that a
