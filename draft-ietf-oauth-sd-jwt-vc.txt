@@ -5,10 +5,10 @@
 Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Intended status: Standards Track                                 D. Fett
-Expires: 29 April 2027                                     Authlete Inc.
+Expires: 30 April 2027                                     Authlete Inc.
                                                              B. Campbell
                                                            Ping Identity
-                                                         26 October 2026
+                                                         27 October 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -47,7 +47,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 29 April 2027.
+   This Internet-Draft will expire on 30 April 2027.
 
 Copyright Notice
 
@@ -683,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C2yEk
-   HgELcDfq7fjDRsBXmatDWzgVXhS_tEqMD6C9ncpP5_rf6N2KKsu6Q4AqqWnxYy7-eDPD
-   edXIXq2TSomaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4zc4n
+   RtSxp6DD-p0GyGaD0ZzDc5K6JbP3Xwz_V6tad5NLclNBsn8SzIHlvmJYNvkQM6mb0Wg-
+   amUdEEbzC09Cw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -721,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.C2yEk
-   HgELcDfq7fjDRsBXmatDWzgVXhS_tEqMD6C9ncpP5_rf6N2KKsu6Q4AqqWnxYy7-eDPD
-   edXIXq2TSomaQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.4zc4n
+   RtSxp6DD-p0GyGaD0ZzDc5K6JbP3Xwz_V6tad5NLclNBsn8SzIHlvmJYNvkQM6mb0Wg-
+   amUdEEbzC09Cw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMwNTgxMz
-   AsICJzZF9oYXNoIjogInRDcUU4bnBxdklQSklDYXJyV2tQQkZJLWNQbFZMVV9XUmlsZW
-   1NQjZncncifQ.RT-SNpsJzyVLflk9Dyct9W1nRi0Fux2onCDaJPFDx2gya_QNvccA4lC
-   tsq5NrSXv124jNDCgkmMN4tur83Ccew
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMxMzI5NT
+   QsICJzZF9oYXNoIjogIkVSa1ZMTjJGa21HS1YtV3AzSHZKbFcyQ21PV3hINjE5TG1BZT
+   VCY2pYaFkifQ.CY57U_D6r2dunBSbCzmIIz9FrzdpSPCZSyeC_sLgCPpYo2z-LUHbHim
+   rQAlMkdCzu_AYf4bc1AqCzcyVgS5uJg
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -777,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.9AwSYo6RoxFlP0LWUMXiIrWuj9_0f_W9twalEl1YELcHBx
-   NA4HTafBkPGYK1c_McO-_XEsiWNDsEyHa44mBYaw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.oKX-SeKZRniXXNC_BQ-zOBtQcNaktKpUfXztL6QM-ucOBU
+   qBenKhalMt3OMKlbH8X789AM9R3qR3orIMyhAlFw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1444,10 +1444,12 @@ Table of Contents
       one value.  This property is OPTIONAL.
 
    When a Consumer processes Type Metadata for an SD-JWT VC, the claims
-   property and each claim metadata object MUST conform to the structure
-   defined in this section and its subsections; otherwise, claim
-   metadata processing fails.  Properties that are not understood are
-   ignored as defined in Section 5.2.
+   property MUST be an array of objects, and each of these objects MUST
+   conform to the definitions of the path, mandatory, and sd properties
+   in this section and its subsections; otherwise, claim metadata
+   processing fails.  Other properties, including display and svg_id, do
+   not cause claim metadata processing to fail.  Properties that are not
+   understood are ignored as defined in Section 5.2.
 
    When a Holder or Verifier processes claim metadata for an SD-JWT VC,
    it MUST validate the processed SD-JWT payload against the claim
@@ -2381,8 +2383,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vCslmlBhhqwlagJ-du7wJzI0GpJQVKP5
-   F5VD7aut9OK3fCEwPg0qFNC2LROoZisH8wGlcqrWrXQ7aNKhnVu9ow~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.D-TGh8IUizBhPng4Eh1LFhvP7Sc1SqzD
+   rTPeXYYbjPckGLf1c6nnmWDkI-rcitbVJH0lPUEWW4UjS5y8Onf8RQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2764,8 +2766,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.vCslmlBhhqwlagJ-du7wJzI0GpJQVKP5
-   F5VD7aut9OK3fCEwPg0qFNC2LROoZisH8wGlcqrWrXQ7aNKhnVu9ow~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.D-TGh8IUizBhPng4Eh1LFhvP7Sc1SqzD
+   rTPeXYYbjPckGLf1c6nnmWDkI-rcitbVJH0lPUEWW4UjS5y8Onf8RQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2776,10 +2778,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMwNTgxMzAsICJzZF9oYXNoIjogIn
-   UxNkw1eVZFN0Z3eFY0eDVCaFlmZXVEYWR1bW53Q1FpbnpEaXlGd0dnWG8ifQ.4xSEMd9
-   OctjhBHb5cIalg2A-SrS33qlXPPLXnLO-uqc4gyuEPzSNX7DqZT1Gn3Iepla9kGljAL-
-   XbOo4Kt7VLw
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMxMzI5NTQsICJzZF9oYXNoIjogIk
+   1GcTBNYWpZWkJubmhOdGl3Q0x3WFBRZGYtalpTd1p6TG1kVXhtUVZjancifQ.JuTQCbL
+   6ie4dSsHyI70bjb9N2wl5C0tJ3b4IndEyMhJDiEHvbJA0gavTIVrEj1q3NQtnwshj1vb
+   qp38u4zcSjA
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2788,8 +2790,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793058130,
-     "sd_hash": "u16L5yVE7FwxV4x5BhYfeuDadumnwCQinzDiyFwGgXo"
+     "iat": 1793132954,
+     "sd_hash": "MFq0MajYZBnnhNtiwCLwXPQdf-jZSwZzLmdUxmQVcjw"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3080,6 +3082,13 @@ Appendix B.  Acknowledgements
    initial set of implementations.
 
 Appendix C.  Document History
+
+   -21
+
+   *  Limit the claim metadata processing failure rule to the claims
+      array and the path, mandatory, and sd properties; a non-conforming
+      display or svg_id no longer results in the SD-JWT VC being
+      rejected
 
    -20
 
