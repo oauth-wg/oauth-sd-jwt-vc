@@ -363,7 +363,7 @@ exist between `sub` and `cnf` claims.
 * `iat`: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
       [@!RFC7519] for more information.
 
-Note that [@!RFC7800, section 3] requires that either the `sub` or `iss` be present in the JWT.
+Note that [@!RFC7800, section 3] requires that a JWT containing a `cnf` claim also contain either the `sub` or `iss` claim.
 This specification explicitly overrides that requirement, as there are valid and
 legitimate uses of key-bound SD-JWT VCs without either of those claims.
 
@@ -1991,6 +1991,7 @@ Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Hannes Tschofenig,
+Ketan Talaulikar,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
@@ -2004,7 +2005,7 @@ Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
-remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
+Remco Schaar (on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
 Tim Cappalli,
 Timo Glastra,
