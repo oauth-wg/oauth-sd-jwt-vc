@@ -2018,7 +2018,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -22
 
-* Address IESG ballot comments: use the term Verifiable Digital Credential for the `status` claim, state the RFC 7800 `sub`/`iss` departure neutrally, title the SD-JWT payload example figure correctly, align the claim display metadata text with the type display metadata text, use `urn:example` identifiers in the Security Considerations, align the media type registration with RFC 9901, and make the references to RFC 7515 and the Status List normative
+* Address Ketan Talaulikar's IESG ballot comments: use the term Verifiable Digital Credential for the `status` claim, state the RFC 7800 `sub`/`iss` departure neutrally, title the SD-JWT payload example figure correctly, align the claim display metadata text with the type display metadata text, use `urn:example` identifiers in the Security Considerations, align the media type registration with RFC 9901, and make the references to RFC 7515 and the Status List normative
 
 -21
 
