@@ -350,8 +350,8 @@ information.
 * `vct#integrity`: OPTIONAL. The hash of the Type Metadata document to provide integrity as defined in (#document-integrity).
 * `aka_vcts`: OPTIONAL. An array of additional types of the Verifiable Digital
 Credential, as defined in (#aka-vcts-claim).
-* `status`: OPTIONAL. The information on how to read the status of the Verifiable
-Credential. See [@?I-D.ietf-oauth-status-list]
+* `status`: OPTIONAL. The information on how to read the status of the Verifiable Digital
+Credential. See [@!I-D.ietf-oauth-status-list]
  for more information. When the `status` claim is present and using the `status_list` mechanism, the associated Status List Token MUST be in JWT format.
 
 The following registered JWT claims are used within the SD-JWT component of the SD-JWT VC and MAY be included in Disclosures, i.e., can be selectively disclosed:
@@ -363,8 +363,7 @@ exist between `sub` and `cnf` claims.
 * `iat`: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
       [@!RFC7519] for more information.
 
-Note that [@!RFC7800, section 3] has a somewhat misguided requirement that either
-the `sub` or `iss` be present in the JWT.
+Note that [@!RFC7800, section 3] requires that either the `sub` or `iss` be present in the JWT.
 This specification explicitly overrides that requirement, as there are valid and
 legitimate uses of key-bound SD-JWT VCs without either of those claims.
 
@@ -398,7 +397,7 @@ above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:
 
 <{{examples/01/sd_jwt_payload.json}}
-Figure: Unsecured Payload Example {#sd-jwt-payload1}
+Figure: SD-JWT Payload Example {#sd-jwt-payload1}
 
 Note that a `cnf` claim has been added to the SD-JWT payload to express the
 confirmation method of the Key Binding.
@@ -476,7 +475,7 @@ This specification defines the following two mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter ([@RFC7515, section 4.1.6]), the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` header parameter and validates the X.509 certificate chain accordingly against a trust anchor permitted for the Issuer according to policy. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. If the `iss` claim is also present, there is no requirement that its value directly correspond to a subject name in the end-entity certificate.
+- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter ([@!RFC7515, section 4.1.6]), the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` header parameter and validates the X.509 certificate chain accordingly against a trust anchor permitted for the Issuer according to policy. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. If the `iss` claim is also present, there is no requirement that its value directly correspond to a subject name in the end-entity certificate.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
@@ -1116,9 +1115,9 @@ also security concerns with some implementations.
 ### Claim Display Metadata {#claim-display-metadata}
 
 The `display` property is an array containing display information for the
-claim. The array MUST contain an object for each locale that is supported by
-the type. The consuming application MUST use the language tag it considers most
-appropriate for the user.
+claim. The array contains an object for each locale that is supported by
+the type. The consuming application uses the object containing the language tag
+it considers most appropriate for the user.
 
 The objects in the array have the following properties:
 
@@ -1413,11 +1412,11 @@ or the privacy of the user. To this end, the following considerations apply:
 ## Credential Type Extension and Issuer Authorization {#type-extension-issuer-authorization}
 
 When processing credentials, it is important to recognize that the ability to extend or reference
-an existing credential type (e.g., a well-known identifier such as `urn:ec.eu.x.y.z`) does not
+an existing credential type (e.g., a well-known identifier such as `urn:example:eudi:pid`) does not
 confer any implicit authorization to issue credentials of that type or its extensions. In particular:
 
-- **Issuer Authorization**: Verifiers and Holders MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type `urn:de.bla` extending a European PID type) does not validate the issuer's authority.
-- **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:attacker` extending `urn:ec.eu.x.y.z`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
+- **Issuer Authorization**: Verifiers and Holders MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type `urn:example:de:pid` extending a European PID type) does not validate the issuer's authority.
+- **Rogue Issuers**: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., `urn:example:attacker:pid` extending `urn:example:eudi:pid`). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.
 - **Processing Rules**: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.
 
 Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
@@ -1657,11 +1656,12 @@ the "Media Types" registry [@IANA.MediaTypes].
 * Subtype name: `dc+sd-jwt`
 * Required parameters: n/a
 * Optional parameters: n/a
-* Encoding considerations: 8-bit code points; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.
+* Encoding considerations: binary; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.
 * Security considerations: See Security Considerations in (#security-considerations).
 * Interoperability considerations: n/a
 * Published specification: [[ this specification ]]
 * Applications that use this media type: Applications that issue, present, and verify SD-JWT-based Verifiable Digital Credentials.
+* Fragment identifier considerations: n/a
 * Additional information:
   - Magic number(s): n/a
   - File extension(s): n/a
@@ -2014,6 +2014,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-22
+
+* Address IESG ballot comments: use the term Verifiable Digital Credential for the `status` claim, state the RFC 7800 `sub`/`iss` departure neutrally, title the SD-JWT payload example figure correctly, align the claim display metadata text with the type display metadata text, use `urn:example` identifiers in the Security Considerations, align the media type registration with RFC 9901, and make the references to RFC 7515 and the Status List normative
 
 -21
 
