@@ -1782,7 +1782,7 @@ exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-2.2
   <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-2.2.2.3-5.2" class="pilcrow">¶</a>
 </li>
             </ul>
-<p id="section-2.2.2.3-6">Note that <span><a href="https://rfc-editor.org/rfc/rfc7800#section-3" class="relref">Section 3</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> requires that either the <code>sub</code> or <code>iss</code> be present in the JWT.
+<p id="section-2.2.2.3-6">Note that <span><a href="https://rfc-editor.org/rfc/rfc7800#section-3" class="relref">Section 3</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> requires that a JWT containing a <code>cnf</code> claim also contain either the <code>sub</code> or <code>iss</code> claim.
 This specification explicitly overrides that requirement, as there are valid and
 legitimate uses of key-bound SD-JWT VCs without either of those claims.<a href="#section-2.2.2.3-6" class="pilcrow">¶</a></p>
 </section>
@@ -2024,9 +2024,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xWWzZ
-NOK09MmpG0BCgie79CGwP19fbrob0QPbSWjWcLudhaKCre9b2ad_06qrO3hXIOpLMw2C
-P-6X5K3RkEvYQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xVTGO
+feVqDZp9PeozUwOn__yoofTrW22lpcsbVsdtg0WR5-hrO0xJXVwWVtPBc9nyf0N9XE6G
+-LjDtTOnbc4AQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2072,17 +2072,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xWWzZ
-NOK09MmpG0BCgie79CGwP19fbrob0QPbSWjWcLudhaKCre9b2ad_06qrO3hXIOpLMw2C
-P-6X5K3RkEvYQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xVTGO
+feVqDZp9PeozUwOn__yoofTrW22lpcsbVsdtg0WR5-hrO0xJXVwWVtPBc9nyf0N9XE6G
+-LjDtTOnbc4AQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMxMzcxNj
-ksICJzZF9oYXNoIjogIjdsYWJiXzdjSzdMY3ZydUNySEFtNjcwZlRXdTdBTGZ4aXRQdj
-J0dEV4aGcifQ.doGx7zEdjFUBBPyX6jfWpsW_BfDWoFsY9TS7pzv3RgT-BYwnfUUknne
-B4CbgjQPuw41077rzcMql5ZadPDn8vQ
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMxMzgyMT
+csICJzZF9oYXNoIjogIjlqLXh0YW9UTWdwbS1GdGxHa1VvaW81YU5WY3RleUhPMHp6WG
+VWR3hNNjgifQ.gdn3I0edApyckOJtBAD70ENF6uhJy44TPOwr0LbXsQ56935497nllqw
+_vTgQP47XO1mx2dgeqjxy35V5kzL6YQ
 
 </pre>
 </div>
@@ -2139,8 +2139,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.jwVJpRUHC2JFTVKzAaL6bM61xpVeVuSoD9m1_-AL3Fz0pz
-yvuxLDzoiNk7fxn5qvKqrasexxLLd_lz9Oo4p0pQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.s7p4zjFxpvJsxRyu80TB8OvJhGseMQpGyi5BDjTiyxcrd4
+OCsHo7Jx0D-kmAsBI2n2jKTp6AiiPQh-hZ88mB7w~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -3946,8 +3946,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.zTTsDsif2GIsjF0p1LMJMMeWc1YS5Y9K
-ghzC3NIJSIoJ1NhnFRYLnEeNHoG0JP1FC3eXDi5_tF6c7xHzodm4jQ~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.FzgoXYiIwlNNiOWqkIupFn3QZT2sxVrq
+-HNXmla8NuMU9BGip9XKMamDayrLC39a_tzSd3oncnAi1Z9yOPqjpQ~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4444,8 +4444,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.zTTsDsif2GIsjF0p1LMJMMeWc1YS5Y9K
-ghzC3NIJSIoJ1NhnFRYLnEeNHoG0JP1FC3eXDi5_tF6c7xHzodm4jQ~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.FzgoXYiIwlNNiOWqkIupFn3QZT2sxVrq
+-HNXmla8NuMU9BGip9XKMamDayrLC39a_tzSd3oncnAi1Z9yOPqjpQ~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4456,10 +4456,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMxMzcxNjksICJzZF9oYXNoIjogIm
-JrODJlaVpGMW5EV2g4dW5lM0dBQ1NnRUo1eDBaazUzUkdrdXJxa1lTRkkifQ.WUNknlF
-HajJZelVYv4pM-608ErUSZqcuRi0ozxe6-XMIbbhM61tBvOxrleIsYUWxB5acxYpmUu2
-wlmZ6gKnzrg
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTMxMzgyMTcsICJzZF9oYXNoIjogIj
+VaZmlBQ01EZG9hZG1TcU9zMnZxMUd2aHFzTS1IdDl4SFRFN3MzMkZwdjQifQ.dofkM50
+BU-qFLDtcCq1oGmJudi4Z_Pe6coONwckW8ErcjOzukIg1saGnqkBmHE1lTl-bqP5s7R1
+vfxJfov2wKw
 
 </pre>
 </div>
@@ -4474,8 +4474,8 @@ wlmZ6gKnzrg
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1793137169,
-  "sd_hash": "bk82eiZF1nDWh8une3GACSgEJ5x0Zk53RGkurqkYSFI"
+  "iat": 1793138217,
+  "sd_hash": "5ZfiACMDdoadmSqOs2vq1GvhqsM-Ht9xHTE7s32Fpv4"
 }
 
 </pre>
@@ -4792,6 +4792,7 @@ Denis Pinkas,
 George J Padayatti,
 Giuseppe De Marco,
 Hannes Tschofenig,
+Ketan Talaulikar,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
@@ -4805,7 +4806,7 @@ Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
-remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
+Remco Schaar (on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
 Tim Cappalli,
 Timo Glastra,
