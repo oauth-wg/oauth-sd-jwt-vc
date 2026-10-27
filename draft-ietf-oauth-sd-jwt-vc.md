@@ -996,7 +996,8 @@ Each object contains the following properties:
   whose `path` contains a `null` component, since such a `path` can select more than
   one value. This property is OPTIONAL.
 
-When a Consumer processes Type Metadata for an SD-JWT VC, the `claims` property and each claim metadata object MUST conform to the structure defined in this section and its subsections; otherwise, claim metadata processing fails.
+When a Consumer processes Type Metadata for an SD-JWT VC, the `claims` property MUST be an array of objects, and each of these objects MUST conform to the definitions of the `path`, `mandatory`, and `sd` properties in this section and its subsections; otherwise, claim metadata processing fails.
+Other properties, including `display` and `svg_id`, do not cause claim metadata processing to fail.
 Properties that are not understood are ignored as defined in (#type-metadata-format).
 
 When a Holder or Verifier processes claim metadata for an SD-JWT VC, it MUST validate the processed SD-JWT payload against the claim metadata in the Type Metadata after applying any extensions as described in (#claim-metadata-extends).
@@ -2013,6 +2014,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-21
+
+* Limit the claim metadata processing failure rule to the `claims` array and the `path`, `mandatory`, and `sd` properties; a non-conforming `display` or `svg_id` no longer results in the SD-JWT VC being rejected
 
 -20
 
