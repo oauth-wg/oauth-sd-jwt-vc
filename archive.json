@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-25T00:51:38.963280+00:00",
+  "timestamp": "2026-10-27T00:48:52.555267+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -34623,24 +34623,26 @@
       "id": "PR_kwDOJbVClc8AAAABIsiQcQ",
       "title": "Secdir last call review updates",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/443",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "updates aimed at addressing things from [[Last-Call] draft-ietf-oauth-sd-jwt-vc-19 ietf last call Secdir review ](https://mailarchive.ietf.org/arch/msg/last-call/D0TY8D9hXbjM0nsv-lqITd4K-6o/)",
       "createdAt": "2026-10-15T19:12:42Z",
-      "updatedAt": "2026-10-23T21:56:40Z",
+      "updatedAt": "2026-10-26T23:41:43Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "bf41e4c81455e9b6223f76cf753271249e1f1b3a",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "secdir-lc",
-      "headRefOid": "f18983572aa191b5b2e3da60fc25e9ce8df5f856",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "headRefOid": "889105c9f4211e46f729d3f6242054f56a0ca277",
+      "closedAt": "2026-10-26T23:41:43Z",
+      "mergedAt": "2026-10-26T23:41:43Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "eefd635208af7508eb7e642043f3329dcbb5660c"
+      },
       "comments": [
         {
           "author": "bc-pi",
@@ -34776,6 +34778,26 @@
           "createdAt": "2026-10-23T21:56:40Z",
           "updatedAt": "2026-10-23T21:56:40Z",
           "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUGaGFw",
+          "commit": {
+            "abbreviatedOid": "f189835"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-25T15:28:12Z",
+          "updatedAt": "2026-10-25T15:28:13Z",
+          "comments": [
+            {
+              "originalPosition": 48,
+              "body": "Suggest dropping the `sd: never` clause here.\r\n\r\n`mandatory` decides whether the Issuer has to include a claim; `sd` decides how a claim is packaged **IF** it is included (\"if omitted, the claim is considered optional for the Issuer to include\"). This paragraph is about absence, so it belongs to `mandatory` only. With the clause, every optional `sd: never` claim silently becomes mandatory.\r\n\r\nExample from our own Type Metadata: `{\"path\": [\"degrees\"], \"sd\": \"never\"}` has no `mandatory`, so a credential for a student without a degree simply omits `degrees`. Evaluating `[\"degrees\"]` against that payload removes the root object from the selection, so the text as written says the credential violates a MUST, although nothing declared `degrees` mandatory. 5.6 has no failure case for it either: the `sd` check only looks at selected claims, and nothing is selected.\r\n\r\n`sd: never` does not need a rule like this: the `sd` check in 5.6 runs per **selected** claim, so the questions this paragraph settles for `mandatory` (all elements or at least one, missing intermediate keys) never arise for it. What is absent is not selected; whether it may be absent is `mandatory`'s question. Nothing is lost by dropping the clause: an Issuer that hides `degrees` behind an `_sd` digest still fails the `sd` check, and a missing mandatory claim is still caught by this paragraph. A type that wants Verifiers to be guaranteed to see a claim sets both `mandatory: true` and `sd: never`; `sd: never` alone cannot give that guarantee, since a Verifier cannot tell \"omitted by the Issuer\" from \"withheld by the Holder\".\r\n\r\nIonut's original comment was about `mandatory` and the removal rule only, so his point stays fully addressed.\r\n\r\n```suggestion\r\n(#claim-mandatory-metadata)), processing the `path` against such a complete payload\r\n```",
+              "createdAt": "2026-10-25T15:28:13Z",
+              "updatedAt": "2026-10-25T15:28:14Z"
+            }
+          ]
         }
       ]
     },
