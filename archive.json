@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-27T00:48:52.555267+00:00",
+  "timestamp": "2026-10-29T00:36:51.864345+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -34943,6 +34943,210 @@
           "createdAt": "2026-10-19T13:35:25Z",
           "updatedAt": "2026-10-19T13:35:25Z",
           "comments": []
+        }
+      ]
+    },
+    {
+      "number": 446,
+      "id": "PR_kwDOJbVClc8AAAABLEcblQ",
+      "title": "Non-conforming display metadata is ignored rather than causing the SD-JWT VC to be rejected",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/446",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Since -17, Section 5.6 requires each claim metadata object to conform to the structure defined in 5.6 \"and its subsections\", otherwise claim metadata processing fails, and Section 5.7 then requires the SD-JWT VC to be rejected. Section 5.6.2 (Claim Display Metadata) is one of those subsections. As written, a malformed `display` object inside claim metadata, for example a missing `locale` or `label`, rejects the credential at every Holder or Verifier that processes Type Metadata, while the type-level `display` in Section 5.5 has no such consequence. #408, #409 and #411 motivated the rule with the metadata that drives validation (`path`, `mandatory`, `sd`); `display` was not considered.\n\nThe consequence is disproportionate: a typo in a claim label fails every credential of the type, and fixing the Type Metadata document changes its hash, so credentials already issued with `vct#integrity` fail as well. Display metadata only affects presentation. For SVG templates the document already degrades the rendering instead of the credential (\"SHOULD reject and not render the SVG template\").\n\nThis PR rewrites the one sentence in Section 5.6 so that the failure rule names what it is for: the `claims` array itself and the `path`, `mandatory`, and `sd` properties of each claim metadata object. A second short sentence states that other properties, including `display` and `svg_id`, do not cause claim metadata processing to fail. Naming the properties also means that properties added by future versions or extensions are not fatal by default. No new requirements are introduced; the existing MUST is narrowed. `svg_id` only affects SVG rendering, where 5.5.1.2.2 already defines the consequences of problems with placeholders.",
+      "createdAt": "2026-10-27T16:52:42Z",
+      "updatedAt": "2026-10-27T20:28:54Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "eefd635208af7508eb7e642043f3329dcbb5660c",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "ignore-nonconforming-display",
+      "headRefOid": "18831bcacf7f40df91d0c20d0d2df61477b7e3bb",
+      "closedAt": "2026-10-27T20:28:54Z",
+      "mergedAt": "2026-10-27T20:28:54Z",
+      "mergedBy": "awoie",
+      "mergeCommit": {
+        "oid": "5f8f51d1c15267326f7524bedc4ed740728de413"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUivyPQ",
+          "commit": {
+            "abbreviatedOid": "18831bc"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "honestly i'm struggling a bit to really understand this one (including how/why we got to rejecting credentials from metadata processing issues) but don't see an issue with this small change",
+          "createdAt": "2026-10-27T20:07:19Z",
+          "updatedAt": "2026-10-27T20:07:19Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 447,
+      "id": "PR_kwDOJbVClc8AAAABLIAzRQ",
+      "title": "Address the editorial items in Ketan Talaulikar's ballot comment on -20",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/447",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "PR covering the items from Ketan's ballot comment of 27 October that are editorial or clearly correct, in his order:\r\n\r\nItem 1: Section 2.2.2.3, `status` claim: \"Verifiable Credential\" becomes \"Verifiable Digital Credential\", the term the document uses everywhere else.\r\nItem 2: Section 2.2.2.3, RFC 7800 note: the departure from RFC 7800 is stated neutrally, using Ketan's wording.\r\nItem 3: Figure 6 shows the SD-JWT payload, not the Unsecured Payload; retitled \"SD-JWT Payload Example\".\r\nItem 5: Section 5.6.2: first paragraph aligned with 5.5, without the two MUSTs (the AD review had already done this for 5.5 in -19).\r\nItem 6: Section 7.7: `urn:example` identifiers instead of `urn:ec.eu.x.y.z`, `urn:de.bla` and `urn:attacker`, which are not valid URNs; the European PID type reuses `urn:example:eudi:pid`, which the document already uses.\r\nItem 7: Media type registration: \"binary\" as in RFC 9901 instead of \"8-bit code points\", and the missing \"Fragment identifier considerations: n/a\".\r\nItem 8: References: RFC 7515 is cited for the definition of Collision-Resistant Names (a MUST for `vct`) and for `x5c`, but was rendered under Informative References because one citation lacked the normative marker; all three citations are now marked normative. The Status List reference is normative as well, since Section 2.2.2.3 requires the Status List Token to be a JWT; the Status List draft is already in the RFC Editor queue, so the dependency should not delay this document.\r\n\r\nNot included, as it needs a decision by the authors: item 4, registries or a naming rule for additional properties in Issuer Metadata, Type Metadata, rendering methods and claim metadata.\r\n\r\nKetan added to the Acknowledgements. Document History entry added under a new -22 heading. And fixed contributor name.",
+      "createdAt": "2026-10-27T21:42:41Z",
+      "updatedAt": "2026-10-28T15:44:28Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "5f8f51d1c15267326f7524bedc4ed740728de413",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "ketan-ballot-comments",
+      "headRefOid": "cf3f14bbba9836e1bf3bd75989c77ad9c41dec71",
+      "closedAt": "2026-10-27T22:36:58Z",
+      "mergedAt": "2026-10-27T22:36:58Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "66a7d2a997eda2a42f62e987bff65962e201fc85"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUkU0ZQ",
+          "commit": {
+            "abbreviatedOid": "21611fa"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T22:23:24Z",
+          "updatedAt": "2026-10-27T22:23:25Z",
+          "comments": [
+            {
+              "originalPosition": 94,
+              "body": "```suggestion\nremcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),\n```",
+              "createdAt": "2026-10-27T22:23:24Z",
+              "updatedAt": "2026-10-27T22:23:25Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUkVd5Q",
+          "commit": {
+            "abbreviatedOid": "21611fa"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T22:24:38Z",
+          "updatedAt": "2026-10-27T22:24:38Z",
+          "comments": [
+            {
+              "originalPosition": 94,
+              "body": "same as here https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/444/changes#r4309413777",
+              "createdAt": "2026-10-27T22:24:38Z",
+              "updatedAt": "2026-10-27T22:24:39Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUkZyEg",
+          "commit": {
+            "abbreviatedOid": "b72200e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T22:33:03Z",
+          "updatedAt": "2026-10-27T22:33:03Z",
+          "comments": [
+            {
+              "originalPosition": 95,
+              "body": "```suggestion\n* Address Ketan Talaulikar's IESG ballot comments: use the term Verifiable Digital Credential for the `status` claim, state the RFC 7800 `sub`/`iss` departure neutrally, title the SD-JWT payload example figure correctly, align the claim display metadata text with the type display metadata text, use `urn:example` identifiers in the Security Considerations, align the media type registration with RFC 9901, and make the references to RFC 7515 and the Status List normative\n```",
+              "createdAt": "2026-10-27T22:33:03Z",
+              "updatedAt": "2026-10-27T22:33:32Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUkbFGg",
+          "commit": {
+            "abbreviatedOid": "cf3f14b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-27T22:34:59Z",
+          "updatedAt": "2026-10-27T22:34:59Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUkb67A",
+          "commit": {
+            "abbreviatedOid": "cf3f14b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T22:36:18Z",
+          "updatedAt": "2026-10-27T22:36:18Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "it might have been misguided on my part but I liked the use of misguided there",
+              "createdAt": "2026-10-27T22:36:18Z",
+              "updatedAt": "2026-10-27T22:36:18Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUkmBrQ",
+          "commit": {
+            "abbreviatedOid": "cf3f14b"
+          },
+          "author": "debcooley",
+          "authorAssociation": "NONE",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-27T22:56:04Z",
+          "updatedAt": "2026-10-27T22:56:04Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "like 'for those who celebrate'...  misguided is how you can think about it, but in the specification it is better if it is more professional.",
+              "createdAt": "2026-10-27T22:56:04Z",
+              "updatedAt": "2026-10-27T22:56:04Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABUuGOqA",
+          "commit": {
+            "abbreviatedOid": "cf3f14b"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-10-28T15:44:28Z",
+          "updatedAt": "2026-10-28T15:44:28Z",
+          "comments": [
+            {
+              "originalPosition": 17,
+              "body": "meh, one could argue that \"better\" and \"professional\" are just as subjective as \"misguided\" but I realize not everyone celebrates ",
+              "createdAt": "2026-10-28T15:44:28Z",
+              "updatedAt": "2026-10-28T15:44:29Z"
+            }
+          ]
         }
       ]
     }
