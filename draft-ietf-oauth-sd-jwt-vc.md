@@ -867,7 +867,7 @@ support SVG rendering. The object contains at least one of the following propert
   the type, as described in (#background-image-metadata). This property is OPTIONAL.
 - `background_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] for the background of the credential.
   This property is OPTIONAL.
-- `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] value for the text of the credential. This property
+- `text_color`: An RGB color value as defined in [@!W3C.CSS-COLOR] for the text of the credential. This property
   is OPTIONAL.
 
 ##### Logo Metadata {#logo-metadata}
@@ -1532,7 +1532,7 @@ be included in any request to retrieve such resources (e.g., in HTTP headers).
     </front>
 </reference>
 
-<reference anchor="OWASP_SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">
+<reference anchor="OWASP_SSRF" target="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">
   <front>
     <author fullname="OWASP"></author>
     <title>Server Side Request Forgery Prevention Cheat Sheet</title>
@@ -1676,7 +1676,7 @@ the "Media Types" registry [@IANA.MediaTypes].
 
 This specification requests the well-known URI defined in (#jwt-vc-issuer-metadata)
 in the IANA "Well-Known URIs" registry [@IANA.well-known] as described in
-by [@!RFC8615].
+[@!RFC8615].
 
 * URI suffix: jwt-vc-issuer
 * Change controller: IETF
@@ -2007,6 +2007,7 @@ Paul Bastian,
 Pavel Zarecky,
 remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
+Su-hyeon Forten Lee,
 Tim Cappalli,
 Timo Glastra,
 Torsten Lodderstedt,
