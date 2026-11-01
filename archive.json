@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-10-29T00:36:51.864345+00:00",
+  "timestamp": "2026-11-01T00:37:47.853265+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -35149,6 +35149,91 @@
           ]
         }
       ]
+    },
+    {
+      "number": 448,
+      "id": "PR_kwDOJbVClc8AAAABL9hcyg",
+      "title": "Fix a broken reference URL and two editorial nits",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/448",
+      "state": "MERGED",
+      "author": "shlee1223",
+      "authorAssociation": "CONTRIBUTOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Thanks for your work on this draft. I noticed a few small things while reading it:\n\n- The `OWASP_SSRF` reference URL ends with a `/` and returns a 404. Without the trailing slash it resolves.\n- \"An RGB color value as defined in [W3C.CSS-COLOR] value for the text\" has an extra \"value\", compared with `background_color` right above it.\n- \"as described in by [RFC8615]\" has an extra \"by\".",
+      "createdAt": "2026-10-31T12:53:45Z",
+      "updatedAt": "2026-10-31T18:24:01Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "66a7d2a997eda2a42f62e987bff65962e201fc85",
+      "headRepository": "shlee1223/oauth-sd-jwt-vc",
+      "headRefName": "fix-nits",
+      "headRefOid": "890d835539a772cc0cc03ffdd5adb5dfc57f7991",
+      "closedAt": "2026-10-31T18:24:01Z",
+      "mergedAt": "2026-10-31T18:24:01Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "346de9a7050f327219e56df0d6aab7efdaf974bb"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "thanks @shlee1223! please add yourself to the acknowledgements too (if you want to be listed there) ",
+          "createdAt": "2026-10-31T15:53:36Z",
+          "updatedAt": "2026-10-31T15:53:36Z"
+        },
+        {
+          "author": "shlee1223",
+          "authorAssociation": "CONTRIBUTOR",
+          "body": "Thank you! Your work, including this draft, has been a great reference for me over the years. I've added myself to the acknowledgements.",
+          "createdAt": "2026-10-31T16:09:40Z",
+          "updatedAt": "2026-10-31T16:09:40Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABVSfrIw",
+          "commit": {
+            "abbreviatedOid": "bc16737"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-10-31T15:52:03Z",
+          "updatedAt": "2026-10-31T15:52:03Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 449,
+      "id": "PR_kwDOJbVClc8AAAABMAFDFg",
+      "title": "Update document history with minor fixes",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/449",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "",
+      "createdAt": "2026-10-31T18:28:17Z",
+      "updatedAt": "2026-10-31T18:34:21Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "346de9a7050f327219e56df0d6aab7efdaf974bb",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "23andme",
+      "headRefOid": "360a4e6e364ca07550a38e00fa6ebc7596326f4f",
+      "closedAt": "2026-10-31T18:34:20Z",
+      "mergedAt": "2026-10-31T18:34:20Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "2353a2c2e4d949c92fc66877598dadd7cba4655e"
+      },
+      "comments": [],
+      "reviews": []
     }
   ]
 }
