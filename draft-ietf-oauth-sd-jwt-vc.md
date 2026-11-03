@@ -278,7 +278,7 @@ between the types.
 An SD-JWT VC containing the `aka_vcts` claim is a Verifiable Digital
 Credential of the type identified by the `vct` claim and, additionally, of each
 of the types identified by the values in the `aka_vcts` claim. Holders
-and Verifiers can treat the SD-JWT VC as a credential of any of these types. This is
+and Verifiers can treat the SD-JWT VC as a credential of these types. This is
 typically used when the type identified by the `vct` claim is derived from a
 more general type, which is then included in the `aka_vcts` claim.
 
@@ -335,12 +335,12 @@ described in (#document-integrity).
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
 
-The following registered JWT claims, including any of their sub-claims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:
+The following registered JWT claims, including any of their subclaims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:
 
 * `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Digital Credential
     when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
 * `nbf`: OPTIONAL. The time before which the Verifiable Digital Credential MUST NOT be
-accepted before validating. See [@!RFC7519] for more information.
+accepted. See [@!RFC7519] for more information.
 * `exp`: OPTIONAL. The expiry time of the Verifiable Digital Credential after which the
 Verifiable Digital Credential is no longer valid. See [@!RFC7519] for more
 information.
@@ -502,7 +502,7 @@ defining the respective document or resource. A Consumer MUST NOT use the
 content of an error response (a response with a 4xx or 5xx status code) in
 place of the requested document or resource.
 
-All URLs dereferenced according to this specification MUST use the HTTPS
+All URLs dereferenced according to this specification MUST use the `https:`
 scheme. As an exception, the rendering resource URIs defined in
 (#rendering-metadata) MAY alternatively be `data:` URIs [@!RFC2397], which
 embed the resource and do not involve any retrieval.
@@ -1059,7 +1059,7 @@ The following shows examples of `path` values and the respective selected
 claims in the credential above:
 
 - `["name"]`: The claim `name` with the value `Arthur Dent` is selected.
-- `["address"]`: The claim `address` with its sub-claims as the value is selected.
+- `["address"]`: The claim `address` with its subclaims as the value is selected.
 - `["address", "street_address"]`: The claim `street_address` with the value
   `42 Market Street` is selected.
 - `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
@@ -2083,7 +2083,7 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Note privacy implications of retrieving rendering resources
 * Be more explicit about JWS JSON serialization being not explicitly defined for SD-JWT VCs
 * Address AD review:
-  * Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
+  * Clarify that claims that must not be selectively disclosed includes their subclaims not being selectively disclosable
   * Remove: "Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period."
   * Not use big 2119 language in the first paragraph of the Display Metadata section
   * Add a bit more explanation about aka_vcts
