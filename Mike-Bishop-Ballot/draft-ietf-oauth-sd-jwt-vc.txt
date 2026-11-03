@@ -683,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xwz6Z
-   qVxN7rUq1VqZ0WlreHI2OGzG6oWuI8nVSji39AD-UsBd4-8QHbu43DhJkbUcf652ku7R
-   -vdgcknvE9HaQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oH4fP
+   HMnSE-gWNl3FQ-1YiRiosIQ-XqZtcbozK_r_tXyOTRqxmY8ldSfgkkXZS0GLmD01WT5T
+   xnJ2yKssqkusw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -721,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.xwz6Z
-   qVxN7rUq1VqZ0WlreHI2OGzG6oWuI8nVSji39AD-UsBd4-8QHbu43DhJkbUcf652ku7R
-   -vdgcknvE9HaQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.oH4fP
+   HMnSE-gWNl3FQ-1YiRiosIQ-XqZtcbozK_r_tXyOTRqxmY8ldSfgkkXZS0GLmD01WT5T
+   xnJ2yKssqkusw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDY0OD
-   QsICJzZF9oYXNoIjogImNiNVhaNl8zQ25HbFBOanZpWUUtUGJqX1YxbDBHdmVkaUJyQk
-   hQTmVnRUUifQ.MwEkuWtkIvXMMCnnNtNi9VOvyVvAAYWrL4uVyFnKIUTI1CuUw9dUy1_
-   ifBRocC42iQf-0wignYLW8K7LswP_Kg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDY3OD
+   UsICJzZF9oYXNoIjogImlfS253cHFjWW9fd2hPaEVYTTlfd3RwcWYtSnNWQ3NpUFFJNE
+   l4a044ZmsifQ.mMYT3WtTYvYjQa_syfeMKit4dK0UCZMI5aH-kER6N5_H-UGYsp_L-t4
+   00qOqYkNNI3wFkl_FdD_y_MDzOcpboQ
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -777,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.qEZM48ifgD3yOkdYAzWbqkcLZ117rQqKkBRdcN2TE0D3pD
-   kCJPpMxEaS_3QuLZ8HBSkR-tEXpcJP97bwzbKgKg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.kplmAeXoR1t4q9hBJoDSMfYfmfsvwG1nS-f2itgCezGDhZ
+   Ej4QAMAOIYkTJJwATc7aM0OonP00G9jJtwidND_g~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -885,11 +885,11 @@ Table of Contents
 
    This specification defines several documents and resources that a
    Consumer retrieves via HTTP URLs: the JWT VC Issuer Metadata
-   configuration and the JWK Set referenced by jwks_uri Section 4, Type
-   Metadata documents referenced by vct claims and extends properties
-   Section 5.3, and rendering resources such as logos, background
-   images, and SVG templates Section 5.5.1.  The requirements in this
-   section apply to every such retrieval.
+   configuration and the JWK Set referenced by jwks_uri (Section 4),
+   Type Metadata documents referenced by vct claims and extends
+   properties (Section 5.3), and rendering resources such as logos,
+   background images, and SVG templates (Section 5.5.1).  The
+   requirements in this section apply to every such retrieval.
 
    HTTP requests and responses used with this specification are governed
    by HTTP semantics [RFC9110] and HTTP caching [RFC9111].  A document
@@ -2391,8 +2391,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3FkhlwXbrV6-Zuw9KGYt44541rwNj3Ei
-   0UGwV5GSk4VwiDFDm0il6oKr7My80hIU6ASOxXv4ADQlru3RDvxj5A~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._zV9E_-TgxiC4ZVKY8chTtyGp7F3M5j1
+   ZxjlW52WOQ6BiTrAD-DLOhz-19J1OguCejRNaLa7Ib-JYrntmxkKrA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2774,8 +2774,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.3FkhlwXbrV6-Zuw9KGYt44541rwNj3Ei
-   0UGwV5GSk4VwiDFDm0il6oKr7My80hIU6ASOxXv4ADQlru3RDvxj5A~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ._zV9E_-TgxiC4ZVKY8chTtyGp7F3M5j1
+   ZxjlW52WOQ6BiTrAD-DLOhz-19J1OguCejRNaLa7Ib-JYrntmxkKrA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2786,10 +2786,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDY0ODQsICJzZF9oYXNoIjogIk
-   paRzlHWlcybEppRjA4b2EzVl9FNkJGQWxDX3lsLTB2Vmw3VHRIWGMwUncifQ.rt6p5rt
-   J_FduHGFMYbLV_IRjxhtgcprjtPu8t9sGF4GQ4wcwg6KDPeYuCTmDL9rjZ2Ve48V7KGB
-   FDsmcpyDTiA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDY3ODUsICJzZF9oYXNoIjogIn
+   NoVFBjTnpMbWNRb1Roa3g2OFN4anphRDlPMUVXV0FlMlljZ0ZUUWZpemcifQ.XprLE_E
+   YmctrWnlEQqYZ_a5Gg5xK-gcXxXgabUhxay3n-Byx6KuEVazDVfvJ2eLPQsK_3HKjTaq
+   cXLTJW7BOYQ
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2798,8 +2798,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793746484,
-     "sd_hash": "JZG9GZW2lJiF08oa3V_E6BFAlC_yl-0vVl7TtHXc0Rw"
+     "iat": 1793746785,
+     "sd_hash": "shTPcNzLmcQoThkx68SxjzaD9O1EWWAe2YcgFTQfizg"
    }
 
                      Figure 27: Key Binding JWT Payload
