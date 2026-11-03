@@ -1398,9 +1398,9 @@ described in (#privacy-preserving-retrieval-of-type-metadata).
 
 Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., `display`, allow issuers and providers of metadata to
 specify human-readable information. These can contain arbitrary textual information that
-may be displayed to end users and developers. As such, any consuming application MUST ensure that maliciously
+may be displayed to end users and developers. To ensure that maliciously
 crafted information cannot be used to compromise the security of the application
-or the privacy of the user. To this end, the following considerations apply:
+or the privacy of the user, the following considerations apply:
 
 - The consuming application MUST ensure that the text is properly escaped before
   displaying it to the user or transferring it into other contexts. For example,
