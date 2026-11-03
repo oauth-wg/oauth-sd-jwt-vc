@@ -120,9 +120,9 @@ by its type, which is conveyed in the `vct` claim (#type-claim). Type Metadata
 how the credential and its claims are displayed. The `aka_vcts` claim
 (#aka-vcts-claim) lists further types that the credential also has.
 
-SD-JWT VCs can contain claims that are registered in "JSON Web Token Claims"
-registry as defined in [@!RFC7519], as well as public and
-private claims.
+SD-JWT VCs can contain claims that are registered in the "JSON Web Token Claims"
+registry [@IANA.JWT], as well as public and
+private claims as defined in [@!RFC7519].
 
 ## Requirements Notation and Conventions
 
