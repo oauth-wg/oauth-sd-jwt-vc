@@ -683,9 +683,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gE9wq
-   -s_OXugq1royglFYDSkqMayFemsLNEgfYmdUOVTzqpKfFZ-U2XerQ2L0A6J9C_qK8U2y
-   CSA4mTnSD4oiA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bYH2y
+   fjM33X2kGSw0uU8hv5szS0rQT0dnUJmd8MP3jaMqZHp9AQCc9WLXh3RWqs_1xjY-25p_
+   wrwu4NqqO8kUA~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -721,17 +721,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.gE9wq
-   -s_OXugq1royglFYDSkqMayFemsLNEgfYmdUOVTzqpKfFZ-U2XerQ2L0A6J9C_qK8U2y
-   CSA4mTnSD4oiA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bYH2y
+   fjM33X2kGSw0uU8hv5szS0rQT0dnUJmd8MP3jaMqZHp9AQCc9WLXh3RWqs_1xjY-25p_
+   wrwu4NqqO8kUA~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDQwMD
-   AsICJzZF9oYXNoIjogImxIc2JtMXl5WlVxM3dyV1A1cUJxZm1VRjF5ZGFONEFDaUhlSj
-   l1b2l5OE0ifQ.FvOjc6VLfxKzRD2p7ZtHmumnsfx9qYwp8QsirEtEFheHUujB4cFGqQ2
-   hsrolMJssCpEjaoh9M6vDArikTO7CWQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDYxMz
+   csICJzZF9oYXNoIjogImZ2WUlZRG12cEVsYmh3dXk3c0x0MmlISXJYWXBNLUpObjNBNT
+   FHM2FRYjQifQ.fTI2G0m9b0DVsx63iIcK2cX-d3hc0Wg03T2EM5SebWj7LdyD6z2N5mu
+   cDG9xYoX19ba8oYMr1m6Pcde1nJnlCg
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -777,8 +777,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.m2tPN7kTFLvO63RO7lwxeGEJ-Zt0k89zmgxFdWEtS6iwBO
-   Yx2nnRYiUEMcf2guOJlDdRvVvhpISTpFNu5LBmTw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.BRs4KACCa8wXuLtRG_-pZuDAVHrI7vWKqTgeMzC3H8UExX
+   oIgHamaSGqDBBS3-NvMRDLqjnrRR9Ga39LBv1jfQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1358,11 +1358,12 @@ Table of Contents
 
 5.5.1.2.2.  SVG Rendering
 
-   A consuming application MUST preprocess the SVG template by replacing
-   placeholders in the SVG template with properly escaped values of the
-   claims in the credential.  The placeholders MUST be defined in the
-   SVG template using the syntax {{svg_id}}, where svg_id is an
-   identifier defined in the claim metadata as described in Section 5.6.
+   A consuming application MUST preprocess the SVG template [W3C.SVG] by
+   replacing placeholders in the SVG template with properly escaped
+   values of the claims in the credential.  The placeholders MUST be
+   defined in the SVG template using the syntax {{svg_id}}, where svg_id
+   is an identifier defined in the claim metadata as described in
+   Section 5.6.
 
    Placeholders MUST only be used in the text content of the SVG
    template and MUST NOT be used in any other part of the SVG template,
@@ -2244,6 +2245,12 @@ Table of Contents
               "Subresource Integrity", 23 June 2016,
               <https://www.w3.org/TR/2016/REC-SRI-20160623/>.
 
+   [W3C.SVG]  Dahlström, E., Dengler, P., Grasso, A., Lilley, C.,
+              McCormack, C., Schepers, D., and R. Longson, "Scalable
+              Vector Graphics (SVG) 1.1 (Second Edition)", World Wide
+              Web Consortium Recommendation REC-SVG11-20110816, August
+              2011, <https://www.w3.org/TR/2011/REC-SVG11-20110816/>.
+
 10.2.  Informative References
 
    [EUDIW.ARF]
@@ -2385,8 +2392,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2RjulrOgClJSwwTMFWKenGHQbKSizCaR
-   _YmL_PnuhoRjL9M4Nvp9c0_d-wVEHcVu58fjrTdARuxt4UYtxc1jTg~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kTqCmVqYlIo8zhVbmozImWEybm8eI_zw
+   xNxKHqnvkW11Odbr1VGQQwTmghnNxamQZpPUvbv1J4e78TXYJ1NobA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2768,8 +2775,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2RjulrOgClJSwwTMFWKenGHQbKSizCaR
-   _YmL_PnuhoRjL9M4Nvp9c0_d-wVEHcVu58fjrTdARuxt4UYtxc1jTg~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.kTqCmVqYlIo8zhVbmozImWEybm8eI_zw
+   xNxKHqnvkW11Odbr1VGQQwTmghnNxamQZpPUvbv1J4e78TXYJ1NobA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2780,10 +2787,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDQwMDAsICJzZF9oYXNoIjogIk
-   pIS2pLZnBMZ1A5TzZ3dGRaZ09hTTlpenVudW8yOHhEOTVYNlFMbDdqX1EifQ.-yceXhy
-   wOV--IvSMaLaAFRxBj83g1Ef_fJ3fo_3rvc_AuOB0OJrF8EcneXTGlIDoNJc57S2gf4V
-   DIpnsA_EjNA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM3NDYxMzcsICJzZF9oYXNoIjogIl
+   lNaWExbldPaFl5QlU1cFlIdFZfbGJEalRqM1RXTjNYRFV1ajFfVURnZG8ifQ.lAykqaB
+   DUW3o8n-p3u4Ly64Gvo7sHwNlBPs9UzAPlHeUnzEtTHa3gqw_F9NRA7HQgAgD7_rfWcq
+   35c9Y1W7TDg
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2792,8 +2799,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793744000,
-     "sd_hash": "JHKjKfpLgP9O6wtdZgOaM9izunuo28xD95X6QLl7j_Q"
+     "iat": 1793746137,
+     "sd_hash": "YMia1nWOhYyBU5pYHtV_lbDjTj3TWN3XDUuj1_UDgdo"
    }
 
                      Figure 27: Key Binding JWT Payload
