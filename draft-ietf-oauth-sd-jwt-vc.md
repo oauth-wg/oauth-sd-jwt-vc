@@ -922,7 +922,7 @@ contains at least one of the following properties:
 
 ##### SVG Rendering {#svg-rendering}
 
-A consuming application MUST preprocess the SVG template by replacing placeholders
+A consuming application MUST preprocess the SVG template [@!W3C.SVG] by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
 placeholders MUST be defined in the SVG template using the syntax
 `{{svg_id}}`, where `svg_id` is an identifier defined in the claim metadata as
@@ -1623,6 +1623,21 @@ be included in any request to retrieve such resources (e.g., in HTTP headers).
   <title>JSON Web Token Claims</title>
   <author><organization>IANA</organization></author>
 </front>
+</reference>
+
+<reference anchor="W3C.SVG" target="https://www.w3.org/TR/2011/REC-SVG11-20110816/">
+  <front>
+    <title>Scalable Vector Graphics (SVG) 1.1 (Second Edition)</title>
+    <author fullname="Erik Dahlström" surname="Dahlström"/>
+    <author fullname="Patrick Dengler" surname="Dengler"/>
+    <author fullname="Anthony Grasso" surname="Grasso"/>
+    <author fullname="Chris Lilley" surname="Lilley"/>
+    <author fullname="Cameron McCormack" surname="McCormack"/>
+    <author fullname="Doug Schepers" surname="Schepers"/>
+    <author fullname="Robert Longson" surname="Longson"/>
+    <date month="August" year="2011"/>
+  </front>
+  <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-SVG11-20110816"/>
 </reference>
 
 # IANA Considerations
