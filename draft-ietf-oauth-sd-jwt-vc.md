@@ -908,7 +908,7 @@ the following properties:
 ##### SVG Template Properties {#svg-template-properties}
 
 The `properties` property is an object containing properties for the SVG
-template. Consuming applications MUST use these properties to find the best SVG
+template. Consuming applications use these properties to find the best SVG
 template available for display to the user based on the display properties
 (landscape/portrait) and user preferences (color scheme, contrast). The object
 contains at least one of the following properties:
