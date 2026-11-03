@@ -487,10 +487,10 @@ If a recipient cannot validate that the public verification key corresponds to t
 
 This specification defines several documents and resources that a Consumer
 retrieves via HTTP URLs: the JWT VC Issuer Metadata configuration and the JWK
-Set referenced by `jwks_uri` (#jwt-vc-issuer-metadata), Type Metadata documents
+Set referenced by `jwks_uri` ((#jwt-vc-issuer-metadata)), Type Metadata documents
 referenced by `vct` claims and `extends` properties
-(#retrieving-type-metadata), and rendering resources such as logos, background
-images, and SVG templates (#rendering-metadata). The requirements in this
+((#retrieving-type-metadata)), and rendering resources such as logos, background
+images, and SVG templates ((#rendering-metadata)). The requirements in this
 section apply to every such retrieval.
 
 HTTP requests and responses used with this specification are governed by HTTP
