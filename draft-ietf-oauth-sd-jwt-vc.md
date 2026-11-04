@@ -115,10 +115,10 @@ selective disclosure in SD-JWT VCs is optional.
 An SD-JWT VC is verifiable through the Issuer's signature and, when Key Binding is
 used, through the Holder's proof of possession of the key referenced in the `cnf`
 claim. What the credential means, that is, the semantics of its claims, is identified
-by its type, which is conveyed in the `vct` claim (#type-claim). Type Metadata
-(#type-metadata) can be retrieved for a type and describes it to Consumers, including
+by its type, which is conveyed in the `vct` claim ((#type-claim)). Type Metadata
+((#type-metadata)) can be retrieved for a type and describes it to Consumers, including
 how the credential and its claims are displayed. The `aka_vcts` claim
-(#aka-vcts-claim) lists further types that the credential also has.
+((#aka-vcts-claim)) lists further types that the credential also has.
 
 SD-JWT VCs can contain claims that are registered in "JSON Web Token Claims"
 registry as defined in [@!RFC7519], as well as public and
@@ -317,7 +317,7 @@ Note that the `aka_vcts` claim is asserted by
 the Issuer and, like the `vct` claim, is only as trustworthy as the Issuer
 itself.
 
-The `aka_vcts` claim is independent of Type Metadata (#type-metadata)
+The `aka_vcts` claim is independent of Type Metadata ((#type-metadata))
 and, in particular, orthogonal to the `extends` property: the claim can be used
 whether or not Type Metadata exists for any of the listed types, and the listed
 types are not required to be related to the type of the SD-JWT VC through the
