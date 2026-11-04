@@ -1747,7 +1747,7 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
   "vct#integrity":
-    "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
+    "sha256-dPPy/f63dtwl0FcbK8Pr9t2uCrF83zHnfInSPDdHaZc=",
   "name": "Zaphod Beeblebrox",
   "address": {
     "street_address": "42 Galaxy Way",
@@ -1778,9 +1778,9 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
-  "name": "Betelgeuse Education Credential - First Version",
+  "name": "Betelgeuse Education Credential - Version 42",
   "description":
-    "This is our first version of the education credential. Don't panic.",
+    "This is our education credential. Don't panic.",
   "extends":
     "https://galaxy.example.com/galactic-education-credential/v2",
   "extends#integrity":
