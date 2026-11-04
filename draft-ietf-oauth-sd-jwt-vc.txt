@@ -191,10 +191,10 @@ Table of Contents
    Verifiable Digital Credentials in a way that is easy to understand
    and process as it builds upon established web primitives.
 
-   Selective Disclosure JWT (SD-JWT) [RFC9901] is a specification that
-   introduces conventions to support selective disclosure for JWTs: For
-   an SD-JWT document, a Holder can decide which claims to release
-   (within bounds defined by the Issuer).
+   Selective Disclosure for JSON Web Tokens (SD-JWT) [RFC9901] is a
+   specification that introduces conventions to support selective
+   disclosure for JWTs: For an SD-JWT document, a Holder can decide
+   which claims to release (within bounds defined by the Issuer).
 
    SD-JWT builds on JWT/JWS.  It can also be used when there are no
    selectively disclosable claims.  However, SD-JWT itself does not
@@ -211,10 +211,11 @@ Table of Contents
    Key Binding is used, through the Holder's proof of possession of the
    key referenced in the cnf claim.  What the credential means, that is,
    the semantics of its claims, is identified by its type, which is
-   conveyed in the vct claim Section 2.2.2.1.  Type Metadata Section 5
-   can be retrieved for a type and describes it to Consumers, including
-   how the credential and its claims are displayed.  The aka_vcts claim
-   Section 2.2.2.2 lists further types that the credential also has.
+   conveyed in the vct claim (Section 2.2.2.1).  Type Metadata
+   (Section 5) can be retrieved for a type and describes it to
+   Consumers, including how the credential and its claims are displayed.
+   The aka_vcts claim (Section 2.2.2.2) lists further types that the
+   credential also has.
 
    SD-JWT VCs can contain claims that are registered in the "JSON Web
    Token Claims" registry [IANA.JWT], as well as public and private
@@ -433,12 +434,12 @@ Table of Contents
    Note that the aka_vcts claim is asserted by the Issuer and, like the
    vct claim, is only as trustworthy as the Issuer itself.
 
-   The aka_vcts claim is independent of Type Metadata Section 5 and, in
-   particular, orthogonal to the extends property: the claim can be used
-   whether or not Type Metadata exists for any of the listed types, and
-   the listed types are not required to be related to the type of the
-   SD-JWT VC through the extends property.  The interaction between the
-   aka_vcts claim and Type Metadata using the extends property is
+   The aka_vcts claim is independent of Type Metadata (Section 5) and,
+   in particular, orthogonal to the extends property: the claim can be
+   used whether or not Type Metadata exists for any of the listed types,
+   and the listed types are not required to be related to the type of
+   the SD-JWT VC through the extends property.  The interaction between
+   the aka_vcts claim and Type Metadata using the extends property is
    described in Section 5.4.
 
    Because the values of the aka_vcts claim are not used to retrieve
@@ -689,9 +690,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0oQLv
-   PMGte2z51x31ha3bt0tHSS6_JIDlXPADOd2mc0Il0g7kPohlqcR2QCxWIlP6MK4PvHZA
-   mquhHXZTIks5g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0j8Gd
+   Mel_T0EJV0MOoQaJBVLzFs46CgoWq1HcclTYf-njTzNYMVQHHMSM0E6xaChQxnKF5vAM
+   rlnVZJTj0dzFg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -727,17 +728,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0oQLv
-   PMGte2z51x31ha3bt0tHSS6_JIDlXPADOd2mc0Il0g7kPohlqcR2QCxWIlP6MK4PvHZA
-   mquhHXZTIks5g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0j8Gd
+   Mel_T0EJV0MOoQaJBVLzFs46CgoWq1HcclTYf-njTzNYMVQHHMSM0E6xaChQxnKF5vAM
+   rlnVZJTj0dzFg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4MzI4Nj
-   IsICJzZF9oYXNoIjogInktV2lUTmZNX283V1o1b21feEY3VHk3OWQ3QUFHNEdWV0tUbj
-   ZGWnB5cG8ifQ.VCB1ORECr2zvL7a8uoKXcS0aWMiAjd-532XATzG1Z2ksd15CvLZsXI8
-   cPGxXHWvgOH7hYWeBrZOD1mPgssOgEg
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4MzM4Nz
+   QsICJzZF9oYXNoIjogIkRvdnctaHloQVlFS1o2eDhDZXdlY1RjSm9tNks3RU9QbHBMRm
+   g5UWNyM1kifQ.SHtzmlg4eVMFP_J4cYTkcDYB4Fntv9HjR5-Sh3CWQ2W6USi0CR34-3_
+   JkEwg6WHAwBBtIhTs884-vyXjChpq4Q
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -783,8 +784,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.82IxUurxG1CKRcptbk-js8vn0cKaEql2sYoxz6xU2kGugG
-   mcqmElyCHAE-0P2z-5aBNC4Do8HDZ6YCUZpKKKSw~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.4jc53byXwwETaAz8Rhe3P3JB4AZS65qzjQVFoOGBQVVEJg
+   qry-50VurccP8W1qo-NsIluIjZAnkUi1pJwbviCA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2401,8 +2402,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.izuZ7O8IJ3wlr3UsGH0eVcQEO8TAqi7n
-   kEbTYf7AZXGLUs-lGmgxAhT0-Y6rKGQCX8TFZ9eJHsFSt8pcK5mSvw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Ky9-oxQowT3fTm2EhUv1U4wnencMQUaw
+   feOD-fqCTEn_LdIa8n_tkIPLkyjq2MY7qBM5LwMQwuWd3d-Pu-a9Bw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2784,8 +2785,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.izuZ7O8IJ3wlr3UsGH0eVcQEO8TAqi7n
-   kEbTYf7AZXGLUs-lGmgxAhT0-Y6rKGQCX8TFZ9eJHsFSt8pcK5mSvw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Ky9-oxQowT3fTm2EhUv1U4wnencMQUaw
+   feOD-fqCTEn_LdIa8n_tkIPLkyjq2MY7qBM5LwMQwuWd3d-Pu-a9Bw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2796,10 +2797,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4MzI4NjIsICJzZF9oYXNoIjogIl
-   FEeERONko2b3RySFVTQWluT0hOOHhBYmRtWnRKNXQ5emlqUUJwVHF6M1EifQ.f8dwO0m
-   kIUX9CNYvUw7wp1fi9N-dKWAbImZNysRBH4Glr4MK0WCSSsB9AzLkvKOiyUVs9Ji2Wry
-   RMqUHEn6rxw
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4MzM4NzQsICJzZF9oYXNoIjogIm
+   pXMXdGbll4dFBBVW5RN1Z3ZlhIWWlZR3BnY0FuaUNFdG81SHlfRjE5c0kifQ.XLB0bRj
+   R0enfX3jeJ-TiEno6CDiNU1_nwDXjUbhNCN1Kyp8ZqpgfE6QFu3dq7GsjO0RkZH8UkXR
+   I3bvBKOyeEQ
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2808,8 +2809,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793832862,
-     "sd_hash": "QDxDN6J6otrHUSAinOHN8xAbdmZtJ5t9zijQBpTqz3Q"
+     "iat": 1793833874,
+     "sd_hash": "jW1wFnYxtPAUnQ7VwfXHYiYGpgcAniCEto5Hy_F19sI"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -2848,7 +2849,7 @@ A.2.  Example Type Metadata
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
      "vct#integrity":
-       "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
+       "sha256-dPPy/f63dtwl0FcbK8Pr9t2uCrF83zHnfInSPDdHaZc=",
      "name": "Zaphod Beeblebrox",
      "address": {
        "street_address": "42 Galaxy Way",
@@ -2879,9 +2880,9 @@ A.2.  Example Type Metadata
 
    {
      "vct": "https://betelgeuse.example.com/education_credential/v42",
-     "name": "Betelgeuse Education Credential - First Version",
+     "name": "Betelgeuse Education Credential - Version 42",
      "description":
-       "This is our first version of the education credential. Don't panic.",
+       "This is our education credential. Don't panic.",
      "extends":
        "https://galaxy.example.com/galactic-education-credential/v2",
      "extends#integrity":
@@ -3080,7 +3081,7 @@ A.2.  Example Type Metadata
        disclosed, the field_of_study property will always be included
        and cannot be hidden.
    4.  The date_awarded property of each degree object is marked as sd:
-       always, meaning it can be selectively disclosed.
+       always, meaning it is always selectively disclosable.
 
 Appendix B.  Acknowledgements
 
@@ -3089,15 +3090,16 @@ Appendix B.  Acknowledgements
    Jurkovikj, Babis Routis, Christian Amsüss, Christian Bormann, Dan
    Moore, Deb Cooley, Denis Pinkas, George J Padayatti, Giuseppe De
    Marco, Hannes Tschofenig, Ketan Talaulikar, Lukas J Han, Lukasz
-   Jaromin, Leif Johansson, Mark Nottingham, Michael B.  Jones, Mike
-   Bishop, Mike Prorock, Ionuț Mihalcea, Mirko Mollik, Nas Til, Nat
-   Sakimura, Orie Steele, Paul Bastian, Pavel Zarecky, remcoschaar
-   (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group
-   responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed
-   at its meeting on 14 October 2026), Stefan Charsley, Su-hyeon Forten
-   Lee, Tim Cappalli, Timo Glastra, Torsten Lodderstedt, Tobias Looker,
-   and Kristina Yasuda for their contributions (some of which
-   substantial) to this draft and to the initial set of implementations.
+   Jaromin, Leif Johansson, Mahesh Jethanandani, Mark Nottingham,
+   Michael B.  Jones, Mike Bishop, Mike Prorock, Ionuț Mihalcea, Mirko
+   Mollik, Nas Til, Nat Sakimura, Orie Steele, Paul Bastian, Pavel
+   Zarecky, remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG
+   10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220
+   series, as was agreed at its meeting on 14 October 2026), Stefan
+   Charsley, Su-hyeon Forten Lee, Tim Cappalli, Timo Glastra, Torsten
+   Lodderstedt, Tobias Looker, and Kristina Yasuda for their
+   contributions (some of which substantial) to this draft and to the
+   initial set of implementations.
 
 Appendix C.  Document History
 
