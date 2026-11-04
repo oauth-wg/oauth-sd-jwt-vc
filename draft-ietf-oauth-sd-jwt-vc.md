@@ -2039,7 +2039,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -24
 
-* Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT)
+* Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes
 
 -23
 
