@@ -5,6 +5,7 @@ ipr = "trust200902"
 area = "Security"
 workgroup = "Web Authorization Protocol"
 keyword = ["security", "oauth2", "sd-jwt"]
+updates = [7800]
 
 [seriesInfo]
 name = "Internet-Draft"
@@ -43,13 +44,15 @@ organization="Ping Identity"
 This specification describes data formats as well as validation and processing
 rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT format.
 
+Furthermore, this specification updates RFC7800 to allow for the Confirmation Claim (`cnf`) to be used regardless of the presence or absence of other claims.
+
 {mainmatter}
 
 # Introduction
 
 ## Issuer-Holder-Verifier Model
 
-In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
+In the Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
 Holder, who can then present the credentials to Verifiers. Verifiable Digital
 Credentials are cryptographically secured statements about a Subject, typically the Holder.
 
@@ -120,9 +123,9 @@ by its type, which is conveyed in the `vct` claim ((#type-claim)). Type Metadata
 how the credential and its claims are displayed. The `aka_vcts` claim
 ((#aka-vcts-claim)) lists further types that the credential also has.
 
-SD-JWT VCs can contain claims that are registered in "JSON Web Token Claims"
-registry as defined in [@!RFC7519], as well as public and
-private claims.
+SD-JWT VCs can contain claims that are registered in the "JSON Web Token Claims"
+registry [@IANA.JWT], as well as public and
+private claims as defined in [@!RFC7519].
 
 ## Requirements Notation and Conventions
 
@@ -278,7 +281,7 @@ between the types.
 An SD-JWT VC containing the `aka_vcts` claim is a Verifiable Digital
 Credential of the type identified by the `vct` claim and, additionally, of each
 of the types identified by the values in the `aka_vcts` claim. Holders
-and Verifiers can treat the SD-JWT VC as a credential of any of these types. This is
+and Verifiers can treat the SD-JWT VC as a credential of these types. This is
 typically used when the type identified by the `vct` claim is derived from a
 more general type, which is then included in the `aka_vcts` claim.
 
@@ -335,12 +338,12 @@ described in (#document-integrity).
 SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in [@!RFC7519].
 
-The following registered JWT claims, including any of their sub-claims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:
+The following registered JWT claims, including any of their subclaims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:
 
 * `iss`: OPTIONAL. As defined in [@!RFC7519, section 4.1.1] this claim explicitly indicates the Issuer of the Verifiable Digital Credential
     when it is not conveyed by other means (e.g., the subject of the end-entity certificate of an `x5c` header).
 * `nbf`: OPTIONAL. The time before which the Verifiable Digital Credential MUST NOT be
-accepted before validating. See [@!RFC7519] for more information.
+accepted. See [@!RFC7519] for more information.
 * `exp`: OPTIONAL. The expiry time of the Verifiable Digital Credential after which the
 Verifiable Digital Credential is no longer valid. See [@!RFC7519] for more
 information.
@@ -363,9 +366,11 @@ exist between `sub` and `cnf` claims.
 * `iat`: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
       [@!RFC7519] for more information.
 
-Note that [@!RFC7800, section 3] requires that a JWT containing a `cnf` claim also contain either the `sub` or `iss` claim.
-This specification explicitly overrides that requirement, as there are valid and
-legitimate uses of key-bound SD-JWT VCs without either of those claims.
+##### Confirmation Claim Independence
+
+The second paragraph of [@!RFC7800, section 3] requires that a JWT containing a `cnf` claim also contain either the `sub` or `iss` claim.
+This specification explicitly overrides that requirement and updates [@!RFC7800] to nullify that requirement, as there are valid and
+legitimate uses of key-bound SD-JWT VCs, SD-JWTs, and JWTs without either of those claims.
 
 #### Public and Private JWT claims
 
@@ -487,10 +492,10 @@ If a recipient cannot validate that the public verification key corresponds to t
 
 This specification defines several documents and resources that a Consumer
 retrieves via HTTP URLs: the JWT VC Issuer Metadata configuration and the JWK
-Set referenced by `jwks_uri` (#jwt-vc-issuer-metadata), Type Metadata documents
+Set referenced by `jwks_uri` ((#jwt-vc-issuer-metadata)), Type Metadata documents
 referenced by `vct` claims and `extends` properties
-(#retrieving-type-metadata), and rendering resources such as logos, background
-images, and SVG templates (#rendering-metadata). The requirements in this
+((#retrieving-type-metadata)), and rendering resources such as logos, background
+images, and SVG templates ((#rendering-metadata)). The requirements in this
 section apply to every such retrieval.
 
 HTTP requests and responses used with this specification are governed by HTTP
@@ -502,7 +507,7 @@ defining the respective document or resource. A Consumer MUST NOT use the
 content of an error response (a response with a 4xx or 5xx status code) in
 place of the requested document or resource.
 
-All URLs dereferenced according to this specification MUST use the HTTPS
+All URLs dereferenced according to this specification MUST use the `https:`
 scheme. As an exception, the rendering resource URIs defined in
 (#rendering-metadata) MAY alternatively be `data:` URIs [@!RFC2397], which
 embed the resource and do not involve any retrieval.
@@ -543,6 +548,9 @@ optionally, port number and path components as defined in [@!RFC3986], but no
 query or fragment components. The path component, if present, MUST NOT contain
 any dot-segments (i.e., the discrete path segments "`.`" and "`..`" described
 in [@!RFC3986, section 3.3]).
+Lowercasing the scheme and host components of the `iss` value is RECOMMENDED, as mentioned in
+[@RFC7519, section 7.3], to provide a consistent representation of the value despite
+the case-insensitive treatment of those components per [@!RFC3986].
 
 ## JWT VC Issuer Metadata Request
 
@@ -908,7 +916,7 @@ the following properties:
 ##### SVG Template Properties {#svg-template-properties}
 
 The `properties` property is an object containing properties for the SVG
-template. Consuming applications MUST use these properties to find the best SVG
+template. Consuming applications use these properties to find the best SVG
 template available for display to the user based on the display properties
 (landscape/portrait) and user preferences (color scheme, contrast). The object
 contains at least one of the following properties:
@@ -922,7 +930,7 @@ contains at least one of the following properties:
 
 ##### SVG Rendering {#svg-rendering}
 
-A consuming application MUST preprocess the SVG template by replacing placeholders
+A consuming application MUST preprocess the SVG template [@!W3C.SVG] by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
 placeholders MUST be defined in the SVG template using the syntax
 `{{svg_id}}`, where `svg_id` is an identifier defined in the claim metadata as
@@ -1059,7 +1067,7 @@ The following shows examples of `path` values and the respective selected
 claims in the credential above:
 
 - `["name"]`: The claim `name` with the value `Arthur Dent` is selected.
-- `["address"]`: The claim `address` with its sub-claims as the value is selected.
+- `["address"]`: The claim `address` with its subclaims as the value is selected.
 - `["address", "street_address"]`: The claim `street_address` with the value
   `42 Market Street` is selected.
 - `["degrees", null, "type"]`: All `type` claims in the `degrees` array are
@@ -1398,9 +1406,9 @@ described in (#privacy-preserving-retrieval-of-type-metadata).
 
 Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., `display`, allow issuers and providers of metadata to
 specify human-readable information. These can contain arbitrary textual information that
-may be displayed to end users and developers. As such, any consuming application MUST ensure that maliciously
+may be displayed to end users and developers. To ensure that maliciously
 crafted information cannot be used to compromise the security of the application
-or the privacy of the user. To this end, the following considerations apply:
+or the privacy of the user, the following considerations apply:
 
 - The consuming application MUST ensure that the text is properly escaped before
   displaying it to the user or transferring it into other contexts. For example,
@@ -1623,6 +1631,21 @@ be included in any request to retrieve such resources (e.g., in HTTP headers).
   <title>JSON Web Token Claims</title>
   <author><organization>IANA</organization></author>
 </front>
+</reference>
+
+<reference anchor="W3C.SVG" target="https://www.w3.org/TR/2011/REC-SVG11-20110816/">
+  <front>
+    <title>Scalable Vector Graphics (SVG) 1.1 (Second Edition)</title>
+    <author fullname="Erik Dahlström" surname="Dahlström"/>
+    <author fullname="Patrick Dengler" surname="Dengler"/>
+    <author fullname="Anthony Grasso" surname="Grasso"/>
+    <author fullname="Chris Lilley" surname="Lilley"/>
+    <author fullname="Cameron McCormack" surname="McCormack"/>
+    <author fullname="Doug Schepers" surname="Schepers"/>
+    <author fullname="Robert Longson" surname="Longson"/>
+    <date month="August" year="2011"/>
+  </front>
+  <seriesInfo name="World Wide Web Consortium Recommendation" value="REC-SVG11-20110816"/>
 </reference>
 
 # IANA Considerations
@@ -1998,6 +2021,7 @@ Leif Johansson,
 Mahesh Jethanandani,
 Mark Nottingham,
 Michael B. Jones,
+Mike Bishop,
 Mike Prorock,
 Ionuț Mihalcea,
 Mirko Mollik,
@@ -2017,6 +2041,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-24
+
+* Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes
 
 -23
 
@@ -2069,7 +2097,7 @@ for their contributions (some of which substantial) to this draft and to the ini
   * Note privacy implications of retrieving rendering resources
 * Be more explicit about JWS JSON serialization being not explicitly defined for SD-JWT VCs
 * Address AD review:
-  * Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable
+  * Clarify that claims that must not be selectively disclosed includes their subclaims not being selectively disclosable
   * Remove: "Note that this draft used `vc+sd-jwt` as the value of the `typ` header from its inception in July 2023 until November 2024 when it was changed to `dc+sd-jwt` to avoid conflict with the `vc` media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both `vc+sd-jwt` and `dc+sd-jwt` should be accepted as the value of the `typ` header for a reasonable transitional period."
   * Not use big 2119 language in the first paragraph of the Display Metadata section
   * Add a bit more explanation about aka_vcts
