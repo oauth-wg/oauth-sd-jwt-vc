@@ -178,7 +178,7 @@ SD-JWT VC uses the SD-JWT format defined in [@!RFC9901, section 4].
 Use of the JWS JSON Serialization per [@!RFC9901, section 8] for SD-JWT VC is not precluded
 but the specific details are beyond the scope of this specification.
 
-Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
+Note that in some cases, an SD-JWT VC can have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.
 
 ### JOSE Header
@@ -383,7 +383,7 @@ An example of a claim containing binary data encoded as a data URI is shown in (
 
 #### SD-JWT VC without Selectively Disclosable Claims
 
-An SD-JWT VC MAY have no selectively disclosable claims.
+An SD-JWT VC can have no selectively disclosable claims.
 In that case, the SD-JWT VC MUST NOT contain the `_sd` claim in the JWT body. It also
 MUST NOT have any Disclosures.
 
@@ -776,8 +776,8 @@ The registry MUST provide the Type Metadata in the same format as described in
 
 ### Using a Defined Retrieval Method {#defined-retrieval-method}
 
-Ecosystems MAY define additional methods for retrieving Type Metadata. For example, a
-standardization body or a community MAY define a service which has to be used to
+Ecosystems can define additional methods for retrieving Type Metadata. For example, a
+standardization body or a community can define a service which has to be used to
 retrieve Type Metadata based on a URN in the `vct` claim.
 
 ### From a Local Cache {#retrieval-from-local-cache}
@@ -2006,6 +2006,7 @@ Andrii Deinega,
 Annabelle Kennedy,
 Antun Jurkovikj,
 Babis Routis,
+Charles Eckel,
 Christian Amsüss,
 Christian Bormann,
 Dan Moore,
@@ -2044,6 +2045,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -24
 
 * Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes
+* some keyword fixes for Charles Eckel's No Objection on draft-ietf-oauth-sd-jwt-vc-23: (with COMMENT)
 
 -23
 
