@@ -5,6 +5,7 @@ ipr = "trust200902"
 area = "Security"
 workgroup = "Web Authorization Protocol"
 keyword = ["security", "oauth2", "sd-jwt"]
+updates = [7800]
 
 [seriesInfo]
 name = "Internet-Draft"
@@ -49,7 +50,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
 
 ## Issuer-Holder-Verifier Model
 
-In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
+In the Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
 Holder, who can then present the credentials to Verifiers. Verifiable Digital
 Credentials are cryptographically secured statements about a Subject, typically the Holder.
 
