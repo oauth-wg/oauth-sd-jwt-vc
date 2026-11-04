@@ -5,7 +5,6 @@ ipr = "trust200902"
 area = "Security"
 workgroup = "Web Authorization Protocol"
 keyword = ["security", "oauth2", "sd-jwt"]
-updates = [7800]
 
 [seriesInfo]
 name = "Internet-Draft"
