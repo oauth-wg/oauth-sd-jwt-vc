@@ -100,7 +100,7 @@ JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Digital Credentials in a way that is easy to understand and process as it
 builds upon established web primitives.
 
-Selective Disclosure JWT (SD-JWT) [@!RFC9901] is
+Selective Disclosure for JSON Web Tokens (SD-JWT) [@!RFC9901] is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
@@ -118,10 +118,10 @@ selective disclosure in SD-JWT VCs is optional.
 An SD-JWT VC is verifiable through the Issuer's signature and, when Key Binding is
 used, through the Holder's proof of possession of the key referenced in the `cnf`
 claim. What the credential means, that is, the semantics of its claims, is identified
-by its type, which is conveyed in the `vct` claim (#type-claim). Type Metadata
-(#type-metadata) can be retrieved for a type and describes it to Consumers, including
+by its type, which is conveyed in the `vct` claim ((#type-claim)). Type Metadata
+((#type-metadata)) can be retrieved for a type and describes it to Consumers, including
 how the credential and its claims are displayed. The `aka_vcts` claim
-(#aka-vcts-claim) lists further types that the credential also has.
+((#aka-vcts-claim)) lists further types that the credential also has.
 
 SD-JWT VCs can contain claims that are registered in the "JSON Web Token Claims"
 registry [@IANA.JWT], as well as public and
@@ -320,7 +320,7 @@ Note that the `aka_vcts` claim is asserted by
 the Issuer and, like the `vct` claim, is only as trustworthy as the Issuer
 itself.
 
-The `aka_vcts` claim is independent of Type Metadata (#type-metadata)
+The `aka_vcts` claim is independent of Type Metadata ((#type-metadata))
 and, in particular, orthogonal to the `extends` property: the claim can be used
 whether or not Type Metadata exists for any of the listed types, and the listed
 types are not required to be related to the type of the SD-JWT VC through the
@@ -1770,7 +1770,7 @@ The following example for Type Metadata assumes an SD-JWT VC payload structured 
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
   "vct#integrity":
-    "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
+    "sha256-dPPy/f63dtwl0FcbK8Pr9t2uCrF83zHnfInSPDdHaZc=",
   "name": "Zaphod Beeblebrox",
   "address": {
     "street_address": "42 Galaxy Way",
@@ -1801,9 +1801,9 @@ The Type Metadata for this SD-JWT VC could be defined as follows in (#example-ty
 ```json
 {
   "vct": "https://betelgeuse.example.com/education_credential/v42",
-  "name": "Betelgeuse Education Credential - First Version",
+  "name": "Betelgeuse Education Credential - Version 42",
   "description":
-    "This is our first version of the education credential. Don't panic.",
+    "This is our education credential. Don't panic.",
   "extends":
     "https://galaxy.example.com/galactic-education-credential/v2",
   "extends#integrity":
@@ -1992,7 +1992,7 @@ Note that in this example, there are four definitions affecting the `degrees` cl
 1. The `degrees` array itself is marked as `sd: never`, meaning the element `degrees` cannot be selectively disclosed and will always exist in the disclosed SD-JWT. Changing this to `sd: always` would mean that the `degrees` array itself is selectively disclosable.
 2. Each item in the `degrees` array (denoted by `null` in the path) is marked as `sd: always`, meaning each degree object will be selectively disclosed as a whole.
 3. The `field_of_study` property of each degree object is marked as `sd: never`, meaning that if the respective degree object is disclosed, the `field_of_study` property will always be included and cannot be hidden.
-4. The `date_awarded` property of each degree object is marked as `sd: always`, meaning it can be selectively disclosed.
+4. The `date_awarded` property of each degree object is marked as `sd: always`, meaning it is always selectively disclosable.
 
 
 # Acknowledgements {#Acknowledgements}
@@ -2018,6 +2018,7 @@ Ketan Talaulikar,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
+Mahesh Jethanandani,
 Mark Nottingham,
 Michael B. Jones,
 Mike Bishop,
