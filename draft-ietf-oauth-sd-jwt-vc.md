@@ -97,7 +97,7 @@ JSON Web Tokens (JWTs) [@!RFC7519] can in principle be used to express
 Verifiable Digital Credentials in a way that is easy to understand and process as it
 builds upon established web primitives.
 
-Selective Disclosure JWT (SD-JWT) [@!RFC9901] is
+Selective Disclosure for JSON Web Tokens (SD-JWT) [@!RFC9901] is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).
