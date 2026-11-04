@@ -548,6 +548,9 @@ optionally, port number and path components as defined in [@!RFC3986], but no
 query or fragment components. The path component, if present, MUST NOT contain
 any dot-segments (i.e., the discrete path segments "`.`" and "`..`" described
 in [@!RFC3986, section 3.3]).
+Lowercasing the scheme and host components of the `iss` value is RECOMMENDED, as mentioned in
+[@RFC7519, section 7.3], to provide a consistent representation of the value despite
+the case-insensitive treatment of those components per [@!RFC3986].
 
 ## JWT VC Issuer Metadata Request
 
