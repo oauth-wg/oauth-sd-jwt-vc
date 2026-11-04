@@ -5,6 +5,7 @@ ipr = "trust200902"
 area = "Security"
 workgroup = "Web Authorization Protocol"
 keyword = ["security", "oauth2", "sd-jwt"]
+updates = [7800]
 
 [seriesInfo]
 name = "Internet-Draft"
@@ -42,6 +43,8 @@ organization="Ping Identity"
 
 This specification describes data formats as well as validation and processing
 rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT format.
+
+Furthermore, this specification updates RFC7800 to allow for the Confirmation Claim (`cnf`) to be used regardless of the presence or absence of other claims.
 
 {mainmatter}
 
@@ -363,9 +366,11 @@ exist between `sub` and `cnf` claims.
 * `iat`: OPTIONAL. The time of issuance of the Verifiable Digital Credential. See
       [@!RFC7519] for more information.
 
-Note that [@!RFC7800, section 3] requires that a JWT containing a `cnf` claim also contain either the `sub` or `iss` claim.
-This specification explicitly overrides that requirement, as there are valid and
-legitimate uses of key-bound SD-JWT VCs without either of those claims.
+##### Confirmation Claim Independence
+
+The second paragraph of [@!RFC7800, section 3] requires that a JWT containing a `cnf` claim also contain either the `sub` or `iss` claim.
+This specification explicitly overrides that requirement and updates [@!RFC7800] to nullify that requirement, as there are valid and
+legitimate uses of key-bound SD-JWT VCs, SD-JWTs, and JWTs without either of those claims.
 
 #### Public and Private JWT claims
 
