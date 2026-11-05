@@ -2060,7 +2060,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -25
 
-* working on Éric Vyncke's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT)
+* working on Éric Vyncke's Discuss on draft-ietf-oauth-sd-jwt-vc-23
 
 -24
 
