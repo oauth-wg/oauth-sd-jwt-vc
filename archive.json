@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-11-01T00:37:47.853265+00:00",
+  "timestamp": "2026-11-05T00:31:51.202522+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -35232,6 +35232,170 @@
       "mergeCommit": {
         "oid": "2353a2c2e4d949c92fc66877598dadd7cba4655e"
       },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 450,
+      "id": "PR_kwDOJbVClc8AAAABMq2dJA",
+      "title": "Mike Bishop's ballot ",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/450",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "for https://mailarchive.ietf.org/arch/msg/oauth/d49b8f7_xsSOXCgDit-a1p9-yvg/ ",
+      "createdAt": "2026-11-03T22:04:28Z",
+      "updatedAt": "2026-11-04T22:54:01Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "2353a2c2e4d949c92fc66877598dadd7cba4655e",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "Mike-Bishop-Ballot",
+      "headRefOid": "000f09ddcbc1cb37a610931b061a9b22b63ea229",
+      "closedAt": "2026-11-04T22:54:01Z",
+      "mergedAt": "2026-11-04T22:54:01Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "34fd3b4fe83cc6610eb021486c60c1cdb4d31f03"
+      },
+      "comments": [
+        {
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "body": "initial response https://mailarchive.ietf.org/arch/msg/oauth/4HcuffVivoI7zlujPUWwVPff6y0/ ",
+          "createdAt": "2026-11-03T23:30:05Z",
+          "updatedAt": "2026-11-03T23:30:05Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWAGcGw",
+          "commit": {
+            "abbreviatedOid": "1e7f654"
+          },
+          "author": "awoie",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "Editorial items for Mike all LGTM. \r\n\r\nOne more from Mike's nits that isn't in here yet: 1.1, \"In the so-called Issuer-Holder-Verifier Model\" -> \"In the Issuer-Holder-Verifier Model\". Outside the diff, so no suggestion possible.\r\n\r\nI'll approve once the DISCUSS part is in.",
+          "createdAt": "2026-11-04T15:57:02Z",
+          "updatedAt": "2026-11-04T15:57:02Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 451,
+      "id": "PR_kwDOJbVClc8AAAABM5KAFg",
+      "title": "Issuer key discovery: policy selects the mechanism, inputs of other mechanisms do not identify the Issuer",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/451",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "For Mahesh's ballot comment on 2.5 / 7.3 (Roman endorsed it).\n\nThe -20 text says `iss` doesn't have to match the `x5c` cert, but nothing says which identity is authoritative. Under a shared CA / trusted list, any cert holder under that trust framework could put someone else's `iss` into the payload, `x5c` validates fine, and downstream takes `iss` as the issuer. Same thing the other way round with an `x5c` under the metadata mechanism.\n\nSo:\n\n- 2.5: a credential can carry inputs for more than one mechanism; policy picks the mechanism per issuer, not the credential. The issuer identity is whatever the mechanism in use establishes. Inputs of other mechanisms MUST NOT be treated as the issuer identity unless policy binds them and the recipient checked that.\n- 2.5, `x5c` bullet: chain validation per RFC 7515 4.1.6 / RFC 5280, a cert doesn't become a trust anchor by being in `x5c`, MAY reject an unbound `iss`, issuers SHOULD NOT include `iss` without a binding.\n- 7.3: talks about the issuer instead of the `iss` value, plus a short paragraph on why.\n\nNo precedence rule, no MUST reject (would invalidate existing credentials). RFC 5280 becomes normative.",
+      "createdAt": "2026-11-04T19:20:42Z",
+      "updatedAt": "2026-11-04T23:08:07Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "34fd3b4fe83cc6610eb021486c60c1cdb4d31f03",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "x5c-iss-policy",
+      "headRefOid": "705b91ca27877d82ba16f3ea325c28dcc2086d30",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWDBMTA",
+          "commit": {
+            "abbreviatedOid": "efb595e"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-11-04T19:31:05Z",
+          "updatedAt": "2026-11-04T19:31:06Z",
+          "comments": [
+            {
+              "originalPosition": 5,
+              "body": "placing the \"not a trust anchor merely because...\" in parenthetical so it won't read like the case being refereed to in the start of the next sentence \"In this case\" \n```suggestion\n- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter ([@!RFC7515, section 4.1.6]), the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` header parameter and validates the X.509 certificate chain according to [@!RFC7515, section 4.1.6] and [@!RFC5280] against a trust anchor permitted for the Issuer according to policy (a certificate in the `x5c` header parameter is not a trust anchor merely because it is included there). In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. An `iss` claim, if present, is not authenticated by this mechanism (see below); a recipient MAY reject an SD-JWT VC whose `iss` value is not bound to the end-entity certificate according to its policy, and Issuers using this mechanism SHOULD NOT include an `iss` claim without such a binding.\n```",
+              "createdAt": "2026-11-04T19:31:05Z",
+              "updatedAt": "2026-11-04T19:31:06Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWD4BVg",
+          "commit": {
+            "abbreviatedOid": "449a668"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "danke! ",
+          "createdAt": "2026-11-04T20:39:18Z",
+          "updatedAt": "2026-11-04T20:39:18Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 452,
+      "id": "PR_kwDOJbVClc8AAAABM6jr1g",
+      "title": "some other items from Mahesh Jethanandani ballot",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/452",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "https://mailarchive.ietf.org/arch/msg/oauth/5yaIITzC7JvwuRt94lpF7u4P72E/\nalso #451 ",
+      "createdAt": "2026-11-04T21:10:14Z",
+      "updatedAt": "2026-11-04T23:10:46Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "34fd3b4fe83cc6610eb021486c60c1cdb4d31f03",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "Mahesh-Jethanandani-Ballot",
+      "headRefOid": "4def9e298120f64d856144e3bceca9516ec74e6f",
+      "closedAt": "2026-11-04T23:10:46Z",
+      "mergedAt": "2026-11-04T23:10:46Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "1eaf43e5a8926c1582b478337e00b30360d8eec5"
+      },
+      "comments": [],
+      "reviews": []
+    },
+    {
+      "number": 453,
+      "id": "PR_kwDOJbVClc8AAAABM71wXA",
+      "title": "some keyword fixes for Charles Eckel's No Objection on draft-ietf-oauth-sd-jwt-vc-23: (with COMMENT)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/453",
+      "state": "OPEN",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": " https://mailarchive.ietf.org/arch/msg/oauth/h0Erp-t-X8pu3UFKthrUl2Ttf2k/ and https://mailarchive.ietf.org/arch/msg/oauth/-XTToR0epFjLtoYB-XfkOUVcjps/",
+      "createdAt": "2026-11-04T23:02:07Z",
+      "updatedAt": "2026-11-04T23:09:10Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "34fd3b4fe83cc6610eb021486c60c1cdb4d31f03",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "Charles-Eckel-Ballot",
+      "headRefOid": "1f041da4614b40c71f441ceafaa765384921448d",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
       "comments": [],
       "reviews": []
     }
