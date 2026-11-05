@@ -289,7 +289,7 @@ The `aka_vcts` claim is particularly useful in issuance and presentation protoco
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
-For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
+For the purpose of type matching, a Holder or Verifier treats an SD-JWT VC as being
 of a given type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
@@ -2024,6 +2024,7 @@ Christian Bormann,
 Dan Moore,
 Deb Cooley,
 Denis Pinkas,
+Éric Vyncke,
 George J Padayatti,
 Giuseppe De Marco,
 Hannes Tschofenig,
