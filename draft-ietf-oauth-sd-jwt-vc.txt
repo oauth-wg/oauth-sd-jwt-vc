@@ -690,9 +690,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.w1gby
-   3xAN-Xv1gmTOBswQmPJ6uR0XQyqW4DXOgSTX8Btpb8ZdWoVbL22dQRgHHp7xdVkz3FIc
-   Urzq8GfPDPXqw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.DEUom
+   Gk6jJkVAe3Sl60hXGIg5xxFHCOiTSXx-NRvYJ8OKTO8a7UXBtcoBfrHdBbaVgT3k694k
+   xyPZxAzhpTQ6g~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -728,17 +728,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.w1gby
-   3xAN-Xv1gmTOBswQmPJ6uR0XQyqW4DXOgSTX8Btpb8ZdWoVbL22dQRgHHp7xdVkz3FIc
-   Urzq8GfPDPXqw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.DEUom
+   Gk6jJkVAe3Sl60hXGIg5xxFHCOiTSXx-NRvYJ8OKTO8a7UXBtcoBfrHdBbaVgT3k694k
+   xyPZxAzhpTQ6g~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4NDEzMT
-   QsICJzZF9oYXNoIjogIkdJV29mRE1fNnB0NzU4Z3ZGckF6ajRodHN4Wkllc1Z3aGF2M2
-   ZBeUZTRW8ifQ.Kp50GV8P3BY1RS6S6QIGeW5S9VsWTT0WOJJ08kg4XIdNSJfh_kgXv3d
-   TwQm8gRHpoMjOqiTkw72BJG6u_QrE6Q
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4NDI2MT
+   gsICJzZF9oYXNoIjogIkJRRmN2RVlBNE9UNUNZZlByVHowWUxDdnhGdVpNb3VfM0Vkbk
+   V6RzJwcHMifQ.uQtuVJ_Bt7tJbKrBnEi2Ujk9T7PwupKC4z0Xq9H1UMjptTriCY0quz8
+   da7gW4M_ysf-pq8GBpo4o4hXYYP1xvQ
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -784,8 +784,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.q9QOfVGscLGV1j-HD5TeSicuVWw_9U0QArCm65vKH2g5i5
-   V5vKXSeI_d9uQ9rFgyswtvPKHQh4wj5_WIvBUunQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.HSp23VF3ipBXf_C4UDeEO-uBi6fWDWzaKllDRkbF15NLFp
+   i_sO1KGK9D2RPktWVdueViKisRRjjwhWZdovU6Hw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -869,12 +869,26 @@ Table of Contents
       x5c parameter (Section 4.1.6 of [RFC7515]), the recipient uses the
       public key from the end-entity certificate of the certificates
       from that x5c header parameter and validates the X.509 certificate
-      chain accordingly against a trust anchor permitted for the Issuer
-      according to policy.  In this case, the Issuer of the Verifiable
-      Digital Credential is the subject of the end-entity certificate.
-      If the iss claim is also present, there is no requirement that its
-      value directly correspond to a subject name in the end-entity
-      certificate.
+      chain according to Section 4.1.6 of [RFC7515] and [RFC5280]
+      against a trust anchor permitted for the Issuer according to
+      policy (a certificate in the x5c header parameter is not a trust
+      anchor merely because it is included there).  In this case, the
+      Issuer of the Verifiable Digital Credential is the subject of the
+      end-entity certificate.  An iss claim, if present, is not
+      authenticated by this mechanism (see below); a recipient MAY
+      reject an SD-JWT VC whose iss value is not bound to the end-entity
+      certificate according to its policy, and Issuers using this
+      mechanism SHOULD NOT include an iss claim without such a binding.
+
+   An SD-JWT VC can carry the inputs for more than one mechanism, for
+   example both an HTTPS iss value and an x5c header parameter.  The
+   recipient's policy determines which mechanism applies to an Issuer;
+   the SD-JWT VC does not.  The Issuer is identified as defined by the
+   mechanism in use.  A recipient MUST NOT treat inputs of other
+   mechanisms as identifying the Issuer unless its policy binds them to
+   that identity, for example an iss value to the end-entity certificate
+   through a Subject Alternative Name (Section 4.2.1.6 of [RFC5280]) or
+   a configured mapping, and the recipient has verified that binding.
 
    To enable different trust anchoring systems or key resolution
    methods, separate specifications or ecosystem regulations may define
@@ -1881,14 +1895,25 @@ Table of Contents
    When defining ecosystem-specific rules for resolution and
    verification of the public key, as outlined in Section 2.5, it is
    critical that those rules maintain the integrity of the relationship
-   between the iss value of the SD-JWT, if present, and the public keys
-   of the Issuer.
+   between the Issuer of the SD-JWT VC, as identified by the key
+   discovery and validation mechanism in use, for example by the iss
+   value or by the end-entity certificate of the x5c header parameter,
+   and the public keys of the Issuer.
 
-   A Verifier MUST ensure that for any given iss value, an attacker
-   cannot influence the type of verification process used.  Otherwise,
-   an attacker could attempt to make the Verifier use a verification
+   A Verifier MUST ensure that for any given Issuer, an attacker cannot
+   influence the type of verification process used.  Otherwise, an
+   attacker could attempt to make the Verifier use a verification
    process not intended by the Issuer, allowing the attacker to
    potentially manipulate the verification result to their advantage.
+
+   A key discovery and validation mechanism authenticates only its own
+   inputs.  Under the Inline X.509 Certificates mechanism, any holder of
+   a certificate under a permitted trust anchor can include an arbitrary
+   iss value; under the JWT VC Issuer Metadata mechanism, an x5c header
+   parameter has not been validated against a trust anchor and does not
+   identify the Issuer.  Recipients that pass the processed SD-JWT
+   payload to other components therefore convey the Issuer identity
+   established by the mechanism in use (see Section 2.5).
 
 7.4.  Circular "extends" Dependencies of Types
 
@@ -2197,6 +2222,12 @@ Table of Contents
               RFC 3986, DOI 10.17487/RFC3986, January 2005,
               <https://www.rfc-editor.org/info/rfc3986>.
 
+   [RFC5280]  Cooper, D., Santesson, S., Farrell, S., Boeyen, S.,
+              Housley, R., and W. Polk, "Internet X.509 Public Key
+              Infrastructure Certificate and Certificate Revocation List
+              (CRL) Profile", RFC 5280, DOI 10.17487/RFC5280, May 2008,
+              <https://www.rfc-editor.org/info/rfc5280>.
+
    [RFC5646]  Phillips, A., Ed. and M. Davis, Ed., "Tags for Identifying
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <https://www.rfc-editor.org/info/rfc5646>.
@@ -2402,8 +2433,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qmSzdwkttJEewYE80jwcg6zwZnBVU-nV
-   GgHwILkSlpy5bR1n07jppyJ3Ca7fdIbfI_umBfqonKePbwN66VWmpw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.z-DRcUs0Rf8IYR2nTWmsSWV9p4Wq5aRy
+   PaOvK5HofT9rd48iEtTSk5dD3etxRTDrcq86TKtQRR_s8wlnFvn8IA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2785,8 +2816,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qmSzdwkttJEewYE80jwcg6zwZnBVU-nV
-   GgHwILkSlpy5bR1n07jppyJ3Ca7fdIbfI_umBfqonKePbwN66VWmpw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.z-DRcUs0Rf8IYR2nTWmsSWV9p4Wq5aRy
+   PaOvK5HofT9rd48iEtTSk5dD3etxRTDrcq86TKtQRR_s8wlnFvn8IA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2797,10 +2828,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4NDEzMTQsICJzZF9oYXNoIjogIk
-   pvT056Q0F4aG00eUx6Sy1FOUJ1SHRGcnVFejdQckRVSk1PaHJ5bjdVYnMifQ.utfJgHl
-   GXcxxSOkjKZwcn0DYrq_ERisRvrq4py0kPSgustLGIDvT15w3HhHp6w3RMS00t2Lazzp
-   8_r3qSWEZcA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4NDI2MTgsICJzZF9oYXNoIjogIk
+   RnVFBwWWxCS3JTUktrbnBoNlZpQzhXeUhnNE8tWlVrWlh4SlhSWV81WWMifQ.XqKkybm
+   XzDBxKdC_f0QZROhN_DPRGEPgCNKtrUTjyISs23WfAW2_AS6baczhC_6Duw6Du2vlIk9
+   ESF858UvJaQ
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2809,8 +2840,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793841314,
-     "sd_hash": "JoONzCAxhm4yLzK-E9BuHtFruEz7PrDUJMOhryn7Ubs"
+     "iat": 1793842618,
+     "sd_hash": "DgTPpYlBKrSRKknph6ViC8WyHg4O-ZUkZXxJXRY_5Yc"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3105,6 +3136,12 @@ Appendix C.  Document History
 
    -24
 
+   *  Address IESG ballot comments on issuer key discovery: policy
+      selects the mechanism when both iss and x5c are present, chain
+      validation per RFC 7515 and RFC 5280, a certificate does not
+      become a trust anchor by being in x5c, and inputs of a mechanism
+      not in use (such as iss under x5c) do not identify the Issuer
+      unless policy binds them
    *  Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23:
       (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes
    *  some keyword fixes for Charles Eckel's No Objection on draft-ietf-
