@@ -6,9 +6,9 @@ Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Updates: 7800 (if approved)                                      D. Fett
 Intended status: Standards Track                           Authlete Inc.
-Expires: 8 May 2027                                          B. Campbell
+Expires: 9 May 2027                                          B. Campbell
                                                            Ping Identity
-                                                         4 November 2026
+                                                         5 November 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 8 May 2027.
+   This Internet-Draft will expire on 9 May 2027.
 
 Copyright Notice
 
@@ -282,7 +282,7 @@ Table of Contents
    JWT VC is not precluded but the specific details are beyond the scope
    of this specification.
 
-   Note that in some cases, an SD-JWT VC MAY have no selectively
+   Note that in some cases, an SD-JWT VC can have no selectively
    disclosable claims, and therefore the encoded SD-JWT will not contain
    any Disclosures.
 
@@ -525,7 +525,7 @@ Table of Contents
 
 2.2.2.5.  SD-JWT VC without Selectively Disclosable Claims
 
-   An SD-JWT VC MAY have no selectively disclosable claims.  In that
+   An SD-JWT VC can have no selectively disclosable claims.  In that
    case, the SD-JWT VC MUST NOT contain the _sd claim in the JWT body.
    It also MUST NOT have any Disclosures.
 
@@ -690,9 +690,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0j8Gd
-   Mel_T0EJV0MOoQaJBVLzFs46CgoWq1HcclTYf-njTzNYMVQHHMSM0E6xaChQxnKF5vAM
-   rlnVZJTj0dzFg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.w1gby
+   3xAN-Xv1gmTOBswQmPJ6uR0XQyqW4DXOgSTX8Btpb8ZdWoVbL22dQRgHHp7xdVkz3FIc
+   Urzq8GfPDPXqw~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -728,17 +728,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.0j8Gd
-   Mel_T0EJV0MOoQaJBVLzFs46CgoWq1HcclTYf-njTzNYMVQHHMSM0E6xaChQxnKF5vAM
-   rlnVZJTj0dzFg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.w1gby
+   3xAN-Xv1gmTOBswQmPJ6uR0XQyqW4DXOgSTX8Btpb8ZdWoVbL22dQRgHHp7xdVkz3FIc
+   Urzq8GfPDPXqw~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4MzM4Nz
-   QsICJzZF9oYXNoIjogIkRvdnctaHloQVlFS1o2eDhDZXdlY1RjSm9tNks3RU9QbHBMRm
-   g5UWNyM1kifQ.SHtzmlg4eVMFP_J4cYTkcDYB4Fntv9HjR5-Sh3CWQ2W6USi0CR34-3_
-   JkEwg6WHAwBBtIhTs884-vyXjChpq4Q
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4NDEzMT
+   QsICJzZF9oYXNoIjogIkdJV29mRE1fNnB0NzU4Z3ZGckF6ajRodHN4Wkllc1Z3aGF2M2
+   ZBeUZTRW8ifQ.Kp50GV8P3BY1RS6S6QIGeW5S9VsWTT0WOJJ08kg4XIdNSJfh_kgXv3d
+   TwQm8gRHpoMjOqiTkw72BJG6u_QrE6Q
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -784,8 +784,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.4jc53byXwwETaAz8Rhe3P3JB4AZS65qzjQVFoOGBQVVEJg
-   qry-50VurccP8W1qo-NsIluIjZAnkUi1pJwbviCA~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.q9QOfVGscLGV1j-HD5TeSicuVWw_9U0QArCm65vKH2g5i5
+   V5vKXSeI_d9uQ9rFgyswtvPKHQh4wj5_WIvBUunQ~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1195,8 +1195,8 @@ Table of Contents
 
 5.3.3.  Using a Defined Retrieval Method
 
-   Ecosystems MAY define additional methods for retrieving Type
-   Metadata.  For example, a standardization body or a community MAY
+   Ecosystems can define additional methods for retrieving Type
+   Metadata.  For example, a standardization body or a community can
    define a service which has to be used to retrieve Type Metadata based
    on a URN in the vct claim.
 
@@ -2402,8 +2402,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Ky9-oxQowT3fTm2EhUv1U4wnencMQUaw
-   feOD-fqCTEn_LdIa8n_tkIPLkyjq2MY7qBM5LwMQwuWd3d-Pu-a9Bw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qmSzdwkttJEewYE80jwcg6zwZnBVU-nV
+   GgHwILkSlpy5bR1n07jppyJ3Ca7fdIbfI_umBfqonKePbwN66VWmpw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2785,8 +2785,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Ky9-oxQowT3fTm2EhUv1U4wnencMQUaw
-   feOD-fqCTEn_LdIa8n_tkIPLkyjq2MY7qBM5LwMQwuWd3d-Pu-a9Bw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.qmSzdwkttJEewYE80jwcg6zwZnBVU-nV
+   GgHwILkSlpy5bR1n07jppyJ3Ca7fdIbfI_umBfqonKePbwN66VWmpw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2797,10 +2797,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4MzM4NzQsICJzZF9oYXNoIjogIm
-   pXMXdGbll4dFBBVW5RN1Z3ZlhIWWlZR3BnY0FuaUNFdG81SHlfRjE5c0kifQ.XLB0bRj
-   R0enfX3jeJ-TiEno6CDiNU1_nwDXjUbhNCN1Kyp8ZqpgfE6QFu3dq7GsjO0RkZH8UkXR
-   I3bvBKOyeEQ
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM4NDEzMTQsICJzZF9oYXNoIjogIk
+   pvT056Q0F4aG00eUx6Sy1FOUJ1SHRGcnVFejdQckRVSk1PaHJ5bjdVYnMifQ.utfJgHl
+   GXcxxSOkjKZwcn0DYrq_ERisRvrq4py0kPSgustLGIDvT15w3HhHp6w3RMS00t2Lazzp
+   8_r3qSWEZcA
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2809,8 +2809,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793833874,
-     "sd_hash": "jW1wFnYxtPAUnQ7VwfXHYiYGpgcAniCEto5Hy_F19sI"
+     "iat": 1793841314,
+     "sd_hash": "JoONzCAxhm4yLzK-E9BuHtFruEz7PrDUJMOhryn7Ubs"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3087,10 +3087,10 @@ Appendix B.  Acknowledgements
 
    We would like to thank Aaron Parecki, Albertus Geldenhuys, Alen
    Horvat, Andres Uribe, Andrii Deinega, Annabelle Kennedy, Antun
-   Jurkovikj, Babis Routis, Christian Amsüss, Christian Bormann, Dan
-   Moore, Deb Cooley, Denis Pinkas, George J Padayatti, Giuseppe De
-   Marco, Hannes Tschofenig, Ketan Talaulikar, Lukas J Han, Lukasz
-   Jaromin, Leif Johansson, Mahesh Jethanandani, Mark Nottingham,
+   Jurkovikj, Babis Routis, Charles Eckel, Christian Amsüss, Christian
+   Bormann, Dan Moore, Deb Cooley, Denis Pinkas, George J Padayatti,
+   Giuseppe De Marco, Hannes Tschofenig, Ketan Talaulikar, Lukas J Han,
+   Lukasz Jaromin, Leif Johansson, Mahesh Jethanandani, Mark Nottingham,
    Michael B.  Jones, Mike Bishop, Mike Prorock, Ionuț Mihalcea, Mirko
    Mollik, Nas Til, Nat Sakimura, Orie Steele, Paul Bastian, Pavel
    Zarecky, remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG
@@ -3107,6 +3107,8 @@ Appendix C.  Document History
 
    *  Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23:
       (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes
+   *  some keyword fixes for Charles Eckel's No Objection on draft-ietf-
+      oauth-sd-jwt-vc-23: (with COMMENT)
 
    -23
 
