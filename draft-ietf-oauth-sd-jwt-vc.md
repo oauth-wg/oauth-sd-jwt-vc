@@ -289,7 +289,7 @@ The `aka_vcts` claim is particularly useful in issuance and presentation protoco
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
-For the purpose of type matching, a Holder or Verifier SHOULD treat an SD-JWT VC as being
+For the purpose of type matching, a Holder or Verifier treats an SD-JWT VC as being
 of a given type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
 While relationships between credential types can be expressed through the extends
 property in Type Metadata, Type Metadata is optional and may not be available,
@@ -461,7 +461,9 @@ If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
 If `status` is present in the verified payload of the SD-JWT, the status SHOULD
-be checked. Verifier policy decides whether to reject or accept a presentation of
+be checked. A Verifier that does not check the status cannot detect that the
+Verifiable Digital Credential has been revoked or suspended and accepts that risk
+according to its policy. Verifier policy decides whether to reject or accept a presentation of
 a SD-JWT VC based on the status of the Verifiable Digital Credential.
 
 Additional validation rules MAY apply, but their use is out of the scope of this
@@ -2024,6 +2026,7 @@ Christian Bormann,
 Dan Moore,
 Deb Cooley,
 Denis Pinkas,
+Éric Vyncke,
 George J Padayatti,
 Giuseppe De Marco,
 Hannes Tschofenig,
@@ -2054,6 +2057,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-25
+
+* working on Éric Vyncke's Discuss on draft-ietf-oauth-sd-jwt-vc-23
 
 -24
 
