@@ -480,7 +480,9 @@ This specification defines the following two mechanisms:
 
 - JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the `iss` claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in (#jwt-vc-issuer-metadata).
 
-- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter ([@!RFC7515, section 4.1.6]), the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` header parameter and validates the X.509 certificate chain accordingly against a trust anchor permitted for the Issuer according to policy. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. If the `iss` claim is also present, there is no requirement that its value directly correspond to a subject name in the end-entity certificate.
+- Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the `x5c` parameter ([@!RFC7515, section 4.1.6]), the recipient uses the public key from the end-entity certificate of the certificates from that `x5c` header parameter and validates the X.509 certificate chain according to [@!RFC7515, section 4.1.6] and [@!RFC5280] against a trust anchor permitted for the Issuer according to policy (a certificate in the `x5c` header parameter is not a trust anchor merely because it is included there). In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. An `iss` claim, if present, is not authenticated by this mechanism (see below); a recipient MAY reject an SD-JWT VC whose `iss` value is not bound to the end-entity certificate according to its policy, and Issuers using this mechanism SHOULD NOT include an `iss` claim without such a binding.
+
+An SD-JWT VC can carry the inputs for more than one mechanism, for example both an HTTPS `iss` value and an `x5c` header parameter. The recipient's policy determines which mechanism applies to an Issuer; the SD-JWT VC does not. The Issuer is identified as defined by the mechanism in use. A recipient MUST NOT treat inputs of other mechanisms as identifying the Issuer unless its policy binds them to that identity, for example an `iss` value to the end-entity certificate through a Subject Alternative Name ([@!RFC5280, section 4.2.1.6]) or a configured mapping, and the recipient has verified that binding.
 
 To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
@@ -1370,12 +1372,22 @@ browser.
 
 When defining ecosystem-specific rules for resolution and verification of the public key,
 as outlined in (#key-stuff), it is critical that those rules maintain the integrity of the
-relationship between the `iss` value of the SD-JWT, if present, and the public keys of the Issuer.
+relationship between the Issuer of the SD-JWT VC, as identified by the key discovery and
+validation mechanism in use, for example by the `iss` value or by the end-entity certificate
+of the `x5c` header parameter, and the public keys of the Issuer.
 
-A Verifier MUST ensure that for any given `iss` value, an attacker cannot influence
+A Verifier MUST ensure that for any given Issuer, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
 the Verifier use a verification process not intended by the Issuer, allowing the
 attacker to potentially manipulate the verification result to their advantage.
+
+A key discovery and validation mechanism authenticates only its own inputs. Under the
+Inline X.509 Certificates mechanism, any holder of a certificate under a permitted trust
+anchor can include an arbitrary `iss` value; under the JWT VC Issuer Metadata mechanism,
+an `x5c` header parameter has not been validated against a trust anchor and does not
+identify the Issuer. Recipients that
+pass the processed SD-JWT payload to other components therefore convey the Issuer
+identity established by the mechanism in use (see (#key-stuff)).
 
 ## Circular "extends" Dependencies of Types {#circular-extends}
 
@@ -2045,6 +2057,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 
 -24
 
+* Address IESG ballot comments on issuer key discovery: policy selects the mechanism when both `iss` and `x5c` are present, chain validation per RFC 7515 and RFC 5280, a certificate does not become a trust anchor by being in `x5c`, and inputs of a mechanism not in use (such as `iss` under `x5c`) do not identify the Issuer unless policy binds them
 * Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes
 * some keyword fixes for Charles Eckel's No Objection on draft-ietf-oauth-sd-jwt-vc-23: (with COMMENT)
 
