@@ -461,7 +461,9 @@ If there are no selectively disclosable claims, there is no need to process the
 `_sd` claim nor any Disclosures.
 
 If `status` is present in the verified payload of the SD-JWT, the status SHOULD
-be checked. Verifier policy decides whether to reject or accept a presentation of
+be checked. A Verifier that does not check the status cannot detect that the
+Verifiable Digital Credential has been revoked or suspended and accepts that risk
+according to its policy. Verifier policy decides whether to reject or accept a presentation of
 a SD-JWT VC based on the status of the Verifiable Digital Credential.
 
 Additional validation rules MAY apply, but their use is out of the scope of this
@@ -2055,6 +2057,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-25
+
+* working on Éric Vyncke's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT)
 
 -24
 
