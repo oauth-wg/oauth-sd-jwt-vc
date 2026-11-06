@@ -1341,7 +1341,8 @@ as described in (#http-retrieval), the Consumer MUST validate the URL to
 ensure that it is a valid HTTPS URL and that it does not point to resources
 an issuer cannot access (e.g., resources internal to the Consumer).
 Such resources include, in particular, hosts with addresses
-from the IANA Special-Purpose Address Registries [@!RFC6890] that are not
+from the IANA IPv4 and IPv6 Special-Purpose Address Registries
+[@IANA.IPv4-Special-Registry] [@IANA.IPv6-Special-Registry] that are not
 globally reachable (such as loopback, link-local, and private-use address
 ranges) as well as hosts that are only reachable from within the Consumer's
 network. Validation requires ensuring that the host part of the URL does not
@@ -1645,6 +1646,20 @@ be included in any request to retrieve such resources (e.g., in HTTP headers).
   <title>JSON Web Token Claims</title>
   <author><organization>IANA</organization></author>
 </front>
+</reference>
+
+<reference anchor="IANA.IPv4-Special-Registry" target="https://www.iana.org/assignments/iana-ipv4-special-registry">
+ <front>
+  <title>IANA IPv4 Special-Purpose Address Registry</title>
+  <author><organization>IANA</organization></author>
+ </front>
+</reference>
+
+<reference anchor="IANA.IPv6-Special-Registry" target="https://www.iana.org/assignments/iana-ipv6-special-registry">
+ <front>
+  <title>IANA IPv6 Special-Purpose Address Registry</title>
+  <author><organization>IANA</organization></author>
+ </front>
 </reference>
 
 <reference anchor="W3C.SVG" target="https://www.w3.org/TR/2011/REC-SVG11-20110816/">
@@ -2057,6 +2072,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-26
+
+* Cite the IANA IPv4 and IPv6 Special-Purpose Address Registries instead of RFC 6890 in the SSRF considerations (Éric Vyncke's ballot comment)
 
 -25
 
