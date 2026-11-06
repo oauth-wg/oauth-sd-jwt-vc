@@ -1685,7 +1685,7 @@ This specification requests registration of the following Claims in the
 IANA "JSON Web Token Claims" registry [@IANA.JWT] established by [@!RFC7519].
 
 - Claim Name: "vct"
-- Claim Description: Verifiable digital Credential Type identifier
+- Claim Description: Verifiable Digital Credential Type identifier
 - Change Controller: IETF
 - Specification Document(s): [[ (#type-claim) of this specification ]]
 <br/>
