@@ -280,8 +280,7 @@ between the types.
 
 An SD-JWT VC containing the `aka_vcts` claim is a Verifiable Digital
 Credential of the type identified by the `vct` claim and, additionally, of each
-of the types identified by the values in the `aka_vcts` claim. Holders
-and Verifiers can treat the SD-JWT VC as a credential of these types. This is
+of the types identified by the values in the `aka_vcts` claim. This is
 typically used when the type identified by the `vct` claim is derived from a
 more general type, which is then included in the `aka_vcts` claim.
 
@@ -2076,6 +2075,7 @@ for their contributions (some of which substantial) to this draft and to the ini
 -26
 
 * Cite the IANA IPv4 and IPv6 Special-Purpose Address Registries instead of RFC 6890 in the SSRF considerations (Éric Vyncke's ballot comment)
+* Remove a duplicate sentence in Section 2.2.2.2 (follow-up to Éric Vyncke's DISCUSS)
 
 -25
 
