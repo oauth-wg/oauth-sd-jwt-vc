@@ -394,10 +394,9 @@ Table of Contents
    An SD-JWT VC containing the aka_vcts claim is a Verifiable Digital
    Credential of the type identified by the vct claim and, additionally,
    of each of the types identified by the values in the aka_vcts claim.
-   Holders and Verifiers can treat the SD-JWT VC as a credential of
-   these types.  This is typically used when the type identified by the
-   vct claim is derived from a more general type, which is then included
-   in the aka_vcts claim.
+   This is typically used when the type identified by the vct claim is
+   derived from a more general type, which is then included in the
+   aka_vcts claim.
 
    The aka_vcts claim is particularly useful in issuance and
    presentation protocols, where the receiving party (a Holder during
@@ -690,9 +689,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CD6vE
-   wnusaXHJPPMjZ_uW5Pdafde1Nc5M79b22fP9IdC9tdPFYpdi-0poHZFi9ct102QJEFqu
-   M5TlfPZ3MWhMg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.IMdG7
+   St8C_DsebdNfoTO-VkXRmIXeqqvvYvE2bPGTtNRfv4gvLj0eCwiXw2vyGeNP40hoxY6f
+   X4GvajJraAQWQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -728,17 +727,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CD6vE
-   wnusaXHJPPMjZ_uW5Pdafde1Nc5M79b22fP9IdC9tdPFYpdi-0poHZFi9ct102QJEFqu
-   M5TlfPZ3MWhMg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.IMdG7
+   St8C_DsebdNfoTO-VkXRmIXeqqvvYvE2bPGTtNRfv4gvLj0eCwiXw2vyGeNP40hoxY6f
+   X4GvajJraAQWQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5NzQwMz
-   AsICJzZF9oYXNoIjogIkktRzctMDZMYTJKb2h0R203VExHVG9qc1lPQVlqVUlySzV4dH
-   RaZWlOTVEifQ.x9UjG_9yN0IX1NnnbVMslAD0WSDUIY8AtmzzDXqZ3hPFjp_EBzpybDC
-   gs3Gk7YnIG3z7A_1L5ZC4h8yUiUBWPw
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5ODU0Mz
+   QsICJzZF9oYXNoIjogIkhScmdYeWtiWXMyTVhpczItRjEwNXpBVjNmYUJ1T3c1MjMwZ3
+   hxbnZybzQifQ.Ax-ufMlIpUZMR9CqiBepZg_vwR8_Tt8mKSEkSInTWVSiikmWqdAM-Ic
+   WeT0zdhjhIGtSpOWNBHzu-29_2PpYAQ
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -784,8 +783,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.qOq2pmragITGukQ-N_J2q8Ojmiup8UIO4fIv1mV5hMvSHd
-   hIuUInJrs3qsp7qLFBSZOlIKoG95lO_wVsDW4qfg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.7IElE6Qt5UkuJ10pYebSyXrjMFrJ_tPozt3EzCfq_7Eysl
+   31veoUZFhnJHc35zR2tcXbBFf4-giBPZmP-PARXA~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2441,8 +2440,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.q6wRnv0Bemn5361S_fKnqUlL4ofSnmtA
-   fLh0pZkvtbQsItCrX68qBxWcgtJoZYyHXglSl6LqaVy1B7OHlMcDEA~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CjoCdft23FDoqS6J4YWAAksUywb5dW_r
+   YABKW9S9HP5EtfdwzAAMYcMLSNN2mq2vIMBOF6YAA_rWs3vyEgOygQ~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2824,8 +2823,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.q6wRnv0Bemn5361S_fKnqUlL4ofSnmtA
-   fLh0pZkvtbQsItCrX68qBxWcgtJoZYyHXglSl6LqaVy1B7OHlMcDEA~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CjoCdft23FDoqS6J4YWAAksUywb5dW_r
+   YABKW9S9HP5EtfdwzAAMYcMLSNN2mq2vIMBOF6YAA_rWs3vyEgOygQ~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2836,10 +2835,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5NzQwMzAsICJzZF9oYXNoIjogIm
-   Rzd3A2UzRDLXZDdGwxZHY3U1ViSV94QXlXRGplTUJOUXdub2JDc2JmMFUifQ.zwZ1mSz
-   ZMR7uSYG7e-X1RfNRx2SxiRzWaN3Wwnfh2l46s3YywP3l8PDL5fm7Tj-zZBvKTfizjLn
-   PaCEfYjKObg
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5ODU0MzQsICJzZF9oYXNoIjogIj
+   l2UkJJLW4xOVZMTnZJSFVmdnR6OEIzOE80UmxCSlgzaWlKd1ZHQ292ZVEifQ.eTwqEXp
+   YQasqpvUnrWJuZV34mqqV4gWXMV4UCqN_eTvcnpZ9qRYlbU00VepJzLw3EGy7M70J9UB
+   XMHDPTR3Z-w
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2848,8 +2847,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793974030,
-     "sd_hash": "dswp6S4C-vCtl1dv7SUbI_xAyWDjeMBNQwnobCsbf0U"
+     "iat": 1793985434,
+     "sd_hash": "9vRBI-n19VLNvIHUfvtz8B38O4RlBJX3iiJwVGCoveQ"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3147,6 +3146,8 @@ Appendix C.  Document History
    *  Cite the IANA IPv4 and IPv6 Special-Purpose Address Registries
       instead of RFC 6890 in the SSRF considerations (Éric Vyncke's
       ballot comment)
+   *  Remove a duplicate sentence in Section 2.2.2.2 (follow-up to Éric
+      Vyncke's DISCUSS)
 
    -25
 
