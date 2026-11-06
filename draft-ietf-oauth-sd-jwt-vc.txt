@@ -6,9 +6,9 @@ Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Updates: 7800 (if approved)                                      D. Fett
 Intended status: Standards Track                           Authlete Inc.
-Expires: 9 May 2027                                          B. Campbell
+Expires: 10 May 2027                                         B. Campbell
                                                            Ping Identity
-                                                         5 November 2026
+                                                         6 November 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 9 May 2027.
+   This Internet-Draft will expire on 10 May 2027.
 
 Copyright Notice
 
@@ -394,10 +394,9 @@ Table of Contents
    An SD-JWT VC containing the aka_vcts claim is a Verifiable Digital
    Credential of the type identified by the vct claim and, additionally,
    of each of the types identified by the values in the aka_vcts claim.
-   Holders and Verifiers can treat the SD-JWT VC as a credential of
-   these types.  This is typically used when the type identified by the
-   vct claim is derived from a more general type, which is then included
-   in the aka_vcts claim.
+   This is typically used when the type identified by the vct claim is
+   derived from a more general type, which is then included in the
+   aka_vcts claim.
 
    The aka_vcts claim is particularly useful in issuance and
    presentation protocols, where the receiving party (a Holder during
@@ -690,9 +689,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iHets
-   GM20J_66AGQ7fBJgtE7Ss4TV_nyfa9DCsy0LfoHiKdC6EYTcWG9RJZG5HqmMYAHw_lQL
-   RnBPCZAM-6OuQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2L2px
+   QaA0NZP93LQjIZyQZzqk5HpGAwoh6F0kRiOXKteyKM21CwghIVTyOak7u6YgHOZdwBMp
+   hORcUNt20_e6w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -728,17 +727,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.iHets
-   GM20J_66AGQ7fBJgtE7Ss4TV_nyfa9DCsy0LfoHiKdC6EYTcWG9RJZG5HqmMYAHw_lQL
-   RnBPCZAM-6OuQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2L2px
+   QaA0NZP93LQjIZyQZzqk5HpGAwoh6F0kRiOXKteyKM21CwghIVTyOak7u6YgHOZdwBMp
+   hORcUNt20_e6w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5MDk5MT
-   MsICJzZF9oYXNoIjogIjNpRVBYM1hURFNLODEyODZFTFQxT3A4azVLWkQxUGxqdmNPaF
-   dkLVd4WVkifQ.EWnykifgMLByQDYyAbV6LaAyYDnNrGmB7ZQtyTH53pGxSkuzKfqYRoz
-   JRuvm_Ffm5NuxxjoWzIbj1Ub9jhcIzQ
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5ODU1MD
+   EsICJzZF9oYXNoIjogIjd1THFFWEpDQjRTRjUtaEJpWEdZUWprVFhJb1dPck1Ca0pTMm
+   ZUM3F2dVUifQ.v_hOEOVM_hzGaub3lZxbFn9IFmKsDB3QXFFBRRJqj9mvG5V03Ln2osY
+   pvfWgvZcU6lRzbzsO-oGFDu_xbEHIIA
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -784,8 +783,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.KCJBH-VgqpwEAgahlYVEZqWFjyXr9JbqL6HMWP9Y1uvt2T
-   HtUxIAI5iCnPLLSL7CVty5R6-Bu6k8lAje416Rqg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.nvPNvt7LfzdhpPNtZwn_z_sVCRWNS0tz4QnUTiG2ygFYaq
+   vMh8ezzl514aIV5OCYO1irv0OSWgOuH2qE_yNPAg~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1861,7 +1860,8 @@ Table of Contents
    the URL to ensure that it is a valid HTTPS URL and that it does not
    point to resources an issuer cannot access (e.g., resources internal
    to the Consumer).  Such resources include, in particular, hosts with
-   addresses from the IANA Special-Purpose Address Registries [RFC6890]
+   addresses from the IANA IPv4 and IPv6 Special-Purpose Address
+   Registries [IANA.IPv4-Special-Registry] [IANA.IPv6-Special-Registry]
    that are not globally reachable (such as loopback, link-local, and
    private-use address ranges) as well as hosts that are only reachable
    from within the Consumer's network.  Validation requires ensuring
@@ -2234,11 +2234,6 @@ Table of Contents
               Languages", BCP 47, RFC 5646, DOI 10.17487/RFC5646,
               September 2009, <https://www.rfc-editor.org/info/rfc5646>.
 
-   [RFC6890]  Cotton, M., Vegoda, L., Bonica, R., Ed., and B. Haberman,
-              "Special-Purpose IP Address Registries", BCP 153,
-              RFC 6890, DOI 10.17487/RFC6890, April 2013,
-              <https://www.rfc-editor.org/info/rfc6890>.
-
    [RFC7515]  Jones, M., Bradley, J., and N. Sakimura, "JSON Web
               Signature (JWS)", RFC 7515, DOI 10.17487/RFC7515, May
               2015, <https://www.rfc-editor.org/info/rfc7515>.
@@ -2301,6 +2296,16 @@ Table of Contents
               Architecture and Reference Framework",
               <https://github.com/eu-digital-identity-wallet/eudi-doc-
               architecture-and-reference-framework/releases>.
+
+   [IANA.IPv4-Special-Registry]
+              IANA, "IANA IPv4 Special-Purpose Address Registry",
+              <https://www.iana.org/assignments/iana-ipv4-special-
+              registry>.
+
+   [IANA.IPv6-Special-Registry]
+              IANA, "IANA IPv6 Special-Purpose Address Registry",
+              <https://www.iana.org/assignments/iana-ipv6-special-
+              registry>.
 
    [IANA.JWT] IANA, "JSON Web Token Claims",
               <https://www.iana.org/assignments/jwt>.
@@ -2435,8 +2440,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.b1Xt2g7pQbOYQW70E6Ew3AlURp4hIIGg
-   3Sa4Zl6lfQex_QS4eTLgRAIrTa4dP97KwZxMEFlJ8hdixHPOhvNPVw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.IB2sDdm5vfGor3ml8XKhfvGQhZ3JWvUu
+   2BBQhyQnRP4T2QgDxai90YgdpJxYZinVMdqINbbggxjvcwgxToFNUw~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2818,8 +2823,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.b1Xt2g7pQbOYQW70E6Ew3AlURp4hIIGg
-   3Sa4Zl6lfQex_QS4eTLgRAIrTa4dP97KwZxMEFlJ8hdixHPOhvNPVw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.IB2sDdm5vfGor3ml8XKhfvGQhZ3JWvUu
+   2BBQhyQnRP4T2QgDxai90YgdpJxYZinVMdqINbbggxjvcwgxToFNUw~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2830,10 +2835,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5MDk5MTMsICJzZF9oYXNoIjogIn
-   hWZjF4UFRjbDJ6NmhfdmZ4WEhpWm5VakdrRk9feGZUVFFGQWYxdFJLNEkifQ.wa1TLy8
-   WVQmAMlZ_KaKtCDzGVqPk81UTLaFkSgN4vxeOBPULxzjhcUqAWnr6SsDWdEs9495DAO5
-   c6D5iCS4RFA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5ODU1MDEsICJzZF9oYXNoIjogIl
+   YtQVM2RUtqejhCenlrcnRsblJJRjVVandkb2cwdTdTd0xMWlE0Q2dFSWsifQ.ByJYTkQ
+   osbxikRuljS-Y4bCoSn1Hxy1lQH74bbpB3KvZpV9Pa9kMUK5zskPKag6mQyU9wlvVEnV
+   keYHFuIV9TA
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2842,8 +2847,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793909913,
-     "sd_hash": "xVf1xPTcl2z6h_vfxXHiZnUjGkFO_xfTTQFAf1tRK4I"
+     "iat": 1793985501,
+     "sd_hash": "V-AS6EKjz8BzykrtlnRIF5Ujwdog0u7SwLLZQ4CgEIk"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3135,6 +3140,14 @@ Appendix B.  Acknowledgements
    the initial set of implementations.
 
 Appendix C.  Document History
+
+   -26
+
+   *  Cite the IANA IPv4 and IPv6 Special-Purpose Address Registries
+      instead of RFC 6890 in the SSRF considerations (Éric Vyncke's
+      ballot comment)
+   *  Remove a duplicate sentence in Section 2.2.2.2 (follow-up to Éric
+      Vyncke's DISCUSS)
 
    -25
 
