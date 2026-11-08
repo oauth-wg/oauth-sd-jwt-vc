@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-11-05T00:31:51.202522+00:00",
+  "timestamp": "2026-11-08T00:33:58.905623+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -35290,24 +35290,26 @@
       "id": "PR_kwDOJbVClc8AAAABM5KAFg",
       "title": "Issuer key discovery: policy selects the mechanism, inputs of other mechanisms do not identify the Issuer",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/451",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "awoie",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": "For Mahesh's ballot comment on 2.5 / 7.3 (Roman endorsed it).\n\nThe -20 text says `iss` doesn't have to match the `x5c` cert, but nothing says which identity is authoritative. Under a shared CA / trusted list, any cert holder under that trust framework could put someone else's `iss` into the payload, `x5c` validates fine, and downstream takes `iss` as the issuer. Same thing the other way round with an `x5c` under the metadata mechanism.\n\nSo:\n\n- 2.5: a credential can carry inputs for more than one mechanism; policy picks the mechanism per issuer, not the credential. The issuer identity is whatever the mechanism in use establishes. Inputs of other mechanisms MUST NOT be treated as the issuer identity unless policy binds them and the recipient checked that.\n- 2.5, `x5c` bullet: chain validation per RFC 7515 4.1.6 / RFC 5280, a cert doesn't become a trust anchor by being in `x5c`, MAY reject an unbound `iss`, issuers SHOULD NOT include `iss` without a binding.\n- 7.3: talks about the issuer instead of the `iss` value, plus a short paragraph on why.\n\nNo precedence rule, no MUST reject (would invalidate existing credentials). RFC 5280 becomes normative.",
       "createdAt": "2026-11-04T19:20:42Z",
-      "updatedAt": "2026-11-04T23:08:07Z",
+      "updatedAt": "2026-11-05T01:36:36Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "34fd3b4fe83cc6610eb021486c60c1cdb4d31f03",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "x5c-iss-policy",
       "headRefOid": "705b91ca27877d82ba16f3ea325c28dcc2086d30",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-11-05T01:36:36Z",
+      "mergedAt": "2026-11-05T01:36:36Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "d0db369729a0c7e61884d5917f034f0d55267927"
+      },
       "comments": [],
       "reviews": [
         {
@@ -35378,26 +35380,188 @@
       "id": "PR_kwDOJbVClc8AAAABM71wXA",
       "title": "some keyword fixes for Charles Eckel's No Objection on draft-ietf-oauth-sd-jwt-vc-23: (with COMMENT)",
       "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/453",
-      "state": "OPEN",
+      "state": "MERGED",
       "author": "bc-pi",
       "authorAssociation": "COLLABORATOR",
       "assignees": [],
       "labels": [],
       "body": " https://mailarchive.ietf.org/arch/msg/oauth/h0Erp-t-X8pu3UFKthrUl2Ttf2k/ and https://mailarchive.ietf.org/arch/msg/oauth/-XTToR0epFjLtoYB-XfkOUVcjps/",
       "createdAt": "2026-11-04T23:02:07Z",
-      "updatedAt": "2026-11-04T23:09:10Z",
+      "updatedAt": "2026-11-05T01:14:57Z",
       "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
       "baseRefName": "main",
       "baseRefOid": "34fd3b4fe83cc6610eb021486c60c1cdb4d31f03",
       "headRepository": "oauth-wg/oauth-sd-jwt-vc",
       "headRefName": "Charles-Eckel-Ballot",
       "headRefOid": "1f041da4614b40c71f441ceafaa765384921448d",
-      "closedAt": null,
-      "mergedAt": null,
-      "mergedBy": null,
-      "mergeCommit": null,
+      "closedAt": "2026-11-05T01:14:57Z",
+      "mergedAt": "2026-11-05T01:14:56Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "813fb7cf1042d61ba0e8ca024fc36cf502457d09"
+      },
       "comments": [],
       "reviews": []
+    },
+    {
+      "number": 454,
+      "id": "PR_kwDOJbVClc8AAAABNJLHWA",
+      "title": "Vyncke discuss",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/454",
+      "state": "MERGED",
+      "author": "bc-pi",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "per https://mailarchive.ietf.org/arch/msg/oauth/Jq-oFheO82BciSZUIkv2hjpc1WI/",
+      "createdAt": "2026-11-05T18:55:29Z",
+      "updatedAt": "2026-11-05T20:18:13Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d0db369729a0c7e61884d5917f034f0d55267927",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "Vyncke-DISCUSS",
+      "headRefOid": "61b669a7a1673967fe47f8b32d1e4345f6885d24",
+      "closedAt": "2026-11-05T20:18:13Z",
+      "mergedAt": "2026-11-05T20:18:13Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "c71300cda0fcdf4bfb4a877111126f644d407916"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWTJImQ",
+          "commit": {
+            "abbreviatedOid": "1539cec"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-11-05T20:15:53Z",
+          "updatedAt": "2026-11-05T20:15:53Z",
+          "comments": [
+            {
+              "originalPosition": 34,
+              "body": "```suggestion\n* working on \u00c9ric Vyncke's Discuss on draft-ietf-oauth-sd-jwt-vc-23\n```",
+              "createdAt": "2026-11-05T20:15:53Z",
+              "updatedAt": "2026-11-05T20:15:53Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 455,
+      "id": "PR_kwDOJbVClc8AAAABNSEEfA",
+      "title": "Cite the IANA special-purpose address registries instead of RFC 6890 (\u00c9ric Vyncke's ballot comment)",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/455",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Addresses the non-blocking COMMENT in \u00c9ric Vyncke's ballot on -23 (\"Strongly suggest to replace the normative reference to RFC 6890 by the two special use registries\").\r\n\r\nSection 7.1 now points to the IANA IPv4 and IPv6 Special-Purpose Address Registries themselves (informative references) instead of RFC 6890. RFC 6890 only created the registries in 2013 and has been updated since; the registries are the maintained source of the address ranges and of the \"globally reachable\" property the text relies on. Nothing in Section 7.1 needs to be read from RFC 6890 to implement the SSRF protection, so the reference was informative in nature anyway. No change to the requirements.\r\n\r\nThe reference to RFC 6890 is dropped entirely (it was cited only in Section 7.1). History entry added under -26; if this is handled as an RFC Editor note instead, the history line can go.",
+      "createdAt": "2026-11-06T10:17:40Z",
+      "updatedAt": "2026-11-06T17:17:55Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "c71300cda0fcdf4bfb4a877111126f644d407916",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "vyncke-rfc6890",
+      "headRefOid": "c99ad74688df4c75e8ec66c1573ff0a6fa3b9803",
+      "closedAt": "2026-11-06T17:17:55Z",
+      "mergedAt": "2026-11-06T17:17:55Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "d167baaa7e5361ecf0e1e79dfb81ed5bfb26d82c"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWb2fRA",
+          "commit": {
+            "abbreviatedOid": "f8bb254"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-11-06T13:15:13Z",
+          "updatedAt": "2026-11-06T13:15:13Z",
+          "comments": [
+            {
+              "originalPosition": 36,
+              "body": "that was on purpose to align the capitalization with the letters in the claim name ",
+              "createdAt": "2026-11-06T13:15:13Z",
+              "updatedAt": "2026-11-06T13:15:13Z"
+            }
+          ]
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWb4hsw",
+          "commit": {
+            "abbreviatedOid": "f8bb254"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "COMMENTED",
+          "body": "",
+          "createdAt": "2026-11-06T13:18:18Z",
+          "updatedAt": "2026-11-06T13:18:18Z",
+          "comments": [
+            {
+              "originalPosition": 36,
+              "body": "```suggestion\r\n- Claim Description: Verifiable digital Credential Type identifier\r\n```",
+              "createdAt": "2026-11-06T13:18:18Z",
+              "updatedAt": "2026-11-06T13:18:18Z"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "number": 456,
+      "id": "PR_kwDOJbVClc8AAAABNUvv1Q",
+      "title": "Remove a duplicate sentence in Section 2.2.2.2",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/456",
+      "state": "MERGED",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Editorial follow-up to the -25 change for \u00c9ric Vyncke's DISCUSS on Section 2.2.2.2.\n\nWith the type matching rule in place (#454), the older sentence \"Holders and Verifiers can treat the SD-JWT VC as a credential of these types\" (from #420) only repeats the sentence before it. This PR removes the duplicate. No change in meaning.\n\nStacked on #455 so that the history entry sits under the same -26 heading. Merging this PR puts the change into the #455 branch; if #455 is merged first, I will rebase this one onto main.\n",
+      "createdAt": "2026-11-06T14:12:31Z",
+      "updatedAt": "2026-11-06T17:16:56Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "vyncke-rfc6890",
+      "baseRefOid": "9190edd4de09932e62e4fc8bf28d72f0b1186143",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "aka-vcts-can-treat",
+      "headRefOid": "1fb5d4dd4980b5a4069e665eb1525926035a789d",
+      "closedAt": "2026-11-06T17:16:56Z",
+      "mergedAt": "2026-11-06T17:16:56Z",
+      "mergedBy": "bc-pi",
+      "mergeCommit": {
+        "oid": "c99ad74688df4c75e8ec66c1573ff0a6fa3b9803"
+      },
+      "comments": [],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABWe1f5A",
+          "commit": {
+            "abbreviatedOid": "1fb5d4d"
+          },
+          "author": "bc-pi",
+          "authorAssociation": "COLLABORATOR",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-11-06T16:45:53Z",
+          "updatedAt": "2026-11-06T16:45:53Z",
+          "comments": []
+        }
+      ]
     }
   ]
 }
