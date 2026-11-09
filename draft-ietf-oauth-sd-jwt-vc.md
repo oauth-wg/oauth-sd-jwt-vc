@@ -290,9 +290,10 @@ matches the type of a received SD-JWT VC against the type it requested or
 expects.
 For the purpose of type matching, a Holder or Verifier treats an SD-JWT VC as being
 of a given type, if that type is the `vct` value or one of the values of the `aka_vcts` array.
-While relationships between credential types can be expressed through the extends
-property in Type Metadata, Type Metadata is optional and may not be available,
-so issuance and presentation protocols cannot always rely on it for type matching.
+Type Metadata, which is optional and may not be available, describes a type but
+does not determine the types of an SD-JWT VC (see (#extending-type-metadata)),
+so issuance and presentation protocols rely on the `vct` and `aka_vcts` claims
+for type matching.
 For example, a Verifier requesting a credential of the hypothetical
 type `urn:example:eudi:pid` that receives an SD-JWT VC with a `vct` value of
 `urn:example:eudi:pid:aendgard:1` can determine from an `aka_vcts` value of
@@ -809,14 +810,14 @@ chain or hierarchy of types. The security considerations described in
 (#circular-extends) apply in order to avoid problems with circular dependencies.
 
 The `extends` property and the `aka_vcts` claim defined in
-(#aka-vcts-claim) are orthogonal mechanisms, and Type Metadata does not
-add any requirements to the content of the `aka_vcts` claim. However,
+(#aka-vcts-claim) are orthogonal mechanisms: the types of an SD-JWT VC are
+those asserted by the Issuer in the `vct` and `aka_vcts` claims, whereas
+`extends` only determines which Type Metadata is inherited. Type Metadata does
+not make an SD-JWT VC an instance of further types and does not add any
+requirements to the content of the `aka_vcts` claim. However,
 if Type Metadata exists both for the type in the `vct` claim and for a type
 listed in the `aka_vcts` claim, the type of the SD-JWT VC SHOULD
-extend the listed type, whether directly or transitively. A Consumer
-processing Type Metadata MAY use the types established via the `extends`
-property in addition to those in the `aka_vcts` claim when matching
-types.
+extend the listed type, whether directly or transitively.
 
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
@@ -2071,6 +2072,10 @@ Kristina Yasuda
 for their contributions (some of which substantial) to this draft and to the initial set of implementations.
 
 # Document History
+
+-27
+
+* Clarify that the types of an SD-JWT VC are those asserted in `vct` and `aka_vcts`; Type Metadata and `extends` do not establish further types for type matching
 
 -26
 
