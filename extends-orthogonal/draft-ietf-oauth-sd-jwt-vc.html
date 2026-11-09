@@ -11,26 +11,27 @@
 <meta content="
        This specification describes data formats as well as validation and processing
 rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT format. 
+       Furthermore, this specification updates RFC7800 to allow for the Confirmation Claim ( cnf ) to be used regardless of the presence or absence of other claims. 
     " name="description">
-<meta content="xml2rfc 3.34.1" name="generator">
+<meta content="xml2rfc 3.35.0" name="generator">
 <meta content="security" name="keyword">
 <meta content="oauth2" name="keyword">
 <meta content="sd-jwt" name="keyword">
 <meta content="draft-ietf-oauth-sd-jwt-vc-latest" name="ietf.draft">
 <!-- Generator version information:
-  xml2rfc 3.34.1
-    Python 3.14.8
-    ConfigArgParse 1.8.0
+  xml2rfc 3.35.0
+    Python 3.14.10
+    ConfigArgParse 1.9.0
     google-i18n-address 3.1.1
     intervaltree 3.2.1
     Jinja2 3.1.6
     lxml 6.1.1
     natsort 8.4.0
-    platformdirs 4.12.2
+    platformdirs 4.14.3
     pycountry 24.6.1
     PyYAML 6.0.3
     requests 2.33.1
-    wcwidth 0.9.1
+    wcwidth 0.9.4
 -->
 <link href="draft-ietf-oauth-sd-jwt-vc.xml" rel="alternate" type="application/rfc+xml">
 <link href="#copyright" rel="license">
@@ -1031,7 +1032,7 @@ svg {
   & :is([stroke="white"], [stroke^="#fff"]) {
     stroke: var(--background-color);
   }
-  & :is([fill="black"], [fill^="#000"], :not([fill])) {
+  & :is([fill="black"], [fill^="#000"], :not([fill], [fill] *)) {
     fill: var(--text-color);
   }
   & :is([fill="white"], [fill^="#fff"]) {
@@ -1046,11 +1047,11 @@ svg {
 <thead><tr>
 <td class="left">Internet-Draft</td>
 <td class="center">SD-JWT VC</td>
-<td class="right">October 2026</td>
+<td class="right">November 2026</td>
 </tr></thead>
 <tfoot><tr>
 <td class="left">Terbu, et al.</td>
-<td class="center">Expires 10 April 2027</td>
+<td class="center">Expires 13 May 2027</td>
 <td class="right">[Page]</td>
 </tr></tfoot>
 </table>
@@ -1061,14 +1062,17 @@ svg {
 <dd class="workgroup">Web Authorization Protocol</dd>
 <dt class="label-internet-draft">Internet-Draft:</dt>
 <dd class="internet-draft">draft-ietf-oauth-sd-jwt-vc-latest</dd>
+<dt class="label-updates">Updates:</dt>
+<dd class="updates">
+<a href="https://www.rfc-editor.org/rfc/rfc7800" class="eref">7800</a> (if approved)</dd>
 <dt class="label-published">Published:</dt>
 <dd class="published">
-<time datetime="2026-10-07" class="published">7 October 2026</time>
+<time datetime="2026-11-09" class="published">9 November 2026</time>
     </dd>
 <dt class="label-intended-status">Intended Status:</dt>
 <dd class="intended-status">Standards Track</dd>
 <dt class="label-expires">Expires:</dt>
-<dd class="expires"><time datetime="2027-04-10">10 April 2027</time></dd>
+<dd class="expires"><time datetime="2027-05-13">13 May 2027</time></dd>
 <dt class="label-authors">Authors:</dt>
 <dd class="authors">
 <div class="author">
@@ -1091,6 +1095,7 @@ svg {
       <h2 id="abstract"><a href="#abstract" class="selfRef">Abstract</a></h2>
 <p id="section-abstract-1">This specification describes data formats as well as validation and processing
 rules to express Verifiable Digital Credentials with JSON payloads with and without selective disclosure based on the SD-JWT format.<a href="#section-abstract-1" class="pilcrow">¶</a></p>
+<p id="section-abstract-2">Furthermore, this specification updates RFC7800 to allow for the Confirmation Claim (<code>cnf</code>) to be used regardless of the presence or absence of other claims.<a href="#section-abstract-2" class="pilcrow">¶</a></p>
 </section>
 <section class="note rfcEditorRemove" id="section-note.1">
       <h2 id="name-discussion-venues">
@@ -1122,7 +1127,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
         time. It is inappropriate to use Internet-Drafts as reference
         material or to cite them other than as "work in progress."<a href="#section-boilerplate.1-3" class="pilcrow">¶</a></p>
 <p id="section-boilerplate.1-4">
-        This Internet-Draft will expire on 10 April 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
+        This Internet-Draft will expire on 13 May 2027.<a href="#section-boilerplate.1-4" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="copyright">
@@ -1400,7 +1405,7 @@ rules to express Verifiable Digital Credentials with JSON payloads with and with
         <h3 id="name-issuer-holder-verifier-mode">
 <a href="#section-1.1" class="section-number selfRef">1.1. </a><a href="#name-issuer-holder-verifier-mode" class="section-name selfRef">Issuer-Holder-Verifier Model</a>
         </h3>
-<p id="section-1.1-1">In the so-called Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
+<p id="section-1.1-1">In the Issuer-Holder-Verifier Model, Issuers issue Verifiable Digital Credentials to a
 Holder, who can then present the credentials to Verifiers. Verifiable Digital
 Credentials are cryptographically secured statements about a Subject, typically the Holder.<a href="#section-1.1-1" class="pilcrow">¶</a></p>
 <p id="section-1.1-2"><a href="#abstract-model" class="auto internal xref">Figure 1</a> depicts the Issuer-Holder-Verifier model.<a href="#section-1.1-2" class="pilcrow">¶</a></p>
@@ -1455,7 +1460,7 @@ described in <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>.<a 
 <p id="section-1.2-1">JSON Web Tokens (JWTs) <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> can in principle be used to express
 Verifiable Digital Credentials in a way that is easy to understand and process as it
 builds upon established web primitives.<a href="#section-1.2-1" class="pilcrow">¶</a></p>
-<p id="section-1.2-2">Selective Disclosure JWT (SD-JWT) <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> is
+<p id="section-1.2-2">Selective Disclosure for JSON Web Tokens (SD-JWT) <span>[<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> is
 a specification that introduces conventions to support selective disclosure for
 JWTs: For an SD-JWT document, a Holder can decide which claims to release (within
 bounds defined by the Issuer).<a href="#section-1.2-2" class="pilcrow">¶</a></p>
@@ -1467,9 +1472,16 @@ the claims that must be used within the payload or their semantics.<a href="#sec
 extensibility model as basis for representing Verifiable Digital Credentials with JSON
 payloads. These Verifiable Digital Credentials are called SD-JWT VCs. The use of
 selective disclosure in SD-JWT VCs is optional.<a href="#section-1.2-4" class="pilcrow">¶</a></p>
-<p id="section-1.2-5">SD-JWT VCs can contain claims that are registered in "JSON Web Token Claims"
-registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>, as well as public and
-private claims.<a href="#section-1.2-5" class="pilcrow">¶</a></p>
+<p id="section-1.2-5">An SD-JWT VC is verifiable through the Issuer's signature and, when Key Binding is
+used, through the Holder's proof of possession of the key referenced in the <code>cnf</code>
+claim. What the credential means, that is, the semantics of its claims, is identified
+by its type, which is conveyed in the <code>vct</code> claim (<a href="#type-claim" class="auto internal xref">Section 2.2.2.1</a>). Type Metadata
+(<a href="#type-metadata" class="auto internal xref">Section 5</a>) can be retrieved for a type and describes it to Consumers, including
+how the credential and its claims are displayed. The <code>aka_vcts</code> claim
+(<a href="#aka-vcts-claim" class="auto internal xref">Section 2.2.2.2</a>) lists further types that the credential also has.<a href="#section-1.2-5" class="pilcrow">¶</a></p>
+<p id="section-1.2-6">SD-JWT VCs can contain claims that are registered in the "JSON Web Token Claims"
+registry <span>[<a href="#IANA.JWT" class="cite xref">IANA.JWT</a>]</span>, as well as public and
+private claims as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-1.2-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="requirements-notation-and-conventions">
@@ -1536,8 +1548,8 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.10" class="
         <h3 id="name-media-type">
 <a href="#section-2.1" class="section-number selfRef">2.1. </a><a href="#name-media-type" class="section-name selfRef">Media Type</a>
         </h3>
-<p id="section-2.1-1">SD-JWT VCs compliant with this specification MUST use the media type
-<code>application/dc+sd-jwt</code>, where the base subtype name <code>dc</code> stands for "digital credential".<a href="#section-2.1-1" class="pilcrow">¶</a></p>
+<p id="section-2.1-1">Where a media type is used to identify an SD-JWT VC compliant with this specification,
+it MUST be <code>application/dc+sd-jwt</code>, where the base subtype name <code>dc</code> stands for "digital credential".<a href="#section-2.1-1" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="data-format">
@@ -1548,7 +1560,7 @@ an SD-JWT VC complying to this specification.<a href="#section-1.4-2.10" class="
 <p id="section-2.2-1">SD-JWT VC uses the SD-JWT format defined in <span><a href="https://rfc-editor.org/rfc/rfc9901#section-4" class="relref">Section 4</a> of [<a href="#RFC9901" class="cite xref">RFC9901</a>]</span>.
 Use of the JWS JSON Serialization per <span><a href="https://rfc-editor.org/rfc/rfc9901#section-8" class="relref">Section 8</a> of [<a href="#RFC9901" class="cite xref">RFC9901</a>]</span> for SD-JWT VC is not precluded
 but the specific details are beyond the scope of this specification.<a href="#section-2.2-1" class="pilcrow">¶</a></p>
-<p id="section-2.2-2">Note that in some cases, an SD-JWT VC MAY have no selectively disclosable
+<p id="section-2.2-2">Note that in some cases, an SD-JWT VC can have no selectively disclosable
 claims, and therefore the encoded SD-JWT will not contain any Disclosures.<a href="#section-2.2-2" class="pilcrow">¶</a></p>
 <div id="jose-header">
 <section id="section-2.2.1">
@@ -1666,27 +1678,31 @@ not significant and does not convey any information about the relationships
 between the types.<a href="#section-2.2.2.2-1" class="pilcrow">¶</a></p>
 <p id="section-2.2.2.2-2">An SD-JWT VC containing the <code>aka_vcts</code> claim is a Verifiable Digital
 Credential of the type identified by the <code>vct</code> claim and, additionally, of each
-of the types identified by the values in the <code>aka_vcts</code> claim. Holders
-and Verifiers can treat the SD-JWT VC as a credential of any of these types. This is
+of the types identified by the values in the <code>aka_vcts</code> claim. This is
 typically used when the type identified by the <code>vct</code> claim is derived from a
 more general type, which is then included in the <code>aka_vcts</code> claim.<a href="#section-2.2.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-2.2.2.2-3">The <code>aka_vcts</code> claim is particularly useful in issuance and presentation protocols,
 where the receiving party (a Holder during issuance or a Verifier during presentation)
 matches the type of a received SD-JWT VC against the type it requested or
 expects.
-While relationships between credential types can be expressed through the extends
-property in Type Metadata, Type Metadata is optional and may not be available,
-so issuance and presentation protocols cannot always rely on it for type matching.
+For the purpose of type matching, a Holder or Verifier treats an SD-JWT VC as being
+of a given type, if that type is the <code>vct</code> value or one of the values of the <code>aka_vcts</code> array.
+Type Metadata, which is optional and may not be available, describes a type but
+does not determine the types of an SD-JWT VC (see <a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>),
+so issuance and presentation protocols rely on the <code>vct</code> and <code>aka_vcts</code> claims
+for type matching.
 For example, a Verifier requesting a credential of the hypothetical
 type <code>urn:example:eudi:pid</code> that receives an SD-JWT VC with a <code>vct</code> value of
 <code>urn:example:eudi:pid:aendgard:1</code> can determine from an <code>aka_vcts</code> value of
 <code>["urn:example:eudi:pid"]</code> that the received credential is also of the
 requested type.<a href="#section-2.2.2.2-3" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-4">The content in <a href="#example-with-aka-vcts" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
-Payload using the <code>aka_vcts</code> claim to express this example.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-4">When the type in <code>vct</code> is derived from, extends, or is otherwise meant to be accepted
+as one or more general types, the Issuer SHOULD list those types in <code>aka_vcts</code>.<a href="#section-2.2.2.2-4" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-5">The content in <a href="#example-with-aka-vcts" class="auto internal xref">Figure 4</a> shows an excerpt of an Unsecured
+Payload using the <code>aka_vcts</code> claim to express this example.<a href="#section-2.2.2.2-5" class="pilcrow">¶</a></p>
 <span id="name-example-unsecured-payload-e"></span><div id="example-with-aka-vcts">
 <figure id="figure-4">
-              <div class="lang-json sourcecode" id="section-2.2.2.2-5.1">
+              <div class="lang-json sourcecode" id="section-2.2.2.2-6.1">
 <pre>{
   "vct": "urn:example:eudi:pid:aendgard:1",
   "aka_vcts": [
@@ -1700,16 +1716,20 @@ Payload using the <code>aka_vcts</code> claim to express this example.<a href="#
 <a href="#name-example-unsecured-payload-e" class="selfRef">Example Unsecured Payload excerpt with <code>aka_vcts</code></a>
               </figcaption></figure>
 </div>
-<p id="section-2.2.2.2-6">Note that the <code>aka_vcts</code> claim is asserted by
+<p id="section-2.2.2.2-7">Note that the <code>aka_vcts</code> claim is asserted by
 the Issuer and, like the <code>vct</code> claim, is only as trustworthy as the Issuer
-itself.<a href="#section-2.2.2.2-6" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.2-7">The <code>aka_vcts</code> claim is independent of Type Metadata <a href="#type-metadata" class="auto internal xref">Section 5</a>
+itself.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-8">The <code>aka_vcts</code> claim is independent of Type Metadata (<a href="#type-metadata" class="auto internal xref">Section 5</a>)
 and, in particular, orthogonal to the <code>extends</code> property: the claim can be used
 whether or not Type Metadata exists for any of the listed types, and the listed
 types are not required to be related to the type of the SD-JWT VC through the
 <code>extends</code> property. The interaction between the <code>aka_vcts</code> claim and
 Type Metadata using the <code>extends</code> property is described in
-<a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>.<a href="#section-2.2.2.2-7" class="pilcrow">¶</a></p>
+<a href="#extending-type-metadata" class="auto internal xref">Section 5.4</a>.<a href="#section-2.2.2.2-8" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.2-9">Because the values of the <code>aka_vcts</code> claim are not used to retrieve Type Metadata,
+there is no <code>aka_vcts#integrity</code> counterpart to the <code>vct#integrity</code> claim; the integrity of
+Type Metadata reached via the <code>extends</code> property is covered by <code>extends#integrity</code> as
+described in <a href="#document-integrity" class="auto internal xref">Section 6</a>.<a href="#section-2.2.2.2-9" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claims">
@@ -1719,7 +1739,7 @@ Type Metadata using the <code>extends</code> property is described in
             </h5>
 <p id="section-2.2.2.3-1">SD-JWT VCs MAY use any claim registered in the "JSON Web Token Claims"
 registry as defined in <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>.<a href="#section-2.2.2.3-1" class="pilcrow">¶</a></p>
-<p id="section-2.2.2.3-2">The following registered JWT claims, including any of their sub-claims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:<a href="#section-2.2.2.3-2" class="pilcrow">¶</a></p>
+<p id="section-2.2.2.3-2">The following registered JWT claims, including any of their subclaims, when used in the SD-JWT component of an SD-JWT VC, MUST NOT be included in Disclosures and therefore MUST NOT be selectively disclosed:<a href="#section-2.2.2.3-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-2.2.2.3-3.1">
                 <code>iss</code>: OPTIONAL. As defined in <span><a href="https://rfc-editor.org/rfc/rfc7519#section-4.1.1" class="relref">Section 4.1.1</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> this claim explicitly indicates the Issuer of the Verifiable Digital Credential
@@ -1727,7 +1747,7 @@ when it is not conveyed by other means (e.g., the subject of the end-entity cert
 </li>
               <li class="compact" id="section-2.2.2.3-3.2">
                 <code>nbf</code>: OPTIONAL. The time before which the Verifiable Digital Credential MUST NOT be
-accepted before validating. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-2.2.2.3-3.2" class="pilcrow">¶</a>
+accepted. See <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-2.2.2.3-3.2" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-2.2.2.3-3.3">
                 <code>exp</code>: OPTIONAL. The expiry time of the Verifiable Digital Credential after which the
@@ -1749,7 +1769,7 @@ information.<a href="#section-2.2.2.3-3.3" class="pilcrow">¶</a>
 Credential, as defined in <a href="#aka-vcts-claim" class="auto internal xref">Section 2.2.2.2</a>.<a href="#section-2.2.2.3-3.7" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-2.2.2.3-3.8">
-                <code>status</code>: OPTIONAL. The information on how to read the status of the Verifiable
+                <code>status</code>: OPTIONAL. The information on how to read the status of the Verifiable Digital
 Credential. See <span>[<a href="#I-D.ietf-oauth-status-list" class="cite xref">I-D.ietf-oauth-status-list</a>]</span>
 for more information. When the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token MUST be in JWT format.<a href="#section-2.2.2.3-3.8" class="pilcrow">¶</a>
 </li>
@@ -1767,10 +1787,16 @@ exist between <code>sub</code> and <code>cnf</code> claims.<a href="#section-2.2
   <span>[<a href="#RFC7519" class="cite xref">RFC7519</a>]</span> for more information.<a href="#section-2.2.2.3-5.2" class="pilcrow">¶</a>
 </li>
             </ul>
-<p id="section-2.2.2.3-6">Note that <span><a href="https://rfc-editor.org/rfc/rfc7800#section-3" class="relref">Section 3</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> has a somewhat misguided requirement that either
-the <code>sub</code> or <code>iss</code> be present in the JWT.
-This specification explicitly overrides that requirement, as there are valid and
-legitimate uses of key-bound SD-JWT VCs without either of those claims.<a href="#section-2.2.2.3-6" class="pilcrow">¶</a></p>
+<div id="confirmation-claim-independence">
+<section id="section-2.2.2.3.1">
+              <h6 id="name-confirmation-claim-independ">
+<a href="#section-2.2.2.3.1" class="section-number selfRef">2.2.2.3.1. </a><a href="#name-confirmation-claim-independ" class="section-name selfRef">Confirmation Claim Independence</a>
+              </h6>
+<p id="section-2.2.2.3.1-1">The second paragraph of <span><a href="https://rfc-editor.org/rfc/rfc7800#section-3" class="relref">Section 3</a> of [<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> requires that a JWT containing a <code>cnf</code> claim also contain either the <code>sub</code> or <code>iss</code> claim.
+This specification explicitly overrides that requirement and updates <span>[<a href="#RFC7800" class="cite xref">RFC7800</a>]</span> to nullify that requirement, as there are valid and
+legitimate uses of key-bound SD-JWT VCs, SD-JWTs, and JWTs without either of those claims.<a href="#section-2.2.2.3.1-1" class="pilcrow">¶</a></p>
+</section>
+</div>
 </section>
 </div>
 <div id="public-and-private-jwt-claims">
@@ -1789,7 +1815,7 @@ legitimate uses of key-bound SD-JWT VCs without either of those claims.<a href="
             <h5 id="name-sd-jwt-vc-without-selective">
 <a href="#section-2.2.2.5" class="section-number selfRef">2.2.2.5. </a><a href="#name-sd-jwt-vc-without-selective" class="section-name selfRef">SD-JWT VC without Selectively Disclosable Claims</a>
             </h5>
-<p id="section-2.2.2.5-1">An SD-JWT VC MAY have no selectively disclosable claims.
+<p id="section-2.2.2.5-1">An SD-JWT VC can have no selectively disclosable claims.
 In that case, the SD-JWT VC MUST NOT contain the <code>_sd</code> claim in the JWT body. It also
 MUST NOT have any Disclosures.<a href="#section-2.2.2.5-1" class="pilcrow">¶</a></p>
 </section>
@@ -1840,7 +1866,7 @@ SD-JWT VC.<a href="#section-2.3.1-1" class="pilcrow">¶</a></p>
 <p id="section-2.3.1-3"><a href="#sd-jwt-payload1" class="auto internal xref">Figure 6</a> shows how the Unsecured Payload
 above can be used in an SD-JWT where the resulting SD-JWT VC contains
 only claims about the Subject that are selectively disclosable:<a href="#section-2.3.1-3" class="pilcrow">¶</a></p>
-<span id="name-unsecured-payload-example-2"></span><div id="sd-jwt-payload1">
+<span id="name-sd-jwt-payload-example"></span><div id="sd-jwt-payload1">
 <figure id="figure-6">
             <div class="lang-json sourcecode" id="section-2.3.1-4.1">
 <pre>{
@@ -1873,7 +1899,7 @@ only claims about the Subject that are selectively disclosable:<a href="#section
 </pre>
 </div>
 <figcaption><a href="#figure-6" class="selfRef">Figure 6</a>:
-<a href="#name-unsecured-payload-example-2" class="selfRef">Unsecured Payload Example</a>
+<a href="#name-sd-jwt-payload-example" class="selfRef">SD-JWT Payload Example</a>
             </figcaption></figure>
 </div>
 <p id="section-2.3.1-5">Note that a <code>cnf</code> claim has been added to the SD-JWT payload to express the
@@ -2010,9 +2036,9 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bHwDc
-lHG3oyNjBSmqW6hOwvAw38BcRyAuXkVqOONuBXVK-dt5FFde8e_ZYeG5Z2GjnejXvub2
-YnOMw_AdJgNYg~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Yz4dH
+sEvYbyAW9FD5AVSAaDohlVojVw4qIJW02hYwKOAnoKWbZQ1Nkyd_98HUs13qx-gpnTtO
+uHsziQ7dKOzgQ~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
 AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
 kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
 ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -2058,17 +2084,17 @@ cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9jcmVkZW50aWFscy5leGFtcGxl
 LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
 bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
 QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.bHwDc
-lHG3oyNjBSmqW6hOwvAw38BcRyAuXkVqOONuBXVK-dt5FFde8e_ZYeG5Z2GjnejXvub2
-YnOMw_AdJgNYg~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.Yz4dH
+sEvYbyAW9FD5AVSAaDohlVojVw4qIJW02hYwKOAnoKWbZQ1Nkyd_98HUs13qx-gpnTtO
+uHsziQ7dKOzgQ~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
 B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
 ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
 icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
 yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE0MDgyNz
-UsICJzZF9oYXNoIjogIllXQ0t0dTM4TzViSkl1LU04V244YktiZ09Tcm9tcDc3VjVDTk
-J6YXI3UG8ifQ.iuARCDHKrIyh3CdjQcJ7TCXllySE7FaTdvpiUEHd3cOEq2b7-gUaImR
-gq2s3qhdMwtNeyWhm-ngInYPSs_wZsw
+I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTQyMjkwMT
+gsICJzZF9oYXNoIjogImJPd192aVlxZGh0SnNQeW1mQlJqaEV4T2l0VVVHcGZDRDJuRX
+VMV3ppYncifQ.WNT9FfJnUyAkFxBdXQEywTn5Ztt2t51VBN3HkmvOSkDjcYqJ7099UJs
+jbEICb8He3d2ysx5EgPl4n2-0wWSQtA
 
 </pre>
 </div>
@@ -2125,8 +2151,8 @@ laVVRd1k5UXF4SSIsICJqc3U5eVZ1bHdRUWxoRmxNXzNKbHpNYVNGemdsaFFHMERwZmF
 5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
 0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
 jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-hbGciOiAic2hhLTI1NiJ9.9hkWKch1b3QrBT9gWpU9SDzLKlfX8C3OjxU0gRJJa737ER
-tQP9dAKUbh7_BkuL-YMrTeskfmC3p-VQOyJfzQ-g~WyJsa2x4RjVqTVlsR1RQVW92TU5
+hbGciOiAic2hhLTI1NiJ9.1FJ3dO_NJMiq3V5OAkIlEz3E-k80__vVUoP0aNOh1_8doj
+YminbubliKkx-bQDO8o7BEGIHYs8_9fQ6ymY3-kw~WyJsa2x4RjVqTVlsR1RQVW92TU5
 JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
 IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
 Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -2185,7 +2211,9 @@ If Type Metadata is processed, the rules defined in <a href="#processing-type-me
 <p id="section-2.4-4">If there are no selectively disclosable claims, there is no need to process the
 <code>_sd</code> claim nor any Disclosures.<a href="#section-2.4-4" class="pilcrow">¶</a></p>
 <p id="section-2.4-5">If <code>status</code> is present in the verified payload of the SD-JWT, the status SHOULD
-be checked. Verifier policy decides whether to reject or accept a presentation of
+be checked. A Verifier that does not check the status cannot detect that the
+Verifiable Digital Credential has been revoked or suspended and accepts that risk
+according to its policy. Verifier policy decides whether to reject or accept a presentation of
 a SD-JWT VC based on the status of the Verifiable Digital Credential.<a href="#section-2.4-5" class="pilcrow">¶</a></p>
 <p id="section-2.4-6">Additional validation rules MAY apply, but their use is out of the scope of this
 specification.<a href="#section-2.4-6" class="pilcrow">¶</a></p>
@@ -2208,13 +2236,14 @@ This specification defines the following two mechanisms:<a href="#section-2.5-2"
             <p id="section-2.5-3.1.1">JWT VC Issuer Metadata: A mechanism to retrieve the Issuer's public key using web-based resolution. When the value of the <code>iss</code> claim of the Issuer-signed JWT is an HTTPS URI, the recipient obtains the public key using the keys from JWT VC Issuer Metadata as defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 4</a>.<a href="#section-2.5-3.1.1" class="pilcrow">¶</a></p>
 </li>
           <li class="normal" id="section-2.5-3.2">
-            <p id="section-2.5-3.2.1">Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter, the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> parameter and validates the X.509 certificate chain accordingly. In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate.<a href="#section-2.5-3.2.1" class="pilcrow">¶</a></p>
+            <p id="section-2.5-3.2.1">Inline X.509 Certificates: A mechanism to retrieve the Issuer's public key using the X.509 certificate chain in the SD-JWT header. When the protected header of the Issuer-signed JWT contains the <code>x5c</code> parameter (<span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.6" class="relref">Section 4.1.6</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span>), the recipient uses the public key from the end-entity certificate of the certificates from that <code>x5c</code> header parameter and validates the X.509 certificate chain according to <span><a href="https://rfc-editor.org/rfc/rfc7515#section-4.1.6" class="relref">Section 4.1.6</a> of [<a href="#RFC7515" class="cite xref">RFC7515</a>]</span> and <span>[<a href="#RFC5280" class="cite xref">RFC5280</a>]</span> against a trust anchor permitted for the Issuer according to policy (a certificate in the <code>x5c</code> header parameter is not a trust anchor merely because it is included there). In this case, the Issuer of the Verifiable Digital Credential is the subject of the end-entity certificate. An <code>iss</code> claim, if present, is not authenticated by this mechanism (see below); a recipient MAY reject an SD-JWT VC whose <code>iss</code> value is not bound to the end-entity certificate according to its policy, and Issuers using this mechanism SHOULD NOT include an <code>iss</code> claim without such a binding.<a href="#section-2.5-3.2.1" class="pilcrow">¶</a></p>
 </li>
         </ul>
-<p id="section-2.5-4">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
+<p id="section-2.5-4">An SD-JWT VC can carry the inputs for more than one mechanism, for example both an HTTPS <code>iss</code> value and an <code>x5c</code> header parameter. The recipient's policy determines which mechanism applies to an Issuer; the SD-JWT VC does not. The Issuer is identified as defined by the mechanism in use. A recipient MUST NOT treat inputs of other mechanisms as identifying the Issuer unless its policy binds them to that identity, for example an <code>iss</code> value to the end-entity certificate through a Subject Alternative Name (<span><a href="https://rfc-editor.org/rfc/rfc5280#section-4.2.1.6" class="relref">Section 4.2.1.6</a> of [<a href="#RFC5280" class="cite xref">RFC5280</a>]</span>) or a configured mapping, and the recipient has verified that binding.<a href="#section-2.5-4" class="pilcrow">¶</a></p>
+<p id="section-2.5-5">To enable different trust anchoring systems or key resolution methods, separate specifications or ecosystem regulations
 may define additional key discovery and validation mechanisms that complement or override those defined above; however, the specifics of such mechanisms are out of scope for this specification.
-See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 7.3</a> for related security considerations.<a href="#section-2.5-4" class="pilcrow">¶</a></p>
-<p id="section-2.5-5">If a recipient cannot validate that the public verification key corresponds to the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
+See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 7.3</a> for related security considerations.<a href="#section-2.5-5" class="pilcrow">¶</a></p>
+<p id="section-2.5-6">If a recipient cannot validate that the public verification key corresponds to the Issuer of the Issuer-signed JWT using a permitted key discovery and validation mechanism, the SD-JWT VC MUST be rejected.<a href="#section-2.5-6" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -2226,10 +2255,10 @@ See <a href="#ecosystem-verification-rules" class="auto internal xref">Section 7
       </h2>
 <p id="section-3-1">This specification defines several documents and resources that a Consumer
 retrieves via HTTP URLs: the JWT VC Issuer Metadata configuration and the JWK
-Set referenced by <code>jwks_uri</code> <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 4</a>, Type Metadata documents
+Set referenced by <code>jwks_uri</code> (<a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 4</a>), Type Metadata documents
 referenced by <code>vct</code> claims and <code>extends</code> properties
-<a href="#retrieving-type-metadata" class="auto internal xref">Section 5.3</a>, and rendering resources such as logos, background
-images, and SVG templates <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>. The requirements in this
+(<a href="#retrieving-type-metadata" class="auto internal xref">Section 5.3</a>), and rendering resources such as logos, background
+images, and SVG templates (<a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>). The requirements in this
 section apply to every such retrieval.<a href="#section-3-1" class="pilcrow">¶</a></p>
 <p id="section-3-2">HTTP requests and responses used with this specification are governed by HTTP
 semantics <span>[<a href="#RFC9110" class="cite xref">RFC9110</a>]</span> and HTTP caching <span>[<a href="#RFC9111" class="cite xref">RFC9111</a>]</span>. A document or resource is
@@ -2239,7 +2268,7 @@ the expected media type of that representation is defined in the section
 defining the respective document or resource. A Consumer MUST NOT use the
 content of an error response (a response with a 4xx or 5xx status code) in
 place of the requested document or resource.<a href="#section-3-2" class="pilcrow">¶</a></p>
-<p id="section-3-3">All URLs dereferenced according to this specification MUST use the HTTPS
+<p id="section-3-3">All URLs dereferenced according to this specification MUST use the <code>https:</code>
 scheme. As an exception, the rendering resource URIs defined in
 <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a> MAY alternatively be <code>data:</code> URIs <span>[<a href="#RFC2397" class="cite xref">RFC2397</a>]</span>, which
 embed the resource and do not involve any retrieval.<a href="#section-3-3" class="pilcrow">¶</a></p>
@@ -2277,7 +2306,12 @@ configuration available at the location formed by inserting the well-known strin
 component (if any) of the <code>iss</code> claim value in the JWT. The <code>iss</code> MUST
 be a case-sensitive URL using the HTTPS scheme that contains scheme, host and,
 optionally, port number and path components as defined in <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>, but no
-query or fragment components.<a href="#section-4-2" class="pilcrow">¶</a></p>
+query or fragment components. The path component, if present, MUST NOT contain
+any dot-segments (i.e., the discrete path segments "<code>.</code>" and "<code>..</code>" described
+in <span><a href="https://rfc-editor.org/rfc/rfc3986#section-3.3" class="relref">Section 3.3</a> of [<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>).
+Lowercasing the scheme and host components of the <code>iss</code> value is RECOMMENDED, as mentioned in
+<span><a href="https://rfc-editor.org/rfc/rfc7519#section-7.3" class="relref">Section 7.3</a> of [<a href="#RFC7519" class="cite xref">RFC7519</a>]</span>, to provide a consistent representation of the value despite
+the case-insensitive treatment of those components per <span>[<a href="#RFC3986" class="cite xref">RFC3986</a>]</span>.<a href="#section-4-2" class="pilcrow">¶</a></p>
 <div id="jwt-vc-issuer-metadata-request">
 <section id="section-4.1">
         <h3 id="name-jwt-vc-issuer-metadata-requ">
@@ -2554,7 +2588,7 @@ MUST be an "integrity metadata" string as defined in <a href="#document-integrit
           </h4>
 <p id="section-5.3.1-1">A URI in the <code>vct</code> claim can be used to express a type. If the
 type is a URL using the HTTPS scheme, Type Metadata might be retrievable from that URL, and
-it is at the consumer's discretion whether to attempt retrieve Type Metadata from the URL.<a href="#section-5.3.1-1" class="pilcrow">¶</a></p>
+it is at the consumer's discretion whether to attempt to retrieve Type Metadata from the URL.<a href="#section-5.3.1-1" class="pilcrow">¶</a></p>
 <p id="section-5.3.1-2">The Type Metadata is retrieved from that URL using an HTTP <code>GET</code> request,
 following the rules defined in <a href="#http-retrieval" class="auto internal xref">Section 3</a>. A successful response
 carries a JSON object as defined in <a href="#type-metadata-format" class="auto internal xref">Section 5.2</a> as its content,
@@ -2578,8 +2612,8 @@ access to the URL. A Consumer needs to trust the registry to provide correct Typ
           <h4 id="name-using-a-defined-retrieval-m">
 <a href="#section-5.3.3" class="section-number selfRef">5.3.3. </a><a href="#name-using-a-defined-retrieval-m" class="section-name selfRef">Using a Defined Retrieval Method</a>
           </h4>
-<p id="section-5.3.3-1">Ecosystems MAY define additional methods for retrieving Type Metadata. For example, a
-standardization body or a community MAY define a service which has to be used to
+<p id="section-5.3.3-1">Ecosystems can define additional methods for retrieving Type Metadata. For example, a
+standardization body or a community can define a service which has to be used to
 retrieve Type Metadata based on a URN in the <code>vct</code> claim.<a href="#section-5.3.3-1" class="pilcrow">¶</a></p>
 </section>
 </div>
@@ -2616,14 +2650,14 @@ type.<a href="#section-5.4-1" class="pilcrow">¶</a></p>
 chain or hierarchy of types. The security considerations described in
 <a href="#circular-extends" class="auto internal xref">Section 7.4</a> apply in order to avoid problems with circular dependencies.<a href="#section-5.4-2" class="pilcrow">¶</a></p>
 <p id="section-5.4-3">The <code>extends</code> property and the <code>aka_vcts</code> claim defined in
-<a href="#aka-vcts-claim" class="auto internal xref">Section 2.2.2.2</a> are orthogonal mechanisms, and Type Metadata does not
-add any requirements to the content of the <code>aka_vcts</code> claim. However,
+<a href="#aka-vcts-claim" class="auto internal xref">Section 2.2.2.2</a> are orthogonal mechanisms: the types of an SD-JWT VC are
+those asserted by the Issuer in the <code>vct</code> and <code>aka_vcts</code> claims, whereas
+<code>extends</code> only determines which Type Metadata is inherited. Type Metadata does
+not make an SD-JWT VC an instance of further types and does not add any
+requirements to the content of the <code>aka_vcts</code> claim. However,
 if Type Metadata exists both for the type in the <code>vct</code> claim and for a type
 listed in the <code>aka_vcts</code> claim, the type of the SD-JWT VC SHOULD
-extend the listed type, whether directly or transitively. A Consumer
-processing Type Metadata MAY use the types established via the <code>extends</code>
-property in addition to those in the <code>aka_vcts</code> claim when matching
-types.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
+extend the listed type, whether directly or transitively.<a href="#section-5.4-3" class="pilcrow">¶</a></p>
 <p id="section-5.4-4">Processing details when extending type metadata are described in
 <a href="#display-metadata-extends" class="auto internal xref">Section 5.5.2</a> and <a href="#claim-metadata-extends" class="auto internal xref">Section 5.6.5</a>.<a href="#section-5.4-4" class="pilcrow">¶</a></p>
 </section>
@@ -2651,10 +2685,24 @@ property is REQUIRED.<a href="#section-5.5-3.2" class="pilcrow">¶</a>
 users. This property is OPTIONAL.<a href="#section-5.5-3.3" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-5.5-3.4">
+            <code>dir</code>: The base text direction of the human-readable string values in this object,
+such as <code>name</code> and <code>description</code>, and in nested objects, such as the <code>alt_text</code> of a
+logo in the rendering metadata, as one of the strings <code>ltr</code>, <code>rtl</code>, or <code>auto</code>. <code>ltr</code>
+and <code>rtl</code> set the paragraph direction for the Unicode Bidirectional Algorithm
+<span>[<a href="#UAX9" class="cite xref">UAX9</a>]</span>; <code>auto</code> means that the direction is determined from the first strong
+character of each value. If absent, <code>auto</code> applies. This property is OPTIONAL.<a href="#section-5.5-3.4" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-5.5-3.5">
             <code>rendering</code>: An object containing rendering information for the type, as
-described in <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>. This property is OPTIONAL.<a href="#section-5.5-3.4" class="pilcrow">¶</a>
+described in <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>. This property is OPTIONAL.<a href="#section-5.5-3.5" class="pilcrow">¶</a>
 </li>
         </ul>
+<p id="section-5.5-4">The human-readable string values in a display object and its nested objects are
+Unicode strings whose display direction follows from the Unicode Bidirectional
+Algorithm <span>[<a href="#UAX9" class="cite xref">UAX9</a>]</span>. Where the default resolution is not the intended one, Issuers
+can set the <code>dir</code> property or include the Unicode directional formatting
+characters in the value. The
+language tag in <code>locale</code> can include a script subtag (<span><a href="https://rfc-editor.org/rfc/rfc5646#section-2.2.3" class="relref">Section 2.2.3</a> of [<a href="#RFC5646" class="cite xref">RFC5646</a>]</span>).<a href="#section-5.5-4" class="pilcrow">¶</a></p>
 <div id="rendering-metadata">
 <section id="section-5.5.1">
           <h4 id="name-rendering-metadata">
@@ -2678,7 +2726,7 @@ images are expected to be served with an appropriate image media type
 <a href="#section-5.5.1.1" class="section-number selfRef">5.5.1.1. </a><a href="#name-rendering-method-simple" class="section-name selfRef">Rendering Method "simple"</a>
             </h5>
 <p id="section-5.5.1.1-1">The <code>simple</code> rendering method is intended for use in applications that do not
-support SVG rendering. The object contains the following properties:<a href="#section-5.5.1.1-1" class="pilcrow">¶</a></p>
+support SVG rendering. The object contains at least one of the following properties:<a href="#section-5.5.1.1-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-5.5.1.1-2.1">
                 <code>logo</code>: An object containing information about the logo to be displayed for
@@ -2693,7 +2741,7 @@ the type, as described in <a href="#background-image-metadata" class="auto inter
 This property is OPTIONAL.<a href="#section-5.5.1.1-2.3" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-5.5.1.1-2.4">
-                <code>text_color</code>: An RGB color value as defined in <span>[<a href="#W3C.CSS-COLOR" class="cite xref">W3C.CSS-COLOR</a>]</span> value for the text of the credential. This property
+                <code>text_color</code>: An RGB color value as defined in <span>[<a href="#W3C.CSS-COLOR" class="cite xref">W3C.CSS-COLOR</a>]</span> for the text of the credential. This property
 is OPTIONAL.<a href="#section-5.5.1.1-2.4" class="pilcrow">¶</a>
 </li>
             </ul>
@@ -2768,10 +2816,10 @@ one SVG template is present, otherwise it is OPTIONAL.<a href="#section-5.5.1.2-
 <a href="#section-5.5.1.2.1" class="section-number selfRef">5.5.1.2.1. </a><a href="#name-svg-template-properties" class="section-name selfRef">SVG Template Properties</a>
               </h6>
 <p id="section-5.5.1.2.1-1">The <code>properties</code> property is an object containing properties for the SVG
-template. Consuming applications MUST use these properties to find the best SVG
+template. Consuming applications use these properties to find the best SVG
 template available for display to the user based on the display properties
 (landscape/portrait) and user preferences (color scheme, contrast). The object
-MUST contain at least one of the following properties:<a href="#section-5.5.1.2.1-1" class="pilcrow">¶</a></p>
+contains at least one of the following properties:<a href="#section-5.5.1.2.1-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-5.5.1.2.1-2.1">
                   <code>orientation</code>: The orientation for which the SVG template is optimized, with
@@ -2793,7 +2841,7 @@ values being <code>normal</code> and <code>high</code>. This property is OPTIONA
               <h6 id="name-svg-rendering">
 <a href="#section-5.5.1.2.2" class="section-number selfRef">5.5.1.2.2. </a><a href="#name-svg-rendering" class="section-name selfRef">SVG Rendering</a>
               </h6>
-<p id="section-5.5.1.2.2-1">A consuming application MUST preprocess the SVG template by replacing placeholders
+<p id="section-5.5.1.2.2-1">A consuming application MUST preprocess the SVG template <span>[<a href="#W3C.SVG" class="cite xref">W3C.SVG</a>]</span> by replacing placeholders
 in the SVG template with properly escaped values of the claims in the credential. The
 placeholders MUST be defined in the SVG template using the syntax
 <code>{{svg_id}}</code>, where <code>svg_id</code> is an identifier defined in the claim metadata as
@@ -2801,8 +2849,9 @@ described in <a href="#claim-metadata" class="auto internal xref">Section 5.6</a
 <p id="section-5.5.1.2.2-2">Placeholders MUST only be used in the text content of the SVG template and MUST NOT
 be used in any other part of the SVG template, e.g., in attributes or comments.<a href="#section-5.5.1.2.2-2" class="pilcrow">¶</a></p>
 <p id="section-5.5.1.2.2-3">A consuming application MUST ensure that all special characters in the claim
-values are properly escaped before inserting them into the SVG template. At
-least the following characters MUST be escaped:<a href="#section-5.5.1.2.2-3" class="pilcrow">¶</a></p>
+values are properly escaped before inserting them into the SVG template.
+If invalid XML characters are present in the claim values, the consuming application
+SHOULD reject and not render the SVG template. At least the following characters MUST be escaped:<a href="#section-5.5.1.2.2-3" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-5.5.1.2.2-4.1">
                   <code>&amp;</code> as <code>&amp;amp;</code><a href="#section-5.5.1.2.2-4.1" class="pilcrow">¶</a>
@@ -2824,7 +2873,8 @@ least the following characters MUST be escaped:<a href="#section-5.5.1.2.2-3" cl
 SHOULD reject and not render the SVG template. If the <code>svg_id</code> is present in the
 claim metadata, but the claim is not present in the credential, the placeholder
 MUST be replaced with an empty string or a string appropriate to indicate that
-the value is absent.<a href="#section-5.5.1.2.2-5" class="pilcrow">¶</a></p>
+the value is absent. If the <code>path</code> of the claim metadata object selects more than
+one value, the consuming application SHOULD reject and not render the SVG template.<a href="#section-5.5.1.2.2-5" class="pilcrow">¶</a></p>
 <p id="section-5.5.1.2.2-6">The example in <a href="#example-svg-template" class="auto internal xref">Figure 18</a> shows a minimal SVG with one placeholder
 using the <code>svg_id</code> value <code>address_street_address</code> which is defined in the
 example in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix A.2</a>.<a href="#section-5.5.1.2.2-6" class="pilcrow">¶</a></p>
@@ -2893,10 +2943,13 @@ described in <a href="#claim-selective-disclosure-metadata" class="auto internal
             <code>svg_id</code>: A string defining the ID of the claim for reference in the SVG
 template, as described in <a href="#svg-rendering" class="auto internal xref">Section 5.5.1.2.2</a>. The ID MUST be unique within the
 type metadata. It MUST consist of only alphanumeric characters and underscores
-and MUST NOT start with a digit. This property is OPTIONAL.<a href="#section-5.6-3.5" class="pilcrow">¶</a>
+and MUST NOT start with a digit. It MUST NOT be used in a claim metadata object
+whose <code>path</code> contains a <code>null</code> component, since such a <code>path</code> can select more than
+one value. This property is OPTIONAL.<a href="#section-5.6-3.5" class="pilcrow">¶</a>
 </li>
         </ul>
-<p id="section-5.6-4">When a Consumer processes Type Metadata for an SD-JWT VC, the <code>claims</code> property and each claim metadata object MUST conform to the structure defined in this section and its subsections; otherwise, claim metadata processing fails.
+<p id="section-5.6-4">When a Consumer processes Type Metadata for an SD-JWT VC, the <code>claims</code> property MUST be an array of objects, and each of these objects MUST conform to the definitions of the <code>path</code>, <code>mandatory</code>, and <code>sd</code> properties in this section and its subsections; otherwise, claim metadata processing fails.
+Other properties, including <code>display</code> and <code>svg_id</code>, do not cause claim metadata processing to fail.
 Properties that are not understood are ignored as defined in <a href="#type-metadata-format" class="auto internal xref">Section 5.2</a>.<a href="#section-5.6-4" class="pilcrow">¶</a></p>
 <p id="section-5.6-5">When a Holder or Verifier processes claim metadata for an SD-JWT VC, it MUST validate the processed SD-JWT payload against the claim metadata in the Type Metadata after applying any extensions as described in <a href="#claim-metadata-extends" class="auto internal xref">Section 5.6.5</a>.
 Claim metadata validation fails if any of the following applies:<a href="#section-5.6-5" class="pilcrow">¶</a></p>
@@ -2975,7 +3028,7 @@ claims in the credential above:<a href="#section-5.6.1.1-3" class="pilcrow">¶</
                 <code>["name"]</code>: The claim <code>name</code> with the value <code>Arthur Dent</code> is selected.<a href="#section-5.6.1.1-4.1" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-5.6.1.1-4.2">
-                <code>["address"]</code>: The claim <code>address</code> with its sub-claims as the value is selected.<a href="#section-5.6.1.1-4.2" class="pilcrow">¶</a>
+                <code>["address"]</code>: The claim <code>address</code> with its subclaims as the value is selected.<a href="#section-5.6.1.1-4.2" class="pilcrow">¶</a>
 </li>
               <li class="compact" id="section-5.6.1.1-4.3">
                 <code>["address", "street_address"]</code>: The claim <code>street_address</code> with the value
@@ -3026,8 +3079,15 @@ is the empty set.<a href="#section-5.6.1.2-2.3" class="pilcrow">¶</a>
             </ol>
 <p id="section-5.6.1.2-3">The result of the processing is the set of elements to which the respective
 claim metadata applies.<a href="#section-5.6.1.2-3" class="pilcrow">¶</a></p>
-<p id="section-5.6.1.2-4">The <code>path</code> property MUST point to the respective claim as if all
-selectively disclosable claims were disclosed to a Verifier. That means that a
+<p id="section-5.6.1.2-4">The <code>path</code> property MUST point to the respective claim as if the payload was
+complete and conformant to the Type Metadata with all selectively disclosable
+claims disclosed. For a claim metadata object with <code>mandatory</code> set to <code>true</code> (see
+<a href="#claim-mandatory-metadata" class="auto internal xref">Section 5.6.3</a>), processing the <code>path</code> against such a complete payload
+MUST NOT remove any element from the selection in step 2 above; that is, every
+object traversed contains the respective key and every array traversed contains the
+respective index. A missing intermediate key or index therefore means that a
+mandatory claim is absent. A <code>null</code> component applied to an empty array selects
+nothing without violating this requirement. That means that a
 consuming application which does not have access to all disclosures may not be
 able to identify the claim which is being addressed.<a href="#section-5.6.1.2-4" class="pilcrow">¶</a></p>
 <p id="section-5.6.1.2-5">Note: This specification intentionally does not use JSON Pointer <span>[<a href="#RFC6901" class="cite xref">RFC6901</a>]</span> for
@@ -3046,9 +3106,9 @@ also security concerns with some implementations.<a href="#section-5.6.1.2-5" cl
 <a href="#section-5.6.2" class="section-number selfRef">5.6.2. </a><a href="#name-claim-display-metadata" class="section-name selfRef">Claim Display Metadata</a>
           </h4>
 <p id="section-5.6.2-1">The <code>display</code> property is an array containing display information for the
-claim. The array MUST contain an object for each locale that is supported by
-the type. The consuming application MUST use the language tag it considers most
-appropriate for the user.<a href="#section-5.6.2-1" class="pilcrow">¶</a></p>
+claim. The array contains an object for each locale that is supported by
+the type. The consuming application uses the object containing the language tag
+it considers most appropriate for the user.<a href="#section-5.6.2-1" class="pilcrow">¶</a></p>
 <p id="section-5.6.2-2">The objects in the array have the following properties:<a href="#section-5.6.2-2" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-5.6.2-3.1">
@@ -3062,8 +3122,15 @@ property is REQUIRED.<a href="#section-5.6.2-3.2" class="pilcrow">¶</a>
               <code>description</code>: A human-readable description for the claim, intended for end
 users. This property is OPTIONAL.<a href="#section-5.6.2-3.3" class="pilcrow">¶</a>
 </li>
+            <li class="compact" id="section-5.6.2-3.4">
+              <code>dir</code>: The base text direction of the human-readable string values in this object,
+such as <code>label</code> and <code>description</code>, and in nested objects, with the same values and
+semantics as the <code>dir</code> property in <a href="#display-metadata" class="auto internal xref">Section 5.5</a>. This property is OPTIONAL.<a href="#section-5.6.2-3.4" class="pilcrow">¶</a>
+</li>
           </ul>
-<p id="section-5.6.2-4">See <a href="#example-type-metadata" class="auto internal xref">Figure 30</a> in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix A.2</a> for an example that includes claim display metadata.<a href="#section-5.6.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.6.2-4">The considerations on the display direction of human-readable string values in
+<a href="#display-metadata" class="auto internal xref">Section 5.5</a> apply to claim display objects as well.<a href="#section-5.6.2-4" class="pilcrow">¶</a></p>
+<p id="section-5.6.2-5">See <a href="#example-type-metadata" class="auto internal xref">Figure 30</a> in <a href="#ExampleTypeMetadata" class="auto internal xref">Appendix A.2</a> for an example that includes claim display metadata.<a href="#section-5.6.2-5" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="claim-mandatory-metadata">
@@ -3307,9 +3374,11 @@ endpoints, these URLs MUST be considered untrusted values and could be a vector
 for Server-Side Request Forgery (SSRF) attacks.<a href="#section-7.1-1" class="pilcrow">¶</a></p>
 <p id="section-7.1-2">Before making a request to any of these URLs, including every redirect target
 as described in <a href="#http-retrieval" class="auto internal xref">Section 3</a>, the Consumer MUST validate the URL to
-ensure that it is a valid HTTPS URL and that it does not point to internal
-resources. Internal resources include, in particular, hosts with addresses
-from the IANA Special-Purpose Address Registries <span>[<a href="#RFC6890" class="cite xref">RFC6890</a>]</span> that are not
+ensure that it is a valid HTTPS URL and that it does not point to resources
+an issuer cannot access (e.g., resources internal to the Consumer).
+Such resources include, in particular, hosts with addresses
+from the IANA IPv4 and IPv6 Special-Purpose Address Registries
+<span>[<a href="#IANA.IPv4-Special-Registry" class="cite xref">IANA.IPv4-Special-Registry</a>]</span> <span>[<a href="#IANA.IPv6-Special-Registry" class="cite xref">IANA.IPv6-Special-Registry</a>]</span> that are not
 globally reachable (such as loopback, link-local, and private-use address
 ranges) as well as hosts that are only reachable from within the Consumer's
 network. Validation requires ensuring that the host part of the URL does not
@@ -3348,11 +3417,20 @@ browser.<a href="#section-7.2-1" class="pilcrow">¶</a></p>
         </h3>
 <p id="section-7.3-1">When defining ecosystem-specific rules for resolution and verification of the public key,
 as outlined in <a href="#key-stuff" class="auto internal xref">Section 2.5</a>, it is critical that those rules maintain the integrity of the
-relationship between the <code>iss</code> value of the SD-JWT, if present, and the public keys of the Issuer.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
-<p id="section-7.3-2">A Verifier MUST ensure that for any given <code>iss</code> value, an attacker cannot influence
+relationship between the Issuer of the SD-JWT VC, as identified by the key discovery and
+validation mechanism in use, for example by the <code>iss</code> value or by the end-entity certificate
+of the <code>x5c</code> header parameter, and the public keys of the Issuer.<a href="#section-7.3-1" class="pilcrow">¶</a></p>
+<p id="section-7.3-2">A Verifier MUST ensure that for any given Issuer, an attacker cannot influence
 the type of verification process used. Otherwise, an attacker could attempt to make
 the Verifier use a verification process not intended by the Issuer, allowing the
 attacker to potentially manipulate the verification result to their advantage.<a href="#section-7.3-2" class="pilcrow">¶</a></p>
+<p id="section-7.3-3">A key discovery and validation mechanism authenticates only its own inputs. Under the
+Inline X.509 Certificates mechanism, any holder of a certificate under a permitted trust
+anchor can include an arbitrary <code>iss</code> value; under the JWT VC Issuer Metadata mechanism,
+an <code>x5c</code> header parameter has not been validated against a trust anchor and does not
+identify the Issuer. Recipients that
+pass the processed SD-JWT payload to other components therefore convey the Issuer
+identity established by the mechanism in use (see <a href="#key-stuff" class="auto internal xref">Section 2.5</a>).<a href="#section-7.3-3" class="pilcrow">¶</a></p>
 </section>
 </div>
 <div id="circular-extends">
@@ -3392,9 +3470,9 @@ described in <a href="#privacy-preserving-retrieval-of-type-metadata" class="aut
         </h3>
 <p id="section-7.6-1">Some claims in the SD-JWT VC and properties in the Type Metadata, e.g., <code>display</code>, allow issuers and providers of metadata to
 specify human-readable information. These can contain arbitrary textual information that
-may be displayed to end users and developers. As such, any consuming application MUST ensure that maliciously
+may be displayed to end users and developers. To ensure that maliciously
 crafted information cannot be used to compromise the security of the application
-or the privacy of the user. To this end, the following considerations apply:<a href="#section-7.6-1" class="pilcrow">¶</a></p>
+or the privacy of the user, the following considerations apply:<a href="#section-7.6-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-7.6-2.1">The consuming application MUST ensure that the text is properly escaped before
 displaying it to the user or transferring it into other contexts. For example,
@@ -3413,14 +3491,14 @@ elements cannot be distorted by overly long text or special characters.<a href="
 <a href="#section-7.7" class="section-number selfRef">7.7. </a><a href="#name-credential-type-extension-a" class="section-name selfRef">Credential Type Extension and Issuer Authorization</a>
         </h3>
 <p id="section-7.7-1">When processing credentials, it is important to recognize that the ability to extend or reference
-an existing credential type (e.g., a well-known identifier such as <code>urn:ec.eu.x.y.z</code>) does not
+an existing credential type (e.g., a well-known identifier such as <code>urn:example:eudi:pid</code>) does not
 confer any implicit authorization to issue credentials of that type or its extensions. In particular:<a href="#section-7.7-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-7.7-2.1">
-            <strong>Issuer Authorization</strong>: Verifiers and Holders MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type <code>urn:de.bla</code> extending a European PID type) does not validate the issuer's authority.<a href="#section-7.7-2.1" class="pilcrow">¶</a>
+            <strong>Issuer Authorization</strong>: Verifiers and Holders MUST NOT assume that any issuer who issues a credential extending a known type is authorized to do so. The mere presence of an extension or reference to a recognized type (e.g., a national type <code>urn:example:de:pid</code> extending a European PID type) does not validate the issuer's authority.<a href="#section-7.7-2.1" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-7.7-2.2">
-            <strong>Rogue Issuers</strong>: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., <code>urn:attacker</code> extending <code>urn:ec.eu.x.y.z</code>). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.<a href="#section-7.7-2.2" class="pilcrow">¶</a>
+            <strong>Rogue Issuers</strong>: Attackers may issue credentials with types that extend or mimic legitimate types (e.g., <code>urn:example:attacker:pid</code> extending <code>urn:example:eudi:pid</code>). Such credentials MUST NOT be accepted solely based on their type hierarchy or extension relationship.<a href="#section-7.7-2.2" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-7.7-2.3">
             <strong>Processing Rules</strong>: Implementations MUST verify the issuer's authorization independently of the credential type or its extensions. This typically involves checking the issuer's identity, trust status, and any relevant accreditation or registry before accepting a credential.<a href="#section-7.7-2.3" class="pilcrow">¶</a>
@@ -3463,7 +3541,9 @@ malicious metadata providers or issuers cannot inject executable code into the S
 template and thereby compromise the security of the consuming application. The
 consuming application MUST NOT execute any code in the SVG template. If code
 execution cannot be prevented reliably, the SVG display MUST be sandboxed.<a href="#section-7.10-1" class="pilcrow">¶</a></p>
-<p id="section-7.10-2">Furthermore, consuming applications MUST ensure that references to external
+<p id="section-7.10-2">Furthermore, similar to retrieval of other metadata resources as
+discussed in <a href="#privacy-preserving-retrieval-of-type-metadata" class="auto internal xref">Section 8.4</a>,
+consuming applications need to ensure that references to external
 resources (images, etc.) from within the SVG cannot be used to track users or
 the usage of credentials.<a href="#section-7.10-2" class="pilcrow">¶</a></p>
 </section>
@@ -3543,7 +3623,9 @@ background images, and SVG templates referenced from Type Metadata as
 described in <a href="#rendering-metadata" class="auto internal xref">Section 5.5.1</a>.<a href="#section-8.4-1" class="pilcrow">¶</a></p>
 <p id="section-8.4-2">Consumers SHOULD prefer methods for retrieving Type Metadata and the resources
 it references that do not leak information about the usage of a credential to
-third parties. The recommendations in <a href="#robust-retrieval" class="auto internal xref">Section 7.5</a> apply.<a href="#section-8.4-2" class="pilcrow">¶</a></p>
+third parties. The caching recommendations in <a href="#robust-retrieval" class="auto internal xref">Section 7.5</a> apply and
+potentially identifying information about the Holder or Consumer should not
+be included in any request to retrieve such resources (e.g., in HTTP headers).<a href="#section-8.4-2" class="pilcrow">¶</a></p>
 </section>
 </div>
 </section>
@@ -3606,7 +3688,7 @@ the "Media Types" registry <span>[<a href="#IANA.MediaTypes" class="cite xref">I
 </li>
           <li class="compact" id="section-9.2-2.4">Optional parameters: n/a<a href="#section-9.2-2.4" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.2-2.5">Encoding considerations: 8-bit code points; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.<a href="#section-9.2-2.5" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.2-2.5">Encoding considerations: binary; SD-JWT VC values are encoded as a series of base64url-encoded values (some of which may be the empty string) separated by period ('.') and tilde ('~') characters.<a href="#section-9.2-2.5" class="pilcrow">¶</a>
 </li>
           <li class="compact" id="section-9.2-2.6">Security considerations: See Security Considerations in <a href="#security-considerations" class="auto internal xref">Section 7</a>.<a href="#section-9.2-2.6" class="pilcrow">¶</a>
 </li>
@@ -3616,26 +3698,28 @@ the "Media Types" registry <span>[<a href="#IANA.MediaTypes" class="cite xref">I
 </li>
           <li class="compact" id="section-9.2-2.9">Applications that use this media type: Applications that issue, present, and verify SD-JWT-based Verifiable Digital Credentials.<a href="#section-9.2-2.9" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.2-2.10">
-            <p id="section-9.2-2.10.1">Additional information:<a href="#section-9.2-2.10.1" class="pilcrow">¶</a></p>
+          <li class="compact" id="section-9.2-2.10">Fragment identifier considerations: n/a<a href="#section-9.2-2.10" class="pilcrow">¶</a>
+</li>
+          <li class="compact" id="section-9.2-2.11">
+            <p id="section-9.2-2.11.1">Additional information:<a href="#section-9.2-2.11.1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="section-9.2-2.10.2.1">Magic number(s): n/a<a href="#section-9.2-2.10.2.1" class="pilcrow">¶</a>
+<li class="compact" id="section-9.2-2.11.2.1">Magic number(s): n/a<a href="#section-9.2-2.11.2.1" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-9.2-2.10.2.2">File extension(s): n/a<a href="#section-9.2-2.10.2.2" class="pilcrow">¶</a>
+              <li class="compact" id="section-9.2-2.11.2.2">File extension(s): n/a<a href="#section-9.2-2.11.2.2" class="pilcrow">¶</a>
 </li>
-              <li class="compact" id="section-9.2-2.10.2.3">Macintosh file type code(s): n/a<a href="#section-9.2-2.10.2.3" class="pilcrow">¶</a>
+              <li class="compact" id="section-9.2-2.11.2.3">Macintosh file type code(s): n/a<a href="#section-9.2-2.11.2.3" class="pilcrow">¶</a>
 </li>
             </ul>
 </li>
-          <li class="compact" id="section-9.2-2.11">Person &amp; email address to contact for further information: Oliver Terbu <a href="mailto:oliver.terbu@mattr.global">oliver.terbu@mattr.global</a><a href="#section-9.2-2.11" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.2-2.12">Person &amp; email address to contact for further information: Oliver Terbu <a href="mailto:oliver.terbu@mattr.global">oliver.terbu@mattr.global</a><a href="#section-9.2-2.12" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.2-2.12">Intended usage: COMMON<a href="#section-9.2-2.12" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.2-2.13">Intended usage: COMMON<a href="#section-9.2-2.13" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.2-2.13">Restrictions on usage: none<a href="#section-9.2-2.13" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.2-2.14">Restrictions on usage: none<a href="#section-9.2-2.14" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.2-2.14">Author: Oliver Terbu <a href="mailto:oliver.terbu@mattr.global">oliver.terbu@mattr.global</a><a href="#section-9.2-2.14" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.2-2.15">Author: Oliver Terbu <a href="mailto:oliver.terbu@mattr.global">oliver.terbu@mattr.global</a><a href="#section-9.2-2.15" class="pilcrow">¶</a>
 </li>
-          <li class="compact" id="section-9.2-2.15">Change controller: IETF<a href="#section-9.2-2.15" class="pilcrow">¶</a>
+          <li class="compact" id="section-9.2-2.16">Change controller: IETF<a href="#section-9.2-2.16" class="pilcrow">¶</a>
 </li>
         </ul>
 </section>
@@ -3647,7 +3731,7 @@ the "Media Types" registry <span>[<a href="#IANA.MediaTypes" class="cite xref">I
         </h3>
 <p id="section-9.3-1">This specification requests the well-known URI defined in <a href="#jwt-vc-issuer-metadata" class="auto internal xref">Section 4</a>
 in the IANA "Well-Known URIs" registry <span>[<a href="#IANA.well-known" class="cite xref">IANA.well-known</a>]</span> as described in
-by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
+<span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#section-9.3-1" class="pilcrow">¶</a></p>
 <ul class="compact">
 <li class="compact" id="section-9.3-2.1">URI suffix: jwt-vc-issuer<a href="#section-9.3-2.1" class="pilcrow">¶</a>
 </li>
@@ -3673,6 +3757,10 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
 <a href="#section-10.1" class="section-number selfRef">10.1. </a><a href="#name-normative-references" class="section-name selfRef">Normative References</a>
         </h3>
 <dl class="references">
+<dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
+        <dd>
+<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List (TSL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-21</span>, <time datetime="2026-06-21" class="refDate">21 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-21">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-21</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC2119">[RFC2119]</dt>
         <dd>
 <span class="refAuthor">Bradner, S.</span>, <span class="refTitle">"Key words for use in RFCs to Indicate Requirement Levels"</span>, <span class="seriesInfo">BCP 14</span>, <span class="seriesInfo">RFC 2119</span>, <span class="seriesInfo">DOI 10.17487/RFC2119</span>, <time datetime="1997-03" class="refDate">March 1997</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc2119">https://www.rfc-editor.org/info/rfc2119</a>&gt;</span>. </dd>
@@ -3685,13 +3773,13 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
         <dd>
 <span class="refAuthor">Berners-Lee, T.</span>, <span class="refAuthor">Fielding, R.</span>, and <span class="refAuthor">L. Masinter</span>, <span class="refTitle">"Uniform Resource Identifier (URI): Generic Syntax"</span>, <span class="seriesInfo">STD 66</span>, <span class="seriesInfo">RFC 3986</span>, <span class="seriesInfo">DOI 10.17487/RFC3986</span>, <time datetime="2005-01" class="refDate">January 2005</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc3986">https://www.rfc-editor.org/info/rfc3986</a>&gt;</span>. </dd>
 <dd class="break"></dd>
+<dt id="RFC5280">[RFC5280]</dt>
+        <dd>
+<span class="refAuthor">Cooper, D.</span>, <span class="refAuthor">Santesson, S.</span>, <span class="refAuthor">Farrell, S.</span>, <span class="refAuthor">Boeyen, S.</span>, <span class="refAuthor">Housley, R.</span>, and <span class="refAuthor">W. Polk</span>, <span class="refTitle">"Internet X.509 Public Key Infrastructure Certificate and Certificate Revocation List (CRL) Profile"</span>, <span class="seriesInfo">RFC 5280</span>, <span class="seriesInfo">DOI 10.17487/RFC5280</span>, <time datetime="2008-05" class="refDate">May 2008</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5280">https://www.rfc-editor.org/info/rfc5280</a>&gt;</span>. </dd>
+<dd class="break"></dd>
 <dt id="RFC5646">[RFC5646]</dt>
         <dd>
 <span class="refAuthor">Phillips, A., Ed.</span> and <span class="refAuthor">M. Davis, Ed.</span>, <span class="refTitle">"Tags for Identifying Languages"</span>, <span class="seriesInfo">BCP 47</span>, <span class="seriesInfo">RFC 5646</span>, <span class="seriesInfo">DOI 10.17487/RFC5646</span>, <time datetime="2009-09" class="refDate">September 2009</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc5646">https://www.rfc-editor.org/info/rfc5646</a>&gt;</span>. </dd>
-<dd class="break"></dd>
-<dt id="RFC6890">[RFC6890]</dt>
-        <dd>
-<span class="refAuthor">Cotton, M.</span>, <span class="refAuthor">Vegoda, L.</span>, <span class="refAuthor">Bonica, R., Ed.</span>, and <span class="refAuthor">B. Haberman</span>, <span class="refTitle">"Special-Purpose IP Address Registries"</span>, <span class="seriesInfo">BCP 153</span>, <span class="seriesInfo">RFC 6890</span>, <span class="seriesInfo">DOI 10.17487/RFC6890</span>, <time datetime="2013-04" class="refDate">April 2013</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc6890">https://www.rfc-editor.org/info/rfc6890</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC7515">[RFC7515]</dt>
         <dd>
@@ -3734,8 +3822,12 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
 <span class="refAuthor">Çelik, T.</span>, <span class="refAuthor">Lilley, C.</span>, and <span class="refAuthor">L. D. Baron</span>, <span class="refTitle">"CSS Color Module Level 3"</span>, <time datetime="2022-01-18" class="refDate">18 January 2022</time>, <span>&lt;<a href="https://www.w3.org/TR/css-color-3">https://www.w3.org/TR/css-color-3</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="W3C.SRI">[W3C.SRI]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Akhawe, D.</span>, <span class="refAuthor">Braun, F.</span>, <span class="refAuthor">Marier, F.</span>, and <span class="refAuthor">J. Weinberger</span>, <span class="refTitle">"Subresource Integrity"</span>, <time datetime="2016-06-23" class="refDate">23 June 2016</time>, <span>&lt;<a href="https://www.w3.org/TR/2016/REC-SRI-20160623/">https://www.w3.org/TR/2016/REC-SRI-20160623/</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="W3C.SVG">[W3C.SVG]</dt>
+      <dd>
+<span class="refAuthor">Dahlström, E.</span>, <span class="refAuthor">Dengler, P.</span>, <span class="refAuthor">Grasso, A.</span>, <span class="refAuthor">Lilley, C.</span>, <span class="refAuthor">McCormack, C.</span>, <span class="refAuthor">Schepers, D.</span>, and <span class="refAuthor">R. Longson</span>, <span class="refTitle">"Scalable Vector Graphics (SVG) 1.1 (Second Edition)"</span>, <span class="seriesInfo">World Wide Web Consortium Recommendation REC-SVG11-20110816</span>, <time datetime="2011-08" class="refDate">August 2011</time>, <span>&lt;<a href="https://www.w3.org/TR/2011/REC-SVG11-20110816/">https://www.w3.org/TR/2011/REC-SVG11-20110816/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -3748,9 +3840,13 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
         <dd>
 <span class="refAuthor">Commission, E.</span>, <span class="refTitle">"The European Digital Identity Wallet Architecture and Reference Framework"</span>, <span>&lt;<a href="https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases">https://github.com/eu-digital-identity-wallet/eudi-doc-architecture-and-reference-framework/releases</a>&gt;</span>. </dd>
 <dd class="break"></dd>
-<dt id="I-D.ietf-oauth-status-list">[I-D.ietf-oauth-status-list]</dt>
+<dt id="IANA.IPv4-Special-Registry">[IANA.IPv4-Special-Registry]</dt>
         <dd>
-<span class="refAuthor">Looker, T.</span>, <span class="refAuthor">Bastian, P.</span>, and <span class="refAuthor">C. Bormann</span>, <span class="refTitle">"Token Status List (TSL)"</span>, <span class="refContent">Work in Progress</span>, <span class="seriesInfo">Internet-Draft, draft-ietf-oauth-status-list-21</span>, <time datetime="2026-06-21" class="refDate">21 June 2026</time>, <span>&lt;<a href="https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-21">https://datatracker.ietf.org/doc/html/draft-ietf-oauth-status-list-21</a>&gt;</span>. </dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"IANA IPv4 Special-Purpose Address Registry"</span>, <span>&lt;<a href="https://www.iana.org/assignments/iana-ipv4-special-registry">https://www.iana.org/assignments/iana-ipv4-special-registry</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="IANA.IPv6-Special-Registry">[IANA.IPv6-Special-Registry]</dt>
+        <dd>
+<span class="refAuthor">IANA</span>, <span class="refTitle">"IANA IPv6 Special-Purpose Address Registry"</span>, <span>&lt;<a href="https://www.iana.org/assignments/iana-ipv6-special-registry">https://www.iana.org/assignments/iana-ipv6-special-registry</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="IANA.JWT">[IANA.JWT]</dt>
         <dd>
@@ -3770,7 +3866,7 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
 <dd class="break"></dd>
 <dt id="OWASP_SSRF">[OWASP_SSRF]</dt>
         <dd>
-<span class="refAuthor">OWASP</span>, <span class="refTitle">"Server Side Request Forgery Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html/</a>&gt;</span>. </dd>
+<span class="refAuthor">OWASP</span>, <span class="refTitle">"Server Side Request Forgery Prevention Cheat Sheet"</span>, <span>&lt;<a href="https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html">https://cheatsheetseries.owasp.org/cheatsheets/Server_Side_Request_Forgery_Prevention_Cheat_Sheet.html</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC6901">[RFC6901]</dt>
         <dd>
@@ -3781,8 +3877,12 @@ by <span>[<a href="#RFC8615" class="cite xref">RFC8615</a>]</span>.<a href="#sec
 <span class="refAuthor">Nottingham, M.</span>, <span class="refTitle">"Building Protocols with HTTP"</span>, <span class="seriesInfo">BCP 56</span>, <span class="seriesInfo">RFC 9205</span>, <span class="seriesInfo">DOI 10.17487/RFC9205</span>, <time datetime="2022-06" class="refDate">June 2022</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9205">https://www.rfc-editor.org/info/rfc9205</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 <dt id="RFC9535">[RFC9535]</dt>
-      <dd>
+        <dd>
 <span class="refAuthor">Gössner, S., Ed.</span>, <span class="refAuthor">Normington, G., Ed.</span>, and <span class="refAuthor">C. Bormann, Ed.</span>, <span class="refTitle">"JSONPath: Query Expressions for JSON"</span>, <span class="seriesInfo">RFC 9535</span>, <span class="seriesInfo">DOI 10.17487/RFC9535</span>, <time datetime="2024-02" class="refDate">February 2024</time>, <span>&lt;<a href="https://www.rfc-editor.org/info/rfc9535">https://www.rfc-editor.org/info/rfc9535</a>&gt;</span>. </dd>
+<dd class="break"></dd>
+<dt id="UAX9">[UAX9]</dt>
+      <dd>
+<span class="refAuthor">Unicode Consortium</span>, <span class="refTitle">"Unicode Standard Annex #9: Unicode Bidirectional Algorithm"</span>, <span>&lt;<a href="https://www.unicode.org/reports/tr9/">https://www.unicode.org/reports/tr9/</a>&gt;</span>. </dd>
 <dd class="break"></dd>
 </dl>
 </section>
@@ -3886,8 +3986,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wnXFk6Efh646z4n1UKnVtWZBxmM-YyMP
-Gc8Kq_tydhZWKyJWlcCE4DTg2SgsWl5THS38h-Eo8XXsNklb1i-trw~WyIyR0xDNDJzS
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.TaATAsVA_t3Jk4cVdQxMsUfIiyEZiyIe
+Q6Z_aycocUqbxFYaSOIS1HNkAsyyzhBJw3oyNq---Z1utC72V9qbnA~WyIyR0xDNDJzS
 1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
 2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
 E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -4384,8 +4484,8 @@ wIjogMTg4MzAwMDAwMCwgInZjdCI6ICJ1cm46ZXhhbXBsZTpldWRpOnBpZDphZW5kZ2F
 yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
 gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
 Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.wnXFk6Efh646z4n1UKnVtWZBxmM-YyMP
-Gc8Kq_tydhZWKyJWlcCE4DTg2SgsWl5THS38h-Eo8XXsNklb1i-trw~WyJlSzVvNXBIZ
+JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.TaATAsVA_t3Jk4cVdQxMsUfIiyEZiyIe
+Q6Z_aycocUqbxFYaSOIS1HNkAsyyzhBJw3oyNq---Z1utC72V9qbnA~WyJlSzVvNXBIZ
 md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
 Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
 VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -4396,10 +4496,10 @@ lFXejB0TGl1Q21NZU8wS3FhekdJIl19XQ~WyJPQktsVFZsdkxnLUFkd3FZR2JQOFpBIi
 wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
 RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
 iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTE0MDgyNzUsICJzZF9oYXNoIjogIk
-9GdW9xeFN6ZkZ0U0psNUVmdGFyMzdXUFhld0VkWXo2QjR6YXBmR2dmUEkifQ.KQ4FW1P
-yXT9ea7BMzV7F8It8KXrpSF7aD8JPqlt38RpGVKuN8ZaQcsx_nkG0g3gVSBetUs99yel
-DyYpNywxktg
+1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTQyMjkwMTgsICJzZF9oYXNoIjogIj
+hWN1YtMjU0b2tMVnpWYzNObl9Jd0V2ZjVUcE9PV0pMZ2tQeHJNR0dTcnMifQ.WiBPRNM
+DVx_jFoLUpK9jc8Al5KgKLM6yPPe1o3DmZ0cKCkH_t3URFNfjR5qUP-yYqOYwY7ZfaAd
+osMt7amHy2A
 
 </pre>
 </div>
@@ -4414,8 +4514,8 @@ DyYpNywxktg
 <pre>{
   "nonce": "1234567890",
   "aud": "https://example.com/verifier",
-  "iat": 1791408275,
-  "sd_hash": "OFuoqxSzfFtSJl5Eftar37WPXewEdYz6B4zapfGgfPI"
+  "iat": 1794229018,
+  "sd_hash": "8V7V-254okLVzVc3Nn_IwEvf5TpOOWJLgkPxrMGGSrs"
 }
 
 </pre>
@@ -4469,7 +4569,7 @@ DyYpNywxktg
 <pre>{
   "vct": "https://betelgeuse.example.com/education_credential/v42",
   "vct#integrity":
-    "sha256-vJKakJAQkDYkIhGrT1M3nxRuSj9udH0l1PXB06QHto8=",
+    "sha256-dPPy/f63dtwl0FcbK8Pr9t2uCrF83zHnfInSPDdHaZc=",
   "name": "Zaphod Beeblebrox",
   "address": {
     "street_address": "42 Galaxy Way",
@@ -4505,9 +4605,9 @@ DyYpNywxktg
           <div class="breakable lang-json sourcecode" id="appendix-A.2-4.1">
 <pre>{
   "vct": "https://betelgeuse.example.com/education_credential/v42",
-  "name": "Betelgeuse Education Credential - First Version",
+  "name": "Betelgeuse Education Credential - Version 42",
   "description":
-    "This is our first version of the education credential. Don't panic.",
+    "This is our education credential. Don't panic.",
   "extends":
     "https://galaxy.example.com/galactic-education-credential/v2",
   "extends#integrity":
@@ -4703,7 +4803,7 @@ DyYpNywxktg
 </li>
           <li id="appendix-A.2-6.3">The <code>field_of_study</code> property of each degree object is marked as <code>sd: never</code>, meaning that if the respective degree object is disclosed, the <code>field_of_study</code> property will always be included and cannot be hidden.<a href="#appendix-A.2-6.3" class="pilcrow">¶</a>
 </li>
-          <li id="appendix-A.2-6.4">The <code>date_awarded</code> property of each degree object is marked as <code>sd: always</code>, meaning it can be selectively disclosed.<a href="#appendix-A.2-6.4" class="pilcrow">¶</a>
+          <li id="appendix-A.2-6.4">The <code>date_awarded</code> property of each degree object is marked as <code>sd: always</code>, meaning it is always selectively disclosable.<a href="#appendix-A.2-6.4" class="pilcrow">¶</a>
 </li>
         </ol>
 </section>
@@ -4724,25 +4824,35 @@ Andrii Deinega,
 Annabelle Kennedy,
 Antun Jurkovikj,
 Babis Routis,
+Charles Eckel,
+Christian Amsüss,
 Christian Bormann,
 Dan Moore,
 Deb Cooley,
 Denis Pinkas,
+Éric Vyncke,
 George J Padayatti,
 Giuseppe De Marco,
 Hannes Tschofenig,
+Ketan Talaulikar,
 Lukas J Han,
 Lukasz Jaromin,
 Leif Johansson,
+Mahesh Jethanandani,
 Mark Nottingham,
 Michael B. Jones,
+Mike Bishop,
 Mike Prorock,
+Ionuț Mihalcea,
 Mirko Mollik,
+Nas Til,
 Nat Sakimura,
 Orie Steele,
 Paul Bastian,
 Pavel Zarecky,
+remcoschaar (GitHub user on behalf of ISO/IEC JTC1/SC 17/WG 10, the working group responsible for ISO/IEC 18013 and ISO/IEC 23220 series, as was agreed at its meeting on 14 October 2026),
 Stefan Charsley,
+Su-hyeon Forten Lee,
 Tim Cappalli,
 Timo Glastra,
 Torsten Lodderstedt,
@@ -4756,349 +4866,422 @@ for their contributions (some of which substantial) to this draft and to the ini
       <h2 id="name-document-history">
 <a href="#appendix-C" class="section-number selfRef">Appendix C. </a><a href="#name-document-history" class="section-name selfRef">Document History</a>
       </h2>
-<p id="appendix-C-1">-20<a href="#appendix-C-1" class="pilcrow">¶</a></p>
+<p id="appendix-C-1">-27<a href="#appendix-C-1" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-2.1">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-2.1" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-C-2.2">Fix a couple of example hash values<a href="#appendix-C-2.2" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-C-2.3">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-2.3" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-C-2.4">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-2.4" class="pilcrow">¶</a>
-</li>
-        <li class="compact" id="appendix-C-2.5">remove a few superfluous subsection headings from the IANA Considerations<a href="#appendix-C-2.5" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-2.1">Clarify that the types of an SD-JWT VC are those asserted in <code>vct</code> and <code>aka_vcts</code>; Type Metadata and <code>extends</code> do not establish further types for type matching<a href="#appendix-C-2.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-3">-19<a href="#appendix-C-3" class="pilcrow">¶</a></p>
+<p id="appendix-C-3">-26<a href="#appendix-C-3" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-4.1">
-          <p id="appendix-C-4.1.1">Address HTTP Directorate review:<a href="#appendix-C-4.1.1" class="pilcrow">¶</a></p>
+<li class="compact" id="appendix-C-4.1">Cite the IANA IPv4 and IPv6 Special-Purpose Address Registries instead of RFC 6890 in the SSRF considerations (Éric Vyncke's ballot comment)<a href="#appendix-C-4.1" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-4.2">Remove a duplicate sentence in Section 2.2.2.2 (follow-up to Éric Vyncke's DISCUSS)<a href="#appendix-C-4.2" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="appendix-C-5">-25<a href="#appendix-C-5" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-4.1.2.1">Added a general section on retrieving documents and resources via HTTP, covering HTTP/caching semantics (RFC 9110, RFC 9111), redirect handling, scheme requirements, and time-bound/size-bound retrieval for all URLs dereferenced per this specification<a href="#appendix-C-4.1.2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-6.1">working on Éric Vyncke's Discuss on draft-ietf-oauth-sd-jwt-vc-23<a href="#appendix-C-6.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.2">Describe successful metadata responses in terms of their content and media type instead of pinning the HTTP 200 status code<a href="#appendix-C-4.1.2.2" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-C-7">-24<a href="#appendix-C-7" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-8.1">Address IESG ballot comments on issuer key discovery: policy selects the mechanism when both <code>iss</code> and <code>x5c</code> are present, chain validation per RFC 7515 and RFC 5280, a certificate does not become a trust anchor by being in <code>x5c</code>, and inputs of a mechanism not in use (such as <code>iss</code> under <code>x5c</code>) do not identify the Issuer unless policy binds them<a href="#appendix-C-8.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.3">Base the caching rules on the HTTP caching model of RFC 9111, recommend explicit freshness lifetimes, and clarify that integrity-keyed indefinite caching is independent of response caching directives<a href="#appendix-C-4.1.2.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-8.2">Address Mike Bishop's Discuss on draft-ietf-oauth-sd-jwt-vc-23: (with DISCUSS and COMMENT) by updating RFC7800 plus other fixes<a href="#appendix-C-8.2" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.4">Define the integrity verification procedure directly in this specification, using W3C SRI only for the syntax of the integrity metadata string and hash algorithm identification, and clarify that CORS is not required<a href="#appendix-C-4.1.2.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-8.3">some keyword fixes for Charles Eckel's No Objection on draft-ietf-oauth-sd-jwt-vc-23: (with COMMENT)<a href="#appendix-C-8.3" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.5">Constrain rendering resource URIs to HTTPS URLs or data: URIs and apply the general retrieval and SSRF requirements to them and to the JWK Set referenced by jwks_uri<a href="#appendix-C-4.1.2.5" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-C-9">-23<a href="#appendix-C-9" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-10.1">some minor fixes<a href="#appendix-C-10.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.6">Generalize the SSRF considerations to all dereferenced URLs, including redirect targets, and define internal resources with reference to RFC 6890<a href="#appendix-C-4.1.2.6" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-C-11">-22<a href="#appendix-C-11" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-12.1">Address Ketan Talaulikar's IESG ballot comments: use the term Verifiable Digital Credential for the <code>status</code> claim, state the RFC 7800 <code>sub</code>/<code>iss</code> departure neutrally, title the SD-JWT payload example figure correctly, align the claim display metadata text with the type display metadata text, use <code>urn:example</code> identifiers in the Security Considerations, align the media type registration with RFC 9901, and make the references to RFC 7515 and the Status List normative<a href="#appendix-C-12.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.7">Recommend nosniff and Content-Security-Policy response header fields when serving documents and rendering resources<a href="#appendix-C-4.1.2.7" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-C-13">-21<a href="#appendix-C-13" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-14.1">Limit the claim metadata processing failure rule to the <code>claims</code> array and the <code>path</code>, <code>mandatory</code>, and <code>sd</code> properties; a non-conforming <code>display</code> or <code>svg_id</code> no longer results in the SD-JWT VC being rejected<a href="#appendix-C-14.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.8">Added a complete HTTP response example for JWT VC Issuer Metadata<a href="#appendix-C-4.1.2.8" class="pilcrow">¶</a>
+      </ul>
+<p id="appendix-C-15">-20<a href="#appendix-C-15" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-16.1">say that anytime the <code>vct</code> type is derived from, extends, or is otherwise meant to be accepted as one or more general types, the Issuer should list them all in <code>aka_vcts</code>
+and Holders/Verifiers should consider them all when matching<a href="#appendix-C-16.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.9">Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components<a href="#appendix-C-4.1.2.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-16.2">Address ARTART review: scope the media type requirement to where a media type is used and explain why there is no <code>aka_vcts#integrity</code><a href="#appendix-C-16.2" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.1.2.10">Note privacy implications of retrieving rendering resources<a href="#appendix-C-4.1.2.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-16.3">Note that the somewhat misguided RFC7800 requirement that either <code>sub</code> or <code>iss</code> be present in the JWT doesn't apply<a href="#appendix-C-16.3" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.4">Address ARTART review: explain in the introduction how verifiability, the <code>vct</code> claim, Type Metadata and <code>aka_vcts</code> relate<a href="#appendix-C-16.4" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.5">Fix a couple of example hash values<a href="#appendix-C-16.5" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.6">Type Metadata identity: attempt to clarify value checking on retrieval of Type Metadata<a href="#appendix-C-16.6" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.7">add 'or the Subject' to a sentence in Verifiable Digital Credential Type Identifier section to better reflect that the holder need not be the subject<a href="#appendix-C-16.7" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.8">state that when both the <code>iss</code> claim and <code>x5c</code> header are present, there is no requirement they directly correspond<a href="#appendix-C-16.8" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.9">clarify that x5c is from RFC7515 and has to be validated against a policy-permitted trust anchor<a href="#appendix-C-16.9" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.10">Address ARTART review: an <code>svg_id</code> is not used with a <code>path</code> that can select more than one value, and the template is not rendered if it does<a href="#appendix-C-16.10" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.11">remove a few superfluous subsection headings from the IANA Considerations<a href="#appendix-C-16.11" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-16.12">
+          <p id="appendix-C-16.12.1">Secdir review items:<a href="#appendix-C-16.12.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-16.12.2.1">align the "at least one of" text in 5.5.1.1 and 5.5.1.2.1<a href="#appendix-C-16.12.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-16.12.2.2">say not to render and SVG template when invalid XML characters are present in the claim values<a href="#appendix-C-16.12.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-16.12.2.3">add a ref to the privacy text in the <a href="#svg-rendering-sec" class="auto internal xref">Section 7.10</a> in the security considerations section to the related privacy considerations <a href="#privacy-preserving-retrieval-of-type-metadata" class="auto internal xref">Section 8.4</a><a href="#appendix-C-16.12.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-16.12.2.4">try to qualify a bit more that the <code>path</code> points to a claim in a fully disclosed payload that's conformant with the type metadata<a href="#appendix-C-16.12.2.4" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-16.12.2.5">explicitly prohibit dot-segments in the path component, if present, of HTTPS URL based issuer identifiers used in Issuer Metadata retrieval<a href="#appendix-C-16.12.2.5" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
-        <li class="compact" id="appendix-C-4.2">Be more explicit about JWS JSON serialization being not explicitly defined for SD-JWT VCs<a href="#appendix-C-4.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-16.13">Address ARTART review: note how the display direction of human-readable strings is determined<a href="#appendix-C-16.13" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-4.3">
-          <p id="appendix-C-4.3.1">Address AD review:<a href="#appendix-C-4.3.1" class="pilcrow">¶</a></p>
+        <li class="compact" id="appendix-C-16.14">Address ARTART review: add an optional <code>dir</code> property for the base text direction of display strings<a href="#appendix-C-16.14" class="pilcrow">¶</a>
+</li>
+      </ul>
+<p id="appendix-C-17">-19<a href="#appendix-C-17" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-4.3.2.1">Clarify that claims that must not be selectively disclosed includes their sub-claims not being selectively disclosable<a href="#appendix-C-4.3.2.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-18.1">
+          <p id="appendix-C-18.1.1">Address HTTP Directorate review:<a href="#appendix-C-18.1.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-18.1.2.1">Added a general section on retrieving documents and resources via HTTP, covering HTTP/caching semantics (RFC 9110, RFC 9111), redirect handling, scheme requirements, and time-bound/size-bound retrieval for all URLs dereferenced per this specification<a href="#appendix-C-18.1.2.1" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.3.2.2">Remove: "Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period."<a href="#appendix-C-4.3.2.2" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-18.1.2.2">Describe successful metadata responses in terms of their content and media type instead of pinning the HTTP 200 status code<a href="#appendix-C-18.1.2.2" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.3.2.3">Not use big 2119 language in the first paragraph of the Display Metadata section<a href="#appendix-C-4.3.2.3" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-18.1.2.3">Base the caching rules on the HTTP caching model of RFC 9111, recommend explicit freshness lifetimes, and clarify that integrity-keyed indefinite caching is independent of response caching directives<a href="#appendix-C-18.1.2.3" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.3.2.4">Add a bit more explanation about aka_vcts<a href="#appendix-C-4.3.2.4" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-18.1.2.4">Define the integrity verification procedure directly in this specification, using W3C SRI only for the syntax of the integrity metadata string and hash algorithm identification, and clarify that CORS is not required<a href="#appendix-C-18.1.2.4" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.3.2.5">Add refs with URLs for the IANA registries for media types and JWT claims<a href="#appendix-C-4.3.2.5" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-18.1.2.5">Constrain rendering resource URIs to HTTPS URLs or data: URIs and apply the general retrieval and SSRF requirements to them and to the JWK Set referenced by jwks_uri<a href="#appendix-C-18.1.2.5" class="pilcrow">¶</a>
 </li>
-            <li class="compact" id="appendix-C-4.3.2.6">Move SVG template rendering security stuff into a new security considerations subsection<a href="#appendix-C-4.3.2.6" class="pilcrow">¶</a>
+            <li class="compact" id="appendix-C-18.1.2.6">Generalize the SSRF considerations to all dereferenced URLs, including redirect targets, and define internal resources with reference to RFC 6890<a href="#appendix-C-18.1.2.6" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.1.2.7">Recommend nosniff and Content-Security-Policy response header fields when serving documents and rendering resources<a href="#appendix-C-18.1.2.7" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.1.2.8">Added a complete HTTP response example for JWT VC Issuer Metadata<a href="#appendix-C-18.1.2.8" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.1.2.9">Use the BCP 14 (RFC 8174) boilerplate and add a reference to RFC 3986 for URL components<a href="#appendix-C-18.1.2.9" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.1.2.10">Note privacy implications of retrieving rendering resources<a href="#appendix-C-18.1.2.10" class="pilcrow">¶</a>
+</li>
+          </ul>
+</li>
+        <li class="compact" id="appendix-C-18.2">Be more explicit about JWS JSON serialization being not explicitly defined for SD-JWT VCs<a href="#appendix-C-18.2" class="pilcrow">¶</a>
+</li>
+        <li class="compact" id="appendix-C-18.3">
+          <p id="appendix-C-18.3.1">Address AD review:<a href="#appendix-C-18.3.1" class="pilcrow">¶</a></p>
+<ul class="compact">
+<li class="compact" id="appendix-C-18.3.2.1">Clarify that claims that must not be selectively disclosed includes their subclaims not being selectively disclosable<a href="#appendix-C-18.3.2.1" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.3.2.2">Remove: "Note that this draft used <code>vc+sd-jwt</code> as the value of the <code>typ</code> header from its inception in July 2023 until November 2024 when it was changed to <code>dc+sd-jwt</code> to avoid conflict with the <code>vc</code> media type name registered by the W3C's Verifiable Credentials Data Model draft. In order to facilitate a minimally disruptive transition, both <code>vc+sd-jwt</code> and <code>dc+sd-jwt</code> should be accepted as the value of the <code>typ</code> header for a reasonable transitional period."<a href="#appendix-C-18.3.2.2" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.3.2.3">Not use big 2119 language in the first paragraph of the Display Metadata section<a href="#appendix-C-18.3.2.3" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.3.2.4">Add a bit more explanation about aka_vcts<a href="#appendix-C-18.3.2.4" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.3.2.5">Add refs with URLs for the IANA registries for media types and JWT claims<a href="#appendix-C-18.3.2.5" class="pilcrow">¶</a>
+</li>
+            <li class="compact" id="appendix-C-18.3.2.6">Move SVG template rendering security stuff into a new security considerations subsection<a href="#appendix-C-18.3.2.6" class="pilcrow">¶</a>
 </li>
           </ul>
 </li>
       </ul>
-<p id="appendix-C-5">-18<a href="#appendix-C-5" class="pilcrow">¶</a></p>
+<p id="appendix-C-19">-18<a href="#appendix-C-19" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-6.1">Added the optional <code>aka_vcts</code> claim, conveying additional types of the credential.<a href="#appendix-C-6.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-20.1">Added the optional <code>aka_vcts</code> claim, conveying additional types of the credential.<a href="#appendix-C-20.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-6.2">Update obsoleted reference, move IANA Considerations, fix long lines, other nits<a href="#appendix-C-6.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-20.2">Update obsoleted reference, move IANA Considerations, fix long lines, other nits<a href="#appendix-C-20.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-7">-17<a href="#appendix-C-7" class="pilcrow">¶</a></p>
+<p id="appendix-C-21">-17<a href="#appendix-C-21" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-8.1">Clarified when optional Type Metadata processing occurs and how ecosystem rules can require it, in a new Processing Type Metadata section.<a href="#appendix-C-8.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-22.1">Clarified when optional Type Metadata processing occurs and how ecosystem rules can require it, in a new Processing Type Metadata section.<a href="#appendix-C-22.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-8.2">Require rejection when processed claim metadata is malformed or when <code>mandatory</code> or <code>sd</code> claim metadata does not match the credential.<a href="#appendix-C-8.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-22.2">Require rejection when processed claim metadata is malformed or when <code>mandatory</code> or <code>sd</code> claim metadata does not match the credential.<a href="#appendix-C-22.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-8.3">Clarified claim metadata validation for presentations: a Verifier must not treat absence of a selectively disclosable claim as a missing mandatory claim, and array positions in <code>path</code> account for array elements that are not disclosed.<a href="#appendix-C-8.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-22.3">Clarified claim metadata validation for presentations: a Verifier must not treat absence of a selectively disclosable claim as a missing mandatory claim, and array positions in <code>path</code> account for array elements that are not disclosed.<a href="#appendix-C-22.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-8.4">Moved the <code>vct#integrity</code> requirement to the general Type Metadata retrieval section.<a href="#appendix-C-8.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-22.4">Moved the <code>vct#integrity</code> requirement to the general Type Metadata retrieval section.<a href="#appendix-C-22.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-8.5">
-          <code>path</code> processing yields an empty set instead of an error when no claims are selected.<a href="#appendix-C-8.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-22.5">
+          <code>path</code> processing yields an empty set instead of an error when no claims are selected.<a href="#appendix-C-22.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-8.6">Updated the referenced document integrity wording.<a href="#appendix-C-8.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-22.6">Updated the referenced document integrity wording.<a href="#appendix-C-22.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-8.7">Editorial fixes.<a href="#appendix-C-8.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-22.7">Editorial fixes.<a href="#appendix-C-22.7" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-9">-16<a href="#appendix-C-9" class="pilcrow">¶</a></p>
+<p id="appendix-C-23">-16<a href="#appendix-C-23" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-10.1">shepherd review and resulting changes<a href="#appendix-C-10.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-24.1">shepherd review and resulting changes<a href="#appendix-C-24.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-10.2">use key discovery and validation mechanism instead of Issuer Signature Mechanism<a href="#appendix-C-10.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-24.2">use key discovery and validation mechanism instead of Issuer Signature Mechanism<a href="#appendix-C-24.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-10.3">moved Display Metadata and Claim Metadata to be subsections of SD-JWT VC Type Metadata<a href="#appendix-C-10.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-24.3">moved Display Metadata and Claim Metadata to be subsections of SD-JWT VC Type Metadata<a href="#appendix-C-24.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-11">-15<a href="#appendix-C-11" class="pilcrow">¶</a></p>
+<p id="appendix-C-25">-15<a href="#appendix-C-25" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-12.1">remove unnecessary Relationships to Other Documents section<a href="#appendix-C-12.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-26.1">remove unnecessary Relationships to Other Documents section<a href="#appendix-C-26.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-13">-14<a href="#appendix-C-13" class="pilcrow">¶</a></p>
+<p id="appendix-C-27">-14<a href="#appendix-C-27" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-14.1">State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms<a href="#appendix-C-14.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-28.1">State more explicitly that additional Issuer Signature Mechanisms can complement or override the defined mechanisms<a href="#appendix-C-28.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.2">Add example of a vct value that is versioned (in the text)<a href="#appendix-C-14.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.2">Add example of a vct value that is versioned (in the text)<a href="#appendix-C-28.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.3">Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document<a href="#appendix-C-14.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.3">Use the three-word term Verifiable Digital Credential as consistently as possible throughout the document<a href="#appendix-C-28.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.4">Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901<a href="#appendix-C-14.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.4">Update draft-ietf-oauth-selective-disclosure-jwt references to point to RFC 9901<a href="#appendix-C-28.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.5">More consistent use of <code>application/json</code> content type and 200 status code when retrieving metadata<a href="#appendix-C-14.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.5">More consistent use of <code>application/json</code> content type and 200 status code when retrieving metadata<a href="#appendix-C-28.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.6">Editorial improvements based on review feedback of -13<a href="#appendix-C-14.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.6">Editorial improvements based on review feedback of -13<a href="#appendix-C-28.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.7">Expand the example showing the vct claim<a href="#appendix-C-14.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.7">Expand the example showing the vct claim<a href="#appendix-C-28.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.8">Number and label the examples/figures<a href="#appendix-C-14.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.8">Number and label the examples/figures<a href="#appendix-C-28.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.9">Fix reference to Subresource Integrity document to point to W3C Recommendation version<a href="#appendix-C-14.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.9">Fix reference to Subresource Integrity document to point to W3C Recommendation version<a href="#appendix-C-28.9" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.10">Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs<a href="#appendix-C-14.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.10">Move Privacy-Preserving Retrieval of Type Metadata section to Privacy Considerations where it belongs<a href="#appendix-C-28.10" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.11">Move RFC 2397 to informative (only mentioned once and behind a SHOULD)<a href="#appendix-C-14.11" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.11">Move RFC 2397 to informative (only mentioned once and behind a SHOULD)<a href="#appendix-C-28.11" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.12">Add line break between the two things in the JSON Web Token Claims Registration section<a href="#appendix-C-14.12" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.12">Add line break between the two things in the JSON Web Token Claims Registration section<a href="#appendix-C-28.12" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.13">Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes<a href="#appendix-C-14.13" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.13">Error responses both for JWT VC Issuer Metadata and Type Metadata retrieval now MUST use appropriate HTTP status codes<a href="#appendix-C-28.13" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.14">Clarified that if an integrity property is present for a particular claim/property, the Consumer MUST verify the integrity of the retrieved document.<a href="#appendix-C-14.14" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.14">Clarified that if an integrity property is present for a particular claim/property, the Consumer MUST verify the integrity of the retrieved document.<a href="#appendix-C-28.14" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.15">Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.<a href="#appendix-C-14.15" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.15">Fixed the description of the claim metadata extension rules to correctly reflect the intended behavior.<a href="#appendix-C-28.15" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.16">Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.<a href="#appendix-C-14.16" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.16">Added a note explaining the difference in overriding rules between claim metadata and display metadata when extending types.<a href="#appendix-C-28.16" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.17">Merged section section 4 into section 3<a href="#appendix-C-14.17" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.17">Merged section section 4 into section 3<a href="#appendix-C-28.17" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-14.18">Replaced the term wallet with holder for consistency reasons<a href="#appendix-C-14.18" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-28.18">Replaced the term wallet with holder for consistency reasons<a href="#appendix-C-28.18" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-15">-13<a href="#appendix-C-15" class="pilcrow">¶</a></p>
+<p id="appendix-C-29">-13<a href="#appendix-C-29" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-16.1">Updated svg_template to match pluralised appendix example<a href="#appendix-C-16.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-30.1">Updated svg_template to match pluralised appendix example<a href="#appendix-C-30.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-17">-12<a href="#appendix-C-17" class="pilcrow">¶</a></p>
+<p id="appendix-C-31">-12<a href="#appendix-C-31" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-18.1">Change <code>lang</code> to <code>locale</code>. While <code>lang</code> is more accurate, <code>locale</code> is what has traditionally been used in OpenID Connect and later related specs.<a href="#appendix-C-18.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-32.1">Change <code>lang</code> to <code>locale</code>. While <code>lang</code> is more accurate, <code>locale</code> is what has traditionally been used in OpenID Connect and later related specs.<a href="#appendix-C-32.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.2">Remove JSON schema from Type Metadata<a href="#appendix-C-18.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.2">Remove JSON schema from Type Metadata<a href="#appendix-C-32.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.3">Introduce optional mandatory property for claims<a href="#appendix-C-18.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.3">Introduce optional mandatory property for claims<a href="#appendix-C-32.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.4">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-C-18.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.4">Explicitly mention that Type Metadata can have additional stuff that has to be ignored if not understood<a href="#appendix-C-32.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.5">Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)<a href="#appendix-C-18.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.5">Clarify that an SD-JWT VC doesn't contain a KB-JWT but rather might have an associated one (which makes it a SD-JWT+KB and Brian is still not sure about the term or these words, but it's where we've ended up)<a href="#appendix-C-32.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.6">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-C-18.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.6">Remove the requirement to ignore unknown claims, as some applications may not want to follow this rule<a href="#appendix-C-32.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.7">Fix cnf claim and JWK references and move them to normative<a href="#appendix-C-18.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.7">Fix cnf claim and JWK references and move them to normative<a href="#appendix-C-32.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.8">List <code>vct</code> as one of the required values in type metadata and ensure that the use of the document integrity claims is clear<a href="#appendix-C-18.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.8">List <code>vct</code> as one of the required values in type metadata and ensure that the use of the document integrity claims is clear<a href="#appendix-C-32.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.9">Remove discussion of status and Status Provider from the Introduction<a href="#appendix-C-18.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.9">Remove discussion of status and Status Provider from the Introduction<a href="#appendix-C-32.9" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.10">Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI<a href="#appendix-C-18.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.10">Add a background_image property to the simple rendering aligned with the definition in OpenID4VCI<a href="#appendix-C-32.10" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.11">Recommend to use <code>sd=always</code> or <code>sd=never</code> to avoid ambiguity and introduce rules for <code>sd</code> and <code>mandatory</code> when extending types<a href="#appendix-C-18.11" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.11">Recommend to use <code>sd=always</code> or <code>sd=never</code> to avoid ambiguity and introduce rules for <code>sd</code> and <code>mandatory</code> when extending types<a href="#appendix-C-32.11" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.12">Provide some guidance on versioning via the <code>vct</code> value<a href="#appendix-C-18.12" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.12">Provide some guidance on versioning via the <code>vct</code> value<a href="#appendix-C-32.12" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.13">Add security considerations for trust in type metadata<a href="#appendix-C-18.13" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.13">Add security considerations for trust in type metadata<a href="#appendix-C-32.13" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.14">Require data URIs for non-JSON types<a href="#appendix-C-18.14" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.14">Require data URIs for non-JSON types<a href="#appendix-C-32.14" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.15">Require <code>x5c</code> to be in the protected header<a href="#appendix-C-18.15" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.15">Require <code>x5c</code> to be in the protected header<a href="#appendix-C-32.15" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.16">Clarify presentations of SD-JWT VC do not require KB<a href="#appendix-C-18.16" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.16">Clarify presentations of SD-JWT VC do not require KB<a href="#appendix-C-32.16" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.17">Updated/expanded example for Type Metadata<a href="#appendix-C-18.17" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.17">Updated/expanded example for Type Metadata<a href="#appendix-C-32.17" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.18">Be more consistent with style for lists of claims/parameters/properties<a href="#appendix-C-18.18" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.18">Be more consistent with style for lists of claims/parameters/properties<a href="#appendix-C-32.18" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.19">Update PID example to make clear that it is not normative<a href="#appendix-C-18.19" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.19">Update PID example to make clear that it is not normative<a href="#appendix-C-32.19" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-18.20">Clarification on processing of display metadata<a href="#appendix-C-18.20" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-32.20">Clarification on processing of display metadata<a href="#appendix-C-32.20" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-19">-11<a href="#appendix-C-19" class="pilcrow">¶</a></p>
+<p id="appendix-C-33">-11<a href="#appendix-C-33" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-20.1">Clarify extend support for claim metadata<a href="#appendix-C-20.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-34.1">Clarify extend support for claim metadata<a href="#appendix-C-34.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.2">Add privacy concerns regarding the use of <code>x5u</code> parameter in JWKs and similar remote retrieval mechanisms<a href="#appendix-C-20.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.2">Add privacy concerns regarding the use of <code>x5u</code> parameter in JWKs and similar remote retrieval mechanisms<a href="#appendix-C-34.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.3">Added a section on Credential Type Extension and Issuer Authorization.<a href="#appendix-C-20.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.3">Added a section on Credential Type Extension and Issuer Authorization.<a href="#appendix-C-34.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.4">Fixed an inconsistency to the description of <code>display</code> attribute of claim metadata.<a href="#appendix-C-20.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.4">Fixed an inconsistency to the description of <code>display</code> attribute of claim metadata.<a href="#appendix-C-34.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.5">add <code>vct#integrity</code> to the list of claims that cannot be selectively disclosed<a href="#appendix-C-20.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.5">add <code>vct#integrity</code> to the list of claims that cannot be selectively disclosed<a href="#appendix-C-34.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.6">Drop explicit treatment of the glue type metadata document concept<a href="#appendix-C-20.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.6">Drop explicit treatment of the glue type metadata document concept<a href="#appendix-C-34.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.7">Editorial updates and fixes.<a href="#appendix-C-20.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.7">Editorial updates and fixes.<a href="#appendix-C-34.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.8">State that when the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token has to be a JWT.<a href="#appendix-C-20.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.8">State that when the <code>status</code> claim is present and using the <code>status_list</code> mechanism, the associated Status List Token has to be a JWT.<a href="#appendix-C-34.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-20.9">
-          <code>vct</code> datatype is now just a string<a href="#appendix-C-20.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-34.9">
+          <code>vct</code> datatype is now just a string<a href="#appendix-C-34.9" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-21">-10<a href="#appendix-C-21" class="pilcrow">¶</a></p>
+<p id="appendix-C-35">-10<a href="#appendix-C-35" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-22.1">Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.<a href="#appendix-C-22.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-36.1">Rename 'Issuer-signed JWT Verification Key Validation' to 'Issuer Signature Mechanisms' and rework some text accordingly. Provide a web-based metadata resolution mechanism and an inline x509 mechanism. A DID-based mechanism is not explicitly provided herein but still possible via profile/extension. Be explicit that the employed Issuer Signature Mechanism has to be one that is permitted for the Issuer according to policy. Be more clear that one permitted Issuer Signature Mechanism is sufficient.<a href="#appendix-C-36.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-22.2">Fix "[...]#integrity" claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)<a href="#appendix-C-22.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-36.2">Fix "[...]#integrity" claim values in examples (Subresource Integrity uses regular base64 encoding and some were wrong length)<a href="#appendix-C-36.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-23">-09<a href="#appendix-C-23" class="pilcrow">¶</a></p>
+<p id="appendix-C-37">-09<a href="#appendix-C-37" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-24.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-C-24.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-38.1">Use SD-JWT KB in place of SD-JWT with Key Binding JWT<a href="#appendix-C-38.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-24.2">Editorial changes<a href="#appendix-C-24.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-38.2">Editorial changes<a href="#appendix-C-38.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-24.3">Document reasons for not using JSON Pointer or JSON Path (Issue 267)<a href="#appendix-C-24.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-38.3">Document reasons for not using JSON Pointer or JSON Path (Issue 267)<a href="#appendix-C-38.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-24.4">Clarify that private claim names MAY be used<a href="#appendix-C-24.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-38.4">Clarify that private claim names MAY be used<a href="#appendix-C-38.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-24.5">Update PID Example<a href="#appendix-C-24.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-38.5">Update PID Example<a href="#appendix-C-38.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-24.6">Fix section numbering in a few SD-JWT references<a href="#appendix-C-24.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-38.6">Fix section numbering in a few SD-JWT references<a href="#appendix-C-38.6" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-25">-08<a href="#appendix-C-25" class="pilcrow">¶</a></p>
+<p id="appendix-C-39">-08<a href="#appendix-C-39" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-26.1">Fix formatting issue introduced by the reintroduction of the DID paragraph in -07<a href="#appendix-C-26.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-40.1">Fix formatting issue introduced by the reintroduction of the DID paragraph in -07<a href="#appendix-C-40.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-27">-07<a href="#appendix-C-27" class="pilcrow">¶</a></p>
+<p id="appendix-C-41">-07<a href="#appendix-C-41" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-28.1">Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section<a href="#appendix-C-28.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-42.1">Revert change from previous release that removed explicit mention of DIDs in the Issuer-signed JWT Verification Key Validation section<a href="#appendix-C-42.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-28.2">Remove the requirement to insert a .well-known part for vct URLs<a href="#appendix-C-28.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-42.2">Remove the requirement to insert a .well-known part for vct URLs<a href="#appendix-C-42.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-28.3">fix section numbering in SD-JWT references to align with the latest -14 version<a href="#appendix-C-28.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-42.3">fix section numbering in SD-JWT references to align with the latest -14 version<a href="#appendix-C-42.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-29">-06<a href="#appendix-C-29" class="pilcrow">¶</a></p>
+<p id="appendix-C-43">-06<a href="#appendix-C-43" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-30.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-C-30.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-44.1">Update the anticipated media type registration request from <code>application/vc+sd-jwt</code> to <code>application/dc+sd-jwt</code><a href="#appendix-C-44.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-30.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-C-30.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-44.2">Tightened the exposition of the Issuer-signed JWT Verification Key Validation section<a href="#appendix-C-44.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-30.3">Add the “Status” field for the well-known URI registration per IANA early review<a href="#appendix-C-30.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-44.3">Add the “Status” field for the well-known URI registration per IANA early review<a href="#appendix-C-44.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-31">-05<a href="#appendix-C-31" class="pilcrow">¶</a></p>
+<p id="appendix-C-45">-05<a href="#appendix-C-45" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-32.1">Include display and claim type metadata<a href="#appendix-C-32.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-46.1">Include display and claim type metadata<a href="#appendix-C-46.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-32.2">Added example for type metadata<a href="#appendix-C-32.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-46.2">Added example for type metadata<a href="#appendix-C-46.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-32.3">Clarify, add context, or otherwise improved the examples<a href="#appendix-C-32.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-46.3">Clarify, add context, or otherwise improved the examples<a href="#appendix-C-46.3" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-33">-04<a href="#appendix-C-33" class="pilcrow">¶</a></p>
+<p id="appendix-C-47">-04<a href="#appendix-C-47" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-34.1">update reference to IETF Status List<a href="#appendix-C-34.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-48.1">update reference to IETF Status List<a href="#appendix-C-48.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-34.2">Include Type Metadata<a href="#appendix-C-34.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-48.2">Include Type Metadata<a href="#appendix-C-48.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-34.3">Include schema Type Metadata<a href="#appendix-C-34.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-48.3">Include schema Type Metadata<a href="#appendix-C-48.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-34.4">Editorial changes<a href="#appendix-C-34.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-48.4">Editorial changes<a href="#appendix-C-48.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-34.5">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-C-34.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-48.5">Updated terminology to clarify digital signatures are one way to secure VCs and presentations<a href="#appendix-C-48.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-34.6">Rework key resolution/validation for x5c<a href="#appendix-C-34.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-48.6">Rework key resolution/validation for x5c<a href="#appendix-C-48.6" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-35">-03<a href="#appendix-C-35" class="pilcrow">¶</a></p>
+<p id="appendix-C-49">-03<a href="#appendix-C-49" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-36.1">Include disclosure of age_equal_or_over/18 in the PID example<a href="#appendix-C-36.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-50.1">Include disclosure of age_equal_or_over/18 in the PID example<a href="#appendix-C-50.1" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-37">-02<a href="#appendix-C-37" class="pilcrow">¶</a></p>
+<p id="appendix-C-51">-02<a href="#appendix-C-51" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-38.1">Made specific rules for public verification key validation conditional<a href="#appendix-C-38.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-52.1">Made specific rules for public verification key validation conditional<a href="#appendix-C-52.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.2">Finetuned rules for obtaining public verification key<a href="#appendix-C-38.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.2">Finetuned rules for obtaining public verification key<a href="#appendix-C-52.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.3">Editorial changes<a href="#appendix-C-38.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.3">Editorial changes<a href="#appendix-C-52.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.4">added Brian Campbell as co-author<a href="#appendix-C-38.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.4">added Brian Campbell as co-author<a href="#appendix-C-52.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.5">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-C-38.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.5">Renamed JWT Issuer Metadata to JWT VC Issuer Metadata<a href="#appendix-C-52.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.6">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-C-38.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.6">'iat' is now optional and allowed to be selectively disclosable<a href="#appendix-C-52.6" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.7">Fix inconstancy in the .well-known path construction<a href="#appendix-C-38.7" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.7">Fix inconstancy in the .well-known path construction<a href="#appendix-C-52.7" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.8">Added registration request to IANA for the well-known URI<a href="#appendix-C-38.8" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.8">Added registration request to IANA for the well-known URI<a href="#appendix-C-52.8" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-C-38.9" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.9">Fix some formatting and text in the media type and JWT claim registration requests<a href="#appendix-C-52.9" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.10">Clarify the optionality of the <code>cnf</code> claim<a href="#appendix-C-38.10" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.10">Clarify the optionality of the <code>cnf</code> claim<a href="#appendix-C-52.10" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.11">Added relationships to other documents<a href="#appendix-C-38.11" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.11">Added relationships to other documents<a href="#appendix-C-52.11" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-38.12">Added PID example<a href="#appendix-C-38.12" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-52.12">Added PID example<a href="#appendix-C-52.12" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-39">-01<a href="#appendix-C-39" class="pilcrow">¶</a></p>
+<p id="appendix-C-53">-01<a href="#appendix-C-53" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-40.1">Introduce rules for type identifiers (Collision-Resistant Name)<a href="#appendix-C-40.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-54.1">Introduce rules for type identifiers (Collision-Resistant Name)<a href="#appendix-C-54.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-40.2">Rename <code>type</code> to <code>vct</code><a href="#appendix-C-40.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-54.2">Rename <code>type</code> to <code>vct</code><a href="#appendix-C-54.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-40.3">Removed duplicated and inconsistent requirements on KB-JWT<a href="#appendix-C-40.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-54.3">Removed duplicated and inconsistent requirements on KB-JWT<a href="#appendix-C-54.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-40.4">Editorial changes<a href="#appendix-C-40.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-54.4">Editorial changes<a href="#appendix-C-54.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-40.5">Added issuer public verification key discovery section.<a href="#appendix-C-40.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-54.5">Added issuer public verification key discovery section.<a href="#appendix-C-54.5" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-41">-00<a href="#appendix-C-41" class="pilcrow">¶</a></p>
+<p id="appendix-C-55">-00<a href="#appendix-C-55" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-42.1">Upload as draft-ietf-oauth-sd-jwt-vc-00<a href="#appendix-C-42.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-56.1">Upload as draft-ietf-oauth-sd-jwt-vc-00<a href="#appendix-C-56.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-42.2">Aligned terminology and descriptions with latest version of SD-JWT<a href="#appendix-C-42.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-56.2">Aligned terminology and descriptions with latest version of SD-JWT<a href="#appendix-C-56.2" class="pilcrow">¶</a>
 </li>
       </ul>
-<p id="appendix-C-43">[[ pre Working Group Adoption: ]]<a href="#appendix-C-43" class="pilcrow">¶</a></p>
-<p id="appendix-C-44">-00<a href="#appendix-C-44" class="pilcrow">¶</a></p>
+<p id="appendix-C-57">[[ pre Working Group Adoption: ]]<a href="#appendix-C-57" class="pilcrow">¶</a></p>
+<p id="appendix-C-58">-00<a href="#appendix-C-58" class="pilcrow">¶</a></p>
 <ul class="compact">
-<li class="compact" id="appendix-C-45.1">Initial Version<a href="#appendix-C-45.1" class="pilcrow">¶</a>
+<li class="compact" id="appendix-C-59.1">Initial Version<a href="#appendix-C-59.1" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-45.2">Removed W3C VCDM transformation algorithm<a href="#appendix-C-45.2" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-59.2">Removed W3C VCDM transformation algorithm<a href="#appendix-C-59.2" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-45.3">Various editorial changes based on feedback<a href="#appendix-C-45.3" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-59.3">Various editorial changes based on feedback<a href="#appendix-C-59.3" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-45.4">Adjusted terminology based on feedback<a href="#appendix-C-45.4" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-59.4">Adjusted terminology based on feedback<a href="#appendix-C-59.4" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-45.5">Added non-selectively disclosable JWT VC<a href="#appendix-C-45.5" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-59.5">Added non-selectively disclosable JWT VC<a href="#appendix-C-59.5" class="pilcrow">¶</a>
 </li>
-        <li class="compact" id="appendix-C-45.6">Added a note that this is not W3C VCDM<a href="#appendix-C-45.6" class="pilcrow">¶</a>
+        <li class="compact" id="appendix-C-59.6">Added a note that this is not W3C VCDM<a href="#appendix-C-59.6" class="pilcrow">¶</a>
 </li>
       </ul>
 </section>
