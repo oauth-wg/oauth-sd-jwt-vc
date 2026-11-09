@@ -813,11 +813,11 @@ The `extends` property and the `aka_vcts` claim defined in
 (#aka-vcts-claim) are orthogonal mechanisms: the types of an SD-JWT VC are
 those asserted by the Issuer in the `vct` and `aka_vcts` claims, whereas
 `extends` only determines which Type Metadata is inherited. Type Metadata does
-not make an SD-JWT VC an instance of further types and does not add any
-requirements to the content of the `aka_vcts` claim. However,
-if Type Metadata exists both for the type in the `vct` claim and for a type
-listed in the `aka_vcts` claim, the type of the SD-JWT VC SHOULD
-extend the listed type, whether directly or transitively.
+not make an SD-JWT VC an instance of further types; when the type in the `vct`
+claim extends other types, (#aka-vcts-claim) recommends that the Issuer list
+those types in `aka_vcts`. Conversely, if Type Metadata exists both for the type
+in the `vct` claim and for a type listed in the `aka_vcts` claim, the type of
+the SD-JWT VC SHOULD extend the listed type, whether directly or transitively.
 
 Processing details when extending type metadata are described in
 (#display-metadata-extends) and (#claim-metadata-extends).
