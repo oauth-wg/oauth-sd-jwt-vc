@@ -1443,8 +1443,8 @@ confer any implicit authorization to issue credentials of that type or its exten
 Verifiers and Holders MUST implement explicit checks for issuer authorization and MUST NOT rely on type extension as a proxy for trust or legitimacy. Credential acceptance decisions MUST be based on both the credential type and the verified authority of the issuer.
 
 The same considerations apply to the additional types asserted via the `aka_vcts`
-claim defined in (#aka-vcts-claim). These types are asserted by the Issuer and,
-for types without Type Metadata, cannot be corroborated by an `extends` relationship.
+claim defined in (#aka-vcts-claim). These types are asserted by the Issuer in the
+same way as the type in the `vct` claim.
 Verifiers and Holders therefore MUST NOT treat the presence of a type in the `aka_vcts`
 claim as evidence that the Issuer is authorized to issue credentials of, or derived
 from, that type.
