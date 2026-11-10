@@ -1,6 +1,6 @@
 {
   "magic": "E!vIA5L86J2I",
-  "timestamp": "2026-11-08T00:33:58.905623+00:00",
+  "timestamp": "2026-11-10T00:29:34.505917+00:00",
   "repo": "oauth-wg/oauth-sd-jwt-vc",
   "labels": [
     {
@@ -35559,6 +35559,80 @@
           "body": "",
           "createdAt": "2026-11-06T16:45:53Z",
           "updatedAt": "2026-11-06T16:45:53Z",
+          "comments": []
+        }
+      ]
+    },
+    {
+      "number": 457,
+      "id": "PR_kwDOJbVClc8AAAABN21A6Q",
+      "title": "Clarify that the types of an SD-JWT VC are those asserted in vct and aka_vcts",
+      "url": "https://github.com/oauth-wg/oauth-sd-jwt-vc/pull/457",
+      "state": "OPEN",
+      "author": "awoie",
+      "authorAssociation": "COLLABORATOR",
+      "assignees": [],
+      "labels": [],
+      "body": "Since -25, Section 2.2.2.2 says a credential is of a given type if that type is the `vct` value or listed in `aka_vcts`. Section 5.4 still had two leftovers from the introduction of `aka_vcts` (#420) that pull in the other direction:\r\n\r\n- a MAY letting a Consumer also match types via the `extends` property of Type Metadata, so that whether a credential matches can depend on which side retrieved Type Metadata;\r\n- a SHOULD that the `vct` type extend each type listed in `aka_vcts`, which cannot be followed when `aka_vcts` lists two types that are not related to each other through `extends`, because a type can extend only one other type.\r\n\r\nThis PR removes both and says what 5.4 already calls orthogonal: the types of a credential are those the Issuer asserts in `vct` and `aka_vcts`; `extends` only determines which Type Metadata is inherited. The sentence in 2.2.2.2 about relying on Type Metadata for matching is adjusted to match, and 5.4 now points to the existing recommendation in 2.2.2.2 to list extended types in `aka_vcts`. In Section 7.7, the clause that described `aka_vcts` types as corroborated by an `extends` relationship is replaced by \"asserted by the Issuer in the same way as the type in the `vct` claim\"; the MUST NOT that follows is unchanged.\r\n\r\nNo new requirement for anyone. OpenID4VP 1.1 already matches `vct_values` on `vct` and `aka_vcts` and treats anything beyond that, type extension included, as out of band knowledge; ISO/IEC 18013-5 delegates type matching to this document and will cite a dated draft at the end of November. Review comments from Remco Schaar (WG10) are incorporated.\r\n",
+      "createdAt": "2026-11-09T13:45:28Z",
+      "updatedAt": "2026-11-09T21:08:02Z",
+      "baseRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "baseRefName": "main",
+      "baseRefOid": "d167baaa7e5361ecf0e1e79dfb81ed5bfb26d82c",
+      "headRepository": "oauth-wg/oauth-sd-jwt-vc",
+      "headRefName": "extends-orthogonal",
+      "headRefOid": "f0a27fb47aa3de6c5dce3c028b3d5c14fb5b2a1a",
+      "closedAt": null,
+      "mergedAt": null,
+      "mergedBy": null,
+      "mergeCommit": null,
+      "comments": [
+        {
+          "author": "remcoschaar",
+          "authorAssociation": "NONE",
+          "body": "As @awoie metioned, I did review this PR. The change aligns with commit a918aa2, and increases clarity on vct matching.",
+          "createdAt": "2026-11-09T16:59:03Z",
+          "updatedAt": "2026-11-09T16:59:03Z"
+        }
+      ],
+      "reviews": [
+        {
+          "id": "PRR_kwDOJbVClc8AAAABW2f5CA",
+          "commit": {
+            "abbreviatedOid": "f0a27fb"
+          },
+          "author": "GarethCOliver",
+          "authorAssociation": "NONE",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-11-09T15:52:09Z",
+          "updatedAt": "2026-11-09T15:52:09Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABW5C4dw",
+          "commit": {
+            "abbreviatedOid": "f0a27fb"
+          },
+          "author": "danielfett",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-11-09T19:08:48Z",
+          "updatedAt": "2026-11-09T19:08:48Z",
+          "comments": []
+        },
+        {
+          "id": "PRR_kwDOJbVClc8AAAABW6HEmw",
+          "commit": {
+            "abbreviatedOid": "f0a27fb"
+          },
+          "author": "c2bo",
+          "authorAssociation": "MEMBER",
+          "state": "APPROVED",
+          "body": "",
+          "createdAt": "2026-11-09T20:32:31Z",
+          "updatedAt": "2026-11-09T20:32:31Z",
           "comments": []
         }
       ]
