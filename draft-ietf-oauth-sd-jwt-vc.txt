@@ -6,9 +6,9 @@ Web Authorization Protocol                                      O. Terbu
 Internet-Draft                                                     MATTR
 Updates: 7800 (if approved)                                      D. Fett
 Intended status: Standards Track                           Authlete Inc.
-Expires: 10 May 2027                                         B. Campbell
+Expires: 20 May 2027                                         B. Campbell
                                                            Ping Identity
-                                                         6 November 2026
+                                                        16 November 2026
 
 
         SD-JWT-based Verifiable Digital Credentials (SD-JWT VC)
@@ -51,7 +51,7 @@ Status of This Memo
    time.  It is inappropriate to use Internet-Drafts as reference
    material or to cite them other than as "work in progress."
 
-   This Internet-Draft will expire on 10 May 2027.
+   This Internet-Draft will expire on 20 May 2027.
 
 Copyright Notice
 
@@ -404,15 +404,15 @@ Table of Contents
    received SD-JWT VC against the type it requested or expects.  For the
    purpose of type matching, a Holder or Verifier treats an SD-JWT VC as
    being of a given type, if that type is the vct value or one of the
-   values of the aka_vcts array.  While relationships between credential
-   types can be expressed through the extends property in Type Metadata,
-   Type Metadata is optional and may not be available, so issuance and
-   presentation protocols cannot always rely on it for type matching.
-   For example, a Verifier requesting a credential of the hypothetical
-   type urn:example:eudi:pid that receives an SD-JWT VC with a vct value
-   of urn:example:eudi:pid:aendgard:1 can determine from an aka_vcts
-   value of ["urn:example:eudi:pid"] that the received credential is
-   also of the requested type.
+   values of the aka_vcts array.  Type Metadata, which is optional and
+   may not be available, describes a type but does not determine the
+   types of an SD-JWT VC (see Section 5.4), so issuance and presentation
+   protocols rely on the vct and aka_vcts claims for type matching.  For
+   example, a Verifier requesting a credential of the hypothetical type
+   urn:example:eudi:pid that receives an SD-JWT VC with a vct value of
+   urn:example:eudi:pid:aendgard:1 can determine from an aka_vcts value
+   of ["urn:example:eudi:pid"] that the received credential is also of
+   the requested type.
 
    When the type in vct is derived from, extends, or is otherwise meant
    to be accepted as one or more general types, the Issuer SHOULD list
@@ -689,9 +689,9 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2L2px
-   QaA0NZP93LQjIZyQZzqk5HpGAwoh6F0kRiOXKteyKM21CwghIVTyOak7u6YgHOZdwBMp
-   hORcUNt20_e6w~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CQkb_
+   YgavL5RyQ8yywZk9LrdhNrXMI_56AROY6asaM2rnHpuloGkVRGsjxVRwQD1dwM5R3t17
+   RzU8kLKsrZL2Q~WyIyR0xDNDJzS1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLC
    AiSm9obiJd~WyJlbHVWNU9nM2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgI
    kRvZSJd~WyI2SWo3dE0tYTVpVlBHYm9TNXRtdlZBIiwgImVtYWlsIiwgImpvaG5kb2VA
    ZXhhbXBsZS5jb20iXQ~WyJlSThaV205UW5LUHBOUGVOZW5IZGhRIiwgInBob25lX251b
@@ -727,17 +727,17 @@ Table of Contents
    LmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJj
    bmYiOiB7Imp3ayI6IHsia3R5IjogIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRD
    QUVSMTladnUzT0hGNGo0VzR2ZlNWb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJa
-   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.2L2px
-   QaA0NZP93LQjIZyQZzqk5HpGAwoh6F0kRiOXKteyKM21CwghIVTyOak7u6YgHOZdwBMp
-   hORcUNt20_e6w~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
+   eGppV1diWk1RR0hWV0tWUTRoYlNJaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.CQkb_
+   YgavL5RyQ8yywZk9LrdhNrXMI_56AROY6asaM2rnHpuloGkVRGsjxVRwQD1dwM5R3t17
+   RzU8kLKsrZL2Q~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgImlzX292ZXJfNjUiLC
    B0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9BIiwgImFkZHJlc3MiLCB7InN0cmV
    ldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxvY2FsaXR5IjogIkFueXRvd24iLCA
    icmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnkiOiAiVVMifV0~eyJhbGciOiAiRVM
    yNTYiLCAidHlwIjogImtiK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZC
-   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5ODU1MD
-   EsICJzZF9oYXNoIjogIjd1THFFWEpDQjRTRjUtaEJpWEdZUWprVFhJb1dPck1Ca0pTMm
-   ZUM3F2dVUifQ.v_hOEOVM_hzGaub3lZxbFn9IFmKsDB3QXFFBRRJqj9mvG5V03Ln2osY
-   pvfWgvZcU6lRzbzsO-oGFDu_xbEHIIA
+   I6ICJodHRwczovL2V4YW1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTQ4MjU0Mz
+   UsICJzZF9oYXNoIjogIjIzalpfV2tvakVtQmJzaG9rM1JXS2t1ekNTQzRjc0lMWF9kUX
+   U2NUJhaW8ifQ.uFTp6A3O3wRsXNnSGKiMKpQDcHHDgwYZt33OgWpJR0XOWIxjLU2UpMD
+   LgeUDuQRRULXtEA7H0M6LV1f9u6ThQA
 
                    Figure 8: Presented SD-JWT+KB Example
 
@@ -783,8 +783,8 @@ Table of Contents
    5UXdMVUs0Il0sICJpc3MiOiAiaHR0cHM6Ly9leGFtcGxlLmNvbS9pc3N1ZXIiLCAiaWF
    0IjogMTY4MzAwMDAwMCwgImV4cCI6IDE4ODMwMDAwMDAsICJ2Y3QiOiAiaHR0cHM6Ly9
    jcmVkZW50aWFscy5leGFtcGxlLmNvbS9pZGVudGl0eV9jcmVkZW50aWFsIiwgIl9zZF9
-   hbGciOiAic2hhLTI1NiJ9.nvPNvt7LfzdhpPNtZwn_z_sVCRWNS0tz4QnUTiG2ygFYaq
-   vMh8ezzl514aIV5OCYO1irv0OSWgOuH2qE_yNPAg~WyJsa2x4RjVqTVlsR1RQVW92TU5
+   hbGciOiAic2hhLTI1NiJ9.QVr2pm40czAH84GzwA8ntFC2B8BI-HMpsW2kXeCwk06diW
+   6V-51Di-yBa6RpTeQLypKC6OdAPX8o4Y4a9M3anw~WyJsa2x4RjVqTVlsR1RQVW92TU5
    JdkNBIiwgImlzX292ZXJfNjUiLCB0cnVlXQ~WyJRZ19PNjR6cUF4ZTQxMmExMDhpcm9B
    IiwgImFkZHJlc3MiLCB7InN0cmVldF9hZGRyZXNzIjogIjEyMyBNYWluIFN0IiwgImxv
    Y2FsaXR5IjogIkFueXRvd24iLCAicmVnaW9uIjogIkFueXN0YXRlIiwgImNvdW50cnki
@@ -1243,14 +1243,13 @@ Table of Contents
    circular dependencies.
 
    The extends property and the aka_vcts claim defined in
-   Section 2.2.2.2 are orthogonal mechanisms, and Type Metadata does not
-   add any requirements to the content of the aka_vcts claim.  However,
-   if Type Metadata exists both for the type in the vct claim and for a
-   type listed in the aka_vcts claim, the type of the SD-JWT VC SHOULD
-   extend the listed type, whether directly or transitively.  A Consumer
-   processing Type Metadata MAY use the types established via the
-   extends property in addition to those in the aka_vcts claim when
-   matching types.
+   Section 2.2.2.2 are orthogonal mechanisms: the types of an SD-JWT VC
+   are those asserted by the Issuer in the vct and aka_vcts claims,
+   whereas extends only determines which Type Metadata is inherited.
+   Type Metadata does not make an SD-JWT VC an instance of further
+   types; when the type in the vct claim extends other types,
+   Section 2.2.2.2 recommends that the Issuer list those types in
+   aka_vcts.
 
    Processing details when extending type metadata are described in
    Section 5.5.2 and Section 5.6.5.
@@ -1994,11 +1993,10 @@ Table of Contents
 
    The same considerations apply to the additional types asserted via
    the aka_vcts claim defined in Section 2.2.2.2.  These types are
-   asserted by the Issuer and, for types without Type Metadata, cannot
-   be corroborated by an extends relationship.  Verifiers and Holders
-   therefore MUST NOT treat the presence of a type in the aka_vcts claim
-   as evidence that the Issuer is authorized to issue credentials of, or
-   derived from, that type.
+   asserted by the Issuer in the same way as the type in the vct claim.
+   Verifiers and Holders therefore MUST NOT treat the presence of a type
+   in the aka_vcts claim as evidence that the Issuer is authorized to
+   issue credentials of, or derived from, that type.
 
 7.8.  Trust in Type Metadata
 
@@ -2440,8 +2438,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.IB2sDdm5vfGor3ml8XKhfvGQhZ3JWvUu
-   2BBQhyQnRP4T2QgDxai90YgdpJxYZinVMdqINbbggxjvcwgxToFNUw~WyIyR0xDNDJzS
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.P-YiKmE_wfhqPg_iNp0tcSxAHKdNSgCw
+   KCUYeLhRT7NCjP50fNRg5CKUez7ezquKn6_pq1iaQaEF1zOKUIfiuA~WyIyR0xDNDJzS
    1F2ZUNmR2ZyeU5STjl3IiwgImdpdmVuX25hbWUiLCAiQXN0cmlkIl0~WyJlbHVWNU9nM
    2dTTklJOEVZbnN4QV9BIiwgImZhbWlseV9uYW1lIiwgIkhvbG1ncmVuIl0~WyI2SWo3d
    E0tYTVpVlBHYm9TNXRtdlZBIiwgImJpcnRoZGF0ZSIsICIxOTc4LTA0LTEwIl0~WyJlS
@@ -2823,8 +2821,8 @@ A.1.  Example Person Identification Data (PID) Credential
    yZDoxIiwgIl9zZF9hbGciOiAic2hhLTI1NiIsICJjbmYiOiB7Imp3ayI6IHsia3R5Ijo
    gIkVDIiwgImNydiI6ICJQLTI1NiIsICJ4IjogIlRDQUVSMTladnUzT0hGNGo0VzR2ZlN
    Wb0hJUDFJTGlsRGxzN3ZDZUdlbWMiLCAieSI6ICJaeGppV1diWk1RR0hWV0tWUTRoYlN
-   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.IB2sDdm5vfGor3ml8XKhfvGQhZ3JWvUu
-   2BBQhyQnRP4T2QgDxai90YgdpJxYZinVMdqINbbggxjvcwgxToFNUw~WyJlSzVvNXBIZ
+   JaXJzVmZ1ZWNDRTZ0NGpUOUYySFpRIn19fQ.P-YiKmE_wfhqPg_iNp0tcSxAHKdNSgCw
+   KCUYeLhRT7NCjP50fNRg5CKUez7ezquKn6_pq1iaQaEF1zOKUIfiuA~WyJlSzVvNXBIZ
    md1cFBwbHRqMXFoQUp3IiwgImFnZV9lcXVhbF9vcl9vdmVyIiwgeyJfc2QiOiBbIjF0R
    Wl5elBSWU9Lc2Y3U3NZR01nUFpLc09UMWxRWlJ4SFhBMHI1X0J3a2siLCAiQ1ZLbmx5N
    VA5MHlKczNFd3R4UWlPdFVjemFYQ1lOQTRJY3pSYW9ock1EZyIsICJhNDQtZzJHcjhfM
@@ -2835,10 +2833,10 @@ A.1.  Example Person Identification Data (PID) Credential
    wgIjE4IiwgdHJ1ZV0~WyJsa2x4RjVqTVlsR1RQVW92TU5JdkNBIiwgIm5hdGlvbmFsaX
    RpZXMiLCBbIlx1MDBjNm5kZ2FyZCJdXQ~eyJhbGciOiAiRVMyNTYiLCAidHlwIjogImt
    iK2p3dCJ9.eyJub25jZSI6ICIxMjM0NTY3ODkwIiwgImF1ZCI6ICJodHRwczovL2V4YW
-   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTM5ODU1MDEsICJzZF9oYXNoIjogIl
-   YtQVM2RUtqejhCenlrcnRsblJJRjVVandkb2cwdTdTd0xMWlE0Q2dFSWsifQ.ByJYTkQ
-   osbxikRuljS-Y4bCoSn1Hxy1lQH74bbpB3KvZpV9Pa9kMUK5zskPKag6mQyU9wlvVEnV
-   keYHFuIV9TA
+   1wbGUuY29tL3ZlcmlmaWVyIiwgImlhdCI6IDE3OTQ4MjU0MzUsICJzZF9oYXNoIjogIj
+   NxOFBoUEUxaGFvNlprSlhRTi1mN3Z1TW0yRExFX2VDZVQ4b0JiX25BbGsifQ.VEkKkiF
+   HjHlvSWPsm4cU7xPFw4wb-jFrAnk9NO4noDSqwRNcMvEz8injiaNSb4elIgMNA3PvSTd
+   f8iqasn2G7Q
 
                        Figure 26: Presented SD-JWT+KB
 
@@ -2847,8 +2845,8 @@ A.1.  Example Person Identification Data (PID) Credential
    {
      "nonce": "1234567890",
      "aud": "https://example.com/verifier",
-     "iat": 1793985501,
-     "sd_hash": "V-AS6EKjz8BzykrtlnRIF5Ujwdog0u7SwLLZQ4CgEIk"
+     "iat": 1794825435,
+     "sd_hash": "3q8PhPE1hao6ZkJXQN-f7vuMm2DLE_eCeT8oBb_nAlk"
    }
 
                      Figure 27: Key Binding JWT Payload
@@ -3140,6 +3138,13 @@ Appendix B.  Acknowledgements
    the initial set of implementations.
 
 Appendix C.  Document History
+
+   -27
+
+   *  Clarify that the types of an SD-JWT VC are those asserted in vct
+      and aka_vcts; Type Metadata and extends do not establish further
+      types for type matching, and the type in vct is not expected to
+      extend the types listed in aka_vcts
 
    -26
 
